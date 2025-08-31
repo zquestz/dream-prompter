@@ -13,7 +13,7 @@ def create_new_image(image_data=None, width=400, height=400):
     Create a new GIMP image in a new tab
 
     Args:
-        image_data (bytes): Optional image data to load
+        image_data (GdkPixbuf.Pixbuf): Optional pixbuf to load
         width (int): Width for new image if no data provided
         height (int): Height for new image if no data provided
 
@@ -21,15 +21,18 @@ def create_new_image(image_data=None, width=400, height=400):
         Gimp.Image: The created image, or None if failed
     """
     try:
-        image = Gimp.Image.new(width, height, Gimp.ImageBaseType.RGB)
+        if image_data:
+            width = image_data.get_width()
+            height = image_data.get_height()
+            image = Gimp.Image.new(width, height, Gimp.ImageBaseType.RGB)
+            layer = Gimp.Layer.new_from_pixbuf(image, "Generated", image_data, 100, Gimp.LayerMode.NORMAL, 0, 1)
 
-        layer = Gimp.Layer.new(image, "Generated", width, height,
-                                Gimp.ImageType.RGB_IMAGE, 100, Gimp.LayerMode.NORMAL)
+        else:
+            image = Gimp.Image.new(width, height, Gimp.ImageBaseType.RGB)
+            layer = Gimp.Layer.new(image, "Generated", width, height,
+                                   Gimp.ImageType.RGB_IMAGE, 100, Gimp.LayerMode.NORMAL)
 
         image.insert_layer(layer, None, 0)
-
-        # TODO: If image_data provided, load it into the layer
-
         Gimp.Display.new(image)
 
         return image
@@ -45,7 +48,7 @@ def create_edit_layer(image, drawable=None, image_data=None):
     Args:
         image (Gimp.Image): The existing image to add layer to
         drawable (Gimp.Drawable): Current selected drawable for positioning
-        image_data (bytes): Optional image data for the layer
+        image_data (GdkPixbuf.Pixbuf): Optional pixbuf for the layer
 
     Returns:
         Gimp.Layer: The created layer, or None if failed
@@ -55,11 +58,13 @@ def create_edit_layer(image, drawable=None, image_data=None):
             print("No image provided for edit layer")
             return None
 
-        width = image.get_width()
-        height = image.get_height()
-
-        new_layer = Gimp.Layer.new(image, "AI Edit", width, height,
-                                   Gimp.ImageType.RGB_IMAGE, 100, Gimp.LayerMode.NORMAL)
+        if image_data:
+            new_layer = Gimp.Layer.new_from_pixbuf(image, "AI Edit", image_data, 100, Gimp.LayerMode.NORMAL, 0, 1)
+        else:
+            width = image.get_width()
+            height = image.get_height()
+            new_layer = Gimp.Layer.new(image, "AI Edit", width, height,
+                                       Gimp.ImageType.RGB_IMAGE, 100, Gimp.LayerMode.NORMAL)
 
         if drawable:
             parent = drawable.get_parent()
@@ -69,8 +74,6 @@ def create_edit_layer(image, drawable=None, image_data=None):
             image.insert_layer(new_layer, None, 0)
 
         image.set_selected_layers([new_layer])
-
-        # TODO: If image_data provided, load it into the layer
 
         return new_layer
 

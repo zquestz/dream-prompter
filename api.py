@@ -6,8 +6,8 @@ Google AI image generation integration for Dream Prompter plugin
 Minimal placeholder implementation for testing
 """
 
-import base64
 import time
+from gi.repository import GdkPixbuf
 from i18n import _
 
 class GeminiAPI:
@@ -26,7 +26,7 @@ class GeminiAPI:
             progress_callback (callable): Optional callback for progress updates
 
         Returns:
-            bytes: Generated image data, or None if failed
+            GdkPixbuf.Pixbuf: Generated image as pixbuf, or None if failed
         """
         if progress_callback:
             progress_callback(_("Simulating API call..."))
@@ -36,6 +36,19 @@ class GeminiAPI:
         if progress_callback:
             progress_callback(_("Creating test image..."))
 
-        return base64.b64decode(
-            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
-        )
+        try:
+            pixbuf = GdkPixbuf.Pixbuf.new(
+                GdkPixbuf.Colorspace.RGB,  # colorspace
+                False,                     # has_alpha
+                8,                         # bits_per_sample
+                256,                       # width
+                256                        # height
+            )
+
+            pixbuf.fill(0xff0000ff)
+
+            return pixbuf
+
+        except Exception as e:
+            print(f"Error creating test pixbuf: {e}")
+            return None
