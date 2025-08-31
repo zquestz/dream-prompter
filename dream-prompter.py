@@ -13,12 +13,10 @@ gi.require_version('GimpUi', '3.0')
 gi.require_version('GLib', '2.0')
 import sys
 
-from i18n import _, DOMAIN
-
 from dialog import DreamPrompterDialog
 from gi.repository import Gimp, GimpUi, Gtk, GLib
+from i18n import _, DOMAIN
 
-# Plugin metadata
 PLUGIN_NAME = "dream-prompter"
 PLUGIN_VERSION = "1.0.0"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Nano Banana"
@@ -62,22 +60,31 @@ class DreamPrompter(Gimp.PlugIn):
     def run_dream_prompter(self, procedure, run_mode, image, drawables, config, run_data):
         """Run the Dream Prompter plugin"""
         if run_mode == Gimp.RunMode.INTERACTIVE:
-            GimpUi.init("dream-prompter")
+            try:
+                GimpUi.init("dream-prompter")
 
-            drawable = drawables[0] if drawables else None
+                drawable = None
+                if drawables and len(drawables) > 0:
+                    drawable = drawables[0]
 
-            dialog = DreamPrompterDialog(procedure, image, drawable)
-            dialog.show_all()
+                dialog = DreamPrompterDialog(procedure, image, drawable)
+                dialog.show_all()
 
-            response = dialog.run()
-            dialog.destroy()
+                response = dialog.run()
+                dialog.destroy()
 
-            if response == Gtk.ResponseType.OK:
-                return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
-            else:
-                return procedure.new_return_values(Gimp.PDBStatusType.CANCEL, GLib.Error())
+                if response == Gtk.ResponseType.OK:
+                    return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
+                else:
+                    return procedure.new_return_values(Gimp.PDBStatusType.CANCEL, GLib.Error())
+
+            except Exception as e:
+                error_msg = _("Error running Dream Prompter: {error}").format(error=str(e))
+                print(error_msg)
+                return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
 
         return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
 
-# Register the plugin
-Gimp.main(DreamPrompter.__gtype__, sys.argv)
+
+if __name__ == '__main__':
+    Gimp.main(DreamPrompter.__gtype__, sys.argv)

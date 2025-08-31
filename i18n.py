@@ -5,9 +5,9 @@
 Internationalization support for Dream Prompter plugin
 """
 
-import os
 import gettext
 import locale
+import os
 
 DOMAIN = "dream-prompter"
 
@@ -28,20 +28,15 @@ def setup_i18n():
         translation = gettext.translation(DOMAIN, locale_dir, fallback=True)
         translation.install()
         return translation.gettext
-    except Exception:
+    except (OSError, IOError) as e:
+        print(f"Translation files not found: {e}")
+        import builtins
+        builtins.__dict__['_'] = lambda x: x
+        return lambda x: x
+    except Exception as e:
+        print(f"Unexpected i18n error: {e}")
         import builtins
         builtins.__dict__['_'] = lambda x: x
         return lambda x: x
 
-def get_language_code():
-    """Get the current language code"""
-    try:
-        lang = locale.getdefaultlocale()[0]
-        if lang:
-            return lang.split('_')[0]
-        pass
-    except Exception:
-        return 'en'
-
-# Initialize i18n and make _ function globally available
 _ = setup_i18n()

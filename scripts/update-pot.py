@@ -18,9 +18,15 @@ def extract_strings():
     os.chdir(plugin_dir)
 
     python_files = [
-        'dream-prompter.py',
+        'api.py',
         'dialog.py',
-        'i18n.py'
+        'dialog_events.py',
+        'dialog_gtk.py',
+        'dialog_threads.py',
+        'dream-prompter.py',
+        'gimp_integration.py',
+        'i18n.py',
+        'settings.py'
     ]
 
     pot_file = 'locale/dream-prompter.pot'
