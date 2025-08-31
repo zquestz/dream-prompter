@@ -1,0 +1,243 @@
+# Dream Prompter GIMP Plugin - Spanish Translation
+# Copyright (C) 2025 Josh Ellithorpe
+# This file is distributed under the same license as the Dream Prompter package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Dream Prompter 1.0.0\n"
+"Report-Msgid-Bugs-To: quest@mac.com\n"
+"POT-Creation-Date: 2025-08-30 20:11-1000\n"
+"PO-Revision-Date: 2025-01-03 12:00+0000\n"
+"Last-Translator: Example Translator\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dialog.py:137
+msgid "AI Prompt"
+msgstr "Prompt de AI"
+
+#: dream-prompter.py:50
+msgid "AI-powered image creation/editing with Nano Banana"
+msgstr "Creación/edición de imágenes con AI usando Nano Banana"
+
+#: dialog.py:196
+msgid "Additional Images (Optional)"
+msgstr "Imágenes Adicionales (Opcional)"
+
+#: dialog.py:241 dialog.py:374
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: dialog.py:215
+msgid "Clear selected files"
+msgstr "Limpiar archivos seleccionados"
+
+#: dialog.py:346
+msgid "Create a new image and add it as a layer to the current project"
+msgstr "Crear una nueva imagen y agregarla como capa al proyecto actual"
+
+#: dialog.py:348
+msgid "Create a new image in a new GIMP project"
+msgstr "Crear una nueva imagen en un nuevo proyecto de GIMP"
+
+#: dialog.py:23
+msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
+msgstr "Dream Prompter - Creador/Editor de Imágenes AI Nano Banana"
+
+#: dream-prompter.py:55
+msgid "Dream Prompter..."
+msgstr "Dream Prompter..."
+
+#: dialog.py:509
+msgid "Edit"
+msgstr "Editar"
+
+#: dialog.py:115
+msgid "Edit existing image"
+msgstr "Editar imagen existente"
+
+#: dialog.py:504
+msgid "Edit mode requires a selected layer"
+msgstr "El modo de edición requiere una capa seleccionada"
+
+#: dialog.py:297 dialog.py:339
+msgid "Edit the current layer using AI"
+msgstr "Editar la capa actual usando AI"
+
+#: dialog.py:82
+msgid "Enter your Google Gemini API key..."
+msgstr "Ingresa tu clave API de Google Gemini..."
+
+#: dialog.py:164
+msgid "Example prompts:"
+msgstr "Prompts de ejemplo:"
+
+#: dialog.py:509
+msgid "Generate"
+msgstr "Generar"
+
+#: dialog.py:246 dialog.py:342
+msgid "Generate AI Edit"
+msgstr "Generar Edición AI"
+
+#: dialog.py:349
+msgid "Generate New Image"
+msgstr "Generar Nueva Imagen"
+
+#: dialog.py:119
+msgid "Generate new image"
+msgstr "Generar nueva imagen"
+
+#: dialog.py:96
+#, python-brace-format
+msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
+msgstr "Obtén tu clave API desde <a href=\"{url}\">Google Cloud Console</a>"
+
+#: dialog.py:75
+msgid "Google Gemini API Key"
+msgstr "Clave API de Google Gemini"
+
+#: dialog.py:360
+msgid "Hide API key"
+msgstr "Ocultar clave API"
+
+#: dialog.py:379
+msgid "Image files"
+msgstr "Archivos de imagen"
+
+#: dialog.py:208 dialog.py:404
+msgid "No additional images selected"
+msgstr "No hay imágenes adicionales seleccionadas"
+
+#: dialog.py:292
+msgid "No image open - only generation mode available"
+msgstr "No hay imagen abierta - solo modo de generación disponible"
+
+#: dialog.py:341
+msgid "No layer available to edit"
+msgstr "No hay capa disponible para editar"
+
+#: dialog.py:109
+msgid "Operation Mode"
+msgstr "Modo de Operación"
+
+#: dialog.py:500
+msgid "Please enter a prompt"
+msgstr "Por favor ingresa un prompt"
+
+#: dialog.py:496
+msgid "Please enter your Google Gemini API key"
+msgstr "Por favor ingresa tu clave API de Google Gemini"
+
+#: dialog.py:510
+#, python-brace-format
+msgid "Processing {mode} request..."
+msgstr "Procesando solicitud de {mode}..."
+
+#: dialog.py:259
+msgid "Ready"
+msgstr "Listo"
+
+#: dialog.py:530
+#, python-brace-format
+msgid "Ready for API integration! (Last: {mode} mode)"
+msgstr "¡Listo para integración de API! (Último: modo {mode})"
+
+#: dialog.py:375
+msgid "Select"
+msgstr "Seleccionar"
+
+#: dialog.py:369
+msgid "Select Additional Images"
+msgstr "Seleccionar Imágenes Adicionales"
+
+#: dialog.py:203
+msgid "Select Images..."
+msgstr "Seleccionar Imágenes..."
+
+#: dialog.py:228 dialog.py:343
+msgid "Select additional images to merge or reference in your AI edit"
+msgstr ""
+"Selecciona imágenes adicionales para fusionar o referenciar en tu edición de "
+"AI"
+
+#: dialog.py:350
+msgid ""
+"Select reference images to influence the style or composition of your new "
+"image"
+msgstr ""
+"Selecciona imágenes de referencia para influir en el estilo o composición de "
+"tu nueva imagen"
+
+#: dialog.py:364
+msgid "Show API key"
+msgstr "Mostrar clave API"
+
+#: dialog.py:89
+msgid "Show/Hide API key"
+msgstr "Mostrar/Ocultar clave API"
+
+#: dream-prompter.py:51
+msgid ""
+"Transform existing images or generate new images using Google's Gemini 2.5 "
+"Flash Image model (Nano Banana) with natural language prompts. Supports "
+"consistent multi-turn editing and image merging capabilities."
+msgstr ""
+"Transforma imágenes existentes o genera nuevas imágenes usando el modelo "
+"Gemini 2.5 Flash Image de Google (Nano Banana) con prompts en lenguaje "
+"natural. Soporta edición multi-turno consistente y capacidades de fusión de "
+"imágenes."
+
+#: dialog.py:529
+msgid "edit"
+msgstr "edición"
+
+#: dialog.py:529
+msgid "generation"
+msgstr "generación"
+
+#: dialog.py:411
+#, python-brace-format
+msgid "{count} image selected"
+msgstr "{count} imagen seleccionada"
+
+#: dialog.py:413
+#, python-brace-format
+msgid "{count} images selected"
+msgstr "{count} imágenes seleccionadas"
+
+#: dialog.py:177
+msgid "• A majestic dragon flying over a mountain range"
+msgstr "• Un dragón majestuoso volando sobre una cordillera"
+
+#: dialog.py:172
+msgid "• Add snow falling in the scene"
+msgstr "• Agregar nieve cayendo en la escena"
+
+#: dialog.py:170
+msgid "• Change the background to a medieval castle"
+msgstr "• Cambiar el fondo a un castillo medieval"
+
+#: dialog.py:179
+msgid "• Cyberpunk cityscape at night with neon lights"
+msgstr "• Paisaje urbano cyberpunk nocturno con luces de neón"
+
+#: dialog.py:171
+msgid "• Make this person wear a red dress instead"
+msgstr "• Hacer que esta persona use un vestido rojo"
+
+#: dialog.py:180
+msgid "• Peaceful forest clearing with sunbeams"
+msgstr "• Claro de bosque pacífico con rayos de sol"
+
+#: dialog.py:178
+msgid "• Portrait of a woman in Victorian dress"
+msgstr "• Retrato de una mujer en vestido victoriano"
+
+#: dialog.py:173
+msgid "• Transform this into a painting style"
+msgstr "• Transformar esto en estilo de pintura"
