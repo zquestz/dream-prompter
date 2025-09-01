@@ -6,9 +6,11 @@ GIMP integration functions for Dream Prompter plugin
 Handles all GIMP-specific operations like creating images and layers
 """
 
+import os
+import tempfile
 import textwrap
 
-from gi.repository import Gimp
+from gi.repository import Gimp, Gio
 
 MAX_LAYER_NAME_LENGTH = 64
 
@@ -83,3 +85,47 @@ def create_edit_layer(image, drawable, pixbuf, prompt):
     except Exception as e:
         print(f"Error creating edit layer: {e}")
         return None
+
+def export_gimp_image_to_bytes(image):
+    """
+    Export a GIMP image to PNG bytes
+
+    Args:
+        image (Gimp.Image): GIMP image to export
+
+    Returns:
+        bytes: PNG image data, or None if failed
+    """
+    duplicate = None
+    temp_path = None
+    try:
+        duplicate = image.duplicate()
+        duplicate.flatten()
+
+        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+            temp_path = temp_file.name
+
+        temp_gfile = Gio.File.new_for_path(temp_path)
+
+        success = Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, duplicate, temp_gfile, None)
+
+        if not success:
+            return None
+
+        with open(temp_path, 'rb') as f:
+            image_data = f.read()
+
+        return image_data
+
+    except Exception as e:
+        print(f"Error exporting GIMP image: {e}")
+        return None
+    finally:
+        # Always clean up resources
+        if duplicate:
+            duplicate.delete()
+        if temp_path:
+            try:
+                os.remove(temp_path)
+            except:
+                pass

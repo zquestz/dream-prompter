@@ -19,6 +19,7 @@ class DreamPrompterEventHandler:
         self.ui = ui
         self.image = image
         self.drawable = drawable
+        self.ui.event_handler = self
 
         self.threads = DreamPrompterThreads(ui, image, drawable)
         self.threads.set_callbacks({
@@ -57,6 +58,11 @@ class DreamPrompterEventHandler:
             return
 
         if self.ui.edit_mode_radio.get_active():
+            if len(self.ui.selected_files) > 2:
+                self.ui.selected_files = self.ui.selected_files[:2]
+                self.ui.update_files_display()
+                print(_("Reduced to 2 reference images for edit mode"))
+
             if self.drawable:
                 text = _("Edit the current layer using AI")
             else:
@@ -66,7 +72,7 @@ class DreamPrompterEventHandler:
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate AI Edit"))
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select additional images to merge or reference in your AI edit")}</small>')
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 2 additional images to merge or reference in your AI edit")}</small>')
         else:
             if self.image:
                 text = _("Create a new image and add it as a layer to the current project")
@@ -77,7 +83,7 @@ class DreamPrompterEventHandler:
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate New Image"))
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select reference images to influence the style or composition of your new image")}</small>')
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 3 reference images to influence the style or composition of your new image")}</small>')
 
         if self.ui.update_prompt_examples:
             self.ui.update_prompt_examples(self.ui.edit_mode_radio.get_active())
@@ -119,23 +125,22 @@ class DreamPrompterEventHandler:
             button.set_tooltip_text(_("Show API key"))
 
     def on_select_files(self, button):
-        """Handle file selection"""
+        """Open file chooser for reference images"""
         dialog = Gtk.FileChooserDialog(
-            title=_("Select Additional Images"),
+            title=_("Select Reference Images"),
             parent=self.dialog,
             action=Gtk.FileChooserAction.OPEN
         )
-        dialog.add_buttons(
-            _("Cancel"), Gtk.ResponseType.CANCEL,
-            _("Select"), Gtk.ResponseType.OK
-        )
 
-        filter_images = Gtk.FileFilter()
-        filter_images.set_name(_("Image files"))
-        filter_images.add_mime_type("image/jpeg")
-        filter_images.add_mime_type("image/png")
-        filter_images.add_mime_type("image/gif")
-        dialog.add_filter(filter_images)
+        dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        dialog.add_button(_("Select"), Gtk.ResponseType.OK)
+
+        image_filter = Gtk.FileFilter()
+        image_filter.set_name(_("Supported Images (PNG, JPEG, WebP)"))
+        image_filter.add_mime_type("image/png")
+        image_filter.add_mime_type("image/jpeg")
+        image_filter.add_mime_type("image/webp")
+        dialog.add_filter(image_filter)
 
         dialog.set_select_multiple(True)
 
@@ -143,9 +148,21 @@ class DreamPrompterEventHandler:
 
         if response == Gtk.ResponseType.OK:
             files = dialog.get_filenames()
-            self.ui.selected_files.extend(files)
-            self.ui.update_files_display()
-            self._connect_remove_buttons()
+
+            if self.ui.edit_mode_radio and self.ui.edit_mode_radio.get_active():
+                max_total_files = 2
+            else:
+                max_total_files = 3
+
+            max_new_files = max_total_files - len(self.ui.selected_files)
+            if max_new_files > 0:
+                self.ui.selected_files.extend(files[:max_new_files])
+                self.ui.update_files_display()
+            elif files:
+                if self.ui.edit_mode_radio and self.ui.edit_mode_radio.get_active():
+                    print(_("Cannot add {count} files. Maximum 2 reference images allowed in edit mode.").format(count=len(files)))
+                else:
+                    print(_("Cannot add {count} files. Maximum 3 reference images allowed.").format(count=len(files)))
 
         dialog.destroy()
 
@@ -159,22 +176,6 @@ class DreamPrompterEventHandler:
         if file_path in self.ui.selected_files:
             self.ui.selected_files.remove(file_path)
             self.ui.update_files_display()
-            self._connect_remove_buttons()
-
-    def _connect_remove_buttons(self):
-        """Connect remove buttons after files display update"""
-        if not self.ui.files_listbox:
-            return
-
-        for row in self.ui.files_listbox.get_children():
-            file_box = row.get_child()
-            if file_box:
-                children = file_box.get_children()
-                if len(children) >= 3:
-                    remove_btn = children[2]
-                    if hasattr(remove_btn, 'file_path'):
-                        remove_btn.disconnect_by_func(self.on_remove_file)
-                        remove_btn.connect("clicked", self.on_remove_file, remove_btn.file_path)
 
     def on_prompt_changed(self, buffer):
         """Handle prompt text changes"""

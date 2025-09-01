@@ -18,6 +18,7 @@ class DreamPrompterUI:
 
     def __init__(self):
         self.selected_files = []
+        self.event_handler = None
 
         self.api_key_entry = None
         self.toggle_visibility_btn = None
@@ -231,7 +232,6 @@ class DreamPrompterUI:
         section_box.pack_start(self.files_listbox, False, False, 0)
 
         self.images_help_label = Gtk.Label()
-        self.images_help_label.set_markup(f'<small>{_("Select additional images to merge or reference in your AI edit")}</small>')
         self.images_help_label.set_halign(Gtk.Align.START)
         self.images_help_label.set_line_wrap(True)
         section_box.pack_start(self.images_help_label, False, False, 0)
@@ -265,6 +265,17 @@ class DreamPrompterUI:
 
             for file_path in self.selected_files:
                 filename = os.path.basename(file_path)
+
+                try:
+                    file_size = os.path.getsize(file_path)
+                    size_mb = file_size / (1024 * 1024)
+                    if size_mb > 7:
+                        filename += " " + _("⚠️ ({size:.1f} MB - Max Size Exceeded)").format(size=size_mb)
+                    elif size_mb > 1:
+                        filename += " " + _("({size:.1f} MB)").format(size=size_mb)
+                except:
+                    pass
+
                 row = Gtk.ListBoxRow()
 
                 file_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -286,6 +297,10 @@ class DreamPrompterUI:
                 remove_btn.set_image(Gtk.Image.new_from_icon_name("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR))
                 remove_btn.set_relief(Gtk.ReliefStyle.NONE)
                 remove_btn.file_path = file_path
+
+                if self.event_handler:
+                    remove_btn.connect("clicked", self.event_handler.on_remove_file, file_path)
+
                 file_box.pack_start(remove_btn, False, False, 0)
 
                 row.add(file_box)

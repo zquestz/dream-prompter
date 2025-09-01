@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.0.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-08-31 17:39-1000\n"
+"POT-Creation-Date: 2025-08-31 20:51-1000\n"
 "PO-Revision-Date: 2025-01-03 12:00+0000\n"
 "Last-Translator: AI Translation Assistant\n"
 "Language-Team: Spanish\n"
@@ -17,45 +17,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:141
+#: dialog_gtk.py:275
+#, python-brace-format
+msgid "({size:.1f} MB)"
+msgstr "({size:.1f} MB)"
+
+#: dialog_gtk.py:142
 msgid "AI Prompt"
-msgstr "Prompt AI"
+msgstr "Prompt de AI"
 
 #: dream-prompter.py:48
 msgid "AI-powered image creation/editing with Nano Banana"
 msgstr "Creación/edición de imágenes con AI usando Nano Banana"
 
-#: dialog_threads.py:130
+#: dialog_threads.py:129
 msgid "Adding edit layer..."
 msgstr "Agregando capa de edición..."
 
-#: dialog_gtk.py:202
+#: dialog_gtk.py:203
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
-#: dialog_events.py:129 dialog_gtk.py:305
+#: api.py:110
+msgid "Building Nano Banana edit request..."
+msgstr "Construyendo solicitud de edición para Nano Banana..."
+
+#: dialog_events.py:135 dialog_gtk.py:320
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: dialog_gtk.py:221
+#: dialog_events.py:163
+#, python-brace-format
+msgid ""
+"Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
+msgstr ""
+"No se pueden agregar {count} archivos. Máximo 2 imágenes de referencia "
+"permitidas en modo edición."
+
+#: dialog_events.py:165
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum 3 reference images allowed."
+msgstr ""
+"No se pueden agregar {count} archivos. Máximo 3 imágenes de referencia "
+"permitidas."
+
+#: dialog_gtk.py:222
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
-#: dialog_events.py:72
+#: dialog_events.py:78
 msgid "Create a new image and add it as a layer to the current project"
 msgstr "Crear una nueva imagen y agregarla como capa al proyecto actual"
 
-#: dialog_events.py:74
+#: dialog_events.py:80
 msgid "Create a new image in a new GIMP project"
 msgstr "Crear una nueva imagen en un nuevo proyecto de GIMP"
 
-#: dialog_threads.py:114
+#: dialog_threads.py:113
 msgid "Creating GIMP image..."
 msgstr "Creando imagen de GIMP..."
-
-#: api.py:37
-msgid "Creating test image..."
-msgstr "Creando imagen de prueba..."
 
 #: dialog.py:23
 msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
@@ -65,32 +85,32 @@ msgstr "Dream Prompter - Creador/Editor de Imágenes AI Nano Banana"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:119
+#: dialog_gtk.py:120
 msgid "Edit existing image"
 msgstr "Editar imagen existente"
 
-#: dialog_threads.py:137
+#: dialog_threads.py:136
 msgid "Edit layer created!"
 msgstr "¡Capa de edición creada!"
 
-#: dialog_events.py:212
+#: dialog_events.py:213
 msgid "Edit mode requires a selected layer"
 msgstr "El modo de edición requiere una capa seleccionada"
 
-#: dialog.py:63 dialog_events.py:61
+#: dialog.py:63 dialog_events.py:67
 msgid "Edit the current layer using AI"
 msgstr "Editar la capa actual usando AI"
 
-#: dialog_gtk.py:86
+#: dialog_gtk.py:87
 msgid "Enter your Google Gemini API key..."
 msgstr "Ingresa tu clave API de Google Gemini..."
 
-#: dialog_threads.py:125
+#: dialog_threads.py:124
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "Error al crear imagen de GIMP: {error}"
 
-#: dialog_threads.py:141
+#: dialog_threads.py:140
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "Error al crear capa de edición: {error}"
@@ -100,60 +120,60 @@ msgstr "Error al crear capa de edición: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
 
-#: dialog_gtk.py:170
+#: dialog_gtk.py:171
 msgid "Example prompts:"
 msgstr "Prompts de ejemplo:"
 
-#: dialog_threads.py:118
+#: dialog_threads.py:117
 msgid "Failed to create GIMP image"
 msgstr "Error al crear imagen de GIMP"
 
-#: dialog_threads.py:134
+#: dialog_threads.py:133
 msgid "Failed to create edit layer"
 msgstr "Error al crear capa de edición"
 
-#: dialog_events.py:67 dialog_gtk.py:310
+#: dialog_events.py:73 dialog_gtk.py:325
 msgid "Generate AI Edit"
 msgstr "Generar Edición AI"
 
-#: dialog_events.py:78
+#: dialog_events.py:84
 msgid "Generate New Image"
 msgstr "Generar Nueva Imagen"
 
-#: dialog_gtk.py:123
+#: dialog_gtk.py:124
 msgid "Generate new image"
 msgstr "Generar nueva imagen"
 
-#: dialog_gtk.py:100
+#: api.py:52
+msgid "Generating image with Nano Banana..."
+msgstr "Generando imagen con Nano Banana..."
+
+#: dialog_gtk.py:101
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
 msgstr "Obtén tu clave API desde <a href=\"{url}\">Google Cloud Console</a>"
 
-#: dialog_gtk.py:79
+#: dialog_gtk.py:80
 msgid "Google Gemini API Key"
 msgstr "Clave API de Google Gemini"
 
-#: dialog_events.py:115
+#: dialog_events.py:121
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
-#: dialog_events.py:134
-msgid "Image files"
-msgstr "Archivos de imagen"
-
-#: dialog_threads.py:121
+#: dialog_threads.py:120
 msgid "Image generated successfully!"
 msgstr "¡Imagen generada exitosamente!"
 
-#: dialog_events.py:218
+#: dialog_events.py:219
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
-#: dialog_gtk.py:214 dialog_gtk.py:245
+#: dialog_gtk.py:215 dialog_gtk.py:245
 msgid "No additional images selected"
 msgstr "No hay imágenes adicionales seleccionadas"
 
-#: dialog_threads.py:80 dialog_threads.py:105
+#: dialog_threads.py:80 dialog_threads.py:104
 msgid "No image data received from API"
 msgstr "No se recibieron datos de imagen de la API"
 
@@ -161,62 +181,87 @@ msgstr "No se recibieron datos de imagen de la API"
 msgid "No image open - only generation mode available"
 msgstr "No hay imagen abierta - solo modo de generación disponible"
 
-#: dialog_events.py:63
+#: dialog_events.py:69
 msgid "No layer available to edit"
 msgstr "No hay capa disponible para editar"
 
-#: dialog_gtk.py:113
+#: dialog_gtk.py:114
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: dialog_events.py:208
+#: dialog_events.py:209
 msgid "Please enter a prompt"
 msgstr "Por favor ingresa un prompt"
 
-#: dialog_events.py:204
+#: dialog_events.py:205
 msgid "Please enter your Google Gemini API key"
 msgstr "Por favor ingresa tu clave API de Google Gemini"
 
-#: dialog_gtk.py:323
+#: api.py:101
+msgid "Preparing current image for Nano Banana..."
+msgstr "Preparando imagen actual para Nano Banana..."
+
+#: api.py:131
+msgid "Processing Nano Banana edit response..."
+msgstr "Procesando respuesta de edición de Nano Banana..."
+
+#: api.py:67
+msgid "Processing Nano Banana response..."
+msgstr "Procesando respuesta de Nano Banana..."
+
+#: dialog_gtk.py:338
 msgid "Ready"
 msgstr "Listo"
 
-#: dialog_events.py:130
+#: dialog_events.py:64
+msgid "Reduced to 2 reference images for edit mode"
+msgstr "Reducido a 2 imágenes de referencia para modo edición"
+
+#: dialog_events.py:136
 msgid "Select"
 msgstr "Seleccionar"
 
-#: dialog_events.py:124
-msgid "Select Additional Images"
-msgstr "Seleccionar Imágenes Adicionales"
-
-#: dialog_gtk.py:209
+#: dialog_gtk.py:210
 msgid "Select Images..."
 msgstr "Seleccionar Imágenes..."
 
-#: dialog_events.py:69 dialog_gtk.py:234
-msgid "Select additional images to merge or reference in your AI edit"
-msgstr ""
-"Selecciona imágenes adicionales para fusionar o referenciar en tu edición AI"
+#: dialog_events.py:130
+msgid "Select Reference Images"
+msgstr "Seleccionar Imágenes de Referencia"
 
-#: dialog_events.py:80
+#: dialog_events.py:75
+msgid "Select up to 2 additional images to merge or reference in your AI edit"
+msgstr ""
+"Selecciona hasta 2 imágenes adicionales para fusionar o referenciar en tu "
+"edición AI"
+
+#: dialog_events.py:86
 msgid ""
-"Select reference images to influence the style or composition of your new "
-"image"
+"Select up to 3 reference images to influence the style or composition of "
+"your new image"
 msgstr ""
-"Selecciona imágenes de referencia para influir en el estilo o composición de "
-"tu nueva imagen"
+"Selecciona hasta 3 imágenes de referencia para influir en el estilo o "
+"composición de tu nueva imagen"
 
-#: dialog_events.py:119
+#: api.py:123
+msgid "Sending edit request to Nano Banana..."
+msgstr "Enviando solicitud de edición a Nano Banana..."
+
+#: api.py:59
+msgid "Sending request to Nano Banana..."
+msgstr "Enviando solicitud a Nano Banana..."
+
+#: dialog_events.py:125
 msgid "Show API key"
 msgstr "Mostrar clave API"
 
-#: dialog_gtk.py:93
+#: dialog_gtk.py:94
 msgid "Show/Hide API key"
 msgstr "Mostrar/Ocultar clave API"
 
-#: api.py:32
-msgid "Simulating API call..."
-msgstr "Simulando llamada a la API..."
+#: dialog_events.py:139
+msgid "Supported Images (PNG, JPEG, WebP)"
+msgstr "Imágenes Compatibles (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:49
 msgid ""
@@ -239,34 +284,39 @@ msgstr "{count} imagen seleccionada"
 msgid "{count} images selected"
 msgstr "{count} imágenes seleccionadas"
 
-#: dialog_gtk.py:183
+#: dialog_gtk.py:184
 msgid "• A majestic dragon flying over a mountain range"
 msgstr "• Un dragón majestuoso volando sobre una cordillera"
 
-#: dialog_gtk.py:178
+#: dialog_gtk.py:179
 msgid "• Add snow falling in the scene"
 msgstr "• Agregar nieve cayendo en la escena"
 
-#: dialog_gtk.py:176
+#: dialog_gtk.py:177
 msgid "• Change the background to a medieval castle"
 msgstr "• Cambiar el fondo a un castillo medieval"
 
-#: dialog_gtk.py:185
+#: dialog_gtk.py:186
 msgid "• Cyberpunk cityscape at night with neon lights"
 msgstr "• Paisaje urbano cyberpunk nocturno con luces de neón"
 
-#: dialog_gtk.py:177
+#: dialog_gtk.py:178
 msgid "• Make this person wear a red dress instead"
 msgstr "• Hacer que esta persona use un vestido rojo"
 
-#: dialog_gtk.py:186
+#: dialog_gtk.py:187
 msgid "• Peaceful forest clearing with sunbeams"
 msgstr "• Claro de bosque pacífico con rayos de sol"
 
-#: dialog_gtk.py:184
+#: dialog_gtk.py:185
 msgid "• Portrait of a woman in Victorian dress"
 msgstr "• Retrato de una mujer en vestido victoriano"
 
-#: dialog_gtk.py:179
+#: dialog_gtk.py:180
 msgid "• Transform this into a painting style"
 msgstr "• Transformar esto en estilo de pintura"
+
+#: dialog_gtk.py:273
+#, fuzzy, python-brace-format
+msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
+msgstr "⚠️ ({size:.1f} MB - Demasiado Grande)"

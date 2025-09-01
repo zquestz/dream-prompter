@@ -1,271 +1,253 @@
-# Dream Prompter - GIMP Plugin Installation Guide
+# Dream Prompter - GIMP Plugin
 
-Dream Prompter is a GIMP plugin that brings Google's Nano Banana (Gemini 2.5 Flash Image) AI image editing and generation capabilities directly into GIMP.
+Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI capabilities directly into GIMP for intelligent image generation and editing.
 
 ## Features
 
-- ✨ **AI-Powered Image Editing**: Transform existing images using natural language prompts
-- 🎨 **AI Image Generation**: Create brand new images from scratch with text descriptions
-- 🔄 **Consistent Multi-Turn Editing**: Make multiple edits while maintaining subject consistency
-- 🖼️ **Image Merging**: Combine multiple images intelligently
-- 🎯 **Dual Operation Modes**: Seamlessly switch between editing existing images and generating new ones
-- 🏗️ **Native GIMP Integration**: Works within your GIMP workflow edits current layers or creates new ones
-- 🌍 **Multi-Language Support**: Available in multiple languages with easy translation contribution
+- 🎨 **AI Image Generation**: Create new images from text descriptions
+- ✨ **AI Image Editing**: Transform existing images with natural language prompts
+- 🖼️ **Reference Images**: Use up to 3 reference images for generation, 2 for editing
+- 🔄 **Smart Layer Management**: Automatically creates properly named layers
+- 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
+- 🌍 **Multi-Language Support**: Setup to support multiple languages via i18n
+- 🔒 **Safe File Handling**: Validates image formats and file sizes
+- 🏗️ **Native GIMP Integration**: Works seamlessly within your GIMP workflow
 
 ## Requirements
 
-- GIMP 3.0.x
-- Python 3.8+
-- Google Gemini API key
-- GTK 3.0
+- **GIMP 3.0.x**
+- **Python 3.8+**
+- **Google Gemini API key**
+- **Python Dependencies**: `google-genai` library
 
 ## Installation
 
-### Method 1: Manual Installation (Current User)
+### Step 1: Install Python Dependencies
 
-1. **Locate your GIMP plugins directory:**
+Install the required Python library:
+
+```bash
+pip install google-genai
+```
+
+**Important**: Use the same Python that GIMP uses. For system GIMP installations:
+
+```bash
+# System-wide installation
+sudo pip install google-genai
+
+# User installation (recommended)
+pip install --user google-genai
+
+# Ensure Python 3
+pip3 install google-genai
+```
+
+### Step 2: Install the Plugin
+
+#### Method 1: Manual Installation (Recommended)
+
+1. **Find your GIMP plugins directory:**
    - **Linux**: `~/.config/GIMP/3.0/plug-ins/`
    - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\`
    - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/`
 
-2. **Create the plugin directory:**
+2. **Create plugin directory:**
 
    ```bash
    mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
-3. **Copy plugin files:**
+3. **Copy all Python files:**
 
    ```bash
    cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
-4. **Build and copy translations:**
+4. **Build and install translations (Optional):**
 
    ```bash
-   # Build the translation files
    python3 scripts/build-translations.py
-
-   # Copy the locale directory with translations
    cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
-5. **Make the plugin executable:**
+   If you don't build the translations it will default to English.
 
+5. **Make executable:**
    ```bash
    chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
    ```
 
-### Method 2: Development Setup
+#### Method 2: Development Setup
 
-For development or testing:
+```bash
+git clone https://github.com/zquestz/dream-prompter.git
+cd dream-prompter
+pip install google-genai
+python3 scripts/build-translations.py # optional, defaults to English.
+ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
+```
 
-1. **Clone this repository:**
+## Getting Your API Key
 
-   ```bash
-   git clone https://github.com/zquestz/dream-prompter.git
-   cd dream-prompter
-   ```
+1. **Visit [Google AI Studio](https://aistudio.google.com/)**
+2. **Create or select a project**
+3. **Generate an API key**
+4. **Keep your key secure and note usage limits**
 
-2. **Build translations:**
+### API Specifications
 
-   ```bash
-   python3 scripts/build-translations.py
-   ```
+- **Model**: `gemini-2.5-flash-image-preview` (Nano Banana)
+- **Image Limits**:
+  - Generation mode: Up to 3 reference images
+  - Edit mode: Up to 2 reference images (current image + 2 = 3 total)
+- **File Size**: Maximum 7MB per image
+- **Formats**: PNG, JPEG, WebP only
 
-3. **Create symlink to GIMP plugins directory:**
-   ```bash
-   ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
-   ```
+## Usage
 
-### Method 3: System-wide Installation (All Users)
+### Basic Workflow
 
-For system administrators who want to install the plugin for all users:
+1. **Open an image in GIMP** (for editing) or create a new document (for generation)
+2. **Launch Dream Prompter**: `Filters → AI → Dream Prompter...`
+3. **Enter your API key** (saved automatically for future use)
+4. **Select mode**:
+   - **Edit Mode**: Transform the current layer
+   - **Generate Mode**: Create a new image
+5. **Write your prompt**: Be descriptive and specific
+6. **Add reference images** (optional): Click "Select Images..." to add references
+7. **Generate**: Click the generate button and watch the progress
+8. **Result**: New layer appears with a descriptive name
 
-1. **Install to system plugins directory:**
+### Example Prompts
 
-   ```bash
-   sudo mkdir -p /usr/lib/gimp/3.0/plug-ins/dream-prompter/
-   sudo cp *.py /usr/lib/gimp/3.0/plug-ins/dream-prompter/
-   sudo chmod +x /usr/lib/gimp/3.0/plug-ins/dream-prompter/dream-prompter.py
-   ```
+**For Generation:**
 
-2. **Build and install translations:**
+- "A majestic dragon flying over snow-capped mountains at sunset"
+- "Portrait of a woman in Victorian dress, oil painting style"
+- "Cyberpunk cityscape with neon reflections on wet streets"
 
-   ```bash
-   # Build translations
-   python3 scripts/build-translations.py
+**For Editing:**
 
-   # Copy locale directory
-   sudo cp -r locale /usr/lib/gimp/3.0/plug-ins/dream-prompter/
-   ```
+- "Change the background to a peaceful forest clearing"
+- "Make this person wear a red Victorian dress"
+- "Transform this into a watercolor painting style"
+- "Add falling snow to this winter scene"
 
-3. **The plugin will now be available for all users on the system**
+### Tips for Best Results
 
-**Note**: System-wide installation requires administrator privileges and affects all GIMP users on the machine.
+- **Be specific**: "Red sports car" vs "bright red Ferrari 488 GTB"
+- **Include style**: "photorealistic", "oil painting", "digital art"
+- **Describe lighting**: "golden hour", "dramatic shadows", "soft natural light"
+- **Use reference images** to guide style and composition
+- **Keep files under 7MB** for reference images
 
 ## Language Support
-
-Dream Prompter supports multiple languages and automatically detects your system language.
 
 ### Available Languages
 
 - **English** (default)
-- **Spanish** - Complete translation
-- **Other languages** - Ready for translation contributions
+- **Spanish** (complete)
+- **Other languages** welcome via contributions
 
-### Building Translations
-
-If you're installing from source, you'll need to build the translation files:
+### For Developers
 
 ```bash
-# Build all available translations
-# This creates .mo files in locale/[LANG]/LC_MESSAGES/ that GIMP can use
-python3 scripts/build-translations.py
-```
-
-The plugin will automatically use your system language if a translation is available, otherwise it falls back to English.
-
-## Getting a Google Gemini API Key
-
-1. Visit [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Enable the Gemini API
-4. Create credentials (API Key)
-5. Secure your API key and note usage limits
-
-## Usage
-
-1. **Open/Create an image in GIMP**
-2. **Launch the plugin:**
-   - Go to **Filters** → **AI** → **Dream Prompter...**
-
-3. **Configure the plugin:**
-   - Enter your Google Gemini API key
-   - Choose operation mode: Edit existing image or Generate new image
-   - Write a descriptive prompt for your desired transformation or creation
-   - (Optional) Select additional images to merge or reference
-
-4. **Generate your AI edit:**
-   - Click "Generate AI Edit"
-   - Wait for processing to complete
-   - The result will be added as a new layer
-
-## Development
-
-### Building Translations
-
-For developers working on the plugin:
-
-```bash
-# Extract new translatable strings from code
+# Extract new translatable strings
 python3 scripts/update-pot.py
 
-# Update existing translation files with new strings
+# Update existing translations
 python3 scripts/update-translations.py
 
-# Compile translations for distribution
+# Build compiled translations
 python3 scripts/build-translations.py
 ```
 
-## For Translators
+## Architecture
 
-Want to help translate Dream Prompter into your language? We'd love your contribution!
+The plugin is organized into focused modules:
 
-### Getting Started
-
-1. **Check if your language needs translation:**
-
-   ```bash
-   # See what .po files exist
-   ls locale/
-   ```
-
-2. **Create a new translation:**
-
-   ```bash
-   # Copy the template to create a new language file
-   cp locale/dream-prompter.pot locale/[YOUR_LANG].po
-
-   # For example, for French:
-   cp locale/dream-prompter.pot locale/fr.po
-   ```
-
-3. **Edit your language file:**
-   - Open `locale/[YOUR_LANG].po` in your favorite text editor
-   - Or use a translation tool like Poedit, Lokalize, or Gtranslator
-   - Translate the `msgstr ""` fields while keeping `msgid` unchanged
-
-### Translation Guidelines
-
-**UI Elements:**
-
-- Keep button labels concise but clear
-- Use your platform's standard terminology
-- Be consistent throughout the translation
-
-**Technical Terms:**
-
-- "API key" - often kept as-is or adapted to local tech terminology
-- "Prompt" - translate based on local AI/ML terminology usage
-- "Layer" - use GIMP's existing translation for your language
-
-**Example Prompts:**
-
-- Adapt creative examples to be culturally appropriate
-- Maintain the descriptive and inspiring nature
-- Use natural, flowing language for your locale
-
-**Formatting:**
-
-- Keep HTML tags exactly as they are: `<b>Bold</b>`, `<a href="...">Link</a>`
-- Preserve placeholder variables: `{url}`, `{count}`, `{mode}`
-- Maintain line breaks and spacing in multi-line strings
-
-### Testing Your Translation
-
-1. **Build your translation:**
-
-   ```bash
-   python3 scripts/build-translations.py
-   ```
-
-2. **Test in GIMP:**
-   - Install the plugin with your translation
-   - Set your system language to your target language
-   - Launch GIMP and test the plugin interface
-
-3. **Check for:**
-   - Text that overflows UI elements
-   - Missing translations (English fallbacks)
-   - Proper plural forms
-   - Natural-sounding phrases in context
-
-### Submitting Your Translation
-
-1. **Fork this repository** on GitHub
-2. **Add your `.po` file** to the `locale/` directory
-3. **Test thoroughly** in GIMP
-4. **Submit a pull request** with:
-   - Your translation file (`locale/[LANG].po`)
-   - Brief description of any cultural adaptations made
-   - Screenshots if you needed to adjust UI layouts
-
-### Translation Tools
-
-**Recommended editors:**
-
-- **Poedit** - User-friendly GUI with helpful features
-- **Lokalize** - KDE's powerful translation tool
-- **Gtranslator** - GNOME's translation editor
-- **VS Code** - With gettext/po file extensions
-
-**Priority Languages:**
-We especially welcome translations for: French, German, Italian, Portuguese, Russian, Japanese, Korean, and Chinese.
+- **`dream-prompter.py`** - Main GIMP plugin entry point
+- **`dialog_gtk.py`** - GTK user interface components
+- **`dialog_events.py`** - Event handling and user interactions
+- **`dialog_threads.py`** - Background processing and threading
+- **`api.py`** - Google Gemini API integration
+- **`integrator.py`** - GIMP-specific operations
+- **`settings.py`** - Configuration persistence
+- **`i18n.py`** - Internationalization support
 
 ## Troubleshooting
 
-- **Permission denied**: Make sure the main `dream-prompter.py` file is executable (`chmod +x dream-prompter.py`)
-- **Plugin loads but crashes**: Check GIMP's Error Console (`Windows` → `Dockable Dialogs` → `Error Console`) for specific error messages
-- **Interface in wrong language**: Check your system locale settings, or ensure translation files are properly installed in the `locale/` directory
-- **Missing translations**: Some text appears in English even with your language selected - this means those strings need translation contributions
+### Common Issues
+
+**"google-genai not installed" warning**
+
+- Install with: `pip install google-genai`
+- Ensure you're using GIMP's Python environment
+
+**Plugin doesn't appear in menu**
+
+- Check file permissions: `chmod +x dream-prompter.py`
+- Restart GIMP after installation
+- Verify files are in correct plugins directory
+
+**API errors**
+
+- Verify your API key is correct
+- Check your quota at [Google AI Studio](https://aistudio.google.com/)
+- Ensure billing is enabled if using paid tier
+
+**Image processing issues**
+
+- Reference images must be under 7MB
+- Only PNG, JPEG, WebP formats supported
+- Maximum 3 images for generation, 2 for editing
+
+**Interface problems**
+
+- Check GIMP's Error Console: `Windows → Dockable Dialogs → Error Console`
+- Ensure translations are built: `python3 scripts/build-translations.py`
+- Report UI issues with screenshots
+
+### Getting Help
+
+1. **Check the Error Console** in GIMP for specific error messages
+2. **Verify all requirements** are installed correctly
+3. **Test with simple prompts** first
+4. **Check file permissions** on the plugin directory
+5. **Review API quotas** if getting timeout errors
+
+## Contributing
+
+### For Translators
+
+We welcome translations! Here's how to contribute:
+
+1. **Copy the template**: `cp locale/dream-prompter.pot locale/[YOUR_LANG].po`
+2. **Translate the strings** using Poedit, Lokalize, or any text editor
+3. **Test your translation**: Build with `python3 scripts/build-translations.py`
+4. **Submit a pull request** with your `.po` file
+
+**Translation Guidelines:**
+
+- Keep UI text concise but clear
+- Use GIMP's existing terminology for your language
+- Preserve HTML tags and placeholders like `{count}`, `{url}`
+- Test that text fits in the interface
+
+### For Developers
+
+1. **Fork the repository**
+2. **Create a feature branch**
+3. **Follow the existing code style**
+4. **Add tests for new functionality**
+5. **Update translations** if adding new strings
+6. **Submit a pull request**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+Built with Google's Gemini 2.5 Flash Image Preview (Nano Banana) API.
