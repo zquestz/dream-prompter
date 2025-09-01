@@ -193,15 +193,30 @@ class DreamPrompterEventHandler:
             self.ui.update_files_display()
 
     def on_prompt_changed(self, buffer):
-        """Handle prompt text changes"""
+        """
+        Handle prompt text changes
+
+        Args:
+            buffer (Gtk.TextBuffer): The text buffer that changed
+        """
         self.update_generate_button_state()
 
     def on_api_key_changed(self, entry):
-        """Handle API key changes"""
+        """
+        Handle API key changes
+
+        Args:
+            entry (Gtk.Entry): The API key entry field
+        """
         self.update_generate_button_state()
 
     def on_cancel(self, button):
-        """Handle cancel button"""
+        """
+        Handle cancel button
+
+        Args:
+            button (Gtk.Button): The cancel button that was clicked
+        """
         self.dialog.response(Gtk.ResponseType.CANCEL)
 
     def on_generate(self, button):

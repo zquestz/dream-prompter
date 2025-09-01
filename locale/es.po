@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.0.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-08-31 20:51-1000\n"
+"POT-Creation-Date: 2025-08-31 22:50-1000\n"
 "PO-Revision-Date: 2025-01-03 12:00+0000\n"
 "Last-Translator: AI Translation Assistant\n"
 "Language-Team: Spanish\n"
@@ -38,15 +38,15 @@ msgstr "Agregando capa de edición..."
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
-#: api.py:110
+#: api.py:121
 msgid "Building Nano Banana edit request..."
 msgstr "Construyendo solicitud de edición para Nano Banana..."
 
-#: dialog_events.py:135 dialog_gtk.py:320
+#: dialog_events.py:150 dialog_gtk.py:320
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: dialog_events.py:163
+#: dialog_events.py:178
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
@@ -54,7 +54,7 @@ msgstr ""
 "No se pueden agregar {count} archivos. Máximo 2 imágenes de referencia "
 "permitidas en modo edición."
 
-#: dialog_events.py:165
+#: dialog_events.py:180
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum 3 reference images allowed."
 msgstr ""
@@ -65,11 +65,11 @@ msgstr ""
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
-#: dialog_events.py:78
+#: dialog_events.py:93
 msgid "Create a new image and add it as a layer to the current project"
 msgstr "Crear una nueva imagen y agregarla como capa al proyecto actual"
 
-#: dialog_events.py:80
+#: dialog_events.py:95
 msgid "Create a new image in a new GIMP project"
 msgstr "Crear una nueva imagen en un nuevo proyecto de GIMP"
 
@@ -93,11 +93,11 @@ msgstr "Editar imagen existente"
 msgid "Edit layer created!"
 msgstr "¡Capa de edición creada!"
 
-#: dialog_events.py:213
+#: dialog_events.py:243
 msgid "Edit mode requires a selected layer"
 msgstr "El modo de edición requiere una capa seleccionada"
 
-#: dialog.py:63 dialog_events.py:67
+#: dialog.py:63 dialog_events.py:82
 msgid "Edit the current layer using AI"
 msgstr "Editar la capa actual usando AI"
 
@@ -132,11 +132,11 @@ msgstr "Error al crear imagen de GIMP"
 msgid "Failed to create edit layer"
 msgstr "Error al crear capa de edición"
 
-#: dialog_events.py:73 dialog_gtk.py:325
+#: dialog_events.py:88 dialog_gtk.py:325
 msgid "Generate AI Edit"
 msgstr "Generar Edición AI"
 
-#: dialog_events.py:84
+#: dialog_events.py:99
 msgid "Generate New Image"
 msgstr "Generar Nueva Imagen"
 
@@ -144,7 +144,7 @@ msgstr "Generar Nueva Imagen"
 msgid "Generate new image"
 msgstr "Generar nueva imagen"
 
-#: api.py:52
+#: api.py:63
 msgid "Generating image with Nano Banana..."
 msgstr "Generando imagen con Nano Banana..."
 
@@ -157,7 +157,7 @@ msgstr "Obtén tu clave API desde <a href=\"{url}\">Google Cloud Console</a>"
 msgid "Google Gemini API Key"
 msgstr "Clave API de Google Gemini"
 
-#: dialog_events.py:121
+#: dialog_events.py:136
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
@@ -165,7 +165,7 @@ msgstr "Ocultar clave API"
 msgid "Image generated successfully!"
 msgstr "¡Imagen generada exitosamente!"
 
-#: dialog_events.py:219
+#: dialog_events.py:249
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
@@ -181,7 +181,7 @@ msgstr "No se recibieron datos de imagen de la API"
 msgid "No image open - only generation mode available"
 msgstr "No hay imagen abierta - solo modo de generación disponible"
 
-#: dialog_events.py:69
+#: dialog_events.py:84
 msgid "No layer available to edit"
 msgstr "No hay capa disponible para editar"
 
@@ -189,23 +189,23 @@ msgstr "No hay capa disponible para editar"
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: dialog_events.py:209
+#: dialog_events.py:239
 msgid "Please enter a prompt"
 msgstr "Por favor ingresa un prompt"
 
-#: dialog_events.py:205
+#: dialog_events.py:235
 msgid "Please enter your Google Gemini API key"
 msgstr "Por favor ingresa tu clave API de Google Gemini"
 
-#: api.py:101
+#: api.py:112
 msgid "Preparing current image for Nano Banana..."
 msgstr "Preparando imagen actual para Nano Banana..."
 
-#: api.py:131
+#: api.py:142
 msgid "Processing Nano Banana edit response..."
 msgstr "Procesando respuesta de edición de Nano Banana..."
 
-#: api.py:67
+#: api.py:78
 msgid "Processing Nano Banana response..."
 msgstr "Procesando respuesta de Nano Banana..."
 
@@ -213,11 +213,11 @@ msgstr "Procesando respuesta de Nano Banana..."
 msgid "Ready"
 msgstr "Listo"
 
-#: dialog_events.py:64
+#: dialog_events.py:79
 msgid "Reduced to 2 reference images for edit mode"
 msgstr "Reducido a 2 imágenes de referencia para modo edición"
 
-#: dialog_events.py:136
+#: dialog_events.py:151
 msgid "Select"
 msgstr "Seleccionar"
 
@@ -225,17 +225,17 @@ msgstr "Seleccionar"
 msgid "Select Images..."
 msgstr "Seleccionar Imágenes..."
 
-#: dialog_events.py:130
+#: dialog_events.py:145
 msgid "Select Reference Images"
 msgstr "Seleccionar Imágenes de Referencia"
 
-#: dialog_events.py:75
+#: dialog_events.py:90
 msgid "Select up to 2 additional images to merge or reference in your AI edit"
 msgstr ""
 "Selecciona hasta 2 imágenes adicionales para fusionar o referenciar en tu "
 "edición AI"
 
-#: dialog_events.py:86
+#: dialog_events.py:101
 msgid ""
 "Select up to 3 reference images to influence the style or composition of "
 "your new image"
@@ -243,15 +243,15 @@ msgstr ""
 "Selecciona hasta 3 imágenes de referencia para influir en el estilo o "
 "composición de tu nueva imagen"
 
-#: api.py:123
+#: api.py:134
 msgid "Sending edit request to Nano Banana..."
 msgstr "Enviando solicitud de edición a Nano Banana..."
 
-#: api.py:59
+#: api.py:70
 msgid "Sending request to Nano Banana..."
 msgstr "Enviando solicitud a Nano Banana..."
 
-#: dialog_events.py:125
+#: dialog_events.py:140
 msgid "Show API key"
 msgstr "Mostrar clave API"
 
@@ -259,7 +259,7 @@ msgstr "Mostrar clave API"
 msgid "Show/Hide API key"
 msgstr "Mostrar/Ocultar clave API"
 
-#: dialog_events.py:139
+#: dialog_events.py:154
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Imágenes Compatibles (PNG, JPEG, WebP)"
 

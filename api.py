@@ -14,6 +14,11 @@ import os
 from gi.repository import GdkPixbuf
 from i18n import _
 
+MAX_FILE_SIZE_MB = 7
+MAX_REFERENCE_IMAGES_GENERATE = 3
+MAX_REFERENCE_IMAGES_EDIT = 2
+SUPPORTED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/webp']
+
 try:
     from google import genai
     from google.genai import types
@@ -26,6 +31,12 @@ class GeminiAPI:
     """Google AI client for image generation and editing"""
 
     def __init__(self, api_key):
+        """
+        Initialize the Gemini API client
+
+        Args:
+            api_key (str): Google Gemini API key for authentication
+        """
         self.api_key = api_key
         if genai:
             self.client = genai.Client(api_key=api_key)
@@ -49,14 +60,14 @@ class GeminiAPI:
             return None
 
         if progress_callback:
-            progress_callback(_("Generating image with Nano Banana..."))
+            progress_callback(_("Generating image with Nano Banana..."), 0.1)
 
         try:
             contents = [prompt]
-            self._add_reference_images(contents, reference_images, max_count=3)
+            self._add_reference_images(contents, reference_images, max_count=MAX_REFERENCE_IMAGES_GENERATE)
 
             if progress_callback:
-                progress_callback(_("Sending request to Nano Banana..."))
+                progress_callback(_("Sending request to Nano Banana..."), 0.5)
 
             response = self.client.models.generate_content(
                 model='gemini-2.5-flash-image-preview',
@@ -64,7 +75,7 @@ class GeminiAPI:
             )
 
             if progress_callback:
-                progress_callback(_("Processing Nano Banana response..."))
+                progress_callback(_("Processing Nano Banana response..."), 0.9)
 
             pixbuf = self._parse_image_response(response)
             if not pixbuf:
@@ -98,7 +109,7 @@ class GeminiAPI:
             return None
 
         if progress_callback:
-            progress_callback(_("Preparing current image for Nano Banana..."))
+            progress_callback(_("Preparing current image for Nano Banana..."), 0.1)
 
         try:
             current_image_data = integrator.export_gimp_image_to_bytes(image)
@@ -107,7 +118,7 @@ class GeminiAPI:
                 return None
 
             if progress_callback:
-                progress_callback(_("Building Nano Banana edit request..."))
+                progress_callback(_("Building Nano Banana edit request..."), 0.3)
 
             contents = []
             current_image_part = types.Part.from_bytes(
@@ -117,10 +128,10 @@ class GeminiAPI:
             contents.append(current_image_part)
             contents.append(prompt)
 
-            self._add_reference_images(contents, reference_images, max_count=2)
+            self._add_reference_images(contents, reference_images, max_count=MAX_REFERENCE_IMAGES_EDIT)
 
             if progress_callback:
-                progress_callback(_("Sending edit request to Nano Banana..."))
+                progress_callback(_("Sending edit request to Nano Banana..."), 0.5)
 
             response = self.client.models.generate_content(
                 model='gemini-2.5-flash-image-preview',
@@ -128,7 +139,7 @@ class GeminiAPI:
             )
 
             if progress_callback:
-                progress_callback(_("Processing Nano Banana edit response..."))
+                progress_callback(_("Processing Nano Banana edit response..."), 0.9)
 
             pixbuf = self._parse_image_response(response)
             if not pixbuf:
@@ -140,7 +151,7 @@ class GeminiAPI:
             print(f"Error editing image with Nano Banana: {e}")
             return None
 
-    def _validate_reference_image(self, img_path, max_size_mb=7):
+    def _validate_reference_image(self, img_path, max_size_mb=MAX_FILE_SIZE_MB):
         """
         Validate and load a reference image file
 
@@ -165,7 +176,7 @@ class GeminiAPI:
                 image_data = img_file.read()
 
             mime_type, _encoding = mimetypes.guess_type(img_path)
-            if mime_type not in ['image/png', 'image/jpeg', 'image/webp']:
+            if mime_type not in SUPPORTED_MIME_TYPES:
                 print(f"Warning: Image {img_path} has unsupported MIME type {mime_type}. Skipping.")
                 return None, False
 

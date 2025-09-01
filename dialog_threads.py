@@ -65,8 +65,8 @@ class DreamPrompterThreads:
         try:
             api = GeminiAPI(api_key)
 
-            def progress_callback(message):
-                GLib.idle_add(self._update_status, message)
+            def progress_callback(message, percentage=None):
+                GLib.idle_add(self._update_status, message, percentage)
 
             pixbuf = api.generate_image(
                 prompt=prompt,
@@ -88,8 +88,8 @@ class DreamPrompterThreads:
         try:
             api = GeminiAPI(api_key)
 
-            def progress_callback(message):
-                GLib.idle_add(self._update_status, message)
+            def progress_callback(message, percentage=None):
+                GLib.idle_add(self._update_status, message, percentage)
 
             pixbuf = api.edit_image(
                 image=self.image,
@@ -158,10 +158,14 @@ class DreamPrompterThreads:
         if self.ui.progress_bar:
             self.ui.progress_bar.set_visible(False)
 
-    def _update_status(self, message):
+    def _update_status(self, message, percentage=None):
         """Update status message on UI thread"""
         if self.ui.status_label:
             self.ui.status_label.set_text(message)
+
+        if self.ui.progress_bar:
+            if percentage is not None:
+                self.ui.progress_bar.set_fraction(percentage)
 
     def _handle_error(self, error_message):
         """Handle error on main thread"""
