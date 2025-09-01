@@ -167,9 +167,9 @@ class GeminiAPI:
             with open(img_path, 'rb') as img_file:
                 image_data = img_file.read()
 
-            mime_type, _encoding = mimetypes.guess_type(img_path)
+            mime_type, encoding = mimetypes.guess_type(img_path)
             if mime_type not in SUPPORTED_MIME_TYPES:
-                print(f"Warning: Image {img_path} has unsupported MIME type {mime_type}. Skipping.")
+                print(f"Warning: Image {img_path} has unsupported MIME type {mime_type} with encoding {encoding}. Skipping.")
                 return None, False
 
             image_part = types.Part.from_bytes(data=image_data, mime_type=mime_type)
