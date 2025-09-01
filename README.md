@@ -158,9 +158,21 @@ ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
 
 ### Available Languages
 
-- **English** (default)
-- **Spanish** (complete)
-- **Other languages** welcome via contributions
+Dream Prompter is fully translated and available in:
+
+- **🇺🇸 English** (default)
+- **🇪🇸 Spanish** (complete)
+- **🇫🇷 French** (complete)
+- **🇵🇹 Portuguese** (complete)
+- **🇷🇺 Russian** (complete)
+- **🇯🇵 Japanese** (complete)
+- **🇮🇳 Hindi** (complete)
+- **🇧🇩 Bengali** (complete)
+- **🇨🇳 Chinese (Simplified)** (complete)
+- **🇹🇼 Chinese (Traditional)** (complete)
+- **🇰🇷 Korean** (complete)
+
+The plugin automatically detects your system language and uses the appropriate translation. If your language isn't available, it defaults to English.
 
 ### For Developers
 
