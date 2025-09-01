@@ -90,19 +90,29 @@ ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
 
 ## Getting Your API Key
 
+**Important**: The Gemini 2.5 Flash Image Preview model (Nano Banana) requires a **paid Google Cloud account** with billing enabled. Free tier accounts cannot access the image generation capabilities.
+
 1. **Visit [Google AI Studio](https://aistudio.google.com/)**
 2. **Create or select a project**
-3. **Generate an API key**
-4. **Keep your key secure and note usage limits**
+3. **Enable billing** for your Google Cloud account
+4. **Generate an API key**
+5. **Keep your key secure and monitor usage/costs**
 
 ### API Specifications
 
 - **Model**: `gemini-2.5-flash-image-preview` (Nano Banana)
+- **Billing**: **Paid account required** - image generation is not available on free tier
 - **Image Limits**:
   - Generation mode: Up to 3 reference images
   - Edit mode: Up to 2 reference images (current image + 2 = 3 total)
 - **File Size**: Maximum 7MB per image
 - **Formats**: PNG, JPEG, WebP only
+
+### Cost Considerations
+
+- Each image generation/edit counts toward your API usage
+- Monitor your usage at [Google AI Studio](https://aistudio.google.com/) to avoid unexpected charges
+- Consider setting up billing alerts in Google Cloud Console
 
 ## Usage
 
@@ -194,8 +204,9 @@ The plugin is organized into focused modules:
 **API errors**
 
 - Verify your API key is correct
+- **Ensure billing is enabled** - free accounts cannot access image generation
 - Check your quota at [Google AI Studio](https://aistudio.google.com/)
-- Ensure billing is enabled if using paid tier
+- Monitor costs to avoid unexpected charges
 
 **Image processing issues**
 
