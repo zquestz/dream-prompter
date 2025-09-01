@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.0.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-08-31 22:50-1000\n"
+"POT-Creation-Date: 2025-09-01 11:01-1000\n"
 "PO-Revision-Date: 2025-01-03 12:00+0000\n"
 "Last-Translator: AI Translation Assistant\n"
 "Language-Team: Spanish\n"
@@ -38,7 +38,7 @@ msgstr "Agregando capa de edición..."
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
-#: api.py:121
+#: api.py:116
 msgid "Building Nano Banana edit request..."
 msgstr "Construyendo solicitud de edición para Nano Banana..."
 
@@ -105,6 +105,11 @@ msgstr "Editar la capa actual usando AI"
 msgid "Enter your Google Gemini API key..."
 msgstr "Ingresa tu clave API de Google Gemini..."
 
+#: api.py:240
+#, python-brace-format
+msgid "Error converting image data to pixbuf: {error}"
+msgstr "Error convirtiendo datos de imagen a pixbuf: {error}"
+
 #: dialog_threads.py:124
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
@@ -132,6 +137,10 @@ msgstr "Error al crear imagen de GIMP"
 msgid "Failed to create edit layer"
 msgstr "Error al crear capa de edición"
 
+#: api.py:113
+msgid "Failed to export current image"
+msgstr "Error al exportar imagen actual"
+
 #: dialog_events.py:88 dialog_gtk.py:325
 msgid "Generate AI Edit"
 msgstr "Generar Edición AI"
@@ -147,6 +156,11 @@ msgstr "Generar nueva imagen"
 #: api.py:63
 msgid "Generating image with Nano Banana..."
 msgstr "Generando imagen con Nano Banana..."
+
+#: api.py:216
+#, python-brace-format
+msgid "Generation stopped: {reason}"
+msgstr "Generación detenida: {reason}"
 
 #: dialog_gtk.py:101
 #, python-brace-format
@@ -169,9 +183,29 @@ msgstr "¡Imagen generada exitosamente!"
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
+#: api.py:60 api.py:102
+msgid "Nano Banana API not available. Please install google-genai"
+msgstr "API de Nano Banana no disponible. Por favor instala google-genai"
+
+#: api.py:105
+msgid "No GIMP image provided for editing"
+msgstr "No se proporcionó imagen de GIMP para editar"
+
 #: dialog_gtk.py:215 dialog_gtk.py:245
 msgid "No additional images selected"
 msgstr "No hay imágenes adicionales seleccionadas"
+
+#: api.py:219
+msgid "No candidates in API response"
+msgstr "No hay candidatos en la respuesta de la API"
+
+#: api.py:223
+msgid "No content parts in API response"
+msgstr "No hay partes de contenido en la respuesta de la API"
+
+#: api.py:242
+msgid "No image data found in response"
+msgstr "No se encontraron datos de imagen en la respuesta"
 
 #: dialog_threads.py:80 dialog_threads.py:104
 msgid "No image data received from API"
@@ -197,11 +231,11 @@ msgstr "Por favor ingresa un prompt"
 msgid "Please enter your Google Gemini API key"
 msgstr "Por favor ingresa tu clave API de Google Gemini"
 
-#: api.py:112
+#: api.py:108
 msgid "Preparing current image for Nano Banana..."
 msgstr "Preparando imagen actual para Nano Banana..."
 
-#: api.py:142
+#: api.py:137
 msgid "Processing Nano Banana edit response..."
 msgstr "Procesando respuesta de edición de Nano Banana..."
 
@@ -243,7 +277,7 @@ msgstr ""
 "Selecciona hasta 3 imágenes de referencia para influir en el estilo o "
 "composición de tu nueva imagen"
 
-#: api.py:134
+#: api.py:129
 msgid "Sending edit request to Nano Banana..."
 msgstr "Enviando solicitud de edición a Nano Banana..."
 
@@ -317,6 +351,6 @@ msgid "• Transform this into a painting style"
 msgstr "• Transformar esto en estilo de pintura"
 
 #: dialog_gtk.py:273
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
-msgstr "⚠️ ({size:.1f} MB - Demasiado Grande)"
+msgstr "⚠️ ({size:.1f} MB - Tamaño Máximo Excedido)"

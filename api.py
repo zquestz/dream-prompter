@@ -21,10 +21,11 @@ SUPPORTED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/webp']
 
 try:
     from google import genai
-    from google.genai import types
+    from google.genai import types, errors
 except ImportError:
     genai = None
     types = None
+    errors = None
     print("Warning: google-genai not installed. Install with: pip install google-genai")
 
 class GeminiAPI:
@@ -53,11 +54,10 @@ class GeminiAPI:
             progress_callback (callable): Optional callback for progress updates
 
         Returns:
-            GdkPixbuf.Pixbuf: Generated image as pixbuf, or None if failed
+            tuple: (GdkPixbuf.Pixbuf or None, error_message or None)
         """
-        if not self.client or not types:
-            print("Error: Nano Banana API not available. Please install google-genai")
-            return None
+        if not self.client or not types or not errors:
+            return None, _("Nano Banana API not available. Please install google-genai")
 
         if progress_callback:
             progress_callback(_("Generating image with Nano Banana..."), 0.1)
@@ -77,15 +77,13 @@ class GeminiAPI:
             if progress_callback:
                 progress_callback(_("Processing Nano Banana response..."), 0.9)
 
-            pixbuf = self._parse_image_response(response)
-            if not pixbuf:
-                print("Error: No image found in Nano Banana response")
+            pixbuf, error_msg = self._parse_image_response(response)
+            return pixbuf, error_msg
 
-            return pixbuf
-
+        except errors.APIError as e:
+            return None, e.message
         except Exception as e:
-            print(f"Error generating image with Nano Banana: {e}")
-            return None
+            return None, str(e)
 
     def edit_image(self, image, prompt, reference_images=None, progress_callback=None):
         """
@@ -98,15 +96,13 @@ class GeminiAPI:
             progress_callback (callable): Optional callback for progress updates
 
         Returns:
-            GdkPixbuf.Pixbuf: Edited image as pixbuf, or None if failed
+            tuple: (GdkPixbuf.Pixbuf or None, error_message or None)
         """
-        if not self.client or not types:
-            print("Error: Nano Banana API not available. Please install google-genai")
-            return None
+        if not self.client or not types or not errors:
+            return None, _("Nano Banana API not available. Please install google-genai")
 
         if not image:
-            print("Error: No GIMP image provided for editing")
-            return None
+            return None, _("No GIMP image provided for editing")
 
         if progress_callback:
             progress_callback(_("Preparing current image for Nano Banana..."), 0.1)
@@ -114,8 +110,7 @@ class GeminiAPI:
         try:
             current_image_data = integrator.export_gimp_image_to_bytes(image)
             if not current_image_data:
-                print("Error: Failed to export current image")
-                return None
+                return None, _("Failed to export current image")
 
             if progress_callback:
                 progress_callback(_("Building Nano Banana edit request..."), 0.3)
@@ -141,15 +136,12 @@ class GeminiAPI:
             if progress_callback:
                 progress_callback(_("Processing Nano Banana edit response..."), 0.9)
 
-            pixbuf = self._parse_image_response(response)
-            if not pixbuf:
-                print("Error: No edited image found in Nano Banana response")
-
-            return pixbuf
-
+            pixbuf, error_msg = self._parse_image_response(response)
+            return pixbuf, error_msg
+        except errors.APIError as e:
+            return None, e.message
         except Exception as e:
-            print(f"Error editing image with Nano Banana: {e}")
-            return None
+            return None, str(e)
 
     def _validate_reference_image(self, img_path, max_size_mb=MAX_FILE_SIZE_MB):
         """
@@ -212,16 +204,23 @@ class GeminiAPI:
             response: API response object
 
         Returns:
-            GdkPixbuf.Pixbuf: Generated image as pixbuf, or None if failed
+            tuple: (GdkPixbuf.Pixbuf or None, error_message or None)
         """
-        if not response.candidates or len(response.candidates) == 0:
-            print("Error: No candidates in API response")
-            return None
+        if hasattr(response, 'error') and response.error:
+            return None, str(response.error)
+
+        if hasattr(response, 'candidates') and response.candidates:
+            candidate = response.candidates[0]
+            if hasattr(candidate, 'finish_reason') and candidate.finish_reason:
+                if candidate.finish_reason not in ['STOP', 'MAX_TOKENS']:
+                    return None, _("Generation stopped: {reason}").format(reason=candidate.finish_reason)
+
+        if not response.candidates:
+            return None, _("No candidates in API response")
 
         candidate = response.candidates[0]
         if not candidate.content or not candidate.content.parts:
-            print("Error: No content parts in API response")
-            return None
+            return None, _("No content parts in API response")
 
         for part in candidate.content.parts:
             if hasattr(part, 'inline_data') and part.inline_data:
@@ -236,8 +235,8 @@ class GeminiAPI:
                     pixbuf = loader.get_pixbuf()
 
                     if pixbuf:
-                        return pixbuf
+                        return pixbuf, None
                 except Exception as e:
-                    print(f"Error converting image data to pixbuf: {e}")
+                    return None, _("Error converting image data to pixbuf: {error}").format(error=str(e))
 
-        return None
+        return None, _("No image data found in response")

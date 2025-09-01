@@ -68,7 +68,7 @@ class DreamPrompterThreads:
             def progress_callback(message, percentage=None):
                 GLib.idle_add(self._update_status, message, percentage)
 
-            pixbuf = api.generate_image(
+            pixbuf, error_msg = api.generate_image(
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback
@@ -77,7 +77,7 @@ class DreamPrompterThreads:
             if pixbuf:
                 GLib.idle_add(self._handle_generated_image, pixbuf, prompt)
             else:
-                GLib.idle_add(self._handle_error, _("No image data received from API"))
+                GLib.idle_add(self._handle_error, error_msg or _("No image data received from API"))
 
         except Exception as e:
             error_msg = str(e)
@@ -91,7 +91,7 @@ class DreamPrompterThreads:
             def progress_callback(message, percentage=None):
                 GLib.idle_add(self._update_status, message, percentage)
 
-            pixbuf = api.edit_image(
+            pixbuf, error_msg = api.edit_image(
                 image=self.image,
                 prompt=prompt,
                 reference_images=reference_images,
@@ -101,7 +101,7 @@ class DreamPrompterThreads:
             if pixbuf:
                 GLib.idle_add(self._handle_edited_image, pixbuf, prompt)
             else:
-                GLib.idle_add(self._handle_error, _("No image data received from API"))
+                GLib.idle_add(self._handle_error, error_msg or _("No image data received from API"))
 
         except Exception as e:
             error_msg = str(e)
