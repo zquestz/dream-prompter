@@ -2,6 +2,8 @@
 
 Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI capabilities directly into GIMP for intelligent image generation and editing.
 
+![Dream Prompter](screenshots/dream-prompter.png)
+
 ## Features
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
