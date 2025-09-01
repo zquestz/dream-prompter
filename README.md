@@ -61,6 +61,14 @@ pip install google-genai
 
 **Building translations (optional):** If you need languages other than English, run `python3 scripts/build-translations.py` in the plugin directory after installation.
 
+### Arch Linux Installation
+
+To install Dream Prompter on Arch Linux, you can install it from the AUR.
+
+```bash
+yay -S dream-prompter
+```
+
 ### Advanced Installation
 
 #### Manual Installation from Source
@@ -288,9 +296,8 @@ We welcome translations! Here's how to contribute:
 1. **Fork the repository**
 2. **Create a feature branch**
 3. **Follow the existing code style**
-4. **Add tests for new functionality**
-5. **Update translations** if adding new strings
-6. **Submit a pull request**
+4. **Update translations** if adding new strings
+5. **Submit a pull request**
 
 ## License
 
