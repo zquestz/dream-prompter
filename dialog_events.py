@@ -7,9 +7,9 @@ Handles all user interactions and UI events
 """
 
 from dialog_threads import DreamPrompterThreads
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib
 from i18n import _
-from settings import store_settings
+from settings import store_settings, load_settings
 
 class DreamPrompterEventHandler:
     """Handles all dialog events and user interactions"""
@@ -26,6 +26,21 @@ class DreamPrompterEventHandler:
             'on_success': self.close_on_success,
             'on_error': self.show_error
         })
+
+        settings = load_settings()
+        if self.ui.toggle_visibility_btn and self.ui.api_key_entry:
+            is_visible = settings.get("api_key_visible", False)
+            self.ui.toggle_visibility_btn.set_active(is_visible)
+            self.on_toggle_visibility(self.ui.toggle_visibility_btn)
+
+        def after_init():
+            if self.ui.api_key_entry:
+                self.ui.api_key_entry.select_region(0, 0)
+            if self.ui.prompt_textview:
+                self.ui.prompt_textview.grab_focus()
+                return False
+
+        GLib.idle_add(after_init)
 
     def connect_all_signals(self):
         """Connect all UI signals to handlers"""
