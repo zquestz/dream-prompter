@@ -15,24 +15,92 @@ Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI c
 - 🔒 **Safe File Handling**: Validates image formats and file sizes
 - 🏗️ **Native GIMP Integration**: Works seamlessly within your GIMP workflow
 
-## Requirements
+## Installation
+
+### Prerequisites
 
 - **GIMP 3.0.x**
 - **Python 3.8+**
-- **Google Gemini API key**
-- **Python Dependencies**: `google-genai` library
-
-## Installation
-
-### Step 1: Install Python Dependencies
+- **Google Gemini API key** (paid account required)
 
 Install the required Python library:
-
 ```bash
 pip install google-genai
 ```
 
-**Important**: Use the same Python that GIMP uses. For system GIMP installations:
+### Quick Install
+
+1. **Download the latest release** from [GitHub Releases](https://github.com/zquestz/dream-prompter/releases)
+
+2. **Extract the release**
+
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.0.0`)
+
+3. **Move to your GIMP plugins folder with the correct name:**
+
+   Rename and move the extracted folder to exactly `dream-prompter` in your GIMP plugins directory:
+
+   - **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/`
+   - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
+   - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
+
+   Example for Linux:
+   ```bash
+   # Extract creates dream-prompter-1.0.0/
+   unzip dream-prompter-1.0.0.zip
+   # Move to correct location with correct name
+   mv dream-prompter-1.0.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+   ```
+
+4. **Make executable** (Linux/macOS only):
+   ```bash
+   chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
+   ```
+
+5. **Restart GIMP**
+
+**Building translations (optional):** If you need languages other than English, run `python3 scripts/build-translations.py` in the plugin directory after installation.
+
+### Advanced Installation
+
+#### Manual Installation from Source
+
+1. **Find your GIMP plugins directory** (paths listed above)
+
+2. **Create plugin directory:**
+   ```bash
+   mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   ```
+
+3. **Copy all Python files:**
+   ```bash
+   cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   ```
+
+4. **Build and install translations (Optional):**
+   ```bash
+   python3 scripts/build-translations.py
+   cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   ```
+
+5. **Make executable:**
+   ```bash
+   chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
+   ```
+
+#### Development Setup
+
+```bash
+git clone https://github.com/zquestz/dream-prompter.git
+cd dream-prompter
+pip install google-genai
+python3 scripts/build-translations.py # optional, defaults to English
+ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
+```
+
+### Python Dependencies Note
+
+**Important**: Use the same Python that GIMP uses. If `pip install google-genai` doesn't work:
 
 ```bash
 # System-wide installation
@@ -43,51 +111,6 @@ pip install --user google-genai
 
 # Ensure Python 3
 pip3 install google-genai
-```
-
-### Step 2: Install the Plugin
-
-#### Method 1: Manual Installation (Recommended)
-
-1. **Find your GIMP plugins directory:**
-   - **Linux**: `~/.config/GIMP/3.0/plug-ins/`
-   - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\`
-   - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/`
-
-2. **Create plugin directory:**
-
-   ```bash
-   mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
-   ```
-
-3. **Copy all Python files:**
-
-   ```bash
-   cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
-   ```
-
-4. **Build and install translations (Optional):**
-
-   ```bash
-   python3 scripts/build-translations.py
-   cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
-   ```
-
-   If you don't build the translations it will default to English.
-
-5. **Make executable:**
-   ```bash
-   chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
-   ```
-
-#### Method 2: Development Setup
-
-```bash
-git clone https://github.com/zquestz/dream-prompter.git
-cd dream-prompter
-pip install google-genai
-python3 scripts/build-translations.py # optional, defaults to English.
-ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
 ```
 
 ## Getting Your API Key
