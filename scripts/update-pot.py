@@ -24,7 +24,7 @@ def extract_strings():
         'dialog_gtk.py',
         'dialog_threads.py',
         'dream-prompter.py',
-        'gimp_integration.py',
+        'integrator.py',
         'i18n.py',
         'settings.py'
     ]

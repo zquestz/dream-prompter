@@ -6,7 +6,7 @@ Threading operations for Dream Prompter dialog
 Handles all background AI processing and image operations
 """
 
-import gimp_integration
+import integrator
 import threading
 
 from api import GeminiAPI
@@ -68,14 +68,14 @@ class DreamPrompterThreads:
             def progress_callback(message):
                 GLib.idle_add(self._update_status, message)
 
-            image_data = api.generate_image(
+            pixbuf = api.generate_image(
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback
             )
 
-            if image_data:
-                GLib.idle_add(self._handle_generated_image, image_data)
+            if pixbuf:
+                GLib.idle_add(self._handle_generated_image, pixbuf, prompt)
             else:
                 GLib.idle_add(self._handle_error, _("No image data received from API"))
 
@@ -91,16 +91,15 @@ class DreamPrompterThreads:
             def progress_callback(message):
                 GLib.idle_add(self._update_status, message)
 
-            # Call API to edit/generate image (same API call as generation for now)
-            # TODO: When we have a dedicated edit API, we can pass the current image data
-            image_data = api.generate_image(
+            pixbuf = api.edit_image(
+                image=self.image,
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback
             )
 
-            if image_data:
-                GLib.idle_add(self._handle_edited_image, image_data)
+            if pixbuf:
+                GLib.idle_add(self._handle_edited_image, pixbuf, prompt)
             else:
                 GLib.idle_add(self._handle_error, _("No image data received from API"))
 
@@ -108,12 +107,12 @@ class DreamPrompterThreads:
             error_msg = str(e)
             GLib.idle_add(self._handle_error, error_msg)
 
-    def _handle_generated_image(self, image_data):
+    def _handle_generated_image(self, pixbuf, prompt):
         """Handle generated image on main thread"""
         try:
             self._update_status(_("Creating GIMP image..."))
 
-            image = gimp_integration.create_new_image(image_data)
+            image = integrator.create_new_image(pixbuf, prompt)
             if not image:
                 self._handle_error(_("Failed to create GIMP image"))
                 return
@@ -124,12 +123,12 @@ class DreamPrompterThreads:
         except Exception as e:
             self._handle_error(_("Error creating GIMP image: {error}").format(error=str(e)))
 
-    def _handle_edited_image(self, image_data=None):
+    def _handle_edited_image(self, pixbuf, prompt):
         """Handle edited image on main thread"""
         try:
             self._update_status(_("Adding edit layer..."))
 
-            layer = gimp_integration.create_edit_layer(self.image, self.drawable, image_data)
+            layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, prompt)
             if not layer:
                 self._handle_error(_("Failed to create edit layer"))
                 return

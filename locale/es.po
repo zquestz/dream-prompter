@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.0.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-08-31 00:03-1000\n"
+"POT-Creation-Date: 2025-08-31 17:39-1000\n"
 "PO-Revision-Date: 2025-01-03 12:00+0000\n"
 "Last-Translator: AI Translation Assistant\n"
 "Language-Team: Spanish\n"
@@ -69,7 +69,7 @@ msgstr "Dream Prompter..."
 msgid "Edit existing image"
 msgstr "Editar imagen existente"
 
-#: dialog_threads.py:141
+#: dialog_threads.py:137
 msgid "Edit layer created!"
 msgstr "¡Capa de edición creada!"
 
@@ -90,7 +90,7 @@ msgstr "Ingresa tu clave API de Google Gemini..."
 msgid "Error creating GIMP image: {error}"
 msgstr "Error al crear imagen de GIMP: {error}"
 
-#: dialog_threads.py:145
+#: dialog_threads.py:141
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "Error al crear capa de edición: {error}"
