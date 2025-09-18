@@ -207,7 +207,7 @@ class GObjectAccessibleClass(GObject.GPointer):
     pad1: Callable[..., bool] = ...
     pad2: Callable[..., bool] = ...
 
-class Hyperlink(GObject.Object, Action):
+class Hyperlink(GObject.Object, Action): # type: ignore[misc]
     class Props:
         end_index: int
         number_of_anchors: int

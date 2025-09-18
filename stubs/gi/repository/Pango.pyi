@@ -1207,7 +1207,7 @@ class LayoutLine(GObject.GBoxed):
     start_index: int = ...
     length: int = ...
     runs: list[GlyphItem] = ...
-    is_paragraph_start: int = ...
+    is_paragraph_start: int = ... # type: ignore[misc]
     resolved_dir: int = ...
     def get_extents(self) -> Tuple[Rectangle, Rectangle]: ...
     def get_height(self) -> int: ...
@@ -1748,7 +1748,7 @@ class Script(GObject.GEnum):
     @staticmethod
     def get_sample_language(script: Script) -> Optional[Language]: ...
 
-class Stretch(GObject.GEnum):
+class Stretch(GObject.GEnum): # type: ignore[misc]
     CONDENSED = 2
     EXPANDED = 6
     EXTRA_CONDENSED = 1
@@ -1759,24 +1759,24 @@ class Stretch(GObject.GEnum):
     ULTRA_CONDENSED = 0
     ULTRA_EXPANDED = 8
 
-class Style(GObject.GEnum):
+class Style(GObject.GEnum): # type: ignore[misc]
     ITALIC = 2
     NORMAL = 0
     OBLIQUE = 1
 
-class TabAlign(GObject.GEnum):
+class TabAlign(GObject.GEnum): # type: ignore[misc]
     CENTER = 2
     DECIMAL = 3
     LEFT = 0
     RIGHT = 1
 
-class TextTransform(GObject.GEnum):
+class TextTransform(GObject.GEnum): # type: ignore[misc]
     CAPITALIZE = 3
     LOWERCASE = 1
     NONE = 0
     UPPERCASE = 2
 
-class Underline(GObject.GEnum):
+class Underline(GObject.GEnum): # type: ignore[misc]
     DOUBLE = 2
     DOUBLE_LINE = 6
     ERROR = 4
@@ -1786,7 +1786,7 @@ class Underline(GObject.GEnum):
     SINGLE = 1
     SINGLE_LINE = 5
 
-class Variant(GObject.GEnum):
+class Variant(GObject.GEnum): # type: ignore[misc]
     ALL_PETITE_CAPS = 4
     ALL_SMALL_CAPS = 2
     NORMAL = 0
@@ -1795,7 +1795,7 @@ class Variant(GObject.GEnum):
     TITLE_CAPS = 6
     UNICASE = 5
 
-class Weight(GObject.GEnum):
+class Weight(GObject.GEnum): # type: ignore[misc]
     BOLD = 700
     BOOK = 380
     HEAVY = 900
@@ -1809,7 +1809,7 @@ class Weight(GObject.GEnum):
     ULTRAHEAVY = 1000
     ULTRALIGHT = 200
 
-class WrapMode(GObject.GEnum):
+class WrapMode(GObject.GEnum): # type: ignore[misc]
     CHAR = 1
     WORD = 0
     WORD_CHAR = 2
