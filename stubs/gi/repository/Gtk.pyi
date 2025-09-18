@@ -19,7 +19,7 @@ from gi.repository import GLib
 from gi.repository import GObject
 from gi.repository import Pango
 
-_SomeSurface = TypeVar("_SomeSurface", bound=cairo.Surface)
+_SomeSurface = Any
 CellRendererT = TypeVar(
     "CellRendererT",
     CellRendererCombo,
