@@ -108,7 +108,7 @@ class GeminiAPI:
             progress_callback(_("Preparing current image for Nano Banana..."), 0.1)
 
         try:
-            current_image_data = integrator.export_gimp_image_to_bytes(image)
+            current_image_data = integrator.export_current_region_to_bytes(image)
             if not current_image_data:
                 return None, _("Failed to export current image")
 
