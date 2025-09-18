@@ -150,7 +150,7 @@ class AudioFragment(GObject.Object):
     def set_pos(self, pos: int) -> None: ...
     def set_sample_count(self, sample_count: int) -> None: ...
     def set_sample_rate(self, sample_rate: int) -> None: ...
-    
+
 
 class AudioFragmentClass(GObject.GPointer):
     """
@@ -189,13 +189,13 @@ class Buffer(TileHandler):
       height -> gint: height
         pixel height of buffer
       shift-x -> gint: shift-x
-    
+
       shift-y -> gint: shift-y
-    
+
       abyss-x -> gint: abyss-x
-    
+
       abyss-y -> gint: abyss-y
-    
+
       abyss-width -> gint: abyss-width
         pixel width of abyss
       abyss-height -> gint: abyss-height
@@ -299,7 +299,7 @@ class Buffer(TileHandler):
     @staticmethod
     def swap_remove_file(path: str) -> None: ...
     def thaw_changed(self) -> None: ...
-    
+
 
 class BufferIterator(GObject.GPointer):
     """
@@ -338,7 +338,7 @@ class BufferMatrix2(GObject.GPointer):
     def determinant(self) -> float: ...
     def is_identity(self) -> bool: ...
     def is_scale(self) -> bool: ...
-    
+
 
 class Color(GObject.Object):
     """
@@ -382,7 +382,7 @@ class Color(GObject.Object):
     def set_hsva(self, hue: float, saturation: float, value: float, alpha: float, space: typing.Optional[Babl.Object] = None) -> None: ...
     def set_rgba(self, red: float, green: float, blue: float, alpha: float) -> None: ...
     def set_rgba_with_space(self, red: float, green: float, blue: float, alpha: float, space: Babl.Object) -> None: ...
-    
+
 
 class ColorClass(GObject.GPointer):
     """
@@ -489,7 +489,7 @@ class Curve(GObject.Object):
     def new_default(cls) -> Curve: ...
     def num_points(self) -> int: ...
     def set_point(self, index: int, x: float, y: float) -> None: ...
-    
+
 
 class CurveClass(GObject.GPointer):
     """
@@ -547,7 +547,7 @@ class Matrix3(GObject.GBoxed):
     def round_error(self) -> None: ...
     def to_string(self) -> str: ...
     def transform_point(self, x: float, y: float) -> None: ...
-    
+
 
 class Metadata(GObject.GInterface):
     """
@@ -565,7 +565,7 @@ class Metadata(GObject.GInterface):
     def register_map(self, file_module: str, flags: int, map: typing.Sequence[MetadataMap]) -> None: ...
     def set_resolution(self, unit: ResolutionUnit, x: float, y: float) -> bool: ...
     def unregister_map(self) -> None: ...
-    
+
 
 class MetadataHash(MetadataStore, Metadata):
     """
@@ -649,7 +649,7 @@ class MetadataHash(MetadataStore, Metadata):
                  warning: str = ...) -> None: ...
     @classmethod
     def new(cls) -> MetadataHash: ...
-    
+
 
 class MetadataHashClass(GObject.GPointer):
     """
@@ -825,7 +825,7 @@ class MetadataStore(GObject.Object, Metadata):
     def set_value(self, name: str, value: typing.Any) -> None: ...
     def set_warning(self, warning: str) -> None: ...
     def typeof_value(self, name: str) -> typing.Type[typing.Any]: ...
-    
+
 
 class MetadataStoreClass(GObject.GPointer):
     """
@@ -945,7 +945,7 @@ class Node(GObject.Object):
     def set_time(self, time: float) -> None: ...
     def to_xml(self, path_root: str) -> str: ...
     def to_xml_full(self, tail: typing.Optional[Node], path_root: str) -> str: ...
-    
+
 
 class Operation(GObject.Object):
     """
@@ -974,7 +974,7 @@ class Operation(GObject.Object):
     def list_properties(operation_type: str) -> list[GObject.ParamSpec]: ...
     @staticmethod
     def list_property_keys(operation_type: str, property_name: str) -> list[str]: ...
-    
+
 
 class OperationContext(GObject.GPointer): ...
 
@@ -1015,7 +1015,7 @@ class ParamSpecDouble(GObject.GPointer):
     ui_digits: int = ...
     def set_digits(self, digits: int) -> None: ...
     def set_steps(self, small_step: float, big_step: float) -> None: ...
-    
+
 
 class ParamSpecEnum(GObject.GPointer):
     """
@@ -1028,7 +1028,7 @@ class ParamSpecEnum(GObject.GPointer):
     parent_instance: GObject.ParamSpecEnum = ...
     excluded_values: list[None] = ...
     def exclude_value(self, value: int) -> None: ...
-    
+
 
 class ParamSpecFilePath(GObject.GPointer):
     """
@@ -1067,7 +1067,7 @@ class ParamSpecInt(GObject.GPointer):
     ui_step_small: int = ...
     ui_step_big: int = ...
     def set_steps(self, small_step: int, big_step: int) -> None: ...
-    
+
 
 class ParamSpecSeed(GObject.GPointer):
     """
@@ -1155,7 +1155,7 @@ class Path(GObject.Object):
     def set_matrix(self, matrix: Matrix3) -> None: ...
     def thaw(self) -> None: ...
     def to_string(self) -> str: ...
-    
+
 
 class PathClass(GObject.GPointer): ...
 
@@ -1230,7 +1230,7 @@ class Processor(GObject.Object):
     def set_rectangle(self, rectangle: Rectangle) -> None: ...
     def set_scale(self, scale: float) -> None: ...
     def work(self) -> typing.Tuple[bool, float]: ...
-    
+
 
 class Random(GObject.GBoxed):
     """
@@ -1252,7 +1252,7 @@ class Random(GObject.GBoxed):
     @classmethod
     def new_with_seed(cls, seed: int) -> Random: ...
     def set_seed(self, seed: int) -> None: ...
-    
+
 
 class Rectangle(GObject.GBoxed):
     """
@@ -1287,12 +1287,12 @@ class Rectangle(GObject.GBoxed):
     def subtract(self, minuend: Rectangle, subtrahend: Rectangle) -> int: ...
     def subtract_bounding_box(self, minuend: Rectangle, subtrahend: Rectangle) -> bool: ...
     def xor(self, source1: Rectangle, source2: Rectangle) -> int: ...
-    
+
 
 class Sampler(GObject.GPointer):
     def get(self, x: float, y: float, scale: BufferMatrix2, output: None, repeat_mode: AbyssPolicy) -> None: ...
     def get_context_rect(self) -> Rectangle: ...
-    
+
 
 class Stats(GObject.Object):
     """
@@ -1428,7 +1428,7 @@ class TileBackend(TileSource):
     def set_flush_on_destroy(self, flush_on_destroy: bool) -> None: ...
     @staticmethod
     def unlink_swap(path: str) -> None: ...
-    
+
 
 class TileBackendClass(GObject.GPointer):
     """
@@ -1485,7 +1485,7 @@ class TileHandler(TileSource):
     def lock(self) -> None: ...
     def set_source(self, source: TileSource) -> None: ...
     def unlock(self) -> None: ...
-    
+
 
 class TileHandlerClass(GObject.GPointer):
     """
@@ -1630,4 +1630,3 @@ class TileCommand(GObject.GEnum):
     EGL_TILE_SET = 1
     EGL_TILE_VOID = 5
     GEGL_TILE_LAST_0_4_8_COMMAND = 9
-

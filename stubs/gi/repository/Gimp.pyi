@@ -236,7 +236,6 @@ def convolve(drawable: Drawable, pressure: float, convolve_type: ConvolveType, s
 def convolve_default(drawable: Drawable, strokes: typing.Sequence[float]) -> bool: ...
 def core_object_array_get_length(array: GObject.Object) -> int: ...
 def core_object_array_get_type() -> typing.Type[typing.Any]: ...
-def cpu_accel_get_support() -> CpuAccelFlags: ...
 def data_directory() -> str: ...
 def debug_timer_end() -> float: ...
 def debug_timer_start() -> bool: ...
@@ -490,7 +489,7 @@ class Array(GObject.GBoxed):
     def free(self) -> None: ...
     @classmethod
     def new(cls, data: typing.Sequence[int], static_data: bool) -> Array: ...
-    
+
 
 class BatchProcedure(Procedure):
     """
@@ -526,7 +525,7 @@ class BatchProcedure(Procedure):
     @classmethod
     def new(cls, plug_in: PlugIn, name: str, interpreter_name: str, proc_type: PDBProcType, run_func: typing.Callable[..., ValueArray], *run_data: typing.Any) -> BatchProcedure: ...
     def set_interpreter_name(self, interpreter_name: str) -> None: ...
-    
+
 
 class BatchProcedureClass(GObject.GPointer):
     """
@@ -582,7 +581,7 @@ class Brush(Resource, ConfigInterface):
     def set_shape(self, shape_in: BrushGeneratedShape) -> typing.Tuple[bool, BrushGeneratedShape]: ...
     def set_spacing(self, spacing: int) -> bool: ...
     def set_spikes(self, spikes_in: int) -> typing.Tuple[bool, int]: ...
-    
+
 
 class BrushClass(GObject.GPointer):
     """
@@ -632,7 +631,7 @@ class Channel(Drawable):
     def set_color(self, color: Gegl.Color) -> bool: ...
     def set_opacity(self, opacity: float) -> bool: ...
     def set_show_masked(self, show_masked: bool) -> bool: ...
-    
+
 
 class ChannelClass(GObject.GPointer):
     """
@@ -681,7 +680,7 @@ class Choice(GObject.Object):
     @classmethod
     def new(cls) -> Choice: ...
     def set_sensitive(self, nick: str, sensitive: bool) -> None: ...
-    
+
 
 class ChoiceClass(GObject.GPointer):
     """
@@ -793,7 +792,7 @@ class ColorConfig(GObject.Object, ConfigInterface):
     def get_simulation_gamut_check(self) -> bool: ...
     def get_simulation_intent(self) -> ColorRenderingIntent: ...
     def get_simulation_optimize(self) -> bool: ...
-    
+
 
 class ColorConfigClass(GObject.GPointer):
     """
@@ -821,7 +820,7 @@ class ColorManaged(GObject.GInterface):
     def simulation_bpc_changed(self) -> None: ...
     def simulation_intent_changed(self) -> None: ...
     def simulation_profile_changed(self) -> None: ...
-    
+
 
 class ColorManagedInterface(GObject.GPointer):
     """
@@ -902,7 +901,7 @@ class ColorProfile(GObject.Object):
     def new_rgb_srgb_linear(cls) -> ColorProfile: ...
     def new_srgb_trc_from_color_profile(self) -> typing.Optional[ColorProfile]: ...
     def save_to_file(self, file: Gio.File) -> bool: ...
-    
+
 
 class ColorProfileClass(GObject.GPointer):
     """
@@ -940,7 +939,7 @@ class ColorTransform(GObject.Object):
     def new_proofing(cls, src_profile: ColorProfile, src_format: Babl.Object, dest_profile: ColorProfile, dest_format: Babl.Object, proof_profile: ColorProfile, proof_intent: ColorRenderingIntent, display_intent: ColorRenderingIntent, flags: ColorTransformFlags) -> typing.Optional[ColorTransform]: ...
     def process_buffer(self, src_buffer: Gegl.Buffer, src_rect: Gegl.Rectangle, dest_buffer: Gegl.Buffer, dest_rect: Gegl.Rectangle) -> None: ...
     def process_pixels(self, src_format: Babl.Object, src_pixels: None, dest_format: Babl.Object, dest_pixels: None, length: int) -> None: ...
-    
+
 
 class ColorTransformClass(GObject.GPointer):
     """
@@ -974,7 +973,7 @@ class Config(GObject.GPointer):
     def serialize_to_parasite(self, parasite_name: str, parasite_flags: int, data: None) -> Parasite: ...
     def serialize_to_stream(self, output: Gio.OutputStream, header: typing.Optional[str], footer: typing.Optional[str], data: None) -> bool: ...
     def serialize_to_string(self, data: None) -> str: ...
-    
+
 
 class ConfigInterface(GObject.GInterface):
     """
@@ -1011,7 +1010,7 @@ class ConfigInterface(GObject.GInterface):
     def sync(src: GObject.Object, dest: GObject.Object, flags: GObject.ParamFlags) -> bool: ...
     @staticmethod
     def type_register(parent_type: typing.Type[typing.Any], type_name: str, pspecs: typing.Sequence[GObject.ParamSpec]) -> typing.Type[typing.Any]: ...
-    
+
 
 class ConfigPath:
     """
@@ -1027,7 +1026,7 @@ class ConfigPath:
     def expand_to_files(path: str) -> list[Gio.File]: ...
     @staticmethod
     def unexpand(path: str, recode: bool) -> str: ...
-    
+
 
 class ConfigWriter(GObject.GBoxed):
     """
@@ -1061,7 +1060,7 @@ class ConfigWriter(GObject.GBoxed):
     def revert(self) -> None: ...
     def string(self, string: str) -> None: ...
     def unref(self) -> None: ...
-    
+
 
 class Display(GObject.Object):
     """
@@ -1098,7 +1097,7 @@ class Display(GObject.Object):
     @classmethod
     def new(cls, image: Image) -> Display: ...
     def present(self) -> bool: ...
-    
+
 
 class DisplayClass(GObject.GPointer):
     """
@@ -1115,7 +1114,7 @@ class DoubleArray(GObject.GBoxed):
     def get_values(array: Array) -> list[float]: ...
     @staticmethod
     def set_values(array: Array, values: typing.Sequence[float], static_data: bool) -> None: ...
-    
+
 
 class Drawable(Item):
     """
@@ -1195,7 +1194,7 @@ class Drawable(Item):
     def type(self) -> ImageType: ...
     def type_with_alpha(self) -> ImageType: ...
     def update(self, x: int, y: int, width: int, height: int) -> bool: ...
-    
+
 
 class DrawableClass(GObject.GPointer):
     """
@@ -1259,7 +1258,7 @@ class DrawableFilter(GObject.Object):
     def set_opacity(self, opacity: float) -> None: ...
     def set_visible(self, visible: bool) -> bool: ...
     def update(self) -> None: ...
-    
+
 
 class DrawableFilterClass(GObject.GPointer):
     """
@@ -1339,7 +1338,7 @@ class ExportOptions(GObject.Object):
     props: Props = ...
     def __init__(self, capabilities: ExportCapabilities = ...) -> None: ...
     def get_image(self) -> typing.Tuple[ExportReturn, Image]: ...
-    
+
 
 class ExportOptionsClass(GObject.GPointer):
     """
@@ -1419,7 +1418,7 @@ class ExportProcedure(FileProcedure):
     def set_support_profile(self, supports: bool) -> None: ...
     def set_support_thumbnail(self, supports: bool) -> None: ...
     def set_support_xmp(self, supports: bool) -> None: ...
-    
+
 
 class ExportProcedureClass(GObject.GPointer):
     """
@@ -1475,7 +1474,7 @@ class FileProcedure(Procedure):
     def set_mime_types(self, mime_types: str) -> None: ...
     def set_prefixes(self, prefixes: str) -> None: ...
     def set_priority(self, priority: int) -> None: ...
-    
+
 
 class FileProcedureClass(GObject.GPointer):
     """
@@ -1533,7 +1532,7 @@ class Font(Resource, ConfigInterface):
     @staticmethod
     def get_by_name(name: str) -> typing.Optional[Font]: ...
     def get_pango_font_description(self) -> Pango.FontDescription: ...
-    
+
 
 class FontClass(GObject.GPointer):
     """
@@ -1597,7 +1596,7 @@ class Gradient(Resource, ConfigInterface):
     def segment_set_middle_pos(self, segment: int, pos: float) -> typing.Tuple[bool, float]: ...
     def segment_set_right_color(self, segment: int, color: Gegl.Color) -> bool: ...
     def segment_set_right_pos(self, segment: int, pos: float) -> typing.Tuple[bool, float]: ...
-    
+
 
 class GradientClass(GObject.GPointer):
     """
@@ -1636,7 +1635,7 @@ class GroupLayer(Layer):
     def merge(self) -> Layer: ...
     @classmethod
     def new(cls, image: Image, name: typing.Optional[str] = None) -> GroupLayer: ...
-    
+
 
 class GroupLayerClass(GObject.GPointer):
     """
@@ -1833,7 +1832,7 @@ class Image(GObject.Object):
     def undo_is_enabled(self) -> bool: ...
     def undo_thaw(self) -> bool: ...
     def unset_active_channel(self) -> bool: ...
-    
+
 
 class ImageClass(GObject.GPointer):
     """
@@ -1877,7 +1876,7 @@ class ImageProcedure(Procedure):
                  procedure_type: PDBProcType = ...) -> None: ...
     @classmethod
     def new(cls, plug_in: PlugIn, name: str, proc_type: PDBProcType, run_func: typing.Callable[..., ValueArray], *run_data: typing.Any) -> ImageProcedure: ...
-    
+
 
 class ImageProcedureClass(GObject.GPointer):
     """
@@ -1894,7 +1893,7 @@ class Int32Array(GObject.GBoxed):
     def get_values(array: Array) -> list[int]: ...
     @staticmethod
     def set_values(array: Array, values: typing.Sequence[int], static_data: bool) -> None: ...
-    
+
 
 class Item(GObject.Object):
     """
@@ -1983,7 +1982,7 @@ class Item(GObject.Object):
     def transform_scale(self, x0: float, y0: float, x1: float, y1: float) -> Item: ...
     def transform_shear(self, shear_type: OrientationType, magnitude: float) -> Item: ...
     def transform_translate(self, off_x: float, off_y: float) -> Item: ...
-    
+
 
 class ItemClass(GObject.GPointer):
     """
@@ -2076,7 +2075,7 @@ class Layer(Drawable):
     def set_offsets(self, offx: int, offy: int) -> bool: ...
     def set_opacity(self, opacity: float) -> bool: ...
     def set_show_mask(self, show_mask: bool) -> bool: ...
-    
+
 
 class LayerClass(GObject.GPointer):
     """
@@ -2121,7 +2120,7 @@ class LayerMask(Channel):
     def __init__(self, id: int = ...) -> None: ...
     @staticmethod
     def get_by_id(layer_mask_id: int) -> typing.Optional[LayerMask]: ...
-    
+
 
 class LayerMaskClass(GObject.GPointer):
     """
@@ -2170,7 +2169,7 @@ class LoadProcedure(FileProcedure):
     def new(cls, plug_in: PlugIn, name: str, proc_type: PDBProcType, run_func: typing.Callable[..., typing.Tuple[ValueArray, MetadataLoadFlags]], *run_data: typing.Any) -> LoadProcedure: ...
     def set_handles_raw(self, handles_raw: bool) -> None: ...
     def set_thumbnail_loader(self, thumbnail_proc: str) -> None: ...
-    
+
 
 class LoadProcedureClass(GObject.GPointer):
     """
@@ -2206,7 +2205,7 @@ class Matrix2(GObject.GBoxed):
     def invert(self) -> None: ...
     def mult(self, right: Matrix2) -> None: ...
     def transform_point(self, x: float, y: float) -> typing.Tuple[float, float]: ...
-    
+
 
 class Matrix3(GObject.GBoxed):
     """
@@ -2233,7 +2232,7 @@ class Matrix3(GObject.GBoxed):
     def translate(self, x: float, y: float) -> None: ...
     def xshear(self, amount: float) -> None: ...
     def yshear(self, amount: float) -> None: ...
-    
+
 
 class Matrix4(GObject.GPointer):
     """
@@ -2248,7 +2247,7 @@ class Matrix4(GObject.GPointer):
     def mult(self, right: Matrix4) -> None: ...
     def to_deg(self) -> typing.Tuple[float, float, float]: ...
     def transform_point(self, x: float, y: float, z: float) -> typing.Tuple[float, float, float, float]: ...
-    
+
 
 class Memsize:
     """
@@ -2262,7 +2261,7 @@ class Memsize:
     def deserialize(string: str) -> typing.Tuple[bool, int]: ...
     @staticmethod
     def serialize(memsize: int) -> str: ...
-    
+
 
 class Metadata(GObject.Object):
     """
@@ -2302,7 +2301,7 @@ class Metadata(GObject.Object):
     def set_from_xmp(self, xmp_data: typing.Sequence[int]) -> bool: ...
     def set_pixel_size(self, width: int, height: int) -> None: ...
     def set_resolution(self, xres: float, yres: float, unit: Unit) -> None: ...
-    
+
 
 class MetadataClass(GObject.GPointer):
     """
@@ -2358,7 +2357,7 @@ class Module(GObject.TypeModule, GObject.TypePlugin):
     @staticmethod
     def register(module: GObject.TypeModule) -> bool: ...
     def set_auto_load(self, auto_load: bool) -> None: ...
-    
+
 
 class ModuleClass(GObject.GPointer):
     """
@@ -2406,7 +2405,7 @@ class ModuleDB(GObject.Object, Gio.ListModel):
     def refresh(self, module_path: str) -> None: ...
     def set_load_inhibit(self, load_inhibit: str) -> None: ...
     def set_verbose(self, verbose: bool) -> None: ...
-    
+
 
 class ModuleDBClass(GObject.GPointer):
     """
@@ -2453,7 +2452,7 @@ class PDB(GObject.Object):
     def procedure_exists(self, procedure_name: str) -> bool: ...
     def query_procedures(self, name: str, blurb: str, help: str, help_id: str, authors: str, copyright: str, date: str, proc_type: str) -> list[str]: ...
     def temp_procedure_name(self) -> str: ...
-    
+
 
 class PDBClass(GObject.GPointer):
     """
@@ -2503,7 +2502,7 @@ class Palette(Resource, ConfigInterface):
     def set_columns(self, columns: int) -> bool: ...
     def set_entry_color(self, entry_num: int, color: Gegl.Color) -> bool: ...
     def set_entry_name(self, entry_num: int, entry_name: typing.Optional[str] = None) -> bool: ...
-    
+
 
 class PaletteClass(GObject.GPointer):
     """
@@ -2596,7 +2595,7 @@ class ParamSpecObject(GObject.GPointer):
     def has_default(pspec: GObject.ParamSpec) -> bool: ...
     @staticmethod
     def set_default(pspec: GObject.ParamSpec, default_value: typing.Optional[GObject.Object] = None) -> None: ...
-    
+
 
 class ParamSpecObjectClass(GObject.GPointer):
     """
@@ -2651,7 +2650,7 @@ class Parasite(GObject.GBoxed):
     def is_undoable(self) -> bool: ...
     @classmethod
     def new(cls, name: str, flags: int, data: typing.Optional[typing.Sequence[int]] = None) -> Parasite: ...
-    
+
 
 class Path(Item):
     """
@@ -2710,7 +2709,7 @@ class Path(Item):
     def stroke_translate(self, stroke_id: int, off_x: float, off_y: float) -> bool: ...
     @staticmethod
     def to_str(path: list[str]) -> str: ...
-    
+
 
 class PathClass(GObject.GPointer):
     """
@@ -2747,7 +2746,7 @@ class Pattern(Resource, ConfigInterface):
     @staticmethod
     def get_by_name(name: str) -> typing.Optional[Pattern]: ...
     def get_info(self) -> typing.Tuple[bool, int, int, int]: ...
-    
+
 
 class PatternClass(GObject.GPointer):
     """
@@ -2799,6 +2798,7 @@ class PlugIn(GObject.Object):
     Signals from GObject:
       notify (GParam)
     """
+    __gtype__: typing.Any
     class Props:
         read_channel: GLib.IOChannel
         write_channel: GLib.IOChannel
@@ -2827,7 +2827,7 @@ class PlugIn(GObject.Object):
     def remove_temp_procedure(self, procedure_name: str) -> None: ...
     def set_help_domain(self, domain_name: str, domain_uri: Gio.File) -> None: ...
     def set_pdb_error_handler(self, handler: PDBErrorHandler) -> None: ...
-    
+
 
 class PlugInClass(GObject.GPointer):
     """
@@ -3035,7 +3035,7 @@ class Procedure(GObject.Object):
     def set_image_types(self, image_types: str) -> None: ...
     def set_menu_label(self, menu_label: str) -> None: ...
     def set_sensitivity_mask(self, sensitivity_mask: int) -> None: ...
-    
+
 
 class ProcedureClass(GObject.GPointer):
     """
@@ -3091,7 +3091,7 @@ class ProcedureConfig(GObject.Object):
     def save_metadata(self, exported_image: Image, file: Gio.File) -> None: ...
     def set_color_array(self, property_name: str, colors: typing.Sequence[Gegl.Color]) -> None: ...
     def set_core_object_array(self, property_name: str, objects: typing.Sequence[GObject.Object]) -> None: ...
-    
+
 
 class ProcedureConfigClass(GObject.GPointer):
     """
@@ -3188,7 +3188,7 @@ class Resource(GObject.Object, ConfigInterface):
     def is_pattern(self) -> bool: ...
     def is_valid(self) -> bool: ...
     def rename(self, new_name: str) -> bool: ...
-    
+
 
 class ResourceClass(GObject.GPointer):
     """
@@ -3239,7 +3239,7 @@ class Scanner(GObject.GBoxed):
     def parse_token(self, token: GLib.TokenType) -> bool: ...
     def ref(self) -> Scanner: ...
     def unref(self) -> None: ...
-    
+
 
 class Selection(Channel):
     """
@@ -3294,7 +3294,7 @@ class Selection(Channel):
     def translate(image: Image, offx: int, offy: int) -> bool: ...
     @staticmethod
     def value(image: Image, x: int, y: int) -> int: ...
-    
+
 
 class SelectionClass(GObject.GPointer):
     """
@@ -3361,7 +3361,7 @@ class TextLayer(Layer):
     def set_line_spacing(self, line_spacing: float) -> bool: ...
     def set_markup(self, markup: str) -> bool: ...
     def set_text(self, text: str) -> bool: ...
-    
+
 
 class TextLayerClass(GObject.GPointer):
     """
@@ -3405,7 +3405,7 @@ class ThumbnailProcedure(Procedure):
                  procedure_type: PDBProcType = ...) -> None: ...
     @classmethod
     def new(cls, plug_in: PlugIn, name: str, proc_type: PDBProcType, run_func: typing.Callable[..., ValueArray], *run_data: typing.Any) -> ThumbnailProcedure: ...
-    
+
 
 class ThumbnailProcedureClass(GObject.GPointer):
     """
@@ -3482,7 +3482,7 @@ class Unit(GObject.Object):
     @staticmethod
     def point() -> Unit: ...
     def set_deletion_flag(self, deletion_flag: bool) -> None: ...
-    
+
 
 class UnitClass(GObject.GPointer):
     """
@@ -3519,7 +3519,7 @@ class ValueArray(GObject.GBoxed):
     def remove(self, index: int) -> ValueArray: ...
     def truncate(self, n_values: int) -> None: ...
     def unref(self) -> None: ...
-    
+
 
 class Vector2(GObject.GBoxed):
     """
@@ -3557,7 +3557,7 @@ class Vector2(GObject.GBoxed):
     @staticmethod
     def sub(vector1: Vector2, vector2: Vector2) -> Vector2: ...
     def sub_val(self, vector2: Vector2) -> Vector2: ...
-    
+
 
 class Vector3(GObject.GBoxed):
     """
@@ -3594,7 +3594,7 @@ class Vector3(GObject.GBoxed):
     @staticmethod
     def sub(vector1: Vector3, vector2: Vector3) -> Vector3: ...
     def sub_val(self, vector2: Vector3) -> Vector3: ...
-    
+
 
 class Vector4(GObject.GPointer):
     """
@@ -3661,7 +3661,7 @@ class VectorLoadProcedure(LoadProcedure):
     def extract_dimensions(self, file: Gio.File) -> typing.Tuple[bool, VectorLoadData]: ...
     @classmethod
     def new(cls, plug_in: PlugIn, name: str, proc_type: PDBProcType, extract_func: typing.Callable[..., typing.Tuple[bool, VectorLoadData, None, typing.Callable[[None], None]]], run_func: typing.Callable[..., typing.Tuple[ValueArray, MetadataLoadFlags]], *run_data: typing.Any) -> VectorLoadProcedure: ...
-    
+
 
 class VectorLoadProcedureClass(GObject.GPointer):
     """
@@ -4217,4 +4217,3 @@ class UnitID(GObject.GEnum):
     PICA = 4
     PIXEL = 0
     POINT = 3
-

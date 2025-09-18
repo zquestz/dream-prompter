@@ -671,7 +671,7 @@ class var_int_t(GObject.GPointer):
     u16 = ... # FIXME Constant
     u32 = ... # FIXME Constant
     u8 = ... # FIXME Constant
-    
+
 
 class var_num_t(GObject.GPointer):
     f = ... # FIXME Constant
@@ -681,7 +681,7 @@ class var_num_t(GObject.GPointer):
     u16 = ... # FIXME Constant
     u32 = ... # FIXME Constant
     u8 = ... # FIXME Constant
-    
+
 
 class variation_t(GObject.GPointer):
     """
@@ -1450,4 +1450,3 @@ class unicode_general_category_t(GObject.GEnum):
     TITLECASE_LETTER = 8
     UNASSIGNED = 2
     UPPERCASE_LETTER = 9
-
