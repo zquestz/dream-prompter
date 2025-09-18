@@ -1,0 +1,4 @@
+[tool.pyright]
+stubPath = "./stubs"
+typeCheckingMode = "basic"
+reportMissingModuleSource = false

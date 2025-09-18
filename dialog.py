@@ -73,7 +73,7 @@ class DreamPrompterDialog(GimpUi.Dialog):
             settings = load_settings()
 
             if settings.get("api_key") and self.ui.api_key_entry:
-                self.ui.api_key_entry.set_text(settings["api_key"])
+                self.ui.api_key_entry.set_text(str(settings["api_key"]))
 
             if settings.get("api_key_visible") and self.ui.toggle_visibility_btn:
                 self.ui.toggle_visibility_btn.set_active(True)
@@ -86,7 +86,7 @@ class DreamPrompterDialog(GimpUi.Dialog):
                     self.ui.edit_mode_radio.set_active(True)
 
             if settings.get("prompt") and self.ui.prompt_buffer:
-                self.ui.prompt_buffer.set_text(settings["prompt"])
+                self.ui.prompt_buffer.set_text(str(settings["prompt"]))
 
         except Exception as e:
             print(f"Error loading settings: {e}")
