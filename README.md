@@ -24,6 +24,7 @@ Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI c
 - **Google Gemini API key** (paid account required)
 
 Install the required Python library:
+
 ```bash
 pip install google-genai
 ```
@@ -39,12 +40,12 @@ pip install google-genai
 3. **Move to your GIMP plugins folder with the correct name:**
 
    Rename and move the extracted folder to exactly `dream-prompter` in your GIMP plugins directory:
-
    - **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/`
    - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
    - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
 
    Example for Linux:
+
    ```bash
    # Extract creates dream-prompter-1.0.0/
    unzip dream-prompter-1.0.0.zip
@@ -53,6 +54,7 @@ pip install google-genai
    ```
 
 4. **Make executable** (Linux/macOS only):
+
    ```bash
    chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
    ```
@@ -76,16 +78,19 @@ yay -S dream-prompter
 1. **Find your GIMP plugins directory** (paths listed above)
 
 2. **Create plugin directory:**
+
    ```bash
    mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
 3. **Copy all Python files:**
+
    ```bash
    cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
 4. **Build and install translations (Optional):**
+
    ```bash
    python3 scripts/build-translations.py
    cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
@@ -120,6 +125,36 @@ pip install --user google-genai
 # Ensure Python 3
 pip3 install google-genai
 ```
+
+#### macOS Instructions
+
+If you get the **"google-genai not installed"** error on macOS:
+
+1. **Locate GIMP's Python** by opening the Python Console: `Filters → Development → Python-Fu`
+2. **Run this command** in the console:
+
+   ```python
+   import sys; print(sys.executable)
+   ```
+
+   You should see something like:
+
+   ```
+   /Applications/GIMP.app/Contents/MacOS/python3
+   ```
+
+3. **Install google-genai using GIMP's Python** from Terminal:
+
+   ```bash
+   # Change to GIMP's Python directory
+   cd /Applications/GIMP.app/Contents/MacOS
+
+   # Ensure pip is installed
+   ./python3 -m ensurepip
+
+   # Install google-genai
+   ./python3 -m pip install google-genai
+   ```
 
 ## Getting Your API Key
 
