@@ -8,8 +8,9 @@ Settings management for Dream Prompter plugin
 import json
 import os
 import platform
+from typing import cast
 
-def get_config_file():
+def get_config_file() -> str:
     """Get path to config file in GIMP's user directory"""
     system = platform.system()
 
@@ -31,7 +32,7 @@ def get_config_file():
 
     return os.path.join(gimp_dir, "dream-prompter-config.json")
 
-def store_settings(api_key, mode, prompt, api_key_visible):
+def store_settings(api_key: str, mode: str, prompt: str, api_key_visible: bool) -> None:
     """Store settings to config file"""
     try:
         settings = {
@@ -56,13 +57,13 @@ def store_settings(api_key, mode, prompt, api_key_visible):
     except Exception as e:
         print(f"Unexpected error storing settings: {e}")
 
-def load_settings():
+def load_settings() -> dict[str, str | bool]:
     """Load settings from config file"""
     try:
         config_file = get_config_file()
         if os.path.exists(config_file):
             with open(config_file, 'r') as f:
-                return json.load(f)
+                return cast(dict[str, str | bool], json.load(f))
     except (OSError, PermissionError) as e:
         print(f"Failed to read settings file: {e}")
     except json.JSONDecodeError as e:
