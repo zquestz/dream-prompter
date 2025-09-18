@@ -262,7 +262,7 @@ class DreamPrompterEventHandler:
         """Show error message"""
         dialog = Gtk.MessageDialog(
             parent=self.dialog,
-            flags=Gtk.DialogFlags.MODAL,
+            modal=True,
             message_type=Gtk.MessageType.ERROR,
             buttons=Gtk.ButtonsType.OK,
             text=message

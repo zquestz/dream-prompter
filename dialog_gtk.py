@@ -10,7 +10,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 import os
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Pango
 from i18n import _
 
 class DreamPrompterUI:
@@ -331,7 +331,7 @@ class DreamPrompterUI:
         label = Gtk.Label()
         label.set_text(filename)
         label.set_halign(Gtk.Align.START)
-        label.set_ellipsize(3)
+        label.set_ellipsize(Pango.EllipsizeMode.END)
         file_box.pack_start(label, True, True, 0)
 
         remove_btn = self._create_remove_button(file_path)
@@ -344,7 +344,6 @@ class DreamPrompterUI:
         remove_btn = Gtk.Button()
         remove_btn.set_image(Gtk.Image.new_from_icon_name("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR))
         remove_btn.set_relief(Gtk.ReliefStyle.NONE)
-        remove_btn.file_path = file_path
 
         if self.event_handler:
             remove_btn.connect("clicked", self.event_handler.on_remove_file, file_path)
