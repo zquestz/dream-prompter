@@ -11,7 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-def compile_translations():
+def compile_translations() -> bool:
     """Compile all .po files to .mo files"""
 
     plugin_dir = Path(__file__).parent.parent
@@ -41,7 +41,7 @@ def compile_translations():
 
         try:
             cmd = ['msgfmt', '-o', str(mo_file), str(po_file)]
-            subprocess.run(cmd, check=True, capture_output=True)
+            _ = subprocess.run(cmd, check=True, capture_output=True)
             success_count += 1
             print(f"✓ Successfully compiled {lang_code}")
 
@@ -55,7 +55,7 @@ def compile_translations():
     print(f"\nCompilation complete: {success_count}/{len(po_files)} files compiled successfully")
     return success_count > 0
 
-def create_template_files():
+def create_template_files() -> bool:
     """Create template .po files from .pot for manual language setup"""
 
     pot_file = Path('locale/dream-prompter.pot')
@@ -72,7 +72,7 @@ def create_template_files():
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '--init':
-        create_template_files()
+        _ = create_template_files()
     else:
         if compile_translations():
             print("Translation files built successfully!")

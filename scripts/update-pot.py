@@ -11,7 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-def extract_strings():
+def extract_strings() -> bool:
     """Extract strings and create .pot file"""
 
     plugin_dir = Path(__file__).parent.parent
@@ -48,7 +48,7 @@ def extract_strings():
     ] + python_files
 
     try:
-        subprocess.run(cmd, check=True)
+        _ = subprocess.run(cmd, check=True)
         print(f"Successfully created {pot_file}")
         return True
     except (subprocess.CalledProcessError, FileNotFoundError) as e:

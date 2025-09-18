@@ -11,7 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-def update_po_file(po_file, pot_file):
+def update_po_file(po_file: Path, pot_file: Path) -> bool:
     """Update a single .po file with new strings from .pot template"""
 
     print(f"Updating {po_file}...")
@@ -26,7 +26,7 @@ def update_po_file(po_file, pot_file):
             str(pot_file)
         ]
 
-        subprocess.run(cmd, capture_output=True, text=True, check=True)
+        _ = subprocess.run(cmd, capture_output=True, text=True, check=True)
         print(f"✓ Updated {po_file.name}")
         return True
 
@@ -38,7 +38,7 @@ def update_po_file(po_file, pot_file):
         print("✗ msgmerge not found. Install gettext tools.")
         return False
 
-def find_po_files():
+def find_po_files() -> list[Path]:
     """Find all .po files directly in the locale directory"""
 
     locale_dir = Path('locale')
@@ -54,7 +54,7 @@ def find_po_files():
 
     return po_files
 
-def update_all_translations():
+def update_all_translations() -> bool:
     """Update all existing .po files with new strings from .pot template"""
 
     plugin_dir = Path(__file__).parent.parent
