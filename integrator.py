@@ -83,6 +83,14 @@ def create_edit_layer(image, drawable, pixbuf, prompt):
             pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
             offset_x = x
             offset_y = y
+        else:
+            img_width = image.get_width()
+            img_height = image.get_height()
+            pixbuf_width = pixbuf.get_width()
+            pixbuf_height = pixbuf.get_height()
+
+            if pixbuf_width != img_width or pixbuf_height != img_height:
+                pixbuf = pixbuf.scale_simple(img_width, img_height, GdkPixbuf.InterpType.BILINEAR)
 
         if not pixbuf.get_has_alpha():
             pixbuf = pixbuf.add_alpha(False, 0, 0, 0)

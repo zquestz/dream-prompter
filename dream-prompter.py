@@ -19,7 +19,7 @@ from gi.repository import Gimp, GimpUi, Gtk, GLib
 from i18n import _, DOMAIN
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.0.1"
+PLUGIN_VERSION = "1.0.2"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Nano Banana"
 
 class DreamPrompter(Gimp.PlugIn):
