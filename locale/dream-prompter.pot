@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Josh Ellithorpe
+# This file is distributed under the same license as the Dream Prompter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Dream Prompter 1.0.0\n"
+"Report-Msgid-Bugs-To: quest@mac.com\n"
+"POT-Creation-Date: 2025-09-01 11:24-1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api.py:60 api.py:102
+msgid "Nano Banana API not available. Please install google-genai"
+msgstr ""
+
+#: api.py:63
+msgid "Generating image with Nano Banana..."
+msgstr ""
+
+#: api.py:70
+msgid "Sending request to Nano Banana..."
+msgstr ""
+
+#: api.py:78
+msgid "Processing Nano Banana response..."
+msgstr ""
+
+#: api.py:105
+msgid "No GIMP image provided for editing"
+msgstr ""
+
+#: api.py:108
+msgid "Preparing current image for Nano Banana..."
+msgstr ""
+
+#: api.py:113
+msgid "Failed to export current image"
+msgstr ""
+
+#: api.py:116
+msgid "Building Nano Banana edit request..."
+msgstr ""
+
+#: api.py:129
+msgid "Sending edit request to Nano Banana..."
+msgstr ""
+
+#: api.py:137
+msgid "Processing Nano Banana edit response..."
+msgstr ""
+
+#: api.py:216
+#, python-brace-format
+msgid "Generation stopped: {reason}"
+msgstr ""
+
+#: api.py:219
+msgid "No candidates in API response"
+msgstr ""
+
+#: api.py:223
+msgid "No content parts in API response"
+msgstr ""
+
+#: api.py:240
+#, python-brace-format
+msgid "Error converting image data to pixbuf: {error}"
+msgstr ""
+
+#: api.py:242
+msgid "No image data found in response"
+msgstr ""
+
+#: dialog.py:23
+msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
+msgstr ""
+
+#: dialog.py:55
+msgid "No image open - only generation mode available"
+msgstr ""
+
+#: dialog.py:63 dialog_events.py:82
+msgid "Edit the current layer using AI"
+msgstr ""
+
+#: dialog_events.py:79
+msgid "Reduced to 2 reference images for edit mode"
+msgstr ""
+
+#: dialog_events.py:84
+msgid "No layer available to edit"
+msgstr ""
+
+#: dialog_events.py:88 dialog_gtk.py:325
+msgid "Generate AI Edit"
+msgstr ""
+
+#: dialog_events.py:90
+msgid "Select up to 2 additional images to merge or reference in your AI edit"
+msgstr ""
+
+#: dialog_events.py:93
+msgid "Create a new image and add it as a layer to the current project"
+msgstr ""
+
+#: dialog_events.py:95
+msgid "Create a new image in a new GIMP project"
+msgstr ""
+
+#: dialog_events.py:99
+msgid "Generate New Image"
+msgstr ""
+
+#: dialog_events.py:101
+msgid ""
+"Select up to 3 reference images to influence the style or composition of "
+"your new image"
+msgstr ""
+
+#: dialog_events.py:136
+msgid "Hide API key"
+msgstr ""
+
+#: dialog_events.py:140
+msgid "Show API key"
+msgstr ""
+
+#: dialog_events.py:145
+msgid "Select Reference Images"
+msgstr ""
+
+#: dialog_events.py:150 dialog_gtk.py:320
+msgid "Cancel"
+msgstr ""
+
+#: dialog_events.py:151
+msgid "Select"
+msgstr ""
+
+#: dialog_events.py:154
+msgid "Supported Images (PNG, JPEG, WebP)"
+msgstr ""
+
+#: dialog_events.py:178
+#, python-brace-format
+msgid ""
+"Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
+msgstr ""
+
+#: dialog_events.py:180
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum 3 reference images allowed."
+msgstr ""
+
+#: dialog_events.py:235
+msgid "Please enter your Google Gemini API key"
+msgstr ""
+
+#: dialog_events.py:239
+msgid "Please enter a prompt"
+msgstr ""
+
+#: dialog_events.py:243
+msgid "Edit mode requires a selected layer"
+msgstr ""
+
+#: dialog_events.py:249
+msgid "Initializing API request..."
+msgstr ""
+
+#: dialog_gtk.py:80
+msgid "Google Gemini API Key"
+msgstr ""
+
+#: dialog_gtk.py:87
+msgid "Enter your Google Gemini API key..."
+msgstr ""
+
+#: dialog_gtk.py:94
+msgid "Show/Hide API key"
+msgstr ""
+
+#: dialog_gtk.py:101
+#, python-brace-format
+msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
+msgstr ""
+
+#: dialog_gtk.py:114
+msgid "Operation Mode"
+msgstr ""
+
+#: dialog_gtk.py:120
+msgid "Edit existing image"
+msgstr ""
+
+#: dialog_gtk.py:124
+msgid "Generate new image"
+msgstr ""
+
+#: dialog_gtk.py:142
+msgid "AI Prompt"
+msgstr ""
+
+#: dialog_gtk.py:171
+msgid "Example prompts:"
+msgstr ""
+
+#: dialog_gtk.py:177
+msgid "• Change the background to a medieval castle"
+msgstr ""
+
+#: dialog_gtk.py:178
+msgid "• Make this person wear a red dress instead"
+msgstr ""
+
+#: dialog_gtk.py:179
+msgid "• Add snow falling in the scene"
+msgstr ""
+
+#: dialog_gtk.py:180
+msgid "• Transform this into a painting style"
+msgstr ""
+
+#: dialog_gtk.py:184
+msgid "• A majestic dragon flying over a mountain range"
+msgstr ""
+
+#: dialog_gtk.py:185
+msgid "• Portrait of a woman in Victorian dress"
+msgstr ""
+
+#: dialog_gtk.py:186
+msgid "• Cyberpunk cityscape at night with neon lights"
+msgstr ""
+
+#: dialog_gtk.py:187
+msgid "• Peaceful forest clearing with sunbeams"
+msgstr ""
+
+#: dialog_gtk.py:203
+msgid "Additional Images (Optional)"
+msgstr ""
+
+#: dialog_gtk.py:210
+msgid "Select Images..."
+msgstr ""
+
+#: dialog_gtk.py:215 dialog_gtk.py:245
+msgid "No additional images selected"
+msgstr ""
+
+#: dialog_gtk.py:222
+msgid "Clear selected files"
+msgstr ""
+
+#: dialog_gtk.py:253
+#, python-brace-format
+msgid "{count} image selected"
+msgstr ""
+
+#: dialog_gtk.py:255
+#, python-brace-format
+msgid "{count} images selected"
+msgstr ""
+
+#: dialog_gtk.py:273
+#, python-brace-format
+msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
+msgstr ""
+
+#: dialog_gtk.py:275
+#, python-brace-format
+msgid "({size:.1f} MB)"
+msgstr ""
+
+#: dialog_gtk.py:338
+msgid "Ready"
+msgstr ""
+
+#: dialog_threads.py:80 dialog_threads.py:104
+msgid "No image data received from API"
+msgstr ""
+
+#: dialog_threads.py:113
+msgid "Creating GIMP image..."
+msgstr ""
+
+#: dialog_threads.py:117
+msgid "Failed to create GIMP image"
+msgstr ""
+
+#: dialog_threads.py:120
+msgid "Image generated successfully!"
+msgstr ""
+
+#: dialog_threads.py:124
+#, python-brace-format
+msgid "Error creating GIMP image: {error}"
+msgstr ""
+
+#: dialog_threads.py:129
+msgid "Adding edit layer..."
+msgstr ""
+
+#: dialog_threads.py:133
+msgid "Failed to create edit layer"
+msgstr ""
+
+#: dialog_threads.py:136
+msgid "Edit layer created!"
+msgstr ""
+
+#: dialog_threads.py:140
+#, python-brace-format
+msgid "Error creating edit layer: {error}"
+msgstr ""
+
+#: dream-prompter.py:48
+msgid "AI-powered image creation/editing with Nano Banana"
+msgstr ""
+
+#: dream-prompter.py:49
+msgid ""
+"Transform existing images or generate new images using Google's Gemini 2.5 "
+"Flash Image model (Nano Banana) with natural language prompts. Supports "
+"consistent multi-turn editing and image merging capabilities."
+msgstr ""
+
+#: dream-prompter.py:53
+msgid "Dream Prompter..."
+msgstr ""
+
+#: dream-prompter.py:82
+#, python-brace-format
+msgid "Error running Dream Prompter: {error}"
+msgstr ""
