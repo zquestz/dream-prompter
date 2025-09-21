@@ -35,7 +35,7 @@ pip install google-genai
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.0.0`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.0.3`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -47,10 +47,10 @@ pip install google-genai
    Example for Linux:
 
    ```bash
-   # Extract creates dream-prompter-1.0.0/
-   unzip dream-prompter-1.0.0.zip
+   # Extract creates dream-prompter-1.0.3/
+   unzip dream-prompter-1.0.3.zip
    # Move to correct location with correct name
-   mv dream-prompter-1.0.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+   mv dream-prompter-1.0.3 ~/.config/GIMP/3.0/plug-ins/dream-prompter
    ```
 
 4. **Make executable** (Linux/macOS only):

@@ -1,348 +1,358 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Josh Ellithorpe
+# Dream Prompter GIMP Plugin - Hindi Translation
+# Copyright (C) 2025 Josh Ellithorpe
 # This file is distributed under the same license as the Dream Prompter package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hindi Translation Team, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.0.0\n"
+"Project-Id-Version: Dream Prompter 1.0.3\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-01 11:24-1000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Hindi <hi@li.org>\n"
+"POT-Creation-Date: 2025-09-20 16:13-1000\n"
+"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"Last-Translator: Translation Team\n"
+"Language-Team: Hindi\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:275
+#: dialog_gtk.py:357
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_gtk.py:142
+#: integrator.py:111
+msgid "AI Generated"
+msgstr "AI निर्मित"
+
+#: dialog_threads.py:267
+#, python-brace-format
+msgid "AI Generated: {prompt}"
+msgstr "AI निर्मित: {prompt}"
+
+#: dialog_threads.py:269 integrator.py:331
+msgid "AI Layer"
+msgstr "AI परत"
+
+#: dialog_gtk.py:293
 msgid "AI Prompt"
 msgstr "AI प्रॉम्प्ट"
 
-#: dream-prompter.py:48
+#: dream-prompter.py:43
 msgid "AI-powered image creation/editing with Nano Banana"
-msgstr "Nano Banana के साथ AI-संचालित छवि निर्माण/संपादन"
+msgstr "Nano Banana के साथ AI संचालित छवि निर्माण/संपादन"
 
-#: dialog_threads.py:129
+#: api.py:58 dialog_threads.py:87 dialog_threads.py:126
+msgid "API key is required"
+msgstr "API कुंजी आवश्यक है"
+
+#: dialog_threads.py:324
 msgid "Adding edit layer..."
 msgstr "संपादन परत जोड़ी जा रही है..."
 
-#: dialog_gtk.py:203
+#: dialog_gtk.py:141
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: api.py:116
+#: api.py:101
 msgid "Building Nano Banana edit request..."
 msgstr "Nano Banana संपादन अनुरोध बनाया जा रहा है..."
 
-#: dialog_events.py:150 dialog_gtk.py:320
+#: dialog_events.py:163 dialog_gtk.py:221
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: dialog_events.py:178
+#: dialog_threads.py:48
+msgid "Cancelling..."
+msgstr "रद्द किया जा रहा है..."
+
+#: dialog_events.py:192
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
 msgstr ""
 "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम 2 संदर्भ छवियों की अनुमति है।"
 
-#: dialog_events.py:180
+#: dialog_events.py:194
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum 3 reference images allowed."
 msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम 3 संदर्भ छवियों की अनुमति है।"
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:160
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: dialog_events.py:93
-msgid "Create a new image and add it as a layer to the current project"
-msgstr "एक नई छवि बनाएं और इसे वर्तमान प्रोजेक्ट में एक परत के रूप में जोड़ें"
-
-#: dialog_events.py:95
-msgid "Create a new image in a new GIMP project"
-msgstr "नए GIMP प्रोजेक्ट में एक नई छवि बनाएं"
-
-#: dialog_threads.py:113
+#: dialog_threads.py:301
 msgid "Creating GIMP image..."
 msgstr "GIMP छवि बनाई जा रही है..."
 
-#: dialog.py:23
+#: dialog.py:24
 msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
 msgstr "Dream Prompter - Nano Banana AI छवि निर्माता/संपादक"
 
-#: dream-prompter.py:53
+#: dream-prompter.py:48
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:120
-msgid "Edit existing image"
-msgstr "मौजूदा छवि संपादित करें"
+#: dialog_gtk.py:276
+msgid "Edit Image"
+msgstr "छवि संपादित करें"
 
-#: dialog_threads.py:136
+#: dialog_threads.py:331
 msgid "Edit layer created!"
 msgstr "संपादन परत बनाई गई!"
 
-#: dialog_events.py:243
+#: dialog_events.py:106
 msgid "Edit mode requires a selected layer"
-msgstr "संपादन मोड के लिए एक चयनित परत की आवश्यकता है"
+msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
-#: dialog.py:63 dialog_events.py:82
-msgid "Edit the current layer using AI"
-msgstr "AI का उपयोग करके वर्तमान परत को संपादित करें"
-
-#: dialog_gtk.py:87
+#: dialog_gtk.py:191
 msgid "Enter your Google Gemini API key..."
 msgstr "अपनी Google Gemini API कुंजी दर्ज करें..."
 
-#: api.py:240
-#, python-brace-format
-msgid "Error converting image data to pixbuf: {error}"
-msgstr "छवि डेटा को pixbuf में कनवर्ट करने में त्रुटि: {error}"
-
-#: dialog_threads.py:124
+#: dialog_threads.py:312
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "GIMP छवि बनाने में त्रुटि: {error}"
 
-#: dialog_threads.py:140
+#: dialog_threads.py:335
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "संपादन परत बनाने में त्रुटि: {error}"
 
-#: dream-prompter.py:82
+#: dream-prompter.py:85
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: dialog_gtk.py:171
-msgid "Example prompts:"
-msgstr "उदाहरण प्रॉम्प्ट:"
-
-#: dialog_threads.py:117
+#: dialog_threads.py:305
 msgid "Failed to create GIMP image"
 msgstr "GIMP छवि बनाने में विफल"
 
-#: dialog_threads.py:133
+#: dialog_threads.py:328
 msgid "Failed to create edit layer"
 msgstr "संपादन परत बनाने में विफल"
 
-#: api.py:113
+#: api.py:99
 msgid "Failed to export current image"
-msgstr "वर्तमान छवि को निर्यात करने में विफल"
+msgstr "वर्तमान छवि निर्यात करने में विफल"
 
-#: dialog_events.py:88 dialog_gtk.py:325
-msgid "Generate AI Edit"
-msgstr "AI संपादन उत्पन्न करें"
+#: dialog_events.py:133 dialog_gtk.py:226
+msgid "Generate Edit"
+msgstr "संपादन उत्पन्न करें"
 
-#: dialog_events.py:99
-msgid "Generate New Image"
-msgstr "नई छवि उत्पन्न करें"
+#: dialog_events.py:138 dialog_gtk.py:280
+msgid "Generate Image"
+msgstr "छवि उत्पन्न करें"
 
-#: dialog_gtk.py:124
-msgid "Generate new image"
-msgstr "नई छवि उत्पन्न करें"
-
-#: api.py:63
+#: api.py:166
 msgid "Generating image with Nano Banana..."
-msgstr "Nano Banana के साथ छवि बनाई जा रही है..."
+msgstr "Nano Banana के साथ छवि उत्पन्न की जा रही है..."
 
-#: api.py:216
+#: api.py:267
 #, python-brace-format
 msgid "Generation stopped: {reason}"
-msgstr "उत्पादन रोक दिया गया: {reason}"
+msgstr "उत्पादन रुका: {reason}"
 
-#: dialog_gtk.py:101
+#: dialog_gtk.py:207
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
 msgstr "<a href=\"{url}\">Google Cloud Console</a> से अपनी API कुंजी प्राप्त करें"
 
-#: dialog_gtk.py:80
+#: dialog_gtk.py:184
 msgid "Google Gemini API Key"
 msgstr "Google Gemini API कुंजी"
 
-#: dialog_events.py:136
+#: dialog_events.py:206
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: dialog_threads.py:120
+#: api.py:132
+msgid "Image editing complete!"
+msgstr "छवि संपादन पूर्ण!"
+
+#: dialog_threads.py:308
 msgid "Image generated successfully!"
-msgstr "छवि सफलतापूर्वक उत्पन्न की गई!"
+msgstr "छवि सफलतापूर्वक उत्पन्न हुई!"
 
-#: dialog_events.py:249
+#: api.py:194
+msgid "Image generation complete!"
+msgstr "छवि उत्पादन पूर्ण!"
+
+#: dialog_events.py:114
 msgid "Initializing API request..."
-msgstr "API अनुरोध प्रारंभ किया जा रहा है..."
+msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:60 api.py:102
+#: api.py:137 api.py:199
+#, python-brace-format
+msgid "Nano Banana API error: {error}"
+msgstr "Nano Banana API त्रुटि: {error}"
+
+#: api.py:55 api.py:88 api.py:164
 msgid "Nano Banana API not available. Please install google-genai"
-msgstr "Nano Banana API उपलब्ध नहीं है। कृपया google-genai इंस्टॉल करें"
+msgstr "Nano Banana API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
-#: api.py:105
+#: api.py:91
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
-#: dialog_gtk.py:215 dialog_gtk.py:245
+#: dialog_gtk.py:153 dialog_gtk.py:372
 msgid "No additional images selected"
 msgstr "कोई अतिरिक्त छवियां चयनित नहीं"
 
-#: api.py:219
+#: api.py:270
 msgid "No candidates in API response"
 msgstr "API प्रतिक्रिया में कोई उम्मीदवार नहीं"
 
-#: api.py:223
+#: api.py:274
 msgid "No content parts in API response"
 msgstr "API प्रतिक्रिया में कोई सामग्री भाग नहीं"
 
-#: api.py:242
+#: dialog_threads.py:122 dialog_threads.py:208
+msgid "No image available for editing"
+msgstr "संपादन के लिए कोई छवि उपलब्ध नहीं"
+
+#: api.py:286
 msgid "No image data found in response"
 msgstr "प्रतिक्रिया में कोई छवि डेटा नहीं मिला"
 
-#: dialog_threads.py:80 dialog_threads.py:104
+#: dialog_threads.py:182 dialog_threads.py:236
 msgid "No image data received from API"
 msgstr "API से कोई छवि डेटा प्राप्त नहीं हुआ"
 
-#: dialog.py:55
-msgid "No image open - only generation mode available"
-msgstr "कोई छवि खुली नहीं है - केवल उत्पादन मोड उपलब्ध है"
-
-#: dialog_events.py:84
-msgid "No layer available to edit"
+#: dialog_threads.py:118
+msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: dialog_gtk.py:114
+#: dialog_gtk.py:270
 msgid "Operation Mode"
-msgstr "संचालन मोड"
+msgstr "ऑपरेशन मोड"
 
-#: dialog_events.py:239
+#: api.py:94 api.py:102 api.py:119 api.py:127 api.py:167 api.py:181 api.py:189
+#: dialog_threads.py:275
+msgid "Operation cancelled"
+msgstr "ऑपरेशन रद्द किया गया"
+
+#: dialog_events.py:102
 msgid "Please enter a prompt"
 msgstr "कृपया एक प्रॉम्प्ट दर्ज करें"
 
-#: dialog_events.py:235
+#: dialog_events.py:98
 msgid "Please enter your Google Gemini API key"
 msgstr "कृपया अपनी Google Gemini API कुंजी दर्ज करें"
 
-#: api.py:108
+#: api.py:93
 msgid "Preparing current image for Nano Banana..."
-msgstr "वर्तमान छवि को Nano Banana के लिए तैयार किया जा रहा है..."
+msgstr "Nano Banana के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:137
+#: api.py:126
 msgid "Processing Nano Banana edit response..."
-msgstr "Nano Banana संपादन प्रतिक्रिया प्रोसेस की जा रही है..."
+msgstr "Nano Banana संपादन प्रतिक्रिया संसाधित की जा रही है..."
 
-#: api.py:78
+#: api.py:188
 msgid "Processing Nano Banana response..."
-msgstr "Nano Banana की प्रतिक्रिया प्रोसेस की जा रही है..."
+msgstr "Nano Banana प्रतिक्रिया संसाधित की जा रही है..."
 
-#: dialog_gtk.py:338
+#: dialog_threads.py:91 dialog_threads.py:130
+msgid "Prompt is required"
+msgstr "प्रॉम्प्ट आवश्यक है"
+
+#: dialog_gtk.py:78 dialog_gtk.py:335
 msgid "Ready"
 msgstr "तैयार"
 
-#: dialog_events.py:79
+#: dialog_events.py:130
 msgid "Reduced to 2 reference images for edit mode"
-msgstr "संपादन मोड के लिए 2 संदर्भ छवियों तक कम कर दिया गया"
+msgstr "संपादन मोड के लिए 2 संदर्भ छवियों तक कम किया गया"
 
-#: dialog_events.py:151
+#: dialog_events.py:164
 msgid "Select"
 msgstr "चुनें"
 
-#: dialog_gtk.py:210
+#: dialog_gtk.py:148
 msgid "Select Images..."
 msgstr "छवियां चुनें..."
 
-#: dialog_events.py:145
+#: dialog_events.py:158
 msgid "Select Reference Images"
 msgstr "संदर्भ छवियां चुनें"
 
-#: dialog_events.py:90
-msgid "Select up to 2 additional images to merge or reference in your AI edit"
-msgstr "अपने AI संपादन में मर्ज या संदर्भ के लिए 2 अतिरिक्त छवियों तक चुनें"
+#: dialog_events.py:135
+msgid "Select up to 2 additional images"
+msgstr "अधिकतम 2 अतिरिक्त छवियां चुनें"
 
-#: dialog_events.py:101
-msgid ""
-"Select up to 3 reference images to influence the style or composition of "
-"your new image"
-msgstr "अपनी नई छवि की शैली या संरचना को प्रभावित करने के लिए 3 संदर्भ छवियों तक चुनें"
+#: dialog_events.py:140
+msgid "Select up to 3 additional images"
+msgstr "अधिकतम 3 अतिरिक्त छवियां चुनें"
 
-#: api.py:129
+#: api.py:118
 msgid "Sending edit request to Nano Banana..."
-msgstr "संपादन अनुरोध Nano Banana को भेजा जा रहा है..."
+msgstr "Nano Banana को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:70
+#: api.py:180
 msgid "Sending request to Nano Banana..."
 msgstr "Nano Banana को अनुरोध भेजा जा रहा है..."
 
-#: dialog_events.py:140
+#: dialog_events.py:210
 msgid "Show API key"
 msgstr "API कुंजी दिखाएं"
 
-#: dialog_gtk.py:94
+#: dialog_gtk.py:200
 msgid "Show/Hide API key"
 msgstr "API कुंजी दिखाएं/छुपाएं"
 
-#: dialog_events.py:154
+#: dialog_events.py:167
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "समर्थित छवियां (PNG, JPEG, WebP)"
 
-#: dream-prompter.py:49
+#: dream-prompter.py:44
 msgid ""
 "Transform existing images or generate new images using Google's Gemini 2.5 "
 "Flash Image model (Nano Banana) with natural language prompts. Supports "
 "consistent multi-turn editing and image merging capabilities."
 msgstr ""
-"प्राकृतिक भाषा प्रॉम्प्ट के साथ Google के Gemini 2.5 Flash Image मॉडल (Nano Banana) "
-"का उपयोग करके मौजूदा छवियों को रूपांतरित करें या नई छवियां उत्पन्न करें। निरंतर मल्टी-टर्न "
-"संपादन और छवि विलय क्षमताओं का समर्थन करता है।"
+"Google के Gemini 2.5 Flash Image मॉडल (Nano Banana) का उपयोग करके प्राकृतिक भाषा "
+"प्रॉम्प्ट के साथ मौजूदा छवियों को रूपांतरित करें या नई छवियां उत्पन्न करें। निरंतर बहु-चक्र "
+"संपादन और छवि मिलान क्षमताओं का समर्थन करता है।"
 
-#: dialog_gtk.py:253
+#: dialog_threads.py:245
+#, python-brace-format
+msgid "Unexpected error during image editing: {error}"
+msgstr "छवि संपादन के दौरान अप्रत्याशित त्रुटि: {error}"
+
+#: dialog_threads.py:190
+#, python-brace-format
+msgid "Unexpected error during image generation: {error}"
+msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
+
+#: api.py:139 api.py:201
+#, python-brace-format
+msgid "Unexpected error: {error}"
+msgstr "अप्रत्याशित त्रुटि: {error}"
+
+#: dialog_gtk.py:385
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} छवि चयनित"
 
-#: dialog_gtk.py:255
+#: dialog_gtk.py:387
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} छवियां चयनित"
 
-#: dialog_gtk.py:184
-msgid "• A majestic dragon flying over a mountain range"
-msgstr "• पर्वत श्रृंखला के ऊपर उड़ता एक भव्य अजगर"
+#: dialog_threads.py:261
+#, python-brace-format
+msgid "{original} (AI Edit: {prompt})"
+msgstr "{original} (AI संपादन: {prompt})"
 
-#: dialog_gtk.py:179
-msgid "• Add snow falling in the scene"
-msgstr "• दृश्य में गिरती बर्फ जोड़ें"
-
-#: dialog_gtk.py:177
-msgid "• Change the background to a medieval castle"
-msgstr "• पृष्ठभूमि को मध्यकालीन महल में बदलें"
-
-#: dialog_gtk.py:186
-msgid "• Cyberpunk cityscape at night with neon lights"
-msgstr "• नियॉन रोशनी के साथ रात में साइबरपंक शहरी दृश्य"
-
-#: dialog_gtk.py:178
-msgid "• Make this person wear a red dress instead"
-msgstr "• इस व्यक्ति को इसके बजाय लाल पोशाक पहनाएं"
-
-#: dialog_gtk.py:187
-msgid "• Peaceful forest clearing with sunbeams"
-msgstr "• सूर्य की किरणों के साथ शांत वन की खुली जगह"
-
-#: dialog_gtk.py:185
-msgid "• Portrait of a woman in Victorian dress"
-msgstr "• विक्टोरियन पोशाक में एक महिला का चित्र"
-
-#: dialog_gtk.py:180
-msgid "• Transform this into a painting style"
-msgstr "• इसे चित्रकारी शैली में रूपांतरित करें"
-
-#: dialog_gtk.py:273
+#: dialog_gtk.py:355
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
-msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार)"
+msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार हो गया)"
+
+#~ msgid "Generate AI Edit"
+#~ msgstr "AI संपादन उत्पन्न करें"
+
+#~ msgid "Generate new image"
+#~ msgstr "नई छवि उत्पन्न करें"

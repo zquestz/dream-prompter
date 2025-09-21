@@ -1,346 +1,356 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Josh Ellithorpe
+# Dream Prompter GIMP Plugin - Chinese Simplified Translation
+# Copyright (C) 2025 Josh Ellithorpe
 # This file is distributed under the same license as the Dream Prompter package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Chinese Simplified Translation Team, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.0.0\n"
+"Project-Id-Version: Dream Prompter 1.0.3\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-01 11:24-1000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"POT-Creation-Date: 2025-09-20 16:13-1000\n"
+"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"Last-Translator: Translation Team\n"
+"Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:275
+#: dialog_gtk.py:357
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_gtk.py:142
+#: integrator.py:111
+msgid "AI Generated"
+msgstr "AI生成"
+
+#: dialog_threads.py:267
+#, python-brace-format
+msgid "AI Generated: {prompt}"
+msgstr "AI生成：{prompt}"
+
+#: dialog_threads.py:269 integrator.py:331
+msgid "AI Layer"
+msgstr "AI图层"
+
+#: dialog_gtk.py:293
 msgid "AI Prompt"
-msgstr "AI 提示词"
+msgstr "AI提示词"
 
-#: dream-prompter.py:48
+#: dream-prompter.py:43
 msgid "AI-powered image creation/editing with Nano Banana"
-msgstr "使用 Nano Banana 进行 AI 驱动的图像创建/编辑"
+msgstr "使用Nano Banana进行AI驱动的图像创建/编辑"
 
-#: dialog_threads.py:129
+#: api.py:58 dialog_threads.py:87 dialog_threads.py:126
+msgid "API key is required"
+msgstr "需要API密钥"
+
+#: dialog_threads.py:324
 msgid "Adding edit layer..."
 msgstr "正在添加编辑图层..."
 
-#: dialog_gtk.py:203
+#: dialog_gtk.py:141
 msgid "Additional Images (Optional)"
 msgstr "附加图像（可选）"
 
-#: api.py:116
+#: api.py:101
 msgid "Building Nano Banana edit request..."
-msgstr "正在构建 Nano Banana 编辑请求..."
+msgstr "正在构建Nano Banana编辑请求..."
 
-#: dialog_events.py:150 dialog_gtk.py:320
+#: dialog_events.py:163 dialog_gtk.py:221
 msgid "Cancel"
 msgstr "取消"
 
-#: dialog_events.py:178
+#: dialog_threads.py:48
+msgid "Cancelling..."
+msgstr "正在取消..."
+
+#: dialog_events.py:192
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
-msgstr "无法添加 {count} 个文件。编辑模式最多允许 2 张参考图像。"
+msgstr "无法添加{count}个文件。编辑模式下最多允许2张参考图像。"
 
-#: dialog_events.py:180
+#: dialog_events.py:194
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum 3 reference images allowed."
-msgstr "无法添加 {count} 个文件。最多允许 3 张参考图像。"
+msgstr "无法添加{count}个文件。最多允许3张参考图像。"
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:160
 msgid "Clear selected files"
-msgstr "清除选中的文件"
+msgstr "清除选定的文件"
 
-#: dialog_events.py:93
-msgid "Create a new image and add it as a layer to the current project"
-msgstr "创建新图像并将其作为图层添加到当前项目"
-
-#: dialog_events.py:95
-msgid "Create a new image in a new GIMP project"
-msgstr "在新的 GIMP 项目中创建新图像"
-
-#: dialog_threads.py:113
+#: dialog_threads.py:301
 msgid "Creating GIMP image..."
-msgstr "正在创建 GIMP 图像..."
+msgstr "正在创建GIMP图像..."
 
-#: dialog.py:23
+#: dialog.py:24
 msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
-msgstr "Dream Prompter - Nano Banana AI 图像创建/编辑器"
+msgstr "Dream Prompter - Nano Banana AI图像创建器/编辑器"
 
-#: dream-prompter.py:53
+#: dream-prompter.py:48
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:120
-msgid "Edit existing image"
-msgstr "编辑现有图像"
+#: dialog_gtk.py:276
+msgid "Edit Image"
+msgstr "编辑图像"
 
-#: dialog_threads.py:136
+#: dialog_threads.py:331
 msgid "Edit layer created!"
 msgstr "编辑图层已创建！"
 
-#: dialog_events.py:243
+#: dialog_events.py:106
 msgid "Edit mode requires a selected layer"
-msgstr "编辑模式需要选定的图层"
+msgstr "编辑模式需要选择一个图层"
 
-#: dialog.py:63 dialog_events.py:82
-msgid "Edit the current layer using AI"
-msgstr "使用 AI 编辑当前图层"
-
-#: dialog_gtk.py:87
+#: dialog_gtk.py:191
 msgid "Enter your Google Gemini API key..."
-msgstr "输入您的 Google Gemini API 密钥..."
+msgstr "输入您的Google Gemini API密钥..."
 
-#: api.py:240
-#, python-brace-format
-msgid "Error converting image data to pixbuf: {error}"
-msgstr "将图像数据转换为 pixbuf 时出错：{error}"
-
-#: dialog_threads.py:124
+#: dialog_threads.py:312
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
-msgstr "创建 GIMP 图像时出错：{error}"
+msgstr "创建GIMP图像时出错：{error}"
 
-#: dialog_threads.py:140
+#: dialog_threads.py:335
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "创建编辑图层时出错：{error}"
 
-#: dream-prompter.py:82
+#: dream-prompter.py:85
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
-msgstr "运行 Dream Prompter 时出错：{error}"
+msgstr "运行Dream Prompter时出错：{error}"
 
-#: dialog_gtk.py:171
-msgid "Example prompts:"
-msgstr "示例提示词："
-
-#: dialog_threads.py:117
+#: dialog_threads.py:305
 msgid "Failed to create GIMP image"
-msgstr "创建 GIMP 图像失败"
+msgstr "创建GIMP图像失败"
 
-#: dialog_threads.py:133
+#: dialog_threads.py:328
 msgid "Failed to create edit layer"
 msgstr "创建编辑图层失败"
 
-#: api.py:113
+#: api.py:99
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
 
-#: dialog_events.py:88 dialog_gtk.py:325
-msgid "Generate AI Edit"
-msgstr "生成 AI 编辑"
+#: dialog_events.py:133 dialog_gtk.py:226
+msgid "Generate Edit"
+msgstr "生成编辑"
 
-#: dialog_events.py:99
-msgid "Generate New Image"
-msgstr "生成新图像"
+#: dialog_events.py:138 dialog_gtk.py:280
+msgid "Generate Image"
+msgstr "生成图像"
 
-#: dialog_gtk.py:124
-msgid "Generate new image"
-msgstr "生成新图像"
-
-#: api.py:63
+#: api.py:166
 msgid "Generating image with Nano Banana..."
-msgstr "正在使用 Nano Banana 生成图像..."
+msgstr "正在使用Nano Banana生成图像..."
 
-#: api.py:216
+#: api.py:267
 #, python-brace-format
 msgid "Generation stopped: {reason}"
 msgstr "生成已停止：{reason}"
 
-#: dialog_gtk.py:101
+#: dialog_gtk.py:207
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
-msgstr "从<a href=\"{url}\">Google Cloud Console</a>获取您的 API 密钥"
+msgstr "从<a href=\"{url}\">Google Cloud Console</a>获取您的API密钥"
 
-#: dialog_gtk.py:80
+#: dialog_gtk.py:184
 msgid "Google Gemini API Key"
-msgstr "Google Gemini API 密钥"
+msgstr "Google Gemini API密钥"
 
-#: dialog_events.py:136
+#: dialog_events.py:206
 msgid "Hide API key"
-msgstr "隐藏 API 密钥"
+msgstr "隐藏API密钥"
 
-#: dialog_threads.py:120
+#: api.py:132
+msgid "Image editing complete!"
+msgstr "图像编辑完成！"
+
+#: dialog_threads.py:308
 msgid "Image generated successfully!"
 msgstr "图像生成成功！"
 
-#: dialog_events.py:249
+#: api.py:194
+msgid "Image generation complete!"
+msgstr "图像生成完成！"
+
+#: dialog_events.py:114
 msgid "Initializing API request..."
-msgstr "正在初始化 API 请求..."
+msgstr "正在初始化API请求..."
 
-#: api.py:60 api.py:102
+#: api.py:137 api.py:199
+#, python-brace-format
+msgid "Nano Banana API error: {error}"
+msgstr "Nano Banana API错误：{error}"
+
+#: api.py:55 api.py:88 api.py:164
 msgid "Nano Banana API not available. Please install google-genai"
-msgstr "Nano Banana API 不可用。请安装 google-genai"
+msgstr "Nano Banana API不可用。请安装google-genai"
 
-#: api.py:105
+#: api.py:91
 msgid "No GIMP image provided for editing"
-msgstr "未提供用于编辑的 GIMP 图像"
+msgstr "未提供用于编辑的GIMP图像"
 
-#: dialog_gtk.py:215 dialog_gtk.py:245
+#: dialog_gtk.py:153 dialog_gtk.py:372
 msgid "No additional images selected"
 msgstr "未选择附加图像"
 
-#: api.py:219
+#: api.py:270
 msgid "No candidates in API response"
-msgstr "API 响应中没有候选项"
+msgstr "API响应中无候选项"
 
-#: api.py:223
+#: api.py:274
 msgid "No content parts in API response"
-msgstr "API 响应中没有内容部分"
+msgstr "API响应中无内容部分"
 
-#: api.py:242
+#: dialog_threads.py:122 dialog_threads.py:208
+msgid "No image available for editing"
+msgstr "没有可编辑的图像"
+
+#: api.py:286
 msgid "No image data found in response"
 msgstr "响应中未找到图像数据"
 
-#: dialog_threads.py:80 dialog_threads.py:104
+#: dialog_threads.py:182 dialog_threads.py:236
 msgid "No image data received from API"
-msgstr "未从 API 接收到图像数据"
+msgstr "未从API接收到图像数据"
 
-#: dialog.py:55
-msgid "No image open - only generation mode available"
-msgstr "没有打开的图像 - 仅生成模式可用"
-
-#: dialog_events.py:84
-msgid "No layer available to edit"
+#: dialog_threads.py:118
+msgid "No layer available for editing"
 msgstr "没有可编辑的图层"
 
-#: dialog_gtk.py:114
+#: dialog_gtk.py:270
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: dialog_events.py:239
+#: api.py:94 api.py:102 api.py:119 api.py:127 api.py:167 api.py:181 api.py:189
+#: dialog_threads.py:275
+msgid "Operation cancelled"
+msgstr "操作已取消"
+
+#: dialog_events.py:102
 msgid "Please enter a prompt"
 msgstr "请输入提示词"
 
-#: dialog_events.py:235
+#: dialog_events.py:98
 msgid "Please enter your Google Gemini API key"
-msgstr "请输入您的 Google Gemini API 密钥"
+msgstr "请输入您的Google Gemini API密钥"
 
-#: api.py:108
+#: api.py:93
 msgid "Preparing current image for Nano Banana..."
-msgstr "正在为 Nano Banana 准备当前图像..."
+msgstr "正在为Nano Banana准备当前图像..."
 
-#: api.py:137
+#: api.py:126
 msgid "Processing Nano Banana edit response..."
-msgstr "正在处理 Nano Banana 编辑响应..."
+msgstr "正在处理Nano Banana编辑响应..."
 
-#: api.py:78
+#: api.py:188
 msgid "Processing Nano Banana response..."
-msgstr "正在处理 Nano Banana 响应..."
+msgstr "正在处理Nano Banana响应..."
 
-#: dialog_gtk.py:338
+#: dialog_threads.py:91 dialog_threads.py:130
+msgid "Prompt is required"
+msgstr "需要提示词"
+
+#: dialog_gtk.py:78 dialog_gtk.py:335
 msgid "Ready"
 msgstr "就绪"
 
-#: dialog_events.py:79
+#: dialog_events.py:130
 msgid "Reduced to 2 reference images for edit mode"
-msgstr "编辑模式已减少到 2 张参考图像"
+msgstr "编辑模式下减少到2张参考图像"
 
-#: dialog_events.py:151
+#: dialog_events.py:164
 msgid "Select"
 msgstr "选择"
 
-#: dialog_gtk.py:210
+#: dialog_gtk.py:148
 msgid "Select Images..."
 msgstr "选择图像..."
 
-#: dialog_events.py:145
+#: dialog_events.py:158
 msgid "Select Reference Images"
 msgstr "选择参考图像"
 
-#: dialog_events.py:90
-msgid "Select up to 2 additional images to merge or reference in your AI edit"
-msgstr "选择最多 2 张额外图像以在您的 AI 编辑中合并或参考"
-
-#: dialog_events.py:101
-msgid ""
-"Select up to 3 reference images to influence the style or composition of "
-"your new image"
-msgstr "选择最多 3 张参考图像来影响新图像的风格或构图"
-
-#: api.py:129
-msgid "Sending edit request to Nano Banana..."
-msgstr "正在向 Nano Banana 发送编辑请求..."
-
-#: api.py:70
-msgid "Sending request to Nano Banana..."
-msgstr "正在向 Nano Banana 发送请求..."
+#: dialog_events.py:135
+msgid "Select up to 2 additional images"
+msgstr "最多选择2张附加图像"
 
 #: dialog_events.py:140
+msgid "Select up to 3 additional images"
+msgstr "最多选择3张附加图像"
+
+#: api.py:118
+msgid "Sending edit request to Nano Banana..."
+msgstr "正在向Nano Banana发送编辑请求..."
+
+#: api.py:180
+msgid "Sending request to Nano Banana..."
+msgstr "正在向Nano Banana发送请求..."
+
+#: dialog_events.py:210
 msgid "Show API key"
-msgstr "显示 API 密钥"
+msgstr "显示API密钥"
 
-#: dialog_gtk.py:94
+#: dialog_gtk.py:200
 msgid "Show/Hide API key"
-msgstr "显示/隐藏 API 密钥"
+msgstr "显示/隐藏API密钥"
 
-#: dialog_events.py:154
+#: dialog_events.py:167
 msgid "Supported Images (PNG, JPEG, WebP)"
-msgstr "支持的图像格式 (PNG, JPEG, WebP)"
+msgstr "支持的图像格式（PNG、JPEG、WebP）"
 
-#: dream-prompter.py:49
+#: dream-prompter.py:44
 msgid ""
 "Transform existing images or generate new images using Google's Gemini 2.5 "
 "Flash Image model (Nano Banana) with natural language prompts. Supports "
 "consistent multi-turn editing and image merging capabilities."
 msgstr ""
-"使用自然语言提示词，通过 Google 的 Gemini 2.5 Flash Image 模型（Nano Banana）"
-"转换现有图像或生成新图像。支持一致的多轮编辑和图像合并功能。"
+"使用Google的Gemini 2.5 Flash Image模型（Nano Banana）通过自然语言提示词转换现"
+"有图像或生成新图像。支持一致的多轮编辑和图像合并功能。"
 
-#: dialog_gtk.py:253
+#: dialog_threads.py:245
+#, python-brace-format
+msgid "Unexpected error during image editing: {error}"
+msgstr "图像编辑过程中出现意外错误：{error}"
+
+#: dialog_threads.py:190
+#, python-brace-format
+msgid "Unexpected error during image generation: {error}"
+msgstr "图像生成过程中出现意外错误：{error}"
+
+#: api.py:139 api.py:201
+#, python-brace-format
+msgid "Unexpected error: {error}"
+msgstr "意外错误：{error}"
+
+#: dialog_gtk.py:385
 #, python-brace-format
 msgid "{count} image selected"
-msgstr "已选择 {count} 张图像"
+msgstr "已选择{count}张图像"
 
-#: dialog_gtk.py:255
+#: dialog_gtk.py:387
 #, python-brace-format
 msgid "{count} images selected"
-msgstr "已选择 {count} 张图像"
+msgstr "已选择{count}张图像"
 
-#: dialog_gtk.py:184
-msgid "• A majestic dragon flying over a mountain range"
-msgstr "• 一条雄伟的龙飞越山脉"
+#: dialog_threads.py:261
+#, python-brace-format
+msgid "{original} (AI Edit: {prompt})"
+msgstr "{original}（AI编辑：{prompt}）"
 
-#: dialog_gtk.py:179
-msgid "• Add snow falling in the scene"
-msgstr "• 在场景中添加飘雪"
-
-#: dialog_gtk.py:177
-msgid "• Change the background to a medieval castle"
-msgstr "• 将背景更改为中世纪城堡"
-
-#: dialog_gtk.py:186
-msgid "• Cyberpunk cityscape at night with neon lights"
-msgstr "• 夜晚带霓虹灯的赛博朋克城市景观"
-
-#: dialog_gtk.py:178
-msgid "• Make this person wear a red dress instead"
-msgstr "• 让这个人改穿红色连衣裙"
-
-#: dialog_gtk.py:187
-msgid "• Peaceful forest clearing with sunbeams"
-msgstr "• 阳光透过的宁静林间空地"
-
-#: dialog_gtk.py:185
-msgid "• Portrait of a woman in Victorian dress"
-msgstr "• 穿维多利亚时代服装的女性肖像"
-
-#: dialog_gtk.py:180
-msgid "• Transform this into a painting style"
-msgstr "• 将其转换为绘画风格"
-
-#: dialog_gtk.py:273
+#: dialog_gtk.py:355
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
-msgstr "⚠️ ({size:.1f} MB - 超过最大大小)"
+msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
+
+#~ msgid "Generate AI Edit"
+#~ msgstr "生成AI编辑"
+
+#~ msgid "Generate new image"
+#~ msgstr "生成新图像"

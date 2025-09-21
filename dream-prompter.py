@@ -7,31 +7,25 @@ A GIMP plugin for AI-powered image creation/editing using Google's Nano Banana (
 """
 
 import gi
+import sys
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gimp', '3.0')
 gi.require_version('GimpUi', '3.0')
 gi.require_version('GLib', '2.0')
 gi.require_version('GdkPixbuf', '2.0')
-import sys
+
+from gi.repository import Gimp, GimpUi, Gtk, GLib
 
 from dialog import DreamPrompterDialog
-from gi.repository import Gimp, GimpUi, Gtk, GLib
 from i18n import _, DOMAIN
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.0.2"
+PLUGIN_VERSION = "1.0.3"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Nano Banana"
 
 class DreamPrompter(Gimp.PlugIn):
     """Main plugin class"""
-
-    def do_set_i18n(self, procname):
-        """Enable localization"""
-        return DOMAIN
-
-    def do_query_procedures(self):
-        """Register the plugin procedure"""
-        return ['dream-prompter']
 
     def do_create_procedure(self, name):
         """Create the plugin procedure"""
@@ -58,7 +52,15 @@ class DreamPrompter(Gimp.PlugIn):
             return procedure
         return None
 
-    def run_dream_prompter(self, procedure, run_mode, image, drawables, config, run_data):
+    def do_query_procedures(self):
+        """Register the plugin procedure"""
+        return ['dream-prompter']
+
+    def do_set_i18n(self, _procname):
+        """Enable localization"""
+        return DOMAIN
+
+    def run_dream_prompter(self, procedure, run_mode, image, drawables, _config, _run_data):
         """Run the Dream Prompter plugin"""
         if run_mode == Gimp.RunMode.INTERACTIVE:
             try:
@@ -82,6 +84,7 @@ class DreamPrompter(Gimp.PlugIn):
             except Exception as e:
                 error_msg = _("Error running Dream Prompter: {error}").format(error=str(e))
                 print(error_msg)
+                Gimp.message(error_msg)
                 return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
 
         return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
