@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.0.3\n"
+"Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-20 16:13-1000\n"
+"POT-Creation-Date: 2025-09-22 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -43,11 +43,11 @@ msgstr "AI 프롬프트"
 msgid "AI-powered image creation/editing with Nano Banana"
 msgstr "Nano Banana를 사용한 AI 이미지 생성/편집"
 
-#: api.py:58 dialog_threads.py:87 dialog_threads.py:126
+#: api.py:52 dialog_threads.py:87 dialog_threads.py:126
 msgid "API key is required"
 msgstr "API 키가 필요합니다"
 
-#: dialog_threads.py:324
+#: dialog_threads.py:325
 msgid "Adding edit layer..."
 msgstr "편집 레이어 추가 중..."
 
@@ -55,9 +55,9 @@ msgstr "편집 레이어 추가 중..."
 msgid "Additional Images (Optional)"
 msgstr "추가 이미지 (선택사항)"
 
-#: api.py:101
-msgid "Building Nano Banana edit request..."
-msgstr "Nano Banana 편집 요청 구성 중..."
+#: api.py:95
+msgid "Building Replicate edit request..."
+msgstr "Replicate 편집 요청 구축 중..."
 
 #: dialog_events.py:163 dialog_gtk.py:221
 msgid "Cancel"
@@ -67,31 +67,35 @@ msgstr "취소"
 msgid "Cancelling..."
 msgstr "취소 중..."
 
+#: dialog_events.py:194
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum 10 reference images allowed."
+msgstr ""
+"{count}개의 파일을 추가할 수 없습니다. 최대 10개의 추가 이미지가 허용됩니다."
+
 #: dialog_events.py:192
 #, python-brace-format
 msgid ""
-"Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
+"Cannot add {count} files. Maximum 9 reference images allowed in edit mode."
 msgstr ""
-"{count}개 파일을 추가할 수 없습니다. 편집 모드에서는 최대 2개의 참조 이미지"
-"만 허용됩니다."
-
-#: dialog_events.py:194
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum 3 reference images allowed."
-msgstr ""
-"{count}개 파일을 추가할 수 없습니다. 최대 3개의 참조 이미지만 허용됩니다."
+"{count}개의 파일을 추가할 수 없습니다. 편집 모드에서는 최대 9개의 참조 이미지"
+"가 허용됩니다."
 
 #: dialog_gtk.py:160
 msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
-#: dialog_threads.py:301
+#: dialog_threads.py:302
 msgid "Creating GIMP image..."
 msgstr "GIMP 이미지 생성 중..."
 
+#: api.py:133 api.py:222
+msgid "Downloading result..."
+msgstr "결과 다운로드 중..."
+
 #: dialog.py:24
-msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
-msgstr "Dream Prompter - Nano Banana AI 이미지 생성기/편집기"
+msgid "Dream Prompter - AI Image Creator/Editor"
+msgstr "Dream Prompter - AI 이미지 생성기/편집기"
 
 #: dream-prompter.py:48
 msgid "Dream Prompter..."
@@ -101,7 +105,7 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "이미지 편집"
 
-#: dialog_threads.py:331
+#: dialog_threads.py:332
 msgid "Edit layer created!"
 msgstr "편집 레이어가 생성되었습니다!"
 
@@ -110,15 +114,15 @@ msgid "Edit mode requires a selected layer"
 msgstr "편집 모드에는 선택된 레이어가 필요합니다"
 
 #: dialog_gtk.py:191
-msgid "Enter your Google Gemini API key..."
-msgstr "Google Gemini API 키를 입력하세요..."
+msgid "Enter your Replicate API key..."
+msgstr "Replicate API 키를 입력하세요..."
 
-#: dialog_threads.py:312
+#: dialog_threads.py:313
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "GIMP 이미지 생성 오류: {error}"
 
-#: dialog_threads.py:335
+#: dialog_threads.py:336
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "편집 레이어 생성 오류: {error}"
@@ -128,17 +132,25 @@ msgstr "편집 레이어 생성 오류: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
 
-#: dialog_threads.py:305
+#: api.py:156 api.py:245
+msgid "Failed to convert result to image"
+msgstr "결과를 이미지로 변환 실패"
+
+#: dialog_threads.py:306
 msgid "Failed to create GIMP image"
 msgstr "GIMP 이미지 생성 실패"
 
-#: dialog_threads.py:328
+#: dialog_threads.py:329
 msgid "Failed to create edit layer"
 msgstr "편집 레이어 생성 실패"
 
-#: api.py:99
+#: api.py:93
 msgid "Failed to export current image"
 msgstr "현재 이미지 내보내기 실패"
+
+#: api.py:147 api.py:236
+msgid "Failed to process iterable response"
+msgstr "반복 가능한 응답 처리 실패"
 
 #: dialog_events.py:133 dialog_gtk.py:226
 msgid "Generate Edit"
@@ -148,37 +160,28 @@ msgstr "편집 생성"
 msgid "Generate Image"
 msgstr "이미지 생성"
 
-#: api.py:166
-msgid "Generating image with Nano Banana..."
-msgstr "Nano Banana로 이미지 생성 중..."
-
-#: api.py:267
-#, python-brace-format
-msgid "Generation stopped: {reason}"
-msgstr "생성 중단: {reason}"
+#: api.py:191
+msgid "Generating image with Replicate..."
+msgstr "Replicate로 이미지 생성 중..."
 
 #: dialog_gtk.py:207
 #, python-brace-format
-msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
-msgstr "<a href=\"{url}\">Google Cloud Console</a>에서 API 키를 가져오세요"
-
-#: dialog_gtk.py:184
-msgid "Google Gemini API Key"
-msgstr "Google Gemini API 키"
+msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
+msgstr "<a href=\"{url}\">Replicate</a>에서 API 키를 가져오세요"
 
 #: dialog_events.py:206
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
-#: api.py:132
+#: api.py:159
 msgid "Image editing complete!"
 msgstr "이미지 편집 완료!"
 
-#: dialog_threads.py:308
+#: dialog_threads.py:309
 msgid "Image generated successfully!"
 msgstr "이미지 생성 성공!"
 
-#: api.py:194
+#: api.py:248
 msgid "Image generation complete!"
 msgstr "이미지 생성 완료!"
 
@@ -186,16 +189,16 @@ msgstr "이미지 생성 완료!"
 msgid "Initializing API request..."
 msgstr "API 요청 초기화 중..."
 
-#: api.py:137 api.py:199
+#: api.py:122 api.py:256
+msgid "Logs"
+msgstr "로그"
+
+#: api.py:119 api.py:253
 #, python-brace-format
-msgid "Nano Banana API error: {error}"
-msgstr "Nano Banana API 오류: {error}"
+msgid "Model error: {error}"
+msgstr "모델 오류: {error}"
 
-#: api.py:55 api.py:88 api.py:164
-msgid "Nano Banana API not available. Please install google-genai"
-msgstr "Nano Banana API를 사용할 수 없습니다. google-genai를 설치해주세요"
-
-#: api.py:91
+#: api.py:85
 msgid "No GIMP image provided for editing"
 msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 
@@ -203,21 +206,9 @@ msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 msgid "No additional images selected"
 msgstr "추가 이미지가 선택되지 않았습니다"
 
-#: api.py:270
-msgid "No candidates in API response"
-msgstr "API 응답에 후보가 없습니다"
-
-#: api.py:274
-msgid "No content parts in API response"
-msgstr "API 응답에 콘텐츠 부분이 없습니다"
-
 #: dialog_threads.py:122 dialog_threads.py:208
 msgid "No image available for editing"
 msgstr "편집할 이미지가 없습니다"
-
-#: api.py:286
-msgid "No image data found in response"
-msgstr "응답에서 이미지 데이터를 찾을 수 없습니다"
 
 #: dialog_threads.py:182 dialog_threads.py:236
 msgid "No image data received from API"
@@ -227,12 +218,20 @@ msgstr "API에서 이미지 데이터를 받지 못했습니다"
 msgid "No layer available for editing"
 msgstr "편집할 레이어가 없습니다"
 
+#: api.py:131 api.py:220
+msgid "No output received from API"
+msgstr "API에서 출력을 받지 못했습니다"
+
+#: api.py:152 api.py:241
+msgid "No valid image data in API response"
+msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
+
 #: dialog_gtk.py:270
 msgid "Operation Mode"
 msgstr "작업 모드"
 
-#: api.py:94 api.py:102 api.py:119 api.py:127 api.py:167 api.py:181 api.py:189
-#: dialog_threads.py:275
+#: api.py:88 api.py:96 api.py:111 api.py:128 api.py:134 api.py:192 api.py:208
+#: api.py:217 api.py:223
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
@@ -241,20 +240,20 @@ msgid "Please enter a prompt"
 msgstr "프롬프트를 입력해주세요"
 
 #: dialog_events.py:98
-msgid "Please enter your Google Gemini API key"
-msgstr "Google Gemini API 키를 입력해주세요"
+msgid "Please enter your Replicate API key"
+msgstr "Replicate API 키를 입력해주세요"
 
-#: api.py:93
-msgid "Preparing current image for Nano Banana..."
-msgstr "Nano Banana용 현재 이미지 준비 중..."
+#: api.py:87
+msgid "Preparing current image for Replicate..."
+msgstr "Replicate용 현재 이미지 준비 중..."
 
-#: api.py:126
-msgid "Processing Nano Banana edit response..."
-msgstr "Nano Banana 편집 응답 처리 중..."
+#: api.py:127
+msgid "Processing Replicate edit response..."
+msgstr "Replicate 편집 응답 처리 중..."
 
-#: api.py:188
-msgid "Processing Nano Banana response..."
-msgstr "Nano Banana 응답 처리 중..."
+#: api.py:216
+msgid "Processing Replicate response..."
+msgstr "Replicate 응답 처리 중..."
 
 #: dialog_threads.py:91 dialog_threads.py:130
 msgid "Prompt is required"
@@ -268,6 +267,19 @@ msgstr "준비"
 msgid "Reduced to 2 reference images for edit mode"
 msgstr "편집 모드용으로 참조 이미지를 2개로 줄였습니다"
 
+#: dialog_gtk.py:184
+msgid "Replicate API Key"
+msgstr "Replicate API 키"
+
+#: api.py:125 api.py:260
+#, python-brace-format
+msgid "Replicate API error: {error}"
+msgstr "Replicate API 오류: {error}"
+
+#: api.py:49 api.py:82 api.py:189
+msgid "Replicate API not available. Please install replicate"
+msgstr "Replicate API를 사용할 수 없습니다. google-genai를 설치해주세요"
+
 #: dialog_events.py:164
 msgid "Select"
 msgstr "선택"
@@ -280,21 +292,21 @@ msgstr "이미지 선택..."
 msgid "Select Reference Images"
 msgstr "참조 이미지 선택"
 
-#: dialog_events.py:135
-msgid "Select up to 2 additional images"
-msgstr "최대 2개의 추가 이미지 선택"
-
 #: dialog_events.py:140
-msgid "Select up to 3 additional images"
-msgstr "최대 3개의 추가 이미지 선택"
+msgid "Select up to 10 additional images"
+msgstr "최대 10개의 추가 이미지 선택"
 
-#: api.py:118
-msgid "Sending edit request to Nano Banana..."
-msgstr "Nano Banana에 편집 요청 전송 중..."
+#: dialog_events.py:135
+msgid "Select up to 9 additional images"
+msgstr "최대 9개의 추가 이미지 선택"
 
-#: api.py:180
-msgid "Sending request to Nano Banana..."
-msgstr "Nano Banana에 요청 전송 중..."
+#: api.py:110
+msgid "Sending edit request to Replicate..."
+msgstr "Replicate에 편집 요청 전송 중..."
+
+#: api.py:207
+msgid "Sending request to Replicate..."
+msgstr "Replicate에 요청 전송 중..."
 
 #: dialog_events.py:210
 msgid "Show API key"
@@ -328,10 +340,14 @@ msgstr "이미지 편집 중 예상치 못한 오류: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "이미지 생성 중 예상치 못한 오류: {error}"
 
-#: api.py:139 api.py:201
+#: api.py:164 api.py:263
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "예상치 못한 오류: {error}"
+
+#: api.py:149 api.py:238
+msgid "Unexpected response format from API"
+msgstr "API에서 예상치 못한 응답 형식"
 
 #: dialog_gtk.py:385
 #, python-brace-format
@@ -358,3 +374,26 @@ msgstr "⚠️ ({size:.1f} MB - 최대 크기 초과)"
 
 #~ msgid "Generate new image"
 #~ msgstr "새 이미지 생성"
+
+#, python-brace-format
+#~ msgid "Generation stopped: {reason}"
+#~ msgstr "생성 중단: {reason}"
+
+#~ msgid "Google Gemini API Key"
+#~ msgstr "Google Gemini API 키"
+
+#, python-brace-format
+#~ msgid "Nano Banana API error: {error}"
+#~ msgstr "Nano Banana API 오류: {error}"
+
+#~ msgid "No content parts in API response"
+#~ msgstr "API 응답에 콘텐츠 부분이 없습니다"
+
+#~ msgid "No image data found in response"
+#~ msgstr "응답에서 이미지 데이터를 찾을 수 없습니다"
+
+#~ msgid "Processing Nano Banana response..."
+#~ msgstr "Nano Banana 응답 처리 중..."
+
+#~ msgid "Select up to 2 additional images"
+#~ msgstr "최대 2개의 추가 이미지 선택"

@@ -3,7 +3,7 @@
 
 """
 Dream Prompter - Nano Banana GIMP Plugin
-A GIMP plugin for AI-powered image creation/editing using Google's Nano Banana (Gemini 2.5 Flash Image)
+A GIMP plugin for AI-powered image creation/editing using Replicate's Nano Banana (Gemini 2.5 Flash Image)
 """
 
 import gi
@@ -21,7 +21,7 @@ from dialog import DreamPrompterDialog
 from i18n import _, DOMAIN
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.0.3"
+PLUGIN_VERSION = "1.1.0"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Nano Banana"
 
 class DreamPrompter(Gimp.PlugIn):

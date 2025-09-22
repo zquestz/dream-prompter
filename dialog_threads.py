@@ -12,7 +12,7 @@ from typing import Dict, Callable, Optional, Any, List, Union
 from gi.repository import GLib, GdkPixbuf
 
 import integrator
-from api import GeminiAPI
+from api import ReplicateAPI
 from dialog_gtk import DreamPrompterUI
 from i18n import _
 
@@ -76,7 +76,7 @@ class DreamPrompterThreads:
         Start image generation in background thread
 
         Args:
-            api_key: Google Gemini API key
+            api_key: Replicate API key
             prompt: Text prompt for image generation
             reference_images: Optional list of reference image paths
         """
@@ -107,7 +107,7 @@ class DreamPrompterThreads:
         Start image editing in background thread
 
         Args:
-            api_key: Google Gemini API key
+            api_key: Replicate API key
             prompt: Text prompt for image editing
             reference_images: Optional list of reference image paths
         """
@@ -146,7 +146,7 @@ class DreamPrompterThreads:
         Generate image in background thread
 
         Args:
-            api_key: Google Gemini API key
+            api_key: Replicate API key
             prompt: Text prompt for image generation
             reference_images: List of reference image paths
         """
@@ -155,7 +155,7 @@ class DreamPrompterThreads:
                 GLib.idle_add(self._handle_cancelled)
                 return
 
-            api = GeminiAPI(api_key)
+            api = ReplicateAPI(api_key)
 
             def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""
@@ -195,7 +195,7 @@ class DreamPrompterThreads:
         Edit image in background thread
 
         Args:
-            api_key: Google Gemini API key
+            api_key: Replicate API key
             prompt: Text prompt for image editing
             reference_images: List of reference image paths
         """
@@ -208,7 +208,7 @@ class DreamPrompterThreads:
                 GLib.idle_add(self._handle_error, _("No image available for editing"))
                 return
 
-            api = GeminiAPI(api_key)
+            api = ReplicateAPI(api_key)
 
             def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""
@@ -272,7 +272,7 @@ class DreamPrompterThreads:
         """Handle cancelled operation"""
         self._processing = False
         self._current_thread = None
-        self.ui.update_status(_("Operation cancelled"))
+        self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
 
     def _handle_error(self, error_message: str) -> None:
@@ -284,6 +284,7 @@ class DreamPrompterThreads:
         """
         self._processing = False
         self._current_thread = None
+        self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
 
         if self._callbacks.get('on_error'):
@@ -339,6 +340,7 @@ class DreamPrompterThreads:
         """Handle successful processing"""
         self._processing = False
         self._current_thread = None
+        self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
 
         if self._callbacks.get('on_success'):

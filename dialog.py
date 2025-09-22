@@ -21,7 +21,7 @@ class DreamPrompterDialog(GimpUi.Dialog):
 
     def __init__(self, procedure, image, drawable):
         super().__init__(
-            title=_("Dream Prompter - Nano Banana AI Image Creator/Editor"),
+            title=_("Dream Prompter - AI Image Creator/Editor"),
             role="dream-prompter-dialog",
             use_header_bar=True
         )

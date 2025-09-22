@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Google AI image generation integration for Dream Prompter plugin
-Real Gemini API implementation using modern google-genai library
+Replicate API integration for Dream Prompter plugin
+Real Nano Banana API implementation using Replicate
 """
 
 import base64
+import io
 import mimetypes
 import os
 from typing import Optional, Callable, Tuple, List
@@ -17,8 +18,8 @@ import integrator
 from i18n import _
 
 MAX_FILE_SIZE_MB = 7
-MAX_REFERENCE_IMAGES_EDIT = 2
-MAX_REFERENCE_IMAGES_GENERATE = 3
+MAX_REFERENCE_IMAGES_EDIT = 9
+MAX_REFERENCE_IMAGES_GENERATE = 10
 PROGRESS_COMPLETE = 1.0
 PROGRESS_DOWNLOAD = 0.9
 PROGRESS_PREPARE = 0.1
@@ -27,38 +28,31 @@ PROGRESS_UPLOAD = 0.5
 SUPPORTED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/webp']
 
 try:
-    from google import genai
-    from google.genai import types, errors
-    GENAI_AVAILABLE = True
+    from replicate.client import Client
+    from replicate.exceptions import ModelError, ReplicateError
+    REPLICATE_AVAILABLE = True
 except ImportError:
-    genai = None
-    types = None
-    errors = None
-    GENAI_AVAILABLE = False
-    print("Warning: google-genai not installed. Install with: pip install google-genai")
+    REPLICATE_AVAILABLE = False
+    print("Warning: replicate package not installed. Run: pip install replicate")
 
-class GeminiAPI:
-    """Google AI client for image generation and editing"""
+class ReplicateAPI:
+    """Handles Replicate API communication for image generation and editing"""
 
     def __init__(self, api_key: str) -> None:
         """
-        Initialize the Gemini API client
+        Initialize the Replicate API client
 
         Args:
-            api_key (str): Google Gemini API key for authentication
-
-        Raises:
-            ImportError: If google-genai package is not available
-            ValueError: If API key is invalid
+            api_key (str): Replicate API key from user settings
         """
-        if not GENAI_AVAILABLE:
-            raise ImportError(_("Nano Banana API not available. Please install google-genai"))
+        if not REPLICATE_AVAILABLE:
+            raise ImportError(_("Replicate API not available. Please install replicate"))
 
         if not api_key or not api_key.strip():
             raise ValueError(_("API key is required"))
 
         self.api_key = api_key.strip()
-        self.client = genai.Client(api_key=self.api_key) if genai else None
+        self.client = Client(api_token=self.api_key)
 
     def edit_image(
         self,
@@ -73,7 +67,7 @@ class GeminiAPI:
         Args:
             image (Gimp.Image): Image to edit
             prompt (str): Text description of the edits to make
-            reference_images (list, optional): List of image file paths for reference (max 2)
+            reference_images (list, optional): List of image file paths for reference (max 9)
             progress_callback (callable, optional): Progress callback function.
                 Called with (message: str, percentage: float | None).
                 Should return True to continue, False to cancel.
@@ -84,13 +78,13 @@ class GeminiAPI:
                 - If failed: (None, error_message)
                 - If cancelled: (None, "Operation cancelled")
         """
-        if not self.client or not types or not errors:
-            return None, _("Nano Banana API not available. Please install google-genai")
+        if not self.client:
+            return None, _("Replicate API not available. Please install replicate")
 
         if not image:
             return None, _("No GIMP image provided for editing")
 
-        if progress_callback and not progress_callback(_("Preparing current image for Nano Banana..."), PROGRESS_PREPARE):
+        if progress_callback and not progress_callback(_("Preparing current image for Replicate..."), PROGRESS_PREPARE):
             return None, _("Operation cancelled")
 
         try:
@@ -98,43 +92,74 @@ class GeminiAPI:
             if not current_image_data:
                 return None, _("Failed to export current image")
 
-            if progress_callback and not progress_callback(_("Building Nano Banana edit request..."), PROGRESS_UPLOAD):
+            if progress_callback and not progress_callback(_("Building Replicate edit request..."), PROGRESS_UPLOAD):
                 return None, _("Operation cancelled")
 
-            contents = []
+            image_input = [io.BytesIO(current_image_data)]
 
-            current_image_part = types.Part(
-                inline_data=types.Blob(
-                    data=current_image_data,
-                    mime_type='image/png'
+            if reference_images:
+                ref_files = self._prepare_reference_images(reference_images, MAX_REFERENCE_IMAGES_EDIT)
+                image_input.extend(ref_files)
+
+            model_input = {
+                "prompt": prompt,
+                "image_input": image_input,
+                "output_format": "png"
+            }
+
+            if progress_callback and not progress_callback(_("Sending edit request to Replicate..."), PROGRESS_PROCESS):
+                return None, _("Operation cancelled")
+
+            try:
+                output = self.client.run(
+                    "google/nano-banana",
+                    input=model_input
                 )
-            )
-            contents.append(current_image_part)
+            except ModelError as e:
+                error_msg = _("Model error: {error}").format(error=str(e))
+                if hasattr(e, 'prediction') and e.prediction:
+                    if hasattr(e.prediction, 'logs') and e.prediction.logs:
+                        error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
+                return None, error_msg
+            except ReplicateError as e:
+                return None, _("Replicate API error: {error}").format(error=str(e))
 
-            self._add_reference_images(contents, reference_images, MAX_REFERENCE_IMAGES_EDIT)
-
-            contents.append(prompt)
-
-            if progress_callback and not progress_callback(_("Sending edit request to Nano Banana..."), PROGRESS_PROCESS):
+            if progress_callback and not progress_callback(_("Processing Replicate edit response..."), PROGRESS_DOWNLOAD):
                 return None, _("Operation cancelled")
 
-            response = self.client.models.generate_content(
-                model='gemini-2.5-flash-image-preview',
-                contents=contents
-            )
+            if not output:
+                return None, _("No output received from API")
 
-            if progress_callback and not progress_callback(_("Processing Nano Banana edit response..."), PROGRESS_DOWNLOAD):
+            if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
                 return None, _("Operation cancelled")
 
-            pixbuf, error_msg = self._parse_image_response(response)
+            result_bytes = None
+            if isinstance(output, str):
+                import urllib.request
+                with urllib.request.urlopen(output) as url_response:
+                    result_bytes = url_response.read()
+            elif isinstance(output, bytes):
+                result_bytes = output
+            elif hasattr(output, '__iter__'):
+                try:
+                    result_bytes = b''.join(chunk for chunk in output)
+                except (TypeError, ValueError):
+                    return None, _("Failed to process iterable response")
+            else:
+                return None, _("Unexpected response format from API")
 
-            if progress_callback and pixbuf:
+            if not result_bytes or not isinstance(result_bytes, bytes):
+                return None, _("No valid image data in API response")
+
+            pixbuf = self._bytes_to_pixbuf(result_bytes)
+            if not pixbuf:
+                return None, _("Failed to convert result to image")
+
+            if progress_callback:
                 progress_callback(_("Image editing complete!"), PROGRESS_COMPLETE)
 
-            return pixbuf, error_msg
+            return pixbuf, None
 
-        except errors.APIError as e:
-            return None, _("Nano Banana API error: {error}").format(error=e.message)
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
 
@@ -149,7 +174,7 @@ class GeminiAPI:
 
         Args:
             prompt (str): Text description of the image to generate
-            reference_images (list, optional): List of image file paths for reference (max 3)
+            reference_images (list, optional): List of image file paths for reference (max 10)
             progress_callback (callable, optional): Progress callback function.
                 Called with (message: str, percentage: float | None).
                 Should return True to continue, False to cancel.
@@ -160,67 +185,105 @@ class GeminiAPI:
                 - If failed: (None, error_message)
                 - If cancelled: (None, "Operation cancelled")
         """
-        if not self.client or not types or not errors:
-            return None, _("Nano Banana API not available. Please install google-genai")
+        if not self.client:
+            return None, _("Replicate API not available. Please install replicate")
 
-        if progress_callback and not progress_callback(_("Generating image with Nano Banana..."), PROGRESS_PREPARE):
+        if progress_callback and not progress_callback(_("Generating image with Replicate..."), PROGRESS_PREPARE):
             return None, _("Operation cancelled")
 
         try:
+            image_input = []
+
             if reference_images:
-                contents = []
+                ref_files = self._prepare_reference_images(reference_images, MAX_REFERENCE_IMAGES_GENERATE)
+                image_input.extend(ref_files)
 
-                prompt_part = types.Part(text=prompt)
-                contents.append(prompt_part)
+            model_input = {
+                "prompt": prompt,
+                "image_input": image_input,
+                "output_format": "png"
+            }
 
-                self._add_reference_images(contents, reference_images, MAX_REFERENCE_IMAGES_GENERATE)
-            else:
-                contents = prompt
-
-            if progress_callback and not progress_callback(_("Sending request to Nano Banana..."), PROGRESS_PROCESS):
+            if progress_callback and not progress_callback(_("Sending request to Replicate..."), PROGRESS_PROCESS):
                 return None, _("Operation cancelled")
 
-            response = self.client.models.generate_content(
-                model='gemini-2.5-flash-image-preview',
-                contents=contents
-            )
+            try:
+                output = self.client.run(
+                    "google/nano-banana",
+                    input=model_input
+                )
 
-            if progress_callback and not progress_callback(_("Processing Nano Banana response..."), PROGRESS_DOWNLOAD):
-                return None, _("Operation cancelled")
+                if progress_callback and not progress_callback(_("Processing Replicate response..."), PROGRESS_DOWNLOAD):
+                    return None, _("Operation cancelled")
 
-            pixbuf, error_msg = self._parse_image_response(response)
+                if not output:
+                    return None, _("No output received from API")
 
-            if progress_callback and pixbuf:
-                progress_callback(_("Image generation complete!"), PROGRESS_COMPLETE)
+                if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
+                    return None, _("Operation cancelled")
 
-            return pixbuf, error_msg
+                result_bytes = None
+                if isinstance(output, str):
+                    import urllib.request
+                    with urllib.request.urlopen(output) as url_response:
+                        result_bytes = url_response.read()
+                elif isinstance(output, bytes):
+                    result_bytes = output
+                elif hasattr(output, '__iter__'):
+                    try:
+                        result_bytes = b''.join(chunk for chunk in output)
+                    except (TypeError, ValueError):
+                        return None, _("Failed to process iterable response")
+                else:
+                    return None, _("Unexpected response format from API")
 
-        except errors.APIError as e:
-            return None, _("Nano Banana API error: {error}").format(error=e.message)
+                if not result_bytes or not isinstance(result_bytes, bytes):
+                    return None, _("No valid image data in API response")
+
+                pixbuf = self._bytes_to_pixbuf(result_bytes)
+                if not pixbuf:
+                    return None, _("Failed to convert result to image")
+
+                if progress_callback:
+                    progress_callback(_("Image generation complete!"), PROGRESS_COMPLETE)
+
+                return pixbuf, None
+
+            except ModelError as e:
+                error_msg = _("Model error: {error}").format(error=str(e))
+                if hasattr(e, 'prediction') and e.prediction:
+                    if hasattr(e.prediction, 'logs') and e.prediction.logs:
+                        error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
+                return None, error_msg
+
+            except ReplicateError as e:
+                return None, _("Replicate API error: {error}").format(error=str(e))
+
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
 
-    def _add_reference_images(
+    def _prepare_reference_images(
         self,
-        contents: List,
-        reference_images: Optional[List[str]],
+        reference_images: List[str],
         max_count: int
-    ) -> None:
+    ) -> List:
         """
-        Add reference images to the contents list
+        Prepare reference images for Replicate API
 
         Args:
-            contents (list): List to append image parts to
-            reference_images (list, optional): List of image file paths
-            max_count (int): Maximum number of images to add
+            reference_images (list): List of image file paths
+            max_count (int): Maximum number of images to process
+
+        Returns:
+            list: List of file objects for Replicate API
         """
-        if not reference_images or not types:
-            return
+        valid_files = []
 
         for img_path in reference_images[:max_count]:
-            image_part, success = self._validate_reference_image(img_path)
-            if success and image_part:
-                contents.append(image_part)
+            if self._validate_reference_image(img_path):
+                valid_files.append(open(img_path, 'rb'))
+
+        return valid_files
 
     def _bytes_to_pixbuf(self, image_bytes: bytes) -> Optional[GdkPixbuf.Pixbuf]:
         """
@@ -244,87 +307,34 @@ class GeminiAPI:
             print(f"Error converting bytes to pixbuf: {e}")
             return None
 
-    def _parse_image_response(self, response) -> Tuple[Optional[GdkPixbuf.Pixbuf], Optional[str]]:
-        """
-        Parse the API response and extract the generated image
-
-        Args:
-            response: API response object
-
-        Returns:
-            tuple: (GdkPixbuf.Pixbuf | None, str | None)
-                - If successful: (pixbuf, None)
-                - If failed: (None, error_message)
-        """
-        if hasattr(response, 'error') and response.error:
-            return None, str(response.error)
-
-        if hasattr(response, 'candidates') and response.candidates:
-            candidate = response.candidates[0]
-            if hasattr(candidate, 'finish_reason') and candidate.finish_reason:
-                if candidate.finish_reason not in ['STOP', 'MAX_TOKENS']:
-                    return None, _("Generation stopped: {reason}").format(reason=candidate.finish_reason)
-
-        if not response.candidates:
-            return None, _("No candidates in API response")
-
-        candidate = response.candidates[0]
-        if not candidate.content or not candidate.content.parts:
-            return None, _("No content parts in API response")
-
-        for part in candidate.content.parts:
-            if hasattr(part, 'inline_data') and part.inline_data:
-                image_bytes = part.inline_data.data
-                if isinstance(image_bytes, str):
-                    image_bytes = base64.b64decode(image_bytes)
-
-                pixbuf = self._bytes_to_pixbuf(image_bytes)
-                if pixbuf:
-                    return pixbuf, None
-
-        return None, _("No image data found in response")
-
     def _validate_reference_image(
         self,
         img_path: str,
         max_size_mb: int = MAX_FILE_SIZE_MB
-    ) -> Tuple[Optional[object], bool]:
+    ) -> bool:
         """
-        Validate and load a reference image file
+        Validate a reference image file
 
         Args:
             img_path (str): Path to the image file
             max_size_mb (int): Maximum file size in MB
 
         Returns:
-            tuple: (image_part | None, success: bool)
+            bool: True if valid, False otherwise
         """
-        if not types:
-            print("Error: types module not found")
-            return None, False
-
         try:
             file_size = os.path.getsize(img_path)
             if file_size > max_size_mb * 1024 * 1024:
                 print(f"Warning: Image {img_path} is {file_size / (1024*1024):.1f} MB, exceeds {max_size_mb} MB limit. Skipping.")
-                return None, False
-
-            with open(img_path, 'rb') as img_file:
-                image_data = img_file.read()
+                return False
 
             mime_type, encoding = mimetypes.guess_type(img_path)
             if mime_type not in SUPPORTED_MIME_TYPES:
                 print(f"Warning: Image {img_path} has unsupported MIME type {mime_type} with encoding {encoding}. Skipping.")
-                return None, False
+                return False
 
-            image_part = types.Part(
-                inline_data=types.Blob(
-                    data=image_data,
-                    mime_type=mime_type
-                )
-            )
-            return image_part, True
+            return True
 
         except Exception as e:
-            print(f"Warning: Could not load reference image {img_path}: {e}")
-            return None, False
+            print(f"Warning: Could not validate reference image {img_path}: {e}")
+            return False

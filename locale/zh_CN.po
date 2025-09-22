@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.0.3\n"
+"Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-20 16:13-1000\n"
+"POT-Creation-Date: 2025-09-22 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -43,11 +43,11 @@ msgstr "AI提示词"
 msgid "AI-powered image creation/editing with Nano Banana"
 msgstr "使用Nano Banana进行AI驱动的图像创建/编辑"
 
-#: api.py:58 dialog_threads.py:87 dialog_threads.py:126
+#: api.py:52 dialog_threads.py:87 dialog_threads.py:126
 msgid "API key is required"
 msgstr "需要API密钥"
 
-#: dialog_threads.py:324
+#: dialog_threads.py:325
 msgid "Adding edit layer..."
 msgstr "正在添加编辑图层..."
 
@@ -55,9 +55,9 @@ msgstr "正在添加编辑图层..."
 msgid "Additional Images (Optional)"
 msgstr "附加图像（可选）"
 
-#: api.py:101
-msgid "Building Nano Banana edit request..."
-msgstr "正在构建Nano Banana编辑请求..."
+#: api.py:95
+msgid "Building Replicate edit request..."
+msgstr "构建Replicate编辑请求..."
 
 #: dialog_events.py:163 dialog_gtk.py:221
 msgid "Cancel"
@@ -67,28 +67,32 @@ msgstr "取消"
 msgid "Cancelling..."
 msgstr "正在取消..."
 
+#: dialog_events.py:194
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum 10 reference images allowed."
+msgstr "无法添加{count}个文件。最多允许10个参考图像。"
+
 #: dialog_events.py:192
 #, python-brace-format
 msgid ""
-"Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
-msgstr "无法添加{count}个文件。编辑模式下最多允许2张参考图像。"
-
-#: dialog_events.py:194
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum 3 reference images allowed."
-msgstr "无法添加{count}个文件。最多允许3张参考图像。"
+"Cannot add {count} files. Maximum 9 reference images allowed in edit mode."
+msgstr "无法添加{count}个文件。编辑模式下最多允许9张参考图像。"
 
 #: dialog_gtk.py:160
 msgid "Clear selected files"
 msgstr "清除选定的文件"
 
-#: dialog_threads.py:301
+#: dialog_threads.py:302
 msgid "Creating GIMP image..."
 msgstr "正在创建GIMP图像..."
 
+#: api.py:133 api.py:222
+msgid "Downloading result..."
+msgstr "正在下载结果..."
+
 #: dialog.py:24
-msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
-msgstr "Dream Prompter - Nano Banana AI图像创建器/编辑器"
+msgid "Dream Prompter - AI Image Creator/Editor"
+msgstr "Dream Prompter - AI图像创建器/编辑器"
 
 #: dream-prompter.py:48
 msgid "Dream Prompter..."
@@ -98,7 +102,7 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "编辑图像"
 
-#: dialog_threads.py:331
+#: dialog_threads.py:332
 msgid "Edit layer created!"
 msgstr "编辑图层已创建！"
 
@@ -107,15 +111,15 @@ msgid "Edit mode requires a selected layer"
 msgstr "编辑模式需要选择一个图层"
 
 #: dialog_gtk.py:191
-msgid "Enter your Google Gemini API key..."
-msgstr "输入您的Google Gemini API密钥..."
+msgid "Enter your Replicate API key..."
+msgstr "输入您的Replicate API密钥..."
 
-#: dialog_threads.py:312
+#: dialog_threads.py:313
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "创建GIMP图像时出错：{error}"
 
-#: dialog_threads.py:335
+#: dialog_threads.py:336
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "创建编辑图层时出错：{error}"
@@ -125,17 +129,25 @@ msgstr "创建编辑图层时出错：{error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "运行Dream Prompter时出错：{error}"
 
-#: dialog_threads.py:305
+#: api.py:156 api.py:245
+msgid "Failed to convert result to image"
+msgstr "将结果转换为图像失败"
+
+#: dialog_threads.py:306
 msgid "Failed to create GIMP image"
 msgstr "创建GIMP图像失败"
 
-#: dialog_threads.py:328
+#: dialog_threads.py:329
 msgid "Failed to create edit layer"
 msgstr "创建编辑图层失败"
 
-#: api.py:99
+#: api.py:93
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
+
+#: api.py:147 api.py:236
+msgid "Failed to process iterable response"
+msgstr "处理可迭代响应失败"
 
 #: dialog_events.py:133 dialog_gtk.py:226
 msgid "Generate Edit"
@@ -145,37 +157,28 @@ msgstr "生成编辑"
 msgid "Generate Image"
 msgstr "生成图像"
 
-#: api.py:166
-msgid "Generating image with Nano Banana..."
-msgstr "正在使用Nano Banana生成图像..."
-
-#: api.py:267
-#, python-brace-format
-msgid "Generation stopped: {reason}"
-msgstr "生成已停止：{reason}"
+#: api.py:191
+msgid "Generating image with Replicate..."
+msgstr "正在使用Replicate生成图像..."
 
 #: dialog_gtk.py:207
 #, python-brace-format
-msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
-msgstr "从<a href=\"{url}\">Google Cloud Console</a>获取您的API密钥"
-
-#: dialog_gtk.py:184
-msgid "Google Gemini API Key"
-msgstr "Google Gemini API密钥"
+msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
+msgstr "从<a href=\"{url}\">Replicate</a>获取您的API密钥"
 
 #: dialog_events.py:206
 msgid "Hide API key"
 msgstr "隐藏API密钥"
 
-#: api.py:132
+#: api.py:159
 msgid "Image editing complete!"
 msgstr "图像编辑完成！"
 
-#: dialog_threads.py:308
+#: dialog_threads.py:309
 msgid "Image generated successfully!"
 msgstr "图像生成成功！"
 
-#: api.py:194
+#: api.py:248
 msgid "Image generation complete!"
 msgstr "图像生成完成！"
 
@@ -183,16 +186,16 @@ msgstr "图像生成完成！"
 msgid "Initializing API request..."
 msgstr "正在初始化API请求..."
 
-#: api.py:137 api.py:199
+#: api.py:122 api.py:256
+msgid "Logs"
+msgstr "日志"
+
+#: api.py:119 api.py:253
 #, python-brace-format
-msgid "Nano Banana API error: {error}"
-msgstr "Nano Banana API错误：{error}"
+msgid "Model error: {error}"
+msgstr "模型错误：{error}"
 
-#: api.py:55 api.py:88 api.py:164
-msgid "Nano Banana API not available. Please install google-genai"
-msgstr "Nano Banana API不可用。请安装google-genai"
-
-#: api.py:91
+#: api.py:85
 msgid "No GIMP image provided for editing"
 msgstr "未提供用于编辑的GIMP图像"
 
@@ -200,21 +203,9 @@ msgstr "未提供用于编辑的GIMP图像"
 msgid "No additional images selected"
 msgstr "未选择附加图像"
 
-#: api.py:270
-msgid "No candidates in API response"
-msgstr "API响应中无候选项"
-
-#: api.py:274
-msgid "No content parts in API response"
-msgstr "API响应中无内容部分"
-
 #: dialog_threads.py:122 dialog_threads.py:208
 msgid "No image available for editing"
 msgstr "没有可编辑的图像"
-
-#: api.py:286
-msgid "No image data found in response"
-msgstr "响应中未找到图像数据"
 
 #: dialog_threads.py:182 dialog_threads.py:236
 msgid "No image data received from API"
@@ -224,12 +215,20 @@ msgstr "未从API接收到图像数据"
 msgid "No layer available for editing"
 msgstr "没有可编辑的图层"
 
+#: api.py:131 api.py:220
+msgid "No output received from API"
+msgstr "未从API接收到输出"
+
+#: api.py:152 api.py:241
+msgid "No valid image data in API response"
+msgstr "API响应中没有有效图像数据"
+
 #: dialog_gtk.py:270
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:94 api.py:102 api.py:119 api.py:127 api.py:167 api.py:181 api.py:189
-#: dialog_threads.py:275
+#: api.py:88 api.py:96 api.py:111 api.py:128 api.py:134 api.py:192 api.py:208
+#: api.py:217 api.py:223
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
@@ -238,20 +237,20 @@ msgid "Please enter a prompt"
 msgstr "请输入提示词"
 
 #: dialog_events.py:98
-msgid "Please enter your Google Gemini API key"
-msgstr "请输入您的Google Gemini API密钥"
+msgid "Please enter your Replicate API key"
+msgstr "请输入您的Replicate API密钥"
 
-#: api.py:93
-msgid "Preparing current image for Nano Banana..."
-msgstr "正在为Nano Banana准备当前图像..."
+#: api.py:87
+msgid "Preparing current image for Replicate..."
+msgstr "为Replicate准备当前图像..."
 
-#: api.py:126
-msgid "Processing Nano Banana edit response..."
-msgstr "正在处理Nano Banana编辑响应..."
+#: api.py:127
+msgid "Processing Replicate edit response..."
+msgstr "处理Replicate编辑响应..."
 
-#: api.py:188
-msgid "Processing Nano Banana response..."
-msgstr "正在处理Nano Banana响应..."
+#: api.py:216
+msgid "Processing Replicate response..."
+msgstr "处理Replicate响应..."
 
 #: dialog_threads.py:91 dialog_threads.py:130
 msgid "Prompt is required"
@@ -265,6 +264,19 @@ msgstr "就绪"
 msgid "Reduced to 2 reference images for edit mode"
 msgstr "编辑模式下减少到2张参考图像"
 
+#: dialog_gtk.py:184
+msgid "Replicate API Key"
+msgstr "Replicate API密钥"
+
+#: api.py:125 api.py:260
+#, python-brace-format
+msgid "Replicate API error: {error}"
+msgstr "Replicate API错误：{error}"
+
+#: api.py:49 api.py:82 api.py:189
+msgid "Replicate API not available. Please install replicate"
+msgstr "Replicate API不可用。请安装google-genai"
+
 #: dialog_events.py:164
 msgid "Select"
 msgstr "选择"
@@ -277,21 +289,21 @@ msgstr "选择图像..."
 msgid "Select Reference Images"
 msgstr "选择参考图像"
 
-#: dialog_events.py:135
-msgid "Select up to 2 additional images"
-msgstr "最多选择2张附加图像"
-
 #: dialog_events.py:140
-msgid "Select up to 3 additional images"
-msgstr "最多选择3张附加图像"
+msgid "Select up to 10 additional images"
+msgstr "最多选择10张附加图像"
 
-#: api.py:118
-msgid "Sending edit request to Nano Banana..."
-msgstr "正在向Nano Banana发送编辑请求..."
+#: dialog_events.py:135
+msgid "Select up to 9 additional images"
+msgstr "最多选择9张附加图像"
 
-#: api.py:180
-msgid "Sending request to Nano Banana..."
-msgstr "正在向Nano Banana发送请求..."
+#: api.py:110
+msgid "Sending edit request to Replicate..."
+msgstr "向Replicate发送编辑请求..."
+
+#: api.py:207
+msgid "Sending request to Replicate..."
+msgstr "向Replicate发送请求..."
 
 #: dialog_events.py:210
 msgid "Show API key"
@@ -324,10 +336,14 @@ msgstr "图像编辑过程中出现意外错误：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "图像生成过程中出现意外错误：{error}"
 
-#: api.py:139 api.py:201
+#: api.py:164 api.py:263
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外错误：{error}"
+
+#: api.py:149 api.py:238
+msgid "Unexpected response format from API"
+msgstr "API返回意外的响应格式"
 
 #: dialog_gtk.py:385
 #, python-brace-format
@@ -354,3 +370,23 @@ msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
 
 #~ msgid "Generate new image"
 #~ msgstr "生成新图像"
+
+#, python-brace-format
+#~ msgid "Generation stopped: {reason}"
+#~ msgstr "生成已停止：{reason}"
+
+#~ msgid "Google Gemini API Key"
+#~ msgstr "Google Gemini API密钥"
+
+#, python-brace-format
+#~ msgid "Nano Banana API error: {error}"
+#~ msgstr "Nano Banana API错误：{error}"
+
+#~ msgid "No content parts in API response"
+#~ msgstr "API响应中无内容部分"
+
+#~ msgid "No image data found in response"
+#~ msgstr "响应中未找到图像数据"
+
+#~ msgid "Processing Nano Banana response..."
+#~ msgstr "正在处理Nano Banana响应..."

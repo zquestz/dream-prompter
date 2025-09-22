@@ -95,7 +95,7 @@ class DreamPrompterEventHandler:
         prompt_text = self.dialog.get_prompt()
 
         if not api_key:
-            self.show_error(_("Please enter your Google Gemini API key"))
+            self.show_error(_("Please enter your Replicate API key"))
             return
 
         if not prompt_text:
@@ -132,12 +132,12 @@ class DreamPrompterEventHandler:
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Edit"))
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 2 additional images")}</small>')
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 9 additional images")}</small>')
         else:
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Image"))
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 3 additional images")}</small>')
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 10 additional images")}</small>')
 
         self.update_generate_button_state()
 
@@ -179,9 +179,9 @@ class DreamPrompterEventHandler:
 
             current_mode = self.dialog.get_current_mode()
             if current_mode == "edit":
-                max_total_files = 2
+                max_total_files = 9
             else:
-                max_total_files = 3
+                max_total_files = 10
 
             max_new_files = max_total_files - len(self.ui.selected_files)
             if max_new_files > 0:
@@ -189,9 +189,9 @@ class DreamPrompterEventHandler:
                 self.ui.update_files_display()
             elif files:
                 if current_mode == "edit":
-                    print(_("Cannot add {count} files. Maximum 2 reference images allowed in edit mode.").format(count=len(files)))
+                    print(_("Cannot add {count} files. Maximum 9 reference images allowed in edit mode.").format(count=len(files)))
                 else:
-                    print(_("Cannot add {count} files. Maximum 3 reference images allowed.").format(count=len(files)))
+                    print(_("Cannot add {count} files. Maximum 10 reference images allowed.").format(count=len(files)))
 
         dialog.destroy()
 

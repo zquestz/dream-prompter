@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI capabilities directly into GIMP for intelligent image generation and editing.
+Dream Prompter brings Replicate's Nano Banana (Gemini 2.5 Flash Image Preview) AI capabilities directly into GIMP for intelligent image generation and editing.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI c
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🖼️ **Reference Images**: Use up to 3 reference images for generation, 2 for editing
+- 🖼️ **Reference Images**: Use up to 10 reference images for generation, 9 for editing
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
 - 🌍 **Multi-Language Support**: Setup to support multiple languages via i18n
@@ -21,12 +21,12 @@ Dream Prompter brings Google's Nano Banana (Gemini 2.5 Flash Image Preview) AI c
 
 - **GIMP 3.0.x**
 - **Python 3.8+**
-- **Google Gemini API key** (paid account required)
+- **Replicate API key** (paid account required)
 
 Install the required Python library:
 
 ```bash
-pip install google-genai
+pip install replicate
 ```
 
 ### Quick Install
@@ -35,7 +35,7 @@ pip install google-genai
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.0.3`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -47,10 +47,10 @@ pip install google-genai
    Example for Linux:
 
    ```bash
-   # Extract creates dream-prompter-1.0.3/
-   unzip dream-prompter-1.0.3.zip
+   # Extract creates dream-prompter-1.1.0/
+   unzip dream-prompter-1.1.0.zip
    # Move to correct location with correct name
-   mv dream-prompter-1.0.3 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+   mv dream-prompter-1.1.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
    ```
 
 4. **Make executable** (Linux/macOS only):
@@ -106,29 +106,29 @@ yay -S dream-prompter
 ```bash
 git clone https://github.com/zquestz/dream-prompter.git
 cd dream-prompter
-pip install google-genai
+pip install replicate
 python3 scripts/build-translations.py # optional, defaults to English
 ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
 ```
 
 ### Python Dependencies Note
 
-**Important**: Use the same Python that GIMP uses. If `pip install google-genai` doesn't work:
+**Important**: Use the same Python that GIMP uses. If `pip install replicate` doesn't work:
 
 ```bash
 # System-wide installation
-sudo pip install google-genai
+sudo pip install replicate
 
 # User installation (recommended)
-pip install --user google-genai
+pip install --user replicate
 
 # Ensure Python 3
-pip3 install google-genai
+pip3 install replicate
 ```
 
 #### macOS Instructions
 
-If you get the **"google-genai not installed"** error on macOS:
+If you get the **"replicate not installed"** error on macOS:
 
 1. **Locate GIMP's Python** by opening the Python Console: `Filters → Development → Python-Fu`
 2. **Run this command** in the console:
@@ -143,7 +143,7 @@ If you get the **"google-genai not installed"** error on macOS:
    /Applications/GIMP.app/Contents/MacOS/python3
    ```
 
-3. **Install google-genai using GIMP's Python** from Terminal:
+3. **Install replicate using GIMP's Python** from Terminal:
 
    ```bash
    # Change to GIMP's Python directory
@@ -152,35 +152,29 @@ If you get the **"google-genai not installed"** error on macOS:
    # Ensure pip is installed
    ./python3 -m ensurepip
 
-   # Install google-genai
-   ./python3 -m pip install google-genai
+   # Install replicate
+   ./python3 -m pip install replicate
    ```
 
 ## Getting Your API Key
 
-**Important**: The Gemini 2.5 Flash Image Preview model (Nano Banana) requires a **paid Google Cloud account** with billing enabled. Free tier accounts cannot access the image generation capabilities.
-
-1. **Visit [Google AI Studio](https://aistudio.google.com/)**
-2. **Create or select a project**
-3. **Enable billing** for your Google Cloud account
-4. **Generate an API key**
-5. **Keep your key secure and monitor usage/costs**
+1. **Visit [Replicate](https://replicate.com/)**
+2. **Generate an API key**
+3. **Keep your key secure and monitor usage/costs**
 
 ### API Specifications
 
-- **Model**: `gemini-2.5-flash-image-preview` (Nano Banana)
-- **Billing**: **Paid account required** - image generation is not available on free tier
+- **Model**: `google/nano-banana` (Gemini 2.5 Flash Image Preview)
 - **Image Limits**:
-  - Generation mode: Up to 3 reference images
-  - Edit mode: Up to 2 reference images (current image + 2 = 3 total)
+  - Generation mode: Up to 10 reference images
+  - Edit mode: Up to 9 reference images (current image + 9 = 10 total)
 - **File Size**: Maximum 7MB per image
 - **Formats**: PNG, JPEG, WebP only
 
 ### Cost Considerations
 
 - Each image generation/edit counts toward your API usage
-- Monitor your usage at [Google AI Studio](https://aistudio.google.com/) to avoid unexpected charges
-- Consider setting up billing alerts in Google Cloud Console
+- Monitor your usage at [Replicate](https://replicate.com/) to avoid unexpected charges
 
 ## Usage
 
@@ -261,7 +255,7 @@ The plugin is organized into focused modules:
 - **`dialog_gtk.py`** - GTK user interface components
 - **`dialog_events.py`** - Event handling and user interactions
 - **`dialog_threads.py`** - Background processing and threading
-- **`api.py`** - Google Gemini API integration
+- **`api.py`** - Replicate API integration
 - **`integrator.py`** - GIMP-specific operations
 - **`settings.py`** - Configuration persistence
 - **`i18n.py`** - Internationalization support
@@ -270,9 +264,9 @@ The plugin is organized into focused modules:
 
 ### Common Issues
 
-**"google-genai not installed" warning**
+**"replicate not installed" warning**
 
-- Install with: `pip install google-genai`
+- Install with: `pip install replicate`
 - Ensure you're using GIMP's Python environment
 
 **Plugin doesn't appear in menu**
@@ -284,8 +278,7 @@ The plugin is organized into focused modules:
 **API errors**
 
 - Verify your API key is correct
-- **Ensure billing is enabled** - free accounts cannot access image generation
-- Check your quota at [Google AI Studio](https://aistudio.google.com/)
+- Check your quota at [Replicate](https://replicate.com/)
 - Monitor costs to avoid unexpected charges
 
 **Image processing issues**
@@ -340,4 +333,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Google's Gemini 2.5 Flash Image Preview (Nano Banana) API.
+Built with Replicate's API accessing Google's Nano Banana (Gemini 2.5 Flash Image Preview) model.

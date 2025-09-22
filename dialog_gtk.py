@@ -181,14 +181,14 @@ class DreamPrompterUI:
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
         title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{_('Google Gemini API Key')}</b>")
+        title_label.set_markup(f"<b>{_('Replicate API Key')}</b>")
         title_label.set_halign(Gtk.Align.START)
         section_box.pack_start(title_label, False, False, 0)
 
         key_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
 
         self.api_key_entry = Gtk.Entry()
-        self.api_key_entry.set_placeholder_text(_("Enter your Google Gemini API key..."))
+        self.api_key_entry.set_placeholder_text(_("Enter your Replicate API key..."))
         self.api_key_entry.set_visibility(False)
         self.api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         key_container.pack_start(self.api_key_entry, True, True, 0)
@@ -203,8 +203,8 @@ class DreamPrompterUI:
         section_box.pack_start(key_container, False, False, 0)
 
         help_label = Gtk.Label()
-        help_url = "https://console.cloud.google.com/"
-        help_text = _('Get your API key from <a href="{url}">Google Cloud Console</a>').format(url=help_url)
+        help_url = "https://replicate.com/account/api-tokens"
+        help_text = _('Get your API key from <a href="{url}">Replicate</a>').format(url=help_url)
         help_label.set_markup(f'<small>{help_text}</small>')
         help_label.set_halign(Gtk.Align.START)
         help_label.set_line_wrap(True)

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.0.3\n"
+"Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-20 16:13-1000\n"
+"POT-Creation-Date: 2025-09-22 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -43,11 +43,11 @@ msgstr "AI प्रॉम्प्ट"
 msgid "AI-powered image creation/editing with Nano Banana"
 msgstr "Nano Banana के साथ AI संचालित छवि निर्माण/संपादन"
 
-#: api.py:58 dialog_threads.py:87 dialog_threads.py:126
+#: api.py:52 dialog_threads.py:87 dialog_threads.py:126
 msgid "API key is required"
 msgstr "API कुंजी आवश्यक है"
 
-#: dialog_threads.py:324
+#: dialog_threads.py:325
 msgid "Adding edit layer..."
 msgstr "संपादन परत जोड़ी जा रही है..."
 
@@ -55,9 +55,9 @@ msgstr "संपादन परत जोड़ी जा रही है..."
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: api.py:101
-msgid "Building Nano Banana edit request..."
-msgstr "Nano Banana संपादन अनुरोध बनाया जा रहा है..."
+#: api.py:95
+msgid "Building Replicate edit request..."
+msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
 #: dialog_events.py:163 dialog_gtk.py:221
 msgid "Cancel"
@@ -67,29 +67,33 @@ msgstr "रद्द करें"
 msgid "Cancelling..."
 msgstr "रद्द किया जा रहा है..."
 
+#: dialog_events.py:194
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum 10 reference images allowed."
+msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम 10 संदर्भ छवियों की अनुमति है।"
+
 #: dialog_events.py:192
 #, python-brace-format
 msgid ""
-"Cannot add {count} files. Maximum 2 reference images allowed in edit mode."
+"Cannot add {count} files. Maximum 9 reference images allowed in edit mode."
 msgstr ""
-"{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम 2 संदर्भ छवियों की अनुमति है।"
-
-#: dialog_events.py:194
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum 3 reference images allowed."
-msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम 3 संदर्भ छवियों की अनुमति है।"
+"{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम 9 संदर्भ छवियों की अनुमति है।"
 
 #: dialog_gtk.py:160
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: dialog_threads.py:301
+#: dialog_threads.py:302
 msgid "Creating GIMP image..."
 msgstr "GIMP छवि बनाई जा रही है..."
 
+#: api.py:133 api.py:222
+msgid "Downloading result..."
+msgstr "परिणाम डाउनलोड किया जा रहा है..."
+
 #: dialog.py:24
-msgid "Dream Prompter - Nano Banana AI Image Creator/Editor"
-msgstr "Dream Prompter - Nano Banana AI छवि निर्माता/संपादक"
+msgid "Dream Prompter - AI Image Creator/Editor"
+msgstr "Dream Prompter - AI छवि निर्माता/संपादक"
 
 #: dream-prompter.py:48
 msgid "Dream Prompter..."
@@ -99,7 +103,7 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "छवि संपादित करें"
 
-#: dialog_threads.py:331
+#: dialog_threads.py:332
 msgid "Edit layer created!"
 msgstr "संपादन परत बनाई गई!"
 
@@ -108,15 +112,15 @@ msgid "Edit mode requires a selected layer"
 msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
 #: dialog_gtk.py:191
-msgid "Enter your Google Gemini API key..."
-msgstr "अपनी Google Gemini API कुंजी दर्ज करें..."
+msgid "Enter your Replicate API key..."
+msgstr "अपनी Replicate API कुंजी दर्ज करें..."
 
-#: dialog_threads.py:312
+#: dialog_threads.py:313
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "GIMP छवि बनाने में त्रुटि: {error}"
 
-#: dialog_threads.py:335
+#: dialog_threads.py:336
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "संपादन परत बनाने में त्रुटि: {error}"
@@ -126,17 +130,25 @@ msgstr "संपादन परत बनाने में त्रुट�
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: dialog_threads.py:305
+#: api.py:156 api.py:245
+msgid "Failed to convert result to image"
+msgstr "परिणाम को छवि में परिवर्तित करने में विफल"
+
+#: dialog_threads.py:306
 msgid "Failed to create GIMP image"
 msgstr "GIMP छवि बनाने में विफल"
 
-#: dialog_threads.py:328
+#: dialog_threads.py:329
 msgid "Failed to create edit layer"
 msgstr "संपादन परत बनाने में विफल"
 
-#: api.py:99
+#: api.py:93
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
+
+#: api.py:147 api.py:236
+msgid "Failed to process iterable response"
+msgstr "पुनरावृत्तीय प्रतिक्रिया को संसाधित करने में विफल"
 
 #: dialog_events.py:133 dialog_gtk.py:226
 msgid "Generate Edit"
@@ -146,37 +158,28 @@ msgstr "संपादन उत्पन्न करें"
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: api.py:166
-msgid "Generating image with Nano Banana..."
-msgstr "Nano Banana के साथ छवि उत्पन्न की जा रही है..."
-
-#: api.py:267
-#, python-brace-format
-msgid "Generation stopped: {reason}"
-msgstr "उत्पादन रुका: {reason}"
+#: api.py:191
+msgid "Generating image with Replicate..."
+msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
 #: dialog_gtk.py:207
 #, python-brace-format
-msgid "Get your API key from <a href=\"{url}\">Google Cloud Console</a>"
-msgstr "<a href=\"{url}\">Google Cloud Console</a> से अपनी API कुंजी प्राप्त करें"
-
-#: dialog_gtk.py:184
-msgid "Google Gemini API Key"
-msgstr "Google Gemini API कुंजी"
+msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
+msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी प्राप्त करें"
 
 #: dialog_events.py:206
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: api.py:132
+#: api.py:159
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
-#: dialog_threads.py:308
+#: dialog_threads.py:309
 msgid "Image generated successfully!"
 msgstr "छवि सफलतापूर्वक उत्पन्न हुई!"
 
-#: api.py:194
+#: api.py:248
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -184,16 +187,16 @@ msgstr "छवि उत्पादन पूर्ण!"
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:137 api.py:199
+#: api.py:122 api.py:256
+msgid "Logs"
+msgstr "लॉग"
+
+#: api.py:119 api.py:253
 #, python-brace-format
-msgid "Nano Banana API error: {error}"
-msgstr "Nano Banana API त्रुटि: {error}"
+msgid "Model error: {error}"
+msgstr "मॉडल त्रुटि: {error}"
 
-#: api.py:55 api.py:88 api.py:164
-msgid "Nano Banana API not available. Please install google-genai"
-msgstr "Nano Banana API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
-
-#: api.py:91
+#: api.py:85
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
@@ -201,21 +204,9 @@ msgstr "संपादन के लिए कोई GIMP छवि प्र�
 msgid "No additional images selected"
 msgstr "कोई अतिरिक्त छवियां चयनित नहीं"
 
-#: api.py:270
-msgid "No candidates in API response"
-msgstr "API प्रतिक्रिया में कोई उम्मीदवार नहीं"
-
-#: api.py:274
-msgid "No content parts in API response"
-msgstr "API प्रतिक्रिया में कोई सामग्री भाग नहीं"
-
 #: dialog_threads.py:122 dialog_threads.py:208
 msgid "No image available for editing"
 msgstr "संपादन के लिए कोई छवि उपलब्ध नहीं"
-
-#: api.py:286
-msgid "No image data found in response"
-msgstr "प्रतिक्रिया में कोई छवि डेटा नहीं मिला"
 
 #: dialog_threads.py:182 dialog_threads.py:236
 msgid "No image data received from API"
@@ -225,12 +216,20 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
+#: api.py:131 api.py:220
+msgid "No output received from API"
+msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
+
+#: api.py:152 api.py:241
+msgid "No valid image data in API response"
+msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
+
 #: dialog_gtk.py:270
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:94 api.py:102 api.py:119 api.py:127 api.py:167 api.py:181 api.py:189
-#: dialog_threads.py:275
+#: api.py:88 api.py:96 api.py:111 api.py:128 api.py:134 api.py:192 api.py:208
+#: api.py:217 api.py:223
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
@@ -239,20 +238,20 @@ msgid "Please enter a prompt"
 msgstr "कृपया एक प्रॉम्प्ट दर्ज करें"
 
 #: dialog_events.py:98
-msgid "Please enter your Google Gemini API key"
-msgstr "कृपया अपनी Google Gemini API कुंजी दर्ज करें"
+msgid "Please enter your Replicate API key"
+msgstr "कृपया अपनी Replicate API कुंजी दर्ज करें"
 
-#: api.py:93
-msgid "Preparing current image for Nano Banana..."
-msgstr "Nano Banana के लिए वर्तमान छवि तैयार की जा रही है..."
+#: api.py:87
+msgid "Preparing current image for Replicate..."
+msgstr "Replicate के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:126
-msgid "Processing Nano Banana edit response..."
-msgstr "Nano Banana संपादन प्रतिक्रिया संसाधित की जा रही है..."
+#: api.py:127
+msgid "Processing Replicate edit response..."
+msgstr "Replicate संपादन प्रतिक्रिया संसाधित की जा रही है..."
 
-#: api.py:188
-msgid "Processing Nano Banana response..."
-msgstr "Nano Banana प्रतिक्रिया संसाधित की जा रही है..."
+#: api.py:216
+msgid "Processing Replicate response..."
+msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
 #: dialog_threads.py:91 dialog_threads.py:130
 msgid "Prompt is required"
@@ -266,6 +265,19 @@ msgstr "तैयार"
 msgid "Reduced to 2 reference images for edit mode"
 msgstr "संपादन मोड के लिए 2 संदर्भ छवियों तक कम किया गया"
 
+#: dialog_gtk.py:184
+msgid "Replicate API Key"
+msgstr "Replicate API कुंजी"
+
+#: api.py:125 api.py:260
+#, python-brace-format
+msgid "Replicate API error: {error}"
+msgstr "Replicate API त्रुटि: {error}"
+
+#: api.py:49 api.py:82 api.py:189
+msgid "Replicate API not available. Please install replicate"
+msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
+
 #: dialog_events.py:164
 msgid "Select"
 msgstr "चुनें"
@@ -278,21 +290,21 @@ msgstr "छवियां चुनें..."
 msgid "Select Reference Images"
 msgstr "संदर्भ छवियां चुनें"
 
-#: dialog_events.py:135
-msgid "Select up to 2 additional images"
-msgstr "अधिकतम 2 अतिरिक्त छवियां चुनें"
-
 #: dialog_events.py:140
-msgid "Select up to 3 additional images"
-msgstr "अधिकतम 3 अतिरिक्त छवियां चुनें"
+msgid "Select up to 10 additional images"
+msgstr "अधिकतम 10 अतिरिक्त छवियां चुनें"
 
-#: api.py:118
-msgid "Sending edit request to Nano Banana..."
-msgstr "Nano Banana को संपादन अनुरोध भेजा जा रहा है..."
+#: dialog_events.py:135
+msgid "Select up to 9 additional images"
+msgstr "अधिकतम 9 अतिरिक्त छवियां चुनें"
 
-#: api.py:180
-msgid "Sending request to Nano Banana..."
-msgstr "Nano Banana को अनुरोध भेजा जा रहा है..."
+#: api.py:110
+msgid "Sending edit request to Replicate..."
+msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
+
+#: api.py:207
+msgid "Sending request to Replicate..."
+msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
 #: dialog_events.py:210
 msgid "Show API key"
@@ -326,10 +338,14 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:139 api.py:201
+#: api.py:164 api.py:263
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
+
+#: api.py:149 api.py:238
+msgid "Unexpected response format from API"
+msgstr "API से अप्रत्याशित प्रतिक्रिया प्रारूप"
 
 #: dialog_gtk.py:385
 #, python-brace-format
@@ -356,3 +372,26 @@ msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार हो
 
 #~ msgid "Generate new image"
 #~ msgstr "नई छवि उत्पन्न करें"
+
+#, python-brace-format
+#~ msgid "Generation stopped: {reason}"
+#~ msgstr "उत्पादन रुका: {reason}"
+
+#~ msgid "Google Gemini API Key"
+#~ msgstr "Google Gemini API कुंजी"
+
+#, python-brace-format
+#~ msgid "Nano Banana API error: {error}"
+#~ msgstr "Nano Banana API त्रुटि: {error}"
+
+#~ msgid "No content parts in API response"
+#~ msgstr "API प्रतिक्रिया में कोई सामग्री भाग नहीं"
+
+#~ msgid "No image data found in response"
+#~ msgstr "प्रतिक्रिया में कोई छवि डेटा नहीं मिला"
+
+#~ msgid "Processing Nano Banana response..."
+#~ msgstr "Nano Banana प्रतिक्रिया संसाधित की जा रही है..."
+
+#~ msgid "Select up to 2 additional images"
+#~ msgstr "अधिकतम 2 अतिरिक्त छवियां चुनें"
