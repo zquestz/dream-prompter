@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Nano Banana, Seedream 4, and more
+- 🤖 **Multiple AI Models**: Choose from Nano Banana and Seedream 4
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -117,6 +117,7 @@ yay -S dream-prompter
 │   ├── __init__.py
 │   ├── factory.py
 │   └── nano_banana.py
+│   └── seedream4.py
 └── locale/ (optional)
     └── ...
 ```
