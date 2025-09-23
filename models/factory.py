@@ -22,6 +22,49 @@ class ModelFactory:
         from . import nano_banana
         from . import seedream4
 
+    def create_model_info_dict(self, model_name: str) -> Optional[Dict[str, Any]]:
+        """
+        Create a dictionary with model information for UI/display purposes
+
+        Args:
+            model_name: Name of the model
+
+        Returns:
+            Dictionary with model info or None if model not found
+        """
+        model = self.get_model_by_name(model_name)
+        if not model:
+            return None
+
+        return {
+            'name': model.name,
+            'display_name': model.display_name,
+            'description': model.description,
+            'max_reference_images': model.max_reference_images,
+            'max_reference_images_edit': model.max_reference_images_edit,
+            'max_file_size_mb': model.max_file_size_mb,
+            'supported_mime_types': model.supported_mime_types,
+            'default_output_format': model.default_output_format.value,
+        }
+
+    def get_available_model_names(self) -> List[str]:
+        """
+        Get list of all available model names
+
+        Returns:
+            List of model names
+        """
+        return get_model_names()
+
+    def get_available_models(self) -> Dict[str, BaseModel]:
+        """
+        Get all available model instances
+
+        Returns:
+            Dictionary of model name -> model instance
+        """
+        return get_all_models()
+
     def get_default_model(self) -> BaseModel:
         """
         Get the default model instance
@@ -48,66 +91,6 @@ class ModelFactory:
             Model instance or None if not found
         """
         return get_model(name)
-
-    def get_available_models(self) -> Dict[str, BaseModel]:
-        """
-        Get all available model instances
-
-        Returns:
-            Dictionary of model name -> model instance
-        """
-        return get_all_models()
-
-    def get_available_model_names(self) -> List[str]:
-        """
-        Get list of all available model names
-
-        Returns:
-            List of model names
-        """
-        return get_model_names()
-
-    def create_model_info_dict(self, model_name: str) -> Optional[Dict[str, Any]]:
-        """
-        Create a dictionary with model information for UI/display purposes
-
-        Args:
-            model_name: Name of the model
-
-        Returns:
-            Dictionary with model info or None if model not found
-        """
-        model = self.get_model_by_name(model_name)
-        if not model:
-            return None
-
-        return {
-            'name': model.name,
-            'display_name': model.display_name,
-            'description': model.description,
-            'max_reference_images': model.max_reference_images,
-            'max_reference_images_edit': model.max_reference_images_edit,
-            'max_file_size_mb': model.max_file_size_mb,
-            'supported_mime_types': model.supported_mime_types,
-            'default_output_format': model.default_output_format.value,
-        }
-
-    def validate_model_compatibility(self, model_name: str, operation_type: str) -> bool:
-        """
-        Validate if a model supports a specific operation type
-
-        Args:
-            model_name: Name of the model
-            operation_type: Type of operation ('generate' or 'edit')
-
-        Returns:
-            True if model supports the operation, False otherwise
-        """
-        model = self.get_model_by_name(model_name)
-        if not model:
-            return False
-
-        return operation_type.lower() in ['generate', 'edit']
 
     def get_model_limits(self, model_name: str, operation_type: str) -> Optional[Dict[str, Any]]:
         """
@@ -148,6 +131,23 @@ class ModelFactory:
             self._default_model = model_name
             return True
         return False
+
+    def validate_model_compatibility(self, model_name: str, operation_type: str) -> bool:
+        """
+        Validate if a model supports a specific operation type
+
+        Args:
+            model_name: Name of the model
+            operation_type: Type of operation ('generate' or 'edit')
+
+        Returns:
+            True if model supports the operation, False otherwise
+        """
+        model = self.get_model_by_name(model_name)
+        if not model:
+            return False
+
+        return operation_type.lower() in ['generate', 'edit']
 
 model_factory = ModelFactory()
 

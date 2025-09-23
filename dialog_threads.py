@@ -71,38 +71,6 @@ class DreamPrompterThreads:
 
         self._callbacks = callbacks
 
-    def start_generate_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
-        """
-        Start image generation in background thread
-
-        Args:
-            api_key: Replicate API key
-            prompt: Text prompt for image generation
-            reference_images: Optional list of reference image paths
-            model_name: Optional model name to use
-        """
-        if not self.ui or self._processing:
-            return
-
-        if not api_key or not api_key.strip():
-            self._handle_error(_("API key is required"))
-            return
-
-        if not prompt or not prompt.strip():
-            self._handle_error(_("Prompt is required"))
-            return
-
-        self._processing = True
-        self._cancel_requested = False
-        self.ui.set_ui_enabled(False)
-
-        self._current_thread = threading.Thread(
-            target=self._generate_image_worker,
-            args=(api_key, prompt, reference_images or [], model_name)
-        )
-        self._current_thread.daemon = True
-        self._current_thread.start()
-
     def start_edit_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
         """
         Start image editing in background thread
@@ -143,55 +111,37 @@ class DreamPrompterThreads:
         self._current_thread.daemon = True
         self._current_thread.start()
 
-    def _generate_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
+    def start_generate_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
         """
-        Generate image in background thread
+        Start image generation in background thread
 
         Args:
             api_key: Replicate API key
             prompt: Text prompt for image generation
-            reference_images: List of reference image paths
+            reference_images: Optional list of reference image paths
             model_name: Optional model name to use
         """
-        try:
-            if self._cancel_requested:
-                GLib.idle_add(self._handle_cancelled)
-                return
+        if not self.ui or self._processing:
+            return
 
-            api = ReplicateAPI(api_key, model_name)
+        if not api_key or not api_key.strip():
+            self._handle_error(_("API key is required"))
+            return
 
-            def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
-                """Progress callback for API operations"""
-                if self._cancel_requested:
-                    return False
-                GLib.idle_add(self.ui.update_status, message, percentage)
-                return True
+        if not prompt or not prompt.strip():
+            self._handle_error(_("Prompt is required"))
+            return
 
-            pixbuf, error_msg = api.generate_image(
-                prompt=prompt,
-                reference_images=reference_images,
-                progress_callback=progress_callback
-            )
+        self._processing = True
+        self._cancel_requested = False
+        self.ui.set_ui_enabled(False)
 
-            if self._cancel_requested:
-                GLib.idle_add(self._handle_cancelled)
-                return
-
-            if error_msg:
-                GLib.idle_add(self._handle_error, error_msg)
-                return
-
-            if not pixbuf:
-                GLib.idle_add(self._handle_error, _("No image data received from API"))
-                return
-
-            GLib.idle_add(self._handle_generated_image, pixbuf, prompt)
-
-        except (ImportError, ValueError) as e:
-            GLib.idle_add(self._handle_error, str(e))
-        except Exception as e:
-            error_msg = _("Unexpected error during image generation: {error}").format(error=str(e))
-            GLib.idle_add(self._handle_error, error_msg)
+        self._current_thread = threading.Thread(
+            target=self._generate_image_worker,
+            args=(api_key, prompt, reference_images or [], model_name)
+        )
+        self._current_thread.daemon = True
+        self._current_thread.start()
 
     def _edit_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
         """
@@ -249,6 +199,56 @@ class DreamPrompterThreads:
             error_msg = _("Unexpected error during image editing: {error}").format(error=str(e))
             GLib.idle_add(self._handle_error, error_msg)
 
+    def _generate_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
+        """
+        Generate image in background thread
+
+        Args:
+            api_key: Replicate API key
+            prompt: Text prompt for image generation
+            reference_images: List of reference image paths
+            model_name: Optional model name to use
+        """
+        try:
+            if self._cancel_requested:
+                GLib.idle_add(self._handle_cancelled)
+                return
+
+            api = ReplicateAPI(api_key, model_name)
+
+            def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
+                """Progress callback for API operations"""
+                if self._cancel_requested:
+                    return False
+                GLib.idle_add(self.ui.update_status, message, percentage)
+                return True
+
+            pixbuf, error_msg = api.generate_image(
+                prompt=prompt,
+                reference_images=reference_images,
+                progress_callback=progress_callback
+            )
+
+            if self._cancel_requested:
+                GLib.idle_add(self._handle_cancelled)
+                return
+
+            if error_msg:
+                GLib.idle_add(self._handle_error, error_msg)
+                return
+
+            if not pixbuf:
+                GLib.idle_add(self._handle_error, _("No image data received from API"))
+                return
+
+            GLib.idle_add(self._handle_generated_image, pixbuf, prompt)
+
+        except (ImportError, ValueError) as e:
+            GLib.idle_add(self._handle_error, str(e))
+        except Exception as e:
+            error_msg = _("Unexpected error during image generation: {error}").format(error=str(e))
+            GLib.idle_add(self._handle_error, error_msg)
+
     def _generate_layer_name(self, prompt: str) -> str:
         """
         Generate a name for the new layer
@@ -278,6 +278,29 @@ class DreamPrompterThreads:
         self._current_thread = None
         self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
+
+    def _handle_edited_image(self, pixbuf: GdkPixbuf.Pixbuf, layer_name: str) -> None:
+        """
+        Handle edited image on main thread
+
+        Args:
+            pixbuf: The edited image data
+            layer_name: Name for the new layer
+        """
+        try:
+            self.ui.update_status(_("Adding edit layer..."), 0.9)
+
+            layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, layer_name)
+            if not layer:
+                self._handle_error(_("Failed to create edit layer"))
+                return
+
+            self.ui.update_status(_("Edit layer created!"), 1.0)
+            self._handle_success()
+
+        except Exception as e:
+            error_msg = _("Error creating edit layer: {error}").format(error=str(e))
+            self._handle_error(error_msg)
 
     def _handle_error(self, error_message: str) -> None:
         """
@@ -315,29 +338,6 @@ class DreamPrompterThreads:
 
         except Exception as e:
             error_msg = _("Error creating GIMP image: {error}").format(error=str(e))
-            self._handle_error(error_msg)
-
-    def _handle_edited_image(self, pixbuf: GdkPixbuf.Pixbuf, layer_name: str) -> None:
-        """
-        Handle edited image on main thread
-
-        Args:
-            pixbuf: The edited image data
-            layer_name: Name for the new layer
-        """
-        try:
-            self.ui.update_status(_("Adding edit layer..."), 0.9)
-
-            layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, layer_name)
-            if not layer:
-                self._handle_error(_("Failed to create edit layer"))
-                return
-
-            self.ui.update_status(_("Edit layer created!"), 1.0)
-            self._handle_success()
-
-        except Exception as e:
-            error_msg = _("Error creating edit layer: {error}").format(error=str(e))
             self._handle_error(error_msg)
 
     def _handle_success(self) -> None:

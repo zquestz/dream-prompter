@@ -3,21 +3,21 @@
 
 """
 Replicate API integration for Dream Prompter plugin
-Real Nano Banana API implementation using Replicate
+Multi-model API implementation using Replicate
 """
 
-import base64
 import io
 import mimetypes
 import os
+import urllib.request
 from typing import Optional, Callable, Tuple, List
 
 from gi.repository import GdkPixbuf, Gimp
 
 import integrator
 from i18n import _
-from models.factory import get_default_model, get_model_by_name
 from models import BaseModel
+from models.factory import get_default_model, get_model_by_name
 
 PROGRESS_COMPLETE = 1.0
 PROGRESS_DOWNLOAD = 0.9
@@ -71,7 +71,7 @@ class ReplicateAPI:
         progress_callback: Optional[Callable[[str, Optional[float]], bool]] = None
     ) -> Tuple[Optional[GdkPixbuf.Pixbuf], Optional[str]]:
         """
-        Edit an image from a text prompt using Nano Banana
+        Edit an image from a text prompt using the selected AI model
 
         Args:
             image (Gimp.Image): Image to edit
@@ -142,7 +142,6 @@ class ReplicateAPI:
 
             result_bytes = None
             if isinstance(output, str):
-                import urllib.request
                 with urllib.request.urlopen(output) as url_response:
                     result_bytes = url_response.read()
             elif isinstance(output, bytes):
@@ -180,7 +179,7 @@ class ReplicateAPI:
         progress_callback: Optional[Callable[[str, Optional[float]], bool]] = None
     ) -> Tuple[Optional[GdkPixbuf.Pixbuf], Optional[str]]:
         """
-        Generate a new image from a text prompt using Nano Banana
+        Generate a new image from a text prompt using the selected AI model
 
         Args:
             prompt (str): Text description of the image to generate
@@ -231,7 +230,6 @@ class ReplicateAPI:
 
                 result_bytes = None
                 if isinstance(output, str):
-                    import urllib.request
                     with urllib.request.urlopen(output) as url_response:
                         result_bytes = url_response.read()
                 elif isinstance(output, bytes):
@@ -272,29 +270,6 @@ class ReplicateAPI:
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
 
-    def _prepare_reference_images(
-        self,
-        reference_images: List[str],
-        max_count: int
-    ) -> List:
-        """
-        Prepare reference images for Replicate API
-
-        Args:
-            reference_images (list): List of image file paths
-            max_count (int): Maximum number of images to process
-
-        Returns:
-            list: List of file objects for Replicate API
-        """
-        valid_files = []
-
-        for img_path in reference_images[:max_count]:
-            if self._validate_reference_image(img_path):
-                valid_files.append(open(img_path, 'rb'))
-
-        return valid_files
-
     def _bytes_to_pixbuf(self, image_bytes: bytes) -> Optional[GdkPixbuf.Pixbuf]:
         """
         Convert image bytes to GdkPixbuf
@@ -316,6 +291,32 @@ class ReplicateAPI:
         except Exception as e:
             print(f"Error converting bytes to pixbuf: {e}")
             return None
+
+    def _prepare_reference_images(
+        self,
+        reference_images: List[str],
+        max_count: int
+    ) -> List:
+        """
+        Prepare reference images for Replicate API
+
+        Args:
+            reference_images (list): List of image file paths
+            max_count (int): Maximum number of images to process
+
+        Returns:
+            list: List of file objects for Replicate API
+        """
+        valid_files = []
+
+        for img_path in reference_images[:max_count]:
+            if self._validate_reference_image(img_path):
+                try:
+                    valid_files.append(open(img_path, 'rb'))
+                except (OSError, IOError) as e:
+                    print(f"Warning: Could not open reference image {img_path}: {e}")
+
+        return valid_files
 
     def _validate_reference_image(
         self,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:57-1000\n"
+"POT-Creation-Date: 2025-09-22 16:38-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api.py:50 api.py:91 api.py:199
+#: api.py:50 api.py:91 api.py:198
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
-#: api.py:53 dialog_threads.py:88 dialog_threads.py:128
+#: api.py:53 dialog_threads.py:96 dialog_threads.py:128
 msgid "API key is required"
 msgstr ""
 
@@ -33,8 +33,8 @@ msgstr ""
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
-#: api.py:224 api.py:230
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:201 api.py:214
+#: api.py:223 api.py:229
 msgid "Operation cancelled"
 msgstr ""
 
@@ -50,16 +50,16 @@ msgstr ""
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:126 api.py:263
+#: api.py:126 api.py:261
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:129 api.py:266
+#: api.py:129 api.py:264
 msgid "Logs"
 msgstr ""
 
-#: api.py:132 api.py:270
+#: api.py:132 api.py:268
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
@@ -68,52 +68,52 @@ msgstr ""
 msgid "Processing Replicate edit response..."
 msgstr ""
 
-#: api.py:138 api.py:227
+#: api.py:138 api.py:226
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:140 api.py:229
+#: api.py:140 api.py:228
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:157 api.py:246
+#: api.py:156 api.py:244
 msgid "Failed to process iterable response"
 msgstr ""
 
-#: api.py:159 api.py:248
+#: api.py:158 api.py:246
 msgid "Unexpected response format from API"
 msgstr ""
 
-#: api.py:162 api.py:251
+#: api.py:161 api.py:249
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:166 api.py:255
+#: api.py:165 api.py:253
 msgid "Failed to convert result to image"
 msgstr ""
 
-#: api.py:169
+#: api.py:168
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:174 api.py:273
+#: api.py:173 api.py:271
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:201
+#: api.py:200
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:214
+#: api.py:213
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:223
+#: api.py:222
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:258
+#: api.py:256
 msgid "Image generation complete!"
 msgstr ""
 
@@ -121,145 +121,145 @@ msgstr ""
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr ""
 
-#: dialog_events.py:105 dialog_events.py:108
-#, python-brace-format
-msgid "Select up to {max} additional images"
-msgstr ""
-
-#: dialog_events.py:128
+#: dialog_events.py:106
 msgid "Please enter your Replicate API key"
 msgstr ""
 
-#: dialog_events.py:132
+#: dialog_events.py:110
 msgid "Please enter a prompt"
 msgstr ""
 
-#: dialog_events.py:136
+#: dialog_events.py:114
 msgid "Edit mode requires a selected layer"
 msgstr ""
 
-#: dialog_events.py:145
+#: dialog_events.py:123
 msgid "Initializing API request..."
 msgstr ""
 
-#: dialog_events.py:162
+#: dialog_events.py:150
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:165 dialog_gtk.py:282
+#: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:168 dialog_gtk.py:336
+#: dialog_events.py:156 dialog_gtk.py:339
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:186
+#: dialog_events.py:174
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:191 dialog_gtk.py:277
+#: dialog_events.py:179 dialog_gtk.py:289
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:192
+#: dialog_events.py:180
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:195
+#: dialog_events.py:183
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr ""
 
-#: dialog_events.py:220
+#: dialog_events.py:208
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr ""
 
-#: dialog_events.py:222
+#: dialog_events.py:210
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 
-#: dialog_events.py:234
+#: dialog_events.py:222
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:238
+#: dialog_events.py:226
 msgid "Show API key"
 msgstr ""
 
-#: dialog_gtk.py:83 dialog_gtk.py:391
+#: dialog_events.py:269 dialog_events.py:272
+#, python-brace-format
+msgid "Select up to {max} additional images"
+msgstr ""
+
+#: dialog_gtk.py:91 dialog_gtk.py:394
 msgid "Ready"
 msgstr ""
 
-#: dialog_gtk.py:168
+#: dialog_gtk.py:171
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:175
+#: dialog_gtk.py:178
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:180 dialog_gtk.py:428
+#: dialog_gtk.py:183 dialog_gtk.py:431
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:187
+#: dialog_gtk.py:190
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:211
+#: dialog_gtk.py:225
+msgid "AI Model"
+msgstr ""
+
+#: dialog_gtk.py:252
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:218
+#: dialog_gtk.py:259
 msgid "Enter your Replicate API key..."
 msgstr ""
 
-#: dialog_gtk.py:227
+#: dialog_gtk.py:268
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:234
+#: dialog_gtk.py:275
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:249
-msgid "AI Model"
-msgstr ""
-
-#: dialog_gtk.py:326
+#: dialog_gtk.py:329
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:332
+#: dialog_gtk.py:335
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:349
+#: dialog_gtk.py:352
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:411
+#: dialog_gtk.py:414
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:413
+#: dialog_gtk.py:416
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:441
+#: dialog_gtk.py:444
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:443
+#: dialog_gtk.py:446
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""
@@ -268,30 +268,30 @@ msgstr ""
 msgid "Cancelling..."
 msgstr ""
 
-#: dialog_threads.py:92 dialog_threads.py:132
-msgid "Prompt is required"
-msgstr ""
-
-#: dialog_threads.py:120
+#: dialog_threads.py:88
 msgid "No layer available for editing"
 msgstr ""
 
-#: dialog_threads.py:124 dialog_threads.py:212
+#: dialog_threads.py:92 dialog_threads.py:162
 msgid "No image available for editing"
 msgstr ""
 
-#: dialog_threads.py:185 dialog_threads.py:240
+#: dialog_threads.py:100 dialog_threads.py:132
+msgid "Prompt is required"
+msgstr ""
+
+#: dialog_threads.py:190 dialog_threads.py:241
 msgid "No image data received from API"
 msgstr ""
 
-#: dialog_threads.py:193
+#: dialog_threads.py:199
 #, python-brace-format
-msgid "Unexpected error during image generation: {error}"
+msgid "Unexpected error during image editing: {error}"
 msgstr ""
 
 #: dialog_threads.py:249
 #, python-brace-format
-msgid "Unexpected error during image editing: {error}"
+msgid "Unexpected error during image generation: {error}"
 msgstr ""
 
 #: dialog_threads.py:265
@@ -308,38 +308,38 @@ msgstr ""
 msgid "AI Layer"
 msgstr ""
 
-#: dialog_threads.py:306
-msgid "Creating GIMP image..."
-msgstr ""
-
-#: dialog_threads.py:310
-msgid "Failed to create GIMP image"
-msgstr ""
-
-#: dialog_threads.py:313
-msgid "Image generated successfully!"
-msgstr ""
-
-#: dialog_threads.py:317
-#, python-brace-format
-msgid "Error creating GIMP image: {error}"
-msgstr ""
-
-#: dialog_threads.py:329
+#: dialog_threads.py:291
 msgid "Adding edit layer..."
 msgstr ""
 
-#: dialog_threads.py:333
+#: dialog_threads.py:295
 msgid "Failed to create edit layer"
 msgstr ""
 
-#: dialog_threads.py:336
+#: dialog_threads.py:298
 msgid "Edit layer created!"
+msgstr ""
+
+#: dialog_threads.py:302
+#, python-brace-format
+msgid "Error creating edit layer: {error}"
+msgstr ""
+
+#: dialog_threads.py:329
+msgid "Creating GIMP image..."
+msgstr ""
+
+#: dialog_threads.py:333
+msgid "Failed to create GIMP image"
+msgstr ""
+
+#: dialog_threads.py:336
+msgid "Image generated successfully!"
 msgstr ""
 
 #: dialog_threads.py:340
 #, python-brace-format
-msgid "Error creating edit layer: {error}"
+msgid "Error creating GIMP image: {error}"
 msgstr ""
 
 #: dream-prompter.py:43

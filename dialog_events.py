@@ -6,12 +6,13 @@ Event handlers for Dream Prompter dialog
 Handles all user interactions and UI events
 """
 
-from gi.repository import Gtk, GLib
 import threading
 
+from gi.repository import Gtk, GLib
+
 from dialog_threads import DreamPrompterThreads
-from models.factory import get_default_model, get_model_by_name
 from i18n import _
+from models.factory import get_default_model, get_model_by_name
 from settings import store_settings, load_settings
 
 class DreamPrompterEventHandler:
@@ -31,9 +32,6 @@ class DreamPrompterEventHandler:
             'on_success': self.close_on_success,
             'on_error': self.show_error
         })
-
-        if self.ui.model_dropdown:
-            self.ui.model_dropdown.connect('changed', self.on_model_changed)
 
         settings = load_settings()
         if self.ui.toggle_visibility_btn and self.ui.api_key_entry:
@@ -57,6 +55,9 @@ class DreamPrompterEventHandler:
 
     def connect_all_signals(self):
         """Connect all UI signals to handlers"""
+        if self.ui.model_dropdown:
+            self.ui.model_dropdown.connect('changed', self.on_model_changed)
+
         if self.ui.edit_mode_radio:
             self.ui.edit_mode_radio.connect("toggled", self.on_mode_changed)
         if self.ui.generate_mode_radio:
@@ -83,29 +84,6 @@ class DreamPrompterEventHandler:
     def on_api_key_changed(self, _entry):
         """Handle API key changes"""
         self.update_generate_button_state()
-
-    def on_model_changed(self, combo_box):
-        """Handle model selection changes"""
-        selected_model_name = combo_box.get_active_id()
-        if selected_model_name:
-            new_model = get_model_by_name(selected_model_name)
-            if new_model:
-                self.model = new_model
-                self.update_ui_limits()
-                self.ui.update_model_description(new_model)
-
-    def update_ui_limits(self):
-        """Update UI text to reflect current model limits"""
-        if not self.model:
-            return
-
-        current_mode = self.dialog.get_current_mode()
-        if current_mode == "edit":
-            if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images_edit)}</small>')
-        else:
-            if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images)}</small>')
 
     def on_cancel(self, _button):
         """Handle cancel button click"""
@@ -148,6 +126,16 @@ class DreamPrompterEventHandler:
             self.threads.start_edit_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
         else:
             self.threads.start_generate_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
+
+    def on_model_changed(self, combo_box):
+        """Handle model selection changes"""
+        selected_model_name = combo_box.get_active_id()
+        if selected_model_name:
+            new_model = get_model_by_name(selected_model_name)
+            if new_model:
+                self.model = new_model
+                self.update_ui_limits()
+                self.ui.update_model_description(new_model)
 
     def on_mode_changed(self, _radio_button):
         """Handle mode selection changes"""
@@ -269,3 +257,16 @@ class DreamPrompterEventHandler:
             self.ui.generate_btn.set_sensitive(has_text and has_api_key and has_drawable)
         else:
             self.ui.generate_btn.set_sensitive(has_text and has_api_key)
+
+    def update_ui_limits(self):
+        """Update UI text to reflect current model limits"""
+        if not self.model:
+            return
+
+        current_mode = self.dialog.get_current_mode()
+        if current_mode == "edit":
+            if self.ui.images_help_label:
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images_edit)}</small>')
+        else:
+            if self.ui.images_help_label:
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images)}</small>')
