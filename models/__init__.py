@@ -31,13 +31,21 @@ class ParameterMode(Enum):
 class ParameterDefinition:
     """Definition of a configurable parameter"""
 
-    def __init__(self, name: str, param_type: ParameterType, default_value: Any,
-                 label: Optional[str] = None, description: Optional[str] = None,
-                 choices: Optional[List[Any]] = None, min_value: Any = None,
-                 max_value: Any = None, step: Any = None, 
-                 supported_modes: Optional[List[ParameterMode]] = None):
+    def __init__(
+        self,
+        name: str,
+        param_type: ParameterType,
+        default_value: Any,
+        label: Optional[str] = None,
+        description: Optional[str] = None,
+        choices: Optional[List[Any]] = None,
+        min_value: Any = None,
+        max_value: Any = None,
+        step: Any = None,
+        supported_modes: Optional[List[ParameterMode]] = None,
+    ):
         self.name = name
-        self.type = param_type
+        self.param_type = param_type
         self.default_value = default_value
         self.label = label or name
         self.description = description or ""
@@ -49,10 +57,19 @@ class ParameterDefinition:
 
     def supports_mode(self, mode: str) -> bool:
         """Check if this parameter supports the given mode"""
+        if not mode or not isinstance(mode, str):
+            return False
+
         if ParameterMode.BOTH in self.supported_modes:
             return True
-        
-        mode_enum = ParameterMode.GENERATE if mode == "generate" else ParameterMode.EDIT
+
+        if mode == "generate":
+            mode_enum = ParameterMode.GENERATE
+        elif mode == "edit":
+            mode_enum = ParameterMode.EDIT
+        else:
+            return False
+
         return mode_enum in self.supported_modes
 
     def validate_value(self, value: Any) -> Any:
@@ -60,44 +77,56 @@ class ParameterDefinition:
         if value is None:
             return self.default_value
 
-        if self.type == ParameterType.INTEGER:
-            try:
-                val = int(value)
-                if self.min_value is not None and val < self.min_value:
-                    val = self.min_value
-                if self.max_value is not None and val > self.max_value:
-                    val = self.max_value
-                return val
-            except (ValueError, TypeError):
-                return self.default_value
-
-        elif self.type == ParameterType.FLOAT:
-            try:
-                val = float(value)
-                if self.min_value is not None and val < self.min_value:
-                    val = self.min_value
-                if self.max_value is not None and val > self.max_value:
-                    val = self.max_value
-                return val
-            except (ValueError, TypeError):
-                return self.default_value
-
-        elif self.type == ParameterType.STRING:
+        if self.param_type == ParameterType.INTEGER:
+            return self._validate_integer(value)
+        elif self.param_type == ParameterType.FLOAT:
+            return self._validate_float(value)
+        elif self.param_type == ParameterType.STRING:
             return str(value)
-
-        elif self.type == ParameterType.BOOLEAN:
-            if isinstance(value, bool):
-                return value
-            if isinstance(value, str):
-                return value.lower() in ('true', '1', 'yes', 'on')
-            return bool(value)
-
-        elif self.type == ParameterType.CHOICE:
-            if value in self.choices:
-                return value
-            return self.default_value
+        elif self.param_type == ParameterType.BOOLEAN:
+            return self._validate_boolean(value)
+        elif self.param_type == ParameterType.CHOICE:
+            return self._validate_choice(value)
 
         return self.default_value
+
+    def _validate_boolean(self, value: Any) -> bool:
+        """Validate boolean parameter value"""
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, str):
+            return value.lower() in ('true', '1', 'yes', 'on')
+        return bool(value)
+
+    def _validate_choice(self, value: Any) -> Any:
+        """Validate choice parameter value"""
+        if value in self.choices:
+            return value
+        return self.default_value
+
+    def _validate_float(self, value: Any) -> float:
+        """Validate float parameter value"""
+        try:
+            val = float(value)
+            if self.min_value is not None and val < self.min_value:
+                val = self.min_value
+            if self.max_value is not None and val > self.max_value:
+                val = self.max_value
+            return val
+        except (ValueError, TypeError):
+            return self.default_value
+
+    def _validate_integer(self, value: Any) -> int:
+        """Validate integer parameter value"""
+        try:
+            val = int(value)
+            if self.min_value is not None and val < self.min_value:
+                val = self.min_value
+            if self.max_value is not None and val > self.max_value:
+                val = self.max_value
+            return val
+        except (ValueError, TypeError):
+            return self.default_value
 
 
 class OutputFormat(Enum):
@@ -112,8 +141,14 @@ class BaseModel(ABC):
 
     @property
     @abstractmethod
-    def name(self) -> str:
-        """Model name/identifier"""
+    def default_output_format(self) -> OutputFormat:
+        """Default output format for generated images"""
+        pass
+
+    @property
+    @abstractmethod
+    def description(self) -> str:
+        """Model description"""
         pass
 
     @property
@@ -124,8 +159,8 @@ class BaseModel(ABC):
 
     @property
     @abstractmethod
-    def description(self) -> str:
-        """Model description"""
+    def max_file_size_mb(self) -> int:
+        """Maximum file size in MB for reference images"""
         pass
 
     @property
@@ -141,8 +176,8 @@ class BaseModel(ABC):
 
     @property
     @abstractmethod
-    def max_file_size_mb(self) -> int:
-        """Maximum file size in MB for reference images"""
+    def name(self) -> str:
+        """Model name/identifier"""
         pass
 
     @property
@@ -151,11 +186,85 @@ class BaseModel(ABC):
         """List of supported MIME types for reference images"""
         pass
 
-    @property
     @abstractmethod
-    def default_output_format(self) -> OutputFormat:
-        """Default output format for generated images"""
+    def build_edit_input(
+        self,
+        prompt: str,
+        main_image,
+        reference_images: Optional[List] = None,
+        user_settings: Optional[Dict[str, Any]] = None,
+        **kwargs
+    ) -> Dict[str, Any]:
+        """
+        Build input dictionary for image editing
+
+        Args:
+            prompt: Text prompt for editing
+            main_image: Main image to edit (file object or bytes)
+            reference_images: Optional list of reference image file objects
+            user_settings: User's saved settings for this model
+            **kwargs: Additional model-specific parameters
+                (override user_settings)
+
+        Returns:
+            Dictionary of input parameters for the model API
+        """
         pass
+
+    @abstractmethod
+    def build_generation_input(
+        self,
+        prompt: str,
+        reference_images: Optional[List] = None,
+        user_settings: Optional[Dict[str, Any]] = None,
+        **kwargs
+    ) -> Dict[str, Any]:
+        """
+        Build input dictionary for image generation
+
+        Args:
+            prompt: Text prompt for generation
+            reference_images: Optional list of reference image file objects
+            user_settings: User's saved settings for this model
+            **kwargs: Additional model-specific parameters
+                (override user_settings)
+
+        Returns:
+            Dictionary of input parameters for the model API
+        """
+        pass
+
+    def build_parameters_dict(self,
+                              user_settings: Optional[Dict[str, Any]] = None
+                              ) -> Dict[str, Any]:
+        """
+        Build dictionary of all parameter values for API calls
+
+        Args:
+            user_settings: User's saved settings for this model
+
+        Returns:
+            Dictionary of parameter name -> value
+        """
+        params = {}
+        for param_def in self.get_parameter_definitions():
+            param_value = self.get_parameter_value(
+                param_def.name, user_settings
+            )
+            params[param_def.name] = param_value
+        return params
+
+    def get_output_format_string(self, format_enum: OutputFormat) -> str:
+        """
+        Get string representation of output format for API calls
+
+        Args:
+            format_enum: OutputFormat enum value
+
+        Returns:
+            String representation for API calls
+        """
+        return format_enum.value
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
         """
@@ -166,8 +275,11 @@ class BaseModel(ABC):
         """
         return []
 
-    def get_parameter_value(self, parameter_name: str,
-                            user_settings: Optional[Dict[str, Any]] = None) -> Any:
+    def get_parameter_value(
+        self,
+        parameter_name: str,
+        user_settings: Optional[Dict[str, Any]] = None,
+    ) -> Any:
         """
         Get parameter value from user settings or default
 
@@ -186,89 +298,6 @@ class BaseModel(ABC):
             return param_def.validate_value(user_settings[parameter_name])
 
         return param_def.default_value
-
-    def _get_parameter_definition(self, parameter_name: str
-                                  ) -> Optional[ParameterDefinition]:
-        """Get parameter definition by name"""
-        for param_def in self.get_parameter_definitions():
-            if param_def.name == parameter_name:
-                return param_def
-        return None
-
-    def build_parameters_dict(self,
-                              user_settings: Optional[Dict[str, Any]] = None
-                              ) -> Dict[str, Any]:
-        """
-        Build dictionary of all parameter values for API calls
-
-        Args:
-            user_settings: User's saved settings for this model
-
-        Returns:
-            Dictionary of parameter name -> value
-        """
-        params = {}
-        for param_def in self.get_parameter_definitions():
-            param_value = self.get_parameter_value(param_def.name, user_settings)
-            params[param_def.name] = param_value
-        return params
-
-    @abstractmethod
-    def build_generation_input(self, prompt: str,
-                               reference_images: Optional[List] = None,
-                               user_settings: Optional[Dict[str, Any]] = None,
-                               **kwargs) -> Dict[str, Any]:
-        """
-        Build input dictionary for image generation
-
-        Args:
-            prompt: Text prompt for generation
-            reference_images: Optional list of reference image file objects
-            user_settings: User's saved settings for this model
-            **kwargs: Additional model-specific parameters (override user_settings)
-
-        Returns:
-            Dictionary of input parameters for the model API
-        """
-        pass
-
-    @abstractmethod
-    def build_edit_input(self, prompt: str, main_image,
-                         reference_images: Optional[List] = None,
-                         user_settings: Optional[Dict[str, Any]] = None,
-                         **kwargs) -> Dict[str, Any]:
-        """
-        Build input dictionary for image editing
-
-        Args:
-            prompt: Text prompt for editing
-            main_image: Main image to edit (file object or bytes)
-            reference_images: Optional list of reference image file objects
-            user_settings: User's saved settings for this model
-            **kwargs: Additional model-specific parameters (override user_settings)
-
-        Returns:
-            Dictionary of input parameters for the model API
-        """
-        pass
-
-    def validate_reference_image_count(self, count: int,
-                                       is_edit: bool = False) -> bool:
-        """
-        Validate reference image count
-
-        Args:
-            count: Number of reference images
-            is_edit: Whether this is for editing (vs generation)
-
-        Returns:
-            True if count is valid, False otherwise
-        """
-        if is_edit:
-            max_count = self.max_reference_images_edit
-        else:
-            max_count = self.max_reference_images
-        return 0 <= count <= max_count
 
     def validate_file_size(self, size_bytes: int) -> bool:
         """
@@ -295,17 +324,13 @@ class BaseModel(ABC):
         """
         return mime_type in self.supported_mime_types
 
-    def get_output_format_string(self, format_enum: OutputFormat) -> str:
-        """
-        Get string representation of output format for API calls
-
-        Args:
-            format_enum: OutputFormat enum value
-
-        Returns:
-            String representation for API calls
-        """
-        return format_enum.value
+    def _get_parameter_definition(self, parameter_name: str
+                                  ) -> Optional[ParameterDefinition]:
+        """Get parameter definition by name"""
+        for param_def in self.get_parameter_definitions():
+            if param_def.name == parameter_name:
+                return param_def
+        return None
 
 
 _model_registry: Dict[str, BaseModel] = {}

@@ -346,7 +346,7 @@ class DreamPrompterUI:
 
         widget = None
 
-        if param_def.type == ParameterType.CHOICE:
+        if param_def.param_type == ParameterType.CHOICE:
             widget = Gtk.ComboBoxText()
             for choice in param_def.choices:
                 widget.append(str(choice), str(choice))
@@ -357,7 +357,7 @@ class DreamPrompterUI:
             widget.connect('changed', self._on_parameter_changed,
                            param_def.name)
 
-        elif param_def.type == ParameterType.BOOLEAN:
+        elif param_def.param_type == ParameterType.BOOLEAN:
             widget = Gtk.CheckButton()
             default_val = param_def.default_value
             value = bool(current_value) if current_value is not None else default_val
@@ -365,7 +365,7 @@ class DreamPrompterUI:
             widget.connect('toggled', self._on_parameter_changed,
                            param_def.name)
 
-        elif param_def.type == ParameterType.INTEGER:
+        elif param_def.param_type == ParameterType.INTEGER:
             min_val = param_def.min_value if param_def.min_value is not None else 0
             max_val = param_def.max_value if param_def.max_value is not None else 10000
             step = param_def.step if param_def.step is not None else 1
@@ -385,7 +385,7 @@ class DreamPrompterUI:
             widget.connect('value-changed',
                            self._on_parameter_changed, param_def.name)
 
-        elif param_def.type == ParameterType.FLOAT:
+        elif param_def.param_type == ParameterType.FLOAT:
             min_val = param_def.min_value if param_def.min_value is not None else 0.0
             max_val = param_def.max_value if param_def.max_value is not None else 100.0
             step = param_def.step if param_def.step is not None else 0.1
@@ -405,7 +405,7 @@ class DreamPrompterUI:
             widget.connect('value-changed',
                            self._on_parameter_changed, param_def.name)
 
-        elif param_def.type == ParameterType.STRING:
+        elif param_def.param_type == ParameterType.STRING:
             widget = Gtk.Entry()
             text_value = (str(current_value) if current_value is not None
                           else str(param_def.default_value))
@@ -449,15 +449,15 @@ class DreamPrompterUI:
             if not param_def:
                 return
 
-            if param_def.type == ParameterType.CHOICE:
+            if param_def.param_type == ParameterType.CHOICE:
                 value = widget.get_active_id()
-            elif param_def.type == ParameterType.BOOLEAN:
+            elif param_def.param_type == ParameterType.BOOLEAN:
                 value = widget.get_active()
-            elif param_def.type in [ParameterType.INTEGER, ParameterType.FLOAT]:
+            elif param_def.param_type in [ParameterType.INTEGER, ParameterType.FLOAT]:
                 value = widget.get_value()
-                if param_def.type == ParameterType.INTEGER:
+                if param_def.param_type == ParameterType.INTEGER:
                     value = int(value)
-            elif param_def.type == ParameterType.STRING:
+            elif param_def.param_type == ParameterType.STRING:
                 value = widget.get_text()
             else:
                 return

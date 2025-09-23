@@ -66,7 +66,7 @@ class ModelParameterManager:
 
         return {
             'name': param_def.name,
-            'type': param_def.type.value,
+            'type': param_def.param_type.value,
             'label': param_def.label,
             'description': param_def.description,
             'default_value': param_def.default_value,
