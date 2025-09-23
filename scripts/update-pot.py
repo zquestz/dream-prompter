@@ -12,27 +12,36 @@ import sys
 from pathlib import Path
 
 
+def discover_python_files() -> list[str]:
+    """Automatically discover Python files in the plugin directory"""
+    python_files = []
+
+    for file_path in Path('.').glob('*.py'):
+        python_files.append(str(file_path))
+
+    models_dir = Path('models')
+    if models_dir.exists():
+        for file_path in models_dir.glob('*.py'):
+            python_files.append(str(file_path))
+
+    return sorted(python_files)
+
+
 def extract_strings() -> bool:
     """Extract strings and create .pot file"""
 
     plugin_dir = Path(__file__).parent.parent
     os.chdir(plugin_dir)
 
-    python_files = [
-        'api.py',
-        'dialog.py',
-        'dialog_events.py',
-        'dialog_gtk.py',
-        'dialog_threads.py',
-        'dream-prompter.py',
-        'integrator.py',
-        'i18n.py',
-        'settings.py',
-        'models/__init__.py',
-        'models/factory.py',
-        'models/nano_banana.py',
-        'models/seedream4.py'
-    ]
+    python_files = discover_python_files()
+
+    if not python_files:
+        print("No Python files found to extract strings from!")
+        return False
+
+    print(f"Extracting strings from {len(python_files)} Python files:")
+    for f in python_files:
+        print(f"  - {f}")
 
     pot_file = 'locale/dream-prompter.pot'
 

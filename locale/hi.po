@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:19-1000\n"
+"POT-Creation-Date: 2025-09-23 12:33-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -75,7 +75,7 @@ msgstr "परत {num} जोड़ी जा रही है..."
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: models/seedream4.py:99
+#: models/seedream4.py:190
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
@@ -83,7 +83,7 @@ msgstr "पहलू अनुपात"
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
-#: models/seedream4.py:34
+#: models/seedream4.py:29
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
 
@@ -113,7 +113,7 @@ msgstr "{count} फ़ाइलें नहीं जोड़ी जा सक
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: models/seedream4.py:100
+#: models/seedream4.py:191
 msgid "Control aspect ratio of generated images"
 msgstr "जेनेरेट की गई छवियों का पहलू अनुपात नियंत्रित करें"
 
@@ -122,11 +122,11 @@ msgstr "जेनेरेट की गई छवियों का पहल�
 msgid "Creating image {num}..."
 msgstr "छवि {num} बनाई जा रही है..."
 
-#: models/seedream4.py:89
+#: models/seedream4.py:180
 msgid "Custom height in pixels"
 msgstr "पिक्सेल में कस्टम ऊंचाई"
 
-#: models/seedream4.py:78
+#: models/seedream4.py:169
 msgid "Custom width in pixels"
 msgstr "पिक्सेल में कस्टम चौड़ाई"
 
@@ -178,7 +178,7 @@ msgstr "API प्रतिक्रिया से छवियों को �
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
 
-#: models/nano_banana.py:68
+#: models/nano_banana.py:147
 msgid "Format for generated images"
 msgstr "जेनेरेट की गई छवियों का प्रारूप"
 
@@ -190,7 +190,7 @@ msgstr "संपादन उत्पन्न करें"
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: models/seedream4.py:120
+#: models/seedream4.py:211
 msgid "Generate images sequentially or in parallel"
 msgstr "छवियों को क्रमिक या समानांतर में जेनेरेट करें"
 
@@ -208,11 +208,11 @@ msgstr "Replicate के साथ छवि उत्पन्न की जा
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी प्राप्त करें"
 
-#: models/nano_banana.py:33
+#: models/nano_banana.py:28
 msgid "Google's advanced image generation and editing model"
 msgstr "Google का उन्नत चित्र निर्माण और संपादन मॉडल"
 
-#: models/seedream4.py:88
+#: models/seedream4.py:179
 msgid "Height"
 msgstr "ऊंचाई"
 
@@ -220,7 +220,7 @@ msgstr "ऊंचाई"
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: models/seedream4.py:68
+#: models/seedream4.py:159
 msgid "Image Size"
 msgstr "छवि का आकार"
 
@@ -240,11 +240,11 @@ msgstr "API अनुरोध आरंभ किया जा रहा है
 msgid "Logs"
 msgstr "लॉग"
 
-#: models/seedream4.py:109
+#: models/seedream4.py:200
 msgid "Max Images"
 msgstr "अधिकतम छवियां"
 
-#: models/seedream4.py:110
+#: models/seedream4.py:201
 msgid "Maximum number of images to generate"
 msgstr "जेनेरेट करने के लिए छवियों की अधिकतम संख्या"
 
@@ -257,9 +257,13 @@ msgstr "मॉडल सेटिंग्स"
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
 
-#: models/nano_banana.py:28
+#: models/nano_banana.py:33
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
+
+#: model_settings.py:241
+msgid "No"
+msgstr ""
 
 #: api.py:97
 msgid "No GIMP image provided for editing"
@@ -289,6 +293,10 @@ msgstr "API से कोई आउटपुट प्राप्त नही�
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
+#: model_settings.py:238
+msgid "Not set"
+msgstr ""
+
 #: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
@@ -298,7 +306,7 @@ msgstr "ऑपरेशन मोड"
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
-#: models/nano_banana.py:67
+#: models/nano_banana.py:146
 msgid "Output Format"
 msgstr "आउटपुट प्रारूप"
 
@@ -348,11 +356,11 @@ msgstr "Replicate API त्रुटि: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
-#: models/seedream4.py:69
+#: models/seedream4.py:160
 msgid "Resolution preset for generated images"
 msgstr "जेनेरेट की गई छवियों के लिए रिज़ॉल्यूशन प्रीसेट"
 
-#: models/seedream4.py:29
+#: models/seedream4.py:34
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
@@ -381,7 +389,7 @@ msgstr "Replicate को संपादन अनुरोध भेजा ज�
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
-#: models/seedream4.py:119
+#: models/seedream4.py:210
 msgid "Sequential Generation"
 msgstr "क्रमिक जेनेरेशन"
 
@@ -422,9 +430,13 @@ msgstr "छवि उत्पादन के दौरान अप्रत�
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
 
-#: models/seedream4.py:77
+#: models/seedream4.py:168
 msgid "Width"
 msgstr "चौड़ाई"
+
+#: model_settings.py:241
+msgid "Yes"
+msgstr ""
 
 #: dialog_gtk.py:684
 #, python-brace-format

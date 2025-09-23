@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:19-1000\n"
+"POT-Creation-Date: 2025-09-23 12:33-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Russian\n"
@@ -76,7 +76,7 @@ msgstr "Добавление слоя {num}..."
 msgid "Additional Images (Optional)"
 msgstr "Дополнительные изображения (необязательно)"
 
-#: models/seedream4.py:99
+#: models/seedream4.py:190
 msgid "Aspect Ratio"
 msgstr "Соотношение Сторон"
 
@@ -84,7 +84,7 @@ msgstr "Соотношение Сторон"
 msgid "Building Replicate edit request..."
 msgstr "Построение запроса редактирования Replicate..."
 
-#: models/seedream4.py:34
+#: models/seedream4.py:29
 msgid "ByteDance's unified generation and editing model"
 msgstr "Единая модель генерации и редактирования ByteDance"
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Clear selected files"
 msgstr "Очистить выбранные файлы"
 
-#: models/seedream4.py:100
+#: models/seedream4.py:191
 msgid "Control aspect ratio of generated images"
 msgstr "Управление соотношением сторон генерируемых изображений"
 
@@ -125,11 +125,11 @@ msgstr "Управление соотношением сторон генери�
 msgid "Creating image {num}..."
 msgstr "Создание изображения {num}..."
 
-#: models/seedream4.py:89
+#: models/seedream4.py:180
 msgid "Custom height in pixels"
 msgstr "Пользовательская высота в пикселях"
 
-#: models/seedream4.py:78
+#: models/seedream4.py:169
 msgid "Custom width in pixels"
 msgstr "Пользовательская ширина в пикселях"
 
@@ -181,7 +181,7 @@ msgstr "Не удалось преобразовать изображения и
 msgid "Failed to export current image"
 msgstr "Не удалось экспортировать текущее изображение"
 
-#: models/nano_banana.py:68
+#: models/nano_banana.py:147
 msgid "Format for generated images"
 msgstr "Формат для генерируемых изображений"
 
@@ -193,7 +193,7 @@ msgstr "Генерировать редактирование"
 msgid "Generate Image"
 msgstr "Генерировать изображение"
 
-#: models/seedream4.py:120
+#: models/seedream4.py:211
 msgid "Generate images sequentially or in parallel"
 msgstr "Генерировать изображения последовательно или параллельно"
 
@@ -211,11 +211,11 @@ msgstr "Генерация изображения с Replicate..."
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Получите ваш ключ API из <a href=\"{url}\">Replicate</a>"
 
-#: models/nano_banana.py:33
+#: models/nano_banana.py:28
 msgid "Google's advanced image generation and editing model"
 msgstr "Продвинутая модель генерации и редактирования изображений Google"
 
-#: models/seedream4.py:88
+#: models/seedream4.py:179
 msgid "Height"
 msgstr "Высота"
 
@@ -223,7 +223,7 @@ msgstr "Высота"
 msgid "Hide API key"
 msgstr "Скрыть ключ API"
 
-#: models/seedream4.py:68
+#: models/seedream4.py:159
 msgid "Image Size"
 msgstr "Размер Изображения"
 
@@ -243,11 +243,11 @@ msgstr "Инициализация запроса API..."
 msgid "Logs"
 msgstr "Журналы"
 
-#: models/seedream4.py:109
+#: models/seedream4.py:200
 msgid "Max Images"
 msgstr "Макс Изображений"
 
-#: models/seedream4.py:110
+#: models/seedream4.py:201
 msgid "Maximum number of images to generate"
 msgstr "Максимальное количество изображений для генерации"
 
@@ -260,9 +260,13 @@ msgstr "Настройки Модели"
 msgid "Model error: {error}"
 msgstr "Ошибка модели: {error}"
 
-#: models/nano_banana.py:28
+#: models/nano_banana.py:33
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
+
+#: model_settings.py:241
+msgid "No"
+msgstr ""
 
 #: api.py:97
 msgid "No GIMP image provided for editing"
@@ -292,6 +296,10 @@ msgstr "Не получено выходных данных от API"
 msgid "No valid image data in API response"
 msgstr "Нет действительных данных изображения в ответе API"
 
+#: model_settings.py:238
+msgid "Not set"
+msgstr ""
+
 #: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "Режим операции"
@@ -301,7 +309,7 @@ msgstr "Режим операции"
 msgid "Operation cancelled"
 msgstr "Операция отменена"
 
-#: models/nano_banana.py:67
+#: models/nano_banana.py:146
 msgid "Output Format"
 msgstr "Формат Вывода"
 
@@ -351,11 +359,11 @@ msgstr "Ошибка API Replicate: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana недоступен. Пожалуйста установите google-genai"
 
-#: models/seedream4.py:69
+#: models/seedream4.py:160
 msgid "Resolution preset for generated images"
 msgstr "Предустановка разрешения для генерируемых изображений"
 
-#: models/seedream4.py:29
+#: models/seedream4.py:34
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
@@ -384,7 +392,7 @@ msgstr "Отправка запроса редактирования в Replicat
 msgid "Sending request to Replicate..."
 msgstr "Отправка запроса в Replicate..."
 
-#: models/seedream4.py:119
+#: models/seedream4.py:210
 msgid "Sequential Generation"
 msgstr "Последовательная Генерация"
 
@@ -425,9 +433,13 @@ msgstr "Неожиданная ошибка во время генерации �
 msgid "Unexpected error: {error}"
 msgstr "Неожиданная ошибка: {error}"
 
-#: models/seedream4.py:77
+#: models/seedream4.py:168
 msgid "Width"
 msgstr "Ширина"
+
+#: model_settings.py:241
+msgid "Yes"
+msgstr ""
 
 #: dialog_gtk.py:684
 #, python-brace-format
