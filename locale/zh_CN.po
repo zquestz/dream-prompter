@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:04-1000\n"
+"POT-Creation-Date: 2025-09-22 17:25-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -27,9 +27,14 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: integrator.py:111
+#: dialog_threads.py:324 integrator.py:111
 msgid "AI Generated"
 msgstr "AI生成"
+
+#: dialog_threads.py:322
+#, python-brace-format
+msgid "AI Generated {num}"
+msgstr "AI生成 {num}"
 
 #: dialog_threads.py:271
 #, python-brace-format
@@ -56,9 +61,15 @@ msgstr "使用Replicate模型进行AI驱动的图像创建/编辑"
 msgid "API key is required"
 msgstr "需要API密钥"
 
-#: dialog_threads.py:291
-msgid "Adding edit layer..."
-msgstr "正在添加编辑图层..."
+#: dialog_threads.py:301
+#, python-brace-format
+msgid "Added {count} layers"
+msgstr "已添加 {count} 层"
+
+#: dialog_threads.py:294
+#, python-brace-format
+msgid "Adding layer {num}..."
+msgstr "正在添加图层 {num}..."
 
 #: dialog_gtk.py:171
 msgid "Additional Images (Optional)"
@@ -96,11 +107,12 @@ msgstr "无法添加{count}个文件。最多允许{max}个参考图像。"
 msgid "Clear selected files"
 msgstr "清除选定的文件"
 
-#: dialog_threads.py:329
-msgid "Creating GIMP image..."
-msgstr "正在创建GIMP图像..."
+#: dialog_threads.py:319
+#, python-brace-format
+msgid "Creating image {num}..."
+msgstr "正在创建图像 {num}..."
 
-#: api.py:140 api.py:228
+#: api.py:140 api.py:221
 msgid "Downloading result..."
 msgstr "正在下载结果..."
 
@@ -116,10 +128,6 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "编辑图像"
 
-#: dialog_threads.py:298
-msgid "Edit layer created!"
-msgstr "编辑图层已创建！"
-
 #: dialog_events.py:114
 msgid "Edit mode requires a selected layer"
 msgstr "编辑模式需要选择一个图层"
@@ -128,40 +136,28 @@ msgstr "编辑模式需要选择一个图层"
 msgid "Enter your Replicate API key..."
 msgstr "输入您的Replicate API密钥..."
 
-#: dialog_threads.py:340
+#: dialog_threads.py:306
 #, python-brace-format
-msgid "Error creating GIMP image: {error}"
-msgstr "创建GIMP图像时出错：{error}"
+msgid "Error adding layers: {error}"
+msgstr "添加图层错误: {error}"
 
-#: dialog_threads.py:302
+#: dialog_threads.py:336
 #, python-brace-format
-msgid "Error creating edit layer: {error}"
-msgstr "创建编辑图层时出错：{error}"
+msgid "Error creating images: {error}"
+msgstr "创建图像错误: {error}"
 
 #: dream-prompter.py:85
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "运行Dream Prompter时出错：{error}"
 
-#: api.py:165 api.py:253
-msgid "Failed to convert result to image"
-msgstr "将结果转换为图像失败"
-
-#: dialog_threads.py:333
-msgid "Failed to create GIMP image"
-msgstr "创建GIMP图像失败"
-
-#: dialog_threads.py:295
-msgid "Failed to create edit layer"
-msgstr "创建编辑图层失败"
+#: api.py:158 api.py:239
+msgid "Failed to convert any images from API response"
+msgstr "无法从API响应转换图像"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
-
-#: api.py:156 api.py:244
-msgid "Failed to process iterable response"
-msgstr "处理可迭代响应失败"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -171,7 +167,12 @@ msgstr "生成编辑"
 msgid "Generate Image"
 msgstr "生成图像"
 
-#: api.py:200
+#: dialog_threads.py:331
+#, python-brace-format
+msgid "Generated {count} images"
+msgstr "已生成 {count} 张图像"
+
+#: api.py:193
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成图像..."
 
@@ -188,15 +189,11 @@ msgstr "Google的高级图像生成和编辑模型"
 msgid "Hide API key"
 msgstr "隐藏API密钥"
 
-#: api.py:168
+#: api.py:161
 msgid "Image editing complete!"
 msgstr "图像编辑完成！"
 
-#: dialog_threads.py:336
-msgid "Image generated successfully!"
-msgstr "图像生成成功！"
-
-#: api.py:256
+#: api.py:242
 msgid "Image generation complete!"
 msgstr "图像生成完成！"
 
@@ -204,11 +201,11 @@ msgstr "图像生成完成！"
 msgid "Initializing API request..."
 msgstr "正在初始化API请求..."
 
-#: api.py:129 api.py:264
+#: api.py:129 api.py:250
 msgid "Logs"
 msgstr "日志"
 
-#: api.py:126 api.py:261
+#: api.py:126 api.py:247
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型错误：{error}"
@@ -237,11 +234,11 @@ msgstr "未从API接收到图像数据"
 msgid "No layer available for editing"
 msgstr "没有可编辑的图层"
 
-#: api.py:138 api.py:226
+#: api.py:138 api.py:219
 msgid "No output received from API"
 msgstr "未从API接收到输出"
 
-#: api.py:161 api.py:249
+#: api.py:146 api.py:227
 msgid "No valid image data in API response"
 msgstr "API响应中没有有效图像数据"
 
@@ -249,8 +246,8 @@ msgstr "API响应中没有有效图像数据"
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:201 api.py:214
-#: api.py:223 api.py:229
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
+#: api.py:216 api.py:222
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
@@ -270,7 +267,7 @@ msgstr "为Replicate准备当前图像..."
 msgid "Processing Replicate edit response..."
 msgstr "处理Replicate编辑响应..."
 
-#: api.py:222
+#: api.py:215
 msgid "Processing Replicate response..."
 msgstr "处理Replicate响应..."
 
@@ -291,12 +288,12 @@ msgstr "减少到{max}张参考图像用于编辑模式"
 msgid "Replicate API Key"
 msgstr "Replicate API密钥"
 
-#: api.py:132 api.py:268
+#: api.py:132 api.py:254
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API错误：{error}"
 
-#: api.py:50 api.py:91 api.py:198
+#: api.py:50 api.py:91 api.py:191
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。请安装google-genai"
 
@@ -325,7 +322,7 @@ msgstr "最多选择{max}张附加图像"
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate发送编辑请求..."
 
-#: api.py:213
+#: api.py:206
 msgid "Sending request to Replicate..."
 msgstr "向Replicate发送请求..."
 
@@ -360,14 +357,10 @@ msgstr "图像编辑过程中出现意外错误：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "图像生成过程中出现意外错误：{error}"
 
-#: api.py:173 api.py:271
+#: api.py:166 api.py:257
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外错误：{error}"
-
-#: api.py:158 api.py:246
-msgid "Unexpected response format from API"
-msgstr "API返回意外的响应格式"
 
 #: dialog_gtk.py:448
 #, python-brace-format
@@ -389,11 +382,20 @@ msgstr "{original}（AI编辑：{prompt}）"
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
 
+#~ msgid "Edit layer created!"
+#~ msgstr "编辑图层已创建！"
+
+#~ msgid "Failed to convert result to image"
+#~ msgstr "将结果转换为图像失败"
+
+#~ msgid "Failed to create GIMP image"
+#~ msgstr "创建GIMP图像失败"
+
+#~ msgid "Failed to create edit layer"
+#~ msgstr "创建编辑图层失败"
+
 #~ msgid "Generate AI Edit"
 #~ msgstr "生成AI编辑"
-
-#~ msgid "Generate new image"
-#~ msgstr "生成新图像"
 
 #, python-brace-format
 #~ msgid "Generation stopped: {reason}"
@@ -401,6 +403,9 @@ msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
 
 #~ msgid "Google Gemini API Key"
 #~ msgstr "Google Gemini API密钥"
+
+#~ msgid "Image generated successfully!"
+#~ msgstr "图像生成成功！"
 
 #, python-brace-format
 #~ msgid "Nano Banana API error: {error}"
@@ -417,3 +422,6 @@ msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
 
 #~ msgid "Select up to 10 additional images"
 #~ msgstr "最多选择10张附加图像"
+
+#~ msgid "Unexpected response format from API"
+#~ msgstr "API返回意外的响应格式"

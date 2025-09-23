@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:04-1000\n"
+"POT-Creation-Date: 2025-09-22 17:25-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -27,9 +27,14 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: integrator.py:111
+#: dialog_threads.py:324 integrator.py:111
 msgid "AI Generated"
 msgstr "AI তৈরি"
+
+#: dialog_threads.py:322
+#, python-brace-format
+msgid "AI Generated {num}"
+msgstr "AI জেনেরেটেড {num}"
 
 #: dialog_threads.py:271
 #, python-brace-format
@@ -56,9 +61,15 @@ msgstr "Replicate মডেলের সাথে AI চালিত ছবি �
 msgid "API key is required"
 msgstr "API কী প্রয়োজন"
 
-#: dialog_threads.py:291
-msgid "Adding edit layer..."
-msgstr "সম্পাদনা লেয়ার যোগ করা হচ্ছে..."
+#: dialog_threads.py:301
+#, python-brace-format
+msgid "Added {count} layers"
+msgstr "{count}টি স্তর যোগ করা হয়েছে"
+
+#: dialog_threads.py:294
+#, python-brace-format
+msgid "Adding layer {num}..."
+msgstr "স্তর {num} যোগ করা হচ্ছে..."
 
 #: dialog_gtk.py:171
 msgid "Additional Images (Optional)"
@@ -98,11 +109,12 @@ msgstr "{count}টি ফাইল যোগ করা যাবে না। �
 msgid "Clear selected files"
 msgstr "নির্বাচিত ফাইলগুলি সাফ করুন"
 
-#: dialog_threads.py:329
-msgid "Creating GIMP image..."
-msgstr "GIMP ছবি তৈরি করা হচ্ছে..."
+#: dialog_threads.py:319
+#, python-brace-format
+msgid "Creating image {num}..."
+msgstr "ছবি {num} তৈরি করা হচ্ছে..."
 
-#: api.py:140 api.py:228
+#: api.py:140 api.py:221
 msgid "Downloading result..."
 msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 
@@ -118,10 +130,6 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "ছবি সম্পাদনা করুন"
 
-#: dialog_threads.py:298
-msgid "Edit layer created!"
-msgstr "সম্পাদনা লেয়ার তৈরি হয়েছে!"
-
 #: dialog_events.py:114
 msgid "Edit mode requires a selected layer"
 msgstr "সম্পাদনা মোডের জন্য একটি নির্বাচিত লেয়ার প্রয়োজন"
@@ -130,40 +138,28 @@ msgstr "সম্পাদনা মোডের জন্য একটি ন�
 msgid "Enter your Replicate API key..."
 msgstr "আপনার Replicate API কী প্রবেশ করান..."
 
-#: dialog_threads.py:340
+#: dialog_threads.py:306
 #, python-brace-format
-msgid "Error creating GIMP image: {error}"
-msgstr "GIMP ছবি তৈরি করতে ত্রুটি: {error}"
+msgid "Error adding layers: {error}"
+msgstr "স্তর যোগ করতে ত্রুটি: {error}"
 
-#: dialog_threads.py:302
+#: dialog_threads.py:336
 #, python-brace-format
-msgid "Error creating edit layer: {error}"
-msgstr "সম্পাদনা লেয়ার তৈরি করতে ত্রুটি: {error}"
+msgid "Error creating images: {error}"
+msgstr "ছবি তৈরি করতে ত্রুটি: {error}"
 
 #: dream-prompter.py:85
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
 
-#: api.py:165 api.py:253
-msgid "Failed to convert result to image"
-msgstr "ফলাফলকে ছবিতে রূপান্তর করতে ব্যর্থ"
-
-#: dialog_threads.py:333
-msgid "Failed to create GIMP image"
-msgstr "GIMP ছবি তৈরি করতে ব্যর্থ"
-
-#: dialog_threads.py:295
-msgid "Failed to create edit layer"
-msgstr "সম্পাদনা লেয়ার তৈরি করতে ব্যর্থ"
+#: api.py:158 api.py:239
+msgid "Failed to convert any images from API response"
+msgstr "API প্রতিক্রিয়া থেকে ছবি রূপান্তর করতে ব্যর্থ"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "বর্তমান ছবি রপ্তানি করতে ব্যর্থ"
-
-#: api.py:156 api.py:244
-msgid "Failed to process iterable response"
-msgstr "পুনরাবৃত্তিযোগ্য প্রতিক্রিয়া প্রক্রিয়া করতে ব্যর্থ"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -173,7 +169,12 @@ msgstr "সম্পাদনা তৈরি করুন"
 msgid "Generate Image"
 msgstr "ছবি তৈরি করুন"
 
-#: api.py:200
+#: dialog_threads.py:331
+#, python-brace-format
+msgid "Generated {count} images"
+msgstr "{count}টি ছবি জেনারেট করা হয়েছে"
+
+#: api.py:193
 msgid "Generating image with Replicate..."
 msgstr "Replicate দিয়ে ছবি তৈরি করা হচ্ছে..."
 
@@ -190,15 +191,11 @@ msgstr "Google এর উন্নত ছবি তৈরি এবং সম্
 msgid "Hide API key"
 msgstr "API কী লুকান"
 
-#: api.py:168
+#: api.py:161
 msgid "Image editing complete!"
 msgstr "ছবি সম্পাদনা সম্পূর্ণ!"
 
-#: dialog_threads.py:336
-msgid "Image generated successfully!"
-msgstr "ছবি সফলভাবে তৈরি হয়েছে!"
-
-#: api.py:256
+#: api.py:242
 msgid "Image generation complete!"
 msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 
@@ -206,11 +203,11 @@ msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 msgid "Initializing API request..."
 msgstr "API অনুরোধ শুরু করা হচ্ছে..."
 
-#: api.py:129 api.py:264
+#: api.py:129 api.py:250
 msgid "Logs"
 msgstr "লগ"
 
-#: api.py:126 api.py:261
+#: api.py:126 api.py:247
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "মডেল ত্রুটি: {error}"
@@ -239,11 +236,11 @@ msgstr "API থেকে কোনো ছবির ডেটা পাওয়�
 msgid "No layer available for editing"
 msgstr "সম্পাদনার জন্য কোনো স্তর উপলব্ধ নেই"
 
-#: api.py:138 api.py:226
+#: api.py:138 api.py:219
 msgid "No output received from API"
 msgstr "API থেকে কোনো আউটপুট পাওয়া যায়নি"
 
-#: api.py:161 api.py:249
+#: api.py:146 api.py:227
 msgid "No valid image data in API response"
 msgstr "API প্রতিক্রিয়ায় কোনো বৈধ ছবির ডেটা নেই"
 
@@ -251,8 +248,8 @@ msgstr "API প্রতিক্রিয়ায় কোনো বৈধ �
 msgid "Operation Mode"
 msgstr "অপারেশন মোড"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:201 api.py:214
-#: api.py:223 api.py:229
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
+#: api.py:216 api.py:222
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
@@ -272,7 +269,7 @@ msgstr "Replicate এর জন্য বর্তমান ছবি প্র�
 msgid "Processing Replicate edit response..."
 msgstr "Replicate সম্পাদনা প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
-#: api.py:222
+#: api.py:215
 msgid "Processing Replicate response..."
 msgstr "Replicate প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
@@ -293,12 +290,12 @@ msgstr "সম্পাদনা মোডের জন্য {max}টি রে
 msgid "Replicate API Key"
 msgstr "Replicate API কী"
 
-#: api.py:132 api.py:268
+#: api.py:132 api.py:254
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API ত্রুটি: {error}"
 
-#: api.py:50 api.py:91 api.py:198
+#: api.py:50 api.py:91 api.py:191
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API উপলব্ধ নেই। অনুগ্রহ করে replicate ইনস্টল করুন"
 
@@ -327,7 +324,7 @@ msgstr "সর্বোচ্চ {max}টি অতিরিক্ত ছবি 
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate এ সম্পাদনা অনুরোধ পাঠানো হচ্ছে..."
 
-#: api.py:213
+#: api.py:206
 msgid "Sending request to Replicate..."
 msgstr "Replicate এ অনুরোধ পাঠানো হচ্ছে..."
 
@@ -363,14 +360,10 @@ msgstr "ছবি সম্পাদনার সময় অপ্রত্য
 msgid "Unexpected error during image generation: {error}"
 msgstr "ছবি তৈরির সময় অপ্রত্যাশিত ত্রুটি: {error}"
 
-#: api.py:173 api.py:271
+#: api.py:166 api.py:257
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "অপ্রত্যাশিত ত্রুটি: {error}"
-
-#: api.py:158 api.py:246
-msgid "Unexpected response format from API"
-msgstr "API থেকে অপ্রত্যাশিত প্রতিক্রিয়া বিন্যাস"
 
 #: dialog_gtk.py:448
 #, python-brace-format
@@ -392,15 +385,24 @@ msgstr "{original} (AI সম্পাদনা: {prompt})"
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - সর্বোচ্চ আকার অতিক্রান্ত)"
 
+#~ msgid "Edit layer created!"
+#~ msgstr "সম্পাদনা লেয়ার তৈরি হয়েছে!"
+
 #, python-brace-format
 #~ msgid "Error processing API response: {error}"
 #~ msgstr "API প্রতিক্রিয়া প্রক্রিয়াকরণে ত্রুটি: {error}"
 
+#~ msgid "Failed to convert result to image"
+#~ msgstr "ফলাফলকে ছবিতে রূপান্তর করতে ব্যর্থ"
+
+#~ msgid "Failed to create GIMP image"
+#~ msgstr "GIMP ছবি তৈরি করতে ব্যর্থ"
+
+#~ msgid "Failed to create edit layer"
+#~ msgstr "সম্পাদনা লেয়ার তৈরি করতে ব্যর্থ"
+
 #~ msgid "Generate AI Edit"
 #~ msgstr "AI সম্পাদনা তৈরি করুন"
-
-#~ msgid "Generate new image"
-#~ msgstr "নতুন ছবি তৈরি করুন"
 
 #, python-brace-format
 #~ msgid "Generation stopped: {reason}"
@@ -408,6 +410,9 @@ msgstr "⚠️ ({size:.1f} MB - সর্বোচ্চ আকার অতি�
 
 #~ msgid "Google Gemini API Key"
 #~ msgstr "Google Gemini API কী"
+
+#~ msgid "Image generated successfully!"
+#~ msgstr "ছবি সফলভাবে তৈরি হয়েছে!"
 
 #, python-brace-format
 #~ msgid "Nano Banana API error: {error}"
@@ -427,3 +432,6 @@ msgstr "⚠️ ({size:.1f} MB - সর্বোচ্চ আকার অতি�
 
 #~ msgid "Select up to 2 additional images"
 #~ msgstr "সর্বোচ্চ ২টি অতিরিক্ত ছবি নির্বাচন করুন"
+
+#~ msgid "Unexpected response format from API"
+#~ msgstr "API থেকে অপ্রত্যাশিত প্রতিক্রিয়া বিন্যাস"

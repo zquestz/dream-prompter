@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:04-1000\n"
+"POT-Creation-Date: 2025-09-22 17:25-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Portuguese\n"
@@ -27,9 +27,14 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: integrator.py:111
+#: dialog_threads.py:324 integrator.py:111
 msgid "AI Generated"
 msgstr "Gerado por IA"
+
+#: dialog_threads.py:322
+#, python-brace-format
+msgid "AI Generated {num}"
+msgstr "IA Gerada {num}"
 
 #: dialog_threads.py:271
 #, python-brace-format
@@ -56,9 +61,15 @@ msgstr "Criação/edição de imagens com IA usando modelos Replicate"
 msgid "API key is required"
 msgstr "Chave API é obrigatória"
 
-#: dialog_threads.py:291
-msgid "Adding edit layer..."
-msgstr "Adicionando camada de edição..."
+#: dialog_threads.py:301
+#, python-brace-format
+msgid "Added {count} layers"
+msgstr "Adicionadas {count} camadas"
+
+#: dialog_threads.py:294
+#, python-brace-format
+msgid "Adding layer {num}..."
+msgstr "Adicionando camada {num}..."
 
 #: dialog_gtk.py:171
 msgid "Additional Images (Optional)"
@@ -100,11 +111,12 @@ msgstr ""
 msgid "Clear selected files"
 msgstr "Limpar arquivos selecionados"
 
-#: dialog_threads.py:329
-msgid "Creating GIMP image..."
-msgstr "Criando imagem do GIMP..."
+#: dialog_threads.py:319
+#, python-brace-format
+msgid "Creating image {num}..."
+msgstr "Criando imagem {num}..."
 
-#: api.py:140 api.py:228
+#: api.py:140 api.py:221
 msgid "Downloading result..."
 msgstr "Baixando resultado..."
 
@@ -120,10 +132,6 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "Editar Imagem"
 
-#: dialog_threads.py:298
-msgid "Edit layer created!"
-msgstr "Camada de edição criada!"
-
 #: dialog_events.py:114
 msgid "Edit mode requires a selected layer"
 msgstr "Modo de edição requer uma camada selecionada"
@@ -132,40 +140,28 @@ msgstr "Modo de edição requer uma camada selecionada"
 msgid "Enter your Replicate API key..."
 msgstr "Digite sua chave API do Replicate..."
 
-#: dialog_threads.py:340
+#: dialog_threads.py:306
 #, python-brace-format
-msgid "Error creating GIMP image: {error}"
-msgstr "Erro ao criar imagem do GIMP: {error}"
+msgid "Error adding layers: {error}"
+msgstr "Erro ao adicionar camadas: {error}"
 
-#: dialog_threads.py:302
+#: dialog_threads.py:336
 #, python-brace-format
-msgid "Error creating edit layer: {error}"
-msgstr "Erro ao criar camada de edição: {error}"
+msgid "Error creating images: {error}"
+msgstr "Erro ao criar imagens: {error}"
 
 #: dream-prompter.py:85
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Erro executando Dream Prompter: {error}"
 
-#: api.py:165 api.py:253
-msgid "Failed to convert result to image"
-msgstr "Falha ao converter resultado para imagem"
-
-#: dialog_threads.py:333
-msgid "Failed to create GIMP image"
-msgstr "Falha ao criar imagem do GIMP"
-
-#: dialog_threads.py:295
-msgid "Failed to create edit layer"
-msgstr "Falha ao criar camada de edição"
+#: api.py:158 api.py:239
+msgid "Failed to convert any images from API response"
+msgstr "Falha ao converter imagens da resposta da API"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "Falha ao exportar imagem atual"
-
-#: api.py:156 api.py:244
-msgid "Failed to process iterable response"
-msgstr "Falha ao processar resposta iterável"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -175,7 +171,12 @@ msgstr "Gerar Edição"
 msgid "Generate Image"
 msgstr "Gerar Imagem"
 
-#: api.py:200
+#: dialog_threads.py:331
+#, python-brace-format
+msgid "Generated {count} images"
+msgstr "Geradas {count} imagens"
+
+#: api.py:193
 msgid "Generating image with Replicate..."
 msgstr "Gerando imagem com Replicate..."
 
@@ -192,15 +193,11 @@ msgstr "Modelo avançado de geração e edição de imagens do Google"
 msgid "Hide API key"
 msgstr "Ocultar chave API"
 
-#: api.py:168
+#: api.py:161
 msgid "Image editing complete!"
 msgstr "Edição de imagem concluída!"
 
-#: dialog_threads.py:336
-msgid "Image generated successfully!"
-msgstr "Imagem gerada com sucesso!"
-
-#: api.py:256
+#: api.py:242
 msgid "Image generation complete!"
 msgstr "Geração de imagem concluída!"
 
@@ -208,11 +205,11 @@ msgstr "Geração de imagem concluída!"
 msgid "Initializing API request..."
 msgstr "Inicializando solicitação da API..."
 
-#: api.py:129 api.py:264
+#: api.py:129 api.py:250
 msgid "Logs"
 msgstr "Logs"
 
-#: api.py:126 api.py:261
+#: api.py:126 api.py:247
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Erro do modelo: {error}"
@@ -241,11 +238,11 @@ msgstr "Nenhum dado de imagem recebido da API"
 msgid "No layer available for editing"
 msgstr "Nenhuma camada disponível para edição"
 
-#: api.py:138 api.py:226
+#: api.py:138 api.py:219
 msgid "No output received from API"
 msgstr "Nenhuma saída recebida da API"
 
-#: api.py:161 api.py:249
+#: api.py:146 api.py:227
 msgid "No valid image data in API response"
 msgstr "Nenhum dado de imagem válido na resposta da API"
 
@@ -253,8 +250,8 @@ msgstr "Nenhum dado de imagem válido na resposta da API"
 msgid "Operation Mode"
 msgstr "Modo de Operação"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:201 api.py:214
-#: api.py:223 api.py:229
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
+#: api.py:216 api.py:222
 msgid "Operation cancelled"
 msgstr "Operação cancelada"
 
@@ -274,7 +271,7 @@ msgstr "Preparando imagem atual para Replicate..."
 msgid "Processing Replicate edit response..."
 msgstr "Processando resposta de edição do Replicate..."
 
-#: api.py:222
+#: api.py:215
 msgid "Processing Replicate response..."
 msgstr "Processando resposta do Replicate..."
 
@@ -295,12 +292,12 @@ msgstr "Reduzido para {max} imagens de referência para o modo de edição"
 msgid "Replicate API Key"
 msgstr "Chave API do Replicate"
 
-#: api.py:132 api.py:268
+#: api.py:132 api.py:254
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Erro da API Replicate: {error}"
 
-#: api.py:50 api.py:91 api.py:198
+#: api.py:50 api.py:91 api.py:191
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana não disponível. Por favor instale google-genai"
 
@@ -329,7 +326,7 @@ msgstr "Selecione até {max} imagens adicionais"
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitação de edição para Replicate..."
 
-#: api.py:213
+#: api.py:206
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitação para Replicate..."
 
@@ -365,14 +362,10 @@ msgstr "Erro inesperado durante edição de imagem: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Erro inesperado durante geração de imagem: {error}"
 
-#: api.py:173 api.py:271
+#: api.py:166 api.py:257
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Erro inesperado: {error}"
-
-#: api.py:158 api.py:246
-msgid "Unexpected response format from API"
-msgstr "Formato de resposta inesperado da API"
 
 #: dialog_gtk.py:448
 #, python-brace-format
@@ -394,11 +387,20 @@ msgstr "{original} (Edição IA: {prompt})"
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - Tamanho Máximo Excedido)"
 
+#~ msgid "Edit layer created!"
+#~ msgstr "Camada de edição criada!"
+
+#~ msgid "Failed to convert result to image"
+#~ msgstr "Falha ao converter resultado para imagem"
+
+#~ msgid "Failed to create GIMP image"
+#~ msgstr "Falha ao criar imagem do GIMP"
+
+#~ msgid "Failed to create edit layer"
+#~ msgstr "Falha ao criar camada de edição"
+
 #~ msgid "Generate AI Edit"
 #~ msgstr "Gerar Edição IA"
-
-#~ msgid "Generate new image"
-#~ msgstr "Gerar nova imagem"
 
 #, python-brace-format
 #~ msgid "Generation stopped: {reason}"
@@ -406,6 +408,9 @@ msgstr "⚠️ ({size:.1f} MB - Tamanho Máximo Excedido)"
 
 #~ msgid "Google Gemini API Key"
 #~ msgstr "Chave API do Google Gemini"
+
+#~ msgid "Image generated successfully!"
+#~ msgstr "Imagem gerada com sucesso!"
 
 #, python-brace-format
 #~ msgid "Nano Banana API error: {error}"
@@ -425,3 +430,6 @@ msgstr "⚠️ ({size:.1f} MB - Tamanho Máximo Excedido)"
 
 #~ msgid "Select up to 2 additional images"
 #~ msgstr "Selecione até 2 imagens adicionais"
+
+#~ msgid "Unexpected response format from API"
+#~ msgstr "Formato de resposta inesperado da API"
