@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:25-1000\n"
+"POT-Creation-Date: 2025-09-22 20:52-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -75,6 +75,10 @@ msgstr "正在新增圖層 {num}..."
 msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
 
+#: models/seedream4.py:94
+msgid "Aspect Ratio"
+msgstr "長寬比"
+
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "構建Replicate編輯請求..."
@@ -107,12 +111,24 @@ msgstr "無法添加{count}個檔案。最多允許{max}張參考圖像。"
 msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
+#: models/seedream4.py:95
+msgid "Control aspect ratio of generated images"
+msgstr "控制生成影像的長寬比"
+
 #: dialog_threads.py:319
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "正在建立影像 {num}..."
 
-#: api.py:140 api.py:221
+#: models/seedream4.py:85
+msgid "Custom height in pixels"
+msgstr "自訂像素高度"
+
+#: models/seedream4.py:75
+msgid "Custom width in pixels"
+msgstr "自訂像素寬度"
+
+#: api.py:144 api.py:229
 msgid "Downloading result..."
 msgstr "正在下載結果..."
 
@@ -151,13 +167,17 @@ msgstr "建立影像錯誤: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
 
-#: api.py:158 api.py:239
+#: api.py:162 api.py:247
 msgid "Failed to convert any images from API response"
 msgstr "無法從API回應轉換影像"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "匯出當前圖像失敗"
+
+#: models/nano_banana.py:66
+msgid "Format for generated images"
+msgstr "生成影像的格式"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -167,12 +187,16 @@ msgstr "生成編輯"
 msgid "Generate Image"
 msgstr "生成圖像"
 
+#: models/seedream4.py:112
+msgid "Generate images sequentially or in parallel"
+msgstr "順序或並行生成影像"
+
 #: dialog_threads.py:331
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "已生成 {count} 張影像"
 
-#: api.py:193
+#: api.py:197
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
 
@@ -185,15 +209,23 @@ msgstr "從<a href=\"{url}\">Replicate</a>獲取您的API密鑰"
 msgid "Google's advanced image generation and editing model"
 msgstr "Google的高級圖像生成和編輯模型"
 
+#: models/seedream4.py:84
+msgid "Height"
+msgstr "高度"
+
 #: dialog_events.py:222
 msgid "Hide API key"
 msgstr "隱藏API密鑰"
 
-#: api.py:161
+#: models/seedream4.py:66
+msgid "Image Size"
+msgstr "影像大小"
+
+#: api.py:165
 msgid "Image editing complete!"
 msgstr "圖像編輯完成！"
 
-#: api.py:242
+#: api.py:250
 msgid "Image generation complete!"
 msgstr "圖像生成完成！"
 
@@ -201,11 +233,19 @@ msgstr "圖像生成完成！"
 msgid "Initializing API request..."
 msgstr "正在初始化API請求..."
 
-#: api.py:129 api.py:250
+#: api.py:133 api.py:258
 msgid "Logs"
 msgstr "日誌"
 
-#: api.py:126 api.py:247
+#: models/seedream4.py:102
+msgid "Max Images"
+msgstr "最大影像數"
+
+#: models/seedream4.py:103
+msgid "Maximum number of images to generate"
+msgstr "要生成的最大影像數量"
+
+#: api.py:130 api.py:255
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
@@ -234,11 +274,11 @@ msgstr "未從API接收到圖像數據"
 msgid "No layer available for editing"
 msgstr "沒有可編輯的圖層"
 
-#: api.py:138 api.py:219
+#: api.py:142 api.py:227
 msgid "No output received from API"
 msgstr "未從API接收到輸出"
 
-#: api.py:146 api.py:227
+#: api.py:150 api.py:235
 msgid "No valid image data in API response"
 msgstr "API響應中沒有有效圖像數據"
 
@@ -246,10 +286,14 @@ msgstr "API響應中沒有有效圖像數據"
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
-#: api.py:216 api.py:222
+#: api.py:97 api.py:105 api.py:122 api.py:139 api.py:145 api.py:198 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "操作已取消"
+
+#: models/nano_banana.py:65
+msgid "Output Format"
+msgstr "輸出格式"
 
 #: dialog_events.py:110
 msgid "Please enter a prompt"
@@ -263,11 +307,11 @@ msgstr "請輸入您的Replicate API密鑰"
 msgid "Preparing current image for Replicate..."
 msgstr "為Replicate準備當前圖像..."
 
-#: api.py:134
+#: api.py:138
 msgid "Processing Replicate edit response..."
 msgstr "處理Replicate編輯響應..."
 
-#: api.py:215
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "處理Replicate響應..."
 
@@ -288,14 +332,18 @@ msgstr "減少到{max}張參考圖像用於編輯模式"
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
-#: api.py:132 api.py:254
+#: api.py:136 api.py:262
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API錯誤：{error}"
 
-#: api.py:50 api.py:91 api.py:191
+#: api.py:50 api.py:91 api.py:195
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。請安裝google-genai"
+
+#: models/seedream4.py:67
+msgid "Resolution preset for generated images"
+msgstr "生成影像的解析度預設"
 
 #: models/seedream4.py:27
 msgid "Seedream 4"
@@ -318,13 +366,17 @@ msgstr "選擇參考圖像"
 msgid "Select up to {max} additional images"
 msgstr "最多選擇{max}張附加圖像"
 
-#: api.py:117
+#: api.py:121
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate發送編輯請求..."
 
-#: api.py:206
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "向Replicate發送請求..."
+
+#: models/seedream4.py:111
+msgid "Sequential Generation"
+msgstr "順序生成"
 
 #: dialog_events.py:226
 msgid "Show API key"
@@ -357,10 +409,14 @@ msgstr "圖像編輯過程中出現意外錯誤：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "圖像生成過程中出現意外錯誤：{error}"
 
-#: api.py:166 api.py:257
+#: api.py:170 api.py:265
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外錯誤：{error}"
+
+#: models/seedream4.py:74
+msgid "Width"
+msgstr "寬度"
 
 #: dialog_gtk.py:448
 #, python-brace-format

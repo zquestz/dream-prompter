@@ -9,7 +9,7 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import BaseModel, OutputFormat, register_model
+from . import BaseModel, OutputFormat, ParameterDefinition, ParameterType, register_model
 from i18n import _
 
 class NanaBananaModel(BaseModel):
@@ -55,27 +55,49 @@ class NanaBananaModel(BaseModel):
         """Default output format for generated images"""
         return OutputFormat.PNG
 
-    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None, **kwargs) -> Dict[str, Any]:
+    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+        """Get list of configurable parameters for Nano Banana"""
+        return [
+            ParameterDefinition(
+                name="output_format",
+                param_type=ParameterType.CHOICE,
+                default_value="png",
+                label=_("Output Format"),
+                description=_("Format for generated images"),
+                choices=[OutputFormat.PNG, OutputFormat.JPEG, OutputFormat.WEBP]
+            )
+        ]
+
+    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None,
+                             user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
         Args:
             prompt: Text prompt for generation
             reference_images: Optional list of reference image file objects
-            **kwargs: Additional parameters like output_format
+            user_settings: User's saved settings for this model
+            **kwargs: Additional parameters (override user_settings)
 
         Returns:
             Dictionary of input parameters for the Replicate API
         """
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
         model_input = {
             "prompt": prompt,
             "image_input": reference_images or [],
-            "output_format": kwargs.get("output_format", self.get_output_format_string(self.default_output_format))
+            "output_format": params.get("output_format", self.get_output_format_string(self.default_output_format))
         }
 
         return model_input
 
-    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None, **kwargs) -> Dict[str, Any]:
+    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None,
+                        user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -83,7 +105,8 @@ class NanaBananaModel(BaseModel):
             prompt: Text prompt for editing
             main_image: Main image to edit (file object or bytes)
             reference_images: Optional list of reference image file objects
-            **kwargs: Additional parameters like output_format
+            user_settings: User's saved settings for this model
+            **kwargs: Additional parameters (override user_settings)
 
         Returns:
             Dictionary of input parameters for the Replicate API
@@ -98,10 +121,16 @@ class NanaBananaModel(BaseModel):
         if reference_images:
             image_input.extend(reference_images)
 
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
         model_input = {
             "prompt": prompt,
             "image_input": image_input,
-            "output_format": kwargs.get("output_format", self.get_output_format_string(self.default_output_format))
+            "output_format": params.get("output_format", self.get_output_format_string(self.default_output_format))
         }
 
         return model_input

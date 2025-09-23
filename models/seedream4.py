@@ -10,7 +10,7 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import BaseModel, OutputFormat, register_model
+from . import BaseModel, OutputFormat, ParameterDefinition, ParameterType, register_model
 from i18n import _
 
 class Seedream4Model(BaseModel):
@@ -56,32 +56,99 @@ class Seedream4Model(BaseModel):
         """Default output format for generated images"""
         return OutputFormat.PNG
 
-    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None, **kwargs) -> Dict[str, Any]:
+    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+        """Get list of configurable parameters for Seedream 4"""
+        return [
+            ParameterDefinition(
+                name="size",
+                param_type=ParameterType.CHOICE,
+                default_value="2K",
+                label=_("Image Size"),
+                description=_("Resolution preset for generated images"),
+                choices=["1K", "2K", "4K", "custom"]
+            ),
+            ParameterDefinition(
+                name="width",
+                param_type=ParameterType.INTEGER,
+                default_value=2048,
+                label=_("Width"),
+                description=_("Custom width in pixels"),
+                min_value=1024,
+                max_value=4096,
+                step=1
+            ),
+            ParameterDefinition(
+                name="height",
+                param_type=ParameterType.INTEGER,
+                default_value=2048,
+                label=_("Height"),
+                description=_("Custom height in pixels"),
+                min_value=1024,
+                max_value=4096,
+                step=1
+            ),
+            ParameterDefinition(
+                name="aspect_ratio",
+                param_type=ParameterType.CHOICE,
+                default_value="match_input_image",
+                label=_("Aspect Ratio"),
+                description=_("Control aspect ratio of generated images"),
+                choices=["match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16", "3:2", "2:3", "21.9"]
+            ),
+            ParameterDefinition(
+                name="max_images",
+                param_type=ParameterType.INTEGER,
+                default_value=1,
+                label=_("Max Images"),
+                description=_("Maximum number of images to generate"),
+                min_value=1,
+                max_value=15
+            ),
+            ParameterDefinition(
+                name="sequential_image_generation",
+                param_type=ParameterType.CHOICE,
+                default_value="disabled",
+                label=_("Sequential Generation"),
+                description=_("Generate images sequentially or in parallel"),
+                choices=["disabled", "auto"]
+            )
+        ]
+
+    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None,
+                             user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
         Args:
             prompt: Text prompt for generation
             reference_images: Optional list of reference image file objects
-            **kwargs: Additional parameters like size, aspect_ratio, max_images
+            user_settings: User's saved settings for this model
+            **kwargs: Additional parameters (override user_settings)
 
         Returns:
             Dictionary of input parameters for the Replicate API
         """
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
         model_input = {
             "prompt": prompt,
-            "size": kwargs.get("size", "2K"),
-            "width": kwargs.get("width", 2048),
-            "height": kwargs.get("height", 2048),
-            "aspect_ratio": kwargs.get("aspect_ratio", "match_input_image"),
-            "max_images": kwargs.get("max_images", 1),
-            "sequential_image_generation": kwargs.get("sequential_image_generation", "disabled"),
+            "size": params["size"],
+            "width": params["width"],
+            "height": params["height"],
+            "aspect_ratio": params["aspect_ratio"],
+            "max_images": params["max_images"],
+            "sequential_image_generation": params["sequential_image_generation"],
             "image_input": reference_images or []
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None, **kwargs) -> Dict[str, Any]:
+    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None,
+                        user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -89,7 +156,8 @@ class Seedream4Model(BaseModel):
             prompt: Text prompt for editing (e.g., "Remove the boy in this picture")
             main_image: Main image to edit (file object or bytes)
             reference_images: Optional list of reference image file objects
-            **kwargs: Additional parameters
+            user_settings: User's saved settings for this model
+            **kwargs: Additional parameters (override user_settings)
 
         Returns:
             Dictionary of input parameters for the Replicate API
@@ -103,14 +171,20 @@ class Seedream4Model(BaseModel):
         if reference_images:
             image_input.extend(reference_images[:self.max_reference_images_edit])
 
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
         model_input = {
             "prompt": prompt,
-            "size": kwargs.get("size", "2K"),
-            "width": kwargs.get("width", 2048),
-            "height": kwargs.get("height", 2048),
-            "aspect_ratio": kwargs.get("aspect_ratio", "match_input_image"),
-            "max_images": kwargs.get("max_images", 1),
-            "sequential_image_generation": kwargs.get("sequential_image_generation", "disabled"),
+            "size": params["size"],
+            "width": params["width"],
+            "height": params["height"],
+            "aspect_ratio": params["aspect_ratio"],
+            "max_images": params["max_images"],
+            "sequential_image_generation": params["sequential_image_generation"],
             "image_input": image_input
         }
 

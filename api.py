@@ -108,10 +108,14 @@ class ReplicateAPI:
             if reference_images:
                 ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images_edit)
 
+            from settings import get_model_settings
+            user_settings = get_model_settings(self.model.name)
+
             model_input = self.model.build_edit_input(
                 prompt=prompt,
                 main_image=io.BytesIO(current_image_data),
-                reference_images=ref_files if ref_files else None
+                reference_images=ref_files if ref_files else None,
+                user_settings=user_settings
             )
 
             if progress_callback and not progress_callback(_("Sending edit request to Replicate..."), PROGRESS_PROCESS):
@@ -198,9 +202,13 @@ class ReplicateAPI:
             if reference_images:
                 ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images)
 
+            from settings import get_model_settings
+            user_settings = get_model_settings(self.model.name)
+
             model_input = self.model.build_generation_input(
                 prompt=prompt,
-                reference_images=ref_files if reference_images else None
+                reference_images=ref_files if reference_images else None,
+                user_settings=user_settings
             )
 
             if progress_callback and not progress_callback(_("Sending request to Replicate..."), PROGRESS_PROCESS):

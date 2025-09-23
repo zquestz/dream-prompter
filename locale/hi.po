@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:25-1000\n"
+"POT-Creation-Date: 2025-09-22 20:52-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -75,6 +75,10 @@ msgstr "परत {num} जोड़ी जा रही है..."
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
+#: models/seedream4.py:94
+msgid "Aspect Ratio"
+msgstr "पहलू अनुपात"
+
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
@@ -109,12 +113,24 @@ msgstr "{count} फ़ाइलें नहीं जोड़ी जा सक
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
+#: models/seedream4.py:95
+msgid "Control aspect ratio of generated images"
+msgstr "जेनेरेट की गई छवियों का पहलू अनुपात नियंत्रित करें"
+
 #: dialog_threads.py:319
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "छवि {num} बनाई जा रही है..."
 
-#: api.py:140 api.py:221
+#: models/seedream4.py:85
+msgid "Custom height in pixels"
+msgstr "पिक्सेल में कस्टम ऊंचाई"
+
+#: models/seedream4.py:75
+msgid "Custom width in pixels"
+msgstr "पिक्सेल में कस्टम चौड़ाई"
+
+#: api.py:144 api.py:229
 msgid "Downloading result..."
 msgstr "परिणाम डाउनलोड किया जा रहा है..."
 
@@ -153,13 +169,17 @@ msgstr "छवियां बनाने में त्रुटि: {error}
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: api.py:158 api.py:239
+#: api.py:162 api.py:247
 msgid "Failed to convert any images from API response"
 msgstr "API प्रतिक्रिया से छवियों को रूपांतरित करने में विफल"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
+
+#: models/nano_banana.py:66
+msgid "Format for generated images"
+msgstr "जेनेरेट की गई छवियों का प्रारूप"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -169,12 +189,16 @@ msgstr "संपादन उत्पन्न करें"
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
+#: models/seedream4.py:112
+msgid "Generate images sequentially or in parallel"
+msgstr "छवियों को क्रमिक या समानांतर में जेनेरेट करें"
+
 #: dialog_threads.py:331
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "{count} छवियां जेनेरेट की गईं"
 
-#: api.py:193
+#: api.py:197
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
@@ -187,15 +211,23 @@ msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी 
 msgid "Google's advanced image generation and editing model"
 msgstr "Google का उन्नत चित्र निर्माण और संपादन मॉडल"
 
+#: models/seedream4.py:84
+msgid "Height"
+msgstr "ऊंचाई"
+
 #: dialog_events.py:222
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: api.py:161
+#: models/seedream4.py:66
+msgid "Image Size"
+msgstr "छवि का आकार"
+
+#: api.py:165
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
-#: api.py:242
+#: api.py:250
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -203,11 +235,19 @@ msgstr "छवि उत्पादन पूर्ण!"
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:129 api.py:250
+#: api.py:133 api.py:258
 msgid "Logs"
 msgstr "लॉग"
 
-#: api.py:126 api.py:247
+#: models/seedream4.py:102
+msgid "Max Images"
+msgstr "अधिकतम छवियां"
+
+#: models/seedream4.py:103
+msgid "Maximum number of images to generate"
+msgstr "जेनेरेट करने के लिए छवियों की अधिकतम संख्या"
+
+#: api.py:130 api.py:255
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
@@ -236,11 +276,11 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: api.py:138 api.py:219
+#: api.py:142 api.py:227
 msgid "No output received from API"
 msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
 
-#: api.py:146 api.py:227
+#: api.py:150 api.py:235
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
@@ -248,10 +288,14 @@ msgstr "API प्रतिक्रिया में कोई वैध छ�
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
-#: api.py:216 api.py:222
+#: api.py:97 api.py:105 api.py:122 api.py:139 api.py:145 api.py:198 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
+
+#: models/nano_banana.py:65
+msgid "Output Format"
+msgstr "आउटपुट प्रारूप"
 
 #: dialog_events.py:110
 msgid "Please enter a prompt"
@@ -265,11 +309,11 @@ msgstr "कृपया अपनी Replicate API कुंजी दर्ज 
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:134
+#: api.py:138
 msgid "Processing Replicate edit response..."
 msgstr "Replicate संपादन प्रतिक्रिया संसाधित की जा रही है..."
 
-#: api.py:215
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
@@ -290,14 +334,18 @@ msgstr "संपादन मोड के लिए {max} संदर्भ �
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
-#: api.py:132 api.py:254
+#: api.py:136 api.py:262
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API त्रुटि: {error}"
 
-#: api.py:50 api.py:91 api.py:191
+#: api.py:50 api.py:91 api.py:195
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
+
+#: models/seedream4.py:67
+msgid "Resolution preset for generated images"
+msgstr "जेनेरेट की गई छवियों के लिए रिज़ॉल्यूशन प्रीसेट"
 
 #: models/seedream4.py:27
 msgid "Seedream 4"
@@ -320,13 +368,17 @@ msgstr "संदर्भ छवियां चुनें"
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
 
-#: api.py:117
+#: api.py:121
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:206
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
+
+#: models/seedream4.py:111
+msgid "Sequential Generation"
+msgstr "क्रमिक जेनेरेशन"
 
 #: dialog_events.py:226
 msgid "Show API key"
@@ -360,10 +412,14 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:166 api.py:257
+#: api.py:170 api.py:265
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
+
+#: models/seedream4.py:74
+msgid "Width"
+msgstr "चौड़ाई"
 
 #: dialog_gtk.py:448
 #, python-brace-format

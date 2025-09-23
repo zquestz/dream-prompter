@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 17:25-1000\n"
+"POT-Creation-Date: 2025-09-22 20:52-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -75,6 +75,10 @@ msgstr "Agregando capa {num}..."
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
+#: models/seedream4.py:94
+msgid "Aspect Ratio"
+msgstr "Relación de Aspecto"
+
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Construyendo solicitud de edición para Replicate..."
@@ -111,12 +115,24 @@ msgstr ""
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
+#: models/seedream4.py:95
+msgid "Control aspect ratio of generated images"
+msgstr "Controlar relación de aspecto de imágenes generadas"
+
 #: dialog_threads.py:319
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "Creando imagen {num}..."
 
-#: api.py:140 api.py:221
+#: models/seedream4.py:85
+msgid "Custom height in pixels"
+msgstr "Alto personalizado en píxeles"
+
+#: models/seedream4.py:75
+msgid "Custom width in pixels"
+msgstr "Ancho personalizado en píxeles"
+
+#: api.py:144 api.py:229
 msgid "Downloading result..."
 msgstr "Descargando resultado..."
 
@@ -155,13 +171,17 @@ msgstr "Error al crear imágenes: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
 
-#: api.py:158 api.py:239
+#: api.py:162 api.py:247
 msgid "Failed to convert any images from API response"
 msgstr "Error al convertir imágenes de la respuesta de la API"
 
 #: api.py:102
 msgid "Failed to export current image"
 msgstr "Error al exportar imagen actual"
+
+#: models/nano_banana.py:66
+msgid "Format for generated images"
+msgstr "Formato para imágenes generadas"
 
 #: dialog_events.py:153 dialog_gtk.py:294
 msgid "Generate Edit"
@@ -171,12 +191,16 @@ msgstr "Generar Edición"
 msgid "Generate Image"
 msgstr "Generar Imagen"
 
+#: models/seedream4.py:112
+msgid "Generate images sequentially or in parallel"
+msgstr "Generar imágenes secuencialmente o en paralelo"
+
 #: dialog_threads.py:331
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "Generadas {count} imágenes"
 
-#: api.py:193
+#: api.py:197
 msgid "Generating image with Replicate..."
 msgstr "Generando imagen con Replicate..."
 
@@ -189,15 +213,23 @@ msgstr "Obtén tu clave API desde <a href=\"{url}\">Replicate</a>"
 msgid "Google's advanced image generation and editing model"
 msgstr "Modelo avanzado de generación y edición de imágenes de Google"
 
+#: models/seedream4.py:84
+msgid "Height"
+msgstr "Alto"
+
 #: dialog_events.py:222
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
-#: api.py:161
+#: models/seedream4.py:66
+msgid "Image Size"
+msgstr "Tamaño de Imagen"
+
+#: api.py:165
 msgid "Image editing complete!"
 msgstr "¡Edición de imagen completada!"
 
-#: api.py:242
+#: api.py:250
 msgid "Image generation complete!"
 msgstr "¡Generación de imagen completada!"
 
@@ -205,11 +237,19 @@ msgstr "¡Generación de imagen completada!"
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
-#: api.py:129 api.py:250
+#: api.py:133 api.py:258
 msgid "Logs"
 msgstr "Registros"
 
-#: api.py:126 api.py:247
+#: models/seedream4.py:102
+msgid "Max Images"
+msgstr "Máximo de Imágenes"
+
+#: models/seedream4.py:103
+msgid "Maximum number of images to generate"
+msgstr "Número máximo de imágenes a generar"
+
+#: api.py:130 api.py:255
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
@@ -238,11 +278,11 @@ msgstr "No se recibieron datos de imagen de la API"
 msgid "No layer available for editing"
 msgstr "No hay capa disponible para editar"
 
-#: api.py:138 api.py:219
+#: api.py:142 api.py:227
 msgid "No output received from API"
 msgstr "No se recibió salida de la API"
 
-#: api.py:146 api.py:227
+#: api.py:150 api.py:235
 msgid "No valid image data in API response"
 msgstr "No hay datos de imagen válidos en la respuesta de la API"
 
@@ -250,10 +290,14 @@ msgstr "No hay datos de imagen válidos en la respuesta de la API"
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:194 api.py:207
-#: api.py:216 api.py:222
+#: api.py:97 api.py:105 api.py:122 api.py:139 api.py:145 api.py:198 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
+
+#: models/nano_banana.py:65
+msgid "Output Format"
+msgstr "Formato de Salida"
 
 #: dialog_events.py:110
 msgid "Please enter a prompt"
@@ -267,11 +311,11 @@ msgstr "Por favor ingresa tu clave API de Replicate"
 msgid "Preparing current image for Replicate..."
 msgstr "Preparando imagen actual para Replicate..."
 
-#: api.py:134
+#: api.py:138
 msgid "Processing Replicate edit response..."
 msgstr "Procesando respuesta de edición de Replicate..."
 
-#: api.py:215
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Procesando respuesta de Replicate..."
 
@@ -292,14 +336,18 @@ msgstr "Reducido a {max} imágenes de referencia para modo edición"
 msgid "Replicate API Key"
 msgstr "Clave API de Replicate"
 
-#: api.py:132 api.py:254
+#: api.py:136 api.py:262
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Error de API Replicate: {error}"
 
-#: api.py:50 api.py:91 api.py:191
+#: api.py:50 api.py:91 api.py:195
 msgid "Replicate API not available. Please install replicate"
 msgstr "API de Replicate no disponible. Por favor instala replicate"
+
+#: models/seedream4.py:67
+msgid "Resolution preset for generated images"
+msgstr "Preset de resolución para imágenes generadas"
 
 #: models/seedream4.py:27
 msgid "Seedream 4"
@@ -322,13 +370,17 @@ msgstr "Seleccionar Imágenes de Referencia"
 msgid "Select up to {max} additional images"
 msgstr "Selecciona hasta {max} imágenes adicionales"
 
-#: api.py:117
+#: api.py:121
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitud de edición a Replicate..."
 
-#: api.py:206
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitud a Replicate..."
+
+#: models/seedream4.py:111
+msgid "Sequential Generation"
+msgstr "Generación Secuencial"
 
 #: dialog_events.py:226
 msgid "Show API key"
@@ -362,10 +414,14 @@ msgstr "Error inesperado durante la edición de imagen: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Error inesperado durante la generación de imagen: {error}"
 
-#: api.py:166 api.py:257
+#: api.py:170 api.py:265
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Error inesperado: {error}"
+
+#: models/seedream4.py:74
+msgid "Width"
+msgstr "Ancho"
 
 #: dialog_gtk.py:448
 #, python-brace-format
