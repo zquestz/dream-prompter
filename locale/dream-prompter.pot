@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 12:33-1000\n"
+"POT-Creation-Date: 2025-09-23 13:19-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,95 +17,90 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api.py:52 api.py:94 api.py:213
+#: api.py:58 api.py:103 api.py:171
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
-#: api.py:56 dialog_threads.py:101 dialog_threads.py:135
+#: api.py:62 dialog_threads.py:101 dialog_threads.py:135
 msgid "API key is required"
 msgstr ""
 
-#: api.py:97
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr ""
 
-#: api.py:100
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:102 api.py:112 api.py:133 api.py:154 api.py:162 api.py:219 api.py:240
-#: api.py:251 api.py:259
+#: api.py:114 api.py:125 api.py:134 api.py:178 api.py:187 api.py:397 api.py:405
 msgid "Operation cancelled"
 msgstr ""
 
-#: api.py:107
+#: api.py:120
 msgid "Failed to export current image"
 msgstr ""
 
-#: api.py:110
+#: api.py:123
 msgid "Building Replicate edit request..."
 msgstr ""
 
-#: api.py:131
+#: api.py:132
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:141 api.py:288
-#, python-brace-format
-msgid "Model error: {error}"
-msgstr ""
-
-#: api.py:144 api.py:291
-msgid "Logs"
-msgstr ""
-
-#: api.py:147 api.py:295
-#, python-brace-format
-msgid "Replicate API error: {error}"
-msgstr ""
-
-#: api.py:152
-msgid "Processing Replicate edit response..."
-msgstr ""
-
-#: api.py:157 api.py:254
-msgid "No output received from API"
-msgstr ""
-
-#: api.py:160 api.py:257
-msgid "Downloading result..."
-msgstr ""
-
-#: api.py:167 api.py:264
-msgid "No valid image data in API response"
-msgstr ""
-
-#: api.py:179 api.py:277
-msgid "Failed to convert any images from API response"
-msgstr ""
-
-#: api.py:182
-msgid "Image editing complete!"
-msgstr ""
-
-#: api.py:187 api.py:300
+#: api.py:143 api.py:196
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:217
+#: api.py:176
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:238
+#: api.py:185
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:249
+#: api.py:289
+#, python-brace-format
+msgid "Model error: {error}"
+msgstr ""
+
+#: api.py:292
+msgid "Logs"
+msgstr ""
+
+#: api.py:296
+#, python-brace-format
+msgid "Replicate API error: {error}"
+msgstr ""
+
+#: api.py:395
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:282
+#: api.py:400
+msgid "No output received from API"
+msgstr ""
+
+#: api.py:403
+msgid "Downloading result..."
+msgstr ""
+
+#: api.py:409
+msgid "No valid image data in API response"
+msgstr ""
+
+#: api.py:419
+msgid "Failed to convert any images from API response"
+msgstr ""
+
+#: api.py:423
+msgid "Image editing complete!"
+msgstr ""
+
+#: api.py:425
 msgid "Image generation complete!"
 msgstr ""
 

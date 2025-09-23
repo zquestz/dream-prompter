@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 12:33-1000\n"
+"POT-Creation-Date: 2025-09-23 13:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -57,7 +57,7 @@ msgstr "AI प्रॉम्प्ट"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Replicate मॉडल के साथ AI संचालित छवि निर्माण/संपादन"
 
-#: api.py:56 dialog_threads.py:101 dialog_threads.py:135
+#: api.py:62 dialog_threads.py:101 dialog_threads.py:135
 msgid "API key is required"
 msgstr "API कुंजी आवश्यक है"
 
@@ -79,7 +79,7 @@ msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
-#: api.py:110
+#: api.py:123
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
@@ -130,7 +130,7 @@ msgstr "पिक्सेल में कस्टम ऊंचाई"
 msgid "Custom width in pixels"
 msgstr "पिक्सेल में कस्टम चौड़ाई"
 
-#: api.py:160 api.py:257
+#: api.py:403
 msgid "Downloading result..."
 msgstr "परिणाम डाउनलोड किया जा रहा है..."
 
@@ -151,9 +151,8 @@ msgid "Edit mode requires a selected layer"
 msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
 #: dialog_gtk.py:482
-#, fuzzy
 msgid "Enter your Replicate API key"
-msgstr "अपनी Replicate API कुंजी दर्ज करें..."
+msgstr "अपनी Replicate API कुंजी दर्ज करें"
 
 #: dialog_threads.py:328
 #, python-brace-format
@@ -170,11 +169,11 @@ msgstr "छवियां बनाने में त्रुटि: {error}
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: api.py:179 api.py:277
+#: api.py:419
 msgid "Failed to convert any images from API response"
 msgstr "API प्रतिक्रिया से छवियों को रूपांतरित करने में विफल"
 
-#: api.py:107
+#: api.py:120
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
 
@@ -199,7 +198,7 @@ msgstr "छवियों को क्रमिक या समानां�
 msgid "Generated {count} images"
 msgstr "{count} छवियां जेनेरेट की गईं"
 
-#: api.py:217
+#: api.py:176
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
@@ -224,11 +223,11 @@ msgstr "API कुंजी छुपाएं"
 msgid "Image Size"
 msgstr "छवि का आकार"
 
-#: api.py:182
+#: api.py:423
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
-#: api.py:282
+#: api.py:425
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -236,7 +235,7 @@ msgstr "छवि उत्पादन पूर्ण!"
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:144 api.py:291
+#: api.py:292
 msgid "Logs"
 msgstr "लॉग"
 
@@ -252,7 +251,7 @@ msgstr "जेनेरेट करने के लिए छवियों �
 msgid "Model Settings"
 msgstr "मॉडल सेटिंग्स"
 
-#: api.py:141 api.py:288
+#: api.py:289
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
@@ -263,9 +262,9 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
 #: model_settings.py:241
 msgid "No"
-msgstr ""
+msgstr "नहीं"
 
-#: api.py:97
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
@@ -285,24 +284,23 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: api.py:157 api.py:254
+#: api.py:400
 msgid "No output received from API"
 msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
 
-#: api.py:167 api.py:264
+#: api.py:409
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
 #: model_settings.py:238
 msgid "Not set"
-msgstr ""
+msgstr "सेट नहीं किया गया"
 
 #: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:102 api.py:112 api.py:133 api.py:154 api.py:162 api.py:219 api.py:240
-#: api.py:251 api.py:259
+#: api.py:114 api.py:125 api.py:134 api.py:178 api.py:187 api.py:397 api.py:405
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
@@ -318,15 +316,11 @@ msgstr "कृपया एक प्रॉम्प्ट दर्ज कर�
 msgid "Please enter your Replicate API key"
 msgstr "कृपया अपनी Replicate API कुंजी दर्ज करें"
 
-#: api.py:100
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:152
-msgid "Processing Replicate edit response..."
-msgstr "Replicate संपादन प्रतिक्रिया संसाधित की जा रही है..."
-
-#: api.py:249
+#: api.py:395
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
@@ -347,12 +341,12 @@ msgstr "संपादन मोड के लिए {max} संदर्भ �
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
-#: api.py:147 api.py:295
+#: api.py:296
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API त्रुटि: {error}"
 
-#: api.py:52 api.py:94 api.py:213
+#: api.py:58 api.py:103 api.py:171
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
@@ -381,11 +375,11 @@ msgstr "संदर्भ छवियां चुनें"
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
 
-#: api.py:131
+#: api.py:132
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:238
+#: api.py:185
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
@@ -425,7 +419,7 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:187 api.py:300
+#: api.py:143 api.py:196
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
@@ -436,7 +430,7 @@ msgstr "चौड़ाई"
 
 #: model_settings.py:241
 msgid "Yes"
-msgstr ""
+msgstr "हाँ"
 
 #: dialog_gtk.py:684
 #, python-brace-format

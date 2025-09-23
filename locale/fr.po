@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 12:33-1000\n"
+"POT-Creation-Date: 2025-09-23 13:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: French\n"
@@ -57,7 +57,7 @@ msgstr "Invite IA"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Création/édition d'images avec IA utilisant les modèles Replicate"
 
-#: api.py:56 dialog_threads.py:101 dialog_threads.py:135
+#: api.py:62 dialog_threads.py:101 dialog_threads.py:135
 msgid "API key is required"
 msgstr "Clé API requise"
 
@@ -79,7 +79,7 @@ msgstr "Images Supplémentaires (Optionnel)"
 msgid "Aspect Ratio"
 msgstr "Rapport d'Aspect"
 
-#: api.py:110
+#: api.py:123
 msgid "Building Replicate edit request..."
 msgstr "Construction de la requête d'édition Replicate..."
 
@@ -132,7 +132,7 @@ msgstr "Hauteur personnalisée en pixels"
 msgid "Custom width in pixels"
 msgstr "Largeur personnalisée en pixels"
 
-#: api.py:160 api.py:257
+#: api.py:403
 msgid "Downloading result..."
 msgstr "Téléchargement du résultat..."
 
@@ -153,9 +153,8 @@ msgid "Edit mode requires a selected layer"
 msgstr "Le mode édition nécessite un calque sélectionné"
 
 #: dialog_gtk.py:482
-#, fuzzy
 msgid "Enter your Replicate API key"
-msgstr "Saisissez votre clé API Replicate..."
+msgstr "Saisissez votre clé API Replicate"
 
 #: dialog_threads.py:328
 #, python-brace-format
@@ -172,11 +171,11 @@ msgstr "Erreur lors de la création des images : {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Erreur lors de l'exécution de Dream Prompter : {error}"
 
-#: api.py:179 api.py:277
+#: api.py:419
 msgid "Failed to convert any images from API response"
 msgstr "Impossible de convertir les images de la réponse de l'API"
 
-#: api.py:107
+#: api.py:120
 msgid "Failed to export current image"
 msgstr "Échec de l'exportation de l'image actuelle"
 
@@ -201,7 +200,7 @@ msgstr "Générer les images séquentiellement ou en parallèle"
 msgid "Generated {count} images"
 msgstr "Généré {count} images"
 
-#: api.py:217
+#: api.py:176
 msgid "Generating image with Replicate..."
 msgstr "Génération d'image avec Replicate..."
 
@@ -226,11 +225,11 @@ msgstr "Masquer la clé API"
 msgid "Image Size"
 msgstr "Taille d'Image"
 
-#: api.py:182
+#: api.py:423
 msgid "Image editing complete!"
 msgstr "Édition d'image terminée !"
 
-#: api.py:282
+#: api.py:425
 msgid "Image generation complete!"
 msgstr "Génération d'image terminée !"
 
@@ -238,7 +237,7 @@ msgstr "Génération d'image terminée !"
 msgid "Initializing API request..."
 msgstr "Initialisation de la requête API..."
 
-#: api.py:144 api.py:291
+#: api.py:292
 msgid "Logs"
 msgstr "Journaux"
 
@@ -254,7 +253,7 @@ msgstr "Nombre maximum d'images à générer"
 msgid "Model Settings"
 msgstr "Paramètres du Modèle"
 
-#: api.py:141 api.py:288
+#: api.py:289
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Erreur de modèle : {error}"
@@ -265,9 +264,9 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
 #: model_settings.py:241
 msgid "No"
-msgstr ""
+msgstr "Non"
 
-#: api.py:97
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "Aucune image GIMP fournie pour l'édition"
 
@@ -287,24 +286,23 @@ msgstr "Aucune donnée d'image reçue de l'API"
 msgid "No layer available for editing"
 msgstr "Aucun calque disponible pour l'édition"
 
-#: api.py:157 api.py:254
+#: api.py:400
 msgid "No output received from API"
 msgstr "Aucune sortie reçue de l'API"
 
-#: api.py:167 api.py:264
+#: api.py:409
 msgid "No valid image data in API response"
 msgstr "Aucune donnée d'image valide dans la réponse de l'API"
 
 #: model_settings.py:238
 msgid "Not set"
-msgstr ""
+msgstr "Non défini"
 
 #: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "Mode d'Opération"
 
-#: api.py:102 api.py:112 api.py:133 api.py:154 api.py:162 api.py:219 api.py:240
-#: api.py:251 api.py:259
+#: api.py:114 api.py:125 api.py:134 api.py:178 api.py:187 api.py:397 api.py:405
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
@@ -320,15 +318,11 @@ msgstr "Veuillez saisir une invite"
 msgid "Please enter your Replicate API key"
 msgstr "Veuillez saisir votre clé API Replicate"
 
-#: api.py:100
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Préparation de l'image actuelle pour Replicate..."
 
-#: api.py:152
-msgid "Processing Replicate edit response..."
-msgstr "Traitement de la réponse d'édition de Replicate..."
-
-#: api.py:249
+#: api.py:395
 msgid "Processing Replicate response..."
 msgstr "Traitement de la réponse de Replicate..."
 
@@ -349,12 +343,12 @@ msgstr "Réduit à {max} images de référence pour le mode édition"
 msgid "Replicate API Key"
 msgstr "Clé API Replicate"
 
-#: api.py:147 api.py:295
+#: api.py:296
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Erreur de l'API Replicate : {error}"
 
-#: api.py:52 api.py:94 api.py:213
+#: api.py:58 api.py:103 api.py:171
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana non disponible. Veuillez installer google-genai"
 
@@ -383,11 +377,11 @@ msgstr "Sélectionner les Images de Référence"
 msgid "Select up to {max} additional images"
 msgstr "Sélectionnez jusqu'à {max} images supplémentaires"
 
-#: api.py:131
+#: api.py:132
 msgid "Sending edit request to Replicate..."
 msgstr "Envoi de la requête d'édition à Replicate..."
 
-#: api.py:238
+#: api.py:185
 msgid "Sending request to Replicate..."
 msgstr "Envoi de la requête à Replicate..."
 
@@ -428,7 +422,7 @@ msgstr "Erreur inattendue pendant l'édition d'image : {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Erreur inattendue pendant la génération d'image : {error}"
 
-#: api.py:187 api.py:300
+#: api.py:143 api.py:196
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Erreur inattendue : {error}"
@@ -439,7 +433,7 @@ msgstr "Largeur"
 
 #: model_settings.py:241
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: dialog_gtk.py:684
 #, python-brace-format

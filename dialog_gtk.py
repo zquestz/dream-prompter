@@ -9,7 +9,7 @@ Handles all GTK interface creation and layout
 import os
 import gi
 
-gi.require_version('Gtk', '3.0')  #
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Pango
 
 from i18n import _

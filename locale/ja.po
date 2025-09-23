@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 12:33-1000\n"
+"POT-Creation-Date: 2025-09-23 13:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Japanese\n"
@@ -57,7 +57,7 @@ msgstr "AIプロンプト"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "ReplicateモデルによるAI画像作成・編集"
 
-#: api.py:56 dialog_threads.py:101 dialog_threads.py:135
+#: api.py:62 dialog_threads.py:101 dialog_threads.py:135
 msgid "API key is required"
 msgstr "APIキーが必要です"
 
@@ -79,7 +79,7 @@ msgstr "追加画像（オプション）"
 msgid "Aspect Ratio"
 msgstr "アスペクト比"
 
-#: api.py:110
+#: api.py:123
 msgid "Building Replicate edit request..."
 msgstr "Replicate編集リクエストを構築中..."
 
@@ -132,7 +132,7 @@ msgstr "カスタム高さ（ピクセル）"
 msgid "Custom width in pixels"
 msgstr "カスタム幅（ピクセル）"
 
-#: api.py:160 api.py:257
+#: api.py:403
 msgid "Downloading result..."
 msgstr "結果をダウンロード中..."
 
@@ -153,9 +153,8 @@ msgid "Edit mode requires a selected layer"
 msgstr "編集モードには選択したレイヤーが必要です"
 
 #: dialog_gtk.py:482
-#, fuzzy
 msgid "Enter your Replicate API key"
-msgstr "Replicate APIキーを入力してください..."
+msgstr "Replicate APIキーを入力してください"
 
 #: dialog_threads.py:328
 #, python-brace-format
@@ -172,11 +171,11 @@ msgstr "画像作成エラー: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompterの実行エラー：{error}"
 
-#: api.py:179 api.py:277
+#: api.py:419
 msgid "Failed to convert any images from API response"
 msgstr "APIレスポンスから画像の変換に失敗"
 
-#: api.py:107
+#: api.py:120
 msgid "Failed to export current image"
 msgstr "現在の画像のエクスポートに失敗しました"
 
@@ -201,7 +200,7 @@ msgstr "画像を順次または並列で生成"
 msgid "Generated {count} images"
 msgstr "{count}個の画像を生成"
 
-#: api.py:217
+#: api.py:176
 msgid "Generating image with Replicate..."
 msgstr "Replicateで画像を生成中..."
 
@@ -226,11 +225,11 @@ msgstr "APIキーを隠す"
 msgid "Image Size"
 msgstr "画像サイズ"
 
-#: api.py:182
+#: api.py:423
 msgid "Image editing complete!"
 msgstr "画像編集が完了しました！"
 
-#: api.py:282
+#: api.py:425
 msgid "Image generation complete!"
 msgstr "画像生成が完了しました！"
 
@@ -238,7 +237,7 @@ msgstr "画像生成が完了しました！"
 msgid "Initializing API request..."
 msgstr "APIリクエストを初期化中..."
 
-#: api.py:144 api.py:291
+#: api.py:292
 msgid "Logs"
 msgstr "ログ"
 
@@ -254,7 +253,7 @@ msgstr "生成する画像の最大数"
 msgid "Model Settings"
 msgstr "モデル設定"
 
-#: api.py:141 api.py:288
+#: api.py:289
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "モデルエラー：{error}"
@@ -265,9 +264,9 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
 #: model_settings.py:241
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
-#: api.py:97
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "編集用のGIMP画像が提供されていません"
 
@@ -287,24 +286,23 @@ msgstr "APIから画像データを受信しませんでした"
 msgid "No layer available for editing"
 msgstr "編集可能なレイヤーがありません"
 
-#: api.py:157 api.py:254
+#: api.py:400
 msgid "No output received from API"
 msgstr "APIから出力を受信しませんでした"
 
-#: api.py:167 api.py:264
+#: api.py:409
 msgid "No valid image data in API response"
 msgstr "APIレスポンスに有効な画像データがありません"
 
 #: model_settings.py:238
 msgid "Not set"
-msgstr ""
+msgstr "設定されていません"
 
 #: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "操作モード"
 
-#: api.py:102 api.py:112 api.py:133 api.py:154 api.py:162 api.py:219 api.py:240
-#: api.py:251 api.py:259
+#: api.py:114 api.py:125 api.py:134 api.py:178 api.py:187 api.py:397 api.py:405
 msgid "Operation cancelled"
 msgstr "操作がキャンセルされました"
 
@@ -320,15 +318,11 @@ msgstr "プロンプトを入力してください"
 msgid "Please enter your Replicate API key"
 msgstr "Replicate APIキーを入力してください"
 
-#: api.py:100
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate用に現在の画像を準備中..."
 
-#: api.py:152
-msgid "Processing Replicate edit response..."
-msgstr "Replicate編集レスポンスを処理中..."
-
-#: api.py:249
+#: api.py:395
 msgid "Processing Replicate response..."
 msgstr "Replicateレスポンスを処理中..."
 
@@ -349,12 +343,12 @@ msgstr "編集モードで{max}枚の参照画像に削減しました"
 msgid "Replicate API Key"
 msgstr "Replicate APIキー"
 
-#: api.py:147 api.py:295
+#: api.py:296
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate APIエラー：{error}"
 
-#: api.py:52 api.py:94 api.py:213
+#: api.py:58 api.py:103 api.py:171
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate APIが利用できません。replicateをインストールしてください"
 
@@ -383,11 +377,11 @@ msgstr "参照画像を選択"
 msgid "Select up to {max} additional images"
 msgstr "最大{max}枚の追加画像を選択"
 
-#: api.py:131
+#: api.py:132
 msgid "Sending edit request to Replicate..."
 msgstr "Replicateに編集リクエストを送信中..."
 
-#: api.py:238
+#: api.py:185
 msgid "Sending request to Replicate..."
 msgstr "Replicateにリクエストを送信中..."
 
@@ -427,7 +421,7 @@ msgstr "画像編集中の予期しないエラー：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "画像生成中の予期しないエラー：{error}"
 
-#: api.py:187 api.py:300
+#: api.py:143 api.py:196
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "予期しないエラー：{error}"
@@ -438,7 +432,7 @@ msgstr "幅"
 
 #: model_settings.py:241
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #: dialog_gtk.py:684
 #, python-brace-format
