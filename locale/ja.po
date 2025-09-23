@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:04-1000\n"
+"POT-Creation-Date: 2025-09-22 23:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Japanese\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:641
+#: dialog_gtk.py:656
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:637
+#: dialog_gtk.py:652
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AIレイヤー"
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:296
 msgid "AI Model"
 msgstr "AIモデル"
 
-#: dialog_gtk.py:568
+#: dialog_gtk.py:583
 msgid "AI Prompt"
 msgstr "AIプロンプト"
 
@@ -71,11 +71,11 @@ msgstr "{count}個のレイヤーを追加"
 msgid "Adding layer {num}..."
 msgstr "レイヤー{num}を追加中..."
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:237
 msgid "Additional Images (Optional)"
 msgstr "追加画像（オプション）"
 
-#: models/seedream4.py:96
+#: models/seedream4.py:99
 msgid "Aspect Ratio"
 msgstr "アスペクト比"
 
@@ -87,7 +87,7 @@ msgstr "Replicate編集リクエストを構築中..."
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDanceの統合生成・編集モデル"
 
-#: dialog_events.py:190 dialog_gtk.py:500
+#: dialog_events.py:194 dialog_gtk.py:515
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -95,7 +95,7 @@ msgstr "キャンセル"
 msgid "Cancelling..."
 msgstr "キャンセル中..."
 
-#: dialog_events.py:220
+#: dialog_events.py:224
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -104,18 +104,18 @@ msgstr ""
 "{count}個のファイルを追加できません。編集モードでは最大{max}枚の参照画像が許"
 "可されています。"
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "{count}個のファイルを追加できません。最大{max}枚の参照画像が許可されていま"
 "す。"
 
-#: dialog_gtk.py:246
+#: dialog_gtk.py:261
 msgid "Clear selected files"
 msgstr "選択したファイルをクリア"
 
-#: models/seedream4.py:97
+#: models/seedream4.py:100
 msgid "Control aspect ratio of generated images"
 msgstr "生成画像のアスペクト比を制御"
 
@@ -124,11 +124,11 @@ msgstr "生成画像のアスペクト比を制御"
 msgid "Creating image {num}..."
 msgstr "画像{num}を作成中..."
 
-#: models/seedream4.py:87
+#: models/seedream4.py:89
 msgid "Custom height in pixels"
 msgstr "カスタム高さ（ピクセル）"
 
-#: models/seedream4.py:77
+#: models/seedream4.py:78
 msgid "Custom width in pixels"
 msgstr "カスタム幅（ピクセル）"
 
@@ -144,7 +144,7 @@ msgstr "Dream Prompter - AI画像作成・編集"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:551
+#: dialog_gtk.py:566
 msgid "Edit Image"
 msgstr "画像を編集"
 
@@ -152,7 +152,7 @@ msgstr "画像を編集"
 msgid "Edit mode requires a selected layer"
 msgstr "編集モードには選択したレイヤーが必要です"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:482
 #, fuzzy
 msgid "Enter your Replicate API key"
 msgstr "Replicate APIキーを入力してください..."
@@ -184,15 +184,15 @@ msgstr "現在の画像のエクスポートに失敗しました"
 msgid "Format for generated images"
 msgstr "生成画像のフォーマット"
 
-#: dialog_events.py:164 dialog_gtk.py:505
+#: dialog_events.py:164 dialog_gtk.py:520
 msgid "Generate Edit"
 msgstr "編集を生成"
 
-#: dialog_events.py:167 dialog_gtk.py:555
+#: dialog_events.py:167 dialog_gtk.py:570
 msgid "Generate Image"
 msgstr "画像を生成"
 
-#: models/seedream4.py:115
+#: models/seedream4.py:120
 msgid "Generate images sequentially or in parallel"
 msgstr "画像を順次または並列で生成"
 
@@ -205,7 +205,7 @@ msgstr "{count}個の画像を生成"
 msgid "Generating image with Replicate..."
 msgstr "Replicateで画像を生成中..."
 
-#: dialog_gtk.py:485
+#: dialog_gtk.py:500
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a>からAPIキーを取得してください"
@@ -214,11 +214,11 @@ msgstr "<a href=\"{url}\">Replicate</a>からAPIキーを取得してくださ�
 msgid "Google's advanced image generation and editing model"
 msgstr "Googleの高度な画像生成・編集モデル"
 
-#: models/seedream4.py:86
+#: models/seedream4.py:88
 msgid "Height"
 msgstr "高さ"
 
-#: dialog_events.py:244
+#: dialog_events.py:248
 msgid "Hide API key"
 msgstr "APIキーを隠す"
 
@@ -242,15 +242,15 @@ msgstr "APIリクエストを初期化中..."
 msgid "Logs"
 msgstr "ログ"
 
-#: models/seedream4.py:105
+#: models/seedream4.py:109
 msgid "Max Images"
 msgstr "最大画像数"
 
-#: models/seedream4.py:106
+#: models/seedream4.py:110
 msgid "Maximum number of images to generate"
 msgstr "生成する画像の最大数"
 
-#: dialog_gtk.py:173
+#: dialog_gtk.py:188
 msgid "Model Settings"
 msgstr "モデル設定"
 
@@ -267,7 +267,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "編集用のGIMP画像が提供されていません"
 
-#: dialog_gtk.py:236 dialog_gtk.py:656
+#: dialog_gtk.py:251 dialog_gtk.py:671
 msgid "No additional images selected"
 msgstr "追加画像が選択されていません"
 
@@ -291,7 +291,7 @@ msgstr "APIから出力を受信しませんでした"
 msgid "No valid image data in API response"
 msgstr "APIレスポンスに有効な画像データがありません"
 
-#: dialog_gtk.py:545
+#: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "操作モード"
 
@@ -328,7 +328,7 @@ msgstr "Replicateレスポンスを処理中..."
 msgid "Prompt is required"
 msgstr "プロンプトが必要です"
 
-#: dialog_gtk.py:96 dialog_gtk.py:613
+#: dialog_gtk.py:96 dialog_gtk.py:628
 msgid "Ready"
 msgstr "準備完了"
 
@@ -337,7 +337,7 @@ msgstr "準備完了"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "編集モードで{max}枚の参照画像に削減しました"
 
-#: dialog_gtk.py:460
+#: dialog_gtk.py:475
 msgid "Replicate API Key"
 msgstr "Replicate APIキー"
 
@@ -358,19 +358,19 @@ msgstr "生成画像の解像度プリセット"
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:191
+#: dialog_events.py:195
 msgid "Select"
 msgstr "選択"
 
-#: dialog_gtk.py:229
+#: dialog_gtk.py:244
 msgid "Select Images..."
 msgstr "画像を選択..."
 
-#: dialog_events.py:185
+#: dialog_events.py:189
 msgid "Select Reference Images"
 msgstr "参照画像を選択"
 
-#: dialog_events.py:299 dialog_events.py:305
+#: dialog_events.py:303 dialog_events.py:309
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "最大{max}枚の追加画像を選択"
@@ -383,19 +383,19 @@ msgstr "Replicateに編集リクエストを送信中..."
 msgid "Sending request to Replicate..."
 msgstr "Replicateにリクエストを送信中..."
 
-#: models/seedream4.py:114
+#: models/seedream4.py:119
 msgid "Sequential Generation"
 msgstr "順次生成"
 
-#: dialog_events.py:251
+#: dialog_events.py:255
 msgid "Show API key"
 msgstr "APIキーを表示"
 
-#: dialog_gtk.py:477
+#: dialog_gtk.py:492
 msgid "Show/Hide API key"
 msgstr "APIキーを表示/非表示"
 
-#: dialog_events.py:194
+#: dialog_events.py:198
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "サポート画像（PNG、JPEG、WebP）"
 
@@ -424,16 +424,16 @@ msgstr "画像生成中の予期しないエラー：{error}"
 msgid "Unexpected error: {error}"
 msgstr "予期しないエラー：{error}"
 
-#: models/seedream4.py:76
+#: models/seedream4.py:77
 msgid "Width"
 msgstr "幅"
 
-#: dialog_gtk.py:669
+#: dialog_gtk.py:684
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}枚の画像が選択されました"
 
-#: dialog_gtk.py:671
+#: dialog_gtk.py:686
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}枚の画像が選択されました"
@@ -443,7 +443,7 @@ msgstr "{count}枚の画像が選択されました"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編集：{prompt}）"
 
-#: dialog_gtk.py:634
+#: dialog_gtk.py:649
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 最大サイズ超過)"

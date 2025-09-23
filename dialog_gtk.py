@@ -151,10 +151,13 @@ class DreamPrompterUI:
             markup = f'<small>{model.description}</small>'
             self.model_description_label.set_markup(markup)
 
-    def update_model_settings_ui(self, model):
+    def update_model_settings_ui(self, model, current_mode=None):
         """Update the model settings UI for the selected model"""
         if not self.model_settings_section:
             return
+
+        if current_mode is None and self.event_handler:
+            current_mode = self.event_handler.dialog.get_current_mode()
 
         for child in self.model_settings_section.get_children():
             self.model_settings_section.remove(child)
@@ -166,6 +169,18 @@ class DreamPrompterUI:
 
         param_definitions = model.get_parameter_definitions()
         if not param_definitions:
+            self.model_settings_section.set_visible(False)
+            return
+
+        filtered_params = []
+        if current_mode:
+            for param_def in param_definitions:
+                if param_def.supports_mode(current_mode):
+                    filtered_params.append(param_def)
+        else:
+            filtered_params = param_definitions
+
+        if not filtered_params:
             self.model_settings_section.set_visible(False)
             return
 
@@ -182,7 +197,7 @@ class DreamPrompterUI:
             print(f"Error loading model settings: {e}")
             current_values = {}
 
-        for param_def in param_definitions:
+        for param_def in filtered_params:
             param_name = param_def.name
             current_value = current_values.get(param_name)
             param_container = self._create_parameter_widget(param_def, current_value)

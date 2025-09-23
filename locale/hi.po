@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:04-1000\n"
+"POT-Creation-Date: 2025-09-22 23:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:641
+#: dialog_gtk.py:656
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:637
+#: dialog_gtk.py:652
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI निर्मित: {prompt}"
 msgid "AI Layer"
 msgstr "AI परत"
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:296
 msgid "AI Model"
 msgstr "एआई मॉडल"
 
-#: dialog_gtk.py:568
+#: dialog_gtk.py:583
 msgid "AI Prompt"
 msgstr "AI प्रॉम्प्ट"
 
@@ -71,11 +71,11 @@ msgstr "{count} परतें जोड़ी गईं"
 msgid "Adding layer {num}..."
 msgstr "परत {num} जोड़ी जा रही है..."
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:237
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: models/seedream4.py:96
+#: models/seedream4.py:99
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
@@ -87,7 +87,7 @@ msgstr "Replicate संपादन अनुरोध बनाया जा �
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
 
-#: dialog_events.py:190 dialog_gtk.py:500
+#: dialog_events.py:194 dialog_gtk.py:515
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -95,7 +95,7 @@ msgstr "रद्द करें"
 msgid "Cancelling..."
 msgstr "रद्द किया जा रहा है..."
 
-#: dialog_events.py:220
+#: dialog_events.py:224
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -104,16 +104,16 @@ msgstr ""
 "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम {max} संदर्भ छवियों की अनुमति "
 "है।"
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम {max} संदर्भ छवियों की अनुमति है।"
 
-#: dialog_gtk.py:246
+#: dialog_gtk.py:261
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: models/seedream4.py:97
+#: models/seedream4.py:100
 msgid "Control aspect ratio of generated images"
 msgstr "जेनेरेट की गई छवियों का पहलू अनुपात नियंत्रित करें"
 
@@ -122,11 +122,11 @@ msgstr "जेनेरेट की गई छवियों का पहल�
 msgid "Creating image {num}..."
 msgstr "छवि {num} बनाई जा रही है..."
 
-#: models/seedream4.py:87
+#: models/seedream4.py:89
 msgid "Custom height in pixels"
 msgstr "पिक्सेल में कस्टम ऊंचाई"
 
-#: models/seedream4.py:77
+#: models/seedream4.py:78
 msgid "Custom width in pixels"
 msgstr "पिक्सेल में कस्टम चौड़ाई"
 
@@ -142,7 +142,7 @@ msgstr "Dream Prompter - AI छवि निर्माता/संपाद�
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:551
+#: dialog_gtk.py:566
 msgid "Edit Image"
 msgstr "छवि संपादित करें"
 
@@ -150,7 +150,7 @@ msgstr "छवि संपादित करें"
 msgid "Edit mode requires a selected layer"
 msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:482
 #, fuzzy
 msgid "Enter your Replicate API key"
 msgstr "अपनी Replicate API कुंजी दर्ज करें..."
@@ -182,15 +182,15 @@ msgstr "वर्तमान छवि निर्यात करने म�
 msgid "Format for generated images"
 msgstr "जेनेरेट की गई छवियों का प्रारूप"
 
-#: dialog_events.py:164 dialog_gtk.py:505
+#: dialog_events.py:164 dialog_gtk.py:520
 msgid "Generate Edit"
 msgstr "संपादन उत्पन्न करें"
 
-#: dialog_events.py:167 dialog_gtk.py:555
+#: dialog_events.py:167 dialog_gtk.py:570
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: models/seedream4.py:115
+#: models/seedream4.py:120
 msgid "Generate images sequentially or in parallel"
 msgstr "छवियों को क्रमिक या समानांतर में जेनेरेट करें"
 
@@ -203,7 +203,7 @@ msgstr "{count} छवियां जेनेरेट की गईं"
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
-#: dialog_gtk.py:485
+#: dialog_gtk.py:500
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी प्राप्त करें"
@@ -212,11 +212,11 @@ msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी 
 msgid "Google's advanced image generation and editing model"
 msgstr "Google का उन्नत चित्र निर्माण और संपादन मॉडल"
 
-#: models/seedream4.py:86
+#: models/seedream4.py:88
 msgid "Height"
 msgstr "ऊंचाई"
 
-#: dialog_events.py:244
+#: dialog_events.py:248
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
@@ -240,15 +240,15 @@ msgstr "API अनुरोध आरंभ किया जा रहा है
 msgid "Logs"
 msgstr "लॉग"
 
-#: models/seedream4.py:105
+#: models/seedream4.py:109
 msgid "Max Images"
 msgstr "अधिकतम छवियां"
 
-#: models/seedream4.py:106
+#: models/seedream4.py:110
 msgid "Maximum number of images to generate"
 msgstr "जेनेरेट करने के लिए छवियों की अधिकतम संख्या"
 
-#: dialog_gtk.py:173
+#: dialog_gtk.py:188
 msgid "Model Settings"
 msgstr "मॉडल सेटिंग्स"
 
@@ -265,7 +265,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
-#: dialog_gtk.py:236 dialog_gtk.py:656
+#: dialog_gtk.py:251 dialog_gtk.py:671
 msgid "No additional images selected"
 msgstr "कोई अतिरिक्त छवियां चयनित नहीं"
 
@@ -289,7 +289,7 @@ msgstr "API से कोई आउटपुट प्राप्त नही�
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
-#: dialog_gtk.py:545
+#: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
@@ -326,7 +326,7 @@ msgstr "Replicate प्रतिक्रिया संसाधित की
 msgid "Prompt is required"
 msgstr "प्रॉम्प्ट आवश्यक है"
 
-#: dialog_gtk.py:96 dialog_gtk.py:613
+#: dialog_gtk.py:96 dialog_gtk.py:628
 msgid "Ready"
 msgstr "तैयार"
 
@@ -335,7 +335,7 @@ msgstr "तैयार"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "संपादन मोड के लिए {max} संदर्भ छवियों को कम कर दिया गया"
 
-#: dialog_gtk.py:460
+#: dialog_gtk.py:475
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
@@ -356,19 +356,19 @@ msgstr "जेनेरेट की गई छवियों के लिए 
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:191
+#: dialog_events.py:195
 msgid "Select"
 msgstr "चुनें"
 
-#: dialog_gtk.py:229
+#: dialog_gtk.py:244
 msgid "Select Images..."
 msgstr "छवियां चुनें..."
 
-#: dialog_events.py:185
+#: dialog_events.py:189
 msgid "Select Reference Images"
 msgstr "संदर्भ छवियां चुनें"
 
-#: dialog_events.py:299 dialog_events.py:305
+#: dialog_events.py:303 dialog_events.py:309
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
@@ -381,19 +381,19 @@ msgstr "Replicate को संपादन अनुरोध भेजा ज�
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
-#: models/seedream4.py:114
+#: models/seedream4.py:119
 msgid "Sequential Generation"
 msgstr "क्रमिक जेनेरेशन"
 
-#: dialog_events.py:251
+#: dialog_events.py:255
 msgid "Show API key"
 msgstr "API कुंजी दिखाएं"
 
-#: dialog_gtk.py:477
+#: dialog_gtk.py:492
 msgid "Show/Hide API key"
 msgstr "API कुंजी दिखाएं/छुपाएं"
 
-#: dialog_events.py:194
+#: dialog_events.py:198
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "समर्थित छवियां (PNG, JPEG, WebP)"
 
@@ -422,16 +422,16 @@ msgstr "छवि उत्पादन के दौरान अप्रत�
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
 
-#: models/seedream4.py:76
+#: models/seedream4.py:77
 msgid "Width"
 msgstr "चौड़ाई"
 
-#: dialog_gtk.py:669
+#: dialog_gtk.py:684
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} छवि चयनित"
 
-#: dialog_gtk.py:671
+#: dialog_gtk.py:686
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} छवियां चयनित"
@@ -441,7 +441,7 @@ msgstr "{count} छवियां चयनित"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI संपादन: {prompt})"
 
-#: dialog_gtk.py:634
+#: dialog_gtk.py:649
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार हो गया)"

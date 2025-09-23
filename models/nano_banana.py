@@ -10,7 +10,7 @@ import io
 from typing import List, Dict, Any, Optional
 
 from . import (BaseModel, OutputFormat, ParameterDefinition,
-               ParameterType, register_model)
+               ParameterType, ParameterMode, register_model)
 from i18n import _
 
 
@@ -66,7 +66,8 @@ class NanaBananaModel(BaseModel):
                 default_value="png",
                 label=_("Output Format"),
                 description=_("Format for generated images"),
-                choices=["png", "jpg"]
+                choices=["png", "jpg"],
+                supported_modes=[ParameterMode.BOTH]
             )
         ]
 

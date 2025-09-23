@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:04-1000\n"
+"POT-Creation-Date: 2025-09-22 23:19-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,133 +134,133 @@ msgstr ""
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:164 dialog_gtk.py:505
+#: dialog_events.py:164 dialog_gtk.py:520
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:167 dialog_gtk.py:555
+#: dialog_events.py:167 dialog_gtk.py:570
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:185
+#: dialog_events.py:189
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:190 dialog_gtk.py:500
+#: dialog_events.py:194 dialog_gtk.py:515
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:191
+#: dialog_events.py:195
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:194
+#: dialog_events.py:198
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr ""
 
-#: dialog_events.py:220
+#: dialog_events.py:224
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr ""
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 
-#: dialog_events.py:244
+#: dialog_events.py:248
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:251
+#: dialog_events.py:255
 msgid "Show API key"
 msgstr ""
 
-#: dialog_events.py:299 dialog_events.py:305
+#: dialog_events.py:303 dialog_events.py:309
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr ""
 
-#: dialog_gtk.py:96 dialog_gtk.py:613
+#: dialog_gtk.py:96 dialog_gtk.py:628
 msgid "Ready"
 msgstr ""
 
-#: dialog_gtk.py:173
+#: dialog_gtk.py:188
 msgid "Model Settings"
 msgstr ""
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:237
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:229
+#: dialog_gtk.py:244
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:236 dialog_gtk.py:656
+#: dialog_gtk.py:251 dialog_gtk.py:671
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:246
+#: dialog_gtk.py:261
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:296
 msgid "AI Model"
 msgstr ""
 
-#: dialog_gtk.py:460
+#: dialog_gtk.py:475
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:482
 msgid "Enter your Replicate API key"
 msgstr ""
 
-#: dialog_gtk.py:477
+#: dialog_gtk.py:492
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:485
+#: dialog_gtk.py:500
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:545
+#: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:551
+#: dialog_gtk.py:566
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:568
+#: dialog_gtk.py:583
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:634
+#: dialog_gtk.py:649
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:637
+#: dialog_gtk.py:652
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:641
+#: dialog_gtk.py:656
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr ""
 
-#: dialog_gtk.py:669
+#: dialog_gtk.py:684
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:671
+#: dialog_gtk.py:686
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""
@@ -400,42 +400,42 @@ msgstr ""
 msgid "Resolution preset for generated images"
 msgstr ""
 
-#: models/seedream4.py:76
+#: models/seedream4.py:77
 msgid "Width"
 msgstr ""
 
-#: models/seedream4.py:77
+#: models/seedream4.py:78
 msgid "Custom width in pixels"
 msgstr ""
 
-#: models/seedream4.py:86
+#: models/seedream4.py:88
 msgid "Height"
 msgstr ""
 
-#: models/seedream4.py:87
+#: models/seedream4.py:89
 msgid "Custom height in pixels"
 msgstr ""
 
-#: models/seedream4.py:96
+#: models/seedream4.py:99
 msgid "Aspect Ratio"
 msgstr ""
 
-#: models/seedream4.py:97
+#: models/seedream4.py:100
 msgid "Control aspect ratio of generated images"
 msgstr ""
 
-#: models/seedream4.py:105
+#: models/seedream4.py:109
 msgid "Max Images"
 msgstr ""
 
-#: models/seedream4.py:106
+#: models/seedream4.py:110
 msgid "Maximum number of images to generate"
 msgstr ""
 
-#: models/seedream4.py:114
+#: models/seedream4.py:119
 msgid "Sequential Generation"
 msgstr ""
 
-#: models/seedream4.py:115
+#: models/seedream4.py:120
 msgid "Generate images sequentially or in parallel"
 msgstr ""

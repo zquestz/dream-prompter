@@ -21,13 +21,21 @@ class ParameterType(Enum):
     RANGE = "range"
 
 
+class ParameterMode(Enum):
+    """Modes where parameters are supported"""
+    GENERATE = "generate"
+    EDIT = "edit"
+    BOTH = "both"
+
+
 class ParameterDefinition:
     """Definition of a configurable parameter"""
 
     def __init__(self, name: str, param_type: ParameterType, default_value: Any,
                  label: Optional[str] = None, description: Optional[str] = None,
                  choices: Optional[List[Any]] = None, min_value: Any = None,
-                 max_value: Any = None, step: Any = None):
+                 max_value: Any = None, step: Any = None, 
+                 supported_modes: Optional[List[ParameterMode]] = None):
         self.name = name
         self.type = param_type
         self.default_value = default_value
@@ -37,6 +45,15 @@ class ParameterDefinition:
         self.min_value = min_value
         self.max_value = max_value
         self.step = step
+        self.supported_modes = supported_modes or [ParameterMode.BOTH]
+
+    def supports_mode(self, mode: str) -> bool:
+        """Check if this parameter supports the given mode"""
+        if ParameterMode.BOTH in self.supported_modes:
+            return True
+        
+        mode_enum = ParameterMode.GENERATE if mode == "generate" else ParameterMode.EDIT
+        return mode_enum in self.supported_modes
 
     def validate_value(self, value: Any) -> Any:
         """Validate and convert a value for this parameter"""

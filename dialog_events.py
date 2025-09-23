@@ -169,6 +169,10 @@ class DreamPrompterEventHandler:
         self.update_ui_limits()
         self.update_generate_button_state()
 
+        if self.model:
+            current_mode = self.dialog.get_current_mode()
+            self.ui.update_model_settings_ui(self.model, current_mode)
+
     def on_prompt_changed(self, _buffer):
         """Handle prompt text changes"""
         self.update_generate_button_state()

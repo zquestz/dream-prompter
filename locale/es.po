@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 23:04-1000\n"
+"POT-Creation-Date: 2025-09-22 23:19-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:641
+#: dialog_gtk.py:656
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:637
+#: dialog_gtk.py:652
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "Generado por IA: {prompt}"
 msgid "AI Layer"
 msgstr "Capa IA"
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:296
 msgid "AI Model"
 msgstr "Modelo de IA"
 
-#: dialog_gtk.py:568
+#: dialog_gtk.py:583
 msgid "AI Prompt"
 msgstr "Prompt de AI"
 
@@ -71,11 +71,11 @@ msgstr "Agregadas {count} capas"
 msgid "Adding layer {num}..."
 msgstr "Agregando capa {num}..."
 
-#: dialog_gtk.py:222
+#: dialog_gtk.py:237
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
-#: models/seedream4.py:96
+#: models/seedream4.py:99
 msgid "Aspect Ratio"
 msgstr "Relación de Aspecto"
 
@@ -87,7 +87,7 @@ msgstr "Construyendo solicitud de edición para Replicate..."
 msgid "ByteDance's unified generation and editing model"
 msgstr "Modelo unificado de generación y edición de ByteDance"
 
-#: dialog_events.py:190 dialog_gtk.py:500
+#: dialog_events.py:194 dialog_gtk.py:515
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -95,7 +95,7 @@ msgstr "Cancelar"
 msgid "Cancelling..."
 msgstr "Cancelando..."
 
-#: dialog_events.py:220
+#: dialog_events.py:224
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -104,18 +104,18 @@ msgstr ""
 "No se pueden agregar {count} archivos. Máximo {max} imágenes de referencia "
 "permitidas en modo edición."
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "No se pueden agregar {count} archivos. Máximo {max} imágenes de referencia "
 "permitidas."
 
-#: dialog_gtk.py:246
+#: dialog_gtk.py:261
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
-#: models/seedream4.py:97
+#: models/seedream4.py:100
 msgid "Control aspect ratio of generated images"
 msgstr "Controlar relación de aspecto de imágenes generadas"
 
@@ -124,11 +124,11 @@ msgstr "Controlar relación de aspecto de imágenes generadas"
 msgid "Creating image {num}..."
 msgstr "Creando imagen {num}..."
 
-#: models/seedream4.py:87
+#: models/seedream4.py:89
 msgid "Custom height in pixels"
 msgstr "Alto personalizado en píxeles"
 
-#: models/seedream4.py:77
+#: models/seedream4.py:78
 msgid "Custom width in pixels"
 msgstr "Ancho personalizado en píxeles"
 
@@ -144,7 +144,7 @@ msgstr "Dream Prompter - Creador/Editor de Imágenes AI"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:551
+#: dialog_gtk.py:566
 msgid "Edit Image"
 msgstr "Editar Imagen"
 
@@ -152,7 +152,7 @@ msgstr "Editar Imagen"
 msgid "Edit mode requires a selected layer"
 msgstr "El modo de edición requiere una capa seleccionada"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:482
 #, fuzzy
 msgid "Enter your Replicate API key"
 msgstr "Ingresa tu clave API de Replicate..."
@@ -184,15 +184,15 @@ msgstr "Error al exportar imagen actual"
 msgid "Format for generated images"
 msgstr "Formato para imágenes generadas"
 
-#: dialog_events.py:164 dialog_gtk.py:505
+#: dialog_events.py:164 dialog_gtk.py:520
 msgid "Generate Edit"
 msgstr "Generar Edición"
 
-#: dialog_events.py:167 dialog_gtk.py:555
+#: dialog_events.py:167 dialog_gtk.py:570
 msgid "Generate Image"
 msgstr "Generar Imagen"
 
-#: models/seedream4.py:115
+#: models/seedream4.py:120
 msgid "Generate images sequentially or in parallel"
 msgstr "Generar imágenes secuencialmente o en paralelo"
 
@@ -205,7 +205,7 @@ msgstr "Generadas {count} imágenes"
 msgid "Generating image with Replicate..."
 msgstr "Generando imagen con Replicate..."
 
-#: dialog_gtk.py:485
+#: dialog_gtk.py:500
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Obtén tu clave API desde <a href=\"{url}\">Replicate</a>"
@@ -214,11 +214,11 @@ msgstr "Obtén tu clave API desde <a href=\"{url}\">Replicate</a>"
 msgid "Google's advanced image generation and editing model"
 msgstr "Modelo avanzado de generación y edición de imágenes de Google"
 
-#: models/seedream4.py:86
+#: models/seedream4.py:88
 msgid "Height"
 msgstr "Alto"
 
-#: dialog_events.py:244
+#: dialog_events.py:248
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
@@ -242,15 +242,15 @@ msgstr "Inicializando solicitud a la API..."
 msgid "Logs"
 msgstr "Registros"
 
-#: models/seedream4.py:105
+#: models/seedream4.py:109
 msgid "Max Images"
 msgstr "Máximo de Imágenes"
 
-#: models/seedream4.py:106
+#: models/seedream4.py:110
 msgid "Maximum number of images to generate"
 msgstr "Número máximo de imágenes a generar"
 
-#: dialog_gtk.py:173
+#: dialog_gtk.py:188
 msgid "Model Settings"
 msgstr "Configuración del Modelo"
 
@@ -267,7 +267,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "No se proporcionó imagen de GIMP para editar"
 
-#: dialog_gtk.py:236 dialog_gtk.py:656
+#: dialog_gtk.py:251 dialog_gtk.py:671
 msgid "No additional images selected"
 msgstr "No hay imágenes adicionales seleccionadas"
 
@@ -291,7 +291,7 @@ msgstr "No se recibió salida de la API"
 msgid "No valid image data in API response"
 msgstr "No hay datos de imagen válidos en la respuesta de la API"
 
-#: dialog_gtk.py:545
+#: dialog_gtk.py:560
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
@@ -328,7 +328,7 @@ msgstr "Procesando respuesta de Replicate..."
 msgid "Prompt is required"
 msgstr "Se requiere un prompt"
 
-#: dialog_gtk.py:96 dialog_gtk.py:613
+#: dialog_gtk.py:96 dialog_gtk.py:628
 msgid "Ready"
 msgstr "Listo"
 
@@ -337,7 +337,7 @@ msgstr "Listo"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "Reducido a {max} imágenes de referencia para modo edición"
 
-#: dialog_gtk.py:460
+#: dialog_gtk.py:475
 msgid "Replicate API Key"
 msgstr "Clave API de Replicate"
 
@@ -358,19 +358,19 @@ msgstr "Preset de resolución para imágenes generadas"
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:191
+#: dialog_events.py:195
 msgid "Select"
 msgstr "Seleccionar"
 
-#: dialog_gtk.py:229
+#: dialog_gtk.py:244
 msgid "Select Images..."
 msgstr "Seleccionar Imágenes..."
 
-#: dialog_events.py:185
+#: dialog_events.py:189
 msgid "Select Reference Images"
 msgstr "Seleccionar Imágenes de Referencia"
 
-#: dialog_events.py:299 dialog_events.py:305
+#: dialog_events.py:303 dialog_events.py:309
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "Selecciona hasta {max} imágenes adicionales"
@@ -383,19 +383,19 @@ msgstr "Enviando solicitud de edición a Replicate..."
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitud a Replicate..."
 
-#: models/seedream4.py:114
+#: models/seedream4.py:119
 msgid "Sequential Generation"
 msgstr "Generación Secuencial"
 
-#: dialog_events.py:251
+#: dialog_events.py:255
 msgid "Show API key"
 msgstr "Mostrar clave API"
 
-#: dialog_gtk.py:477
+#: dialog_gtk.py:492
 msgid "Show/Hide API key"
 msgstr "Mostrar/Ocultar clave API"
 
-#: dialog_events.py:194
+#: dialog_events.py:198
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Imágenes Compatibles (PNG, JPEG, WebP)"
 
@@ -424,16 +424,16 @@ msgstr "Error inesperado durante la generación de imagen: {error}"
 msgid "Unexpected error: {error}"
 msgstr "Error inesperado: {error}"
 
-#: models/seedream4.py:76
+#: models/seedream4.py:77
 msgid "Width"
 msgstr "Ancho"
 
-#: dialog_gtk.py:669
+#: dialog_gtk.py:684
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} imagen seleccionada"
 
-#: dialog_gtk.py:671
+#: dialog_gtk.py:686
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} imágenes seleccionadas"
@@ -443,7 +443,7 @@ msgstr "{count} imágenes seleccionadas"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Edición IA: {prompt})"
 
-#: dialog_gtk.py:634
+#: dialog_gtk.py:649
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - Tamaño Máximo Excedido)"

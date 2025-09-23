@@ -11,7 +11,7 @@ import io
 from typing import List, Dict, Any, Optional
 
 from . import (BaseModel, OutputFormat, ParameterDefinition,
-               ParameterType, register_model)
+               ParameterType, ParameterMode, register_model)
 from i18n import _
 
 
@@ -67,7 +67,8 @@ class Seedream4Model(BaseModel):
                 default_value="2K",
                 label=_("Image Size"),
                 description=_("Resolution preset for generated images"),
-                choices=["1K", "2K", "4K", "custom"]
+                choices=["1K", "2K", "4K", "custom"],
+                supported_modes=[ParameterMode.BOTH]
             ),
             ParameterDefinition(
                 name="width",
@@ -77,7 +78,8 @@ class Seedream4Model(BaseModel):
                 description=_("Custom width in pixels"),
                 min_value=1024,
                 max_value=4096,
-                step=1
+                step=1,
+                supported_modes=[ParameterMode.BOTH]
             ),
             ParameterDefinition(
                 name="height",
@@ -87,7 +89,8 @@ class Seedream4Model(BaseModel):
                 description=_("Custom height in pixels"),
                 min_value=1024,
                 max_value=4096,
-                step=1
+                step=1,
+                supported_modes=[ParameterMode.BOTH]
             ),
             ParameterDefinition(
                 name="aspect_ratio",
@@ -96,7 +99,8 @@ class Seedream4Model(BaseModel):
                 label=_("Aspect Ratio"),
                 description=_("Control aspect ratio of generated images"),
                 choices=["match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16",
-                         "3:2", "2:3", "21.9"]
+                         "3:2", "2:3", "21.9"],
+                supported_modes=[ParameterMode.GENERATE]
             ),
             ParameterDefinition(
                 name="max_images",
@@ -105,7 +109,8 @@ class Seedream4Model(BaseModel):
                 label=_("Max Images"),
                 description=_("Maximum number of images to generate"),
                 min_value=1,
-                max_value=15
+                max_value=15,
+                supported_modes=[ParameterMode.BOTH]
             ),
             ParameterDefinition(
                 name="sequential_image_generation",
@@ -113,7 +118,8 @@ class Seedream4Model(BaseModel):
                 default_value="disabled",
                 label=_("Sequential Generation"),
                 description=_("Generate images sequentially or in parallel"),
-                choices=["disabled", "auto"]
+                choices=["disabled", "auto"],
+                supported_modes=[ParameterMode.BOTH]
             )
         ]
 
@@ -189,7 +195,7 @@ class Seedream4Model(BaseModel):
             "size": params["size"],
             "width": params["width"],
             "height": params["height"],
-            "aspect_ratio": params["aspect_ratio"],
+            "aspect_ratio": "match_input_image",
             "max_images": params["max_images"],
             "sequential_image_generation": params["sequential_image_generation"],
             "image_input": image_input
