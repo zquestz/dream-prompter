@@ -73,9 +73,9 @@ class Seedream4Model(BaseModel):
             "size": kwargs.get("size", "2K"),
             "width": kwargs.get("width", 2048),
             "height": kwargs.get("height", 2048),
-            "aspect_ratio": kwargs.get("aspect_ratio", "1:1"),
-            "max_images": kwargs.get("max_images", 5),
-            "sequential_image_generation": kwargs.get("sequential_image_generation", "auto"),
+            "aspect_ratio": kwargs.get("aspect_ratio", "match_input_image"),
+            "max_images": kwargs.get("max_images", 1),
+            "sequential_image_generation": kwargs.get("sequential_image_generation", "disabled"),
             "image_input": reference_images or []
         }
 
@@ -108,9 +108,9 @@ class Seedream4Model(BaseModel):
             "size": kwargs.get("size", "2K"),
             "width": kwargs.get("width", 2048),
             "height": kwargs.get("height", 2048),
-            "aspect_ratio": kwargs.get("aspect_ratio", "1:1"),
-            "max_images": kwargs.get("max_images", 5),
-            "sequential_image_generation": kwargs.get("sequential_image_generation", "auto"),
+            "aspect_ratio": kwargs.get("aspect_ratio", "match_input_image"),
+            "max_images": kwargs.get("max_images", 1),
+            "sequential_image_generation": kwargs.get("sequential_image_generation", "disabled"),
             "image_input": image_input
         }
 
