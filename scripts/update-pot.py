@@ -29,7 +29,8 @@ def extract_strings() -> bool:
         'settings.py',
         'models/__init__.py',
         'models/factory.py',
-        'models/nano_banana.py'
+        'models/nano_banana.py',
+        'models/seedream4.py'
     ]
 
     pot_file = 'locale/dream-prompter.pot'

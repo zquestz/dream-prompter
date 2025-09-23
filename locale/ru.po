@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Russian\n"
@@ -45,7 +45,8 @@ msgid "AI Prompt"
 msgstr "Промпт ИИ"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+#, fuzzy
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Создание/редактирование изображений с ИИ используя Nano Banana"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
@@ -63,6 +64,10 @@ msgstr "Дополнительные изображения (необязате�
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Построение запроса редактирования Replicate..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "Единая модель генерации и редактирования ByteDance"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -96,7 +101,7 @@ msgstr "Очистить выбранные файлы"
 msgid "Creating GIMP image..."
 msgstr "Создание изображения GIMP..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "Загрузка результата..."
 
@@ -139,7 +144,7 @@ msgstr "Ошибка создания слоя редактирования: {er
 msgid "Error running Dream Prompter: {error}"
 msgstr "Ошибка запуска Dream Prompter: {error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "Не удалось преобразовать результат в изображение"
 
@@ -155,7 +160,7 @@ msgstr "Не удалось создать слой редактирования
 msgid "Failed to export current image"
 msgstr "Не удалось экспортировать текущее изображение"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "Не удалось обработать итерируемый ответ"
 
@@ -167,7 +172,7 @@ msgstr "Генерировать редактирование"
 msgid "Generate Image"
 msgstr "Генерировать изображение"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "Генерация изображения с Replicate..."
 
@@ -184,7 +189,7 @@ msgstr "Продвинутая модель генерации и редакти
 msgid "Hide API key"
 msgstr "Скрыть ключ API"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "Редактирование изображения завершено!"
 
@@ -192,7 +197,7 @@ msgstr "Редактирование изображения завершено!"
 msgid "Image generated successfully!"
 msgstr "Изображение успешно сгенерировано!"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "Генерация изображения завершена!"
 
@@ -200,11 +205,11 @@ msgstr "Генерация изображения завершена!"
 msgid "Initializing API request..."
 msgstr "Инициализация запроса API..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "Журналы"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Ошибка модели: {error}"
@@ -233,11 +238,11 @@ msgstr "Не получены данные изображения из API"
 msgid "No layer available for editing"
 msgstr "Нет слоя доступного для редактирования"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "Не получено выходных данных от API"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "Нет действительных данных изображения в ответе API"
 
@@ -245,8 +250,8 @@ msgstr "Нет действительных данных изображения 
 msgid "Operation Mode"
 msgstr "Режим операции"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "Операция отменена"
 
@@ -266,7 +271,7 @@ msgstr "Подготовка текущего изображения для Repl
 msgid "Processing Replicate edit response..."
 msgstr "Обработка ответа редактирования Replicate..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Обработка ответа Replicate..."
 
@@ -287,14 +292,18 @@ msgstr "Уменьшено до {max} опорных изображений дл
 msgid "Replicate API Key"
 msgstr "Ключ API Replicate"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Ошибка API Replicate: {error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana недоступен. Пожалуйста установите google-genai"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -317,7 +326,7 @@ msgstr "Выберите до {max} дополнительных изображ�
 msgid "Sending edit request to Replicate..."
 msgstr "Отправка запроса редактирования в Replicate..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Отправка запроса в Replicate..."
 
@@ -334,10 +343,11 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Поддерживаемые изображения (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:44
+#, fuzzy
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 "Преобразуйте существующие изображения или генерируйте новые изображения "
 "используя модель Google Gemini 2.5 Flash Image (Nano Banana) с промптами на "
@@ -354,12 +364,12 @@ msgstr "Неожиданная ошибка во время редактиров
 msgid "Unexpected error during image generation: {error}"
 msgstr "Неожиданная ошибка во время генерации изображения: {error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Неожиданная ошибка: {error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "Неожиданный формат ответа от API"
 

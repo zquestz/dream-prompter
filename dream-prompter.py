@@ -40,9 +40,9 @@ class DreamPrompter(Gimp.PlugIn):
             procedure.set_image_types("*")
             procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
             procedure.set_documentation(
-                _("AI-powered image creation/editing with Nano Banana"),
-                _("Transform existing images or generate new images using Google's Gemini 2.5 Flash Image model (Nano Banana) "
-                  "with natural language prompts. Supports consistent multi-turn editing and image merging capabilities."),
+                _("AI-powered image creation/editing with Replicate models"),
+                _("Transform existing images or generate new images using advanced AI models from Replicate "
+                  "with natural language prompts. Choose from multiple models including Nano Banana and Seedream 4."),
                 name
             )
             procedure.set_menu_label(_("Dream Prompter..."))

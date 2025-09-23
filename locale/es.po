@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -44,8 +44,8 @@ msgid "AI Prompt"
 msgstr "Prompt de AI"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
-msgstr "Creación/edición de imágenes con AI usando Nano Banana"
+msgid "AI-powered image creation/editing with Replicate models"
+msgstr "Creación/edición de imágenes con IA usando modelos de Replicate"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
 msgid "API key is required"
@@ -62,6 +62,10 @@ msgstr "Imágenes Adicionales (Opcional)"
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Construyendo solicitud de edición para Replicate..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "Modelo unificado de generación y edición de ByteDance"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -95,7 +99,7 @@ msgstr "Limpiar archivos seleccionados"
 msgid "Creating GIMP image..."
 msgstr "Creando imagen de GIMP..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "Descargando resultado..."
 
@@ -138,7 +142,7 @@ msgstr "Error al crear capa de edición: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "Error al convertir resultado a imagen"
 
@@ -154,7 +158,7 @@ msgstr "Error al crear capa de edición"
 msgid "Failed to export current image"
 msgstr "Error al exportar imagen actual"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "Error al procesar respuesta iterable"
 
@@ -166,7 +170,7 @@ msgstr "Generar Edición"
 msgid "Generate Image"
 msgstr "Generar Imagen"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "Generando imagen con Replicate..."
 
@@ -183,7 +187,7 @@ msgstr "Modelo avanzado de generación y edición de imágenes de Google"
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "¡Edición de imagen completada!"
 
@@ -191,7 +195,7 @@ msgstr "¡Edición de imagen completada!"
 msgid "Image generated successfully!"
 msgstr "¡Imagen generada exitosamente!"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "¡Generación de imagen completada!"
 
@@ -199,11 +203,11 @@ msgstr "¡Generación de imagen completada!"
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "Registros"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
@@ -232,11 +236,11 @@ msgstr "No se recibieron datos de imagen de la API"
 msgid "No layer available for editing"
 msgstr "No hay capa disponible para editar"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "No se recibió salida de la API"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "No hay datos de imagen válidos en la respuesta de la API"
 
@@ -244,8 +248,8 @@ msgstr "No hay datos de imagen válidos en la respuesta de la API"
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
@@ -265,7 +269,7 @@ msgstr "Preparando imagen actual para Replicate..."
 msgid "Processing Replicate edit response..."
 msgstr "Procesando respuesta de edición de Replicate..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Procesando respuesta de Replicate..."
 
@@ -286,14 +290,18 @@ msgstr "Reducido a {max} imágenes de referencia para modo edición"
 msgid "Replicate API Key"
 msgstr "Clave API de Replicate"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Error de API Replicate: {error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "API de Replicate no disponible. Por favor instala replicate"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -316,7 +324,7 @@ msgstr "Selecciona hasta {max} imágenes adicionales"
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitud de edición a Replicate..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitud a Replicate..."
 
@@ -334,14 +342,13 @@ msgstr "Imágenes Compatibles (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:44
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
-"Transforma imágenes existentes o genera nuevas imágenes usando el modelo "
-"Gemini 2.5 Flash Image (Nano Banana) de Google con prompts en lenguaje "
-"natural. Soporta edición multi-turno consistente y capacidades de fusión de "
-"imágenes."
+"Transforma imágenes existentes o genera nuevas imágenes usando modelos "
+"avanzados de IA de Replicate con prompts en lenguaje natural. Elige entre "
+"múltiples modelos incluyendo Nano Banana y Seedream 4."
 
 #: dialog_threads.py:249
 #, python-brace-format
@@ -353,12 +360,12 @@ msgstr "Error inesperado durante la edición de imagen: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Error inesperado durante la generación de imagen: {error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Error inesperado: {error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "Formato de respuesta inesperado de la API"
 

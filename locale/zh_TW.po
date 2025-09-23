@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -44,7 +44,8 @@ msgid "AI Prompt"
 msgstr "AI提示詞"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+#, fuzzy
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr "使用Nano Banana進行AI驅動的圖像創建/編輯"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
@@ -62,6 +63,10 @@ msgstr "附加圖像（可選）"
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "構建Replicate編輯請求..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "ByteDance的統一生成和編輯模型"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -91,7 +96,7 @@ msgstr "清除選定的檔案"
 msgid "Creating GIMP image..."
 msgstr "正在創建GIMP圖像..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "正在下載結果..."
 
@@ -134,7 +139,7 @@ msgstr "創建編輯圖層時出錯：{error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "將結果轉換為圖像失敗"
 
@@ -150,7 +155,7 @@ msgstr "創建編輯圖層失敗"
 msgid "Failed to export current image"
 msgstr "匯出當前圖像失敗"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "處理可迭代響應失敗"
 
@@ -162,7 +167,7 @@ msgstr "生成編輯"
 msgid "Generate Image"
 msgstr "生成圖像"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
 
@@ -179,7 +184,7 @@ msgstr "Google的高級圖像生成和編輯模型"
 msgid "Hide API key"
 msgstr "隱藏API密鑰"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "圖像編輯完成！"
 
@@ -187,7 +192,7 @@ msgstr "圖像編輯完成！"
 msgid "Image generated successfully!"
 msgstr "圖像生成成功！"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "圖像生成完成！"
 
@@ -195,11 +200,11 @@ msgstr "圖像生成完成！"
 msgid "Initializing API request..."
 msgstr "正在初始化API請求..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "日誌"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
@@ -228,11 +233,11 @@ msgstr "未從API接收到圖像數據"
 msgid "No layer available for editing"
 msgstr "沒有可編輯的圖層"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "未從API接收到輸出"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "API響應中沒有有效圖像數據"
 
@@ -240,8 +245,8 @@ msgstr "API響應中沒有有效圖像數據"
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
@@ -261,7 +266,7 @@ msgstr "為Replicate準備當前圖像..."
 msgid "Processing Replicate edit response..."
 msgstr "處理Replicate編輯響應..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "處理Replicate響應..."
 
@@ -282,14 +287,18 @@ msgstr "減少到{max}張參考圖像用於編輯模式"
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API錯誤：{error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。請安裝google-genai"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -312,7 +321,7 @@ msgstr "最多選擇{max}張附加圖像"
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate發送編輯請求..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "向Replicate發送請求..."
 
@@ -329,10 +338,11 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支援的圖像格式（PNG、JPEG、WebP）"
 
 #: dream-prompter.py:44
+#, fuzzy
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 "使用Google的Gemini 2.5 Flash Image模型（Nano Banana）通過自然語言提示詞轉換現"
 "有圖像或生成新圖像。支援一致的多輪編輯和圖像合併功能。"
@@ -347,12 +357,12 @@ msgstr "圖像編輯過程中出現意外錯誤：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "圖像生成過程中出現意外錯誤：{error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外錯誤：{error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "API返回意外的響應格式"
 

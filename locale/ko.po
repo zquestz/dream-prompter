@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -44,7 +44,8 @@ msgid "AI Prompt"
 msgstr "AI 프롬프트"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+#, fuzzy
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Nano Banana를 사용한 AI 이미지 생성/편집"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
@@ -62,6 +63,10 @@ msgstr "추가 이미지 (선택사항)"
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Replicate 편집 요청 구축 중..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "ByteDance의 통합 생성 및 편집 모델"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -95,7 +100,7 @@ msgstr "선택한 파일 지우기"
 msgid "Creating GIMP image..."
 msgstr "GIMP 이미지 생성 중..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "결과 다운로드 중..."
 
@@ -138,7 +143,7 @@ msgstr "편집 레이어 생성 오류: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "결과를 이미지로 변환 실패"
 
@@ -154,7 +159,7 @@ msgstr "편집 레이어 생성 실패"
 msgid "Failed to export current image"
 msgstr "현재 이미지 내보내기 실패"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "반복 가능한 응답 처리 실패"
 
@@ -166,7 +171,7 @@ msgstr "편집 생성"
 msgid "Generate Image"
 msgstr "이미지 생성"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "Replicate로 이미지 생성 중..."
 
@@ -183,7 +188,7 @@ msgstr "Google의 고급 이미지 생성 및 편집 모델"
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "이미지 편집 완료!"
 
@@ -191,7 +196,7 @@ msgstr "이미지 편집 완료!"
 msgid "Image generated successfully!"
 msgstr "이미지 생성 성공!"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "이미지 생성 완료!"
 
@@ -199,11 +204,11 @@ msgstr "이미지 생성 완료!"
 msgid "Initializing API request..."
 msgstr "API 요청 초기화 중..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "로그"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
@@ -232,11 +237,11 @@ msgstr "API에서 이미지 데이터를 받지 못했습니다"
 msgid "No layer available for editing"
 msgstr "편집할 레이어가 없습니다"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "API에서 출력을 받지 못했습니다"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 
@@ -244,8 +249,8 @@ msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 msgid "Operation Mode"
 msgstr "작업 모드"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
@@ -265,7 +270,7 @@ msgstr "Replicate용 현재 이미지 준비 중..."
 msgid "Processing Replicate edit response..."
 msgstr "Replicate 편집 응답 처리 중..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Replicate 응답 처리 중..."
 
@@ -286,14 +291,18 @@ msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
 msgid "Replicate API Key"
 msgstr "Replicate API 키"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API 오류: {error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API를 사용할 수 없습니다. google-genai를 설치해주세요"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -316,7 +325,7 @@ msgstr "최대 {max}개의 추가 이미지 선택"
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate에 편집 요청 전송 중..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Replicate에 요청 전송 중..."
 
@@ -333,10 +342,11 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "지원되는 이미지 (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:44
+#, fuzzy
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 "Google의 Gemini 2.5 Flash Image 모델(Nano Banana)을 사용하여 자연어 프롬프트"
 "로 기존 이미지를 변환하거나 새 이미지를 생성합니다. 일관된 다중 턴 편집 및 이"
@@ -352,12 +362,12 @@ msgstr "이미지 편집 중 예상치 못한 오류: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "이미지 생성 중 예상치 못한 오류: {error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "예상치 못한 오류: {error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "API에서 예상치 못한 응답 형식"
 

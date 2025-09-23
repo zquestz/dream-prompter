@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -44,7 +44,8 @@ msgid "AI Prompt"
 msgstr "AI प्रॉम्प्ट"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+#, fuzzy
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Nano Banana के साथ AI संचालित छवि निर्माण/संपादन"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
@@ -62,6 +63,10 @@ msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -93,7 +98,7 @@ msgstr "चयनित फ़ाइलें साफ़ करें"
 msgid "Creating GIMP image..."
 msgstr "GIMP छवि बनाई जा रही है..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "परिणाम डाउनलोड किया जा रहा है..."
 
@@ -136,7 +141,7 @@ msgstr "संपादन परत बनाने में त्रुट�
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "परिणाम को छवि में परिवर्तित करने में विफल"
 
@@ -152,7 +157,7 @@ msgstr "संपादन परत बनाने में विफल"
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "पुनरावृत्तीय प्रतिक्रिया को संसाधित करने में विफल"
 
@@ -164,7 +169,7 @@ msgstr "संपादन उत्पन्न करें"
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
@@ -181,7 +186,7 @@ msgstr "Google का उन्नत चित्र निर्माण औ�
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
@@ -189,7 +194,7 @@ msgstr "छवि संपादन पूर्ण!"
 msgid "Image generated successfully!"
 msgstr "छवि सफलतापूर्वक उत्पन्न हुई!"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -197,11 +202,11 @@ msgstr "छवि उत्पादन पूर्ण!"
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "लॉग"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
@@ -230,11 +235,11 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
@@ -242,8 +247,8 @@ msgstr "API प्रतिक्रिया में कोई वैध छ�
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
@@ -263,7 +268,7 @@ msgstr "Replicate के लिए वर्तमान छवि तैया�
 msgid "Processing Replicate edit response..."
 msgstr "Replicate संपादन प्रतिक्रिया संसाधित की जा रही है..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
@@ -284,14 +289,18 @@ msgstr "संपादन मोड के लिए {max} संदर्भ �
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API त्रुटि: {error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -314,7 +323,7 @@ msgstr "अधिकतम {max} अतिरिक्त छवियां च
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
@@ -331,10 +340,11 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "समर्थित छवियां (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:44
+#, fuzzy
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 "Google के Gemini 2.5 Flash Image मॉडल (Nano Banana) का उपयोग करके प्राकृतिक भाषा "
 "प्रॉम्प्ट के साथ मौजूदा छवियों को रूपांतरित करें या नई छवियां उत्पन्न करें। निरंतर बहु-चक्र "
@@ -350,12 +360,12 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "API से अप्रत्याशित प्रतिक्रिया प्रारूप"
 

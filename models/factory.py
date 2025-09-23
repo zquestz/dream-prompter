@@ -20,6 +20,7 @@ class ModelFactory:
     def _initialize_models(self) -> None:
         """Initialize all available models"""
         from . import nano_banana
+        from . import seedream4
 
     def get_default_model(self) -> BaseModel:
         """

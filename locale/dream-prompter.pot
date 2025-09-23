@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
@@ -33,8 +33,8 @@ msgstr ""
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr ""
 
@@ -50,16 +50,16 @@ msgstr ""
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr ""
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
@@ -68,52 +68,52 @@ msgstr ""
 msgid "Processing Replicate edit response..."
 msgstr ""
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr ""
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr ""
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr ""
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr ""
 
@@ -343,14 +343,14 @@ msgid "Error creating edit layer: {error}"
 msgstr ""
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr ""
 
 #: dream-prompter.py:44
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 
 #: dream-prompter.py:48
@@ -372,4 +372,12 @@ msgstr ""
 
 #: models/nano_banana.py:31
 msgid "Google's advanced image generation and editing model"
+msgstr ""
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr ""
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
 msgstr ""

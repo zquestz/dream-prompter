@@ -149,7 +149,10 @@ class ReplicateAPI:
                 result_bytes = output
             elif hasattr(output, '__iter__'):
                 try:
-                    result_bytes = b''.join(chunk for chunk in output)
+                    if isinstance(output, (list, tuple)) and len(output) > 0 and hasattr(output[0], 'read'):
+                        result_bytes = output[0].read()
+                    else:
+                        result_bytes = b''.join(chunk for chunk in output)
                 except (TypeError, ValueError):
                     return None, _("Failed to process iterable response")
             else:
@@ -181,7 +184,7 @@ class ReplicateAPI:
 
         Args:
             prompt (str): Text description of the image to generate
-            reference_images (list, optional): List of image file paths for reference (max determined by model)
+            reference_images (list, optional): List of image file paths for reference
             progress_callback (callable, optional): Progress callback function.
                 Called with (message: str, percentage: float | None).
                 Should return True to continue, False to cancel.
@@ -235,7 +238,10 @@ class ReplicateAPI:
                     result_bytes = output
                 elif hasattr(output, '__iter__'):
                     try:
-                        result_bytes = b''.join(chunk for chunk in output)
+                        if isinstance(output, (list, tuple)) and len(output) > 0 and hasattr(output[0], 'read'):
+                            result_bytes = output[0].read()
+                        else:
+                            result_bytes = b''.join(chunk for chunk in output)
                     except (TypeError, ValueError):
                         return None, _("Failed to process iterable response")
                 else:

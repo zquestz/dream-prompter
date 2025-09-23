@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings Replicate's Nano Banana (Gemini 2.5 Flash Image Preview) AI capabilities directly into GIMP for intelligent image generation and editing.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Nano Banana and Seedream 4.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,11 +8,12 @@ Dream Prompter brings Replicate's Nano Banana (Gemini 2.5 Flash Image Preview) A
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🖼️ **Reference Images**: Use up to 10 reference images for generation, 9 for editing
+- 🤖 **Multiple AI Models**: Choose from Nano Banana, Seedream 4, and more
+- 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
-- 🌍 **Multi-Language Support**: Setup to support multiple languages via i18n
-- 🔒 **Safe File Handling**: Validates image formats and file sizes
+- 🌍 **Multi-Language Support**: Full internationalization with 10+ languages
+- 🔒 **Safe File Handling**: Validates image formats and file sizes per model
 - 🏗️ **Native GIMP Integration**: Works seamlessly within your GIMP workflow
 
 ## Installation
@@ -103,6 +104,7 @@ yay -S dream-prompter
    ```
 
 **Note:** Your final directory structure should look like:
+
 ```
 ~/.config/GIMP/3.0/plug-ins/dream-prompter/
 ├── dream-prompter.py
@@ -180,14 +182,20 @@ If you get the **"replicate not installed"** error on macOS:
 2. **Generate an API key**
 3. **Keep your key secure and monitor usage/costs**
 
-### API Specifications
+### Available AI Models
 
-- **Model**: `google/nano-banana` (Gemini 2.5 Flash Image Preview)
-- **Image Limits**:
-  - Generation mode: Up to 10 reference images
-  - Edit mode: Up to 9 reference images (current image + 9 = 10 total)
+**Nano Banana** (`google/nano-banana`) - Google's Gemini 2.5 Flash Image Preview:
+
+- **Reference Images**: Up to 10 for generation, 9 for editing
 - **File Size**: Maximum 7MB per image
-- **Formats**: PNG, JPEG, WebP only
+- **Formats**: PNG, JPEG, WebP
+
+**Seedream 4** (`bytedance/seedream-4`) - ByteDance's unified generation and editing model:
+
+- **Reference Images**: Up to 10 for generation, 9 for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: 4K resolution support, unified architecture
 
 ### Cost Considerations
 
@@ -201,13 +209,14 @@ If you get the **"replicate not installed"** error on macOS:
 1. **Open an image in GIMP** (for editing) or create a new document (for generation)
 2. **Launch Dream Prompter**: `Filters → AI → Dream Prompter...`
 3. **Enter your API key** (saved automatically for future use)
-4. **Select mode**:
+4. **Choose your AI model**: Select from available models in the dropdown
+5. **Select mode**:
    - **Edit Mode**: Transform the current layer
    - **Generate Mode**: Create a new image
-5. **Write your prompt**: Be descriptive and specific
-6. **Add reference images** (optional): Click "Select Images..." to add references
-7. **Generate**: Click the generate button and watch the progress
-8. **Result**: New layer appears with a descriptive name
+6. **Write your prompt**: Be descriptive and specific
+7. **Add reference images** (optional): Click "Select Images..." to add references
+8. **Generate**: Click the generate button and watch the progress
+9. **Result**: New layer appears with a descriptive name
 
 ### Example Prompts
 
@@ -270,6 +279,7 @@ python3 scripts/build-translations.py
 The plugin is organized into focused modules with a clean model-driven architecture:
 
 ### Core Plugin Files
+
 - **`dream-prompter.py`** - Main GIMP plugin entry point
 - **`dialog_gtk.py`** - GTK user interface components
 - **`dialog_events.py`** - Event handling and user interactions
@@ -280,11 +290,14 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`i18n.py`** - Internationalization support
 
 ### Model System
+
 - **`models/__init__.py`** - Base model classes and registry system
 - **`models/factory.py`** - Model factory for centralized model management
 - **`models/nano_banana.py`** - Nano Banana model implementation
+- **`models/seedream4.py`** - Seedream 4 model implementation
 
 The model system provides a clean abstraction for AI models, making it easy to:
+
 - **Add new models** by implementing the `BaseModel` interface
 - **Validate inputs** using model-specific limits and constraints
 - **Build API requests** with model-specific parameter formats
@@ -396,4 +409,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API accessing Google's Nano Banana (Gemini 2.5 Flash Image Preview) model.
+Built with Replicate's API providing access to multiple advanced AI models including Google's Nano Banana and ByteDance's Seedream 4.

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 15:22-1000\n"
+"POT-Creation-Date: 2025-09-22 15:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -44,7 +44,8 @@ msgid "AI Prompt"
 msgstr "AI প্রম্পট"
 
 #: dream-prompter.py:43
-msgid "AI-powered image creation/editing with Nano Banana"
+#, fuzzy
+msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Nano Banana দিয়ে AI চালিত ছবি তৈরি/সম্পাদনা"
 
 #: api.py:53 dialog_threads.py:88 dialog_threads.py:128
@@ -62,6 +63,10 @@ msgstr "অতিরিক্ত ছবি (ঐচ্ছিক)"
 #: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "Replicate সম্পাদনা অনুরোধ তৈরি করা হচ্ছে..."
+
+#: models/seedream4.py:32
+msgid "ByteDance's unified generation and editing model"
+msgstr "ByteDance এর একীভূত ছবি তৈরি এবং সম্পাদনা মডেল"
 
 #: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
@@ -93,7 +98,7 @@ msgstr "নির্বাচিত ফাইলগুলি সাফ করু
 msgid "Creating GIMP image..."
 msgstr "GIMP ছবি তৈরি করা হচ্ছে..."
 
-#: api.py:140 api.py:226
+#: api.py:140 api.py:229
 msgid "Downloading result..."
 msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 
@@ -136,7 +141,7 @@ msgstr "সম্পাদনা লেয়ার তৈরি করতে �
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
 
-#: api.py:163 api.py:249
+#: api.py:166 api.py:255
 msgid "Failed to convert result to image"
 msgstr "ফলাফলকে ছবিতে রূপান্তর করতে ব্যর্থ"
 
@@ -152,7 +157,7 @@ msgstr "সম্পাদনা লেয়ার তৈরি করতে �
 msgid "Failed to export current image"
 msgstr "বর্তমান ছবি রপ্তানি করতে ব্যর্থ"
 
-#: api.py:154 api.py:240
+#: api.py:157 api.py:246
 msgid "Failed to process iterable response"
 msgstr "পুনরাবৃত্তিযোগ্য প্রতিক্রিয়া প্রক্রিয়া করতে ব্যর্থ"
 
@@ -164,7 +169,7 @@ msgstr "সম্পাদনা তৈরি করুন"
 msgid "Generate Image"
 msgstr "ছবি তৈরি করুন"
 
-#: api.py:198
+#: api.py:201
 msgid "Generating image with Replicate..."
 msgstr "Replicate দিয়ে ছবি তৈরি করা হচ্ছে..."
 
@@ -175,14 +180,13 @@ msgstr "<a href=\"{url}\">Replicate</a> থেকে আপনার API কী 
 
 #: models/nano_banana.py:31
 msgid "Google's advanced image generation and editing model"
-msgstr "Google এর উন্নত ছবি তৈরি এবং সম্পাদনা মডেল"
-"ক্ষমতা রয়েছে"
+msgstr "Google এর উন্নত ছবি তৈরি এবং সম্পাদনা মডেলক্ষমতা রয়েছে"
 
 #: dialog_events.py:234
 msgid "Hide API key"
 msgstr "API কী লুকান"
 
-#: api.py:166
+#: api.py:169
 msgid "Image editing complete!"
 msgstr "ছবি সম্পাদনা সম্পূর্ণ!"
 
@@ -190,7 +194,7 @@ msgstr "ছবি সম্পাদনা সম্পূর্ণ!"
 msgid "Image generated successfully!"
 msgstr "ছবি সফলভাবে তৈরি হয়েছে!"
 
-#: api.py:252
+#: api.py:258
 msgid "Image generation complete!"
 msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 
@@ -198,11 +202,11 @@ msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 msgid "Initializing API request..."
 msgstr "API অনুরোধ শুরু করা হচ্ছে..."
 
-#: api.py:129 api.py:260
+#: api.py:129 api.py:266
 msgid "Logs"
 msgstr "লগ"
 
-#: api.py:126 api.py:257
+#: api.py:126 api.py:263
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "মডেল ত্রুটি: {error}"
@@ -231,11 +235,11 @@ msgstr "API থেকে কোনো ছবির ডেটা পাওয়�
 msgid "No layer available for editing"
 msgstr "সম্পাদনার জন্য কোনো স্তর উপলব্ধ নেই"
 
-#: api.py:138 api.py:224
+#: api.py:138 api.py:227
 msgid "No output received from API"
 msgstr "API থেকে কোনো আউটপুট পাওয়া যায়নি"
 
-#: api.py:159 api.py:245
+#: api.py:162 api.py:251
 msgid "No valid image data in API response"
 msgstr "API প্রতিক্রিয়ায় কোনো বৈধ ছবির ডেটা নেই"
 
@@ -243,8 +247,8 @@ msgstr "API প্রতিক্রিয়ায় কোনো বৈধ �
 msgid "Operation Mode"
 msgstr "অপারেশন মোড"
 
-#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
-#: api.py:221 api.py:227
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:202 api.py:215
+#: api.py:224 api.py:230
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
@@ -264,7 +268,7 @@ msgstr "Replicate এর জন্য বর্তমান ছবি প্র�
 msgid "Processing Replicate edit response..."
 msgstr "Replicate সম্পাদনা প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
-#: api.py:220
+#: api.py:223
 msgid "Processing Replicate response..."
 msgstr "Replicate প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
@@ -285,14 +289,18 @@ msgstr "সম্পাদনা মোডের জন্য {max}টি রে
 msgid "Replicate API Key"
 msgstr "Replicate API কী"
 
-#: api.py:132 api.py:264
+#: api.py:132 api.py:270
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API ত্রুটি: {error}"
 
-#: api.py:50 api.py:91 api.py:196
+#: api.py:50 api.py:91 api.py:199
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API উপলব্ধ নেই। অনুগ্রহ করে replicate ইনস্টল করুন"
+
+#: models/seedream4.py:27
+msgid "Seedream 4"
+msgstr "Seedream 4"
 
 #: dialog_events.py:192
 msgid "Select"
@@ -315,7 +323,7 @@ msgstr "সর্বোচ্চ {max}টি অতিরিক্ত ছবি 
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate এ সম্পাদনা অনুরোধ পাঠানো হচ্ছে..."
 
-#: api.py:211
+#: api.py:214
 msgid "Sending request to Replicate..."
 msgstr "Replicate এ অনুরোধ পাঠানো হচ্ছে..."
 
@@ -332,10 +340,11 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "সমর্থিত ছবি (PNG, JPEG, WebP)"
 
 #: dream-prompter.py:44
+#, fuzzy
 msgid ""
-"Transform existing images or generate new images using Google's Gemini 2.5 "
-"Flash Image model (Nano Banana) with natural language prompts. Supports "
-"consistent multi-turn editing and image merging capabilities."
+"Transform existing images or generate new images using advanced AI models "
+"from Replicate with natural language prompts. Choose from multiple models "
+"including Nano Banana and Seedream 4."
 msgstr ""
 "প্রাকৃতিক ভাষার প্রম্পট দিয়ে Google এর Gemini 2.5 Flash Image মডেল (Nano Banana) "
 "ব্যবহার করে বিদ্যমান ছবি রূপান্তর করুন বা নতুন ছবি তৈরি করুন। সামঞ্জস্যপূর্ণ মাল্টি-টার্ন "
@@ -351,12 +360,12 @@ msgstr "ছবি সম্পাদনার সময় অপ্রত্য
 msgid "Unexpected error during image generation: {error}"
 msgstr "ছবি তৈরির সময় অপ্রত্যাশিত ত্রুটি: {error}"
 
-#: api.py:171 api.py:267
+#: api.py:174 api.py:273
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "অপ্রত্যাশিত ত্রুটি: {error}"
 
-#: api.py:156 api.py:242
+#: api.py:159 api.py:248
 msgid "Unexpected response format from API"
 msgstr "API থেকে অপ্রত্যাশিত প্রতিক্রিয়া বিন্যাস"
 
