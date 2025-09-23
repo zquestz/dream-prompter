@@ -26,7 +26,10 @@ def extract_strings() -> bool:
         'dream-prompter.py',
         'integrator.py',
         'i18n.py',
-        'settings.py'
+        'settings.py',
+        'models/__init__.py',
+        'models/factory.py',
+        'models/nano_banana.py'
     ]
 
     pot_file = 'locale/dream-prompter.pot'
@@ -42,7 +45,7 @@ def extract_strings() -> bool:
         '--from-code=UTF-8',
         '--copyright-holder=Josh Ellithorpe',
         '--package-name=Dream Prompter',
-        '--package-version=1.0.3',
+        '--package-version=1.1.0',
         '--msgid-bugs-address=quest@mac.com',
         '--add-comments=TRANSLATORS'
     ] + python_files

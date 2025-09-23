@@ -71,7 +71,7 @@ class DreamPrompterThreads:
 
         self._callbacks = callbacks
 
-    def start_generate_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None) -> None:
+    def start_generate_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
         """
         Start image generation in background thread
 
@@ -79,6 +79,7 @@ class DreamPrompterThreads:
             api_key: Replicate API key
             prompt: Text prompt for image generation
             reference_images: Optional list of reference image paths
+            model_name: Optional model name to use
         """
         if not self.ui or self._processing:
             return
@@ -97,12 +98,12 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._generate_image_worker,
-            args=(api_key, prompt, reference_images or [])
+            args=(api_key, prompt, reference_images or [], model_name)
         )
         self._current_thread.daemon = True
         self._current_thread.start()
 
-    def start_edit_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None) -> None:
+    def start_edit_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
         """
         Start image editing in background thread
 
@@ -110,6 +111,7 @@ class DreamPrompterThreads:
             api_key: Replicate API key
             prompt: Text prompt for image editing
             reference_images: Optional list of reference image paths
+            model_name: Optional model name to use
         """
         if not self.ui or self._processing:
             return
@@ -136,12 +138,12 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._edit_image_worker,
-            args=(api_key, prompt, reference_images or [])
+            args=(api_key, prompt, reference_images or [], model_name)
         )
         self._current_thread.daemon = True
         self._current_thread.start()
 
-    def _generate_image_worker(self, api_key: str, prompt: str, reference_images: List[str]) -> None:
+    def _generate_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
         """
         Generate image in background thread
 
@@ -149,13 +151,14 @@ class DreamPrompterThreads:
             api_key: Replicate API key
             prompt: Text prompt for image generation
             reference_images: List of reference image paths
+            model_name: Optional model name to use
         """
         try:
             if self._cancel_requested:
                 GLib.idle_add(self._handle_cancelled)
                 return
 
-            api = ReplicateAPI(api_key)
+            api = ReplicateAPI(api_key, model_name)
 
             def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""
@@ -190,7 +193,7 @@ class DreamPrompterThreads:
             error_msg = _("Unexpected error during image generation: {error}").format(error=str(e))
             GLib.idle_add(self._handle_error, error_msg)
 
-    def _edit_image_worker(self, api_key: str, prompt: str, reference_images: List[str]) -> None:
+    def _edit_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
         """
         Edit image in background thread
 
@@ -198,6 +201,7 @@ class DreamPrompterThreads:
             api_key: Replicate API key
             prompt: Text prompt for image editing
             reference_images: List of reference image paths
+            model_name: Optional model name to use
         """
         try:
             if self._cancel_requested:
@@ -208,7 +212,7 @@ class DreamPrompterThreads:
                 GLib.idle_add(self._handle_error, _("No image available for editing"))
                 return
 
-            api = ReplicateAPI(api_key)
+            api = ReplicateAPI(api_key, model_name)
 
             def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""

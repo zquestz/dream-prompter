@@ -91,6 +91,9 @@ class DreamPrompterDialog(GimpUi.Dialog):
             if settings.get("prompt") and self.ui.prompt_buffer:
                 self.ui.prompt_buffer.set_text(str(settings["prompt"]))
 
+            if settings.get("model") and self.ui.model_dropdown:
+                self.ui.set_selected_model(str(settings["model"]))
+
         except Exception as e:
             print(f"Error loading settings: {e}")
 

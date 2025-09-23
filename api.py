@@ -16,16 +16,14 @@ from gi.repository import GdkPixbuf, Gimp
 
 import integrator
 from i18n import _
+from models.factory import get_default_model, get_model_by_name
+from models import BaseModel
 
-MAX_FILE_SIZE_MB = 7
-MAX_REFERENCE_IMAGES_EDIT = 9
-MAX_REFERENCE_IMAGES_GENERATE = 10
 PROGRESS_COMPLETE = 1.0
 PROGRESS_DOWNLOAD = 0.9
 PROGRESS_PREPARE = 0.1
 PROGRESS_PROCESS = 0.7
 PROGRESS_UPLOAD = 0.5
-SUPPORTED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/webp']
 
 try:
     from replicate.client import Client
@@ -38,12 +36,15 @@ except ImportError:
 class ReplicateAPI:
     """Handles Replicate API communication for image generation and editing"""
 
-    def __init__(self, api_key: str) -> None:
+    model: BaseModel
+
+    def __init__(self, api_key: str, model_name: Optional[str] = None) -> None:
         """
         Initialize the Replicate API client
 
         Args:
             api_key (str): Replicate API key from user settings
+            model_name (str, optional): Model to use (defaults to default model)
         """
         if not REPLICATE_AVAILABLE:
             raise ImportError(_("Replicate API not available. Please install replicate"))
@@ -53,6 +54,14 @@ class ReplicateAPI:
 
         self.api_key = api_key.strip()
         self.client = Client(api_token=self.api_key)
+
+        if model_name:
+            model = get_model_by_name(model_name)
+            if not model:
+                raise ValueError(f"Model '{model_name}' not found")
+            self.model = model
+        else:
+            self.model = get_default_model()
 
     def edit_image(
         self,
@@ -67,7 +76,7 @@ class ReplicateAPI:
         Args:
             image (Gimp.Image): Image to edit
             prompt (str): Text description of the edits to make
-            reference_images (list, optional): List of image file paths for reference (max 9)
+            reference_images (list, optional): List of image file paths for reference
             progress_callback (callable, optional): Progress callback function.
                 Called with (message: str, percentage: float | None).
                 Should return True to continue, False to cancel.
@@ -95,24 +104,22 @@ class ReplicateAPI:
             if progress_callback and not progress_callback(_("Building Replicate edit request..."), PROGRESS_UPLOAD):
                 return None, _("Operation cancelled")
 
-            image_input = [io.BytesIO(current_image_data)]
-
+            ref_files = []
             if reference_images:
-                ref_files = self._prepare_reference_images(reference_images, MAX_REFERENCE_IMAGES_EDIT)
-                image_input.extend(ref_files)
+                ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images_edit)
 
-            model_input = {
-                "prompt": prompt,
-                "image_input": image_input,
-                "output_format": "png"
-            }
+            model_input = self.model.build_edit_input(
+                prompt=prompt,
+                main_image=io.BytesIO(current_image_data),
+                reference_images=ref_files if ref_files else None
+            )
 
             if progress_callback and not progress_callback(_("Sending edit request to Replicate..."), PROGRESS_PROCESS):
                 return None, _("Operation cancelled")
 
             try:
                 output = self.client.run(
-                    "google/nano-banana",
+                    self.model.name,
                     input=model_input
                 )
             except ModelError as e:
@@ -174,7 +181,7 @@ class ReplicateAPI:
 
         Args:
             prompt (str): Text description of the image to generate
-            reference_images (list, optional): List of image file paths for reference (max 10)
+            reference_images (list, optional): List of image file paths for reference (max determined by model)
             progress_callback (callable, optional): Progress callback function.
                 Called with (message: str, percentage: float | None).
                 Should return True to continue, False to cancel.
@@ -192,24 +199,21 @@ class ReplicateAPI:
             return None, _("Operation cancelled")
 
         try:
-            image_input = []
-
+            ref_files = []
             if reference_images:
-                ref_files = self._prepare_reference_images(reference_images, MAX_REFERENCE_IMAGES_GENERATE)
-                image_input.extend(ref_files)
+                ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images)
 
-            model_input = {
-                "prompt": prompt,
-                "image_input": image_input,
-                "output_format": "png"
-            }
+            model_input = self.model.build_generation_input(
+                prompt=prompt,
+                reference_images=ref_files if reference_images else None
+            )
 
             if progress_callback and not progress_callback(_("Sending request to Replicate..."), PROGRESS_PROCESS):
                 return None, _("Operation cancelled")
 
             try:
                 output = self.client.run(
-                    "google/nano-banana",
+                    self.model.name,
                     input=model_input
                 )
 
@@ -310,7 +314,7 @@ class ReplicateAPI:
     def _validate_reference_image(
         self,
         img_path: str,
-        max_size_mb: int = MAX_FILE_SIZE_MB
+        max_size_mb: Optional[int] = None
     ) -> bool:
         """
         Validate a reference image file
@@ -324,13 +328,16 @@ class ReplicateAPI:
         """
         try:
             file_size = os.path.getsize(img_path)
-            if file_size > max_size_mb * 1024 * 1024:
-                print(f"Warning: Image {img_path} is {file_size / (1024*1024):.1f} MB, exceeds {max_size_mb} MB limit. Skipping.")
+            if not self.model.validate_file_size(file_size):
+                print(f"Warning: Image {img_path} is {file_size / (1024*1024):.1f} MB, exceeds {self.model.max_file_size_mb} MB limit. Skipping.")
                 return False
 
             mime_type, encoding = mimetypes.guess_type(img_path)
-            if mime_type not in SUPPORTED_MIME_TYPES:
+            if mime_type and not self.model.validate_mime_type(mime_type):
                 print(f"Warning: Image {img_path} has unsupported MIME type {mime_type} with encoding {encoding}. Skipping.")
+                return False
+            elif not mime_type:
+                print(f"Warning: Could not determine MIME type for {img_path}. Skipping.")
                 return False
 
             return True

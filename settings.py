@@ -19,11 +19,21 @@ FILE_PERMISSIONS = 0o600
 
 DEFAULT_MODE = "edit"
 DEFAULT_API_KEY_VISIBLE = False
+
+def get_default_model_name() -> str:
+    """Get default model name from factory"""
+    try:
+        from models.factory import model_factory
+        return model_factory._default_model
+    except ImportError:
+        return "google/nano-banana"  # Fallback
+
 DEFAULT_SETTINGS: SettingsDict = {
     "api_key": "",
     "mode": DEFAULT_MODE,
     "prompt": "",
-    "api_key_visible": DEFAULT_API_KEY_VISIBLE
+    "api_key_visible": DEFAULT_API_KEY_VISIBLE,
+    "model": ""
 }
 
 def get_config_file() -> str:
@@ -54,6 +64,10 @@ def load_settings() -> SettingsDict:
                 for key, default_value in DEFAULT_SETTINGS.items():
                     if key not in loaded_settings:
                         loaded_settings[key] = default_value
+
+                if not loaded_settings.get("model"):
+                    loaded_settings["model"] = get_default_model_name()
+
                 return loaded_settings
     except (OSError, PermissionError) as e:
         print(f"Failed to read settings file: {e}")
@@ -64,17 +78,21 @@ def load_settings() -> SettingsDict:
 
     return DEFAULT_SETTINGS.copy()
 
-def store_settings(api_key: str, mode: str, prompt: str, api_key_visible: bool) -> None:
+def store_settings(api_key: str, mode: str, prompt: str, api_key_visible: bool, model: str = "") -> None:
     """Store settings to config file"""
     if mode not in ("edit", "generate"):
         raise ValueError(f"Invalid mode: {mode}. Must be 'edit' or 'generate'")
 
     try:
+        if not model:
+            model = get_default_model_name()
+
         settings = {
             "api_key": api_key,
             "mode": mode,
             "prompt": prompt,
-            "api_key_visible": api_key_visible
+            "api_key_visible": api_key_visible,
+            "model": model
         }
 
         config_file = get_config_file()

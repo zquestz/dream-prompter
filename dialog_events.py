@@ -7,26 +7,33 @@ Handles all user interactions and UI events
 """
 
 from gi.repository import Gtk, GLib
+import threading
 
 from dialog_threads import DreamPrompterThreads
+from models.factory import get_default_model, get_model_by_name
 from i18n import _
 from settings import store_settings, load_settings
 
 class DreamPrompterEventHandler:
-    """Handles all dialog events and user interactions"""
+    """Handles all events for the Dream Prompter dialog"""
 
-    def __init__(self, dialog, ui, image, drawable):
+    def __init__(self, dialog, ui, image=None, drawable=None):
+        """Initialize event handler"""
         self.dialog = dialog
         self.ui = ui
         self.image = image
         self.drawable = drawable
         self.ui.event_handler = self
+        self.model = get_default_model()
 
         self.threads = DreamPrompterThreads(ui, image, drawable)
         self.threads.set_callbacks({
             'on_success': self.close_on_success,
             'on_error': self.show_error
         })
+
+        if self.ui.model_dropdown:
+            self.ui.model_dropdown.connect('changed', self.on_model_changed)
 
         settings = load_settings()
         if self.ui.toggle_visibility_btn and self.ui.api_key_entry:
@@ -77,6 +84,29 @@ class DreamPrompterEventHandler:
         """Handle API key changes"""
         self.update_generate_button_state()
 
+    def on_model_changed(self, combo_box):
+        """Handle model selection changes"""
+        selected_model_name = combo_box.get_active_id()
+        if selected_model_name:
+            new_model = get_model_by_name(selected_model_name)
+            if new_model:
+                self.model = new_model
+                self.update_ui_limits()
+                self.ui.update_model_description(new_model)
+
+    def update_ui_limits(self):
+        """Update UI text to reflect current model limits"""
+        if not self.model:
+            return
+
+        current_mode = self.dialog.get_current_mode()
+        if current_mode == "edit":
+            if self.ui.images_help_label:
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images_edit)}</small>')
+        else:
+            if self.ui.images_help_label:
+                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images)}</small>')
+
     def on_cancel(self, _button):
         """Handle cancel button click"""
         if self.threads.is_processing():
@@ -108,39 +138,37 @@ class DreamPrompterEventHandler:
 
         mode = self.dialog.get_current_mode()
         api_key_visible = self.dialog.get_api_key_visible()
-        store_settings(api_key, mode, prompt_text, api_key_visible)
+        selected_model_name = self.ui.get_selected_model()
+        store_settings(api_key, mode, prompt_text, api_key_visible, selected_model_name)
 
         if self.ui.status_label:
             self.ui.status_label.set_text(_("Initializing API request..."))
 
         if mode == "edit":
-            self.threads.start_edit_thread(api_key, prompt_text, self.ui.selected_files)
+            self.threads.start_edit_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
         else:
-            self.threads.start_generate_thread(api_key, prompt_text, self.ui.selected_files)
+            self.threads.start_generate_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
 
-    def on_mode_changed(self, radio_button):
+    def on_mode_changed(self, _radio_button):
         """Handle mode selection changes"""
         if not self.ui.edit_mode_radio:
             return
 
         if self.ui.edit_mode_radio.get_active():
-            if len(self.ui.selected_files) > 2:
-                self.ui.selected_files = self.ui.selected_files[:2]
+            max_edit_files = self.model.max_reference_images_edit
+            if len(self.ui.selected_files) > max_edit_files:
+                self.ui.selected_files = self.ui.selected_files[:max_edit_files]
                 self.ui.update_files_display()
-                print(_("Reduced to 2 reference images for edit mode"))
+                print(_("Reduced to {max} reference images for edit mode").format(max=max_edit_files))
 
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Edit"))
-            if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 9 additional images")}</small>')
         else:
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Image"))
-            if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to 10 additional images")}</small>')
 
+        self.update_ui_limits()
         self.update_generate_button_state()
-
 
     def on_prompt_changed(self, _buffer):
         """Handle prompt text changes"""
@@ -179,9 +207,9 @@ class DreamPrompterEventHandler:
 
             current_mode = self.dialog.get_current_mode()
             if current_mode == "edit":
-                max_total_files = 9
+                max_total_files = self.model.max_reference_images_edit
             else:
-                max_total_files = 10
+                max_total_files = self.model.max_reference_images
 
             max_new_files = max_total_files - len(self.ui.selected_files)
             if max_new_files > 0:
@@ -189,9 +217,9 @@ class DreamPrompterEventHandler:
                 self.ui.update_files_display()
             elif files:
                 if current_mode == "edit":
-                    print(_("Cannot add {count} files. Maximum 9 reference images allowed in edit mode.").format(count=len(files)))
+                    print(_("Cannot add {count} files. Maximum {max} reference images allowed in edit mode.").format(count=len(files), max=self.model.max_reference_images_edit))
                 else:
-                    print(_("Cannot add {count} files. Maximum 10 reference images allowed.").format(count=len(files)))
+                    print(_("Cannot add {count} files. Maximum {max} reference images allowed.").format(count=len(files), max=self.model.max_reference_images))
 
         dialog.destroy()
 

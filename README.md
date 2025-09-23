@@ -83,10 +83,11 @@ yay -S dream-prompter
    mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
-3. **Copy all Python files:**
+3. **Copy all Python files and the models directory:**
 
    ```bash
    cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   cp -r models ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
 4. **Build and install translations (Optional):**
@@ -100,6 +101,23 @@ yay -S dream-prompter
    ```bash
    chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
    ```
+
+**Note:** Your final directory structure should look like:
+```
+~/.config/GIMP/3.0/plug-ins/dream-prompter/
+├── dream-prompter.py
+├── api.py
+├── dialog*.py
+├── integrator.py
+├── settings.py
+├── i18n.py
+├── models/
+│   ├── __init__.py
+│   ├── factory.py
+│   └── nano_banana.py
+└── locale/ (optional)
+    └── ...
+```
 
 #### Development Setup
 
@@ -249,8 +267,9 @@ python3 scripts/build-translations.py
 
 ## Architecture
 
-The plugin is organized into focused modules:
+The plugin is organized into focused modules with a clean model-driven architecture:
 
+### Core Plugin Files
 - **`dream-prompter.py`** - Main GIMP plugin entry point
 - **`dialog_gtk.py`** - GTK user interface components
 - **`dialog_events.py`** - Event handling and user interactions
@@ -259,6 +278,56 @@ The plugin is organized into focused modules:
 - **`integrator.py`** - GIMP-specific operations
 - **`settings.py`** - Configuration persistence
 - **`i18n.py`** - Internationalization support
+
+### Model System
+- **`models/__init__.py`** - Base model classes and registry system
+- **`models/factory.py`** - Model factory for centralized model management
+- **`models/nano_banana.py`** - Nano Banana model implementation
+
+The model system provides a clean abstraction for AI models, making it easy to:
+- **Add new models** by implementing the `BaseModel` interface
+- **Validate inputs** using model-specific limits and constraints
+- **Build API requests** with model-specific parameter formats
+- **Maintain consistency** across the entire plugin
+
+### Extending with New Models
+
+To add support for a new Replicate model:
+
+1. **Create a new model file** in the `models/` directory (e.g., `models/my_model.py`)
+2. **Implement the BaseModel interface**:
+
+```python
+from . import BaseModel, OutputFormat, register_model
+
+class MyModel(BaseModel):
+    @property
+    def name(self) -> str:
+        return "my-account/my-model"
+
+    @property
+    def display_name(self) -> str:
+        return "My Custom Model"
+
+    # Implement other required properties...
+
+    def build_generation_input(self, prompt, reference_images=None, **kwargs):
+        # Implementation for generating...
+        pass
+
+    def build_edit_input(self, prompt, main_image, reference_images=None, **kwargs):
+        # Implementation for editing...
+        pass
+
+# Register the model
+my_model = MyModel()
+register_model(my_model)
+```
+
+3. **Import the model** in `models/factory.py` to ensure it's loaded
+4. **The model is now available** throughout the plugin with automatic validation and UI updates
+
+The `nano_banana.py` file serves as a complete reference implementation.
 
 ## Troubleshooting
 
@@ -280,12 +349,6 @@ The plugin is organized into focused modules:
 - Verify your API key is correct
 - Check your quota at [Replicate](https://replicate.com/)
 - Monitor costs to avoid unexpected charges
-
-**Image processing issues**
-
-- Reference images must be under 7MB
-- Only PNG, JPEG, WebP formats supported
-- Maximum 3 images for generation, 2 for editing
 
 **Interface problems**
 

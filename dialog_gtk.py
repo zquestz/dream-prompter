@@ -35,6 +35,8 @@ class DreamPrompterUI:
         self.generate_btn = None
         self.status_label = None
         self.progress_bar = None
+        self.model_dropdown = None
+        self.model_description_label = None
 
     def build_interface(self, parent_dialog):
         """Build the main plugin interface"""
@@ -50,6 +52,9 @@ class DreamPrompterUI:
         try:
             api_key_section = self._create_api_key_section()
             main_box.pack_start(api_key_section, False, False, 0)
+
+            model_section = self._create_model_selection_section()
+            main_box.pack_start(model_section, False, False, 0)
 
             mode_section = self._create_mode_section()
             main_box.pack_start(mode_section, False, False, 0)
@@ -83,6 +88,8 @@ class DreamPrompterUI:
             self.api_key_entry.set_sensitive(enabled)
         if self.toggle_visibility_btn:
             self.toggle_visibility_btn.set_sensitive(enabled)
+        if self.model_dropdown:
+            self.model_dropdown.set_sensitive(enabled)
         if self.edit_mode_radio:
             self.edit_mode_radio.set_sensitive(enabled)
         if self.generate_mode_radio:
@@ -126,6 +133,26 @@ class DreamPrompterUI:
             else:
                 self.progress_bar.pulse()
                 self.progress_bar.set_visible(True)
+
+    def get_selected_model(self):
+        """Get the currently selected model name"""
+        if self.model_dropdown:
+            return self.model_dropdown.get_active_id()
+        return None
+
+    def set_selected_model(self, model_name):
+        """Set the selected model"""
+        if self.model_dropdown and model_name:
+            self.model_dropdown.set_active_id(model_name)
+            from models.factory import get_model_by_name
+            model = get_model_by_name(model_name)
+            if model:
+                self.update_model_description(model)
+
+    def update_model_description(self, model):
+        """Update the model description help text"""
+        if self.model_description_label and model:
+            self.model_description_label.set_markup(f'<small>{model.description}</small>')
 
     def _clear_existing_file_rows(self):
         """Clear existing file rows from the listbox"""
@@ -209,6 +236,35 @@ class DreamPrompterUI:
         help_label.set_halign(Gtk.Align.START)
         help_label.set_line_wrap(True)
         section_box.pack_start(help_label, False, False, 0)
+
+        return section_box
+
+    def _create_model_selection_section(self):
+        """Create AI model selection section"""
+        from models.factory import model_factory
+
+        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{_('AI Model')}</b>")
+        title_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(title_label, False, False, 0)
+
+        self.model_dropdown = Gtk.ComboBoxText()
+
+        available_models = model_factory.get_available_models()
+
+        for model_name, model in available_models.items():
+            display_text = f"{model.display_name}"
+            self.model_dropdown.append(model_name, display_text)
+
+        section_box.pack_start(self.model_dropdown, False, False, 0)
+
+        self.model_description_label = Gtk.Label()
+        self.model_description_label.set_halign(Gtk.Align.START)
+        self.model_description_label.set_line_wrap(True)
+        self.model_description_label.get_style_context().add_class("dim-label")
+        section_box.pack_start(self.model_description_label, False, False, 0)
 
         return section_box
 

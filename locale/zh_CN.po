@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 13:42-1000\n"
+"POT-Creation-Date: 2025-09-22 15:22-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:357
+#: dialog_gtk.py:413
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -26,16 +26,20 @@ msgstr "({size:.1f} MB)"
 msgid "AI Generated"
 msgstr "AI生成"
 
-#: dialog_threads.py:267
+#: dialog_threads.py:271
 #, python-brace-format
 msgid "AI Generated: {prompt}"
 msgstr "AI生成：{prompt}"
 
-#: dialog_threads.py:269 integrator.py:331
+#: dialog_threads.py:273 integrator.py:331
 msgid "AI Layer"
 msgstr "AI图层"
 
-#: dialog_gtk.py:293
+#: dialog_gtk.py:249
+msgid "AI Model"
+msgstr "AI模型"
+
+#: dialog_gtk.py:349
 msgid "AI Prompt"
 msgstr "AI提示词"
 
@@ -43,23 +47,23 @@ msgstr "AI提示词"
 msgid "AI-powered image creation/editing with Nano Banana"
 msgstr "使用Nano Banana进行AI驱动的图像创建/编辑"
 
-#: api.py:52 dialog_threads.py:87 dialog_threads.py:126
+#: api.py:53 dialog_threads.py:88 dialog_threads.py:128
 msgid "API key is required"
 msgstr "需要API密钥"
 
-#: dialog_threads.py:325
+#: dialog_threads.py:329
 msgid "Adding edit layer..."
 msgstr "正在添加编辑图层..."
 
-#: dialog_gtk.py:141
+#: dialog_gtk.py:168
 msgid "Additional Images (Optional)"
 msgstr "附加图像（可选）"
 
-#: api.py:95
+#: api.py:104
 msgid "Building Replicate edit request..."
 msgstr "构建Replicate编辑请求..."
 
-#: dialog_events.py:163 dialog_gtk.py:221
+#: dialog_events.py:191 dialog_gtk.py:277
 msgid "Cancel"
 msgstr "取消"
 
@@ -67,26 +71,27 @@ msgstr "取消"
 msgid "Cancelling..."
 msgstr "正在取消..."
 
-#: dialog_events.py:194
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum 10 reference images allowed."
-msgstr "无法添加{count}个文件。最多允许10个参考图像。"
-
-#: dialog_events.py:192
+#: dialog_events.py:220
 #, python-brace-format
 msgid ""
-"Cannot add {count} files. Maximum 9 reference images allowed in edit mode."
-msgstr "无法添加{count}个文件。编辑模式下最多允许9张参考图像。"
+"Cannot add {count} files. Maximum {max} reference images allowed in edit "
+"mode."
+msgstr "无法添加{count}个文件。编辑模式下最多允许{max}张参考图像。"
 
-#: dialog_gtk.py:160
+#: dialog_events.py:222
+#, python-brace-format
+msgid "Cannot add {count} files. Maximum {max} reference images allowed."
+msgstr "无法添加{count}个文件。最多允许{max}个参考图像。"
+
+#: dialog_gtk.py:187
 msgid "Clear selected files"
 msgstr "清除选定的文件"
 
-#: dialog_threads.py:302
+#: dialog_threads.py:306
 msgid "Creating GIMP image..."
 msgstr "正在创建GIMP图像..."
 
-#: api.py:133 api.py:222
+#: api.py:140 api.py:226
 msgid "Downloading result..."
 msgstr "正在下载结果..."
 
@@ -98,28 +103,28 @@ msgstr "Dream Prompter - AI图像创建器/编辑器"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:276
+#: dialog_gtk.py:332
 msgid "Edit Image"
 msgstr "编辑图像"
 
-#: dialog_threads.py:332
+#: dialog_threads.py:336
 msgid "Edit layer created!"
 msgstr "编辑图层已创建！"
 
-#: dialog_events.py:106
+#: dialog_events.py:136
 msgid "Edit mode requires a selected layer"
 msgstr "编辑模式需要选择一个图层"
 
-#: dialog_gtk.py:191
+#: dialog_gtk.py:218
 msgid "Enter your Replicate API key..."
 msgstr "输入您的Replicate API密钥..."
 
-#: dialog_threads.py:313
+#: dialog_threads.py:317
 #, python-brace-format
 msgid "Error creating GIMP image: {error}"
 msgstr "创建GIMP图像时出错：{error}"
 
-#: dialog_threads.py:336
+#: dialog_threads.py:340
 #, python-brace-format
 msgid "Error creating edit layer: {error}"
 msgstr "创建编辑图层时出错：{error}"
@@ -129,191 +134,197 @@ msgstr "创建编辑图层时出错：{error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "运行Dream Prompter时出错：{error}"
 
-#: api.py:156 api.py:245
+#: api.py:163 api.py:249
 msgid "Failed to convert result to image"
 msgstr "将结果转换为图像失败"
 
-#: dialog_threads.py:306
+#: dialog_threads.py:310
 msgid "Failed to create GIMP image"
 msgstr "创建GIMP图像失败"
 
-#: dialog_threads.py:329
+#: dialog_threads.py:333
 msgid "Failed to create edit layer"
 msgstr "创建编辑图层失败"
 
-#: api.py:93
+#: api.py:102
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
 
-#: api.py:147 api.py:236
+#: api.py:154 api.py:240
 msgid "Failed to process iterable response"
 msgstr "处理可迭代响应失败"
 
-#: dialog_events.py:133 dialog_gtk.py:226
+#: dialog_events.py:165 dialog_gtk.py:282
 msgid "Generate Edit"
 msgstr "生成编辑"
 
-#: dialog_events.py:138 dialog_gtk.py:280
+#: dialog_events.py:168 dialog_gtk.py:336
 msgid "Generate Image"
 msgstr "生成图像"
 
-#: api.py:191
+#: api.py:198
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成图像..."
 
-#: dialog_gtk.py:207
+#: dialog_gtk.py:234
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "从<a href=\"{url}\">Replicate</a>获取您的API密钥"
 
-#: dialog_events.py:206
+#: models/nano_banana.py:31
+msgid "Google's advanced image generation and editing model"
+msgstr "Google的高级图像生成和编辑模型"
+
+#: dialog_events.py:234
 msgid "Hide API key"
 msgstr "隐藏API密钥"
 
-#: api.py:159
+#: api.py:166
 msgid "Image editing complete!"
 msgstr "图像编辑完成！"
 
-#: dialog_threads.py:309
+#: dialog_threads.py:313
 msgid "Image generated successfully!"
 msgstr "图像生成成功！"
 
-#: api.py:248
+#: api.py:252
 msgid "Image generation complete!"
 msgstr "图像生成完成！"
 
-#: dialog_events.py:114
+#: dialog_events.py:145
 msgid "Initializing API request..."
 msgstr "正在初始化API请求..."
 
-#: api.py:122 api.py:256
+#: api.py:129 api.py:260
 msgid "Logs"
 msgstr "日志"
 
-#: api.py:119 api.py:253
+#: api.py:126 api.py:257
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型错误：{error}"
 
-#: api.py:85
+#: models/nano_banana.py:26
+msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
+msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
+
+#: api.py:94
 msgid "No GIMP image provided for editing"
 msgstr "未提供用于编辑的GIMP图像"
 
-#: dialog_gtk.py:153 dialog_gtk.py:372
+#: dialog_gtk.py:180 dialog_gtk.py:428
 msgid "No additional images selected"
 msgstr "未选择附加图像"
 
-#: dialog_threads.py:122 dialog_threads.py:208
+#: dialog_threads.py:124 dialog_threads.py:212
 msgid "No image available for editing"
 msgstr "没有可编辑的图像"
 
-#: dialog_threads.py:182 dialog_threads.py:236
+#: dialog_threads.py:185 dialog_threads.py:240
 msgid "No image data received from API"
 msgstr "未从API接收到图像数据"
 
-#: dialog_threads.py:118
+#: dialog_threads.py:120
 msgid "No layer available for editing"
 msgstr "没有可编辑的图层"
 
-#: api.py:131 api.py:220
+#: api.py:138 api.py:224
 msgid "No output received from API"
 msgstr "未从API接收到输出"
 
-#: api.py:152 api.py:241
+#: api.py:159 api.py:245
 msgid "No valid image data in API response"
 msgstr "API响应中没有有效图像数据"
 
-#: dialog_gtk.py:270
+#: dialog_gtk.py:326
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:88 api.py:96 api.py:111 api.py:128 api.py:134 api.py:192 api.py:208
-#: api.py:217 api.py:223
+#: api.py:97 api.py:105 api.py:118 api.py:135 api.py:141 api.py:199 api.py:212
+#: api.py:221 api.py:227
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: dialog_events.py:102
+#: dialog_events.py:132
 msgid "Please enter a prompt"
 msgstr "请输入提示词"
 
-#: dialog_events.py:98
+#: dialog_events.py:128
 msgid "Please enter your Replicate API key"
 msgstr "请输入您的Replicate API密钥"
 
-#: api.py:87
+#: api.py:96
 msgid "Preparing current image for Replicate..."
 msgstr "为Replicate准备当前图像..."
 
-#: api.py:127
+#: api.py:134
 msgid "Processing Replicate edit response..."
 msgstr "处理Replicate编辑响应..."
 
-#: api.py:216
+#: api.py:220
 msgid "Processing Replicate response..."
 msgstr "处理Replicate响应..."
 
-#: dialog_threads.py:91 dialog_threads.py:130
+#: dialog_threads.py:92 dialog_threads.py:132
 msgid "Prompt is required"
 msgstr "需要提示词"
 
-#: dialog_gtk.py:78 dialog_gtk.py:335
+#: dialog_gtk.py:83 dialog_gtk.py:391
 msgid "Ready"
 msgstr "就绪"
 
-#: dialog_events.py:130
-msgid "Reduced to 2 reference images for edit mode"
-msgstr "编辑模式下减少到2张参考图像"
+#: dialog_events.py:162
+#, python-brace-format
+msgid "Reduced to {max} reference images for edit mode"
+msgstr "减少到{max}张参考图像用于编辑模式"
 
-#: dialog_gtk.py:184
+#: dialog_gtk.py:211
 msgid "Replicate API Key"
 msgstr "Replicate API密钥"
 
-#: api.py:125 api.py:260
+#: api.py:132 api.py:264
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API错误：{error}"
 
-#: api.py:49 api.py:82 api.py:189
+#: api.py:50 api.py:91 api.py:196
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。请安装google-genai"
 
-#: dialog_events.py:164
+#: dialog_events.py:192
 msgid "Select"
 msgstr "选择"
 
-#: dialog_gtk.py:148
+#: dialog_gtk.py:175
 msgid "Select Images..."
 msgstr "选择图像..."
 
-#: dialog_events.py:158
+#: dialog_events.py:186
 msgid "Select Reference Images"
 msgstr "选择参考图像"
 
-#: dialog_events.py:140
-msgid "Select up to 10 additional images"
-msgstr "最多选择10张附加图像"
+#: dialog_events.py:105 dialog_events.py:108
+#, python-brace-format
+msgid "Select up to {max} additional images"
+msgstr "最多选择{max}张附加图像"
 
-#: dialog_events.py:135
-msgid "Select up to 9 additional images"
-msgstr "最多选择9张附加图像"
-
-#: api.py:110
+#: api.py:117
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate发送编辑请求..."
 
-#: api.py:207
+#: api.py:211
 msgid "Sending request to Replicate..."
 msgstr "向Replicate发送请求..."
 
-#: dialog_events.py:210
+#: dialog_events.py:238
 msgid "Show API key"
 msgstr "显示API密钥"
 
-#: dialog_gtk.py:200
+#: dialog_gtk.py:227
 msgid "Show/Hide API key"
 msgstr "显示/隐藏API密钥"
 
-#: dialog_events.py:167
+#: dialog_events.py:195
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支持的图像格式（PNG、JPEG、WebP）"
 
@@ -326,41 +337,41 @@ msgstr ""
 "使用Google的Gemini 2.5 Flash Image模型（Nano Banana）通过自然语言提示词转换现"
 "有图像或生成新图像。支持一致的多轮编辑和图像合并功能。"
 
-#: dialog_threads.py:245
+#: dialog_threads.py:249
 #, python-brace-format
 msgid "Unexpected error during image editing: {error}"
 msgstr "图像编辑过程中出现意外错误：{error}"
 
-#: dialog_threads.py:190
+#: dialog_threads.py:193
 #, python-brace-format
 msgid "Unexpected error during image generation: {error}"
 msgstr "图像生成过程中出现意外错误：{error}"
 
-#: api.py:164 api.py:263
+#: api.py:171 api.py:267
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外错误：{error}"
 
-#: api.py:149 api.py:238
+#: api.py:156 api.py:242
 msgid "Unexpected response format from API"
 msgstr "API返回意外的响应格式"
 
-#: dialog_gtk.py:385
+#: dialog_gtk.py:441
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已选择{count}张图像"
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:443
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已选择{count}张图像"
 
-#: dialog_threads.py:261
+#: dialog_threads.py:265
 #, python-brace-format
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI编辑：{prompt}）"
 
-#: dialog_gtk.py:355
+#: dialog_gtk.py:411
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
@@ -390,3 +401,6 @@ msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
 
 #~ msgid "Processing Nano Banana response..."
 #~ msgstr "正在处理Nano Banana响应..."
+
+#~ msgid "Select up to 10 additional images"
+#~ msgstr "最多选择10张附加图像"
