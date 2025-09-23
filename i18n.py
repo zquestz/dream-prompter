@@ -12,6 +12,7 @@ from typing import Callable
 
 DOMAIN = "dream-prompter"
 
+
 def setup_i18n() -> Callable[[str], str]:
     """Initialize internationalization support"""
     plugin_dir = os.path.dirname(os.path.abspath(__file__))
@@ -47,5 +48,6 @@ def setup_i18n() -> Callable[[str], str]:
 
         builtins.__dict__['_'] = fallback_gettext
         return fallback_gettext
+
 
 _: Callable[[str], str] = setup_i18n()

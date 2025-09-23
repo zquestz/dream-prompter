@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 20:52-1000\n"
+"POT-Creation-Date: 2025-09-22 23:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -17,118 +17,118 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:420
+#: dialog_gtk.py:641
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:417
+#: dialog_gtk.py:637
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:324 integrator.py:111
+#: dialog_threads.py:349 integrator.py:116
 msgid "AI Generated"
 msgstr "AI生成"
 
-#: dialog_threads.py:322
+#: dialog_threads.py:347
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "AI生成 {num}"
 
-#: dialog_threads.py:271
+#: dialog_threads.py:286
 #, python-brace-format
 msgid "AI Generated: {prompt}"
 msgstr "AI生成：{prompt}"
 
-#: dialog_threads.py:273 integrator.py:331
+#: dialog_threads.py:288 integrator.py:341
 msgid "AI Layer"
 msgstr "AI圖層"
 
-#: dialog_gtk.py:225
+#: dialog_gtk.py:281
 msgid "AI Model"
 msgstr "AI模型"
 
-#: dialog_gtk.py:352
+#: dialog_gtk.py:568
 msgid "AI Prompt"
 msgstr "AI提示詞"
 
-#: dream-prompter.py:43
+#: dream-prompter.py:42
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "使用Replicate模型進行AI驅動的圖像創建/編輯"
 
-#: api.py:53 dialog_threads.py:96 dialog_threads.py:128
+#: api.py:56 dialog_threads.py:101 dialog_threads.py:135
 msgid "API key is required"
 msgstr "需要API密鑰"
 
-#: dialog_threads.py:301
+#: dialog_threads.py:323
 #, python-brace-format
 msgid "Added {count} layers"
 msgstr "已新增 {count} 層"
 
-#: dialog_threads.py:294
+#: dialog_threads.py:313
 #, python-brace-format
 msgid "Adding layer {num}..."
 msgstr "正在新增圖層 {num}..."
 
-#: dialog_gtk.py:171
+#: dialog_gtk.py:222
 msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
 
-#: models/seedream4.py:94
+#: models/seedream4.py:96
 msgid "Aspect Ratio"
 msgstr "長寬比"
 
-#: api.py:104
+#: api.py:110
 msgid "Building Replicate edit request..."
 msgstr "構建Replicate編輯請求..."
 
-#: models/seedream4.py:32
+#: models/seedream4.py:34
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance的統一生成和編輯模型"
 
-#: dialog_events.py:179 dialog_gtk.py:289
+#: dialog_events.py:190 dialog_gtk.py:500
 msgid "Cancel"
 msgstr "取消"
 
-#: dialog_threads.py:48
+#: dialog_threads.py:50
 msgid "Cancelling..."
 msgstr "正在取消..."
 
-#: dialog_events.py:208
+#: dialog_events.py:220
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr "無法添加{count}個檔案。編輯模式下最多允許{max}張參考圖像。"
 
-#: dialog_events.py:210
+#: dialog_events.py:226
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "無法添加{count}個檔案。最多允許{max}張參考圖像。"
 
-#: dialog_gtk.py:190
+#: dialog_gtk.py:246
 msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
-#: models/seedream4.py:95
+#: models/seedream4.py:97
 msgid "Control aspect ratio of generated images"
 msgstr "控制生成影像的長寬比"
 
-#: dialog_threads.py:319
+#: dialog_threads.py:342
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "正在建立影像 {num}..."
 
-#: models/seedream4.py:85
+#: models/seedream4.py:87
 msgid "Custom height in pixels"
 msgstr "自訂像素高度"
 
-#: models/seedream4.py:75
+#: models/seedream4.py:77
 msgid "Custom width in pixels"
 msgstr "自訂像素寬度"
 
-#: api.py:144 api.py:229
+#: api.py:160 api.py:257
 msgid "Downloading result..."
 msgstr "正在下載結果..."
 
@@ -140,257 +140,262 @@ msgstr "Dream Prompter - AI圖像創建器/編輯器"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:335
+#: dialog_gtk.py:551
 msgid "Edit Image"
 msgstr "編輯圖像"
 
-#: dialog_events.py:114
+#: dialog_events.py:117
 msgid "Edit mode requires a selected layer"
 msgstr "編輯模式需要選擇一個圖層"
 
-#: dialog_gtk.py:259
-msgid "Enter your Replicate API key..."
+#: dialog_gtk.py:467
+#, fuzzy
+msgid "Enter your Replicate API key"
 msgstr "輸入您的Replicate API密鑰..."
 
-#: dialog_threads.py:306
+#: dialog_threads.py:328
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "新增圖層錯誤: {error}"
 
-#: dialog_threads.py:336
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "建立影像錯誤: {error}"
 
-#: dream-prompter.py:85
+#: dream-prompter.py:89
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
 
-#: api.py:162 api.py:247
+#: api.py:179 api.py:277
 msgid "Failed to convert any images from API response"
 msgstr "無法從API回應轉換影像"
 
-#: api.py:102
+#: api.py:107
 msgid "Failed to export current image"
 msgstr "匯出當前圖像失敗"
 
-#: models/nano_banana.py:66
+#: models/nano_banana.py:68
 msgid "Format for generated images"
 msgstr "生成影像的格式"
 
-#: dialog_events.py:153 dialog_gtk.py:294
+#: dialog_events.py:164 dialog_gtk.py:505
 msgid "Generate Edit"
 msgstr "生成編輯"
 
-#: dialog_events.py:156 dialog_gtk.py:339
+#: dialog_events.py:167 dialog_gtk.py:555
 msgid "Generate Image"
 msgstr "生成圖像"
 
-#: models/seedream4.py:112
+#: models/seedream4.py:115
 msgid "Generate images sequentially or in parallel"
 msgstr "順序或並行生成影像"
 
-#: dialog_threads.py:331
+#: dialog_threads.py:356
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "已生成 {count} 張影像"
 
-#: api.py:197
+#: api.py:217
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
 
-#: dialog_gtk.py:275
+#: dialog_gtk.py:485
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "從<a href=\"{url}\">Replicate</a>獲取您的API密鑰"
 
-#: models/nano_banana.py:31
+#: models/nano_banana.py:33
 msgid "Google's advanced image generation and editing model"
 msgstr "Google的高級圖像生成和編輯模型"
 
-#: models/seedream4.py:84
+#: models/seedream4.py:86
 msgid "Height"
 msgstr "高度"
 
-#: dialog_events.py:222
+#: dialog_events.py:244
 msgid "Hide API key"
 msgstr "隱藏API密鑰"
 
-#: models/seedream4.py:66
+#: models/seedream4.py:68
 msgid "Image Size"
 msgstr "影像大小"
 
-#: api.py:165
+#: api.py:182
 msgid "Image editing complete!"
 msgstr "圖像編輯完成！"
 
-#: api.py:250
+#: api.py:282
 msgid "Image generation complete!"
 msgstr "圖像生成完成！"
 
-#: dialog_events.py:123
+#: dialog_events.py:127
 msgid "Initializing API request..."
 msgstr "正在初始化API請求..."
 
-#: api.py:133 api.py:258
+#: api.py:144 api.py:291
 msgid "Logs"
 msgstr "日誌"
 
-#: models/seedream4.py:102
+#: models/seedream4.py:105
 msgid "Max Images"
 msgstr "最大影像數"
 
-#: models/seedream4.py:103
+#: models/seedream4.py:106
 msgid "Maximum number of images to generate"
 msgstr "要生成的最大影像數量"
 
-#: api.py:130 api.py:255
+#: dialog_gtk.py:173
+msgid "Model Settings"
+msgstr "模型設定"
+
+#: api.py:141 api.py:288
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
 
-#: models/nano_banana.py:26
+#: models/nano_banana.py:28
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
-#: api.py:94
+#: api.py:97
 msgid "No GIMP image provided for editing"
 msgstr "未提供用於編輯的GIMP圖像"
 
-#: dialog_gtk.py:183 dialog_gtk.py:435
+#: dialog_gtk.py:236 dialog_gtk.py:656
 msgid "No additional images selected"
 msgstr "未選擇附加圖像"
 
-#: dialog_threads.py:92 dialog_threads.py:162
+#: dialog_threads.py:97 dialog_threads.py:171
 msgid "No image available for editing"
 msgstr "沒有可編輯的圖像"
 
-#: dialog_threads.py:190 dialog_threads.py:241
+#: dialog_threads.py:200 dialog_threads.py:255
 msgid "No image data received from API"
 msgstr "未從API接收到圖像數據"
 
-#: dialog_threads.py:88
+#: dialog_threads.py:93
 msgid "No layer available for editing"
 msgstr "沒有可編輯的圖層"
 
-#: api.py:142 api.py:227
+#: api.py:157 api.py:254
 msgid "No output received from API"
 msgstr "未從API接收到輸出"
 
-#: api.py:150 api.py:235
+#: api.py:167 api.py:264
 msgid "No valid image data in API response"
 msgstr "API響應中沒有有效圖像數據"
 
-#: dialog_gtk.py:329
+#: dialog_gtk.py:545
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:97 api.py:105 api.py:122 api.py:139 api.py:145 api.py:198 api.py:215
-#: api.py:224 api.py:230
+#: api.py:102 api.py:112 api.py:133 api.py:154 api.py:162 api.py:219 api.py:240
+#: api.py:251 api.py:259
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: models/nano_banana.py:65
+#: models/nano_banana.py:67
 msgid "Output Format"
 msgstr "輸出格式"
 
-#: dialog_events.py:110
+#: dialog_events.py:111
 msgid "Please enter a prompt"
 msgstr "請輸入提示詞"
 
-#: dialog_events.py:106
+#: dialog_events.py:107
 msgid "Please enter your Replicate API key"
 msgstr "請輸入您的Replicate API密鑰"
 
-#: api.py:96
+#: api.py:100
 msgid "Preparing current image for Replicate..."
 msgstr "為Replicate準備當前圖像..."
 
-#: api.py:138
+#: api.py:152
 msgid "Processing Replicate edit response..."
 msgstr "處理Replicate編輯響應..."
 
-#: api.py:223
+#: api.py:249
 msgid "Processing Replicate response..."
 msgstr "處理Replicate響應..."
 
-#: dialog_threads.py:100 dialog_threads.py:132
+#: dialog_threads.py:105 dialog_threads.py:139
 msgid "Prompt is required"
 msgstr "需要提示詞"
 
-#: dialog_gtk.py:91 dialog_gtk.py:394
+#: dialog_gtk.py:96 dialog_gtk.py:613
 msgid "Ready"
 msgstr "就緒"
 
-#: dialog_events.py:150
+#: dialog_events.py:159
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "減少到{max}張參考圖像用於編輯模式"
 
-#: dialog_gtk.py:252
+#: dialog_gtk.py:460
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
-#: api.py:136 api.py:262
+#: api.py:147 api.py:295
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API錯誤：{error}"
 
-#: api.py:50 api.py:91 api.py:195
+#: api.py:52 api.py:94 api.py:213
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。請安裝google-genai"
 
-#: models/seedream4.py:67
+#: models/seedream4.py:69
 msgid "Resolution preset for generated images"
 msgstr "生成影像的解析度預設"
 
-#: models/seedream4.py:27
+#: models/seedream4.py:29
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:180
+#: dialog_events.py:191
 msgid "Select"
 msgstr "選擇"
 
-#: dialog_gtk.py:178
+#: dialog_gtk.py:229
 msgid "Select Images..."
 msgstr "選擇圖像..."
 
-#: dialog_events.py:174
+#: dialog_events.py:185
 msgid "Select Reference Images"
 msgstr "選擇參考圖像"
 
-#: dialog_events.py:269 dialog_events.py:272
+#: dialog_events.py:299 dialog_events.py:305
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "最多選擇{max}張附加圖像"
 
-#: api.py:121
+#: api.py:131
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate發送編輯請求..."
 
-#: api.py:214
+#: api.py:238
 msgid "Sending request to Replicate..."
 msgstr "向Replicate發送請求..."
 
-#: models/seedream4.py:111
+#: models/seedream4.py:114
 msgid "Sequential Generation"
 msgstr "順序生成"
 
-#: dialog_events.py:226
+#: dialog_events.py:251
 msgid "Show API key"
 msgstr "顯示API密鑰"
 
-#: dialog_gtk.py:268
+#: dialog_gtk.py:477
 msgid "Show/Hide API key"
 msgstr "顯示/隱藏API密鑰"
 
-#: dialog_events.py:183
+#: dialog_events.py:194
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支援的圖像格式（PNG、JPEG、WebP）"
 
-#: dream-prompter.py:44
+#: dream-prompter.py:43
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
@@ -399,41 +404,41 @@ msgstr ""
 "使用自然語言提示通過Replicate的高級AI模型轉換現有圖像或生成新圖像。從包括"
 "Nano Banana和Seedream 4在內的多個模型中選擇。"
 
-#: dialog_threads.py:199
+#: dialog_threads.py:209
 #, python-brace-format
 msgid "Unexpected error during image editing: {error}"
 msgstr "圖像編輯過程中出現意外錯誤：{error}"
 
-#: dialog_threads.py:249
+#: dialog_threads.py:263
 #, python-brace-format
 msgid "Unexpected error during image generation: {error}"
 msgstr "圖像生成過程中出現意外錯誤：{error}"
 
-#: api.py:170 api.py:265
+#: api.py:187 api.py:300
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外錯誤：{error}"
 
-#: models/seedream4.py:74
+#: models/seedream4.py:76
 msgid "Width"
 msgstr "寬度"
 
-#: dialog_gtk.py:448
+#: dialog_gtk.py:669
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已選擇{count}張圖像"
 
-#: dialog_gtk.py:450
+#: dialog_gtk.py:671
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已選擇{count}張圖像"
 
-#: dialog_threads.py:265
+#: dialog_threads.py:280
 #, python-brace-format
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編輯：{prompt}）"
 
-#: dialog_gtk.py:415
+#: dialog_gtk.py:634
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"

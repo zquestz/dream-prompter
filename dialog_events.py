@@ -15,6 +15,7 @@ from i18n import _
 from models.factory import get_default_model, get_model_by_name
 from settings import store_settings, load_settings
 
+
 class DreamPrompterEventHandler:
     """Handles all events for the Dream Prompter dialog"""
 
@@ -110,22 +111,29 @@ class DreamPrompterEventHandler:
             self.show_error(_("Please enter a prompt"))
             return
 
-        if self.ui.edit_mode_radio and self.ui.edit_mode_radio.get_active() and not self.drawable:
+        edit_active = (self.ui.edit_mode_radio and
+                       self.ui.edit_mode_radio.get_active())
+        if edit_active and not self.drawable:
             self.show_error(_("Edit mode requires a selected layer"))
             return
 
         mode = self.dialog.get_current_mode()
         api_key_visible = self.dialog.get_api_key_visible()
         selected_model_name = self.ui.get_selected_model()
-        store_settings(api_key, mode, prompt_text, api_key_visible, selected_model_name)
+        store_settings(api_key, mode, prompt_text, api_key_visible,
+                       selected_model_name)
 
         if self.ui.status_label:
             self.ui.status_label.set_text(_("Initializing API request..."))
 
         if mode == "edit":
-            self.threads.start_edit_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
+            self.threads.start_edit_thread(
+                api_key, prompt_text, self.ui.selected_files, selected_model_name
+            )
         else:
-            self.threads.start_generate_thread(api_key, prompt_text, self.ui.selected_files, selected_model_name)
+            self.threads.start_generate_thread(
+                api_key, prompt_text, self.ui.selected_files, selected_model_name
+            )
 
     def on_model_changed(self, combo_box):
         """Handle model selection changes"""
@@ -136,6 +144,7 @@ class DreamPrompterEventHandler:
                 self.model = new_model
                 self.update_ui_limits()
                 self.ui.update_model_description(new_model)
+                self.ui.update_model_settings_ui(new_model)
 
     def on_mode_changed(self, _radio_button):
         """Handle mode selection changes"""
@@ -147,7 +156,9 @@ class DreamPrompterEventHandler:
             if len(self.ui.selected_files) > max_edit_files:
                 self.ui.selected_files = self.ui.selected_files[:max_edit_files]
                 self.ui.update_files_display()
-                print(_("Reduced to {max} reference images for edit mode").format(max=max_edit_files))
+                print(_("Reduced to {max} reference images for edit mode").format(
+                    max=max_edit_files
+                ))
 
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Edit"))
@@ -205,9 +216,17 @@ class DreamPrompterEventHandler:
                 self.ui.update_files_display()
             elif files:
                 if current_mode == "edit":
-                    print(_("Cannot add {count} files. Maximum {max} reference images allowed in edit mode.").format(count=len(files), max=self.model.max_reference_images_edit))
+                    max_refs = self.model.max_reference_images_edit
+                    print(_("Cannot add {count} files. Maximum {max} reference "
+                            "images allowed in edit mode.").format(
+                        count=len(files), max=max_refs
+                    ))
                 else:
-                    print(_("Cannot add {count} files. Maximum {max} reference images allowed.").format(count=len(files), max=self.model.max_reference_images))
+                    max_refs = self.model.max_reference_images
+                    print(_("Cannot add {count} files. Maximum {max} reference "
+                            "images allowed.").format(
+                        count=len(files), max=max_refs
+                    ))
 
         dialog.destroy()
 
@@ -218,11 +237,17 @@ class DreamPrompterEventHandler:
 
         if button.get_active():
             self.ui.api_key_entry.set_visibility(True)
-            button.set_image(Gtk.Image.new_from_icon_name("view-reveal-symbolic", Gtk.IconSize.BUTTON))
+            icon = Gtk.Image.new_from_icon_name(
+                "view-reveal-symbolic", Gtk.IconSize.BUTTON
+            )
+            button.set_image(icon)
             button.set_tooltip_text(_("Hide API key"))
         else:
             self.ui.api_key_entry.set_visibility(False)
-            button.set_image(Gtk.Image.new_from_icon_name("view-conceal-symbolic", Gtk.IconSize.BUTTON))
+            icon = Gtk.Image.new_from_icon_name(
+                "view-conceal-symbolic", Gtk.IconSize.BUTTON
+            )
+            button.set_image(icon)
             button.set_tooltip_text(_("Show API key"))
 
     def show_error(self, message):
@@ -242,7 +267,9 @@ class DreamPrompterEventHandler:
 
     def update_generate_button_state(self):
         """Update generate button sensitivity based on input state"""
-        if not self.ui.prompt_buffer or not self.ui.api_key_entry or not self.ui.generate_btn:
+        required_widgets = [self.ui.prompt_buffer, self.ui.api_key_entry,
+                            self.ui.generate_btn]
+        if not all(required_widgets):
             return
 
         prompt_text = self.dialog.get_prompt()
@@ -254,9 +281,11 @@ class DreamPrompterEventHandler:
 
         if current_mode == "edit":
             has_drawable = self.drawable is not None
-            self.ui.generate_btn.set_sensitive(has_text and has_api_key and has_drawable)
+            enabled = has_text and has_api_key and has_drawable
+            self.ui.generate_btn.set_sensitive(enabled)
         else:
-            self.ui.generate_btn.set_sensitive(has_text and has_api_key)
+            sensitive = has_text and has_api_key
+            self.ui.generate_btn.set_sensitive(sensitive)
 
     def update_ui_limits(self):
         """Update UI text to reflect current model limits"""
@@ -266,7 +295,13 @@ class DreamPrompterEventHandler:
         current_mode = self.dialog.get_current_mode()
         if current_mode == "edit":
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images_edit)}</small>')
+                max_imgs = self.model.max_reference_images_edit
+                text = _("Select up to {max} additional images").format(max=max_imgs)
+                markup = f'<small>{text}</small>'
+                self.ui.images_help_label.set_markup(markup)
         else:
             if self.ui.images_help_label:
-                self.ui.images_help_label.set_markup(f'<small>{_("Select up to {max} additional images").format(max=self.model.max_reference_images)}</small>')
+                max_imgs = self.model.max_reference_images
+                text = _("Select up to {max} additional images").format(max=max_imgs)
+                markup = f'<small>{text}</small>'
+                self.ui.images_help_label.set_markup(markup)

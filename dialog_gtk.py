@@ -7,13 +7,13 @@ Handles all GTK interface creation and layout
 """
 
 import os
-
 import gi
-gi.require_version('Gtk', '3.0')
 
+gi.require_version('Gtk', '3.0')  #
 from gi.repository import Gtk, Pango
 
 from i18n import _
+
 
 class DreamPrompterUI:
     """Handles all GTK UI creation and layout"""
@@ -39,6 +39,8 @@ class DreamPrompterUI:
         self.progress_bar = None
         self.model_dropdown = None
         self.model_description_label = None
+        self.model_settings_section = None
+        self.model_settings_widgets = {}
 
     def build_interface(self, parent_dialog):
         """Build the main plugin interface"""
@@ -57,6 +59,9 @@ class DreamPrompterUI:
 
             model_section = self._create_model_selection_section()
             main_box.pack_start(model_section, False, False, 0)
+
+            model_settings_section = self._create_model_settings_section()
+            main_box.pack_start(model_settings_section, False, False, 0)
 
             mode_section = self._create_mode_section()
             main_box.pack_start(mode_section, False, False, 0)
@@ -98,6 +103,8 @@ class DreamPrompterUI:
             model = get_model_by_name(model_name)
             if model:
                 self.update_model_description(model)
+                self.update_model_settings_ui(model)
+
 
     def set_ui_enabled(self, enabled=True):
         """Enable/disable UI controls"""
@@ -141,7 +148,51 @@ class DreamPrompterUI:
     def update_model_description(self, model):
         """Update the model description help text"""
         if self.model_description_label and model:
-            self.model_description_label.set_markup(f'<small>{model.description}</small>')
+            markup = f'<small>{model.description}</small>'
+            self.model_description_label.set_markup(markup)
+
+    def update_model_settings_ui(self, model):
+        """Update the model settings UI for the selected model"""
+        if not self.model_settings_section:
+            return
+
+        for child in self.model_settings_section.get_children():
+            self.model_settings_section.remove(child)
+        self.model_settings_widgets.clear()
+
+        if not model:
+            self.model_settings_section.hide()
+            return
+
+        param_definitions = model.get_parameter_definitions()
+        if not param_definitions:
+            self.model_settings_section.set_visible(False)
+            return
+
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{_('Model Settings')}</b>")
+        title_label.set_halign(Gtk.Align.START)
+        self.model_settings_section.pack_start(title_label, False, False, 0)
+
+        from model_settings import ModelParameterManager
+        try:
+            manager = ModelParameterManager(model.name)
+            current_values = manager.get_all_parameter_values()
+        except Exception as e:
+            print(f"Error loading model settings: {e}")
+            current_values = {}
+
+        for param_def in param_definitions:
+            param_name = param_def.name
+            current_value = current_values.get(param_name)
+            param_container = self._create_parameter_widget(param_def, current_value)
+            if param_container:
+                self.model_settings_section.pack_start(
+                    param_container, False, False, 0
+                )
+
+        self.model_settings_section.set_visible(True)
+        self.model_settings_section.show_all()
 
     def update_status(self, message, percentage=None):
         """Update status display"""
@@ -176,17 +227,22 @@ class DreamPrompterUI:
 
         self.file_chooser_btn = Gtk.Button()
         self.file_chooser_btn.set_label(_("Select Images..."))
-        self.file_chooser_btn.set_image(Gtk.Image.new_from_icon_name("document-open-symbolic", Gtk.IconSize.BUTTON))
+        icon = Gtk.Image.new_from_icon_name("document-open-symbolic",
+                                            Gtk.IconSize.BUTTON)
+        self.file_chooser_btn.set_image(icon)
         files_container.pack_start(self.file_chooser_btn, False, False, 0)
 
         self.files_info_label = Gtk.Label()
         self.files_info_label.set_text(_("No additional images selected"))
         self.files_info_label.set_halign(Gtk.Align.START)
-        self.files_info_label.get_style_context().add_class("dim-label")
+        style_context = self.files_info_label.get_style_context()
+        style_context.add_class("dim-label")
         files_container.pack_start(self.files_info_label, True, True, 0)
 
         self.clear_files_btn = Gtk.Button()
-        self.clear_files_btn.set_image(Gtk.Image.new_from_icon_name("edit-clear-symbolic", Gtk.IconSize.BUTTON))
+        clear_icon = Gtk.Image.new_from_icon_name("edit-clear-symbolic",
+                                                  Gtk.IconSize.BUTTON)
+        self.clear_files_btn.set_image(clear_icon)
         self.clear_files_btn.set_tooltip_text(_("Clear selected files"))
         self.clear_files_btn.set_sensitive(False)
         files_container.pack_start(self.clear_files_btn, False, False, 0)
@@ -242,7 +298,159 @@ class DreamPrompterUI:
         self.model_description_label.get_style_context().add_class("dim-label")
         section_box.pack_start(self.model_description_label, False, False, 0)
 
+        tree_model = self.model_dropdown.get_model()
+        if tree_model and len(tree_model) > 0:
+            self.model_dropdown.set_active(0)
+            from models.factory import get_model_by_name
+            first_model_id = self.model_dropdown.get_active_id()
+            if first_model_id:
+                model = get_model_by_name(first_model_id)
+                if model:
+                    self.update_model_description(model)
+
         return section_box
+
+    def _create_model_settings_section(self):
+        """Create model-specific settings section"""
+        orientation = Gtk.Orientation.VERTICAL
+        self.model_settings_section = Gtk.Box(orientation=orientation, spacing=6)
+        return self.model_settings_section
+
+    def _create_parameter_widget(self, param_def, current_value):
+        """Create a widget for a single parameter"""
+        from models import ParameterType
+
+        container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+
+        label = Gtk.Label()
+        label.set_text(param_def.label + ":")
+        label.set_halign(Gtk.Align.START)
+        label.set_xalign(0.0)
+        label.set_size_request(120, -1)
+        container.pack_start(label, False, False, 0)
+
+        widget = None
+
+        if param_def.type == ParameterType.CHOICE:
+            widget = Gtk.ComboBoxText()
+            for choice in param_def.choices:
+                widget.append(str(choice), str(choice))
+            if current_value is not None:
+                widget.set_active_id(str(current_value))
+            else:
+                widget.set_active_id(str(param_def.default_value))
+            widget.connect('changed', self._on_parameter_changed,
+                           param_def.name)
+
+        elif param_def.type == ParameterType.BOOLEAN:
+            widget = Gtk.CheckButton()
+            default_val = param_def.default_value
+            value = bool(current_value) if current_value is not None else default_val
+            widget.set_active(value)
+            widget.connect('toggled', self._on_parameter_changed,
+                           param_def.name)
+
+        elif param_def.type == ParameterType.INTEGER:
+            min_val = param_def.min_value if param_def.min_value is not None else 0
+            max_val = param_def.max_value if param_def.max_value is not None else 10000
+            step = param_def.step if param_def.step is not None else 1
+
+            default_val = param_def.default_value
+            value = current_value if current_value is not None else default_val
+            adjustment = Gtk.Adjustment(
+                value=value,
+                lower=min_val,
+                upper=max_val,
+                step_increment=step,
+                page_increment=step * 10
+            )
+            widget = Gtk.SpinButton()
+            widget.set_adjustment(adjustment)
+            widget.set_digits(0)
+            widget.connect('value-changed',
+                           self._on_parameter_changed, param_def.name)
+
+        elif param_def.type == ParameterType.FLOAT:
+            min_val = param_def.min_value if param_def.min_value is not None else 0.0
+            max_val = param_def.max_value if param_def.max_value is not None else 100.0
+            step = param_def.step if param_def.step is not None else 0.1
+
+            default_val = param_def.default_value
+            value = current_value if current_value is not None else default_val
+            adjustment = Gtk.Adjustment(
+                value=value,
+                lower=min_val,
+                upper=max_val,
+                step_increment=step,
+                page_increment=step * 10
+            )
+            widget = Gtk.SpinButton()
+            widget.set_adjustment(adjustment)
+            widget.set_digits(2)
+            widget.connect('value-changed',
+                           self._on_parameter_changed, param_def.name)
+
+        elif param_def.type == ParameterType.STRING:
+            widget = Gtk.Entry()
+            text_value = (str(current_value) if current_value is not None
+                          else str(param_def.default_value))
+            widget.set_text(text_value)
+            widget.connect('changed', self._on_parameter_changed,
+                           param_def.name)
+
+        if widget:
+            container.pack_start(widget, True, True, 0)
+            self.model_settings_widgets[param_def.name] = widget
+
+            if param_def.description:
+                widget.set_tooltip_text(param_def.description)
+                label.set_tooltip_text(param_def.description)
+
+        return container
+
+    def _on_parameter_changed(self, widget, param_name):
+        """Handle parameter value changes"""
+        try:
+            selected_model_name = self.get_selected_model()
+            if not selected_model_name:
+                return
+
+            from models import ParameterType
+            from models.factory import get_model_by_name
+            from model_settings import ModelParameterManager
+
+            model = get_model_by_name(selected_model_name)
+            if not model:
+                return
+
+            manager = ModelParameterManager(selected_model_name)
+
+            param_def = None
+            for p in model.get_parameter_definitions():
+                if p.name == param_name:
+                    param_def = p
+                    break
+
+            if not param_def:
+                return
+
+            if param_def.type == ParameterType.CHOICE:
+                value = widget.get_active_id()
+            elif param_def.type == ParameterType.BOOLEAN:
+                value = widget.get_active()
+            elif param_def.type in [ParameterType.INTEGER, ParameterType.FLOAT]:
+                value = widget.get_value()
+                if param_def.type == ParameterType.INTEGER:
+                    value = int(value)
+            elif param_def.type == ParameterType.STRING:
+                value = widget.get_text()
+            else:
+                return
+
+            manager.set_parameter_value(param_name, value)
+
+        except Exception as e:
+            print(f"Error handling parameter change: {e}")
 
     def _create_api_key_section(self):
         """Create API key input section"""
@@ -256,7 +464,8 @@ class DreamPrompterUI:
         key_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
 
         self.api_key_entry = Gtk.Entry()
-        self.api_key_entry.set_placeholder_text(_("Enter your Replicate API key..."))
+        placeholder = _("Enter your Replicate API key")
+        self.api_key_entry.set_placeholder_text(placeholder)
         self.api_key_entry.set_visibility(False)
         self.api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         key_container.pack_start(self.api_key_entry, True, True, 0)
@@ -265,14 +474,16 @@ class DreamPrompterUI:
         self.toggle_visibility_btn.set_image(
             Gtk.Image.new_from_icon_name("view-conceal-symbolic", Gtk.IconSize.BUTTON)
         )
-        self.toggle_visibility_btn.set_tooltip_text(_("Show/Hide API key"))
+        tooltip_text = _("Show/Hide API key")
+        self.toggle_visibility_btn.set_tooltip_text(tooltip_text)
         key_container.pack_start(self.toggle_visibility_btn, False, False, 0)
 
         section_box.pack_start(key_container, False, False, 0)
 
         help_label = Gtk.Label()
         help_url = "https://replicate.com/account/api-tokens"
-        help_text = _('Get your API key from <a href="{url}">Replicate</a>').format(url=help_url)
+        help_text = _('Get your API key from <a href="{url}">Replicate</a>')
+        help_text = help_text.format(url=help_url)
         help_label.set_markup(f'<small>{help_text}</small>')
         help_label.set_halign(Gtk.Align.START)
         help_label.set_line_wrap(True)
@@ -292,8 +503,11 @@ class DreamPrompterUI:
 
         self.generate_btn = Gtk.Button()
         self.generate_btn.set_label(_("Generate Edit"))
-        self.generate_btn.set_image(Gtk.Image.new_from_icon_name("applications-graphics-symbolic", Gtk.IconSize.BUTTON))
-        self.generate_btn.get_style_context().add_class("suggested-action")
+        gen_icon = Gtk.Image.new_from_icon_name("applications-graphics-symbolic",
+                                                Gtk.IconSize.BUTTON)
+        self.generate_btn.set_image(gen_icon)
+        generate_style = self.generate_btn.get_style_context()
+        generate_style.add_class("suggested-action")
         self.generate_btn.set_size_request(150, -1)
         buttons_box.pack_start(self.generate_btn, False, False, 0)
 
@@ -301,13 +515,15 @@ class DreamPrompterUI:
 
     def _create_file_box(self, filename, file_path):
         """Create the horizontal box for a file entry"""
-        file_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        orientation = Gtk.Orientation.HORIZONTAL
+        file_box = Gtk.Box(orientation=orientation, spacing=8)
         file_box.set_margin_top(3)
         file_box.set_margin_bottom(3)
         file_box.set_margin_start(6)
         file_box.set_margin_end(6)
 
-        icon = Gtk.Image.new_from_icon_name("image-x-generic-symbolic", Gtk.IconSize.SMALL_TOOLBAR)
+        icon = Gtk.Image.new_from_icon_name("image-x-generic-symbolic",
+                                            Gtk.IconSize.SMALL_TOOLBAR)
         file_box.pack_start(icon, False, False, 0)
 
         label = Gtk.Label()
@@ -369,11 +585,14 @@ class DreamPrompterUI:
     def _create_remove_button(self, file_path):
         """Create remove button for a file"""
         remove_btn = Gtk.Button()
-        remove_btn.set_image(Gtk.Image.new_from_icon_name("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR))
+        del_icon = Gtk.Image.new_from_icon_name("edit-delete-symbolic",
+                                                Gtk.IconSize.MENU)
+        remove_btn.set_image(del_icon)
         remove_btn.set_relief(Gtk.ReliefStyle.NONE)
 
         if self.event_handler:
-            remove_btn.connect("clicked", self.event_handler.on_remove_file, file_path)
+            remove_btn.connect("clicked",
+                               self.event_handler.on_remove_file, file_path)
 
         return remove_btn
 
@@ -412,13 +631,15 @@ class DreamPrompterUI:
             size_mb = file_size / (1024 * 1024)
 
             if size_mb > 7:
-                filename += " " + _("⚠️ ({size:.1f} MB - Max Size Exceeded)").format(size=size_mb)
+                size_warning = _("⚠️ ({size:.1f} MB - Max Size Exceeded)")
+                filename += " " + size_warning.format(size=size_mb)
             elif size_mb >= 0.1:
-                filename += " " + _("({size:.1f} MB)").format(size=size_mb)
+                size_text = _("({size:.1f} MB)").format(size=size_mb)
+                filename += " " + size_text
             else:
                 size_kb = file_size / 1024
                 filename += " " + _("({size:.0f} KB)").format(size=size_kb)
-        except:
+        except Exception:
             pass
 
         return filename

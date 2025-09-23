@@ -21,6 +21,7 @@ FILE_PERMISSIONS = 0o600
 DEFAULT_MODE = "edit"
 DEFAULT_API_KEY_VISIBLE = False
 
+
 def get_default_model_name() -> str:
     """Get default model name from factory"""
     try:
@@ -28,6 +29,7 @@ def get_default_model_name() -> str:
         return model_factory._default_model
     except ImportError:
         return "google/nano-banana"
+
 
 DEFAULT_SETTINGS: SettingsDict = {
     "api_key": "",
@@ -37,6 +39,7 @@ DEFAULT_SETTINGS: SettingsDict = {
     "model": "",
     "model_settings": {}
 }
+
 
 def get_config_file() -> str:
     """Get path to config file in GIMP's user directory"""
@@ -56,7 +59,9 @@ def get_config_file() -> str:
 
     return os.path.join(gimp_dir, CONFIG_FILE_NAME)
 
-def get_model_parameter(model_name: str, parameter: str, default_value: Any = None) -> Any:
+
+def get_model_parameter(model_name: str, parameter: str,
+                        default_value: Any = None) -> Any:
     """
     Get a specific parameter value for a model
 
@@ -70,6 +75,7 @@ def get_model_parameter(model_name: str, parameter: str, default_value: Any = No
     """
     model_settings = get_model_settings(model_name)
     return model_settings.get(parameter, default_value)
+
 
 def get_model_settings(model_name: str) -> ModelSettingsDict:
     """
@@ -90,6 +96,7 @@ def get_model_settings(model_name: str) -> ModelSettingsDict:
     except Exception as e:
         print(f"Error loading model settings for {model_name}: {e}")
         return {}
+
 
 def load_settings() -> SettingsDict:
     """Load settings from config file"""
@@ -115,6 +122,7 @@ def load_settings() -> SettingsDict:
 
     return DEFAULT_SETTINGS.copy()
 
+
 def set_model_parameter(model_name: str, parameter: str, value: Any) -> None:
     """
     Set a specific parameter value for a model
@@ -128,7 +136,9 @@ def set_model_parameter(model_name: str, parameter: str, value: Any) -> None:
     model_settings[parameter] = value
     store_model_settings(model_name, model_settings)
 
-def store_model_settings(model_name: str, model_settings: ModelSettingsDict) -> None:
+
+def store_model_settings(model_name: str,
+                         model_settings: ModelSettingsDict) -> None:
     """
     Store settings for a specific model
 
@@ -147,14 +157,27 @@ def store_model_settings(model_name: str, model_settings: ModelSettingsDict) -> 
             api_key=str(current_settings.get("api_key", "")),
             mode=str(current_settings.get("mode", DEFAULT_MODE)),
             prompt=str(current_settings.get("prompt", "")),
-            api_key_visible=bool(current_settings.get("api_key_visible", DEFAULT_API_KEY_VISIBLE)),
+            api_key_visible=bool(current_settings.get(
+                "api_key_visible", DEFAULT_API_KEY_VISIBLE
+            )),
             model=str(current_settings.get("model", "")),
-            model_settings=all_model_settings if isinstance(all_model_settings, dict) else None
+            model_settings=(
+                all_model_settings if isinstance(all_model_settings, dict)
+                else None
+            )
         )
     except Exception as e:
         print(f"Error storing model settings for {model_name}: {e}")
 
-def store_settings(api_key: str, mode: str, prompt: str, api_key_visible: bool, model: str = "", model_settings: Optional[Dict[str, Dict[str, Any]]] = None) -> None:
+
+def store_settings(
+    api_key: str,
+    mode: str,
+    prompt: str,
+    api_key_visible: bool,
+    model: str = "",
+    model_settings: Optional[Dict[str, Dict[str, Any]]] = None
+) -> None:
     """Store settings to config file"""
     if mode not in ("edit", "generate"):
         raise ValueError(f"Invalid mode: {mode}. Must be 'edit' or 'generate'")
@@ -194,14 +217,17 @@ def store_settings(api_key: str, mode: str, prompt: str, api_key_visible: bool, 
     except Exception as e:
         print(f"Unexpected error storing settings: {e}")
 
+
 def _get_linux_config_dir() -> str:
     """Get Linux config directory"""
     return os.path.join(os.path.expanduser("~"), '.config', 'GIMP', GIMP_VERSION)
+
 
 def _get_macos_config_dir() -> str:
     """Get macOS config directory"""
     home = os.path.expanduser("~")
     return os.path.join(home, 'Library', 'Application Support', 'GIMP', GIMP_VERSION)
+
 
 def _get_windows_config_dir() -> str:
     """Get Windows config directory"""

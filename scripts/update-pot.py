@@ -11,6 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 def extract_strings() -> bool:
     """Extract strings and create .pot file"""
 
@@ -59,6 +60,7 @@ def extract_strings() -> bool:
         print(f"Error running xgettext: {e}")
         print("Please install gettext tools (xgettext)")
         return False
+
 
 if __name__ == '__main__':
     if extract_strings():

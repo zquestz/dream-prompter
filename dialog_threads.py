@@ -16,10 +16,12 @@ from api import ReplicateAPI
 from dialog_gtk import DreamPrompterUI
 from i18n import _
 
+
 class DreamPrompterThreads:
     """Handles all background threading operations"""
 
-    def __init__(self, ui: DreamPrompterUI, image: Optional[Any], drawable: Optional[Any]) -> None:
+    def __init__(self, ui: DreamPrompterUI, image: Optional[Any],
+                 drawable: Optional[Any]) -> None:
         """
         Initialize thread manager
 
@@ -67,11 +69,14 @@ class DreamPrompterThreads:
         valid_keys = {'on_success', 'on_error'}
         for key in callbacks.keys():
             if key not in valid_keys:
-                raise ValueError(f"Invalid callback key: {key}. Valid keys: {valid_keys}")
+                error_msg = f"Invalid callback key: {key}. Valid keys: {valid_keys}"
+                raise ValueError(error_msg)
 
         self._callbacks = callbacks
 
-    def start_edit_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
+    def start_edit_thread(self, api_key: str, prompt: str,
+                          reference_images: Optional[List[str]] = None,
+                          model_name: Optional[str] = None) -> None:
         """
         Start image editing in background thread
 
@@ -106,12 +111,14 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._edit_image_worker,
-            args=(api_key, prompt, reference_images or [], model_name)
+            args=(api_key, prompt, reference_images, model_name)
         )
         self._current_thread.daemon = True
         self._current_thread.start()
 
-    def start_generate_thread(self, api_key: str, prompt: str, reference_images: Optional[List[str]] = None, model_name: Optional[str] = None) -> None:
+    def start_generate_thread(self, api_key: str, prompt: str,
+                              reference_images: Optional[List[str]] = None,
+                              model_name: Optional[str] = None) -> None:
         """
         Start image generation in background thread
 
@@ -138,12 +145,14 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._generate_image_worker,
-            args=(api_key, prompt, reference_images or [], model_name)
+            args=(api_key, prompt, reference_images, model_name)
         )
         self._current_thread.daemon = True
         self._current_thread.start()
 
-    def _edit_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
+    def _edit_image_worker(self, api_key: str, prompt: str,
+                           reference_images: Optional[List[str]],
+                           model_name: Optional[str]) -> None:
         """
         Edit image in background thread
 
@@ -164,7 +173,8 @@ class DreamPrompterThreads:
 
             api = ReplicateAPI(api_key, model_name)
 
-            def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
+            def progress_callback(message: str,
+                                  percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""
                 if self._cancel_requested:
                     return False
@@ -196,10 +206,13 @@ class DreamPrompterThreads:
         except (ImportError, ValueError) as e:
             GLib.idle_add(self._handle_error, str(e))
         except Exception as e:
-            error_msg = _("Unexpected error during image editing: {error}").format(error=str(e))
+            error_text = _("Unexpected error during image editing: {error}")
+            error_msg = error_text.format(error=str(e))
             GLib.idle_add(self._handle_error, error_msg)
 
-    def _generate_image_worker(self, api_key: str, prompt: str, reference_images: List[str], model_name: Optional[str] = None) -> None:
+    def _generate_image_worker(self, api_key: str, prompt: str,
+                               reference_images: Optional[List[str]],
+                               model_name: Optional[str]) -> None:
         """
         Generate image in background thread
 
@@ -216,7 +229,8 @@ class DreamPrompterThreads:
 
             api = ReplicateAPI(api_key, model_name)
 
-            def progress_callback(message: str, percentage: Optional[float] = None) -> bool:
+            def progress_callback(message: str,
+                                  percentage: Optional[float] = None) -> bool:
                 """Progress callback for API operations"""
                 if self._cancel_requested:
                     return False
@@ -246,7 +260,8 @@ class DreamPrompterThreads:
         except (ImportError, ValueError) as e:
             GLib.idle_add(self._handle_error, str(e))
         except Exception as e:
-            error_msg = _("Unexpected error during image generation: {error}").format(error=str(e))
+            error_text = _("Unexpected error during image generation: {error}")
+            error_msg = error_text.format(error=str(e))
             GLib.idle_add(self._handle_error, error_msg)
 
     def _generate_layer_name(self, prompt: str) -> str:
@@ -279,7 +294,8 @@ class DreamPrompterThreads:
         self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
 
-    def _handle_edited_images(self, pixbufs: List[GdkPixbuf.Pixbuf], base_layer_name: str) -> None:
+    def _handle_edited_images(self, pixbufs: List[GdkPixbuf.Pixbuf],
+                              base_layer_name: str) -> None:
         """
         Handle multiple edited images by creating layers
 
@@ -289,11 +305,17 @@ class DreamPrompterThreads:
         """
         try:
             for i, pixbuf in enumerate(pixbufs):
-                layer_name = f"{base_layer_name} {i+1}" if len(pixbufs) > 1 else base_layer_name
+                if len(pixbufs) > 1:
+                    layer_name = f"{base_layer_name} {i+1}"
+                else:
+                    layer_name = base_layer_name
 
-                self.ui.update_status(_("Adding layer {num}...").format(num=i+1), 0.8 + (0.1 * i / len(pixbufs)))
+                status_msg = _("Adding layer {num}...").format(num=i+1)
+                progress = 0.8 + (0.1 * i / len(pixbufs))
+                self.ui.update_status(status_msg, progress)
 
-                layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, layer_name)
+                layer = integrator.create_edit_layer(self.image, self.drawable,
+                                                     pixbuf, layer_name)
                 if not layer:
                     print(f"Warning: Failed to create layer {i+1}")
                     continue
@@ -306,7 +328,8 @@ class DreamPrompterThreads:
             error_msg = _("Error adding layers: {error}").format(error=str(e))
             self._handle_error(error_msg)
 
-    def _handle_generated_images(self, pixbufs: List[GdkPixbuf.Pixbuf], prompt: str) -> None:
+    def _handle_generated_images(self, pixbufs: List[GdkPixbuf.Pixbuf],
+                                 prompt: str) -> None:
         """
         Handle multiple generated images by creating separate files
 
@@ -316,7 +339,9 @@ class DreamPrompterThreads:
         """
         try:
             for i, pixbuf in enumerate(pixbufs):
-                self.ui.update_status(_("Creating image {num}...").format(num=i+1), 0.8 + (0.1 * i / len(pixbufs)))
+                status_msg = _("Creating image {num}...").format(num=i+1)
+                progress = 0.8 + (0.1 * i / len(pixbufs))
+                self.ui.update_status(status_msg, progress)
 
                 if len(pixbufs) > 1:
                     layer_name = _("AI Generated {num}").format(num=i+1)

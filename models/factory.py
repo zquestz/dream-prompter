@@ -9,6 +9,7 @@ Provides easy access to model instances and management
 from typing import Optional, List, Dict, Any
 from . import BaseModel, get_model, get_all_models, get_model_names
 
+
 class ModelFactory:
     """Factory class for creating and managing model instances"""
 
@@ -92,7 +93,8 @@ class ModelFactory:
         """
         return get_model(name)
 
-    def get_model_limits(self, model_name: str, operation_type: str) -> Optional[Dict[str, Any]]:
+    def get_model_limits(self, model_name: str,
+                         operation_type: str) -> Optional[Dict[str, Any]]:
         """
         Get model limits for a specific operation
 
@@ -107,8 +109,12 @@ class ModelFactory:
         if not model:
             return None
 
-        is_edit = operation_type.lower() == 'edit'
-        max_ref_images = model.max_reference_images_edit if is_edit else model.max_reference_images
+        operation_lower = operation_type.lower()
+        is_edit = operation_lower == 'edit'
+        if is_edit:
+            max_ref_images = model.max_reference_images_edit
+        else:
+            max_ref_images = model.max_reference_images
 
         return {
             'max_reference_images': max_ref_images,
@@ -127,12 +133,14 @@ class ModelFactory:
         Returns:
             True if successful, False if model not found
         """
-        if self.get_model_by_name(model_name):
+        model = self.get_model_by_name(model_name)
+        if model:
             self._default_model = model_name
             return True
         return False
 
-    def validate_model_compatibility(self, model_name: str, operation_type: str) -> bool:
+    def validate_model_compatibility(self, model_name: str,
+                                     operation_type: str) -> bool:
         """
         Validate if a model supports a specific operation type
 
@@ -149,15 +157,19 @@ class ModelFactory:
 
         return operation_type.lower() in ['generate', 'edit']
 
+
 model_factory = ModelFactory()
+
 
 def get_default_model() -> BaseModel:
     """Convenience function to get the default model"""
     return model_factory.get_default_model()
 
+
 def get_model_by_name(name: str) -> Optional[BaseModel]:
     """Convenience function to get a model by name"""
     return model_factory.get_model_by_name(name)
+
 
 def get_model_limits(model_name: str, operation_type: str) -> Optional[Dict[str, Any]]:
     """Convenience function to get model limits"""

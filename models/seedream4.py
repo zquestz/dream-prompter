@@ -10,8 +10,10 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import BaseModel, OutputFormat, ParameterDefinition, ParameterType, register_model
+from . import (BaseModel, OutputFormat, ParameterDefinition,
+               ParameterType, register_model)
 from i18n import _
+
 
 class Seedream4Model(BaseModel):
     """ByteDance Seedream 4 model implementation for Replicate"""
@@ -93,7 +95,8 @@ class Seedream4Model(BaseModel):
                 default_value="match_input_image",
                 label=_("Aspect Ratio"),
                 description=_("Control aspect ratio of generated images"),
-                choices=["match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16", "3:2", "2:3", "21.9"]
+                choices=["match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16",
+                         "3:2", "2:3", "21.9"]
             ),
             ParameterDefinition(
                 name="max_images",
@@ -114,8 +117,10 @@ class Seedream4Model(BaseModel):
             )
         ]
 
-    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None,
-                             user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_generation_input(self, prompt: str,
+                               reference_images: Optional[List] = None,
+                               user_settings: Optional[Dict[str, Any]] = None,
+                               **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -147,8 +152,10 @@ class Seedream4Model(BaseModel):
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None,
-                        user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_edit_input(self, prompt: str, main_image,
+                         reference_images: Optional[List] = None,
+                         user_settings: Optional[Dict[str, Any]] = None,
+                         **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -201,8 +208,12 @@ class Seedream4Model(BaseModel):
         Returns:
             True if count is valid, False otherwise
         """
-        max_count = self.max_reference_images_edit if is_edit else self.max_reference_images
+        if is_edit:
+            max_count = self.max_reference_images_edit
+        else:
+            max_count = self.max_reference_images
         return 0 <= count <= max_count
+
 
 seedream4 = Seedream4Model()
 register_model(seedream4)

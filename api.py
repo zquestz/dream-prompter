@@ -33,6 +33,7 @@ except ImportError:
     REPLICATE_AVAILABLE = False
     print("Warning: replicate package not installed. Run: pip install replicate")
 
+
 class ReplicateAPI:
     """Handles Replicate API communication for image generation and editing"""
 
@@ -47,7 +48,9 @@ class ReplicateAPI:
             model_name (str, optional): Model to use (defaults to default model)
         """
         if not REPLICATE_AVAILABLE:
-            raise ImportError(_("Replicate API not available. Please install replicate"))
+            raise ImportError(
+                _("Replicate API not available. Please install replicate")
+            )
 
         if not api_key or not api_key.strip():
             raise ValueError(_("API key is required"))
@@ -93,7 +96,9 @@ class ReplicateAPI:
         if not image:
             return None, _("No GIMP image provided for editing")
 
-        if progress_callback and not progress_callback(_("Preparing current image for Replicate..."), PROGRESS_PREPARE):
+        if progress_callback and not progress_callback(
+            _("Preparing current image for Replicate..."), PROGRESS_PREPARE
+        ):
             return None, _("Operation cancelled")
 
         try:
@@ -101,12 +106,16 @@ class ReplicateAPI:
             if not current_image_data:
                 return None, _("Failed to export current image")
 
-            if progress_callback and not progress_callback(_("Building Replicate edit request..."), PROGRESS_UPLOAD):
+            if progress_callback and not progress_callback(
+                _("Building Replicate edit request..."), PROGRESS_UPLOAD
+            ):
                 return None, _("Operation cancelled")
 
             ref_files = []
             if reference_images:
-                ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images_edit)
+                ref_files = self._prepare_reference_images(
+                    reference_images, self.model.max_reference_images_edit
+                )
 
             from settings import get_model_settings
             user_settings = get_model_settings(self.model.name)
@@ -118,7 +127,9 @@ class ReplicateAPI:
                 user_settings=user_settings
             )
 
-            if progress_callback and not progress_callback(_("Sending edit request to Replicate..."), PROGRESS_PROCESS):
+            if progress_callback and not progress_callback(
+                _("Sending edit request to Replicate..."), PROGRESS_PROCESS
+            ):
                 return None, _("Operation cancelled")
 
             try:
@@ -133,15 +144,21 @@ class ReplicateAPI:
                         error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
                 return None, error_msg
             except ReplicateError as e:
-                return None, _("Replicate API error: {error}").format(error=str(e))
+                return None, _("Replicate API error: {error}").format(
+                    error=str(e)
+                )
 
-            if progress_callback and not progress_callback(_("Processing Replicate edit response..."), PROGRESS_DOWNLOAD):
+            if progress_callback and not progress_callback(
+                _("Processing Replicate edit response..."), PROGRESS_DOWNLOAD
+            ):
                 return None, _("Operation cancelled")
 
             if not output:
                 return None, _("No output received from API")
 
-            if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
+            if progress_callback and not progress_callback(
+                _("Downloading result..."), PROGRESS_DOWNLOAD
+            ):
                 return None, _("Operation cancelled")
 
             image_bytes_list = self._process_api_response(output)
@@ -192,15 +209,21 @@ class ReplicateAPI:
                 - If cancelled: (None, "Operation cancelled")
         """
         if not self.client:
-            return None, _("Replicate API not available. Please install replicate")
+            return None, _(
+                "Replicate API not available. Please install replicate"
+            )
 
-        if progress_callback and not progress_callback(_("Generating image with Replicate..."), PROGRESS_PREPARE):
+        if progress_callback and not progress_callback(
+            _("Generating image with Replicate..."), PROGRESS_PREPARE
+        ):
             return None, _("Operation cancelled")
 
         try:
             ref_files = []
             if reference_images:
-                ref_files = self._prepare_reference_images(reference_images, self.model.max_reference_images)
+                ref_files = self._prepare_reference_images(
+                    reference_images, self.model.max_reference_images
+                )
 
             from settings import get_model_settings
             user_settings = get_model_settings(self.model.name)
@@ -211,7 +234,9 @@ class ReplicateAPI:
                 user_settings=user_settings
             )
 
-            if progress_callback and not progress_callback(_("Sending request to Replicate..."), PROGRESS_PROCESS):
+            if progress_callback and not progress_callback(
+                _("Sending request to Replicate..."), PROGRESS_PROCESS
+            ):
                 return None, _("Operation cancelled")
 
             try:
@@ -220,13 +245,17 @@ class ReplicateAPI:
                     input=model_input
                 )
 
-                if progress_callback and not progress_callback(_("Processing Replicate response..."), PROGRESS_DOWNLOAD):
+                if progress_callback and not progress_callback(
+                    _("Processing Replicate response..."), PROGRESS_DOWNLOAD
+                ):
                     return None, _("Operation cancelled")
 
                 if not output:
                     return None, _("No output received from API")
 
-                if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
+                if progress_callback and not progress_callback(
+                    _("Downloading result..."), PROGRESS_DOWNLOAD
+                ):
                     return None, _("Operation cancelled")
 
                 image_bytes_list = self._process_api_response(output)
@@ -244,10 +273,14 @@ class ReplicateAPI:
                         pixbufs.append(pixbuf)
 
                 if not pixbufs:
-                    return None, _("Failed to convert any images from API response")
+                    return None, _(
+                        "Failed to convert any images from API response"
+                    )
 
                 if progress_callback:
-                    progress_callback(_("Image generation complete!"), PROGRESS_COMPLETE)
+                    progress_callback(
+                        _("Image generation complete!"), PROGRESS_COMPLETE
+                    )
 
                 return pixbufs, None
 
@@ -259,7 +292,9 @@ class ReplicateAPI:
                 return None, error_msg
 
             except ReplicateError as e:
-                return None, _("Replicate API error: {error}").format(error=str(e))
+                return None, _("Replicate API error: {error}").format(
+                    error=str(e)
+                )
 
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
@@ -341,35 +376,46 @@ class ReplicateAPI:
 
     def _validate_reference_image(
         self,
-        img_path: str,
-        max_size_mb: Optional[int] = None
+        img_path: str
     ) -> bool:
         """
         Validate a reference image file
 
         Args:
             img_path (str): Path to the image file
-            max_size_mb (int): Maximum file size in MB
 
         Returns:
             bool: True if valid, False otherwise
         """
         try:
             if not os.path.exists(img_path):
-                print(f"Warning: Image file {img_path} does not exist. Skipping.")
+                print(
+                    f"Warning: Image file {img_path} does not exist. Skipping."
+                )
                 return False
 
             file_size = os.path.getsize(img_path)
             if not self.model.validate_file_size(file_size):
-                print(f"Warning: Image {img_path} is {file_size / (1024*1024):.1f} MB, exceeds {self.model.max_file_size_mb} MB limit. Skipping.")
+                file_size_mb = file_size / (1024*1024)
+                max_size_mb = self.model.max_file_size_mb
+                print(
+                    f"Warning: Image {img_path} is {file_size_mb:.1f} MB, "
+                    f"exceeds {max_size_mb} MB limit. Skipping."
+                )
                 return False
 
             mime_type, encoding = mimetypes.guess_type(img_path)
             if mime_type and not self.model.validate_mime_type(mime_type):
-                print(f"Warning: Image {img_path} has unsupported MIME type {mime_type} with encoding {encoding}. Skipping.")
+                print(
+                    f"Warning: Image {img_path} has unsupported MIME type "
+                    f"{mime_type} with encoding {encoding}. Skipping."
+                )
                 return False
             elif not mime_type:
-                print(f"Warning: Could not determine MIME type for {img_path}. Skipping.")
+                print(
+                    f"Warning: Could not determine MIME type for {img_path}. "
+                    "Skipping."
+                )
                 return False
 
             return True

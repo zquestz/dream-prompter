@@ -8,13 +8,13 @@ Dream Prompter Dialog - Main coordinator
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('GimpUi', '3.0')
-
 from gi.repository import GimpUi
 
 from dialog_events import DreamPrompterEventHandler
 from dialog_gtk import DreamPrompterUI
 from i18n import _
 from settings import load_settings
+
 
 class DreamPrompterDialog(GimpUi.Dialog):
     """Main dialog window for the Dream Prompter plugin"""
@@ -79,7 +79,8 @@ class DreamPrompterDialog(GimpUi.Dialog):
                 self.ui.api_key_entry.set_text(str(settings["api_key"]))
 
             if "api_key_visible" in settings and self.ui.toggle_visibility_btn:
-                self.ui.toggle_visibility_btn.set_active(bool(settings["api_key_visible"]))
+                api_key_visible = bool(settings["api_key_visible"])
+                self.ui.toggle_visibility_btn.set_active(api_key_visible)
 
             stored_mode = settings.get("mode", "edit")
             if self.image and self.drawable:
@@ -91,8 +92,15 @@ class DreamPrompterDialog(GimpUi.Dialog):
             if settings.get("prompt") and self.ui.prompt_buffer:
                 self.ui.prompt_buffer.set_text(str(settings["prompt"]))
 
-            if settings.get("model") and self.ui.model_dropdown:
-                self.ui.set_selected_model(str(settings["model"]))
+            model_name = settings.get("model")
+            if model_name and self.ui.model_dropdown:
+                self.ui.set_selected_model(str(model_name))
+            elif self.ui.model_dropdown:
+                from models.factory import get_default_model
+                default_model = get_default_model()
+                if default_model:
+                    model_name = default_model.name
+                    self.ui.set_selected_model(model_name)
 
         except Exception as e:
             print(f"Error loading settings: {e}")

@@ -10,6 +10,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 from enum import Enum
 
+
 class ParameterType(Enum):
     """Types of configurable parameters"""
     INTEGER = "integer"
@@ -19,12 +20,14 @@ class ParameterType(Enum):
     CHOICE = "choice"
     RANGE = "range"
 
+
 class ParameterDefinition:
     """Definition of a configurable parameter"""
 
     def __init__(self, name: str, param_type: ParameterType, default_value: Any,
-                 label: Optional[str] = None, description: Optional[str] = None, choices: Optional[List[Any]] = None,
-                 min_value: Any = None, max_value: Any = None, step: Any = None):
+                 label: Optional[str] = None, description: Optional[str] = None,
+                 choices: Optional[List[Any]] = None, min_value: Any = None,
+                 max_value: Any = None, step: Any = None):
         self.name = name
         self.type = param_type
         self.default_value = default_value
@@ -79,11 +82,13 @@ class ParameterDefinition:
 
         return self.default_value
 
+
 class OutputFormat(Enum):
     """Supported output formats"""
     PNG = "png"
     JPEG = "jpg"
     WEBP = "webp"
+
 
 class BaseModel(ABC):
     """Abstract base class for all AI models"""
@@ -144,7 +149,8 @@ class BaseModel(ABC):
         """
         return []
 
-    def get_parameter_value(self, parameter_name: str, user_settings: Optional[Dict[str, Any]] = None) -> Any:
+    def get_parameter_value(self, parameter_name: str,
+                            user_settings: Optional[Dict[str, Any]] = None) -> Any:
         """
         Get parameter value from user settings or default
 
@@ -164,14 +170,17 @@ class BaseModel(ABC):
 
         return param_def.default_value
 
-    def _get_parameter_definition(self, parameter_name: str) -> Optional[ParameterDefinition]:
+    def _get_parameter_definition(self, parameter_name: str
+                                  ) -> Optional[ParameterDefinition]:
         """Get parameter definition by name"""
         for param_def in self.get_parameter_definitions():
             if param_def.name == parameter_name:
                 return param_def
         return None
 
-    def build_parameters_dict(self, user_settings: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def build_parameters_dict(self,
+                              user_settings: Optional[Dict[str, Any]] = None
+                              ) -> Dict[str, Any]:
         """
         Build dictionary of all parameter values for API calls
 
@@ -183,12 +192,15 @@ class BaseModel(ABC):
         """
         params = {}
         for param_def in self.get_parameter_definitions():
-            params[param_def.name] = self.get_parameter_value(param_def.name, user_settings)
+            param_value = self.get_parameter_value(param_def.name, user_settings)
+            params[param_def.name] = param_value
         return params
 
     @abstractmethod
-    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None,
-                             user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_generation_input(self, prompt: str,
+                               reference_images: Optional[List] = None,
+                               user_settings: Optional[Dict[str, Any]] = None,
+                               **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -204,8 +216,10 @@ class BaseModel(ABC):
         pass
 
     @abstractmethod
-    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None,
-                        user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_edit_input(self, prompt: str, main_image,
+                         reference_images: Optional[List] = None,
+                         user_settings: Optional[Dict[str, Any]] = None,
+                         **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -221,7 +235,8 @@ class BaseModel(ABC):
         """
         pass
 
-    def validate_reference_image_count(self, count: int, is_edit: bool = False) -> bool:
+    def validate_reference_image_count(self, count: int,
+                                       is_edit: bool = False) -> bool:
         """
         Validate reference image count
 
@@ -232,7 +247,10 @@ class BaseModel(ABC):
         Returns:
             True if count is valid, False otherwise
         """
-        max_count = self.max_reference_images_edit if is_edit else self.max_reference_images
+        if is_edit:
+            max_count = self.max_reference_images_edit
+        else:
+            max_count = self.max_reference_images
         return 0 <= count <= max_count
 
     def validate_file_size(self, size_bytes: int) -> bool:
@@ -272,19 +290,24 @@ class BaseModel(ABC):
         """
         return format_enum.value
 
+
 _model_registry: Dict[str, BaseModel] = {}
+
 
 def register_model(model: BaseModel) -> None:
     """Register a model in the global registry"""
     _model_registry[model.name] = model
 
+
 def get_model(name: str) -> Optional[BaseModel]:
     """Get a model by name from the registry"""
     return _model_registry.get(name)
 
+
 def get_all_models() -> Dict[str, BaseModel]:
     """Get all registered models"""
     return _model_registry.copy()
+
 
 def get_model_names() -> List[str]:
     """Get list of all registered model names"""

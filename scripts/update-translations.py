@@ -11,6 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 def update_po_file(po_file: Path, pot_file: Path) -> bool:
     """Update a single .po file with new strings from .pot template"""
 
@@ -38,6 +39,7 @@ def update_po_file(po_file: Path, pot_file: Path) -> bool:
         print("✗ msgmerge not found. Install gettext tools.")
         return False
 
+
 def find_po_files() -> list[Path]:
     """Find all .po files directly in the locale directory"""
 
@@ -53,6 +55,7 @@ def find_po_files() -> list[Path]:
         return []
 
     return po_files
+
 
 def update_all_translations() -> bool:
     """Update all existing .po files with new strings from .pot template"""
@@ -80,6 +83,7 @@ def update_all_translations() -> bool:
 
     print(f"Update complete: {success_count}/{len(po_files)} files updated")
     return success_count == len(po_files)
+
 
 if __name__ == '__main__':
     if update_all_translations():

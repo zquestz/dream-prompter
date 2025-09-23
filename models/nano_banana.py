@@ -9,8 +9,10 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import BaseModel, OutputFormat, ParameterDefinition, ParameterType, register_model
+from . import (BaseModel, OutputFormat, ParameterDefinition,
+               ParameterType, register_model)
 from i18n import _
+
 
 class NanaBananaModel(BaseModel):
     """Google's Nano Banana model implementation for Replicate"""
@@ -64,12 +66,14 @@ class NanaBananaModel(BaseModel):
                 default_value="png",
                 label=_("Output Format"),
                 description=_("Format for generated images"),
-                choices=[OutputFormat.PNG, OutputFormat.JPEG, OutputFormat.WEBP]
+                choices=["png", "jpg"]
             )
         ]
 
-    def build_generation_input(self, prompt: str, reference_images: Optional[List] = None,
-                             user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_generation_input(self, prompt: str,
+                               reference_images: Optional[List] = None,
+                               user_settings: Optional[Dict[str, Any]] = None,
+                               **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -88,16 +92,20 @@ class NanaBananaModel(BaseModel):
             if key in params:
                 params[key] = value
 
+        default_format = self.get_output_format_string(self.default_output_format)
+        output_format = params.get("output_format", default_format)
         model_input = {
             "prompt": prompt,
             "image_input": reference_images or [],
-            "output_format": params.get("output_format", self.get_output_format_string(self.default_output_format))
+            "output_format": output_format
         }
 
         return model_input
 
-    def build_edit_input(self, prompt: str, main_image, reference_images: Optional[List] = None,
-                        user_settings: Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, Any]:
+    def build_edit_input(self, prompt: str, main_image,
+                         reference_images: Optional[List] = None,
+                         user_settings: Optional[Dict[str, Any]] = None,
+                         **kwargs) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -127,13 +135,16 @@ class NanaBananaModel(BaseModel):
             if key in params:
                 params[key] = value
 
+        default_format = self.get_output_format_string(self.default_output_format)
+        output_format = params.get("output_format", default_format)
         model_input = {
             "prompt": prompt,
             "image_input": image_input,
-            "output_format": params.get("output_format", self.get_output_format_string(self.default_output_format))
+            "output_format": output_format
         }
 
         return model_input
+
 
 nano_banana = NanaBananaModel()
 register_model(nano_banana)

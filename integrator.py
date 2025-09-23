@@ -15,6 +15,7 @@ from i18n import _
 
 MAX_LAYER_NAME_LENGTH = 64
 
+
 def create_edit_layer(image, drawable, pixbuf, layer_name):
     """
     Create a new layer on existing image for AI edits
@@ -53,7 +54,8 @@ def create_edit_layer(image, drawable, pixbuf, layer_name):
             pixbuf_height = pixbuf.get_height()
 
             if pixbuf_width != img_width or pixbuf_height != img_height:
-                pixbuf = pixbuf.scale_simple(img_width, img_height, GdkPixbuf.InterpType.BILINEAR)
+                interp_type = GdkPixbuf.InterpType.BILINEAR
+                pixbuf = pixbuf.scale_simple(img_width, img_height, interp_type)
 
         if not pixbuf.get_has_alpha():
             pixbuf = pixbuf.add_alpha(False, 0, 0, 0)
@@ -87,6 +89,9 @@ def create_edit_layer(image, drawable, pixbuf, layer_name):
     except Exception as e:
         print(f"Error creating edit layer: {e}")
         return None
+
+    return None
+
 
 def create_new_image(pixbuf, prompt):
     """
@@ -135,6 +140,7 @@ def create_new_image(pixbuf, prompt):
     except Exception as e:
         print(f"Error creating new image: {e}")
         return None
+
 
 def export_current_region_to_bytes(image):
     """
@@ -198,8 +204,9 @@ def export_current_region_to_bytes(image):
         if temp_path:
             try:
                 os.remove(temp_path)
-            except:
+            except Exception:
                 pass
+
 
 def export_gimp_image_to_bytes(image):
     """
@@ -253,8 +260,9 @@ def export_gimp_image_to_bytes(image):
         if temp_path:
             try:
                 os.remove(temp_path)
-            except:
+            except Exception:
                 pass
+
 
 def get_selection_bounds(image):
     """
@@ -283,6 +291,7 @@ def get_selection_bounds(image):
     except Exception as e:
         print(f"Error getting selection bounds: {e}")
         return None
+
 
 def has_active_selection(image):
     """
@@ -316,6 +325,7 @@ def has_active_selection(image):
     except Exception as e:
         print(f"Error checking selection: {e}")
         return False
+
 
 def _truncate_layer_name(name):
     """

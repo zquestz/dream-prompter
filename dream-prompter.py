@@ -5,16 +5,14 @@
 Dream Prompter - AI Image Generation GIMP Plugin
 A GIMP plugin for AI-powered image creation/editing using Replicate's advanced AI models
 """
-
-import gi
 import sys
 
+import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gimp', '3.0')
 gi.require_version('GimpUi', '3.0')
 gi.require_version('GLib', '2.0')
 gi.require_version('GdkPixbuf', '2.0')
-
 from gi.repository import Gimp, GimpUi, Gtk, GLib
 
 from dialog import DreamPrompterDialog
@@ -23,6 +21,7 @@ from i18n import _, DOMAIN
 PLUGIN_NAME = "dream-prompter"
 PLUGIN_VERSION = "1.1.0"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Replicate models"
+
 
 class DreamPrompter(Gimp.PlugIn):
     """Main plugin class"""
@@ -41,12 +40,14 @@ class DreamPrompter(Gimp.PlugIn):
             procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
             procedure.set_documentation(
                 _("AI-powered image creation/editing with Replicate models"),
-                _("Transform existing images or generate new images using advanced AI models from Replicate "
-                  "with natural language prompts. Choose from multiple models including Nano Banana and Seedream 4."),
+                _("Transform existing images or generate new images using "
+                  "advanced AI models from Replicate with natural language prompts. "
+                  "Choose from multiple models including Nano Banana and Seedream 4."),
                 name
             )
             procedure.set_menu_label(_("Dream Prompter..."))
-            procedure.set_attribution("Josh Ellithorpe", "Josh Ellithorpe", "2025")
+            procedure.set_attribution("Josh Ellithorpe", "Josh Ellithorpe",
+                                      "2025")
             procedure.add_menu_path("<Image>/Filters/AI")
 
             return procedure
@@ -60,7 +61,8 @@ class DreamPrompter(Gimp.PlugIn):
         """Enable localization"""
         return DOMAIN
 
-    def run_dream_prompter(self, procedure, run_mode, image, drawables, _config, _run_data):
+    def run_dream_prompter(self, procedure, run_mode, image, drawables,
+                           _config, _run_data):
         """Run the Dream Prompter plugin"""
         if run_mode == Gimp.RunMode.INTERACTIVE:
             try:
@@ -77,15 +79,19 @@ class DreamPrompter(Gimp.PlugIn):
                 dialog.destroy()
 
                 if response == Gtk.ResponseType.OK:
-                    return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
+                    return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS,
+                                                       GLib.Error())
                 else:
-                    return procedure.new_return_values(Gimp.PDBStatusType.CANCEL, GLib.Error())
+                    return procedure.new_return_values(Gimp.PDBStatusType.CANCEL,
+                                                       GLib.Error())
 
             except Exception as e:
-                error_msg = _("Error running Dream Prompter: {error}").format(error=str(e))
+                error_text = _("Error running Dream Prompter: {error}")
+                error_msg = error_text.format(error=str(e))
                 print(error_msg)
                 Gimp.message(error_msg)
-                return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
+                return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR,
+                                                   GLib.Error())
 
         return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
 
