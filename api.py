@@ -69,7 +69,7 @@ class ReplicateAPI:
         prompt: str,
         reference_images: Optional[List[str]] = None,
         progress_callback: Optional[Callable[[str, Optional[float]], bool]] = None
-    ) -> Tuple[Optional[GdkPixbuf.Pixbuf], Optional[str]]:
+    ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
         """
         Edit an image from a text prompt using the selected AI model
 
@@ -82,8 +82,8 @@ class ReplicateAPI:
                 Should return True to continue, False to cancel.
 
         Returns:
-            tuple: (GdkPixbuf.Pixbuf | None, str | None)
-                - If successful: (pixbuf, None)
+            tuple: (List[GdkPixbuf.Pixbuf] | None, str | None)
+                - If successful: (pixbufs, None)
                 - If failed: (None, error_message)
                 - If cancelled: (None, "Operation cancelled")
         """
@@ -140,34 +140,27 @@ class ReplicateAPI:
             if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
                 return None, _("Operation cancelled")
 
-            result_bytes = None
-            if isinstance(output, str):
-                with urllib.request.urlopen(output) as url_response:
-                    result_bytes = url_response.read()
-            elif isinstance(output, bytes):
-                result_bytes = output
-            elif hasattr(output, '__iter__'):
-                try:
-                    if isinstance(output, (list, tuple)) and len(output) > 0 and hasattr(output[0], 'read'):
-                        result_bytes = output[0].read()
-                    else:
-                        result_bytes = b''.join(chunk for chunk in output)
-                except (TypeError, ValueError):
-                    return None, _("Failed to process iterable response")
-            else:
-                return None, _("Unexpected response format from API")
+            image_bytes_list = self._process_api_response(output)
 
-            if not result_bytes or not isinstance(result_bytes, bytes):
+            if not image_bytes_list:
                 return None, _("No valid image data in API response")
 
-            pixbuf = self._bytes_to_pixbuf(result_bytes)
-            if not pixbuf:
-                return None, _("Failed to convert result to image")
+            pixbufs = []
+            for i, image_bytes in enumerate(image_bytes_list):
+                if not image_bytes or not isinstance(image_bytes, bytes):
+                    continue
+
+                pixbuf = self._bytes_to_pixbuf(image_bytes)
+                if pixbuf:
+                    pixbufs.append(pixbuf)
+
+            if not pixbufs:
+                return None, _("Failed to convert any images from API response")
 
             if progress_callback:
                 progress_callback(_("Image editing complete!"), PROGRESS_COMPLETE)
 
-            return pixbuf, None
+            return pixbufs, None
 
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
@@ -177,7 +170,7 @@ class ReplicateAPI:
         prompt: str,
         reference_images: Optional[List[str]] = None,
         progress_callback: Optional[Callable[[str, Optional[float]], bool]] = None
-    ) -> Tuple[Optional[GdkPixbuf.Pixbuf], Optional[str]]:
+    ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
         """
         Generate a new image from a text prompt using the selected AI model
 
@@ -189,8 +182,8 @@ class ReplicateAPI:
                 Should return True to continue, False to cancel.
 
         Returns:
-            tuple: (GdkPixbuf.Pixbuf | None, str | None)
-                - If successful: (pixbuf, None)
+            tuple: (List[GdkPixbuf.Pixbuf] | None, str | None)
+                - If successful: (pixbufs, None)
                 - If failed: (None, error_message)
                 - If cancelled: (None, "Operation cancelled")
         """
@@ -228,34 +221,27 @@ class ReplicateAPI:
                 if progress_callback and not progress_callback(_("Downloading result..."), PROGRESS_DOWNLOAD):
                     return None, _("Operation cancelled")
 
-                result_bytes = None
-                if isinstance(output, str):
-                    with urllib.request.urlopen(output) as url_response:
-                        result_bytes = url_response.read()
-                elif isinstance(output, bytes):
-                    result_bytes = output
-                elif hasattr(output, '__iter__'):
-                    try:
-                        if isinstance(output, (list, tuple)) and len(output) > 0 and hasattr(output[0], 'read'):
-                            result_bytes = output[0].read()
-                        else:
-                            result_bytes = b''.join(chunk for chunk in output)
-                    except (TypeError, ValueError):
-                        return None, _("Failed to process iterable response")
-                else:
-                    return None, _("Unexpected response format from API")
+                image_bytes_list = self._process_api_response(output)
 
-                if not result_bytes or not isinstance(result_bytes, bytes):
+                if not image_bytes_list:
                     return None, _("No valid image data in API response")
 
-                pixbuf = self._bytes_to_pixbuf(result_bytes)
-                if not pixbuf:
-                    return None, _("Failed to convert result to image")
+                pixbufs = []
+                for i, image_bytes in enumerate(image_bytes_list):
+                    if not image_bytes or not isinstance(image_bytes, bytes):
+                        continue
+
+                    pixbuf = self._bytes_to_pixbuf(image_bytes)
+                    if pixbuf:
+                        pixbufs.append(pixbuf)
+
+                if not pixbufs:
+                    return None, _("Failed to convert any images from API response")
 
                 if progress_callback:
                     progress_callback(_("Image generation complete!"), PROGRESS_COMPLETE)
 
-                return pixbuf, None
+                return pixbufs, None
 
             except ModelError as e:
                 error_msg = _("Model error: {error}").format(error=str(e))
@@ -318,6 +304,33 @@ class ReplicateAPI:
 
         return valid_files
 
+    def _process_api_response(self, output) -> List[bytes]:
+        """Process API response and return list of image bytes"""
+        image_bytes_list = []
+
+        if isinstance(output, str):
+            with urllib.request.urlopen(output) as url_response:
+                image_bytes_list.append(url_response.read())
+        elif isinstance(output, bytes):
+            image_bytes_list.append(output)
+        elif isinstance(output, (list, tuple)):
+            for item in output:
+                if isinstance(item, str):
+                    with urllib.request.urlopen(item) as url_response:
+                        image_bytes_list.append(url_response.read())
+                elif isinstance(item, bytes):
+                    image_bytes_list.append(item)
+                elif hasattr(item, 'read'):
+                    image_bytes_list.append(item.read())
+        elif hasattr(output, '__iter__'):
+            try:
+                chunk_bytes = b''.join(chunk for chunk in output)
+                image_bytes_list.append(chunk_bytes)
+            except (TypeError, ValueError):
+                pass
+
+        return image_bytes_list
+
     def _validate_reference_image(
         self,
         img_path: str,
@@ -334,6 +347,10 @@ class ReplicateAPI:
             bool: True if valid, False otherwise
         """
         try:
+            if not os.path.exists(img_path):
+                print(f"Warning: Image file {img_path} does not exist. Skipping.")
+                return False
+
             file_size = os.path.getsize(img_path)
             if not self.model.validate_file_size(file_size):
                 print(f"Warning: Image {img_path} is {file_size / (1024*1024):.1f} MB, exceeds {self.model.max_file_size_mb} MB limit. Skipping.")

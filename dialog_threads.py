@@ -9,7 +9,7 @@ Handles all background AI processing and image operations
 import threading
 from typing import Dict, Callable, Optional, Any, List, Union
 
-from gi.repository import GLib, GdkPixbuf
+from gi.repository import GLib, GdkPixbuf, Gimp, Gegl
 
 import integrator
 from api import ReplicateAPI
@@ -171,7 +171,7 @@ class DreamPrompterThreads:
                 GLib.idle_add(self.ui.update_status, message, percentage)
                 return True
 
-            pixbuf, error_msg = api.edit_image(
+            pixbufs, error_msg = api.edit_image(
                 image=self.image,
                 prompt=prompt,
                 reference_images=reference_images,
@@ -186,12 +186,12 @@ class DreamPrompterThreads:
                 GLib.idle_add(self._handle_error, error_msg)
                 return
 
-            if not pixbuf:
+            if not pixbufs:
                 GLib.idle_add(self._handle_error, _("No image data received from API"))
                 return
 
             layer_name = self._generate_layer_name(prompt)
-            GLib.idle_add(self._handle_edited_image, pixbuf, layer_name)
+            GLib.idle_add(self._handle_edited_images, pixbufs, layer_name)
 
         except (ImportError, ValueError) as e:
             GLib.idle_add(self._handle_error, str(e))
@@ -223,7 +223,7 @@ class DreamPrompterThreads:
                 GLib.idle_add(self.ui.update_status, message, percentage)
                 return True
 
-            pixbuf, error_msg = api.generate_image(
+            pixbufs, error_msg = api.generate_image(
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback
@@ -237,11 +237,11 @@ class DreamPrompterThreads:
                 GLib.idle_add(self._handle_error, error_msg)
                 return
 
-            if not pixbuf:
+            if not pixbufs:
                 GLib.idle_add(self._handle_error, _("No image data received from API"))
                 return
 
-            GLib.idle_add(self._handle_generated_image, pixbuf, prompt)
+            GLib.idle_add(self._handle_generated_images, pixbufs, prompt)
 
         except (ImportError, ValueError) as e:
             GLib.idle_add(self._handle_error, str(e))
@@ -279,27 +279,61 @@ class DreamPrompterThreads:
         self.ui.hide_progress()
         self.ui.set_ui_enabled(True)
 
-    def _handle_edited_image(self, pixbuf: GdkPixbuf.Pixbuf, layer_name: str) -> None:
+    def _handle_edited_images(self, pixbufs: List[GdkPixbuf.Pixbuf], base_layer_name: str) -> None:
         """
-        Handle edited image on main thread
+        Handle multiple edited images by creating layers
 
         Args:
-            pixbuf: The edited image data
-            layer_name: Name for the new layer
+            pixbufs: List of edited image data
+            base_layer_name: Base name for the new layers
         """
         try:
-            self.ui.update_status(_("Adding edit layer..."), 0.9)
+            for i, pixbuf in enumerate(pixbufs):
+                layer_name = f"{base_layer_name} {i+1}" if len(pixbufs) > 1 else base_layer_name
 
-            layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, layer_name)
-            if not layer:
-                self._handle_error(_("Failed to create edit layer"))
-                return
+                self.ui.update_status(_("Adding layer {num}...").format(num=i+1), 0.8 + (0.1 * i / len(pixbufs)))
 
-            self.ui.update_status(_("Edit layer created!"), 1.0)
+                layer = integrator.create_edit_layer(self.image, self.drawable, pixbuf, layer_name)
+                if not layer:
+                    print(f"Warning: Failed to create layer {i+1}")
+                    continue
+
+            count_msg = _("Added {count} layers").format(count=len(pixbufs))
+            self.ui.update_status(count_msg, 1.0)
             self._handle_success()
 
         except Exception as e:
-            error_msg = _("Error creating edit layer: {error}").format(error=str(e))
+            error_msg = _("Error adding layers: {error}").format(error=str(e))
+            self._handle_error(error_msg)
+
+    def _handle_generated_images(self, pixbufs: List[GdkPixbuf.Pixbuf], prompt: str) -> None:
+        """
+        Handle multiple generated images by creating separate files
+
+        Args:
+            pixbufs: List of generated image data
+            prompt: The prompt used for generation
+        """
+        try:
+            for i, pixbuf in enumerate(pixbufs):
+                self.ui.update_status(_("Creating image {num}...").format(num=i+1), 0.8 + (0.1 * i / len(pixbufs)))
+
+                if len(pixbufs) > 1:
+                    layer_name = _("AI Generated {num}").format(num=i+1)
+                else:
+                    layer_name = _("AI Generated")
+
+                image = integrator.create_new_image(pixbuf, layer_name)
+                if not image:
+                    print(f"Warning: Failed to create image {i+1}")
+                    continue
+
+            count_msg = _("Generated {count} images").format(count=len(pixbufs))
+            self.ui.update_status(count_msg, 1.0)
+            self._handle_success()
+
+        except Exception as e:
+            error_msg = _("Error creating images: {error}").format(error=str(e))
             self._handle_error(error_msg)
 
     def _handle_error(self, error_message: str) -> None:
@@ -316,29 +350,6 @@ class DreamPrompterThreads:
 
         if self._callbacks.get('on_error'):
             self._callbacks['on_error'](error_message)
-
-    def _handle_generated_image(self, pixbuf: GdkPixbuf.Pixbuf, prompt: str) -> None:
-        """
-        Handle generated image on main thread
-
-        Args:
-            pixbuf: The generated image data
-            prompt: The prompt used for generation
-        """
-        try:
-            self.ui.update_status(_("Creating GIMP image..."), 0.9)
-
-            image = integrator.create_new_image(pixbuf, prompt)
-            if not image:
-                self._handle_error(_("Failed to create GIMP image"))
-                return
-
-            self.ui.update_status(_("Image generated successfully!"), 1.0)
-            self._handle_success()
-
-        except Exception as e:
-            error_msg = _("Error creating GIMP image: {error}").format(error=str(e))
-            self._handle_error(error_msg)
 
     def _handle_success(self) -> None:
         """Handle successful processing"""
