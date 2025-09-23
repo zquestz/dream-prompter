@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 16:38-1000\n"
+"POT-Creation-Date: 2025-09-22 17:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -17,7 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:416
+#: dialog_gtk.py:420
+#, python-brace-format
+msgid "({size:.0f} KB)"
+msgstr "({size:.0f} KB)"
+
+#: dialog_gtk.py:417
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -216,7 +221,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "未提供用於編輯的GIMP圖像"
 
-#: dialog_gtk.py:183 dialog_gtk.py:431
+#: dialog_gtk.py:183 dialog_gtk.py:435
 msgid "No additional images selected"
 msgstr "未選擇附加圖像"
 
@@ -364,12 +369,12 @@ msgstr "意外錯誤：{error}"
 msgid "Unexpected response format from API"
 msgstr "API返回意外的響應格式"
 
-#: dialog_gtk.py:444
+#: dialog_gtk.py:448
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已選擇{count}張圖像"
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:450
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已選擇{count}張圖像"
@@ -379,7 +384,7 @@ msgstr "已選擇{count}張圖像"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編輯：{prompt}）"
 
-#: dialog_gtk.py:414
+#: dialog_gtk.py:415
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"

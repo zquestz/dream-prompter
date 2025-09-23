@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 16:38-1000\n"
+"POT-Creation-Date: 2025-09-22 17:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -17,7 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:416
+#: dialog_gtk.py:420
+#, python-brace-format
+msgid "({size:.0f} KB)"
+msgstr "({size:.0f} KB)"
+
+#: dialog_gtk.py:417
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -220,7 +225,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 
-#: dialog_gtk.py:183 dialog_gtk.py:431
+#: dialog_gtk.py:183 dialog_gtk.py:435
 msgid "No additional images selected"
 msgstr "추가 이미지가 선택되지 않았습니다"
 
@@ -347,8 +352,8 @@ msgid ""
 "including Nano Banana and Seedream 4."
 msgstr ""
 "자연어 프롬프트로 Replicate의 고급 AI 모델을 사용하여 기존 이미지를 변환하거"
-"나 새 이미지를 생성합니다. Nano Banana와 Seedream 4를 포함한 여러 모델 중에서 "
-"선택할 수 있습니다."
+"나 새 이미지를 생성합니다. Nano Banana와 Seedream 4를 포함한 여러 모델 중에"
+"서 선택할 수 있습니다."
 
 #: dialog_threads.py:199
 #, python-brace-format
@@ -369,12 +374,12 @@ msgstr "예상치 못한 오류: {error}"
 msgid "Unexpected response format from API"
 msgstr "API에서 예상치 못한 응답 형식"
 
-#: dialog_gtk.py:444
+#: dialog_gtk.py:448
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:450
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}개 이미지 선택됨"
@@ -384,7 +389,7 @@ msgstr "{count}개 이미지 선택됨"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI 편집: {prompt})"
 
-#: dialog_gtk.py:414
+#: dialog_gtk.py:415
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 최대 크기 초과)"

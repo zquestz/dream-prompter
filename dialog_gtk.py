@@ -410,10 +410,14 @@ class DreamPrompterUI:
         try:
             file_size = os.path.getsize(file_path)
             size_mb = file_size / (1024 * 1024)
+
             if size_mb > 7:
                 filename += " " + _("⚠️ ({size:.1f} MB - Max Size Exceeded)").format(size=size_mb)
-            elif size_mb > 1:
+            elif size_mb >= 0.1:
                 filename += " " + _("({size:.1f} MB)").format(size=size_mb)
+            else:
+                size_kb = file_size / 1024
+                filename += " " + _("({size:.0f} KB)").format(size=size_kb)
         except:
             pass
 

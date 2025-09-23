@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 16:38-1000\n"
+"POT-Creation-Date: 2025-09-22 17:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: French\n"
@@ -17,7 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: dialog_gtk.py:416
+#: dialog_gtk.py:420
+#, python-brace-format
+msgid "({size:.0f} KB)"
+msgstr "({size:.0f} Ko)"
+
+#: dialog_gtk.py:417
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} Mo)"
@@ -220,7 +225,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "Aucune image GIMP fournie pour l'édition"
 
-#: dialog_gtk.py:183 dialog_gtk.py:431
+#: dialog_gtk.py:183 dialog_gtk.py:435
 msgid "No additional images selected"
 msgstr "Aucune image supplémentaire sélectionnée"
 
@@ -370,12 +375,12 @@ msgstr "Erreur inattendue : {error}"
 msgid "Unexpected response format from API"
 msgstr "Format de réponse inattendu de l'API"
 
-#: dialog_gtk.py:444
+#: dialog_gtk.py:448
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} image sélectionnée"
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:450
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} images sélectionnées"
@@ -385,7 +390,7 @@ msgstr "{count} images sélectionnées"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Édition IA : {prompt})"
 
-#: dialog_gtk.py:414
+#: dialog_gtk.py:415
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} Mo - Taille Max Dépassée)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 16:38-1000\n"
+"POT-Creation-Date: 2025-09-22 17:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Japanese\n"
@@ -17,7 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:416
+#: dialog_gtk.py:420
+#, python-brace-format
+msgid "({size:.0f} KB)"
+msgstr "({size:.0f} KB)"
+
+#: dialog_gtk.py:417
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -220,7 +225,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "編集用のGIMP画像が提供されていません"
 
-#: dialog_gtk.py:183 dialog_gtk.py:431
+#: dialog_gtk.py:183 dialog_gtk.py:435
 msgid "No additional images selected"
 msgstr "追加画像が選択されていません"
 
@@ -346,9 +351,9 @@ msgid ""
 "from Replicate with natural language prompts. Choose from multiple models "
 "including Nano Banana and Seedream 4."
 msgstr ""
-"自然言語プロンプトでReplicateの高度なAIモデルを使用して既存の画像を変換した"
-"り新しい画像を生成したりします。Nano BananaとSeedream 4を含む複数のモデル"
-"から選択できます。"
+"自然言語プロンプトでReplicateの高度なAIモデルを使用して既存の画像を変換したり"
+"新しい画像を生成したりします。Nano BananaとSeedream 4を含む複数のモデルから選"
+"択できます。"
 
 #: dialog_threads.py:199
 #, python-brace-format
@@ -369,12 +374,12 @@ msgstr "予期しないエラー：{error}"
 msgid "Unexpected response format from API"
 msgstr "APIから予期しないレスポンス形式"
 
-#: dialog_gtk.py:444
+#: dialog_gtk.py:448
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}枚の画像が選択されました"
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:450
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}枚の画像が選択されました"
@@ -384,7 +389,7 @@ msgstr "{count}枚の画像が選択されました"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編集：{prompt}）"
 
-#: dialog_gtk.py:414
+#: dialog_gtk.py:415
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 最大サイズ超過)"

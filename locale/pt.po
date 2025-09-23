@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-22 16:38-1000\n"
+"POT-Creation-Date: 2025-09-22 17:04-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Portuguese\n"
@@ -17,7 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:416
+#: dialog_gtk.py:420
+#, python-brace-format
+msgid "({size:.0f} KB)"
+msgstr "({size:.0f} KB)"
+
+#: dialog_gtk.py:417
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -220,7 +225,7 @@ msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgid "No GIMP image provided for editing"
 msgstr "Nenhuma imagem do GIMP fornecida para edição"
 
-#: dialog_gtk.py:183 dialog_gtk.py:431
+#: dialog_gtk.py:183 dialog_gtk.py:435
 msgid "No additional images selected"
 msgstr "Nenhuma imagem adicional selecionada"
 
@@ -346,9 +351,9 @@ msgid ""
 "from Replicate with natural language prompts. Choose from multiple models "
 "including Nano Banana and Seedream 4."
 msgstr ""
-"Transforme imagens existentes ou gere novas imagens usando modelos "
-"avançados de IA do Replicate com prompts em linguagem natural. Escolha "
-"entre múltiplos modelos incluindo Nano Banana e Seedream 4."
+"Transforme imagens existentes ou gere novas imagens usando modelos avançados "
+"de IA do Replicate com prompts em linguagem natural. Escolha entre múltiplos "
+"modelos incluindo Nano Banana e Seedream 4."
 
 #: dialog_threads.py:199
 #, python-brace-format
@@ -369,12 +374,12 @@ msgstr "Erro inesperado: {error}"
 msgid "Unexpected response format from API"
 msgstr "Formato de resposta inesperado da API"
 
-#: dialog_gtk.py:444
+#: dialog_gtk.py:448
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} imagem selecionada"
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:450
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} imagens selecionadas"
@@ -384,7 +389,7 @@ msgstr "{count} imagens selecionadas"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Edição IA: {prompt})"
 
-#: dialog_gtk.py:414
+#: dialog_gtk.py:415
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - Tamanho Máximo Excedido)"
