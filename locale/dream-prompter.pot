@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:22-1000\n"
+"POT-Creation-Date: 2025-09-23 14:39-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api.py:57 api.py:102 api.py:170
+#: api.py:57 api.py:102 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
+#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr ""
 
@@ -41,66 +41,66 @@ msgstr ""
 msgid "Failed to export current image"
 msgstr ""
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr ""
 
-#: api.py:131
+#: api.py:139
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:142 api.py:195
+#: api.py:150 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:175
+#: api.py:186
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:184
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:288
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:291
+#: api.py:268
 msgid "Logs"
 msgstr ""
 
-#: api.py:295
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
 
-#: api.py:394
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:399
+#: api.py:376
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:402
+#: api.py:379
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:408
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:418
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr ""
 
-#: api.py:422
+#: api.py:399
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:424
+#: api.py:401
 msgid "Image generation complete!"
 msgstr ""
 

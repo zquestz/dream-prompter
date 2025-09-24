@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:22-1000\n"
+"POT-Creation-Date: 2025-09-23 14:39-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -79,7 +79,7 @@ msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
@@ -130,7 +130,7 @@ msgstr "पिक्सेल में कस्टम ऊंचाई"
 msgid "Custom width in pixels"
 msgstr "पिक्सेल में कस्टम चौड़ाई"
 
-#: api.py:402
+#: api.py:379
 msgid "Downloading result..."
 msgstr "परिणाम डाउनलोड किया जा रहा है..."
 
@@ -169,7 +169,7 @@ msgstr "छवियां बनाने में त्रुटि: {error}
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 
-#: api.py:418
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr "API प्रतिक्रिया से छवियों को रूपांतरित करने में विफल"
 
@@ -198,7 +198,7 @@ msgstr "छवियों को क्रमिक या समानां�
 msgid "Generated {count} images"
 msgstr "{count} छवियां जेनेरेट की गईं"
 
-#: api.py:175
+#: api.py:186
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
@@ -223,11 +223,11 @@ msgstr "API कुंजी छुपाएं"
 msgid "Image Size"
 msgstr "छवि का आकार"
 
-#: api.py:422
+#: api.py:399
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
-#: api.py:424
+#: api.py:401
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -235,7 +235,7 @@ msgstr "छवि उत्पादन पूर्ण!"
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: api.py:291
+#: api.py:268
 msgid "Logs"
 msgstr "लॉग"
 
@@ -251,7 +251,7 @@ msgstr "जेनेरेट करने के लिए छवियों �
 msgid "Model Settings"
 msgstr "मॉडल सेटिंग्स"
 
-#: api.py:288
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
@@ -284,11 +284,11 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: api.py:399
+#: api.py:376
 msgid "No output received from API"
 msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
 
-#: api.py:408
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
@@ -300,7 +300,7 @@ msgstr "सेट नहीं किया गया"
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
+#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
@@ -320,7 +320,7 @@ msgstr "कृपया अपनी Replicate API कुंजी दर्ज 
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:394
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
@@ -341,12 +341,12 @@ msgstr "संपादन मोड के लिए {max} संदर्भ �
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
-#: api.py:295
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API त्रुटि: {error}"
 
-#: api.py:57 api.py:102 api.py:170
+#: api.py:57 api.py:102 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
@@ -375,11 +375,11 @@ msgstr "संदर्भ छवियां चुनें"
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
 
-#: api.py:131
+#: api.py:139
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:184
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
@@ -419,7 +419,7 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:142 api.py:195
+#: api.py:150 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"

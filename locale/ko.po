@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:22-1000\n"
+"POT-Creation-Date: 2025-09-23 14:39-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -79,7 +79,7 @@ msgstr "추가 이미지 (선택사항)"
 msgid "Aspect Ratio"
 msgstr "종횡비"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Replicate 편집 요청 구축 중..."
 
@@ -132,7 +132,7 @@ msgstr "픽셀 단위 사용자 정의 높이"
 msgid "Custom width in pixels"
 msgstr "픽셀 단위 사용자 정의 너비"
 
-#: api.py:402
+#: api.py:379
 msgid "Downloading result..."
 msgstr "결과 다운로드 중..."
 
@@ -171,7 +171,7 @@ msgstr "이미지 생성 오류: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
 
-#: api.py:418
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr "API 응답에서 이미지 변환 실패"
 
@@ -200,7 +200,7 @@ msgstr "이미지를 순차적으로 또는 병렬로 생성"
 msgid "Generated {count} images"
 msgstr "{count}개 이미지 생성됨"
 
-#: api.py:175
+#: api.py:186
 msgid "Generating image with Replicate..."
 msgstr "Replicate로 이미지 생성 중..."
 
@@ -225,11 +225,11 @@ msgstr "API 키 숨기기"
 msgid "Image Size"
 msgstr "이미지 크기"
 
-#: api.py:422
+#: api.py:399
 msgid "Image editing complete!"
 msgstr "이미지 편집 완료!"
 
-#: api.py:424
+#: api.py:401
 msgid "Image generation complete!"
 msgstr "이미지 생성 완료!"
 
@@ -237,7 +237,7 @@ msgstr "이미지 생성 완료!"
 msgid "Initializing API request..."
 msgstr "API 요청 초기화 중..."
 
-#: api.py:291
+#: api.py:268
 msgid "Logs"
 msgstr "로그"
 
@@ -253,7 +253,7 @@ msgstr "생성할 최대 이미지 수"
 msgid "Model Settings"
 msgstr "모델 설정"
 
-#: api.py:288
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
@@ -286,11 +286,11 @@ msgstr "API에서 이미지 데이터를 받지 못했습니다"
 msgid "No layer available for editing"
 msgstr "편집할 레이어가 없습니다"
 
-#: api.py:399
+#: api.py:376
 msgid "No output received from API"
 msgstr "API에서 출력을 받지 못했습니다"
 
-#: api.py:408
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 
@@ -302,7 +302,7 @@ msgstr "설정되지 않음"
 msgid "Operation Mode"
 msgstr "작업 모드"
 
-#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
+#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
@@ -322,7 +322,7 @@ msgstr "Replicate API 키를 입력해주세요"
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate용 현재 이미지 준비 중..."
 
-#: api.py:394
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr "Replicate 응답 처리 중..."
 
@@ -343,12 +343,12 @@ msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
 msgid "Replicate API Key"
 msgstr "Replicate API 키"
 
-#: api.py:295
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API 오류: {error}"
 
-#: api.py:57 api.py:102 api.py:170
+#: api.py:57 api.py:102 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API를 사용할 수 없습니다. google-genai를 설치해주세요"
 
@@ -377,11 +377,11 @@ msgstr "참조 이미지 선택"
 msgid "Select up to {max} additional images"
 msgstr "최대 {max}개의 추가 이미지 선택"
 
-#: api.py:131
+#: api.py:139
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate에 편집 요청 전송 중..."
 
-#: api.py:184
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr "Replicate에 요청 전송 중..."
 
@@ -421,7 +421,7 @@ msgstr "이미지 편집 중 예상치 못한 오류: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "이미지 생성 중 예상치 못한 오류: {error}"
 
-#: api.py:142 api.py:195
+#: api.py:150 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "예상치 못한 오류: {error}"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:22-1000\n"
+"POT-Creation-Date: 2025-09-23 14:39-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Portuguese\n"
@@ -79,7 +79,7 @@ msgstr "Imagens Adicionais (Opcional)"
 msgid "Aspect Ratio"
 msgstr "Proporção"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Construindo solicitação de edição para Replicate..."
 
@@ -132,7 +132,7 @@ msgstr "Altura personalizada em pixels"
 msgid "Custom width in pixels"
 msgstr "Largura personalizada em pixels"
 
-#: api.py:402
+#: api.py:379
 msgid "Downloading result..."
 msgstr "Baixando resultado..."
 
@@ -171,7 +171,7 @@ msgstr "Erro ao criar imagens: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Erro executando Dream Prompter: {error}"
 
-#: api.py:418
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr "Falha ao converter imagens da resposta da API"
 
@@ -200,7 +200,7 @@ msgstr "Gerar imagens sequencialmente ou em paralelo"
 msgid "Generated {count} images"
 msgstr "Geradas {count} imagens"
 
-#: api.py:175
+#: api.py:186
 msgid "Generating image with Replicate..."
 msgstr "Gerando imagem com Replicate..."
 
@@ -225,11 +225,11 @@ msgstr "Ocultar chave API"
 msgid "Image Size"
 msgstr "Tamanho da Imagem"
 
-#: api.py:422
+#: api.py:399
 msgid "Image editing complete!"
 msgstr "Edição de imagem concluída!"
 
-#: api.py:424
+#: api.py:401
 msgid "Image generation complete!"
 msgstr "Geração de imagem concluída!"
 
@@ -237,7 +237,7 @@ msgstr "Geração de imagem concluída!"
 msgid "Initializing API request..."
 msgstr "Inicializando solicitação da API..."
 
-#: api.py:291
+#: api.py:268
 msgid "Logs"
 msgstr "Logs"
 
@@ -253,7 +253,7 @@ msgstr "Número máximo de imagens a gerar"
 msgid "Model Settings"
 msgstr "Configurações do Modelo"
 
-#: api.py:288
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Erro do modelo: {error}"
@@ -286,11 +286,11 @@ msgstr "Nenhum dado de imagem recebido da API"
 msgid "No layer available for editing"
 msgstr "Nenhuma camada disponível para edição"
 
-#: api.py:399
+#: api.py:376
 msgid "No output received from API"
 msgstr "Nenhuma saída recebida da API"
 
-#: api.py:408
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr "Nenhum dado de imagem válido na resposta da API"
 
@@ -302,7 +302,7 @@ msgstr "Não definido"
 msgid "Operation Mode"
 msgstr "Modo de Operação"
 
-#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
+#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr "Operação cancelada"
 
@@ -322,7 +322,7 @@ msgstr "Por favor digite sua chave API do Replicate"
 msgid "Preparing current image for Replicate..."
 msgstr "Preparando imagem atual para Replicate..."
 
-#: api.py:394
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr "Processando resposta do Replicate..."
 
@@ -343,12 +343,12 @@ msgstr "Reduzido para {max} imagens de referência para o modo de edição"
 msgid "Replicate API Key"
 msgstr "Chave API do Replicate"
 
-#: api.py:295
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Erro da API Replicate: {error}"
 
-#: api.py:57 api.py:102 api.py:170
+#: api.py:57 api.py:102 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana não disponível. Por favor instale google-genai"
 
@@ -377,11 +377,11 @@ msgstr "Selecionar Imagens de Referência"
 msgid "Select up to {max} additional images"
 msgstr "Selecione até {max} imagens adicionais"
 
-#: api.py:131
+#: api.py:139
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitação de edição para Replicate..."
 
-#: api.py:184
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitação para Replicate..."
 
@@ -421,7 +421,7 @@ msgstr "Erro inesperado durante edição de imagem: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Erro inesperado durante geração de imagem: {error}"
 
-#: api.py:142 api.py:195
+#: api.py:150 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Erro inesperado: {error}"

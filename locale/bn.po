@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:22-1000\n"
+"POT-Creation-Date: 2025-09-23 14:39-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -79,7 +79,7 @@ msgstr "অতিরিক্ত ছবি (ঐচ্ছিক)"
 msgid "Aspect Ratio"
 msgstr "দিক অনুপাত"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Replicate সম্পাদনা অনুরোধ তৈরি করা হচ্ছে..."
 
@@ -130,7 +130,7 @@ msgstr "পিক্সেলে কাস্টম উচ্চতা"
 msgid "Custom width in pixels"
 msgstr "পিক্সেলে কাস্টম প্রস্থ"
 
-#: api.py:402
+#: api.py:379
 msgid "Downloading result..."
 msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 
@@ -169,7 +169,7 @@ msgstr "ছবি তৈরি করতে ত্রুটি: {error}"
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
 
-#: api.py:418
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr "API প্রতিক্রিয়া থেকে ছবি রূপান্তর করতে ব্যর্থ"
 
@@ -198,7 +198,7 @@ msgstr "ছবিগুলি ক্রমিক বা সমান্তরা
 msgid "Generated {count} images"
 msgstr "{count}টি ছবি জেনারেট করা হয়েছে"
 
-#: api.py:175
+#: api.py:186
 msgid "Generating image with Replicate..."
 msgstr "Replicate দিয়ে ছবি তৈরি করা হচ্ছে..."
 
@@ -223,11 +223,11 @@ msgstr "API কী লুকান"
 msgid "Image Size"
 msgstr "ছবির আকার"
 
-#: api.py:422
+#: api.py:399
 msgid "Image editing complete!"
 msgstr "ছবি সম্পাদনা সম্পূর্ণ!"
 
-#: api.py:424
+#: api.py:401
 msgid "Image generation complete!"
 msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 
@@ -235,7 +235,7 @@ msgstr "ছবি উৎপাদন সম্পূর্ণ!"
 msgid "Initializing API request..."
 msgstr "API অনুরোধ শুরু করা হচ্ছে..."
 
-#: api.py:291
+#: api.py:268
 msgid "Logs"
 msgstr "লগ"
 
@@ -251,7 +251,7 @@ msgstr "জেনারেট করার জন্য সর্বোচ্চ
 msgid "Model Settings"
 msgstr "মডেল সেটিংস"
 
-#: api.py:288
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "মডেল ত্রুটি: {error}"
@@ -284,11 +284,11 @@ msgstr "API থেকে কোনো ছবির ডেটা পাওয়�
 msgid "No layer available for editing"
 msgstr "সম্পাদনার জন্য কোনো স্তর উপলব্ধ নেই"
 
-#: api.py:399
+#: api.py:376
 msgid "No output received from API"
 msgstr "API থেকে কোনো আউটপুট পাওয়া যায়নি"
 
-#: api.py:408
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr "API প্রতিক্রিয়ায় কোনো বৈধ ছবির ডেটা নেই"
 
@@ -300,7 +300,7 @@ msgstr "সেট করা হয়নি"
 msgid "Operation Mode"
 msgstr "অপারেশন মোড"
 
-#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
+#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
@@ -320,7 +320,7 @@ msgstr "অনুগ্রহ করে আপনার Replicate API কী প
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate এর জন্য বর্তমান ছবি প্রস্তুত করা হচ্ছে..."
 
-#: api.py:394
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr "Replicate প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
@@ -341,12 +341,12 @@ msgstr "সম্পাদনা মোডের জন্য {max}টি রে
 msgid "Replicate API Key"
 msgstr "Replicate API কী"
 
-#: api.py:295
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API ত্রুটি: {error}"
 
-#: api.py:57 api.py:102 api.py:170
+#: api.py:57 api.py:102 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API উপলব্ধ নেই। অনুগ্রহ করে replicate ইনস্টল করুন"
 
@@ -375,11 +375,11 @@ msgstr "রেফারেন্স ছবি নির্বাচন করু
 msgid "Select up to {max} additional images"
 msgstr "সর্বোচ্চ {max}টি অতিরিক্ত ছবি নির্বাচন করুন"
 
-#: api.py:131
+#: api.py:139
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate এ সম্পাদনা অনুরোধ পাঠানো হচ্ছে..."
 
-#: api.py:184
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr "Replicate এ অনুরোধ পাঠানো হচ্ছে..."
 
@@ -419,7 +419,7 @@ msgstr "ছবি সম্পাদনার সময় অপ্রত্য
 msgid "Unexpected error during image generation: {error}"
 msgstr "ছবি তৈরির সময় অপ্রত্যাশিত ত্রুটি: {error}"
 
-#: api.py:142 api.py:195
+#: api.py:150 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "অপ্রত্যাশিত ত্রুটি: {error}"
