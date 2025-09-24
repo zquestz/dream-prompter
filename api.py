@@ -118,23 +118,31 @@ class ReplicateAPI:
             if not current_image_data:
                 return None, _("Failed to export current image")
 
-            if (progress_callback and not progress_callback(
-                _("Building Replicate edit request..."), PROGRESS_UPLOAD
-            )):
-                return None, _("Operation cancelled")
+            with self._prepare_reference_images(
+                reference_images, self.model.max_reference_images_edit
+            ) as ref_files:
+                if (progress_callback and not progress_callback(
+                    _("Building Replicate edit request..."), PROGRESS_UPLOAD
+                )):
+                    return None, _("Operation cancelled")
 
-            model_input = self._build_edit_input(
-                prompt, current_image_data, reference_images
-            )
+                from settings import get_model_settings
+                user_settings = get_model_settings(self.model.name)
+                model_input = self.model.build_edit_input(
+                    prompt=prompt,
+                    main_image=io.BytesIO(current_image_data),
+                    reference_images=ref_files if ref_files else None,
+                    user_settings=user_settings
+                )
 
-            if (progress_callback and not progress_callback(
-                _("Sending edit request to Replicate..."), PROGRESS_PROCESS
-            )):
-                return None, _("Operation cancelled")
+                if (progress_callback and not progress_callback(
+                    _("Sending edit request to Replicate..."), PROGRESS_PROCESS
+                )):
+                    return None, _("Operation cancelled")
 
-            output = self._execute_api_call(model_input)
-            if isinstance(output, str):
-                return None, output
+                output = self._execute_api_call(model_input)
+                if isinstance(output, str):
+                    return None, output
 
             return self._process_response(output, progress_callback)
 
@@ -171,66 +179,35 @@ class ReplicateAPI:
             )
 
         try:
-            if (progress_callback and not progress_callback(
-                _("Generating image with Replicate..."), PROGRESS_PREPARE
-            )):
-                return None, _("Operation cancelled")
+            with self._prepare_reference_images(
+                reference_images, self.model.max_reference_images
+            ) as ref_files:
+                if (progress_callback and not progress_callback(
+                    _("Generating image with Replicate..."), PROGRESS_PREPARE
+                )):
+                    return None, _("Operation cancelled")
 
-            model_input = self._build_generation_input(
-                prompt, reference_images
-            )
+                from settings import get_model_settings
+                user_settings = get_model_settings(self.model.name)
+                model_input = self.model.build_generation_input(
+                    prompt=prompt,
+                    reference_images=ref_files if reference_images else None,
+                    user_settings=user_settings
+                )
 
-            if (progress_callback and not progress_callback(
-                _("Sending request to Replicate..."), PROGRESS_PROCESS
-            )):
-                return None, _("Operation cancelled")
+                if (progress_callback and not progress_callback(
+                    _("Sending request to Replicate..."), PROGRESS_PROCESS
+                )):
+                    return None, _("Operation cancelled")
 
-            output = self._execute_api_call(model_input)
-            if isinstance(output, str):
-                return None, output
+                output = self._execute_api_call(model_input)
+                if isinstance(output, str):
+                    return None, output
 
             return self._process_response(output, progress_callback)
 
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
-
-    def _build_edit_input(
-        self,
-        prompt: str,
-        current_image_data: bytes,
-        reference_images: Optional[List[str]] = None
-    ) -> dict:
-        """Build input parameters for edit operation."""
-        from settings import get_model_settings
-
-        with self._prepare_reference_images(
-            reference_images, self.model.max_reference_images_edit
-        ) as ref_files:
-            user_settings = get_model_settings(self.model.name)
-            return self.model.build_edit_input(
-                prompt=prompt,
-                main_image=io.BytesIO(current_image_data),
-                reference_images=ref_files if ref_files else None,
-                user_settings=user_settings
-            )
-
-    def _build_generation_input(
-        self,
-        prompt: str,
-        reference_images: Optional[List[str]] = None
-    ) -> dict:
-        """Build input parameters for generation operation."""
-        from settings import get_model_settings
-
-        with self._prepare_reference_images(
-            reference_images, self.model.max_reference_images
-        ) as ref_files:
-            user_settings = get_model_settings(self.model.name)
-            return self.model.build_generation_input(
-                prompt=prompt,
-                reference_images=ref_files if reference_images else None,
-                user_settings=user_settings
-            )
 
     def _bytes_to_pixbuf(
         self, image_bytes: bytes

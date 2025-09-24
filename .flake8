@@ -1,6 +1,5 @@
 [flake8]
 max-line-length = 79
-ignore = E402
 exclude =
     __pycache__,
     *.pyc,
@@ -11,9 +10,11 @@ exclude =
     dist,
     *.egg-info
 
-# E402: module level import not at top of file
-# This is ignored because gi.require_version() calls must come before gi imports
-# which is a required pattern for GTK/GObject applications
-
+# Per-file ignores for specific legitimate violations
 per-file-ignores =
-    models/factory.py:F401
+    # F401: Import model modules to register them automatically
+    models/factory.py:F401,
+    # E402: gi.require_version() must be called before gi imports
+    dialog.py:E402,
+    dialog_gtk.py:E402,
+    dream-prompter.py:E402
