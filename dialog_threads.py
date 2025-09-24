@@ -7,9 +7,9 @@ Handles all background AI processing and image operations
 """
 
 import threading
-from typing import Dict, Callable, Optional, Any, List, Union
+from typing import Dict, Callable, Optional, Any, List
 
-from gi.repository import GLib, GdkPixbuf, Gimp, Gegl
+from gi.repository import GLib, GdkPixbuf
 
 import integrator
 from api import ReplicateAPI
@@ -58,7 +58,8 @@ class DreamPrompterThreads:
         Set callback functions for thread completion
 
         Args:
-            callbacks: Dictionary containing 'on_success' and/or 'on_error' callbacks
+            callbacks: Dictionary containing 'on_success' and/or 'on_error'
+                callbacks
 
         Raises:
             ValueError: If callbacks is not a dictionary
@@ -69,7 +70,8 @@ class DreamPrompterThreads:
         valid_keys = {'on_success', 'on_error'}
         for key in callbacks.keys():
             if key not in valid_keys:
-                error_msg = f"Invalid callback key: {key}. Valid keys: {valid_keys}"
+                error_msg = (f"Invalid callback key: {key}. "
+                             f"Valid keys: {valid_keys}")
                 raise ValueError(error_msg)
 
         self._callbacks = callbacks
@@ -168,7 +170,9 @@ class DreamPrompterThreads:
                 return
 
             if not self.image:
-                GLib.idle_add(self._handle_error, _("No image available for editing"))
+                GLib.idle_add(
+                    self._handle_error, _("No image available for editing")
+                )
                 return
 
             api = ReplicateAPI(api_key, model_name)
@@ -197,7 +201,9 @@ class DreamPrompterThreads:
                 return
 
             if not pixbufs:
-                GLib.idle_add(self._handle_error, _("No image data received from API"))
+                GLib.idle_add(
+                    self._handle_error, _("No image data received from API")
+                )
                 return
 
             layer_name = self._generate_layer_name(prompt)
@@ -252,7 +258,9 @@ class DreamPrompterThreads:
                 return
 
             if not pixbufs:
-                GLib.idle_add(self._handle_error, _("No image data received from API"))
+                GLib.idle_add(
+                    self._handle_error, _("No image data received from API")
+                )
                 return
 
             GLib.idle_add(self._handle_generated_images, pixbufs, prompt)
@@ -276,13 +284,15 @@ class DreamPrompterThreads:
         """
         if self.drawable and prompt:
             original_name = self.drawable.get_name()
-            truncated_prompt = prompt[:30] + "..." if len(prompt) > 30 else prompt
+            truncated_prompt = (prompt[:30] + "..." if len(prompt) > 30
+                                else prompt)
             return _("{original} (AI Edit: {prompt})").format(
                 original=original_name,
                 prompt=truncated_prompt
             )
         elif prompt:
-            truncated_prompt = prompt[:30] + "..." if len(prompt) > 30 else prompt
+            truncated_prompt = (prompt[:30] + "..." if len(prompt) > 30
+                                else prompt)
             return _("AI Generated: {prompt}").format(prompt=truncated_prompt)
         else:
             return _("AI Layer")
@@ -306,18 +316,18 @@ class DreamPrompterThreads:
         try:
             for i, pixbuf in enumerate(pixbufs):
                 if len(pixbufs) > 1:
-                    layer_name = f"{base_layer_name} {i+1}"
+                    layer_name = f"{base_layer_name} {i + 1}"
                 else:
                     layer_name = base_layer_name
 
-                status_msg = _("Adding layer {num}...").format(num=i+1)
+                status_msg = _("Adding layer {num}...").format(num=i + 1)
                 progress = 0.8 + (0.1 * i / len(pixbufs))
                 self.ui.update_status(status_msg, progress)
 
                 layer = integrator.create_edit_layer(self.image, self.drawable,
                                                      pixbuf, layer_name)
                 if not layer:
-                    print(f"Warning: Failed to create layer {i+1}")
+                    print(f"Warning: Failed to create layer {i + 1}")
                     continue
 
             count_msg = _("Added {count} layers").format(count=len(pixbufs))
@@ -339,26 +349,30 @@ class DreamPrompterThreads:
         """
         try:
             for i, pixbuf in enumerate(pixbufs):
-                status_msg = _("Creating image {num}...").format(num=i+1)
+                status_msg = _("Creating image {num}...").format(num=i + 1)
                 progress = 0.8 + (0.1 * i / len(pixbufs))
                 self.ui.update_status(status_msg, progress)
 
                 if len(pixbufs) > 1:
-                    layer_name = _("AI Generated {num}").format(num=i+1)
+                    layer_name = _("AI Generated {num}").format(num=i + 1)
                 else:
                     layer_name = _("AI Generated")
 
                 image = integrator.create_new_image(pixbuf, layer_name)
                 if not image:
-                    print(f"Warning: Failed to create image {i+1}")
+                    print(f"Warning: Failed to create image {i + 1}")
                     continue
 
-            count_msg = _("Generated {count} images").format(count=len(pixbufs))
+            count_msg = _("Generated {count} images").format(
+                count=len(pixbufs)
+            )
             self.ui.update_status(count_msg, 1.0)
             self._handle_success()
 
         except Exception as e:
-            error_msg = _("Error creating images: {error}").format(error=str(e))
+            error_msg = _("Error creating images: {error}").format(
+                error=str(e)
+            )
             self._handle_error(error_msg)
 
     def _handle_error(self, error_message: str) -> None:

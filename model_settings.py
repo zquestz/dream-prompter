@@ -9,8 +9,7 @@ Provides easy access to model parameter management
 from typing import Dict, Any, List, Optional, Tuple, cast
 from models import BaseModel, ParameterDefinition, ParameterType
 from models.factory import get_model_by_name, get_all_models
-from settings import (get_model_settings, store_model_settings,
-                      get_model_parameter, set_model_parameter)
+from settings import get_model_settings, set_model_parameter
 from i18n import _
 
 
@@ -50,7 +49,8 @@ class ModelParameterManager:
         """Get all parameter definitions for this model"""
         return self.model.get_parameter_definitions()
 
-    def get_parameter_info(self, parameter_name: str) -> Optional[Dict[str, Any]]:
+    def get_parameter_info(self,
+                           parameter_name: str) -> Optional[Dict[str, Any]]:
         """
         Get complete information about a parameter
 
@@ -120,9 +120,11 @@ class ModelParameterManager:
         if not param_def:
             return False
 
-        return self.set_parameter_value(parameter_name, param_def.default_value)
+        return self.set_parameter_value(parameter_name,
+                                        param_def.default_value)
 
-    def set_multiple_parameters(self, parameters: Dict[str, Any]) -> Dict[str, bool]:
+    def set_multiple_parameters(self,
+                                parameters: Dict[str, Any]) -> Dict[str, bool]:
         """
         Set multiple parameters at once
 
@@ -205,7 +207,8 @@ def get_all_model_parameters() -> Dict[str, List[Dict[str, Any]]]:
     return all_params
 
 
-def get_model_parameter_manager(model_name: str) -> Optional[ModelParameterManager]:
+def get_model_parameter_manager(
+        model_name: str) -> Optional[ModelParameterManager]:
     """
     Get parameter manager for a model
 

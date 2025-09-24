@@ -3,7 +3,8 @@
 
 """
 Dream Prompter - AI Image Generation GIMP Plugin
-A GIMP plugin for AI-powered image creation/editing using Replicate's advanced AI models
+A GIMP plugin for AI-powered image creation/editing using Replicate's
+advanced AI models
 """
 import sys
 
@@ -37,12 +38,15 @@ class DreamPrompter(Gimp.PlugIn):
                 None
             )
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
+            procedure.set_sensitivity_mask(
+                Gimp.ProcedureSensitivityMask.ALWAYS
+            )
             procedure.set_documentation(
                 _("AI-powered image creation/editing with Replicate models"),
                 _("Transform existing images or generate new images using "
-                  "advanced AI models from Replicate with natural language prompts. "
-                  "Choose from multiple models including Nano Banana and Seedream 4."),
+                  "advanced AI models from Replicate with natural language "
+                  "prompts. Choose from multiple models including Nano Banana "
+                  "and Seedream 4."),
                 name
             )
             procedure.set_menu_label(_("Dream Prompter..."))
@@ -79,21 +83,26 @@ class DreamPrompter(Gimp.PlugIn):
                 dialog.destroy()
 
                 if response == Gtk.ResponseType.OK:
-                    return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS,
-                                                       GLib.Error())
+                    return procedure.new_return_values(
+                        Gimp.PDBStatusType.SUCCESS, GLib.Error()
+                    )
                 else:
-                    return procedure.new_return_values(Gimp.PDBStatusType.CANCEL,
-                                                       GLib.Error())
+                    return procedure.new_return_values(
+                        Gimp.PDBStatusType.CANCEL, GLib.Error()
+                    )
 
             except Exception as e:
                 error_text = _("Error running Dream Prompter: {error}")
                 error_msg = error_text.format(error=str(e))
                 print(error_msg)
                 Gimp.message(error_msg)
-                return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR,
-                                                   GLib.Error())
+                return procedure.new_return_values(
+                    Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error()
+                )
 
-        return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
+        return procedure.new_return_values(
+            Gimp.PDBStatusType.SUCCESS, GLib.Error()
+        )
 
 
 if __name__ == '__main__':

@@ -19,12 +19,12 @@ def setup_i18n() -> Callable[[str], str]:
     locale_dir = os.path.join(plugin_dir, "locale")
 
     try:
-        _locale_result = locale.setlocale(locale.LC_ALL, '')
+        locale.setlocale(locale.LC_ALL, '')
     except locale.Error:
         try:
-            _locale_result = locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+            locale.setlocale(locale.LC_ALL, 'C.UTF-8')
         except locale.Error:
-            _locale_result = locale.setlocale(locale.LC_ALL, 'C')
+            locale.setlocale(locale.LC_ALL, 'C')
 
     try:
         translation = gettext.translation(DOMAIN, locale_dir, fallback=True)

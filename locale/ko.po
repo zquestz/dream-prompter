@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 13:19-1000\n"
+"POT-Creation-Date: 2025-09-23 14:22-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -17,61 +17,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:656
+#: dialog_gtk.py:637
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:652
+#: dialog_gtk.py:633
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:349 integrator.py:116
+#: dialog_threads.py:359 integrator.py:120
 msgid "AI Generated"
 msgstr "AI 생성"
 
-#: dialog_threads.py:347
+#: dialog_threads.py:357
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "AI 생성 {num}"
 
-#: dialog_threads.py:286
+#: dialog_threads.py:296
 #, python-brace-format
 msgid "AI Generated: {prompt}"
 msgstr "AI 생성: {prompt}"
 
-#: dialog_threads.py:288 integrator.py:341
+#: dialog_threads.py:298 integrator.py:350
 msgid "AI Layer"
 msgstr "AI 레이어"
 
-#: dialog_gtk.py:296
+#: dialog_gtk.py:394
 msgid "AI Model"
 msgstr "AI 모델"
 
-#: dialog_gtk.py:583
+#: dialog_gtk.py:562
 msgid "AI Prompt"
 msgstr "AI 프롬프트"
 
-#: dream-prompter.py:42
+#: dream-prompter.py:45
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Replicate 모델을 사용한 AI 이미지 생성/편집"
 
-#: api.py:62 dialog_threads.py:101 dialog_threads.py:135
+#: api.py:61 dialog_threads.py:103 dialog_threads.py:137
 msgid "API key is required"
 msgstr "API 키가 필요합니다"
 
-#: dialog_threads.py:323
+#: dialog_threads.py:333
 #, python-brace-format
 msgid "Added {count} layers"
 msgstr "{count}개 레이어 추가됨"
 
-#: dialog_threads.py:313
+#: dialog_threads.py:323
 #, python-brace-format
 msgid "Adding layer {num}..."
 msgstr "레이어 {num} 추가 중..."
 
-#: dialog_gtk.py:237
+#: dialog_gtk.py:240
 msgid "Additional Images (Optional)"
 msgstr "추가 이미지 (선택사항)"
 
@@ -79,7 +79,7 @@ msgstr "추가 이미지 (선택사항)"
 msgid "Aspect Ratio"
 msgstr "종횡비"
 
-#: api.py:123
+#: api.py:122
 msgid "Building Replicate edit request..."
 msgstr "Replicate 편집 요청 구축 중..."
 
@@ -87,7 +87,7 @@ msgstr "Replicate 편집 요청 구축 중..."
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance의 통합 생성 및 편집 모델"
 
-#: dialog_events.py:194 dialog_gtk.py:515
+#: dialog_events.py:199 dialog_gtk.py:337
 msgid "Cancel"
 msgstr "취소"
 
@@ -95,7 +95,7 @@ msgstr "취소"
 msgid "Cancelling..."
 msgstr "취소 중..."
 
-#: dialog_events.py:224
+#: dialog_events.py:229
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -104,14 +104,14 @@ msgstr ""
 "{count}개의 파일을 추가할 수 없습니다. 편집 모드에서는 최대 {max}개의 참조 이"
 "미지가 허용됩니다."
 
-#: dialog_events.py:230
+#: dialog_events.py:234
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "{count}개의 파일을 추가할 수 없습니다. 최대 {max}개의 참조 이미지가 허용됩니"
 "다."
 
-#: dialog_gtk.py:261
+#: dialog_gtk.py:267
 msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
@@ -119,7 +119,7 @@ msgstr "선택한 파일 지우기"
 msgid "Control aspect ratio of generated images"
 msgstr "생성 이미지의 종횡비 제어"
 
-#: dialog_threads.py:342
+#: dialog_threads.py:352
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "이미지 {num} 생성 중..."
@@ -132,7 +132,7 @@ msgstr "픽셀 단위 사용자 정의 높이"
 msgid "Custom width in pixels"
 msgstr "픽셀 단위 사용자 정의 너비"
 
-#: api.py:403
+#: api.py:402
 msgid "Downloading result..."
 msgstr "결과 다운로드 중..."
 
@@ -140,42 +140,42 @@ msgstr "결과 다운로드 중..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI 이미지 생성기/편집기"
 
-#: dream-prompter.py:48
+#: dream-prompter.py:52
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:566
+#: dialog_gtk.py:446
 msgid "Edit Image"
 msgstr "이미지 편집"
 
-#: dialog_events.py:117
+#: dialog_events.py:119
 msgid "Edit mode requires a selected layer"
 msgstr "편집 모드에는 선택된 레이어가 필요합니다"
 
-#: dialog_gtk.py:482
+#: dialog_gtk.py:300
 msgid "Enter your Replicate API key"
 msgstr "Replicate API 키를 입력하세요"
 
-#: dialog_threads.py:328
+#: dialog_threads.py:338
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "레이어 추가 오류: {error}"
 
-#: dialog_threads.py:361
+#: dialog_threads.py:373
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "이미지 생성 오류: {error}"
 
-#: dream-prompter.py:89
+#: dream-prompter.py:95
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
 
-#: api.py:419
+#: api.py:418
 msgid "Failed to convert any images from API response"
 msgstr "API 응답에서 이미지 변환 실패"
 
-#: api.py:120
+#: api.py:119
 msgid "Failed to export current image"
 msgstr "현재 이미지 내보내기 실패"
 
@@ -183,11 +183,11 @@ msgstr "현재 이미지 내보내기 실패"
 msgid "Format for generated images"
 msgstr "생성 이미지의 형식"
 
-#: dialog_events.py:164 dialog_gtk.py:520
+#: dialog_events.py:169 dialog_gtk.py:342
 msgid "Generate Edit"
 msgstr "편집 생성"
 
-#: dialog_events.py:167 dialog_gtk.py:570
+#: dialog_events.py:172 dialog_gtk.py:451
 msgid "Generate Image"
 msgstr "이미지 생성"
 
@@ -195,16 +195,16 @@ msgstr "이미지 생성"
 msgid "Generate images sequentially or in parallel"
 msgstr "이미지를 순차적으로 또는 병렬로 생성"
 
-#: dialog_threads.py:356
+#: dialog_threads.py:366
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "{count}개 이미지 생성됨"
 
-#: api.py:176
+#: api.py:175
 msgid "Generating image with Replicate..."
 msgstr "Replicate로 이미지 생성 중..."
 
-#: dialog_gtk.py:500
+#: dialog_gtk.py:320
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a>에서 API 키를 가져오세요"
@@ -217,7 +217,7 @@ msgstr "Google의 고급 이미지 생성 및 편집 모델"
 msgid "Height"
 msgstr "높이"
 
-#: dialog_events.py:248
+#: dialog_events.py:251
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
@@ -225,19 +225,19 @@ msgstr "API 키 숨기기"
 msgid "Image Size"
 msgstr "이미지 크기"
 
-#: api.py:423
+#: api.py:422
 msgid "Image editing complete!"
 msgstr "이미지 편집 완료!"
 
-#: api.py:425
+#: api.py:424
 msgid "Image generation complete!"
 msgstr "이미지 생성 완료!"
 
-#: dialog_events.py:127
+#: dialog_events.py:129
 msgid "Initializing API request..."
 msgstr "API 요청 초기화 중..."
 
-#: api.py:292
+#: api.py:291
 msgid "Logs"
 msgstr "로그"
 
@@ -253,7 +253,7 @@ msgstr "생성할 최대 이미지 수"
 msgid "Model Settings"
 msgstr "모델 설정"
 
-#: api.py:289
+#: api.py:288
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
@@ -262,47 +262,47 @@ msgstr "모델 오류: {error}"
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
-#: model_settings.py:241
+#: model_settings.py:244
 msgid "No"
 msgstr "아니요"
 
-#: api.py:107
+#: api.py:106
 msgid "No GIMP image provided for editing"
 msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 
-#: dialog_gtk.py:251 dialog_gtk.py:671
+#: dialog_gtk.py:257 dialog_gtk.py:697
 msgid "No additional images selected"
 msgstr "추가 이미지가 선택되지 않았습니다"
 
-#: dialog_threads.py:97 dialog_threads.py:171
+#: dialog_threads.py:99 dialog_threads.py:174
 msgid "No image available for editing"
 msgstr "편집할 이미지가 없습니다"
 
-#: dialog_threads.py:200 dialog_threads.py:255
+#: dialog_threads.py:205 dialog_threads.py:262
 msgid "No image data received from API"
 msgstr "API에서 이미지 데이터를 받지 못했습니다"
 
-#: dialog_threads.py:93
+#: dialog_threads.py:95
 msgid "No layer available for editing"
 msgstr "편집할 레이어가 없습니다"
 
-#: api.py:400
+#: api.py:399
 msgid "No output received from API"
 msgstr "API에서 출력을 받지 못했습니다"
 
-#: api.py:409
+#: api.py:408
 msgid "No valid image data in API response"
 msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 
-#: model_settings.py:238
+#: model_settings.py:241
 msgid "Not set"
 msgstr "설정되지 않음"
 
-#: dialog_gtk.py:560
+#: dialog_gtk.py:439
 msgid "Operation Mode"
 msgstr "작업 모드"
 
-#: api.py:114 api.py:125 api.py:134 api.py:178 api.py:187 api.py:397 api.py:405
+#: api.py:113 api.py:124 api.py:133 api.py:177 api.py:186 api.py:396 api.py:404
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
@@ -310,45 +310,45 @@ msgstr "작업이 취소되었습니다"
 msgid "Output Format"
 msgstr "출력 형식"
 
-#: dialog_events.py:111
+#: dialog_events.py:113
 msgid "Please enter a prompt"
 msgstr "프롬프트를 입력해주세요"
 
-#: dialog_events.py:107
+#: dialog_events.py:109
 msgid "Please enter your Replicate API key"
 msgstr "Replicate API 키를 입력해주세요"
 
-#: api.py:111
+#: api.py:110
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate용 현재 이미지 준비 중..."
 
-#: api.py:395
+#: api.py:394
 msgid "Processing Replicate response..."
 msgstr "Replicate 응답 처리 중..."
 
-#: dialog_threads.py:105 dialog_threads.py:139
+#: dialog_threads.py:107 dialog_threads.py:141
 msgid "Prompt is required"
 msgstr "프롬프트가 필요합니다"
 
-#: dialog_gtk.py:96 dialog_gtk.py:628
+#: dialog_gtk.py:96 dialog_gtk.py:609
 msgid "Ready"
 msgstr "준비"
 
-#: dialog_events.py:159
+#: dialog_events.py:165
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
 
-#: dialog_gtk.py:475
+#: dialog_gtk.py:291
 msgid "Replicate API Key"
 msgstr "Replicate API 키"
 
-#: api.py:296
+#: api.py:295
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API 오류: {error}"
 
-#: api.py:58 api.py:103 api.py:171
+#: api.py:57 api.py:102 api.py:170
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API를 사용할 수 없습니다. google-genai를 설치해주세요"
 
@@ -360,28 +360,28 @@ msgstr "생성 이미지용 해상도 프리셋"
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:195
+#: dialog_events.py:200
 msgid "Select"
 msgstr "선택"
 
-#: dialog_gtk.py:244
+#: dialog_gtk.py:250
 msgid "Select Images..."
 msgstr "이미지 선택..."
 
-#: dialog_events.py:189
+#: dialog_events.py:194
 msgid "Select Reference Images"
 msgstr "참조 이미지 선택"
 
-#: dialog_events.py:303 dialog_events.py:309
+#: dialog_events.py:306 dialog_events.py:314
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "최대 {max}개의 추가 이미지 선택"
 
-#: api.py:132
+#: api.py:131
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate에 편집 요청 전송 중..."
 
-#: api.py:185
+#: api.py:184
 msgid "Sending request to Replicate..."
 msgstr "Replicate에 요청 전송 중..."
 
@@ -389,19 +389,19 @@ msgstr "Replicate에 요청 전송 중..."
 msgid "Sequential Generation"
 msgstr "순차 생성"
 
-#: dialog_events.py:255
+#: dialog_events.py:258
 msgid "Show API key"
 msgstr "API 키 표시"
 
-#: dialog_gtk.py:492
+#: dialog_gtk.py:312
 msgid "Show/Hide API key"
 msgstr "API 키 표시/숨기기"
 
-#: dialog_events.py:198
+#: dialog_events.py:203
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "지원되는 이미지 (PNG, JPEG, WebP)"
 
-#: dream-prompter.py:43
+#: dream-prompter.py:46
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
@@ -411,17 +411,17 @@ msgstr ""
 "나 새 이미지를 생성합니다. Nano Banana와 Seedream 4를 포함한 여러 모델 중에"
 "서 선택할 수 있습니다."
 
-#: dialog_threads.py:209
+#: dialog_threads.py:215
 #, python-brace-format
 msgid "Unexpected error during image editing: {error}"
 msgstr "이미지 편집 중 예상치 못한 오류: {error}"
 
-#: dialog_threads.py:263
+#: dialog_threads.py:271
 #, python-brace-format
 msgid "Unexpected error during image generation: {error}"
 msgstr "이미지 생성 중 예상치 못한 오류: {error}"
 
-#: api.py:143 api.py:196
+#: api.py:142 api.py:195
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "예상치 못한 오류: {error}"
@@ -430,26 +430,26 @@ msgstr "예상치 못한 오류: {error}"
 msgid "Width"
 msgstr "너비"
 
-#: model_settings.py:241
+#: model_settings.py:244
 msgid "Yes"
 msgstr "예"
 
-#: dialog_gtk.py:684
+#: dialog_gtk.py:710
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_gtk.py:686
+#: dialog_gtk.py:712
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_threads.py:280
+#: dialog_threads.py:289
 #, python-brace-format
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI 편집: {prompt})"
 
-#: dialog_gtk.py:649
+#: dialog_gtk.py:630
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 최대 크기 초과)"

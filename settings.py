@@ -21,16 +21,6 @@ FILE_PERMISSIONS = 0o600
 DEFAULT_MODE = "edit"
 DEFAULT_API_KEY_VISIBLE = False
 
-
-def get_default_model_name() -> str:
-    """Get default model name from factory"""
-    try:
-        from models.factory import model_factory
-        return model_factory._default_model
-    except ImportError:
-        return "google/nano-banana"
-
-
 DEFAULT_SETTINGS: SettingsDict = {
     "api_key": "",
     "mode": DEFAULT_MODE,
@@ -58,6 +48,15 @@ def get_config_file() -> str:
         print(f"Warning: Could not create config directory {gimp_dir}: {e}")
 
     return os.path.join(gimp_dir, CONFIG_FILE_NAME)
+
+
+def get_default_model_name() -> str:
+    """Get default model name from factory"""
+    try:
+        from models.factory import model_factory
+        return model_factory._default_model
+    except ImportError:
+        return "google/nano-banana"
 
 
 def get_model_parameter(model_name: str, parameter: str,
@@ -220,13 +219,17 @@ def store_settings(
 
 def _get_linux_config_dir() -> str:
     """Get Linux config directory"""
-    return os.path.join(os.path.expanduser("~"), '.config', 'GIMP', GIMP_VERSION)
+    return os.path.join(
+        os.path.expanduser("~"), '.config', 'GIMP', GIMP_VERSION
+    )
 
 
 def _get_macos_config_dir() -> str:
     """Get macOS config directory"""
     home = os.path.expanduser("~")
-    return os.path.join(home, 'Library', 'Application Support', 'GIMP', GIMP_VERSION)
+    return os.path.join(
+        home, 'Library', 'Application Support', 'GIMP', GIMP_VERSION
+    )
 
 
 def _get_windows_config_dir() -> str:

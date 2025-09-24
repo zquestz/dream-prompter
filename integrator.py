@@ -44,7 +44,9 @@ def create_edit_layer(image, drawable, pixbuf, layer_name):
 
         if selection_bounds:
             x, y, width, height = selection_bounds
-            pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
+            pixbuf = pixbuf.scale_simple(
+                width, height, GdkPixbuf.InterpType.BILINEAR
+            )
             offset_x = x
             offset_y = y
         else:
@@ -55,7 +57,9 @@ def create_edit_layer(image, drawable, pixbuf, layer_name):
 
             if pixbuf_width != img_width or pixbuf_height != img_height:
                 interp_type = GdkPixbuf.InterpType.BILINEAR
-                pixbuf = pixbuf.scale_simple(img_width, img_height, interp_type)
+                pixbuf = pixbuf.scale_simple(
+                    img_width, img_height, interp_type
+                )
 
         if not pixbuf.get_has_alpha():
             pixbuf = pixbuf.add_alpha(False, 0, 0, 0)
@@ -144,7 +148,8 @@ def create_new_image(pixbuf, prompt):
 
 def export_current_region_to_bytes(image):
     """
-    Export the current region to PNG bytes (selection if active, otherwise full image)
+    Export the current region to PNG bytes (selection if active, otherwise
+    full image)
 
     Args:
         image (Gimp.Image): GIMP image to export
@@ -173,7 +178,9 @@ def export_current_region_to_bytes(image):
 
         duplicate.flatten()
 
-        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+        with tempfile.NamedTemporaryFile(
+            suffix='.png', delete=False
+        ) as temp_file:
             temp_path = temp_file.name
 
         temp_gfile = Gio.File.new_for_path(temp_path)
@@ -229,7 +236,9 @@ def export_gimp_image_to_bytes(image):
         duplicate = image.duplicate()
         duplicate.flatten()
 
-        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+        with tempfile.NamedTemporaryFile(
+            suffix='.png', delete=False
+        ) as temp_file:
             temp_path = temp_file.name
 
         temp_gfile = Gio.File.new_for_path(temp_path)
@@ -343,4 +352,4 @@ def _truncate_layer_name(name):
     if len(name) <= MAX_LAYER_NAME_LENGTH:
         return name
 
-    return name[:MAX_LAYER_NAME_LENGTH-3] + "..."
+    return name[:MAX_LAYER_NAME_LENGTH - 3] + "..."

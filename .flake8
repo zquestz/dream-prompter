@@ -1,0 +1,19 @@
+[flake8]
+max-line-length = 79
+ignore = E402
+exclude =
+    __pycache__,
+    *.pyc,
+    .git,
+    .tox,
+    .pytest_cache,
+    build,
+    dist,
+    *.egg-info
+
+# E402: module level import not at top of file
+# This is ignored because gi.require_version() calls must come before gi imports
+# which is a required pattern for GTK/GObject applications
+
+per-file-ignores =
+    models/factory.py:F401

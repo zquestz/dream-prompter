@@ -51,7 +51,8 @@ class DreamPrompterDialog(GimpUi.Dialog):
 
     def get_current_mode(self):
         """Get the currently selected mode"""
-        if self.ui.generate_mode_radio and self.ui.generate_mode_radio.get_active():
+        generate_radio = self.ui.generate_mode_radio
+        if generate_radio and generate_radio.get_active():
             return "generate"
         return "edit"
 
@@ -60,7 +61,9 @@ class DreamPrompterDialog(GimpUi.Dialog):
         if self.ui.prompt_buffer:
             start_iter = self.ui.prompt_buffer.get_start_iter()
             end_iter = self.ui.prompt_buffer.get_end_iter()
-            return self.ui.prompt_buffer.get_text(start_iter, end_iter, False).strip()
+            return self.ui.prompt_buffer.get_text(
+                start_iter, end_iter, False
+            ).strip()
         return ""
 
     def _initialize(self):

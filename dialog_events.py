@@ -6,8 +6,6 @@ Event handlers for Dream Prompter dialog
 Handles all user interactions and UI events
 """
 
-import threading
-
 from gi.repository import Gtk, GLib
 
 from dialog_threads import DreamPrompterThreads
@@ -62,10 +60,14 @@ class DreamPrompterEventHandler:
         if self.ui.edit_mode_radio:
             self.ui.edit_mode_radio.connect("toggled", self.on_mode_changed)
         if self.ui.generate_mode_radio:
-            self.ui.generate_mode_radio.connect("toggled", self.on_mode_changed)
+            self.ui.generate_mode_radio.connect(
+                "toggled", self.on_mode_changed
+            )
 
         if self.ui.toggle_visibility_btn:
-            self.ui.toggle_visibility_btn.connect("toggled", self.on_toggle_visibility)
+            self.ui.toggle_visibility_btn.connect(
+                "toggled", self.on_toggle_visibility
+            )
 
         if self.ui.file_chooser_btn:
             self.ui.file_chooser_btn.connect("clicked", self.on_select_files)
@@ -111,8 +113,8 @@ class DreamPrompterEventHandler:
             self.show_error(_("Please enter a prompt"))
             return
 
-        edit_active = (self.ui.edit_mode_radio and
-                       self.ui.edit_mode_radio.get_active())
+        edit_radio = self.ui.edit_mode_radio
+        edit_active = (edit_radio and edit_radio.get_active())
         if edit_active and not self.drawable:
             self.show_error(_("Edit mode requires a selected layer"))
             return
@@ -128,11 +130,13 @@ class DreamPrompterEventHandler:
 
         if mode == "edit":
             self.threads.start_edit_thread(
-                api_key, prompt_text, self.ui.selected_files, selected_model_name
+                api_key, prompt_text, self.ui.selected_files,
+                selected_model_name
             )
         else:
             self.threads.start_generate_thread(
-                api_key, prompt_text, self.ui.selected_files, selected_model_name
+                api_key, prompt_text, self.ui.selected_files,
+                selected_model_name
             )
 
     def on_model_changed(self, combo_box):
@@ -154,11 +158,12 @@ class DreamPrompterEventHandler:
         if self.ui.edit_mode_radio.get_active():
             max_edit_files = self.model.max_reference_images_edit
             if len(self.ui.selected_files) > max_edit_files:
-                self.ui.selected_files = self.ui.selected_files[:max_edit_files]
+                self.ui.selected_files = (
+                    self.ui.selected_files[:max_edit_files]
+                )
                 self.ui.update_files_display()
-                print(_("Reduced to {max} reference images for edit mode").format(
-                    max=max_edit_files
-                ))
+                message = _("Reduced to {max} reference images for edit mode")
+                print(message.format(max=max_edit_files))
 
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Edit"))
@@ -221,16 +226,14 @@ class DreamPrompterEventHandler:
             elif files:
                 if current_mode == "edit":
                     max_refs = self.model.max_reference_images_edit
-                    print(_("Cannot add {count} files. Maximum {max} reference "
-                            "images allowed in edit mode.").format(
-                        count=len(files), max=max_refs
-                    ))
+                    message = _("Cannot add {count} files. Maximum {max} "
+                                "reference images allowed in edit mode.")
+                    print(message.format(count=len(files), max=max_refs))
                 else:
                     max_refs = self.model.max_reference_images
-                    print(_("Cannot add {count} files. Maximum {max} reference "
-                            "images allowed.").format(
-                        count=len(files), max=max_refs
-                    ))
+                    message = _("Cannot add {count} files. Maximum {max} "
+                                "reference images allowed.")
+                    print(message.format(count=len(files), max=max_refs))
 
         dialog.destroy()
 
@@ -300,12 +303,16 @@ class DreamPrompterEventHandler:
         if current_mode == "edit":
             if self.ui.images_help_label:
                 max_imgs = self.model.max_reference_images_edit
-                text = _("Select up to {max} additional images").format(max=max_imgs)
+                text = _("Select up to {max} additional images").format(
+                    max=max_imgs
+                )
                 markup = f'<small>{text}</small>'
                 self.ui.images_help_label.set_markup(markup)
         else:
             if self.ui.images_help_label:
                 max_imgs = self.model.max_reference_images
-                text = _("Select up to {max} additional images").format(max=max_imgs)
+                text = _("Select up to {max} additional images").format(
+                    max=max_imgs
+                )
                 markup = f'<small>{text}</small>'
                 self.ui.images_help_label.set_markup(markup)

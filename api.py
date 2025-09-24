@@ -19,7 +19,6 @@ from gi.repository import GdkPixbuf, Gimp
 
 import integrator
 from i18n import _
-from models import BaseModel
 from models.factory import get_default_model, get_model_by_name
 
 PROGRESS_COMPLETE = 1.0
@@ -287,9 +286,9 @@ class ReplicateAPI:
 
         except ModelError as e:
             error_msg = _("Model error: {error}").format(error=str(e))
-            if (hasattr(e, 'prediction') and e.prediction and
-                hasattr(e.prediction, 'logs') and e.prediction.logs):
-                error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
+            if hasattr(e, 'prediction') and e.prediction:
+                if hasattr(e.prediction, 'logs') and e.prediction.logs:
+                    error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
             return error_msg
 
         except ReplicateError as e:

@@ -7,8 +7,8 @@ Handles all GTK interface creation and layout
 """
 
 import os
-import gi
 
+import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Pango
 
@@ -105,7 +105,6 @@ class DreamPrompterUI:
                 self.update_model_description(model)
                 self.update_model_settings_ui(model)
 
-
     def set_ui_enabled(self, enabled=True):
         """Enable/disable UI controls"""
         if self.api_key_entry:
@@ -135,7 +134,8 @@ class DreamPrompterUI:
         is_visible = button.get_active()
         self.api_key_entry.set_visibility(is_visible)
 
-        icon_name = "view-reveal-symbolic" if is_visible else "view-conceal-symbolic"
+        icon_name = ("view-reveal-symbolic" if is_visible
+                     else "view-conceal-symbolic")
         button.get_image().set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
     def update_files_display(self):
@@ -200,7 +200,9 @@ class DreamPrompterUI:
         for param_def in filtered_params:
             param_name = param_def.name
             current_value = current_values.get(param_name)
-            param_container = self._create_parameter_widget(param_def, current_value)
+            param_container = self._create_parameter_widget(
+                param_def, current_value
+            )
             if param_container:
                 self.model_settings_section.pack_start(
                     param_container, False, False, 0
@@ -234,11 +236,15 @@ class DreamPrompterUI:
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
         title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{_('Additional Images (Optional)')}</b>")
+        title_label.set_markup(
+            f"<b>{_('Additional Images (Optional)')}</b>"
+        )
         title_label.set_halign(Gtk.Align.START)
         section_box.pack_start(title_label, False, False, 0)
 
-        files_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        files_container = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=8
+        )
 
         self.file_chooser_btn = Gtk.Button()
         self.file_chooser_btn.set_label(_("Select Images..."))
@@ -276,6 +282,98 @@ class DreamPrompterUI:
         section_box.pack_start(self.images_help_label, False, False, 0)
 
         return section_box
+
+    def _create_api_key_section(self):
+        """Create API key input section"""
+        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{_('Replicate API Key')}</b>")
+        title_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(title_label, False, False, 0)
+
+        key_container = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=8
+        )
+
+        self.api_key_entry = Gtk.Entry()
+        placeholder = _("Enter your Replicate API key")
+        self.api_key_entry.set_placeholder_text(placeholder)
+        self.api_key_entry.set_visibility(False)
+        self.api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
+        key_container.pack_start(self.api_key_entry, True, True, 0)
+
+        self.toggle_visibility_btn = Gtk.ToggleButton()
+        self.toggle_visibility_btn.set_image(
+            Gtk.Image.new_from_icon_name(
+                "view-conceal-symbolic", Gtk.IconSize.BUTTON
+            )
+        )
+        tooltip_text = _("Show/Hide API key")
+        self.toggle_visibility_btn.set_tooltip_text(tooltip_text)
+        key_container.pack_start(self.toggle_visibility_btn, False, False, 0)
+
+        section_box.pack_start(key_container, False, False, 0)
+
+        help_label = Gtk.Label()
+        help_url = "https://replicate.com/account/api-tokens"
+        help_text = _('Get your API key from <a href="{url}">Replicate</a>')
+        help_text = help_text.format(url=help_url)
+        help_label.set_markup(f'<small>{help_text}</small>')
+        help_label.set_halign(Gtk.Align.START)
+        help_label.set_line_wrap(True)
+        section_box.pack_start(help_label, False, False, 0)
+
+        return section_box
+
+    def _create_buttons_section(self):
+        """Create action buttons section"""
+        buttons_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=12
+        )
+        buttons_box.set_halign(Gtk.Align.CENTER)
+
+        self.cancel_btn = Gtk.Button()
+        self.cancel_btn.set_label(_("Cancel"))
+        self.cancel_btn.set_size_request(100, -1)
+        buttons_box.pack_start(self.cancel_btn, False, False, 0)
+
+        self.generate_btn = Gtk.Button()
+        self.generate_btn.set_label(_("Generate Edit"))
+        gen_icon = Gtk.Image.new_from_icon_name(
+            "applications-graphics-symbolic", Gtk.IconSize.BUTTON
+        )
+        self.generate_btn.set_image(gen_icon)
+        generate_style = self.generate_btn.get_style_context()
+        generate_style.add_class("suggested-action")
+        self.generate_btn.set_size_request(150, -1)
+        buttons_box.pack_start(self.generate_btn, False, False, 0)
+
+        return buttons_box
+
+    def _create_file_box(self, filename, file_path):
+        """Create the horizontal box for a file entry"""
+        orientation = Gtk.Orientation.HORIZONTAL
+        file_box = Gtk.Box(orientation=orientation, spacing=8)
+        file_box.set_margin_top(3)
+        file_box.set_margin_bottom(3)
+        file_box.set_margin_start(6)
+        file_box.set_margin_end(6)
+
+        icon = Gtk.Image.new_from_icon_name("image-x-generic-symbolic",
+                                            Gtk.IconSize.SMALL_TOOLBAR)
+        file_box.pack_start(icon, False, False, 0)
+
+        label = Gtk.Label()
+        label.set_text(filename)
+        label.set_halign(Gtk.Align.START)
+        label.set_ellipsize(Pango.EllipsizeMode.END)
+        file_box.pack_start(label, True, True, 0)
+
+        remove_btn = self._create_remove_button(file_path)
+        file_box.pack_start(remove_btn, False, False, 0)
+
+        return file_box
 
     def _create_file_rows(self):
         """Create rows for each selected file"""
@@ -328,8 +426,35 @@ class DreamPrompterUI:
     def _create_model_settings_section(self):
         """Create model-specific settings section"""
         orientation = Gtk.Orientation.VERTICAL
-        self.model_settings_section = Gtk.Box(orientation=orientation, spacing=6)
+        self.model_settings_section = Gtk.Box(
+            orientation=orientation, spacing=6
+        )
         return self.model_settings_section
+
+    def _create_mode_section(self):
+        """Create mode selection section"""
+        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{_('Operation Mode')}</b>")
+        title_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(title_label, False, False, 0)
+
+        radio_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+
+        self.edit_mode_radio = Gtk.RadioButton.new_with_label(
+            None, _("Edit Image")
+        )
+        radio_box.pack_start(self.edit_mode_radio, False, False, 0)
+
+        self.generate_mode_radio = Gtk.RadioButton.new_with_label_from_widget(
+            self.edit_mode_radio, _("Generate Image")
+        )
+        radio_box.pack_start(self.generate_mode_radio, False, False, 0)
+
+        section_box.pack_start(radio_box, False, False, 0)
+
+        return section_box
 
     def _create_parameter_widget(self, param_def, current_value):
         """Create a widget for a single parameter"""
@@ -360,14 +485,18 @@ class DreamPrompterUI:
         elif param_def.param_type == ParameterType.BOOLEAN:
             widget = Gtk.CheckButton()
             default_val = param_def.default_value
-            value = bool(current_value) if current_value is not None else default_val
+            value = (bool(current_value) if current_value is not None
+                     else default_val)
             widget.set_active(value)
-            widget.connect('toggled', self._on_parameter_changed,
-                           param_def.name)
+            widget.connect(
+                'toggled', self._on_parameter_changed, param_def.name
+            )
 
         elif param_def.param_type == ParameterType.INTEGER:
-            min_val = param_def.min_value if param_def.min_value is not None else 0
-            max_val = param_def.max_value if param_def.max_value is not None else 10000
+            min_val = (param_def.min_value if param_def.min_value is not None
+                       else 0)
+            max_val = (param_def.max_value if param_def.max_value is not None
+                       else 10000)
             step = param_def.step if param_def.step is not None else 1
 
             default_val = param_def.default_value
@@ -386,8 +515,10 @@ class DreamPrompterUI:
                            self._on_parameter_changed, param_def.name)
 
         elif param_def.param_type == ParameterType.FLOAT:
-            min_val = param_def.min_value if param_def.min_value is not None else 0.0
-            max_val = param_def.max_value if param_def.max_value is not None else 100.0
+            min_val = (param_def.min_value if param_def.min_value is not None
+                       else 0.0)
+            max_val = (param_def.max_value if param_def.max_value is not None
+                       else 100.0)
             step = param_def.step if param_def.step is not None else 0.1
 
             default_val = param_def.default_value
@@ -423,158 +554,6 @@ class DreamPrompterUI:
 
         return container
 
-    def _on_parameter_changed(self, widget, param_name):
-        """Handle parameter value changes"""
-        try:
-            selected_model_name = self.get_selected_model()
-            if not selected_model_name:
-                return
-
-            from models import ParameterType
-            from models.factory import get_model_by_name
-            from model_settings import ModelParameterManager
-
-            model = get_model_by_name(selected_model_name)
-            if not model:
-                return
-
-            manager = ModelParameterManager(selected_model_name)
-
-            param_def = None
-            for p in model.get_parameter_definitions():
-                if p.name == param_name:
-                    param_def = p
-                    break
-
-            if not param_def:
-                return
-
-            if param_def.param_type == ParameterType.CHOICE:
-                value = widget.get_active_id()
-            elif param_def.param_type == ParameterType.BOOLEAN:
-                value = widget.get_active()
-            elif param_def.param_type in [ParameterType.INTEGER, ParameterType.FLOAT]:
-                value = widget.get_value()
-                if param_def.param_type == ParameterType.INTEGER:
-                    value = int(value)
-            elif param_def.param_type == ParameterType.STRING:
-                value = widget.get_text()
-            else:
-                return
-
-            manager.set_parameter_value(param_name, value)
-
-        except Exception as e:
-            print(f"Error handling parameter change: {e}")
-
-    def _create_api_key_section(self):
-        """Create API key input section"""
-        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-
-        title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{_('Replicate API Key')}</b>")
-        title_label.set_halign(Gtk.Align.START)
-        section_box.pack_start(title_label, False, False, 0)
-
-        key_container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-
-        self.api_key_entry = Gtk.Entry()
-        placeholder = _("Enter your Replicate API key")
-        self.api_key_entry.set_placeholder_text(placeholder)
-        self.api_key_entry.set_visibility(False)
-        self.api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
-        key_container.pack_start(self.api_key_entry, True, True, 0)
-
-        self.toggle_visibility_btn = Gtk.ToggleButton()
-        self.toggle_visibility_btn.set_image(
-            Gtk.Image.new_from_icon_name("view-conceal-symbolic", Gtk.IconSize.BUTTON)
-        )
-        tooltip_text = _("Show/Hide API key")
-        self.toggle_visibility_btn.set_tooltip_text(tooltip_text)
-        key_container.pack_start(self.toggle_visibility_btn, False, False, 0)
-
-        section_box.pack_start(key_container, False, False, 0)
-
-        help_label = Gtk.Label()
-        help_url = "https://replicate.com/account/api-tokens"
-        help_text = _('Get your API key from <a href="{url}">Replicate</a>')
-        help_text = help_text.format(url=help_url)
-        help_label.set_markup(f'<small>{help_text}</small>')
-        help_label.set_halign(Gtk.Align.START)
-        help_label.set_line_wrap(True)
-        section_box.pack_start(help_label, False, False, 0)
-
-        return section_box
-
-    def _create_buttons_section(self):
-        """Create action buttons section"""
-        buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-        buttons_box.set_halign(Gtk.Align.CENTER)
-
-        self.cancel_btn = Gtk.Button()
-        self.cancel_btn.set_label(_("Cancel"))
-        self.cancel_btn.set_size_request(100, -1)
-        buttons_box.pack_start(self.cancel_btn, False, False, 0)
-
-        self.generate_btn = Gtk.Button()
-        self.generate_btn.set_label(_("Generate Edit"))
-        gen_icon = Gtk.Image.new_from_icon_name("applications-graphics-symbolic",
-                                                Gtk.IconSize.BUTTON)
-        self.generate_btn.set_image(gen_icon)
-        generate_style = self.generate_btn.get_style_context()
-        generate_style.add_class("suggested-action")
-        self.generate_btn.set_size_request(150, -1)
-        buttons_box.pack_start(self.generate_btn, False, False, 0)
-
-        return buttons_box
-
-    def _create_file_box(self, filename, file_path):
-        """Create the horizontal box for a file entry"""
-        orientation = Gtk.Orientation.HORIZONTAL
-        file_box = Gtk.Box(orientation=orientation, spacing=8)
-        file_box.set_margin_top(3)
-        file_box.set_margin_bottom(3)
-        file_box.set_margin_start(6)
-        file_box.set_margin_end(6)
-
-        icon = Gtk.Image.new_from_icon_name("image-x-generic-symbolic",
-                                            Gtk.IconSize.SMALL_TOOLBAR)
-        file_box.pack_start(icon, False, False, 0)
-
-        label = Gtk.Label()
-        label.set_text(filename)
-        label.set_halign(Gtk.Align.START)
-        label.set_ellipsize(Pango.EllipsizeMode.END)
-        file_box.pack_start(label, True, True, 0)
-
-        remove_btn = self._create_remove_button(file_path)
-        file_box.pack_start(remove_btn, False, False, 0)
-
-        return file_box
-
-    def _create_mode_section(self):
-        """Create mode selection section"""
-        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-
-        title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{_('Operation Mode')}</b>")
-        title_label.set_halign(Gtk.Align.START)
-        section_box.pack_start(title_label, False, False, 0)
-
-        radio_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
-
-        self.edit_mode_radio = Gtk.RadioButton.new_with_label(None, _("Edit Image"))
-        radio_box.pack_start(self.edit_mode_radio, False, False, 0)
-
-        self.generate_mode_radio = Gtk.RadioButton.new_with_label_from_widget(
-            self.edit_mode_radio, _("Generate Image")
-        )
-        radio_box.pack_start(self.generate_mode_radio, False, False, 0)
-
-        section_box.pack_start(radio_box, False, False, 0)
-
-        return section_box
-
     def _create_prompt_section(self):
         """Create prompt input section"""
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -585,7 +564,9 @@ class DreamPrompterUI:
         section_box.pack_start(title_label, False, False, 0)
 
         scroll_window = Gtk.ScrolledWindow()
-        scroll_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll_window.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC
+        )
         scroll_window.set_min_content_height(120)
 
         self.prompt_textview = Gtk.TextView()
@@ -659,6 +640,51 @@ class DreamPrompterUI:
 
         return filename
 
+    def _on_parameter_changed(self, widget, param_name):
+        """Handle parameter value changes"""
+        try:
+            selected_model_name = self.get_selected_model()
+            if not selected_model_name:
+                return
+
+            from models import ParameterType
+            from models.factory import get_model_by_name
+            from model_settings import ModelParameterManager
+
+            model = get_model_by_name(selected_model_name)
+            if not model:
+                return
+
+            manager = ModelParameterManager(selected_model_name)
+
+            param_def = None
+            for p in model.get_parameter_definitions():
+                if p.name == param_name:
+                    param_def = p
+                    break
+
+            if not param_def:
+                return
+
+            if param_def.param_type == ParameterType.CHOICE:
+                value = widget.get_active_id()
+            elif param_def.param_type == ParameterType.BOOLEAN:
+                value = widget.get_active()
+            elif param_def.param_type in [ParameterType.INTEGER,
+                                          ParameterType.FLOAT]:
+                value = widget.get_value()
+                if param_def.param_type == ParameterType.INTEGER:
+                    value = int(value)
+            elif param_def.param_type == ParameterType.STRING:
+                value = widget.get_text()
+            else:
+                return
+
+            manager.set_parameter_value(param_name, value)
+
+        except Exception as e:
+            print(f"Error handling parameter change: {e}")
+
     def _show_files_list(self):
         """Make the files list visible"""
         if self.files_listbox:
@@ -681,7 +707,7 @@ class DreamPrompterUI:
 
         count = len(self.selected_files)
         if count == 1:
-            text = _("{count} image selected").format(count=count)
+            text = _("{count} image selected")
         else:
             text = _("{count} images selected").format(count=count)
 
