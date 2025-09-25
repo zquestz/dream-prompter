@@ -65,9 +65,7 @@ class QwenImageEditModel(BaseModel):
         return ["image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
-        self,
-        prompt: str,
-        main_image,
+        self, prompt: str, main_image,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -85,12 +83,16 @@ class QwenImageEditModel(BaseModel):
         Returns:
             Dictionary of input parameters for the Replicate API
         """
+        image = []
         if isinstance(main_image, bytes):
-            main_img = io.BytesIO(main_image)
+            image.append(io.BytesIO(main_image))
         else:
-            main_img = main_image
+            image.append(main_image)
 
-        ref_imgs = reference_images[: self.max_reference_images_edit] if reference_images else []
+        if reference_images:
+            image.extend(
+                reference_images[:self.max_reference_images_edit]
+            )
 
         params = self.build_parameters_dict(user_settings or {})
 
@@ -100,14 +102,10 @@ class QwenImageEditModel(BaseModel):
 
         model_input = {
             "prompt": prompt,
-            "aspect_ratio": "match_input_image",
-            "image": [main_img],
-            "reference_images": ref_imgs,
+            "image": image
         }
 
         # Add conditional parameters
-        if params.get("aspect_ratio"):
-            model_input["aspect_ratio"] = params["aspect_ratio"]
         if params.get("go_fast") is not None:
             model_input["go_fast"] = params["go_fast"]
         if params.get("seed", 0) != 0:
@@ -122,8 +120,7 @@ class QwenImageEditModel(BaseModel):
         return {k: v for k, v in model_input.items() if v is not None}
 
     def build_generation_input(
-        self,
-        prompt: str,
+        self, prompt: str,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -148,7 +145,7 @@ class QwenImageEditModel(BaseModel):
 
         model_input = {
             "prompt": prompt,
-            "reference_images": reference_images or [],
+            "image": reference_images or []
         }
 
         # Add conditional parameters
@@ -175,9 +172,9 @@ class QwenImageEditModel(BaseModel):
                 param_type=ParameterType.CHOICE,
                 default_value="match_input_image",
                 label=_("Aspect Ratio"),
-                description=_("Output aspect ratio for edited images"),
+                description=_("Control aspect ratio of generated images"),
                 choices=["match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16"],
-                supported_modes=[ParameterMode.BOTH],
+                supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="go_fast",
