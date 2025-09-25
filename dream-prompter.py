@@ -14,10 +14,10 @@ gi.require_version('Gimp', '3.0')
 gi.require_version('GimpUi', '3.0')
 gi.require_version('GLib', '2.0')
 gi.require_version('GdkPixbuf', '2.0')
-from gi.repository import Gimp, GimpUi, Gtk, GLib
+from gi.repository import Gimp, GimpUi, Gtk, GLib  # noqa: E402
 
-from dialog import DreamPrompterDialog
-from i18n import _, DOMAIN
+from dialog import DreamPrompterDialog  # noqa: E402
+from i18n import _, DOMAIN  # noqa: E402
 
 PLUGIN_NAME = "dream-prompter"
 PLUGIN_VERSION = "1.1.0"

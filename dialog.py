@@ -5,14 +5,12 @@
 Dream Prompter Dialog - Main coordinator
 """
 
-import gi
-gi.require_version('Gtk', '3.0')
-gi.require_version('GimpUi', '3.0')
 from gi.repository import GimpUi
 
 from dialog_events import DreamPrompterEventHandler
 from dialog_gtk import DreamPrompterUI
 from i18n import _
+from models.factory import get_default_model
 from settings import load_settings
 
 
@@ -31,6 +29,7 @@ class DreamPrompterDialog(GimpUi.Dialog):
         self.drawable = drawable
 
         self.set_resizable(True)
+        self.set_size_request(650, -1)
 
         self.ui = DreamPrompterUI()
         self.events = DreamPrompterEventHandler(self, self.ui, image, drawable)
@@ -99,7 +98,6 @@ class DreamPrompterDialog(GimpUi.Dialog):
             if model_name and self.ui.model_dropdown:
                 self.ui.set_selected_model(str(model_name))
             elif self.ui.model_dropdown:
-                from models.factory import get_default_model
                 default_model = get_default_model()
                 if default_model:
                     model_name = default_model.name

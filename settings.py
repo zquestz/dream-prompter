@@ -10,6 +10,11 @@ import os
 import platform
 from typing import cast, Dict, Union, Literal, Any, Optional
 
+try:
+    from models.factory import model_factory
+except ImportError:
+    model_factory = None
+
 ModeKey = Literal["edit", "generate"]
 SettingsDict = Dict[str, Union[str, bool, Dict[str, Any]]]
 ModelSettingsDict = Dict[str, Any]
@@ -52,11 +57,9 @@ def get_config_file() -> str:
 
 def get_default_model_name() -> str:
     """Get default model name from factory"""
-    try:
-        from models.factory import model_factory
+    if model_factory:
         return model_factory._default_model
-    except ImportError:
-        return "google/nano-banana"
+    return "google/nano-banana"
 
 
 def get_model_parameter(model_name: str, parameter: str,

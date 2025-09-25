@@ -20,6 +20,7 @@ from gi.repository import GdkPixbuf, Gimp
 import integrator
 from i18n import _
 from models.factory import get_default_model, get_model_by_name
+from settings import get_model_settings
 
 PROGRESS_COMPLETE = 1.0
 PROGRESS_DOWNLOAD = 0.9
@@ -126,7 +127,6 @@ class ReplicateAPI:
                 )):
                     return None, _("Operation cancelled")
 
-                from settings import get_model_settings
                 user_settings = get_model_settings(self.model.name)
                 model_input = self.model.build_edit_input(
                     prompt=prompt,
@@ -187,7 +187,6 @@ class ReplicateAPI:
                 )):
                     return None, _("Operation cancelled")
 
-                from settings import get_model_settings
                 user_settings = get_model_settings(self.model.name)
                 model_input = self.model.build_generation_input(
                     prompt=prompt,

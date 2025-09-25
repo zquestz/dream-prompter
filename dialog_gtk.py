@@ -8,11 +8,12 @@ Handles all GTK interface creation and layout
 
 import os
 
-import gi
-gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Pango
 
 from i18n import _
+from models import ParameterType
+from models.factory import get_model_by_name, model_factory
+from model_settings import ModelParameterManager
 
 
 class DreamPrompterUI:
@@ -43,7 +44,7 @@ class DreamPrompterUI:
         self.model_settings_widgets = {}
 
     def build_interface(self, parent_dialog):
-        """Build the main plugin interface"""
+        """Build the main plugin interface with two-column layout"""
         if not parent_dialog:
             return
 
@@ -54,23 +55,38 @@ class DreamPrompterUI:
         main_box.set_margin_end(16)
 
         try:
+            columns_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
+            columns_box.set_homogeneous(True)
+
+            left_column = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+            left_column.set_size_request(300, -1)
+
             api_key_section = self._create_api_key_section()
-            main_box.pack_start(api_key_section, False, False, 0)
+            left_column.pack_start(api_key_section, False, False, 0)
 
             model_section = self._create_model_selection_section()
-            main_box.pack_start(model_section, False, False, 0)
-
-            model_settings_section = self._create_model_settings_section()
-            main_box.pack_start(model_settings_section, False, False, 0)
+            left_column.pack_start(model_section, False, False, 0)
 
             mode_section = self._create_mode_section()
-            main_box.pack_start(mode_section, False, False, 0)
+            left_column.pack_start(mode_section, False, False, 0)
 
             prompt_section = self._create_prompt_section()
-            main_box.pack_start(prompt_section, True, True, 0)
+            left_column.pack_start(prompt_section, True, True, 0)
+
+            columns_box.pack_start(left_column, True, True, 0)
+
+            right_column = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+            right_column.set_size_request(300, -1)
+
+            model_settings_section = self._create_model_settings_section()
+            right_column.pack_start(model_settings_section, False, False, 0)
 
             images_section = self._create_additional_images_section()
-            main_box.pack_start(images_section, False, False, 0)
+            right_column.pack_start(images_section, True, True, 0)
+
+            columns_box.pack_start(right_column, True, True, 0)
+
+            main_box.pack_start(columns_box, True, True, 0)
 
             buttons_section = self._create_buttons_section()
             main_box.pack_start(buttons_section, False, False, 0)
@@ -99,7 +115,6 @@ class DreamPrompterUI:
         """Set the selected model"""
         if self.model_dropdown and model_name:
             self.model_dropdown.set_active_id(model_name)
-            from models.factory import get_model_by_name
             model = get_model_by_name(model_name)
             if model:
                 self.update_model_description(model)
@@ -189,7 +204,6 @@ class DreamPrompterUI:
         title_label.set_halign(Gtk.Align.START)
         self.model_settings_section.pack_start(title_label, False, False, 0)
 
-        from model_settings import ModelParameterManager
         try:
             manager = ModelParameterManager(model.name)
             current_values = manager.get_all_parameter_values()
@@ -386,8 +400,6 @@ class DreamPrompterUI:
 
     def _create_model_selection_section(self):
         """Create AI model selection section"""
-        from models.factory import model_factory
-
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
         title_label = Gtk.Label()
@@ -414,7 +426,6 @@ class DreamPrompterUI:
         tree_model = self.model_dropdown.get_model()
         if tree_model and len(tree_model) > 0:
             self.model_dropdown.set_active(0)
-            from models.factory import get_model_by_name
             first_model_id = self.model_dropdown.get_active_id()
             if first_model_id:
                 model = get_model_by_name(first_model_id)
@@ -458,8 +469,6 @@ class DreamPrompterUI:
 
     def _create_parameter_widget(self, param_def, current_value):
         """Create a widget for a single parameter"""
-        from models import ParameterType
-
         container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
 
         label = Gtk.Label()
@@ -646,10 +655,6 @@ class DreamPrompterUI:
             selected_model_name = self.get_selected_model()
             if not selected_model_name:
                 return
-
-            from models import ParameterType
-            from models.factory import get_model_by_name
-            from model_settings import ModelParameterManager
 
             model = get_model_by_name(selected_model_name)
             if not model:
