@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-23 14:39-1000\n"
+"POT-Creation-Date: 2025-09-24 14:30-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: api.py:57 api.py:102 api.py:178
+#: api.py:58 api.py:103 api.py:178
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
-#: api.py:61 dialog_threads.py:103 dialog_threads.py:137
+#: api.py:62 dialog_threads.py:103 dialog_threads.py:137
 msgid "API key is required"
 msgstr ""
 
-#: api.py:106
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr ""
 
-#: api.py:110
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:113 api.py:127 api.py:141 api.py:188 api.py:201 api.py:373 api.py:381
+#: api.py:114 api.py:128 api.py:141 api.py:188 api.py:200 api.py:372 api.py:380
 msgid "Operation cancelled"
 msgstr ""
 
-#: api.py:119
+#: api.py:120
 msgid "Failed to export current image"
 msgstr ""
 
-#: api.py:125
+#: api.py:126
 msgid "Building Replicate edit request..."
 msgstr ""
 
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:150 api.py:210
+#: api.py:150 api.py:209
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
@@ -58,53 +58,53 @@ msgstr ""
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:199
+#: api.py:198
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:265
+#: api.py:264
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:268
+#: api.py:267
 msgid "Logs"
 msgstr ""
 
-#: api.py:272
+#: api.py:271
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
 
-#: api.py:371
+#: api.py:370
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:376
+#: api.py:375
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:379
+#: api.py:378
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:385
+#: api.py:384
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:395
+#: api.py:394
 msgid "Failed to convert any images from API response"
 msgstr ""
 
-#: api.py:399
+#: api.py:398
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:401
+#: api.py:400
 msgid "Image generation complete!"
 msgstr ""
 
-#: dialog.py:24
+#: dialog.py:22
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr ""
 
@@ -129,11 +129,11 @@ msgstr ""
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:169 dialog_gtk.py:342
+#: dialog_events.py:169 dialog_gtk.py:356
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:172 dialog_gtk.py:451
+#: dialog_events.py:172 dialog_gtk.py:462
 msgid "Generate Image"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:199 dialog_gtk.py:337
+#: dialog_events.py:199 dialog_gtk.py:351
 msgid "Cancel"
 msgstr ""
 
@@ -178,84 +178,84 @@ msgstr ""
 msgid "Select up to {max} additional images"
 msgstr ""
 
-#: dialog_gtk.py:96 dialog_gtk.py:609
+#: dialog_gtk.py:112 dialog_gtk.py:618
 msgid "Ready"
 msgstr ""
 
-#: dialog_gtk.py:188
+#: dialog_gtk.py:203
 msgid "Model Settings"
 msgstr ""
 
-#: dialog_gtk.py:240
+#: dialog_gtk.py:254
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:250
+#: dialog_gtk.py:264
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:257 dialog_gtk.py:697
+#: dialog_gtk.py:271 dialog_gtk.py:702
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:267
+#: dialog_gtk.py:281
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:291
+#: dialog_gtk.py:305
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:300
+#: dialog_gtk.py:314
 msgid "Enter your Replicate API key"
 msgstr ""
 
-#: dialog_gtk.py:312
+#: dialog_gtk.py:326
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:320
+#: dialog_gtk.py:334
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:394
+#: dialog_gtk.py:406
 msgid "AI Model"
 msgstr ""
 
-#: dialog_gtk.py:439
+#: dialog_gtk.py:450
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:446
+#: dialog_gtk.py:457
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:562
+#: dialog_gtk.py:571
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:630
+#: dialog_gtk.py:639
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:633
+#: dialog_gtk.py:642
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:637
+#: dialog_gtk.py:646
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr ""
 
-#: dialog_gtk.py:710
+#: dialog_gtk.py:715
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:712
+#: dialog_gtk.py:717
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""
