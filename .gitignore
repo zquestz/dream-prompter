@@ -207,3 +207,7 @@ __marimo__/
 
 # Built i18n files.
 */LC_MESSAGES/*
+
+# Kilocode
+.kilocodeignore
+.kilocode/

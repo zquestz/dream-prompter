@@ -12,6 +12,7 @@ from . import BaseModel, get_model, get_all_models
 # Import models to register them
 from . import nano_banana  # noqa: F401
 from . import seedream4  # noqa: F401
+from . import qwen_image_edit  # noqa: F401
 
 
 class ModelFactory:
