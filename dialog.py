@@ -10,7 +10,7 @@ from gi.repository import GimpUi
 from dialog_events import DreamPrompterEventHandler
 from dialog_gtk import DreamPrompterUI
 from i18n import _
-from models.factory import get_default_model
+from models.factory import get_default_model, get_models_for_context
 from settings import load_settings
 
 
@@ -91,17 +91,26 @@ class DreamPrompterDialog(GimpUi.Dialog):
                 elif self.ui.edit_mode_radio:
                     self.ui.edit_mode_radio.set_active(True)
 
+            if self.ui.model_dropdown:
+                available_models = get_models_for_context(self.ui.has_image)
+
+                stored_model = settings.get("model")
+                model_to_select = None
+
+                if stored_model and stored_model in available_models:
+                    model_to_select = stored_model
+                else:
+                    default_model = get_default_model()
+                    if default_model.name in available_models:
+                        model_to_select = default_model.name
+                    elif available_models:
+                        model_to_select = next(iter(available_models.keys()))
+
+                if model_to_select:
+                    self.ui.set_selected_model(model_to_select)
+
             if settings.get("prompt") and self.ui.prompt_buffer:
                 self.ui.prompt_buffer.set_text(str(settings["prompt"]))
-
-            model_name = settings.get("model")
-            if model_name and self.ui.model_dropdown:
-                self.ui.set_selected_model(str(model_name))
-            elif self.ui.model_dropdown:
-                default_model = get_default_model()
-                if default_model:
-                    model_name = default_model.name
-                    self.ui.set_selected_model(model_name)
 
         except Exception as e:
             print(f"Error loading settings: {e}")

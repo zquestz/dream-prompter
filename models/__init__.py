@@ -11,6 +11,27 @@ from typing import List, Dict, Any, Optional
 from enum import Enum
 
 
+class ModelCapability(Enum):
+    """Model capabilities for different operations"""
+    GENERATE = "generate"
+    EDIT = "edit"
+    BOTH = "both"
+
+
+class OutputFormat(Enum):
+    """Supported output formats"""
+    PNG = "png"
+    JPEG = "jpg"
+    WEBP = "webp"
+
+
+class ParameterMode(Enum):
+    """Modes where parameters are supported"""
+    GENERATE = "generate"
+    EDIT = "edit"
+    BOTH = "both"
+
+
 class ParameterType(Enum):
     """Types of configurable parameters"""
     INTEGER = "integer"
@@ -19,13 +40,6 @@ class ParameterType(Enum):
     BOOLEAN = "boolean"
     CHOICE = "choice"
     RANGE = "range"
-
-
-class ParameterMode(Enum):
-    """Modes where parameters are supported"""
-    GENERATE = "generate"
-    EDIT = "edit"
-    BOTH = "both"
 
 
 class ParameterDefinition:
@@ -129,15 +143,17 @@ class ParameterDefinition:
             return self.default_value
 
 
-class OutputFormat(Enum):
-    """Supported output formats"""
-    PNG = "png"
-    JPEG = "jpg"
-    WEBP = "webp"
-
-
 class BaseModel(ABC):
     """Abstract base class for all AI models"""
+
+    @property
+    @abstractmethod
+    def capabilities(self) -> ModelCapability:
+        """
+        Get model capabilities (default: both generate and edit)
+        Override in subclasses for models with specific limitations
+        """
+        return ModelCapability.BOTH
 
     @property
     @abstractmethod
@@ -299,6 +315,22 @@ class BaseModel(ABC):
 
         return param_def.default_value
 
+    def is_mode_supported(self, mode: str) -> bool:
+        """Check if a specific mode is supported"""
+        if mode == "generate":
+            return self.supports_generation()
+        elif mode == "edit":
+            return self.supports_editing()
+        return False
+
+    def supports_generation(self) -> bool:
+        """Check if model supports image generation"""
+        return self.capabilities in [ModelCapability.GENERATE, ModelCapability.BOTH]
+
+    def supports_editing(self) -> bool:
+        """Check if model supports image editing"""
+        return self.capabilities in [ModelCapability.EDIT, ModelCapability.BOTH]
+
     def validate_file_size(self, size_bytes: int) -> bool:
         """
         Validate file size
@@ -349,6 +381,45 @@ def get_model(name: str) -> Optional[BaseModel]:
 def get_all_models() -> Dict[str, BaseModel]:
     """Get all registered models"""
     return _model_registry.copy()
+
+
+def get_compatible_models(mode: str) -> Dict[str, BaseModel]:
+    """
+    Get models compatible with a specific mode
+
+    Args:
+        mode: Operation mode ("generate" or "edit")
+
+    Returns:
+        Dictionary of compatible models
+    """
+    all_models = get_all_models()
+    return {name: model for name, model in all_models.items()
+            if model.is_mode_supported(mode)}
+
+
+def get_models_for_context(has_image: bool = False) -> Dict[str, BaseModel]:
+    """
+    Get models appropriate for the current context
+
+    Args:
+        has_image: Whether an image is currently open in GIMP
+
+    Returns:
+        Dictionary of model name -> model instance filtered by context
+    """
+    all_models = get_all_models()
+    filtered_models = {}
+
+    for name, model in all_models.items():
+        if has_image:
+            if model.supports_editing() or model.supports_generation():
+                filtered_models[name] = model
+        else:
+            if model.supports_generation():
+                filtered_models[name] = model
+
+    return filtered_models
 
 
 def get_model_names() -> List[str]:

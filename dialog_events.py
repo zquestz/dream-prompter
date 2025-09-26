@@ -150,6 +150,9 @@ class DreamPrompterEventHandler:
                 self.ui.update_model_description(new_model)
                 self.ui.update_model_settings_ui(new_model)
 
+                current_mode = self.dialog.get_current_mode()
+                self.ui.update_mode_sensitivity(new_model, current_mode)
+
     def on_mode_changed(self, _radio_button):
         """Handle mode selection changes"""
         if not self.ui.edit_mode_radio:

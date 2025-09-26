@@ -12,7 +12,7 @@ from gi.repository import Gtk, Pango
 
 from i18n import _
 from models import ParameterType
-from models.factory import get_model_by_name, model_factory
+from models.factory import get_model_by_name, get_models_for_context
 from model_settings import ModelParameterManager
 
 
@@ -47,6 +47,9 @@ class DreamPrompterUI:
         """Build the main plugin interface with two-column layout"""
         if not parent_dialog:
             return
+
+        has_image = bool(parent_dialog.image and parent_dialog.drawable)
+        self.set_has_image(has_image)
 
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
         main_box.set_margin_top(16)
@@ -111,6 +114,36 @@ class DreamPrompterUI:
         if self.status_label:
             self.status_label.set_text(_("Ready"))
 
+    def refresh_model_dropdown(self):
+        """Refresh the model dropdown with context-appropriate models"""
+        if not self.model_dropdown:
+            return
+
+        current_model = self.get_selected_model()
+
+        self.model_dropdown.remove_all()
+
+        available_models = get_models_for_context(self.has_image)
+        sorted_models = sorted(
+          available_models.items(),
+          key=lambda x: x[1].display_name
+        )
+
+        for model_name, model in sorted_models:
+            display_text = f"{model.display_name}"
+            self.model_dropdown.append(model_name, display_text)
+
+        if current_model and current_model in available_models:
+            self.set_selected_model(current_model)
+        else:
+            tree_model = self.model_dropdown.get_model()
+            if tree_model and len(tree_model) > 0:
+                self.model_dropdown.set_active(0)
+
+    def set_has_image(self, has_image: bool):
+        """Set whether an image is available and refresh model list"""
+        self.has_image = has_image
+
     def set_selected_model(self, model_name):
         """Set the selected model"""
         if self.model_dropdown and model_name:
@@ -159,6 +192,25 @@ class DreamPrompterUI:
             self._update_empty_files_display()
         else:
             self._update_files_with_content()
+
+    def update_mode_sensitivity(self, model, current_mode: str):
+        """Update mode radio button sensitivity based on model capabilities AND context"""
+        if not model or not self.edit_mode_radio or not self.generate_mode_radio:
+            return
+
+        edit_supported = model.supports_editing()
+        generate_supported = model.supports_generation()
+
+        edit_enabled = edit_supported and self.has_image
+        generate_enabled = generate_supported
+
+        self.edit_mode_radio.set_sensitive(edit_enabled)
+        self.generate_mode_radio.set_sensitive(generate_enabled)
+
+        if current_mode == "edit" and not edit_enabled and generate_enabled:
+            self.generate_mode_radio.set_active(True)
+        elif current_mode == "generate" and not generate_enabled and edit_enabled:
+            self.edit_mode_radio.set_active(True)
 
     def update_model_description(self, model):
         """Update the model description help text"""
@@ -409,9 +461,13 @@ class DreamPrompterUI:
 
         self.model_dropdown = Gtk.ComboBoxText()
 
-        available_models = model_factory.get_available_models()
+        available_models = get_models_for_context(self.has_image)
+        sorted_models = sorted(
+          available_models.items(),
+          key=lambda x: x[1].display_name
+        )
 
-        for model_name, model in available_models.items():
+        for model_name, model in sorted_models:
             display_text = f"{model.display_name}"
             self.model_dropdown.append(model_name, display_text)
 

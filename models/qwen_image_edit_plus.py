@@ -12,6 +12,7 @@ from typing import List, Dict, Any, Optional
 
 from . import (
     BaseModel,
+    ModelCapability,
     OutputFormat,
     ParameterDefinition,
     ParameterType,
@@ -25,9 +26,14 @@ class QwenImageEditModel(BaseModel):
     """Qwen Image Edit Plus model implementation for Replicate"""
 
     @property
+    def capabilities(self) -> ModelCapability:
+        """Qwen Image Edit Plus only supports editing, not generation"""
+        return ModelCapability.EDIT
+
+    @property
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        return OutputFormat.JPG
+        return OutputFormat.PNG
 
     @property
     def description(self) -> str:
@@ -62,7 +68,7 @@ class QwenImageEditModel(BaseModel):
     @property
     def supported_mime_types(self) -> List[str]:
         """List of supported MIME types for reference images"""
-        return ["image/png", "image/jpeg", "image/webp"]
+        return ["image/gif","image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
         self, prompt: str, main_image,
@@ -105,7 +111,6 @@ class QwenImageEditModel(BaseModel):
             "image": image
         }
 
-        # Add conditional parameters
         if params.get("go_fast") is not None:
             model_input["go_fast"] = params["go_fast"]
         if params.get("seed", 0) != 0:
@@ -148,7 +153,6 @@ class QwenImageEditModel(BaseModel):
             "image": reference_images or []
         }
 
-        # Add conditional parameters
         if params.get("aspect_ratio"):
             model_input["aspect_ratio"] = params["aspect_ratio"]
         if params.get("go_fast") is not None:
@@ -200,7 +204,7 @@ class QwenImageEditModel(BaseModel):
                 default_value="png",
                 label=_("Output Format"),
                 description=_("Output image format"),
-                choices=["png", "jpg"],
+                choices=["jpg", "png", "webp"],
                 supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(

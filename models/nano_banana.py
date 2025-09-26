@@ -9,13 +9,18 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import (BaseModel, OutputFormat, ParameterDefinition,
+from . import (BaseModel, ModelCapability, OutputFormat, ParameterDefinition,
                ParameterType, ParameterMode, register_model)
 from i18n import _
 
 
 class NanaBananaModel(BaseModel):
     """Google's Nano Banana model implementation for Replicate"""
+
+    @property
+    def capabilities(self) -> ModelCapability:
+        """Nano Banana supports editing and generation"""
+        return ModelCapability.BOTH
 
     @property
     def default_output_format(self) -> OutputFormat:
