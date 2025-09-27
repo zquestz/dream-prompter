@@ -38,7 +38,7 @@ class QwenImageEditModel(BaseModel):
     @property
     def description(self) -> str:
         """Model description"""
-        return _("Qwen's advanced image editing model with generation capabilities")
+        return _("Qwen's advanced image editing model")
 
     @property
     def display_name(self) -> str:
@@ -142,31 +142,8 @@ class QwenImageEditModel(BaseModel):
         Returns:
             Dictionary of input parameters for the Replicate API
         """
-        params = self.build_parameters_dict(user_settings or {})
 
-        for key, value in kwargs.items():
-            if key in params:
-                params[key] = value
-
-        model_input = {
-            "prompt": prompt,
-            "image": reference_images or []
-        }
-
-        if params.get("aspect_ratio"):
-            model_input["aspect_ratio"] = params["aspect_ratio"]
-        if params.get("go_fast") is not None:
-            model_input["go_fast"] = params["go_fast"]
-        if params.get("seed", 0) != 0:
-            model_input["seed"] = params["seed"]
-        if params.get("output_format"):
-            model_input["output_format"] = params["output_format"]
-        if params.get("output_quality") and params.get("output_format") == "jpg":
-            model_input["output_quality"] = params["output_quality"]
-        if params.get("disable_safety_checker") is not None:
-            model_input["disable_safety_checker"] = params["disable_safety_checker"]
-
-        return {k: v for k, v in model_input.items() if v is not None}
+        return {}
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
         """Get list of configurable parameters for Qwen Image Edit Plus"""

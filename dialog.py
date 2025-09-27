@@ -10,7 +10,7 @@ from gi.repository import GimpUi
 from dialog_events import DreamPrompterEventHandler
 from dialog_gtk import DreamPrompterUI
 from i18n import _
-from models.factory import get_default_model, get_models_for_context
+from models.factory import get_default_model, get_model_by_name, get_models_for_context
 from settings import load_settings
 
 
@@ -108,6 +108,14 @@ class DreamPrompterDialog(GimpUi.Dialog):
 
                 if model_to_select:
                     self.ui.set_selected_model(model_to_select)
+
+                if self.ui.model_dropdown:
+                    selected_model_name = self.ui.get_selected_model()
+                    if selected_model_name:
+                        model = get_model_by_name(selected_model_name)
+                        if model:
+                            current_mode = self.get_current_mode()
+                            self.ui.update_mode_sensitivity(model, current_mode)
 
             if settings.get("prompt") and self.ui.prompt_buffer:
                 self.ui.prompt_buffer.set_text(str(settings["prompt"]))
