@@ -56,7 +56,7 @@ def extract_strings() -> bool:
         '--from-code=UTF-8',
         '--copyright-holder=Josh Ellithorpe',
         '--package-name=Dream Prompter',
-        '--package-version=1.1.1',
+        '--package-version=1.1.2',
         '--msgid-bugs-address=quest@mac.com',
         '--add-comments=TRANSLATORS'
     ] + python_files

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-24 14:30-1000\n"
+"POT-Creation-Date: 2025-09-26 14:34-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:646
+#: dialog_gtk.py:702
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:642
+#: dialog_gtk.py:698
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AI图层"
 
-#: dialog_gtk.py:406
+#: dialog_gtk.py:458
 msgid "AI Model"
 msgstr "AI模型"
 
-#: dialog_gtk.py:571
+#: dialog_gtk.py:627
 msgid "AI Prompt"
 msgstr "AI提示词"
 
@@ -71,11 +71,12 @@ msgstr "已添加 {count} 层"
 msgid "Adding layer {num}..."
 msgstr "正在添加图层 {num}..."
 
-#: dialog_gtk.py:254
+#: dialog_gtk.py:306
 msgid "Additional Images (Optional)"
 msgstr "附加图像（可选）"
 
-#: models/seedream4.py:190
+#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
+#: models/seedream4.py:195
 msgid "Aspect Ratio"
 msgstr "宽高比"
 
@@ -83,11 +84,15 @@ msgstr "宽高比"
 msgid "Building Replicate edit request..."
 msgstr "构建Replicate编辑请求..."
 
-#: models/seedream4.py:29
+#: models/qwen_image_edit_plus.py:202
+msgid "Bypass safety checks"
+msgstr "绕过安全检查"
+
+#: models/seedream4.py:34
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance的统一生成和编辑模型"
 
-#: dialog_events.py:199 dialog_gtk.py:351
+#: dialog_events.py:202 dialog_gtk.py:403
 msgid "Cancel"
 msgstr "取消"
 
@@ -95,38 +100,47 @@ msgstr "取消"
 msgid "Cancelling..."
 msgstr "正在取消..."
 
-#: dialog_events.py:229
+#: dialog_events.py:232
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr "无法添加{count}个文件。编辑模式下最多允许{max}张参考图像。"
 
-#: dialog_events.py:234
+#: dialog_events.py:237
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "无法添加{count}个文件。最多允许{max}个参考图像。"
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:333
 msgid "Clear selected files"
 msgstr "清除选定的文件"
 
-#: models/seedream4.py:191
+#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
+#: models/seedream4.py:196
 msgid "Control aspect ratio of generated images"
 msgstr "控制生成图像的宽高比"
+
+#: models/imagen4.py:160
+msgid "Control safety of generated images"
+msgstr "控制生成图像的安全性"
 
 #: dialog_threads.py:352
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "正在创建图像 {num}..."
 
-#: models/seedream4.py:180
+#: models/seedream4.py:185
 msgid "Custom height in pixels"
 msgstr "自定义像素高度"
 
-#: models/seedream4.py:169
+#: models/seedream4.py:174
 msgid "Custom width in pixels"
 msgstr "自定义像素宽度"
+
+#: models/qwen_image_edit_plus.py:201
+msgid "Disable Safety Checker"
+msgstr "禁用安全检查器"
 
 #: api.py:378
 msgid "Downloading result..."
@@ -140,7 +154,7 @@ msgstr "Dream Prompter - AI图像创建器/编辑器"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:457
+#: dialog_gtk.py:513
 msgid "Edit Image"
 msgstr "编辑图像"
 
@@ -148,7 +162,11 @@ msgstr "编辑图像"
 msgid "Edit mode requires a selected layer"
 msgstr "编辑模式需要选择一个图层"
 
-#: dialog_gtk.py:314
+#: models/qwen_image_edit_plus.py:165
+msgid "Enable speed optimizations"
+msgstr "启用速度优化"
+
+#: dialog_gtk.py:366
 msgid "Enter your Replicate API key"
 msgstr "输入您的Replicate API密钥"
 
@@ -175,19 +193,19 @@ msgstr "无法从API响应转换图像"
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
 
-#: models/nano_banana.py:147
+#: models/imagen4.py:151 models/nano_banana.py:152
 msgid "Format for generated images"
 msgstr "生成图像的格式"
 
-#: dialog_events.py:169 dialog_gtk.py:356
+#: dialog_events.py:172 dialog_gtk.py:408
 msgid "Generate Edit"
 msgstr "生成编辑"
 
-#: dialog_events.py:172 dialog_gtk.py:462
+#: dialog_events.py:175 dialog_gtk.py:518
 msgid "Generate Image"
 msgstr "生成图像"
 
-#: models/seedream4.py:211
+#: models/seedream4.py:216
 msgid "Generate images sequentially or in parallel"
 msgstr "顺序或并行生成图像"
 
@@ -200,24 +218,32 @@ msgstr "已生成 {count} 张图像"
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成图像..."
 
-#: dialog_gtk.py:334
+#: dialog_gtk.py:386
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "从<a href=\"{url}\">Replicate</a>获取您的API密钥"
 
-#: models/nano_banana.py:28
+#: models/qwen_image_edit_plus.py:164
+msgid "Go Fast"
+msgstr "快速模式"
+
+#: models/nano_banana.py:33
 msgid "Google's advanced image generation and editing model"
 msgstr "Google的高级图像生成和编辑模型"
 
-#: models/seedream4.py:179
+#: models/imagen4.py:39
+msgid "Google's advanced image generation model"
+msgstr "Google的高级图像生成模型"
+
+#: models/seedream4.py:184
 msgid "Height"
 msgstr "高度"
 
-#: dialog_events.py:251
+#: dialog_events.py:254
 msgid "Hide API key"
 msgstr "隐藏API密钥"
 
-#: models/seedream4.py:159
+#: models/seedream4.py:164
 msgid "Image Size"
 msgstr "图像大小"
 
@@ -229,23 +255,31 @@ msgstr "图像编辑完成！"
 msgid "Image generation complete!"
 msgstr "图像生成完成！"
 
+#: models/imagen4.py:44
+msgid "Imagen 4"
+msgstr "Imagen 4"
+
 #: dialog_events.py:129
 msgid "Initializing API request..."
 msgstr "正在初始化API请求..."
+
+#: models/qwen_image_edit_plus.py:192
+msgid "JPEG quality (0-100, ignored for PNG)"
+msgstr "JPEG质量 (0-100，PNG时忽略)"
 
 #: api.py:267
 msgid "Logs"
 msgstr "日志"
 
-#: models/seedream4.py:200
+#: models/seedream4.py:205
 msgid "Max Images"
 msgstr "最大图像数"
 
-#: models/seedream4.py:201
+#: models/seedream4.py:206
 msgid "Maximum number of images to generate"
 msgstr "要生成的最大图像数量"
 
-#: dialog_gtk.py:203
+#: dialog_gtk.py:255
 msgid "Model Settings"
 msgstr "模型设置"
 
@@ -254,7 +288,7 @@ msgstr "模型设置"
 msgid "Model error: {error}"
 msgstr "模型错误：{error}"
 
-#: models/nano_banana.py:33
+#: models/nano_banana.py:38
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
@@ -266,7 +300,7 @@ msgstr "否"
 msgid "No GIMP image provided for editing"
 msgstr "未提供用于编辑的GIMP图像"
 
-#: dialog_gtk.py:271 dialog_gtk.py:702
+#: dialog_gtk.py:323 dialog_gtk.py:758
 msgid "No additional images selected"
 msgstr "未选择附加图像"
 
@@ -294,7 +328,7 @@ msgstr "API响应中没有有效图像数据"
 msgid "Not set"
 msgstr "未设置"
 
-#: dialog_gtk.py:450
+#: dialog_gtk.py:506
 msgid "Operation Mode"
 msgstr "操作模式"
 
@@ -302,9 +336,18 @@ msgstr "操作模式"
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: models/nano_banana.py:146
+#: models/imagen4.py:150 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:182
 msgid "Output Format"
 msgstr "输出格式"
+
+#: models/qwen_image_edit_plus.py:191
+msgid "Output Quality"
+msgstr "输出质量"
+
+#: models/qwen_image_edit_plus.py:183
+msgid "Output image format"
+msgstr "输出图像格式"
 
 #: dialog_events.py:113
 msgid "Please enter a prompt"
@@ -326,16 +369,28 @@ msgstr "处理Replicate响应..."
 msgid "Prompt is required"
 msgstr "需要提示词"
 
-#: dialog_gtk.py:112 dialog_gtk.py:618
+#: models/qwen_image_edit_plus.py:46
+msgid "Qwen Image Edit Plus"
+msgstr "Qwen Image Edit Plus"
+
+#: models/qwen_image_edit_plus.py:41
+msgid "Qwen's advanced image editing model"
+msgstr "Qwen的高级图像编辑模型"
+
+#: models/qwen_image_edit_plus.py:173
+msgid "Random seed for reproducible results (0 = random)"
+msgstr "可重现结果的随机种子 (0 = 随机)"
+
+#: dialog_gtk.py:115 dialog_gtk.py:674
 msgid "Ready"
 msgstr "就绪"
 
-#: dialog_events.py:165
+#: dialog_events.py:168
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "减少到{max}张参考图像用于编辑模式"
 
-#: dialog_gtk.py:305
+#: dialog_gtk.py:357
 msgid "Replicate API Key"
 msgstr "Replicate API密钥"
 
@@ -348,27 +403,35 @@ msgstr "Replicate API错误：{error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。请安装google-genai"
 
-#: models/seedream4.py:160
+#: models/seedream4.py:165
 msgid "Resolution preset for generated images"
 msgstr "生成图像的分辨率预设"
 
-#: models/seedream4.py:34
+#: models/imagen4.py:159
+msgid "Safety Filter Level"
+msgstr "安全过滤级别"
+
+#: models/qwen_image_edit_plus.py:172
+msgid "Seed"
+msgstr "种子"
+
+#: models/seedream4.py:39
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:200
+#: dialog_events.py:203
 msgid "Select"
 msgstr "选择"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:316
 msgid "Select Images..."
 msgstr "选择图像..."
 
-#: dialog_events.py:194
+#: dialog_events.py:197
 msgid "Select Reference Images"
 msgstr "选择参考图像"
 
-#: dialog_events.py:306 dialog_events.py:314
+#: dialog_events.py:309 dialog_events.py:317
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "最多选择{max}张附加图像"
@@ -381,19 +444,19 @@ msgstr "向Replicate发送编辑请求..."
 msgid "Sending request to Replicate..."
 msgstr "向Replicate发送请求..."
 
-#: models/seedream4.py:210
+#: models/seedream4.py:215
 msgid "Sequential Generation"
 msgstr "顺序生成"
 
-#: dialog_events.py:258
+#: dialog_events.py:261
 msgid "Show API key"
 msgstr "显示API密钥"
 
-#: dialog_gtk.py:326
+#: dialog_gtk.py:378
 msgid "Show/Hide API key"
 msgstr "显示/隐藏API密钥"
 
-#: dialog_events.py:203
+#: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支持的图像格式（PNG、JPEG、WebP）"
 
@@ -421,7 +484,7 @@ msgstr "图像生成过程中出现意外错误：{error}"
 msgid "Unexpected error: {error}"
 msgstr "意外错误：{error}"
 
-#: models/seedream4.py:168
+#: models/seedream4.py:173
 msgid "Width"
 msgstr "宽度"
 
@@ -429,12 +492,12 @@ msgstr "宽度"
 msgid "Yes"
 msgstr "是"
 
-#: dialog_gtk.py:715
+#: dialog_gtk.py:771
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已选择{count}张图像"
 
-#: dialog_gtk.py:717
+#: dialog_gtk.py:773
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已选择{count}张图像"
@@ -444,7 +507,7 @@ msgstr "已选择{count}张图像"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI编辑：{prompt}）"
 
-#: dialog_gtk.py:639
+#: dialog_gtk.py:695
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"

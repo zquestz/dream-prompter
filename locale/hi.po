@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-24 14:30-1000\n"
+"POT-Creation-Date: 2025-09-26 14:34-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:646
+#: dialog_gtk.py:702
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:642
+#: dialog_gtk.py:698
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI निर्मित: {prompt}"
 msgid "AI Layer"
 msgstr "AI परत"
 
-#: dialog_gtk.py:406
+#: dialog_gtk.py:458
 msgid "AI Model"
 msgstr "एआई मॉडल"
 
-#: dialog_gtk.py:571
+#: dialog_gtk.py:627
 msgid "AI Prompt"
 msgstr "AI प्रॉम्प्ट"
 
@@ -71,11 +71,12 @@ msgstr "{count} परतें जोड़ी गईं"
 msgid "Adding layer {num}..."
 msgstr "परत {num} जोड़ी जा रही है..."
 
-#: dialog_gtk.py:254
+#: dialog_gtk.py:306
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: models/seedream4.py:190
+#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
+#: models/seedream4.py:195
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
@@ -83,11 +84,15 @@ msgstr "पहलू अनुपात"
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
-#: models/seedream4.py:29
+#: models/qwen_image_edit_plus.py:202
+msgid "Bypass safety checks"
+msgstr "सुरक्षा जांच को दरकिनार करें"
+
+#: models/seedream4.py:34
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
 
-#: dialog_events.py:199 dialog_gtk.py:351
+#: dialog_events.py:202 dialog_gtk.py:403
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -95,7 +100,7 @@ msgstr "रद्द करें"
 msgid "Cancelling..."
 msgstr "रद्द किया जा रहा है..."
 
-#: dialog_events.py:229
+#: dialog_events.py:232
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -104,31 +109,40 @@ msgstr ""
 "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम {max} संदर्भ छवियों की अनुमति "
 "है।"
 
-#: dialog_events.py:234
+#: dialog_events.py:237
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम {max} संदर्भ छवियों की अनुमति है।"
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:333
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: models/seedream4.py:191
+#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
+#: models/seedream4.py:196
 msgid "Control aspect ratio of generated images"
 msgstr "जेनेरेट की गई छवियों का पहलू अनुपात नियंत्रित करें"
+
+#: models/imagen4.py:160
+msgid "Control safety of generated images"
+msgstr "जेनेरेट की गई छवियों की सुरक्षा नियंत्रित करें"
 
 #: dialog_threads.py:352
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "छवि {num} बनाई जा रही है..."
 
-#: models/seedream4.py:180
+#: models/seedream4.py:185
 msgid "Custom height in pixels"
 msgstr "पिक्सेल में कस्टम ऊंचाई"
 
-#: models/seedream4.py:169
+#: models/seedream4.py:174
 msgid "Custom width in pixels"
 msgstr "पिक्सेल में कस्टम चौड़ाई"
+
+#: models/qwen_image_edit_plus.py:201
+msgid "Disable Safety Checker"
+msgstr "सुरक्षा चेकर को निष्क्रिय करें"
 
 #: api.py:378
 msgid "Downloading result..."
@@ -142,7 +156,7 @@ msgstr "Dream Prompter - AI छवि निर्माता/संपाद�
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:457
+#: dialog_gtk.py:513
 msgid "Edit Image"
 msgstr "छवि संपादित करें"
 
@@ -150,7 +164,11 @@ msgstr "छवि संपादित करें"
 msgid "Edit mode requires a selected layer"
 msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
-#: dialog_gtk.py:314
+#: models/qwen_image_edit_plus.py:165
+msgid "Enable speed optimizations"
+msgstr "गति अनुकूलन सक्षम करें"
+
+#: dialog_gtk.py:366
 msgid "Enter your Replicate API key"
 msgstr "अपनी Replicate API कुंजी दर्ज करें"
 
@@ -177,19 +195,19 @@ msgstr "API प्रतिक्रिया से छवियों को �
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
 
-#: models/nano_banana.py:147
+#: models/imagen4.py:151 models/nano_banana.py:152
 msgid "Format for generated images"
 msgstr "जेनेरेट की गई छवियों का प्रारूप"
 
-#: dialog_events.py:169 dialog_gtk.py:356
+#: dialog_events.py:172 dialog_gtk.py:408
 msgid "Generate Edit"
 msgstr "संपादन उत्पन्न करें"
 
-#: dialog_events.py:172 dialog_gtk.py:462
+#: dialog_events.py:175 dialog_gtk.py:518
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: models/seedream4.py:211
+#: models/seedream4.py:216
 msgid "Generate images sequentially or in parallel"
 msgstr "छवियों को क्रमिक या समानांतर में जेनेरेट करें"
 
@@ -202,24 +220,32 @@ msgstr "{count} छवियां जेनेरेट की गईं"
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
 
-#: dialog_gtk.py:334
+#: dialog_gtk.py:386
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी प्राप्त करें"
 
-#: models/nano_banana.py:28
+#: models/qwen_image_edit_plus.py:164
+msgid "Go Fast"
+msgstr "तेज़ मोड"
+
+#: models/nano_banana.py:33
 msgid "Google's advanced image generation and editing model"
 msgstr "Google का उन्नत चित्र निर्माण और संपादन मॉडल"
 
-#: models/seedream4.py:179
+#: models/imagen4.py:39
+msgid "Google's advanced image generation model"
+msgstr "Google का उन्नत चित्र निर्माण मॉडल"
+
+#: models/seedream4.py:184
 msgid "Height"
 msgstr "ऊंचाई"
 
-#: dialog_events.py:251
+#: dialog_events.py:254
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: models/seedream4.py:159
+#: models/seedream4.py:164
 msgid "Image Size"
 msgstr "छवि का आकार"
 
@@ -231,23 +257,31 @@ msgstr "छवि संपादन पूर्ण!"
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
+#: models/imagen4.py:44
+msgid "Imagen 4"
+msgstr "Imagen 4"
+
 #: dialog_events.py:129
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
+
+#: models/qwen_image_edit_plus.py:192
+msgid "JPEG quality (0-100, ignored for PNG)"
+msgstr "JPEG गुणवत्ता (0-100, PNG के लिए अनदेखा)"
 
 #: api.py:267
 msgid "Logs"
 msgstr "लॉग"
 
-#: models/seedream4.py:200
+#: models/seedream4.py:205
 msgid "Max Images"
 msgstr "अधिकतम छवियां"
 
-#: models/seedream4.py:201
+#: models/seedream4.py:206
 msgid "Maximum number of images to generate"
 msgstr "जेनेरेट करने के लिए छवियों की अधिकतम संख्या"
 
-#: dialog_gtk.py:203
+#: dialog_gtk.py:255
 msgid "Model Settings"
 msgstr "मॉडल सेटिंग्स"
 
@@ -256,7 +290,7 @@ msgstr "मॉडल सेटिंग्स"
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
 
-#: models/nano_banana.py:33
+#: models/nano_banana.py:38
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
@@ -268,7 +302,7 @@ msgstr "नहीं"
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
-#: dialog_gtk.py:271 dialog_gtk.py:702
+#: dialog_gtk.py:323 dialog_gtk.py:758
 msgid "No additional images selected"
 msgstr "कोई अतिरिक्त छवियां चयनित नहीं"
 
@@ -296,7 +330,7 @@ msgstr "API प्रतिक्रिया में कोई वैध छ�
 msgid "Not set"
 msgstr "सेट नहीं किया गया"
 
-#: dialog_gtk.py:450
+#: dialog_gtk.py:506
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
@@ -304,9 +338,18 @@ msgstr "ऑपरेशन मोड"
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
-#: models/nano_banana.py:146
+#: models/imagen4.py:150 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:182
 msgid "Output Format"
 msgstr "आउटपुट प्रारूप"
+
+#: models/qwen_image_edit_plus.py:191
+msgid "Output Quality"
+msgstr "आउटपुट गुणवत्ता"
+
+#: models/qwen_image_edit_plus.py:183
+msgid "Output image format"
+msgstr "आउटपुट छवि प्रारूप"
 
 #: dialog_events.py:113
 msgid "Please enter a prompt"
@@ -328,16 +371,28 @@ msgstr "Replicate प्रतिक्रिया संसाधित की
 msgid "Prompt is required"
 msgstr "प्रॉम्प्ट आवश्यक है"
 
-#: dialog_gtk.py:112 dialog_gtk.py:618
+#: models/qwen_image_edit_plus.py:46
+msgid "Qwen Image Edit Plus"
+msgstr "Qwen Image Edit Plus"
+
+#: models/qwen_image_edit_plus.py:41
+msgid "Qwen's advanced image editing model"
+msgstr "Qwen का उन्नत छवि संपादन मॉडल"
+
+#: models/qwen_image_edit_plus.py:173
+msgid "Random seed for reproducible results (0 = random)"
+msgstr "पुनरुत्पादन योग्य परिणामों के लिए यादृच्छिक सीड (0 = यादृच्छिक)"
+
+#: dialog_gtk.py:115 dialog_gtk.py:674
 msgid "Ready"
 msgstr "तैयार"
 
-#: dialog_events.py:165
+#: dialog_events.py:168
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "संपादन मोड के लिए {max} संदर्भ छवियों को कम कर दिया गया"
 
-#: dialog_gtk.py:305
+#: dialog_gtk.py:357
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
@@ -350,27 +405,35 @@ msgstr "Replicate API त्रुटि: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
-#: models/seedream4.py:160
+#: models/seedream4.py:165
 msgid "Resolution preset for generated images"
 msgstr "जेनेरेट की गई छवियों के लिए रिज़ॉल्यूशन प्रीसेट"
 
-#: models/seedream4.py:34
+#: models/imagen4.py:159
+msgid "Safety Filter Level"
+msgstr "सुरक्षा फिल्टर स्तर"
+
+#: models/qwen_image_edit_plus.py:172
+msgid "Seed"
+msgstr "सीड"
+
+#: models/seedream4.py:39
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
-#: dialog_events.py:200
+#: dialog_events.py:203
 msgid "Select"
 msgstr "चुनें"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:316
 msgid "Select Images..."
 msgstr "छवियां चुनें..."
 
-#: dialog_events.py:194
+#: dialog_events.py:197
 msgid "Select Reference Images"
 msgstr "संदर्भ छवियां चुनें"
 
-#: dialog_events.py:306 dialog_events.py:314
+#: dialog_events.py:309 dialog_events.py:317
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
@@ -383,19 +446,19 @@ msgstr "Replicate को संपादन अनुरोध भेजा ज�
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
-#: models/seedream4.py:210
+#: models/seedream4.py:215
 msgid "Sequential Generation"
 msgstr "क्रमिक जेनेरेशन"
 
-#: dialog_events.py:258
+#: dialog_events.py:261
 msgid "Show API key"
 msgstr "API कुंजी दिखाएं"
 
-#: dialog_gtk.py:326
+#: dialog_gtk.py:378
 msgid "Show/Hide API key"
 msgstr "API कुंजी दिखाएं/छुपाएं"
 
-#: dialog_events.py:203
+#: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "समर्थित छवियां (PNG, JPEG, WebP)"
 
@@ -424,7 +487,7 @@ msgstr "छवि उत्पादन के दौरान अप्रत�
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
 
-#: models/seedream4.py:168
+#: models/seedream4.py:173
 msgid "Width"
 msgstr "चौड़ाई"
 
@@ -432,12 +495,12 @@ msgstr "चौड़ाई"
 msgid "Yes"
 msgstr "हाँ"
 
-#: dialog_gtk.py:715
+#: dialog_gtk.py:771
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} छवि चयनित"
 
-#: dialog_gtk.py:717
+#: dialog_gtk.py:773
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} छवियां चयनित"
@@ -447,7 +510,7 @@ msgstr "{count} छवियां चयनित"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI संपादन: {prompt})"
 
-#: dialog_gtk.py:639
+#: dialog_gtk.py:695
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार हो गया)"

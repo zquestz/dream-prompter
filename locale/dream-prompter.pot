@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.1.1\n"
+"Project-Id-Version: Dream Prompter 1.1.2\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-24 14:31-1000\n"
+"POT-Creation-Date: 2025-09-26 14:34-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,138 +124,138 @@ msgstr ""
 msgid "Initializing API request..."
 msgstr ""
 
-#: dialog_events.py:165
+#: dialog_events.py:168
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:169 dialog_gtk.py:356
+#: dialog_events.py:172 dialog_gtk.py:408
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:172 dialog_gtk.py:462
+#: dialog_events.py:175 dialog_gtk.py:518
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:194
+#: dialog_events.py:197
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:199 dialog_gtk.py:351
+#: dialog_events.py:202 dialog_gtk.py:403
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:200
+#: dialog_events.py:203
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:203
+#: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr ""
 
-#: dialog_events.py:229
+#: dialog_events.py:232
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr ""
 
-#: dialog_events.py:234
+#: dialog_events.py:237
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 
-#: dialog_events.py:251
+#: dialog_events.py:254
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:258
+#: dialog_events.py:261
 msgid "Show API key"
 msgstr ""
 
-#: dialog_events.py:306 dialog_events.py:314
+#: dialog_events.py:309 dialog_events.py:317
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr ""
 
-#: dialog_gtk.py:112 dialog_gtk.py:618
+#: dialog_gtk.py:115 dialog_gtk.py:674
 msgid "Ready"
 msgstr ""
 
-#: dialog_gtk.py:203
+#: dialog_gtk.py:255
 msgid "Model Settings"
 msgstr ""
 
-#: dialog_gtk.py:254
+#: dialog_gtk.py:306
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:316
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:271 dialog_gtk.py:702
+#: dialog_gtk.py:323 dialog_gtk.py:758
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:281
+#: dialog_gtk.py:333
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:305
+#: dialog_gtk.py:357
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:314
+#: dialog_gtk.py:366
 msgid "Enter your Replicate API key"
 msgstr ""
 
-#: dialog_gtk.py:326
+#: dialog_gtk.py:378
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:334
+#: dialog_gtk.py:386
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:406
+#: dialog_gtk.py:458
 msgid "AI Model"
 msgstr ""
 
-#: dialog_gtk.py:450
+#: dialog_gtk.py:506
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:457
+#: dialog_gtk.py:513
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:571
+#: dialog_gtk.py:627
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:639
+#: dialog_gtk.py:695
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:642
+#: dialog_gtk.py:698
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:646
+#: dialog_gtk.py:702
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr ""
 
-#: dialog_gtk.py:715
+#: dialog_gtk.py:771
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:717
+#: dialog_gtk.py:773
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""
@@ -375,74 +375,137 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: models/nano_banana.py:28
-msgid "Google's advanced image generation and editing model"
+#: models/imagen4.py:39
+msgid "Google's advanced image generation model"
 msgstr ""
 
-#: models/nano_banana.py:33
-msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
+#: models/imagen4.py:44
+msgid "Imagen 4"
 msgstr ""
 
-#: models/nano_banana.py:146
-msgid "Output Format"
-msgstr ""
-
-#: models/nano_banana.py:147
-msgid "Format for generated images"
-msgstr ""
-
-#: models/seedream4.py:29
-msgid "ByteDance's unified generation and editing model"
-msgstr ""
-
-#: models/seedream4.py:34
-msgid "Seedream 4"
-msgstr ""
-
-#: models/seedream4.py:159
-msgid "Image Size"
-msgstr ""
-
-#: models/seedream4.py:160
-msgid "Resolution preset for generated images"
-msgstr ""
-
-#: models/seedream4.py:168
-msgid "Width"
-msgstr ""
-
-#: models/seedream4.py:169
-msgid "Custom width in pixels"
-msgstr ""
-
-#: models/seedream4.py:179
-msgid "Height"
-msgstr ""
-
-#: models/seedream4.py:180
-msgid "Custom height in pixels"
-msgstr ""
-
-#: models/seedream4.py:190
+#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
+#: models/seedream4.py:195
 msgid "Aspect Ratio"
 msgstr ""
 
-#: models/seedream4.py:191
+#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
+#: models/seedream4.py:196
 msgid "Control aspect ratio of generated images"
 msgstr ""
 
-#: models/seedream4.py:200
+#: models/imagen4.py:150 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:182
+msgid "Output Format"
+msgstr ""
+
+#: models/imagen4.py:151 models/nano_banana.py:152
+msgid "Format for generated images"
+msgstr ""
+
+#: models/imagen4.py:159
+msgid "Safety Filter Level"
+msgstr ""
+
+#: models/imagen4.py:160
+msgid "Control safety of generated images"
+msgstr ""
+
+#: models/nano_banana.py:33
+msgid "Google's advanced image generation and editing model"
+msgstr ""
+
+#: models/nano_banana.py:38
+msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:41
+msgid "Qwen's advanced image editing model"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:46
+msgid "Qwen Image Edit Plus"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:164
+msgid "Go Fast"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:165
+msgid "Enable speed optimizations"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:172
+msgid "Seed"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:173
+msgid "Random seed for reproducible results (0 = random)"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:183
+msgid "Output image format"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:191
+msgid "Output Quality"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:192
+msgid "JPEG quality (0-100, ignored for PNG)"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:201
+msgid "Disable Safety Checker"
+msgstr ""
+
+#: models/qwen_image_edit_plus.py:202
+msgid "Bypass safety checks"
+msgstr ""
+
+#: models/seedream4.py:34
+msgid "ByteDance's unified generation and editing model"
+msgstr ""
+
+#: models/seedream4.py:39
+msgid "Seedream 4"
+msgstr ""
+
+#: models/seedream4.py:164
+msgid "Image Size"
+msgstr ""
+
+#: models/seedream4.py:165
+msgid "Resolution preset for generated images"
+msgstr ""
+
+#: models/seedream4.py:173
+msgid "Width"
+msgstr ""
+
+#: models/seedream4.py:174
+msgid "Custom width in pixels"
+msgstr ""
+
+#: models/seedream4.py:184
+msgid "Height"
+msgstr ""
+
+#: models/seedream4.py:185
+msgid "Custom height in pixels"
+msgstr ""
+
+#: models/seedream4.py:205
 msgid "Max Images"
 msgstr ""
 
-#: models/seedream4.py:201
+#: models/seedream4.py:206
 msgid "Maximum number of images to generate"
 msgstr ""
 
-#: models/seedream4.py:210
+#: models/seedream4.py:215
 msgid "Sequential Generation"
 msgstr ""
 
-#: models/seedream4.py:211
+#: models/seedream4.py:216
 msgid "Generate images sequentially or in parallel"
 msgstr ""
