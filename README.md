@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Nano Banana and Seedream 4.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Imagen 4, Nano Banana, Qwen Image Edit Plus, and Seedream 4.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Nano Banana and Seedream 4
+- 🤖 **Multiple AI Models**: Choose from Imagen 4, Nano Banana, Qwen Image Edit Plus, and Seedream 4
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -116,7 +116,9 @@ yay -S dream-prompter
 ├── models/
 │   ├── __init__.py
 │   ├── factory.py
-│   └── nano_banana.py
+│   ├── imagen4.py
+│   ├── nano_banana.py
+│   ├── qwen_image_edit_plus.py
 │   └── seedream4.py
 └── locale/ (optional)
     └── ...
@@ -185,14 +187,32 @@ If you get the **"replicate not installed"** error on macOS:
 
 ### Available AI Models
 
+**Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
+
+- **Capabilities**: Generation only
+- **Reference Images**: Not supported
+- **File Size**: Maximum 7MB per image
+- **Formats**: PNG, JPEG
+- **Special Features**: Advanced safety filtering, high-quality generation
+
 **Nano Banana** (`google/nano-banana`) - Google's Gemini 2.5 Flash Image Preview:
 
+- **Capabilities**: Both generation and editing
 - **Reference Images**: Up to 10 for generation, 9 for editing
 - **File Size**: Maximum 7MB per image
 - **Formats**: PNG, JPEG, WebP
 
+**Qwen Image Edit Plus** (`qwen/qwen-image-edit-plus`) - Qwen's advanced image editing model:
+
+- **Capabilities**: Editing only
+- **Reference Images**: Up to 9 for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP, GIF
+- **Special Features**: Specialized for image editing and transformation
+
 **Seedream 4** (`bytedance/seedream-4`) - ByteDance's unified generation and editing model:
 
+- **Capabilities**: Both generation and editing
 - **Reference Images**: Up to 10 for generation, 9 for editing
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
@@ -211,9 +231,10 @@ If you get the **"replicate not installed"** error on macOS:
 2. **Launch Dream Prompter**: `Filters → AI → Dream Prompter...`
 3. **Enter your API key** (saved automatically for future use)
 4. **Choose your AI model**: Select from available models in the dropdown
+   - **Note**: Available models will vary based on whether an image is open (edit-capable models) or not (generation-capable models)
 5. **Select mode**:
-   - **Edit Mode**: Transform the current layer
-   - **Generate Mode**: Create a new image
+   - **Edit Mode**: Transform the current layer (requires edit-capable model and open image)
+   - **Generate Mode**: Create a new image (requires generation-capable model)
 6. **Write your prompt**: Be descriptive and specific
 7. **Add reference images** (optional): Click "Select Images..." to add references
 8. **Generate**: Click the generate button and watch the progress
@@ -294,7 +315,9 @@ The plugin is organized into focused modules with a clean model-driven architect
 
 - **`models/__init__.py`** - Base model classes and registry system
 - **`models/factory.py`** - Model factory for centralized model management
+- **`models/imagen4.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
+- **`models/qwen_image_edit_plus.py`** - Qwen Image Edit Plus model implementation
 - **`models/seedream4.py`** - Seedream 4 model implementation
 
 The model system provides a clean abstraction for AI models, making it easy to:
@@ -370,6 +393,12 @@ The `nano_banana.py` file serves as a complete reference implementation.
 - Ensure translations are built: `python3 scripts/build-translations.py`
 - Report UI issues with screenshots
 
+**Model or mode not available**
+
+- **Edit mode disabled**: Some models (like Imagen 4) only support generation - select a different model or use Generate mode
+- **Model missing from dropdown**: Models are filtered based on context - edit-only models won't appear when no image is open
+- **Generate mode disabled**: Some models (like Qwen Image Edit Plus) only support editing - open an image first or select a different model
+
 ### Getting Help
 
 1. **Check the Error Console** in GIMP for specific error messages
@@ -410,4 +439,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Google's Nano Banana and ByteDance's Seedream 4.
+Built with Replicate's API providing access to multiple advanced AI models including Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, and ByteDance's Seedream 4.

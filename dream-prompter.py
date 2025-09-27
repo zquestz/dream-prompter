@@ -45,8 +45,8 @@ class DreamPrompter(Gimp.PlugIn):
                 _("AI-powered image creation/editing with Replicate models"),
                 _("Transform existing images or generate new images using "
                   "advanced AI models from Replicate with natural language "
-                  "prompts. Choose from multiple models including Nano Banana "
-                  "and Seedream 4."),
+                  "prompts. Choose from multiple models including Imagen 4, "
+                  "Nano Banana, Qwen Image Edit Plus, and Seedream 4."),
                 name
             )
             procedure.set_menu_label(_("Dream Prompter..."))
