@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-26 14:34-1000\n"
+"POT-Creation-Date: 2025-09-27 14:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:711
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:698
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI তৈরি: {prompt}"
 msgid "AI Layer"
 msgstr "AI লেয়ার"
 
-#: dialog_gtk.py:458
+#: dialog_gtk.py:467
 msgid "AI Model"
 msgstr "এআই মডেল"
 
-#: dialog_gtk.py:627
+#: dialog_gtk.py:636
 msgid "AI Prompt"
 msgstr "AI প্রম্পট"
 
@@ -71,12 +71,12 @@ msgstr "{count}টি স্তর যোগ করা হয়েছে"
 msgid "Adding layer {num}..."
 msgstr "স্তর {num} যোগ করা হচ্ছে..."
 
-#: dialog_gtk.py:306
+#: dialog_gtk.py:315
 msgid "Additional Images (Optional)"
 msgstr "অতিরিক্ত ছবি (ঐচ্ছিক)"
 
-#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
-#: models/seedream4.py:195
+#: models/imagen4.py:145 models/qwen_image_edit_plus.py:158
+#: models/seedream4.py:195 models/stable_diffusion_3_5_large_turbo.py:178
 msgid "Aspect Ratio"
 msgstr "দিক অনুপাত"
 
@@ -84,7 +84,7 @@ msgstr "দিক অনুপাত"
 msgid "Building Replicate edit request..."
 msgstr "Replicate সম্পাদনা অনুরোধ তৈরি করা হচ্ছে..."
 
-#: models/qwen_image_edit_plus.py:202
+#: models/qwen_image_edit_plus.py:209
 msgid "Bypass safety checks"
 msgstr "নিরাপত্তা পরীক্ষা এড়িয়ে যান"
 
@@ -92,7 +92,7 @@ msgstr "নিরাপত্তা পরীক্ষা এড়িয়ে 
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance এর একীভূত ছবি তৈরি এবং সম্পাদনা মডেল"
 
-#: dialog_events.py:202 dialog_gtk.py:403
+#: dialog_events.py:202 dialog_gtk.py:412
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -114,16 +114,20 @@ msgstr ""
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "{count}টি ফাইল যোগ করা যাবে না। সর্বোচ্চ {max}টি রেফারেন্স ছবি অনুমোদিত।"
 
-#: dialog_gtk.py:333
+#: models/stable_diffusion_3_5_large_turbo.py:190
+msgid "Cfg"
+msgstr "Cfg"
+
+#: dialog_gtk.py:342
 msgid "Clear selected files"
 msgstr "নির্বাচিত ফাইলগুলি সাফ করুন"
 
-#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
-#: models/seedream4.py:196
+#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
+#: models/seedream4.py:196 models/stable_diffusion_3_5_large_turbo.py:179
 msgid "Control aspect ratio of generated images"
 msgstr "জেনারেট করা ছবির দিক অনুপাত নিয়ন্ত্রণ করুন"
 
-#: models/imagen4.py:160
+#: models/imagen4.py:164
 msgid "Control safety of generated images"
 msgstr "জেনারেট করা ছবির নিরাপত্তা নিয়ন্ত্রণ করুন"
 
@@ -140,7 +144,7 @@ msgstr "পিক্সেলে কাস্টম উচ্চতা"
 msgid "Custom width in pixels"
 msgstr "পিক্সেলে কাস্টম প্রস্থ"
 
-#: models/qwen_image_edit_plus.py:201
+#: models/qwen_image_edit_plus.py:208
 msgid "Disable Safety Checker"
 msgstr "নিরাপত্তা পরীক্ষক নিষ্ক্রিয় করুন"
 
@@ -148,15 +152,15 @@ msgstr "নিরাপত্তা পরীক্ষক নিষ্ক্র�
 msgid "Downloading result..."
 msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 
-#: dialog.py:22
+#: dialog.py:24
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI ছবি তৈরিকারী/সম্পাদক"
 
-#: dream-prompter.py:52
+#: dream-prompter.py:53
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:513
+#: dialog_gtk.py:522
 msgid "Edit Image"
 msgstr "ছবি সম্পাদনা করুন"
 
@@ -164,11 +168,11 @@ msgstr "ছবি সম্পাদনা করুন"
 msgid "Edit mode requires a selected layer"
 msgstr "সম্পাদনা মোডের জন্য একটি নির্বাচিত লেয়ার প্রয়োজন"
 
-#: models/qwen_image_edit_plus.py:165
+#: models/qwen_image_edit_plus.py:170
 msgid "Enable speed optimizations"
 msgstr "গতি অপ্টিমাইজেশন সক্ষম করুন"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:375
 msgid "Enter your Replicate API key"
 msgstr "আপনার Replicate API কী প্রবেশ করান"
 
@@ -182,7 +186,7 @@ msgstr "স্তর যোগ করতে ত্রুটি: {error}"
 msgid "Error creating images: {error}"
 msgstr "ছবি তৈরি করতে ত্রুটি: {error}"
 
-#: dream-prompter.py:95
+#: dream-prompter.py:96
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
@@ -195,15 +199,16 @@ msgstr "API প্রতিক্রিয়া থেকে ছবি রূ�
 msgid "Failed to export current image"
 msgstr "বর্তমান ছবি রপ্তানি করতে ব্যর্থ"
 
-#: models/imagen4.py:151 models/nano_banana.py:152
+#: models/imagen4.py:155 models/nano_banana.py:152
+#: models/stable_diffusion_3_5_large_turbo.py:224
 msgid "Format for generated images"
 msgstr "জেনারেট করা ছবির ফরম্যাট"
 
-#: dialog_events.py:172 dialog_gtk.py:408
+#: dialog_events.py:172 dialog_gtk.py:417
 msgid "Generate Edit"
 msgstr "সম্পাদনা তৈরি করুন"
 
-#: dialog_events.py:175 dialog_gtk.py:518
+#: dialog_events.py:175 dialog_gtk.py:527
 msgid "Generate Image"
 msgstr "ছবি তৈরি করুন"
 
@@ -220,12 +225,12 @@ msgstr "{count}টি ছবি জেনারেট করা হয়েছ�
 msgid "Generating image with Replicate..."
 msgstr "Replicate দিয়ে ছবি তৈরি করা হচ্ছে..."
 
-#: dialog_gtk.py:386
+#: dialog_gtk.py:395
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> থেকে আপনার API কী নিন"
 
-#: models/qwen_image_edit_plus.py:164
+#: models/qwen_image_edit_plus.py:169
 msgid "Go Fast"
 msgstr "দ্রুত মোড"
 
@@ -244,6 +249,10 @@ msgstr "উচ্চতা"
 #: dialog_events.py:254
 msgid "Hide API key"
 msgstr "API কী লুকান"
+
+#: models/stable_diffusion_3_5_large_turbo.py:192
+msgid "How similar the output should be to the prompt"
+msgstr "আউটপুট প্রম্পটের কতটা অনুরূপ হওয়া উচিত"
 
 #: models/seedream4.py:164
 msgid "Image Size"
@@ -265,7 +274,7 @@ msgstr "Imagen 4"
 msgid "Initializing API request..."
 msgstr "API অনুরোধ শুরু করা হচ্ছে..."
 
-#: models/qwen_image_edit_plus.py:192
+#: models/qwen_image_edit_plus.py:199
 msgid "JPEG quality (0-100, ignored for PNG)"
 msgstr "JPEG গুণমান (0-100, PNG এর জন্য উপেক্ষিত)"
 
@@ -281,7 +290,7 @@ msgstr "সর্বোচ্চ ছবি"
 msgid "Maximum number of images to generate"
 msgstr "জেনারেট করার জন্য সর্বোচ্চ ছবির সংখ্যা"
 
-#: dialog_gtk.py:255
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr "মডেল সেটিংস"
 
@@ -294,6 +303,10 @@ msgstr "মডেল ত্রুটি: {error}"
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
+#: models/stable_diffusion_3_5_large_turbo.py:170
+msgid "Negative Prompt"
+msgstr "নেগেটিভ প্রম্পট"
+
 #: model_settings.py:244
 msgid "No"
 msgstr "না"
@@ -302,7 +315,7 @@ msgstr "না"
 msgid "No GIMP image provided for editing"
 msgstr "সম্পাদনার জন্য কোনো GIMP ছবি প্রদান করা হয়নি"
 
-#: dialog_gtk.py:323 dialog_gtk.py:758
+#: dialog_gtk.py:332 dialog_gtk.py:767
 msgid "No additional images selected"
 msgstr "কোনো অতিরিক্ত ছবি নির্বাচিত হয়নি"
 
@@ -330,7 +343,7 @@ msgstr "API প্রতিক্রিয়ায় কোনো বৈধ �
 msgid "Not set"
 msgstr "সেট করা হয়নি"
 
-#: dialog_gtk.py:506
+#: dialog_gtk.py:515
 msgid "Operation Mode"
 msgstr "অপারেশন মোড"
 
@@ -338,16 +351,17 @@ msgstr "অপারেশন মোড"
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
-#: models/imagen4.py:150 models/nano_banana.py:151
-#: models/qwen_image_edit_plus.py:182
+#: models/imagen4.py:154 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:189
+#: models/stable_diffusion_3_5_large_turbo.py:223
 msgid "Output Format"
 msgstr "আউটপুট ফরম্যাট"
 
-#: models/qwen_image_edit_plus.py:191
+#: models/qwen_image_edit_plus.py:198
 msgid "Output Quality"
 msgstr "আউটপুট গুণমান"
 
-#: models/qwen_image_edit_plus.py:183
+#: models/qwen_image_edit_plus.py:190
 msgid "Output image format"
 msgstr "আউটপুট ছবি ফরম্যাট"
 
@@ -367,9 +381,17 @@ msgstr "Replicate এর জন্য বর্তমান ছবি প্র�
 msgid "Processing Replicate response..."
 msgstr "Replicate প্রতিক্রিয়া প্রক্রিয়া করা হচ্ছে..."
 
+#: models/stable_diffusion_3_5_large_turbo.py:203
+msgid "Prompt Strength"
+msgstr "প্রম্পট শক্তি"
+
 #: dialog_threads.py:107 dialog_threads.py:141
 msgid "Prompt is required"
 msgstr "প্রম্পট প্রয়োজন"
+
+#: models/stable_diffusion_3_5_large_turbo.py:204
+msgid "Prompt strength (or denoising strength)"
+msgstr "প্রম্পট শক্তি (বা ডিনয়েজিং শক্তি)"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -379,11 +401,11 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Qwen এর উন্নত ছবি সম্পাদনা মডেল"
 
-#: models/qwen_image_edit_plus.py:173
+#: models/qwen_image_edit_plus.py:179
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "পুনরুৎপাদনযোগ্য ফলাফলের জন্য র্যান্ডম সিড (0 = র্যান্ডম)"
 
-#: dialog_gtk.py:115 dialog_gtk.py:674
+#: dialog_gtk.py:121 dialog_gtk.py:683
 msgid "Ready"
 msgstr "প্রস্তুত"
 
@@ -392,7 +414,7 @@ msgstr "প্রস্তুত"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "সম্পাদনা মোডের জন্য {max}টি রেফারেন্স ছবিতে কমানো হয়েছে"
 
-#: dialog_gtk.py:357
+#: dialog_gtk.py:366
 msgid "Replicate API Key"
 msgstr "Replicate API কী"
 
@@ -409,11 +431,12 @@ msgstr "Replicate API উপলব্ধ নেই। অনুগ্রহ ক�
 msgid "Resolution preset for generated images"
 msgstr "জেনারেট করা ছবির জন্য রেজোলিউশন প্রিসেট"
 
-#: models/imagen4.py:159
+#: models/imagen4.py:163
 msgid "Safety Filter Level"
 msgstr "নিরাপত্তা ফিল্টার স্তর"
 
-#: models/qwen_image_edit_plus.py:172
+#: models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_3_5_large_turbo.py:214
 msgid "Seed"
 msgstr "সিড"
 
@@ -425,7 +448,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "নির্বাচন করুন"
 
-#: dialog_gtk.py:316
+#: dialog_gtk.py:325
 msgid "Select Images..."
 msgstr "ছবি নির্বাচন করুন..."
 
@@ -450,13 +473,25 @@ msgstr "Replicate এ অনুরোধ পাঠানো হচ্ছে..."
 msgid "Sequential Generation"
 msgstr "ক্রমিক জেনারেশন"
 
+#: models/stable_diffusion_3_5_large_turbo.py:215
+msgid "Set a seed for reproducibility"
+msgstr "পুনরুৎপাদনযোগ্যতার জন্য একটি বীজ সেট করুন"
+
 #: dialog_events.py:261
 msgid "Show API key"
 msgstr "API কী দেখান"
 
-#: dialog_gtk.py:378
+#: dialog_gtk.py:387
 msgid "Show/Hide API key"
 msgstr "API কী দেখান/লুকান"
+
+#: models/stable_diffusion_3_5_large_turbo.py:44
+msgid "Stability AI's high-resolution image generation model"
+msgstr "Stability AI এর উচ্চ রেজোলিউশন ছবি তৈরির মডেল"
+
+#: models/stable_diffusion_3_5_large_turbo.py:49
+msgid "Stable Diffusion 3.5 Large Turbo"
+msgstr "Stable Diffusion 3.5 Large Turbo"
 
 #: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
@@ -466,11 +501,12 @@ msgstr "সমর্থিত ছবি (PNG, JPEG, WebP)"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Nano Banana and Seedream 4."
+"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+"Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "প্রাকৃতিক ভাষার প্রম্পট দিয়ে Replicate এর উন্নত AI মডেল ব্যবহার করে বিদ্যমান ছবি "
-"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। Nano Banana এবং Seedream 4 সহ একাধিক মডেল "
-"থেকে বেছে নিন।সম্পাদনা এবং ছবি মিশ্রণ ক্ষমতা সমর্থন করে।"
+"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। Imagen 4, Nano Banana, Qwen Image Edit Plus, "
+"Seedream 4 এবং Stable Diffusion 3.5 Large Turbo সহ একাধিক মডেল থেকে বেছে নিন।"
 
 #: dialog_threads.py:215
 #, python-brace-format
@@ -487,6 +523,10 @@ msgstr "ছবি তৈরির সময় অপ্রত্যাশিত
 msgid "Unexpected error: {error}"
 msgstr "অপ্রত্যাশিত ত্রুটি: {error}"
 
+#: models/stable_diffusion_3_5_large_turbo.py:171
+msgid "What you do not want to see in the image"
+msgstr "আপনি ছবিতে যা দেখতে চান না"
+
 #: models/seedream4.py:173
 msgid "Width"
 msgstr "প্রস্থ"
@@ -495,12 +535,12 @@ msgstr "প্রস্থ"
 msgid "Yes"
 msgstr "হ্যাঁ"
 
-#: dialog_gtk.py:771
+#: dialog_gtk.py:780
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}টি ছবি নির্বাচিত"
 
-#: dialog_gtk.py:773
+#: dialog_gtk.py:782
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}টি ছবি নির্বাচিত"
@@ -510,7 +550,7 @@ msgstr "{count}টি ছবি নির্বাচিত"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI সম্পাদনা: {prompt})"
 
-#: dialog_gtk.py:695
+#: dialog_gtk.py:704
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - সর্বোচ্চ আকার অতিক্রান্ত)"

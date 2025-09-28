@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-26 14:34-1000\n"
+"POT-Creation-Date: 2025-09-27 14:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:711
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:698
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AI图层"
 
-#: dialog_gtk.py:458
+#: dialog_gtk.py:467
 msgid "AI Model"
 msgstr "AI模型"
 
-#: dialog_gtk.py:627
+#: dialog_gtk.py:636
 msgid "AI Prompt"
 msgstr "AI提示词"
 
@@ -71,12 +71,12 @@ msgstr "已添加 {count} 层"
 msgid "Adding layer {num}..."
 msgstr "正在添加图层 {num}..."
 
-#: dialog_gtk.py:306
+#: dialog_gtk.py:315
 msgid "Additional Images (Optional)"
 msgstr "附加图像（可选）"
 
-#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
-#: models/seedream4.py:195
+#: models/imagen4.py:145 models/qwen_image_edit_plus.py:158
+#: models/seedream4.py:195 models/stable_diffusion_3_5_large_turbo.py:178
 msgid "Aspect Ratio"
 msgstr "宽高比"
 
@@ -84,7 +84,7 @@ msgstr "宽高比"
 msgid "Building Replicate edit request..."
 msgstr "构建Replicate编辑请求..."
 
-#: models/qwen_image_edit_plus.py:202
+#: models/qwen_image_edit_plus.py:209
 msgid "Bypass safety checks"
 msgstr "绕过安全检查"
 
@@ -92,7 +92,7 @@ msgstr "绕过安全检查"
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance的统一生成和编辑模型"
 
-#: dialog_events.py:202 dialog_gtk.py:403
+#: dialog_events.py:202 dialog_gtk.py:412
 msgid "Cancel"
 msgstr "取消"
 
@@ -112,16 +112,20 @@ msgstr "无法添加{count}个文件。编辑模式下最多允许{max}张参考
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "无法添加{count}个文件。最多允许{max}个参考图像。"
 
-#: dialog_gtk.py:333
+#: models/stable_diffusion_3_5_large_turbo.py:190
+msgid "Cfg"
+msgstr "Cfg"
+
+#: dialog_gtk.py:342
 msgid "Clear selected files"
 msgstr "清除选定的文件"
 
-#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
-#: models/seedream4.py:196
+#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
+#: models/seedream4.py:196 models/stable_diffusion_3_5_large_turbo.py:179
 msgid "Control aspect ratio of generated images"
 msgstr "控制生成图像的宽高比"
 
-#: models/imagen4.py:160
+#: models/imagen4.py:164
 msgid "Control safety of generated images"
 msgstr "控制生成图像的安全性"
 
@@ -138,7 +142,7 @@ msgstr "自定义像素高度"
 msgid "Custom width in pixels"
 msgstr "自定义像素宽度"
 
-#: models/qwen_image_edit_plus.py:201
+#: models/qwen_image_edit_plus.py:208
 msgid "Disable Safety Checker"
 msgstr "禁用安全检查器"
 
@@ -146,15 +150,15 @@ msgstr "禁用安全检查器"
 msgid "Downloading result..."
 msgstr "正在下载结果..."
 
-#: dialog.py:22
+#: dialog.py:24
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI图像创建器/编辑器"
 
-#: dream-prompter.py:52
+#: dream-prompter.py:53
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:513
+#: dialog_gtk.py:522
 msgid "Edit Image"
 msgstr "编辑图像"
 
@@ -162,11 +166,11 @@ msgstr "编辑图像"
 msgid "Edit mode requires a selected layer"
 msgstr "编辑模式需要选择一个图层"
 
-#: models/qwen_image_edit_plus.py:165
+#: models/qwen_image_edit_plus.py:170
 msgid "Enable speed optimizations"
 msgstr "启用速度优化"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:375
 msgid "Enter your Replicate API key"
 msgstr "输入您的Replicate API密钥"
 
@@ -180,7 +184,7 @@ msgstr "添加图层错误: {error}"
 msgid "Error creating images: {error}"
 msgstr "创建图像错误: {error}"
 
-#: dream-prompter.py:95
+#: dream-prompter.py:96
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "运行Dream Prompter时出错：{error}"
@@ -193,15 +197,16 @@ msgstr "无法从API响应转换图像"
 msgid "Failed to export current image"
 msgstr "导出当前图像失败"
 
-#: models/imagen4.py:151 models/nano_banana.py:152
+#: models/imagen4.py:155 models/nano_banana.py:152
+#: models/stable_diffusion_3_5_large_turbo.py:224
 msgid "Format for generated images"
 msgstr "生成图像的格式"
 
-#: dialog_events.py:172 dialog_gtk.py:408
+#: dialog_events.py:172 dialog_gtk.py:417
 msgid "Generate Edit"
 msgstr "生成编辑"
 
-#: dialog_events.py:175 dialog_gtk.py:518
+#: dialog_events.py:175 dialog_gtk.py:527
 msgid "Generate Image"
 msgstr "生成图像"
 
@@ -218,12 +223,12 @@ msgstr "已生成 {count} 张图像"
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成图像..."
 
-#: dialog_gtk.py:386
+#: dialog_gtk.py:395
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "从<a href=\"{url}\">Replicate</a>获取您的API密钥"
 
-#: models/qwen_image_edit_plus.py:164
+#: models/qwen_image_edit_plus.py:169
 msgid "Go Fast"
 msgstr "快速模式"
 
@@ -242,6 +247,10 @@ msgstr "高度"
 #: dialog_events.py:254
 msgid "Hide API key"
 msgstr "隐藏API密钥"
+
+#: models/stable_diffusion_3_5_large_turbo.py:192
+msgid "How similar the output should be to the prompt"
+msgstr "输出与提示的相似程度"
 
 #: models/seedream4.py:164
 msgid "Image Size"
@@ -263,7 +272,7 @@ msgstr "Imagen 4"
 msgid "Initializing API request..."
 msgstr "正在初始化API请求..."
 
-#: models/qwen_image_edit_plus.py:192
+#: models/qwen_image_edit_plus.py:199
 msgid "JPEG quality (0-100, ignored for PNG)"
 msgstr "JPEG质量 (0-100，PNG时忽略)"
 
@@ -279,7 +288,7 @@ msgstr "最大图像数"
 msgid "Maximum number of images to generate"
 msgstr "要生成的最大图像数量"
 
-#: dialog_gtk.py:255
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr "模型设置"
 
@@ -292,6 +301,10 @@ msgstr "模型错误：{error}"
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
+#: models/stable_diffusion_3_5_large_turbo.py:170
+msgid "Negative Prompt"
+msgstr "负面提示"
+
 #: model_settings.py:244
 msgid "No"
 msgstr "否"
@@ -300,7 +313,7 @@ msgstr "否"
 msgid "No GIMP image provided for editing"
 msgstr "未提供用于编辑的GIMP图像"
 
-#: dialog_gtk.py:323 dialog_gtk.py:758
+#: dialog_gtk.py:332 dialog_gtk.py:767
 msgid "No additional images selected"
 msgstr "未选择附加图像"
 
@@ -328,7 +341,7 @@ msgstr "API响应中没有有效图像数据"
 msgid "Not set"
 msgstr "未设置"
 
-#: dialog_gtk.py:506
+#: dialog_gtk.py:515
 msgid "Operation Mode"
 msgstr "操作模式"
 
@@ -336,16 +349,17 @@ msgstr "操作模式"
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: models/imagen4.py:150 models/nano_banana.py:151
-#: models/qwen_image_edit_plus.py:182
+#: models/imagen4.py:154 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:189
+#: models/stable_diffusion_3_5_large_turbo.py:223
 msgid "Output Format"
 msgstr "输出格式"
 
-#: models/qwen_image_edit_plus.py:191
+#: models/qwen_image_edit_plus.py:198
 msgid "Output Quality"
 msgstr "输出质量"
 
-#: models/qwen_image_edit_plus.py:183
+#: models/qwen_image_edit_plus.py:190
 msgid "Output image format"
 msgstr "输出图像格式"
 
@@ -365,9 +379,17 @@ msgstr "为Replicate准备当前图像..."
 msgid "Processing Replicate response..."
 msgstr "处理Replicate响应..."
 
+#: models/stable_diffusion_3_5_large_turbo.py:203
+msgid "Prompt Strength"
+msgstr "提示强度"
+
 #: dialog_threads.py:107 dialog_threads.py:141
 msgid "Prompt is required"
 msgstr "需要提示词"
+
+#: models/stable_diffusion_3_5_large_turbo.py:204
+msgid "Prompt strength (or denoising strength)"
+msgstr "提示强度（或去噪强度）"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -377,11 +399,11 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Qwen的高级图像编辑模型"
 
-#: models/qwen_image_edit_plus.py:173
+#: models/qwen_image_edit_plus.py:179
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "可重现结果的随机种子 (0 = 随机)"
 
-#: dialog_gtk.py:115 dialog_gtk.py:674
+#: dialog_gtk.py:121 dialog_gtk.py:683
 msgid "Ready"
 msgstr "就绪"
 
@@ -390,7 +412,7 @@ msgstr "就绪"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "减少到{max}张参考图像用于编辑模式"
 
-#: dialog_gtk.py:357
+#: dialog_gtk.py:366
 msgid "Replicate API Key"
 msgstr "Replicate API密钥"
 
@@ -407,11 +429,12 @@ msgstr "Replicate API不可用。请安装google-genai"
 msgid "Resolution preset for generated images"
 msgstr "生成图像的分辨率预设"
 
-#: models/imagen4.py:159
+#: models/imagen4.py:163
 msgid "Safety Filter Level"
 msgstr "安全过滤级别"
 
-#: models/qwen_image_edit_plus.py:172
+#: models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_3_5_large_turbo.py:214
 msgid "Seed"
 msgstr "种子"
 
@@ -423,7 +446,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "选择"
 
-#: dialog_gtk.py:316
+#: dialog_gtk.py:325
 msgid "Select Images..."
 msgstr "选择图像..."
 
@@ -448,13 +471,25 @@ msgstr "向Replicate发送请求..."
 msgid "Sequential Generation"
 msgstr "顺序生成"
 
+#: models/stable_diffusion_3_5_large_turbo.py:215
+msgid "Set a seed for reproducibility"
+msgstr "设置种子以获得可重复性"
+
 #: dialog_events.py:261
 msgid "Show API key"
 msgstr "显示API密钥"
 
-#: dialog_gtk.py:378
+#: dialog_gtk.py:387
 msgid "Show/Hide API key"
 msgstr "显示/隐藏API密钥"
+
+#: models/stable_diffusion_3_5_large_turbo.py:44
+msgid "Stability AI's high-resolution image generation model"
+msgstr "Stability AI的高分辨率图像生成模型"
+
+#: models/stable_diffusion_3_5_large_turbo.py:49
+msgid "Stable Diffusion 3.5 Large Turbo"
+msgstr "Stable Diffusion 3.5 Large Turbo"
 
 #: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
@@ -464,10 +499,12 @@ msgstr "支持的图像格式（PNG、JPEG、WebP）"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Nano Banana and Seedream 4."
+"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+"Stable Diffusion 3.5 Large Turbo."
 msgstr ""
-"使用自然语言提示通过Replicate的高级AI模型转换现有图像或生成新图像。从包括"
-"Nano Banana和Seedream 4在内的多个模型中选择。"
+"使用Replicate的高级AI模型，通过自然语言提示转换现有图像或生成新图像。从包括"
+"Imagen 4、Nano Banana、Qwen Image Edit Plus、Seedream 4和Stable Diffusion "
+"3.5 Large Turbo在内的多个模型中选择。"
 
 #: dialog_threads.py:215
 #, python-brace-format
@@ -484,6 +521,10 @@ msgstr "图像生成过程中出现意外错误：{error}"
 msgid "Unexpected error: {error}"
 msgstr "意外错误：{error}"
 
+#: models/stable_diffusion_3_5_large_turbo.py:171
+msgid "What you do not want to see in the image"
+msgstr "您不希望在图像中看到的内容"
+
 #: models/seedream4.py:173
 msgid "Width"
 msgstr "宽度"
@@ -492,12 +533,12 @@ msgstr "宽度"
 msgid "Yes"
 msgstr "是"
 
-#: dialog_gtk.py:771
+#: dialog_gtk.py:780
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已选择{count}张图像"
 
-#: dialog_gtk.py:773
+#: dialog_gtk.py:782
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已选择{count}张图像"
@@ -507,7 +548,7 @@ msgstr "已选择{count}张图像"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI编辑：{prompt}）"
 
-#: dialog_gtk.py:695
+#: dialog_gtk.py:704
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"

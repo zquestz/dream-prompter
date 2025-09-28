@@ -117,10 +117,14 @@ class Imagen4Model(BaseModel):
             if key in params:
                 params[key] = value
 
-        default_format = self.get_output_format_string(self.default_output_format)
+        default_format = self.get_output_format_string(
+            self.default_output_format
+        )
         output_format = params.get("output_format", default_format)
         aspect_ratio = params.get("aspect_ratio", "1:1")
-        safety_filter_level = params.get("safety_filter_level", "block_only_high")
+        safety_filter_level = params.get(
+            "safety_filter_level", "block_only_high"
+        )
         model_input = {
             "prompt": prompt,
             "image_input": reference_images or [],

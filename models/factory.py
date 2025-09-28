@@ -14,6 +14,7 @@ from . import imagen4  # noqa: F401
 from . import nano_banana  # noqa: F401
 from . import qwen_image_edit_plus  # noqa: F401
 from . import seedream4  # noqa: F401
+from . import stable_diffusion_3_5_large_turbo  # noqa: F401
 
 
 class ModelFactory:
@@ -63,7 +64,9 @@ class ModelFactory:
             )
         return model
 
-    def get_models_for_context(self, has_image: bool = False) -> Dict[str, BaseModel]:
+    def get_models_for_context(
+        self, has_image: bool = False
+    ) -> Dict[str, BaseModel]:
         """
         Get models appropriate for the current context
 

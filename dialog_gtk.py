@@ -58,10 +58,14 @@ class DreamPrompterUI:
         main_box.set_margin_end(16)
 
         try:
-            columns_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
+            columns_box = Gtk.Box(
+                orientation=Gtk.Orientation.HORIZONTAL, spacing=16
+            )
             columns_box.set_homogeneous(True)
 
-            left_column = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+            left_column = Gtk.Box(
+                orientation=Gtk.Orientation.VERTICAL, spacing=16
+            )
             left_column.set_size_request(300, -1)
 
             api_key_section = self._create_api_key_section()
@@ -78,7 +82,9 @@ class DreamPrompterUI:
 
             columns_box.pack_start(left_column, True, True, 0)
 
-            right_column = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+            right_column = Gtk.Box(
+                orientation=Gtk.Orientation.VERTICAL, spacing=16
+            )
             right_column.set_size_request(300, -1)
 
             model_settings_section = self._create_model_settings_section()
@@ -194,8 +200,9 @@ class DreamPrompterUI:
             self._update_files_with_content()
 
     def update_mode_sensitivity(self, model, current_mode: str):
-        """Update mode radio button sensitivity based on model capabilities AND context"""
-        if not model or not self.edit_mode_radio or not self.generate_mode_radio:
+        """Update mode sensitivity based on model capabilities AND context"""
+        if (not model or not self.edit_mode_radio or
+                not self.generate_mode_radio):
             return
 
         edit_supported = model.supports_editing()
@@ -207,9 +214,11 @@ class DreamPrompterUI:
         self.edit_mode_radio.set_sensitive(edit_enabled)
         self.generate_mode_radio.set_sensitive(generate_enabled)
 
-        if current_mode == "edit" and not edit_enabled and generate_enabled:
+        if (current_mode == "edit" and not edit_enabled and
+                generate_enabled):
             self.generate_mode_radio.set_active(True)
-        elif current_mode == "generate" and not generate_enabled and edit_enabled:
+        elif (current_mode == "generate" and not generate_enabled and
+                edit_enabled):
             self.edit_mode_radio.set_active(True)
 
     def update_model_description(self, model):

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-26 14:34-1000\n"
+"POT-Creation-Date: 2025-09-27 14:57-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Japanese\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:711
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:698
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AIレイヤー"
 
-#: dialog_gtk.py:458
+#: dialog_gtk.py:467
 msgid "AI Model"
 msgstr "AIモデル"
 
-#: dialog_gtk.py:627
+#: dialog_gtk.py:636
 msgid "AI Prompt"
 msgstr "AIプロンプト"
 
@@ -71,12 +71,12 @@ msgstr "{count}個のレイヤーを追加"
 msgid "Adding layer {num}..."
 msgstr "レイヤー{num}を追加中..."
 
-#: dialog_gtk.py:306
+#: dialog_gtk.py:315
 msgid "Additional Images (Optional)"
 msgstr "追加画像（オプション）"
 
-#: models/imagen4.py:141 models/qwen_image_edit_plus.py:155
-#: models/seedream4.py:195
+#: models/imagen4.py:145 models/qwen_image_edit_plus.py:158
+#: models/seedream4.py:195 models/stable_diffusion_3_5_large_turbo.py:178
 msgid "Aspect Ratio"
 msgstr "アスペクト比"
 
@@ -84,7 +84,7 @@ msgstr "アスペクト比"
 msgid "Building Replicate edit request..."
 msgstr "Replicate編集リクエストを構築中..."
 
-#: models/qwen_image_edit_plus.py:202
+#: models/qwen_image_edit_plus.py:209
 msgid "Bypass safety checks"
 msgstr "安全チェックをバイパス"
 
@@ -92,7 +92,7 @@ msgstr "安全チェックをバイパス"
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDanceの統合生成・編集モデル"
 
-#: dialog_events.py:202 dialog_gtk.py:403
+#: dialog_events.py:202 dialog_gtk.py:412
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -116,16 +116,20 @@ msgstr ""
 "{count}個のファイルを追加できません。最大{max}枚の参照画像が許可されていま"
 "す。"
 
-#: dialog_gtk.py:333
+#: models/stable_diffusion_3_5_large_turbo.py:190
+msgid "Cfg"
+msgstr "Cfg"
+
+#: dialog_gtk.py:342
 msgid "Clear selected files"
 msgstr "選択したファイルをクリア"
 
-#: models/imagen4.py:142 models/qwen_image_edit_plus.py:156
-#: models/seedream4.py:196
+#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
+#: models/seedream4.py:196 models/stable_diffusion_3_5_large_turbo.py:179
 msgid "Control aspect ratio of generated images"
 msgstr "生成画像のアスペクト比を制御"
 
-#: models/imagen4.py:160
+#: models/imagen4.py:164
 msgid "Control safety of generated images"
 msgstr "生成画像の安全性を制御"
 
@@ -142,7 +146,7 @@ msgstr "カスタム高さ（ピクセル）"
 msgid "Custom width in pixels"
 msgstr "カスタム幅（ピクセル）"
 
-#: models/qwen_image_edit_plus.py:201
+#: models/qwen_image_edit_plus.py:208
 msgid "Disable Safety Checker"
 msgstr "セーフティチェッカーを無効化"
 
@@ -150,15 +154,15 @@ msgstr "セーフティチェッカーを無効化"
 msgid "Downloading result..."
 msgstr "結果をダウンロード中..."
 
-#: dialog.py:22
+#: dialog.py:24
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI画像作成・編集"
 
-#: dream-prompter.py:52
+#: dream-prompter.py:53
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:513
+#: dialog_gtk.py:522
 msgid "Edit Image"
 msgstr "画像を編集"
 
@@ -166,11 +170,11 @@ msgstr "画像を編集"
 msgid "Edit mode requires a selected layer"
 msgstr "編集モードには選択したレイヤーが必要です"
 
-#: models/qwen_image_edit_plus.py:165
+#: models/qwen_image_edit_plus.py:170
 msgid "Enable speed optimizations"
 msgstr "速度最適化を有効にする"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:375
 msgid "Enter your Replicate API key"
 msgstr "Replicate APIキーを入力してください"
 
@@ -184,7 +188,7 @@ msgstr "レイヤー追加エラー: {error}"
 msgid "Error creating images: {error}"
 msgstr "画像作成エラー: {error}"
 
-#: dream-prompter.py:95
+#: dream-prompter.py:96
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompterの実行エラー：{error}"
@@ -197,15 +201,16 @@ msgstr "APIレスポンスから画像の変換に失敗"
 msgid "Failed to export current image"
 msgstr "現在の画像のエクスポートに失敗しました"
 
-#: models/imagen4.py:151 models/nano_banana.py:152
+#: models/imagen4.py:155 models/nano_banana.py:152
+#: models/stable_diffusion_3_5_large_turbo.py:224
 msgid "Format for generated images"
 msgstr "生成画像のフォーマット"
 
-#: dialog_events.py:172 dialog_gtk.py:408
+#: dialog_events.py:172 dialog_gtk.py:417
 msgid "Generate Edit"
 msgstr "編集を生成"
 
-#: dialog_events.py:175 dialog_gtk.py:518
+#: dialog_events.py:175 dialog_gtk.py:527
 msgid "Generate Image"
 msgstr "画像を生成"
 
@@ -222,12 +227,12 @@ msgstr "{count}個の画像を生成"
 msgid "Generating image with Replicate..."
 msgstr "Replicateで画像を生成中..."
 
-#: dialog_gtk.py:386
+#: dialog_gtk.py:395
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a>からAPIキーを取得してください"
 
-#: models/qwen_image_edit_plus.py:164
+#: models/qwen_image_edit_plus.py:169
 msgid "Go Fast"
 msgstr "高速モード"
 
@@ -246,6 +251,10 @@ msgstr "高さ"
 #: dialog_events.py:254
 msgid "Hide API key"
 msgstr "APIキーを隠す"
+
+#: models/stable_diffusion_3_5_large_turbo.py:192
+msgid "How similar the output should be to the prompt"
+msgstr "出力がプロンプトにどの程度似ているべきか"
 
 #: models/seedream4.py:164
 msgid "Image Size"
@@ -267,7 +276,7 @@ msgstr "Imagen 4"
 msgid "Initializing API request..."
 msgstr "APIリクエストを初期化中..."
 
-#: models/qwen_image_edit_plus.py:192
+#: models/qwen_image_edit_plus.py:199
 msgid "JPEG quality (0-100, ignored for PNG)"
 msgstr "JPEG品質 (0-100、PNGでは無視)"
 
@@ -283,7 +292,7 @@ msgstr "最大画像数"
 msgid "Maximum number of images to generate"
 msgstr "生成する画像の最大数"
 
-#: dialog_gtk.py:255
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr "モデル設定"
 
@@ -296,6 +305,10 @@ msgstr "モデルエラー：{error}"
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
+#: models/stable_diffusion_3_5_large_turbo.py:170
+msgid "Negative Prompt"
+msgstr "ネガティブプロンプト"
+
 #: model_settings.py:244
 msgid "No"
 msgstr "いいえ"
@@ -304,7 +317,7 @@ msgstr "いいえ"
 msgid "No GIMP image provided for editing"
 msgstr "編集用のGIMP画像が提供されていません"
 
-#: dialog_gtk.py:323 dialog_gtk.py:758
+#: dialog_gtk.py:332 dialog_gtk.py:767
 msgid "No additional images selected"
 msgstr "追加画像が選択されていません"
 
@@ -332,7 +345,7 @@ msgstr "APIレスポンスに有効な画像データがありません"
 msgid "Not set"
 msgstr "設定されていません"
 
-#: dialog_gtk.py:506
+#: dialog_gtk.py:515
 msgid "Operation Mode"
 msgstr "操作モード"
 
@@ -340,16 +353,17 @@ msgstr "操作モード"
 msgid "Operation cancelled"
 msgstr "操作がキャンセルされました"
 
-#: models/imagen4.py:150 models/nano_banana.py:151
-#: models/qwen_image_edit_plus.py:182
+#: models/imagen4.py:154 models/nano_banana.py:151
+#: models/qwen_image_edit_plus.py:189
+#: models/stable_diffusion_3_5_large_turbo.py:223
 msgid "Output Format"
 msgstr "出力フォーマット"
 
-#: models/qwen_image_edit_plus.py:191
+#: models/qwen_image_edit_plus.py:198
 msgid "Output Quality"
 msgstr "出力品質"
 
-#: models/qwen_image_edit_plus.py:183
+#: models/qwen_image_edit_plus.py:190
 msgid "Output image format"
 msgstr "出力画像フォーマット"
 
@@ -369,9 +383,17 @@ msgstr "Replicate用に現在の画像を準備中..."
 msgid "Processing Replicate response..."
 msgstr "Replicateレスポンスを処理中..."
 
+#: models/stable_diffusion_3_5_large_turbo.py:203
+msgid "Prompt Strength"
+msgstr "プロンプト強度"
+
 #: dialog_threads.py:107 dialog_threads.py:141
 msgid "Prompt is required"
 msgstr "プロンプトが必要です"
+
+#: models/stable_diffusion_3_5_large_turbo.py:204
+msgid "Prompt strength (or denoising strength)"
+msgstr "プロンプト強度（またはデノイジング強度）"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -381,11 +403,11 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Qwenの高度な画像編集モデル"
 
-#: models/qwen_image_edit_plus.py:173
+#: models/qwen_image_edit_plus.py:179
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "再現可能な結果のためのランダムシード (0 = ランダム)"
 
-#: dialog_gtk.py:115 dialog_gtk.py:674
+#: dialog_gtk.py:121 dialog_gtk.py:683
 msgid "Ready"
 msgstr "準備完了"
 
@@ -394,7 +416,7 @@ msgstr "準備完了"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "編集モードで{max}枚の参照画像に削減しました"
 
-#: dialog_gtk.py:357
+#: dialog_gtk.py:366
 msgid "Replicate API Key"
 msgstr "Replicate APIキー"
 
@@ -411,11 +433,12 @@ msgstr "Replicate APIが利用できません。replicateをインストール�
 msgid "Resolution preset for generated images"
 msgstr "生成画像の解像度プリセット"
 
-#: models/imagen4.py:159
+#: models/imagen4.py:163
 msgid "Safety Filter Level"
 msgstr "セーフティフィルターレベル"
 
-#: models/qwen_image_edit_plus.py:172
+#: models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_3_5_large_turbo.py:214
 msgid "Seed"
 msgstr "シード"
 
@@ -427,7 +450,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "選択"
 
-#: dialog_gtk.py:316
+#: dialog_gtk.py:325
 msgid "Select Images..."
 msgstr "画像を選択..."
 
@@ -452,13 +475,25 @@ msgstr "Replicateにリクエストを送信中..."
 msgid "Sequential Generation"
 msgstr "順次生成"
 
+#: models/stable_diffusion_3_5_large_turbo.py:215
+msgid "Set a seed for reproducibility"
+msgstr "再現性のためのシードを設定"
+
 #: dialog_events.py:261
 msgid "Show API key"
 msgstr "APIキーを表示"
 
-#: dialog_gtk.py:378
+#: dialog_gtk.py:387
 msgid "Show/Hide API key"
 msgstr "APIキーを表示/非表示"
+
+#: models/stable_diffusion_3_5_large_turbo.py:44
+msgid "Stability AI's high-resolution image generation model"
+msgstr "Stability AIの高解像度画像生成モデル"
+
+#: models/stable_diffusion_3_5_large_turbo.py:49
+msgid "Stable Diffusion 3.5 Large Turbo"
+msgstr "Stable Diffusion 3.5 Large Turbo"
 
 #: dialog_events.py:206
 msgid "Supported Images (PNG, JPEG, WebP)"
@@ -468,11 +503,13 @@ msgstr "サポート画像（PNG、JPEG、WebP）"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Nano Banana and Seedream 4."
+"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+"Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "自然言語プロンプトでReplicateの高度なAIモデルを使用して既存の画像を変換したり"
-"新しい画像を生成したりします。Nano BananaとSeedream 4を含む複数のモデルから選"
-"択できます。"
+"新しい画像を生成したりします。Imagen 4、Nano Banana、Qwen Image Edit Plus、"
+"Seedream 4、Stable Diffusion 3.5 Large Turboを含む複数のモデルから選択できま"
+"す。"
 
 #: dialog_threads.py:215
 #, python-brace-format
@@ -489,6 +526,10 @@ msgstr "画像生成中の予期しないエラー：{error}"
 msgid "Unexpected error: {error}"
 msgstr "予期しないエラー：{error}"
 
+#: models/stable_diffusion_3_5_large_turbo.py:171
+msgid "What you do not want to see in the image"
+msgstr "画像に表示したくないもの"
+
 #: models/seedream4.py:173
 msgid "Width"
 msgstr "幅"
@@ -497,12 +538,12 @@ msgstr "幅"
 msgid "Yes"
 msgstr "はい"
 
-#: dialog_gtk.py:771
+#: dialog_gtk.py:780
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}枚の画像が選択されました"
 
-#: dialog_gtk.py:773
+#: dialog_gtk.py:782
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}枚の画像が選択されました"
@@ -512,7 +553,7 @@ msgstr "{count}枚の画像が選択されました"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編集：{prompt}）"
 
-#: dialog_gtk.py:695
+#: dialog_gtk.py:704
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 最大サイズ超過)"

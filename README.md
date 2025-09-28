@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Imagen 4, Nano Banana, Qwen Image Edit Plus, and Seedream 4.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Imagen 4, Nano Banana, Qwen Image Edit Plus, and Seedream 4
+- 🤖 **Multiple AI Models**: Choose from Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.2`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.3`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -48,10 +48,10 @@ pip install replicate
    Example for Linux:
 
    ```bash
-   # Extract creates dream-prompter-1.1.2/
-   unzip dream-prompter-1.1.2.zip
+   # Extract creates dream-prompter-1.1.3/
+   unzip dream-prompter-1.1.3.zip
    # Move to correct location with correct name
-   mv dream-prompter-1.1.2 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+   mv dream-prompter-1.1.3 ~/.config/GIMP/3.0/plug-ins/dream-prompter
    ```
 
 4. **Make executable** (Linux/macOS only):
@@ -217,6 +217,14 @@ If you get the **"replicate not installed"** error on macOS:
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: 4K resolution support, unified architecture
+
+**Stable Diffusion 3.5 Large Turbo** (`stability-ai/stable-diffusion-3.5-large-turbo`) - Stability AI's high-resolution image generation model:
+
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 1 for generation, none for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: High-resolution generation, fast inference, fewer steps required
 
 ### Cost Considerations
 
@@ -439,4 +447,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, and ByteDance's Seedream 4.
+Built with Replicate's API providing access to multiple advanced AI models including Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.

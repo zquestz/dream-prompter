@@ -325,11 +325,15 @@ class BaseModel(ABC):
 
     def supports_generation(self) -> bool:
         """Check if model supports image generation"""
-        return self.capabilities in [ModelCapability.GENERATE, ModelCapability.BOTH]
+        return self.capabilities in [
+            ModelCapability.GENERATE, ModelCapability.BOTH
+        ]
 
     def supports_editing(self) -> bool:
         """Check if model supports image editing"""
-        return self.capabilities in [ModelCapability.EDIT, ModelCapability.BOTH]
+        return self.capabilities in [
+            ModelCapability.EDIT, ModelCapability.BOTH
+        ]
 
     def validate_file_size(self, size_bytes: int) -> bool:
         """
