@@ -119,7 +119,8 @@ yay -S dream-prompter
 │   ├── imagen4.py
 │   ├── nano_banana.py
 │   ├── qwen_image_edit_plus.py
-│   └── seedream4.py
+│   ├── seedream4.py
+│   └── stable_diffusion_3_5_large_turbo.py
 └── locale/ (optional)
     └── ...
 ```
