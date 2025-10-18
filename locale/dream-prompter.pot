@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.1.3\n"
+"Project-Id-Version: Dream Prompter 1.1.4\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-27 14:57-1000\n"
+"POT-Creation-Date: 2025-10-18 12:48-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,11 +129,11 @@ msgstr ""
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:172 dialog_gtk.py:417
+#: dialog_events.py:172 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:175 dialog_gtk.py:527
+#: dialog_events.py:175 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:202 dialog_gtk.py:412
+#: dialog_events.py:202 dialog_gtk.py:408
 msgid "Cancel"
 msgstr ""
 
@@ -178,84 +178,84 @@ msgstr ""
 msgid "Select up to {max} additional images"
 msgstr ""
 
-#: dialog_gtk.py:121 dialog_gtk.py:683
-msgid "Ready"
-msgstr ""
-
-#: dialog_gtk.py:264
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr ""
 
-#: dialog_gtk.py:315
+#: dialog_gtk.py:311
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:325
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:332 dialog_gtk.py:767
+#: dialog_gtk.py:328 dialog_gtk.py:763
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:342
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:375
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr ""
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:395
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:463
 msgid "AI Model"
 msgstr ""
 
-#: dialog_gtk.py:515
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:522
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:636
+#: dialog_gtk.py:632
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:704
+#: dialog_gtk.py:679
+msgid "Ready"
+msgstr ""
+
+#: dialog_gtk.py:700
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:703
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:711
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr ""
 
-#: dialog_gtk.py:780
+#: dialog_gtk.py:776
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:782
+#: dialog_gtk.py:778
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""

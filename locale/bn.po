@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-27 14:57-1000\n"
+"POT-Creation-Date: 2025-10-18 12:48-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:711
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:703
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI তৈরি: {prompt}"
 msgid "AI Layer"
 msgstr "AI লেয়ার"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:463
 msgid "AI Model"
 msgstr "এআই মডেল"
 
-#: dialog_gtk.py:636
+#: dialog_gtk.py:632
 msgid "AI Prompt"
 msgstr "AI প্রম্পট"
 
@@ -71,7 +71,7 @@ msgstr "{count}টি স্তর যোগ করা হয়েছে"
 msgid "Adding layer {num}..."
 msgstr "স্তর {num} যোগ করা হচ্ছে..."
 
-#: dialog_gtk.py:315
+#: dialog_gtk.py:311
 msgid "Additional Images (Optional)"
 msgstr "অতিরিক্ত ছবি (ঐচ্ছিক)"
 
@@ -92,7 +92,7 @@ msgstr "নিরাপত্তা পরীক্ষা এড়িয়ে 
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance এর একীভূত ছবি তৈরি এবং সম্পাদনা মডেল"
 
-#: dialog_events.py:202 dialog_gtk.py:412
+#: dialog_events.py:202 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -118,7 +118,7 @@ msgstr "{count}টি ফাইল যোগ করা যাবে না। �
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:342
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr "নির্বাচিত ফাইলগুলি সাফ করুন"
 
@@ -160,7 +160,7 @@ msgstr "Dream Prompter - AI ছবি তৈরিকারী/সম্পা�
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:522
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr "ছবি সম্পাদনা করুন"
 
@@ -172,7 +172,7 @@ msgstr "সম্পাদনা মোডের জন্য একটি ন�
 msgid "Enable speed optimizations"
 msgstr "গতি অপ্টিমাইজেশন সক্ষম করুন"
 
-#: dialog_gtk.py:375
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr "আপনার Replicate API কী প্রবেশ করান"
 
@@ -204,11 +204,11 @@ msgstr "বর্তমান ছবি রপ্তানি করতে ব�
 msgid "Format for generated images"
 msgstr "জেনারেট করা ছবির ফরম্যাট"
 
-#: dialog_events.py:172 dialog_gtk.py:417
+#: dialog_events.py:172 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "সম্পাদনা তৈরি করুন"
 
-#: dialog_events.py:175 dialog_gtk.py:527
+#: dialog_events.py:175 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "ছবি তৈরি করুন"
 
@@ -225,7 +225,7 @@ msgstr "{count}টি ছবি জেনারেট করা হয়েছ�
 msgid "Generating image with Replicate..."
 msgstr "Replicate দিয়ে ছবি তৈরি করা হচ্ছে..."
 
-#: dialog_gtk.py:395
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> থেকে আপনার API কী নিন"
@@ -290,7 +290,7 @@ msgstr "সর্বোচ্চ ছবি"
 msgid "Maximum number of images to generate"
 msgstr "জেনারেট করার জন্য সর্বোচ্চ ছবির সংখ্যা"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr "মডেল সেটিংস"
 
@@ -315,7 +315,7 @@ msgstr "না"
 msgid "No GIMP image provided for editing"
 msgstr "সম্পাদনার জন্য কোনো GIMP ছবি প্রদান করা হয়নি"
 
-#: dialog_gtk.py:332 dialog_gtk.py:767
+#: dialog_gtk.py:328 dialog_gtk.py:763
 msgid "No additional images selected"
 msgstr "কোনো অতিরিক্ত ছবি নির্বাচিত হয়নি"
 
@@ -343,7 +343,7 @@ msgstr "API প্রতিক্রিয়ায় কোনো বৈধ �
 msgid "Not set"
 msgstr "সেট করা হয়নি"
 
-#: dialog_gtk.py:515
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr "অপারেশন মোড"
 
@@ -405,7 +405,7 @@ msgstr "Qwen এর উন্নত ছবি সম্পাদনা মডে
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "পুনরুৎপাদনযোগ্য ফলাফলের জন্য র্যান্ডম সিড (0 = র্যান্ডম)"
 
-#: dialog_gtk.py:121 dialog_gtk.py:683
+#: dialog_gtk.py:679
 msgid "Ready"
 msgstr "প্রস্তুত"
 
@@ -414,7 +414,7 @@ msgstr "প্রস্তুত"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "সম্পাদনা মোডের জন্য {max}টি রেফারেন্স ছবিতে কমানো হয়েছে"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr "Replicate API কী"
 
@@ -448,7 +448,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "নির্বাচন করুন"
 
-#: dialog_gtk.py:325
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "ছবি নির্বাচন করুন..."
 
@@ -481,7 +481,7 @@ msgstr "পুনরুৎপাদনযোগ্যতার জন্য এ�
 msgid "Show API key"
 msgstr "API কী দেখান"
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr "API কী দেখান/লুকান"
 
@@ -535,12 +535,12 @@ msgstr "প্রস্থ"
 msgid "Yes"
 msgstr "হ্যাঁ"
 
-#: dialog_gtk.py:780
+#: dialog_gtk.py:776
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}টি ছবি নির্বাচিত"
 
-#: dialog_gtk.py:782
+#: dialog_gtk.py:778
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}টি ছবি নির্বাচিত"
@@ -550,7 +550,7 @@ msgstr "{count}টি ছবি নির্বাচিত"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI সম্পাদনা: {prompt})"
 
-#: dialog_gtk.py:704
+#: dialog_gtk.py:700
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - সর্বোচ্চ আকার অতিক্রান্ত)"

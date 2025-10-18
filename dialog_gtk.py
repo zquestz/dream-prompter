@@ -113,12 +113,10 @@ class DreamPrompterUI:
             return self.model_dropdown.get_active_id()
         return None
 
-    def hide_progress(self):
-        """Hide progress bar and show status message"""
+    def reset_progress(self):
+        """Reset progress bar to zero"""
         if self.progress_bar:
-            self.progress_bar.set_visible(False)
-        if self.status_label:
-            self.status_label.set_text(_("Ready"))
+            self.progress_bar.set_fraction(0.0)
 
     def refresh_model_dropdown(self):
         """Refresh the model dropdown with context-appropriate models"""
@@ -294,11 +292,9 @@ class DreamPrompterUI:
         if percentage is not None:
             if self.progress_bar:
                 self.progress_bar.set_fraction(percentage)
-                self.progress_bar.set_visible(True)
         else:
             if self.progress_bar:
                 self.progress_bar.pulse()
-                self.progress_bar.set_visible(True)
 
     def _clear_existing_file_rows(self):
         """Clear existing file rows from the listbox"""
@@ -687,7 +683,7 @@ class DreamPrompterUI:
 
         self.progress_bar = Gtk.ProgressBar()
         self.progress_bar.set_show_text(False)
-        self.progress_bar.set_visible(False)
+        self.progress_bar.set_fraction(0.0)
         section_box.pack_start(self.progress_bar, False, False, 0)
 
         return section_box

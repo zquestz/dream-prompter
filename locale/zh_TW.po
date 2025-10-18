@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-27 14:57-1000\n"
+"POT-Creation-Date: 2025-10-18 12:48-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:711
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:703
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AI圖層"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:463
 msgid "AI Model"
 msgstr "AI模型"
 
-#: dialog_gtk.py:636
+#: dialog_gtk.py:632
 msgid "AI Prompt"
 msgstr "AI提示詞"
 
@@ -71,7 +71,7 @@ msgstr "已新增 {count} 層"
 msgid "Adding layer {num}..."
 msgstr "正在新增圖層 {num}..."
 
-#: dialog_gtk.py:315
+#: dialog_gtk.py:311
 msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
 
@@ -92,7 +92,7 @@ msgstr "繞過安全檢查"
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance的統一生成和編輯模型"
 
-#: dialog_events.py:202 dialog_gtk.py:412
+#: dialog_events.py:202 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "取消"
 
@@ -116,7 +116,7 @@ msgstr "無法添加{count}個檔案。最多允許{max}張參考圖像。"
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:342
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
@@ -158,7 +158,7 @@ msgstr "Dream Prompter - AI圖像創建器/編輯器"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:522
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr "編輯圖像"
 
@@ -170,7 +170,7 @@ msgstr "編輯模式需要選擇一個圖層"
 msgid "Enable speed optimizations"
 msgstr "啟用速度最佳化"
 
-#: dialog_gtk.py:375
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr "輸入您的Replicate API密鑰"
 
@@ -202,11 +202,11 @@ msgstr "匯出當前圖像失敗"
 msgid "Format for generated images"
 msgstr "生成影像的格式"
 
-#: dialog_events.py:172 dialog_gtk.py:417
+#: dialog_events.py:172 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "生成編輯"
 
-#: dialog_events.py:175 dialog_gtk.py:527
+#: dialog_events.py:175 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "生成圖像"
 
@@ -223,7 +223,7 @@ msgstr "已生成 {count} 張影像"
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
 
-#: dialog_gtk.py:395
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "從<a href=\"{url}\">Replicate</a>獲取您的API密鑰"
@@ -288,7 +288,7 @@ msgstr "最大影像數"
 msgid "Maximum number of images to generate"
 msgstr "要生成的最大影像數量"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr "模型設定"
 
@@ -313,7 +313,7 @@ msgstr "否"
 msgid "No GIMP image provided for editing"
 msgstr "未提供用於編輯的GIMP圖像"
 
-#: dialog_gtk.py:332 dialog_gtk.py:767
+#: dialog_gtk.py:328 dialog_gtk.py:763
 msgid "No additional images selected"
 msgstr "未選擇附加圖像"
 
@@ -341,7 +341,7 @@ msgstr "API響應中沒有有效圖像數據"
 msgid "Not set"
 msgstr "未設置"
 
-#: dialog_gtk.py:515
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr "操作模式"
 
@@ -403,7 +403,7 @@ msgstr "Qwen的高級影像編輯模型"
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "可重現結果的隨機種子 (0 = 隨機)"
 
-#: dialog_gtk.py:121 dialog_gtk.py:683
+#: dialog_gtk.py:679
 msgid "Ready"
 msgstr "就緒"
 
@@ -412,7 +412,7 @@ msgstr "就緒"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "減少到{max}張參考圖像用於編輯模式"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
@@ -446,7 +446,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "選擇"
 
-#: dialog_gtk.py:325
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "選擇圖像..."
 
@@ -479,7 +479,7 @@ msgstr "設置種子以獲得可重複性"
 msgid "Show API key"
 msgstr "顯示API密鑰"
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr "顯示/隱藏API密鑰"
 
@@ -533,12 +533,12 @@ msgstr "寬度"
 msgid "Yes"
 msgstr "是"
 
-#: dialog_gtk.py:780
+#: dialog_gtk.py:776
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "已選擇{count}張圖像"
 
-#: dialog_gtk.py:782
+#: dialog_gtk.py:778
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "已選擇{count}張圖像"
@@ -548,7 +548,7 @@ msgstr "已選擇{count}張圖像"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編輯：{prompt}）"
 
-#: dialog_gtk.py:704
+#: dialog_gtk.py:700
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"

@@ -301,7 +301,7 @@ class DreamPrompterThreads:
         """Handle cancelled operation"""
         self._processing = False
         self._current_thread = None
-        self.ui.hide_progress()
+        self.ui.reset_progress()
         self.ui.set_ui_enabled(True)
 
     def _handle_edited_images(self, pixbufs: List[GdkPixbuf.Pixbuf],
@@ -384,7 +384,7 @@ class DreamPrompterThreads:
         """
         self._processing = False
         self._current_thread = None
-        self.ui.hide_progress()
+        self.ui.reset_progress()
         self.ui.set_ui_enabled(True)
 
         if self._callbacks.get('on_error'):
@@ -394,7 +394,7 @@ class DreamPrompterThreads:
         """Handle successful processing"""
         self._processing = False
         self._current_thread = None
-        self.ui.hide_progress()
+        self.ui.reset_progress()
         self.ui.set_ui_enabled(True)
 
         if self._callbacks.get('on_success'):

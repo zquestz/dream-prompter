@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-27 14:57-1000\n"
+"POT-Creation-Date: 2025-10-18 12:48-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:711
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:703
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -45,11 +45,11 @@ msgstr "AI 생성: {prompt}"
 msgid "AI Layer"
 msgstr "AI 레이어"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:463
 msgid "AI Model"
 msgstr "AI 모델"
 
-#: dialog_gtk.py:636
+#: dialog_gtk.py:632
 msgid "AI Prompt"
 msgstr "AI 프롬프트"
 
@@ -71,7 +71,7 @@ msgstr "{count}개 레이어 추가됨"
 msgid "Adding layer {num}..."
 msgstr "레이어 {num} 추가 중..."
 
-#: dialog_gtk.py:315
+#: dialog_gtk.py:311
 msgid "Additional Images (Optional)"
 msgstr "추가 이미지 (선택사항)"
 
@@ -92,7 +92,7 @@ msgstr "안전 검사 우회"
 msgid "ByteDance's unified generation and editing model"
 msgstr "ByteDance의 통합 생성 및 편집 모델"
 
-#: dialog_events.py:202 dialog_gtk.py:412
+#: dialog_events.py:202 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "취소"
 
@@ -120,7 +120,7 @@ msgstr ""
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:342
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
@@ -162,7 +162,7 @@ msgstr "Dream Prompter - AI 이미지 생성기/편집기"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:522
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr "이미지 편집"
 
@@ -174,7 +174,7 @@ msgstr "편집 모드에는 선택된 레이어가 필요합니다"
 msgid "Enable speed optimizations"
 msgstr "속도 최적화 활성화"
 
-#: dialog_gtk.py:375
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr "Replicate API 키를 입력하세요"
 
@@ -206,11 +206,11 @@ msgstr "현재 이미지 내보내기 실패"
 msgid "Format for generated images"
 msgstr "생성 이미지의 형식"
 
-#: dialog_events.py:172 dialog_gtk.py:417
+#: dialog_events.py:172 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "편집 생성"
 
-#: dialog_events.py:175 dialog_gtk.py:527
+#: dialog_events.py:175 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "이미지 생성"
 
@@ -227,7 +227,7 @@ msgstr "{count}개 이미지 생성됨"
 msgid "Generating image with Replicate..."
 msgstr "Replicate로 이미지 생성 중..."
 
-#: dialog_gtk.py:395
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a>에서 API 키를 가져오세요"
@@ -292,7 +292,7 @@ msgstr "최대 이미지 수"
 msgid "Maximum number of images to generate"
 msgstr "생성할 최대 이미지 수"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr "모델 설정"
 
@@ -317,7 +317,7 @@ msgstr "아니요"
 msgid "No GIMP image provided for editing"
 msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 
-#: dialog_gtk.py:332 dialog_gtk.py:767
+#: dialog_gtk.py:328 dialog_gtk.py:763
 msgid "No additional images selected"
 msgstr "추가 이미지가 선택되지 않았습니다"
 
@@ -345,7 +345,7 @@ msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 msgid "Not set"
 msgstr "설정되지 않음"
 
-#: dialog_gtk.py:515
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr "작업 모드"
 
@@ -407,7 +407,7 @@ msgstr "Qwen의 고급 이미지 편집 모델"
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "재현 가능한 결과를 위한 랜덤 시드 (0 = 랜덤)"
 
-#: dialog_gtk.py:121 dialog_gtk.py:683
+#: dialog_gtk.py:679
 msgid "Ready"
 msgstr "준비"
 
@@ -416,7 +416,7 @@ msgstr "준비"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr "Replicate API 키"
 
@@ -450,7 +450,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "선택"
 
-#: dialog_gtk.py:325
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "이미지 선택..."
 
@@ -483,7 +483,7 @@ msgstr "재현성을 위한 시드 설정"
 msgid "Show API key"
 msgstr "API 키 표시"
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr "API 키 표시/숨기기"
 
@@ -538,12 +538,12 @@ msgstr "너비"
 msgid "Yes"
 msgstr "예"
 
-#: dialog_gtk.py:780
+#: dialog_gtk.py:776
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_gtk.py:782
+#: dialog_gtk.py:778
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}개 이미지 선택됨"
@@ -553,7 +553,7 @@ msgstr "{count}개 이미지 선택됨"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI 편집: {prompt})"
 
-#: dialog_gtk.py:704
+#: dialog_gtk.py:700
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 최대 크기 초과)"

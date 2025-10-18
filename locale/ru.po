@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.1\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-09-27 14:57-1000\n"
+"POT-Creation-Date: 2025-10-18 12:48-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Russian\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
-#: dialog_gtk.py:711
+#: dialog_gtk.py:707
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KБ)"
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:703
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} МБ)"
@@ -46,11 +46,11 @@ msgstr "Создано ИИ: {prompt}"
 msgid "AI Layer"
 msgstr "Слой ИИ"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:463
 msgid "AI Model"
 msgstr "ИИ Модель"
 
-#: dialog_gtk.py:636
+#: dialog_gtk.py:632
 msgid "AI Prompt"
 msgstr "Промпт ИИ"
 
@@ -72,7 +72,7 @@ msgstr "Добавлено {count} слоёв"
 msgid "Adding layer {num}..."
 msgstr "Добавление слоя {num}..."
 
-#: dialog_gtk.py:315
+#: dialog_gtk.py:311
 msgid "Additional Images (Optional)"
 msgstr "Дополнительные изображения (необязательно)"
 
@@ -93,7 +93,7 @@ msgstr "Обходить проверки безопасности"
 msgid "ByteDance's unified generation and editing model"
 msgstr "Единая модель генерации и редактирования ByteDance"
 
-#: dialog_events.py:202 dialog_gtk.py:412
+#: dialog_events.py:202 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:342
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr "Очистить выбранные файлы"
 
@@ -163,7 +163,7 @@ msgstr "Dream Prompter - Создатель/Редактор изображен�
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:522
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr "Редактировать изображение"
 
@@ -175,7 +175,7 @@ msgstr "Режим редактирования требует выбранно�
 msgid "Enable speed optimizations"
 msgstr "Включить оптимизацию скорости"
 
-#: dialog_gtk.py:375
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr "Введите ваш ключ API Replicate"
 
@@ -207,11 +207,11 @@ msgstr "Не удалось экспортировать текущее изоб
 msgid "Format for generated images"
 msgstr "Формат для генерируемых изображений"
 
-#: dialog_events.py:172 dialog_gtk.py:417
+#: dialog_events.py:172 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "Генерировать редактирование"
 
-#: dialog_events.py:175 dialog_gtk.py:527
+#: dialog_events.py:175 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "Генерировать изображение"
 
@@ -228,7 +228,7 @@ msgstr "Сгенерировано {count} изображений"
 msgid "Generating image with Replicate..."
 msgstr "Генерация изображения с Replicate..."
 
-#: dialog_gtk.py:395
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Получите ваш ключ API из <a href=\"{url}\">Replicate</a>"
@@ -293,7 +293,7 @@ msgstr "Макс Изображений"
 msgid "Maximum number of images to generate"
 msgstr "Максимальное количество изображений для генерации"
 
-#: dialog_gtk.py:264
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr "Настройки Модели"
 
@@ -318,7 +318,7 @@ msgstr "Нет"
 msgid "No GIMP image provided for editing"
 msgstr "Не предоставлено изображение GIMP для редактирования"
 
-#: dialog_gtk.py:332 dialog_gtk.py:767
+#: dialog_gtk.py:328 dialog_gtk.py:763
 msgid "No additional images selected"
 msgstr "Не выбрано дополнительных изображений"
 
@@ -346,7 +346,7 @@ msgstr "Нет действительных данных изображения 
 msgid "Not set"
 msgstr "Не установлено"
 
-#: dialog_gtk.py:515
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr "Режим операции"
 
@@ -408,7 +408,7 @@ msgstr "Продвинутая модель редактирования изо�
 msgid "Random seed for reproducible results (0 = random)"
 msgstr "Случайное семя для воспроизводимых результатов (0 = случайно)"
 
-#: dialog_gtk.py:121 dialog_gtk.py:683
+#: dialog_gtk.py:679
 msgid "Ready"
 msgstr "Готово"
 
@@ -417,7 +417,7 @@ msgstr "Готово"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "Уменьшено до {max} опорных изображений для режима редактирования"
 
-#: dialog_gtk.py:366
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr "Ключ API Replicate"
 
@@ -451,7 +451,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "Выбрать"
 
-#: dialog_gtk.py:325
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "Выбрать изображения..."
 
@@ -484,7 +484,7 @@ msgstr "Установить семя для воспроизводимости"
 msgid "Show API key"
 msgstr "Показать ключ API"
 
-#: dialog_gtk.py:387
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr "Показать/Скрыть ключ API"
 
@@ -539,12 +539,12 @@ msgstr "Ширина"
 msgid "Yes"
 msgstr "Да"
 
-#: dialog_gtk.py:780
+#: dialog_gtk.py:776
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} изображение выбрано"
 
-#: dialog_gtk.py:782
+#: dialog_gtk.py:778
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} изображений выбрано"
@@ -554,7 +554,7 @@ msgstr "{count} изображений выбрано"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Редактирование ИИ: {prompt})"
 
-#: dialog_gtk.py:704
+#: dialog_gtk.py:700
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} МБ - Превышен максимальный размер)"
