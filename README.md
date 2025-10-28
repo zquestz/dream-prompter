@@ -41,7 +41,7 @@ pip install replicate
 3. **Move to your GIMP plugins folder with the correct name:**
 
    Rename and move the extracted folder to exactly `dream-prompter` in your GIMP plugins directory:
-   - **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/`
+  - **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/` (Snap: `~/snap/gimp/current/GIMP/3.0/plug-ins/dream-prompter/`)
    - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
    - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
 
@@ -51,12 +51,14 @@ pip install replicate
    # Extract creates dream-prompter-1.1.4/
    unzip dream-prompter-1.1.4.zip
    # Move to correct location with correct name
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    mv dream-prompter-1.1.4 ~/.config/GIMP/3.0/plug-ins/dream-prompter
    ```
 
 4. **Make executable** (Linux/macOS only):
 
    ```bash
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
    ```
 
@@ -77,16 +79,19 @@ yay -S dream-prompter
 #### Manual Installation from Source
 
 1. **Find your GIMP plugins directory** (paths listed above)
+   If you installed GIMP via Snap, use `~/snap/gimp/current/GIMP` as the base directory instead of `~/.config/GIMP`.
 
 2. **Create plugin directory:**
 
    ```bash
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
 3. **Copy all Python files and the models directory:**
 
    ```bash
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    cp -r models ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
@@ -95,11 +100,13 @@ yay -S dream-prompter
 
    ```bash
    python3 scripts/build-translations.py
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
    ```
 
 5. **Make executable:**
    ```bash
+   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
    chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
    ```
 
@@ -132,6 +139,7 @@ git clone https://github.com/zquestz/dream-prompter.git
 cd dream-prompter
 pip install replicate
 python3 scripts/build-translations.py # optional, defaults to English
+# Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
 ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
 ```
 
