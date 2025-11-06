@@ -27,10 +27,9 @@ class DreamPrompterEventHandler:
         self.model = get_default_model()
 
         self.threads = DreamPrompterThreads(ui, image, drawable)
-        self.threads.set_callbacks({
-            'on_success': self.close_on_success,
-            'on_error': self.show_error
-        })
+        self.threads.set_callbacks(
+            {"on_success": self.close_on_success, "on_error": self.show_error}
+        )
 
         settings = load_settings()
         if self.ui.toggle_visibility_btn and self.ui.api_key_entry:
@@ -44,6 +43,15 @@ class DreamPrompterEventHandler:
             if self.ui.prompt_textview:
                 self.ui.prompt_textview.grab_focus()
 
+            # Update self.model to match the selected model in the dropdown
+            if self.ui.model_dropdown:
+                selected_model_name = self.ui.model_dropdown.get_active_id()
+                if selected_model_name:
+                    selected_model = get_model_by_name(selected_model_name)
+                    if selected_model:
+                        self.model = selected_model
+
+            self.update_ui_limits()
             self.update_generate_button_state()
 
         GLib.idle_add(after_init)
@@ -55,14 +63,12 @@ class DreamPrompterEventHandler:
     def connect_all_signals(self):
         """Connect all UI signals to handlers"""
         if self.ui.model_dropdown:
-            self.ui.model_dropdown.connect('changed', self.on_model_changed)
+            self.ui.model_dropdown.connect("changed", self.on_model_changed)
 
         if self.ui.edit_mode_radio:
             self.ui.edit_mode_radio.connect("toggled", self.on_mode_changed)
         if self.ui.generate_mode_radio:
-            self.ui.generate_mode_radio.connect(
-                "toggled", self.on_mode_changed
-            )
+            self.ui.generate_mode_radio.connect("toggled", self.on_mode_changed)
 
         if self.ui.toggle_visibility_btn:
             self.ui.toggle_visibility_btn.connect(
@@ -114,7 +120,7 @@ class DreamPrompterEventHandler:
             return
 
         edit_radio = self.ui.edit_mode_radio
-        edit_active = (edit_radio and edit_radio.get_active())
+        edit_active = edit_radio and edit_radio.get_active()
         if edit_active and not self.drawable:
             self.show_error(_("Edit mode requires a selected layer"))
             return
@@ -122,21 +128,26 @@ class DreamPrompterEventHandler:
         mode = self.dialog.get_current_mode()
         api_key_visible = self.dialog.get_api_key_visible()
         selected_model_name = self.ui.get_selected_model()
-        store_settings(api_key, mode, prompt_text, api_key_visible,
-                       selected_model_name)
+        store_settings(
+            api_key, mode, prompt_text, api_key_visible, selected_model_name
+        )
 
         if self.ui.status_label:
             self.ui.status_label.set_text(_("Initializing API request..."))
 
         if mode == "edit":
             self.threads.start_edit_thread(
-                api_key, prompt_text, self.ui.selected_files,
-                selected_model_name
+                api_key,
+                prompt_text,
+                self.ui.selected_files,
+                selected_model_name,
             )
         else:
             self.threads.start_generate_thread(
-                api_key, prompt_text, self.ui.selected_files,
-                selected_model_name
+                api_key,
+                prompt_text,
+                self.ui.selected_files,
+                selected_model_name,
             )
 
     def on_model_changed(self, combo_box):
@@ -161,9 +172,7 @@ class DreamPrompterEventHandler:
         if self.ui.edit_mode_radio.get_active():
             max_edit_files = self.model.max_reference_images_edit
             if len(self.ui.selected_files) > max_edit_files:
-                self.ui.selected_files = (
-                    self.ui.selected_files[:max_edit_files]
-                )
+                self.ui.selected_files = self.ui.selected_files[:max_edit_files]
                 self.ui.update_files_display()
                 message = _("Reduced to {max} reference images for edit mode")
                 print(message.format(max=max_edit_files))
@@ -196,7 +205,7 @@ class DreamPrompterEventHandler:
         dialog = Gtk.FileChooserDialog(
             title=_("Select Reference Images"),
             parent=self.dialog,
-            action=Gtk.FileChooserAction.OPEN
+            action=Gtk.FileChooserAction.OPEN,
         )
 
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
@@ -229,13 +238,17 @@ class DreamPrompterEventHandler:
             elif files:
                 if current_mode == "edit":
                     max_refs = self.model.max_reference_images_edit
-                    message = _("Cannot add {count} files. Maximum {max} "
-                                "reference images allowed in edit mode.")
+                    message = _(
+                        "Cannot add {count} files. Maximum {max} "
+                        "reference images allowed in edit mode."
+                    )
                     print(message.format(count=len(files), max=max_refs))
                 else:
                     max_refs = self.model.max_reference_images
-                    message = _("Cannot add {count} files. Maximum {max} "
-                                "reference images allowed.")
+                    message = _(
+                        "Cannot add {count} files. Maximum {max} "
+                        "reference images allowed."
+                    )
                     print(message.format(count=len(files), max=max_refs))
 
         dialog.destroy()
@@ -270,15 +283,18 @@ class DreamPrompterEventHandler:
             modal=True,
             message_type=Gtk.MessageType.ERROR,
             buttons=Gtk.ButtonsType.OK,
-            text=message
+            text=message,
         )
         dialog.run()
         dialog.destroy()
 
     def update_generate_button_state(self):
         """Update generate button sensitivity based on input state"""
-        required_widgets = [self.ui.prompt_buffer, self.ui.api_key_entry,
-                            self.ui.generate_btn]
+        required_widgets = [
+            self.ui.prompt_buffer,
+            self.ui.api_key_entry,
+            self.ui.generate_btn,
+        ]
         if not all(required_widgets):
             return
 
@@ -309,7 +325,7 @@ class DreamPrompterEventHandler:
                 text = _("Select up to {max} additional images").format(
                     max=max_imgs
                 )
-                markup = f'<small>{text}</small>'
+                markup = f"<small>{text}</small>"
                 self.ui.images_help_label.set_markup(markup)
         else:
             if self.ui.images_help_label:
@@ -317,5 +333,5 @@ class DreamPrompterEventHandler:
                 text = _("Select up to {max} additional images").format(
                     max=max_imgs
                 )
-                markup = f'<small>{text}</small>'
+                markup = f"<small>{text}</small>"
                 self.ui.images_help_label.set_markup(markup)

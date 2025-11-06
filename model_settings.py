@@ -49,8 +49,9 @@ class ModelParameterManager:
         """Get all parameter definitions for this model"""
         return self.model.get_parameter_definitions()
 
-    def get_parameter_info(self,
-                           parameter_name: str) -> Optional[Dict[str, Any]]:
+    def get_parameter_info(
+        self, parameter_name: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Get complete information about a parameter
 
@@ -65,20 +66,21 @@ class ModelParameterManager:
             return None
 
         return {
-            'name': param_def.name,
-            'type': param_def.param_type.value,
-            'label': param_def.label,
-            'description': param_def.description,
-            'default_value': param_def.default_value,
-            'current_value': self.get_parameter_value(parameter_name),
-            'choices': param_def.choices,
-            'min_value': param_def.min_value,
-            'max_value': param_def.max_value,
-            'step': param_def.step
+            "name": param_def.name,
+            "type": param_def.param_type.value,
+            "label": param_def.label,
+            "description": param_def.description,
+            "default_value": param_def.default_value,
+            "current_value": self.get_parameter_value(parameter_name),
+            "choices": param_def.choices,
+            "min_value": param_def.min_value,
+            "max_value": param_def.max_value,
+            "step": param_def.step,
         }
 
-    def get_parameter_value(self, parameter_name: str,
-                            default_override: Any = None) -> Any:
+    def get_parameter_value(
+        self, parameter_name: str, default_override: Any = None
+    ) -> Any:
         """
         Get current value for a parameter
 
@@ -98,8 +100,11 @@ class ModelParameterManager:
         if parameter_name in user_settings:
             return param_def.validate_value(user_settings[parameter_name])
 
-        return (default_override if default_override is not None
-                else param_def.default_value)
+        return (
+            default_override
+            if default_override is not None
+            else param_def.default_value
+        )
 
     def reset_all_parameters(self) -> None:
         """Reset all parameters to their default values"""
@@ -120,11 +125,11 @@ class ModelParameterManager:
         if not param_def:
             return False
 
-        return self.set_parameter_value(parameter_name,
-                                        param_def.default_value)
+        return self.set_parameter_value(parameter_name, param_def.default_value)
 
-    def set_multiple_parameters(self,
-                                parameters: Dict[str, Any]) -> Dict[str, bool]:
+    def set_multiple_parameters(
+        self, parameters: Dict[str, Any]
+    ) -> Dict[str, bool]:
         """
         Set multiple parameters at once
 
@@ -208,7 +213,8 @@ def get_all_model_parameters() -> Dict[str, List[Dict[str, Any]]]:
 
 
 def get_model_parameter_manager(
-        model_name: str) -> Optional[ModelParameterManager]:
+    model_name: str,
+) -> Optional[ModelParameterManager]:
     """
     Get parameter manager for a model
 
@@ -234,8 +240,8 @@ def get_parameter_display_value(param_info: Dict[str, Any]) -> str:
     Returns:
         String representation of the current value
     """
-    current_value = param_info.get('current_value')
-    param_type = param_info.get('type')
+    current_value = param_info.get("current_value")
+    param_type = param_info.get("type")
 
     if current_value is None:
         return _("Not set")
@@ -250,8 +256,9 @@ def get_parameter_display_value(param_info: Dict[str, Any]) -> str:
         return str(current_value)
 
 
-def import_model_settings(model_name: str,
-                          settings: Dict[str, Any]) -> Dict[str, bool]:
+def import_model_settings(
+    model_name: str, settings: Dict[str, Any]
+) -> Dict[str, bool]:
     """
     Import settings for a model
 

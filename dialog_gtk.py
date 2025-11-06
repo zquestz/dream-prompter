@@ -129,8 +129,7 @@ class DreamPrompterUI:
 
         available_models = get_models_for_context(self.has_image)
         sorted_models = sorted(
-          available_models.items(),
-          key=lambda x: x[1].display_name
+            available_models.items(), key=lambda x: x[1].display_name
         )
 
         for model_name, model in sorted_models:
@@ -186,8 +185,9 @@ class DreamPrompterUI:
         is_visible = button.get_active()
         self.api_key_entry.set_visibility(is_visible)
 
-        icon_name = ("view-reveal-symbolic" if is_visible
-                     else "view-conceal-symbolic")
+        icon_name = (
+            "view-reveal-symbolic" if is_visible else "view-conceal-symbolic"
+        )
         button.get_image().set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
     def update_files_display(self):
@@ -199,8 +199,11 @@ class DreamPrompterUI:
 
     def update_mode_sensitivity(self, model, current_mode: str):
         """Update mode sensitivity based on model capabilities AND context"""
-        if (not model or not self.edit_mode_radio or
-                not self.generate_mode_radio):
+        if (
+            not model
+            or not self.edit_mode_radio
+            or not self.generate_mode_radio
+        ):
             return
 
         edit_supported = model.supports_editing()
@@ -212,17 +215,17 @@ class DreamPrompterUI:
         self.edit_mode_radio.set_sensitive(edit_enabled)
         self.generate_mode_radio.set_sensitive(generate_enabled)
 
-        if (current_mode == "edit" and not edit_enabled and
-                generate_enabled):
+        if current_mode == "edit" and not edit_enabled and generate_enabled:
             self.generate_mode_radio.set_active(True)
-        elif (current_mode == "generate" and not generate_enabled and
-                edit_enabled):
+        elif (
+            current_mode == "generate" and not generate_enabled and edit_enabled
+        ):
             self.edit_mode_radio.set_active(True)
 
     def update_model_description(self, model):
         """Update the model description help text"""
         if self.model_description_label and model:
-            markup = f'<small>{model.description}</small>'
+            markup = f"<small>{model.description}</small>"
             self.model_description_label.set_markup(markup)
 
     def update_model_settings_ui(self, model, current_mode=None):
@@ -307,9 +310,7 @@ class DreamPrompterUI:
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
         title_label = Gtk.Label()
-        title_label.set_markup(
-            f"<b>{_('Additional Images (Optional)')}</b>"
-        )
+        title_label.set_markup(f"<b>{_('Additional Images (Optional)')}</b>")
         title_label.set_halign(Gtk.Align.START)
         section_box.pack_start(title_label, False, False, 0)
 
@@ -319,8 +320,9 @@ class DreamPrompterUI:
 
         self.file_chooser_btn = Gtk.Button()
         self.file_chooser_btn.set_label(_("Select Images..."))
-        icon = Gtk.Image.new_from_icon_name("document-open-symbolic",
-                                            Gtk.IconSize.BUTTON)
+        icon = Gtk.Image.new_from_icon_name(
+            "document-open-symbolic", Gtk.IconSize.BUTTON
+        )
         self.file_chooser_btn.set_image(icon)
         files_container.pack_start(self.file_chooser_btn, False, False, 0)
 
@@ -332,8 +334,9 @@ class DreamPrompterUI:
         files_container.pack_start(self.files_info_label, True, True, 0)
 
         self.clear_files_btn = Gtk.Button()
-        clear_icon = Gtk.Image.new_from_icon_name("edit-clear-symbolic",
-                                                  Gtk.IconSize.BUTTON)
+        clear_icon = Gtk.Image.new_from_icon_name(
+            "edit-clear-symbolic", Gtk.IconSize.BUTTON
+        )
         self.clear_files_btn.set_image(clear_icon)
         self.clear_files_btn.set_tooltip_text(_("Clear selected files"))
         self.clear_files_btn.set_sensitive(False)
@@ -390,7 +393,7 @@ class DreamPrompterUI:
         help_url = "https://replicate.com/account/api-tokens"
         help_text = _('Get your API key from <a href="{url}">Replicate</a>')
         help_text = help_text.format(url=help_url)
-        help_label.set_markup(f'<small>{help_text}</small>')
+        help_label.set_markup(f"<small>{help_text}</small>")
         help_label.set_halign(Gtk.Align.START)
         help_label.set_line_wrap(True)
         section_box.pack_start(help_label, False, False, 0)
@@ -431,8 +434,9 @@ class DreamPrompterUI:
         file_box.set_margin_start(6)
         file_box.set_margin_end(6)
 
-        icon = Gtk.Image.new_from_icon_name("image-x-generic-symbolic",
-                                            Gtk.IconSize.SMALL_TOOLBAR)
+        icon = Gtk.Image.new_from_icon_name(
+            "image-x-generic-symbolic", Gtk.IconSize.SMALL_TOOLBAR
+        )
         file_box.pack_start(icon, False, False, 0)
 
         label = Gtk.Label()
@@ -468,8 +472,7 @@ class DreamPrompterUI:
 
         available_models = get_models_for_context(self.has_image)
         sorted_models = sorted(
-          available_models.items(),
-          key=lambda x: x[1].display_name
+            available_models.items(), key=lambda x: x[1].display_name
         )
 
         for model_name, model in sorted_models:
@@ -549,24 +552,32 @@ class DreamPrompterUI:
                 widget.set_active_id(str(current_value))
             else:
                 widget.set_active_id(str(param_def.default_value))
-            widget.connect('changed', self._on_parameter_changed,
-                           param_def.name)
+            widget.connect(
+                "changed", self._on_parameter_changed, param_def.name
+            )
 
         elif param_def.param_type == ParameterType.BOOLEAN:
             widget = Gtk.CheckButton()
             default_val = param_def.default_value
-            value = (bool(current_value) if current_value is not None
-                     else default_val)
+            value = (
+                bool(current_value)
+                if current_value is not None
+                else default_val
+            )
             widget.set_active(value)
             widget.connect(
-                'toggled', self._on_parameter_changed, param_def.name
+                "toggled", self._on_parameter_changed, param_def.name
             )
 
         elif param_def.param_type == ParameterType.INTEGER:
-            min_val = (param_def.min_value if param_def.min_value is not None
-                       else 0)
-            max_val = (param_def.max_value if param_def.max_value is not None
-                       else 10000)
+            min_val = (
+                param_def.min_value if param_def.min_value is not None else 0
+            )
+            max_val = (
+                param_def.max_value
+                if param_def.max_value is not None
+                else 10000
+            )
             step = param_def.step if param_def.step is not None else 1
 
             default_val = param_def.default_value
@@ -576,19 +587,24 @@ class DreamPrompterUI:
                 lower=min_val,
                 upper=max_val,
                 step_increment=step,
-                page_increment=step * 10
+                page_increment=step * 10,
             )
             widget = Gtk.SpinButton()
             widget.set_adjustment(adjustment)
             widget.set_digits(0)
-            widget.connect('value-changed',
-                           self._on_parameter_changed, param_def.name)
+            widget.connect(
+                "value-changed", self._on_parameter_changed, param_def.name
+            )
 
         elif param_def.param_type == ParameterType.FLOAT:
-            min_val = (param_def.min_value if param_def.min_value is not None
-                       else 0.0)
-            max_val = (param_def.max_value if param_def.max_value is not None
-                       else 100.0)
+            min_val = (
+                param_def.min_value if param_def.min_value is not None else 0.0
+            )
+            max_val = (
+                param_def.max_value
+                if param_def.max_value is not None
+                else 100.0
+            )
             step = param_def.step if param_def.step is not None else 0.1
 
             default_val = param_def.default_value
@@ -598,21 +614,26 @@ class DreamPrompterUI:
                 lower=min_val,
                 upper=max_val,
                 step_increment=step,
-                page_increment=step * 10
+                page_increment=step * 10,
             )
             widget = Gtk.SpinButton()
             widget.set_adjustment(adjustment)
             widget.set_digits(2)
-            widget.connect('value-changed',
-                           self._on_parameter_changed, param_def.name)
+            widget.connect(
+                "value-changed", self._on_parameter_changed, param_def.name
+            )
 
         elif param_def.param_type == ParameterType.STRING:
             widget = Gtk.Entry()
-            text_value = (str(current_value) if current_value is not None
-                          else str(param_def.default_value))
+            text_value = (
+                str(current_value)
+                if current_value is not None
+                else str(param_def.default_value)
+            )
             widget.set_text(text_value)
-            widget.connect('changed', self._on_parameter_changed,
-                           param_def.name)
+            widget.connect(
+                "changed", self._on_parameter_changed, param_def.name
+            )
 
         if widget:
             container.pack_start(widget, True, True, 0)
@@ -651,14 +672,16 @@ class DreamPrompterUI:
     def _create_remove_button(self, file_path):
         """Create remove button for a file"""
         remove_btn = Gtk.Button()
-        del_icon = Gtk.Image.new_from_icon_name("edit-delete-symbolic",
-                                                Gtk.IconSize.MENU)
+        del_icon = Gtk.Image.new_from_icon_name(
+            "edit-delete-symbolic", Gtk.IconSize.MENU
+        )
         remove_btn.set_image(del_icon)
         remove_btn.set_relief(Gtk.ReliefStyle.NONE)
 
         if self.event_handler:
-            remove_btn.connect("clicked",
-                               self.event_handler.on_remove_file, file_path)
+            remove_btn.connect(
+                "clicked", self.event_handler.on_remove_file, file_path
+            )
 
         return remove_btn
 
@@ -736,8 +759,10 @@ class DreamPrompterUI:
                 value = widget.get_active_id()
             elif param_def.param_type == ParameterType.BOOLEAN:
                 value = widget.get_active()
-            elif param_def.param_type in [ParameterType.INTEGER,
-                                          ParameterType.FLOAT]:
+            elif param_def.param_type in [
+                ParameterType.INTEGER,
+                ParameterType.FLOAT,
+            ]:
                 value = widget.get_value()
                 if param_def.param_type == ParameterType.INTEGER:
                     value = int(value)

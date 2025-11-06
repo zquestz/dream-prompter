@@ -71,7 +71,9 @@ class QwenImageEditModel(BaseModel):
         return ["image/gif", "image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
-        self, prompt: str, main_image,
+        self,
+        prompt: str,
+        main_image,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -96,9 +98,7 @@ class QwenImageEditModel(BaseModel):
             image.append(main_image)
 
         if reference_images:
-            image.extend(
-                reference_images[:self.max_reference_images_edit]
-            )
+            image.extend(reference_images[: self.max_reference_images_edit])
 
         params = self.build_parameters_dict(user_settings or {})
 
@@ -106,19 +106,18 @@ class QwenImageEditModel(BaseModel):
             if key in params:
                 params[key] = value
 
-        model_input = {
-            "prompt": prompt,
-            "image": image
-        }
+        model_input = {"prompt": prompt, "image": image}
 
         if params.get("go_fast") is not None:
             model_input["go_fast"] = params["go_fast"]
-        if params.get("seed", 0) != 0:
+        if params.get("seed", -1) != -1:
             model_input["seed"] = params["seed"]
         if params.get("output_format"):
             model_input["output_format"] = params["output_format"]
-        if (params.get("output_quality") and
-                params.get("output_format") == "jpg"):
+        if (
+            params.get("output_quality")
+            and params.get("output_format") == "jpg"
+        ):
             model_input["output_quality"] = params["output_quality"]
         if params.get("disable_safety_checker") is not None:
             model_input["disable_safety_checker"] = params[
@@ -128,7 +127,8 @@ class QwenImageEditModel(BaseModel):
         return {k: v for k, v in model_input.items() if v is not None}
 
     def build_generation_input(
-        self, prompt: str,
+        self,
+        prompt: str,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -158,7 +158,12 @@ class QwenImageEditModel(BaseModel):
                 label=_("Aspect Ratio"),
                 description=_("Control aspect ratio of generated images"),
                 choices=[
-                    "match_input_image", "1:1", "4:3", "3:4", "16:9", "9:16"
+                    "match_input_image",
+                    "1:1",
+                    "4:3",
+                    "3:4",
+                    "16:9",
+                    "9:16",
                 ],
                 supported_modes=[ParameterMode.GENERATE],
             ),
@@ -173,12 +178,13 @@ class QwenImageEditModel(BaseModel):
             ParameterDefinition(
                 name="seed",
                 param_type=ParameterType.INTEGER,
-                default_value=0,
+                default_value=-1,
                 label=_("Seed"),
                 description=_(
-                    "Random seed for reproducible results (0 = random)"
+                    "Random seed for reproducible results (-1 = random)"
                 ),
-                min_value=0,
+                step=1,
+                min_value=-1,
                 max_value=999999999,
                 supported_modes=[ParameterMode.BOTH],
             ),

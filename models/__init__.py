@@ -13,6 +13,7 @@ from enum import Enum
 
 class ModelCapability(Enum):
     """Model capabilities for different operations"""
+
     GENERATE = "generate"
     EDIT = "edit"
     BOTH = "both"
@@ -20,6 +21,7 @@ class ModelCapability(Enum):
 
 class OutputFormat(Enum):
     """Supported output formats"""
+
     PNG = "png"
     JPEG = "jpg"
     WEBP = "webp"
@@ -27,6 +29,7 @@ class OutputFormat(Enum):
 
 class ParameterMode(Enum):
     """Modes where parameters are supported"""
+
     GENERATE = "generate"
     EDIT = "edit"
     BOTH = "both"
@@ -34,6 +37,7 @@ class ParameterMode(Enum):
 
 class ParameterType(Enum):
     """Types of configurable parameters"""
+
     INTEGER = "integer"
     FLOAT = "float"
     STRING = "string"
@@ -109,7 +113,7 @@ class ParameterDefinition:
         if isinstance(value, bool):
             return value
         if isinstance(value, str):
-            return value.lower() in ('true', '1', 'yes', 'on')
+            return value.lower() in ("true", "1", "yes", "on")
         return bool(value)
 
     def _validate_choice(self, value: Any) -> Any:
@@ -209,7 +213,7 @@ class BaseModel(ABC):
         main_image,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
-        **kwargs
+        **kwargs,
     ) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
@@ -233,7 +237,7 @@ class BaseModel(ABC):
         prompt: str,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
-        **kwargs
+        **kwargs,
     ) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
@@ -250,9 +254,9 @@ class BaseModel(ABC):
         """
         pass
 
-    def build_parameters_dict(self,
-                              user_settings: Optional[Dict[str, Any]] = None
-                              ) -> Dict[str, Any]:
+    def build_parameters_dict(
+        self, user_settings: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """
         Build dictionary of all parameter values for API calls
 
@@ -326,14 +330,13 @@ class BaseModel(ABC):
     def supports_generation(self) -> bool:
         """Check if model supports image generation"""
         return self.capabilities in [
-            ModelCapability.GENERATE, ModelCapability.BOTH
+            ModelCapability.GENERATE,
+            ModelCapability.BOTH,
         ]
 
     def supports_editing(self) -> bool:
         """Check if model supports image editing"""
-        return self.capabilities in [
-            ModelCapability.EDIT, ModelCapability.BOTH
-        ]
+        return self.capabilities in [ModelCapability.EDIT, ModelCapability.BOTH]
 
     def validate_file_size(self, size_bytes: int) -> bool:
         """
@@ -360,8 +363,9 @@ class BaseModel(ABC):
         """
         return mime_type in self.supported_mime_types
 
-    def _get_parameter_definition(self, parameter_name: str
-                                  ) -> Optional[ParameterDefinition]:
+    def _get_parameter_definition(
+        self, parameter_name: str
+    ) -> Optional[ParameterDefinition]:
         """Get parameter definition by name"""
         for param_def in self.get_parameter_definitions():
             if param_def.name == parameter_name:
@@ -398,8 +402,11 @@ def get_compatible_models(mode: str) -> Dict[str, BaseModel]:
         Dictionary of compatible models
     """
     all_models = get_all_models()
-    return {name: model for name, model in all_models.items()
-            if model.is_mode_supported(mode)}
+    return {
+        name: model
+        for name, model in all_models.items()
+        if model.is_mode_supported(mode)
+    }
 
 
 def get_models_for_context(has_image: bool = False) -> Dict[str, BaseModel]:

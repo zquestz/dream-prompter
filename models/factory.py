@@ -15,6 +15,7 @@ from . import nano_banana  # noqa: F401
 from . import qwen_image_edit_plus  # noqa: F401
 from . import seedream4  # noqa: F401
 from . import stable_diffusion_3_5_large_turbo  # noqa: F401
+from . import flux_pro  # noqa: F401
 
 
 class ModelFactory:
@@ -44,8 +45,11 @@ class ModelFactory:
             Dictionary of compatible models
         """
         all_models = self.get_available_models()
-        return {name: model for name, model in all_models.items()
-                if model.is_mode_supported(mode)}
+        return {
+            name: model
+            for name, model in all_models.items()
+            if model.is_mode_supported(mode)
+        }
 
     def get_default_model(self) -> BaseModel:
         """

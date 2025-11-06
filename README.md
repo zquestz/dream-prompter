@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 1.1 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 1.1 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.4`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.5`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -48,11 +48,11 @@ pip install replicate
    Example for Linux:
 
    ```bash
-   # Extract creates dream-prompter-1.1.4/
-   unzip dream-prompter-1.1.4.zip
+   # Extract creates dream-prompter-1.1.5/
+   unzip dream-prompter-1.1.5.zip
    # Move to correct location with correct name
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   mv dream-prompter-1.1.4 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+   mv dream-prompter-1.1.5 ~/.config/GIMP/3.0/plug-ins/dream-prompter
    ```
 
 4. **Make executable** (Linux/macOS only):
@@ -123,6 +123,7 @@ yay -S dream-prompter
 ├── models/
 │   ├── __init__.py
 │   ├── factory.py
+│   ├── flux_pro.py
 │   ├── imagen4.py
 │   ├── nano_banana.py
 │   ├── qwen_image_edit_plus.py
@@ -195,6 +196,15 @@ If you get the **"replicate not installed"** error on macOS:
 3. **Keep your key secure and monitor usage/costs**
 
 ### Available AI Models
+
+**Flux 1.1 Pro** (`black-forest-labs/flux-1.1-pro`) - Faster, better FLUX Pro with excellent image quality:
+
+- **Capabilities**: Generation only
+- **Reference Images**: Up to 1 for generation
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP, GIF
+- **Special Features**: 6x faster than predecessor, superior prompt adherence, excellent output diversity
+- **More Info**: [Replicate Model Page](https://replicate.com/black-forest-labs/flux-1.1-pro)
 
 **Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
 
@@ -332,6 +342,7 @@ The plugin is organized into focused modules with a clean model-driven architect
 
 - **`models/__init__.py`** - Base model classes and registry system
 - **`models/factory.py`** - Model factory for centralized model management
+- **`models/flux_pro.py`** - Flux 1.1 Pro model implementation
 - **`models/imagen4.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
 - **`models/qwen_image_edit_plus.py`** - Qwen Image Edit Plus model implementation
@@ -456,4 +467,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 1.1 Pro, Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.

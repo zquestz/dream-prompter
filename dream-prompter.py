@@ -6,21 +6,23 @@ Dream Prompter - AI Image Generation GIMP Plugin
 A GIMP plugin for AI-powered image creation/editing using Replicate's
 advanced AI models
 """
+
 import sys
 
 import gi
-gi.require_version('Gtk', '3.0')
-gi.require_version('Gimp', '3.0')
-gi.require_version('GimpUi', '3.0')
-gi.require_version('GLib', '2.0')
-gi.require_version('GdkPixbuf', '2.0')
+
+gi.require_version("Gtk", "3.0")
+gi.require_version("Gimp", "3.0")
+gi.require_version("GimpUi", "3.0")
+gi.require_version("GLib", "2.0")
+gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import Gimp, GimpUi, Gtk, GLib  # noqa: E402
 
 from dialog import DreamPrompterDialog  # noqa: E402
 from i18n import _, DOMAIN  # noqa: E402
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.1.4"
+PLUGIN_VERSION = "1.1.5"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Replicate models"
 
 
@@ -29,30 +31,31 @@ class DreamPrompter(Gimp.PlugIn):
 
     def do_create_procedure(self, name):
         """Create the plugin procedure"""
-        if name == 'dream-prompter':
+        if name == "dream-prompter":
             procedure = Gimp.ImageProcedure.new(
                 self,
                 name,
                 Gimp.PDBProcType.PLUGIN,
                 self.run_dream_prompter,
-                None
+                None,
             )
             procedure.set_image_types("*")
-            procedure.set_sensitivity_mask(
-                Gimp.ProcedureSensitivityMask.ALWAYS
-            )
+            procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.ALWAYS)
             procedure.set_documentation(
                 _("AI-powered image creation/editing with Replicate models"),
-                _("Transform existing images or generate new images using "
-                  "advanced AI models from Replicate with natural language "
-                  "prompts. Choose from multiple models including Imagen 4, "
-                  "Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
-                  "Stable Diffusion 3.5 Large Turbo."),
-                name
+                _(
+                    "Transform existing images or generate new images using "
+                    "advanced AI models from Replicate with natural language "
+                    "prompts. Choose from multiple models including Imagen 4, "
+                    "Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+                    "Stable Diffusion 3.5 Large Turbo."
+                ),
+                name,
             )
             procedure.set_menu_label(_("Dream Prompter..."))
-            procedure.set_attribution("Josh Ellithorpe", "Josh Ellithorpe",
-                                      "2025")
+            procedure.set_attribution(
+                "Josh Ellithorpe", "Josh Ellithorpe", "2025"
+            )
             procedure.add_menu_path("<Image>/Filters/AI")
 
             return procedure
@@ -60,14 +63,15 @@ class DreamPrompter(Gimp.PlugIn):
 
     def do_query_procedures(self):
         """Register the plugin procedure"""
-        return ['dream-prompter']
+        return ["dream-prompter"]
 
     def do_set_i18n(self, _procname):
         """Enable localization"""
         return DOMAIN
 
-    def run_dream_prompter(self, procedure, run_mode, image, drawables,
-                           _config, _run_data):
+    def run_dream_prompter(
+        self, procedure, run_mode, image, drawables, _config, _run_data
+    ):
         """Run the Dream Prompter plugin"""
         if run_mode == Gimp.RunMode.INTERACTIVE:
             try:
@@ -106,5 +110,5 @@ class DreamPrompter(Gimp.PlugIn):
         )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     Gimp.main(DreamPrompter.__gtype__, sys.argv)

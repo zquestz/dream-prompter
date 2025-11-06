@@ -16,12 +16,12 @@ def discover_python_files() -> list[str]:
     """Automatically discover Python files in the plugin directory"""
     python_files = []
 
-    for file_path in Path('.').glob('*.py'):
+    for file_path in Path(".").glob("*.py"):
         python_files.append(str(file_path))
 
-    models_dir = Path('models')
+    models_dir = Path("models")
     if models_dir.exists():
-        for file_path in models_dir.glob('*.py'):
+        for file_path in models_dir.glob("*.py"):
             python_files.append(str(file_path))
 
     return sorted(python_files)
@@ -43,22 +43,22 @@ def extract_strings() -> bool:
     for f in python_files:
         print(f"  - {f}")
 
-    pot_file = 'locale/dream-prompter.pot'
+    pot_file = "locale/dream-prompter.pot"
 
-    os.makedirs('locale', exist_ok=True)
+    os.makedirs("locale", exist_ok=True)
 
     cmd = [
-        'xgettext',
-        '--language=Python',
-        '--keyword=_',
-        '--keyword=N_',
-        '--output=' + pot_file,
-        '--from-code=UTF-8',
-        '--copyright-holder=Josh Ellithorpe',
-        '--package-name=Dream Prompter',
-        '--package-version=1.1.4',
-        '--msgid-bugs-address=quest@mac.com',
-        '--add-comments=TRANSLATORS'
+        "xgettext",
+        "--language=Python",
+        "--keyword=_",
+        "--keyword=N_",
+        "--output=" + pot_file,
+        "--from-code=UTF-8",
+        "--copyright-holder=Josh Ellithorpe",
+        "--package-name=Dream Prompter",
+        "--package-version=1.1.5",
+        "--msgid-bugs-address=quest@mac.com",
+        "--add-comments=TRANSLATORS",
     ] + python_files
 
     try:
@@ -71,7 +71,7 @@ def extract_strings() -> bool:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if extract_strings():
         print("Translation template created successfully!")
     else:

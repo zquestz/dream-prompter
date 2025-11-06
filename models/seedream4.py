@@ -10,8 +10,15 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import (BaseModel, ModelCapability, OutputFormat, ParameterDefinition,
-               ParameterType, ParameterMode, register_model)
+from . import (
+    BaseModel,
+    ModelCapability,
+    OutputFormat,
+    ParameterDefinition,
+    ParameterType,
+    ParameterMode,
+    register_model,
+)
 from i18n import _
 
 
@@ -61,13 +68,15 @@ class Seedream4Model(BaseModel):
     @property
     def supported_mime_types(self) -> List[str]:
         """List of supported MIME types for reference images"""
-        return ['image/png', 'image/jpeg', 'image/webp']
+        return ["image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
-        self, prompt: str, main_image,
+        self,
+        prompt: str,
+        main_image,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
-        **kwargs
+        **kwargs,
     ) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
@@ -91,7 +100,7 @@ class Seedream4Model(BaseModel):
 
         if reference_images:
             image_input.extend(
-                reference_images[:self.max_reference_images_edit]
+                reference_images[: self.max_reference_images_edit]
             )
 
         params = self.build_parameters_dict(user_settings or {})
@@ -110,16 +119,17 @@ class Seedream4Model(BaseModel):
             "sequential_image_generation": (
                 params["sequential_image_generation"]
             ),
-            "image_input": image_input
+            "image_input": image_input,
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
 
     def build_generation_input(
-        self, prompt: str,
+        self,
+        prompt: str,
         reference_images: Optional[List] = None,
         user_settings: Optional[Dict[str, Any]] = None,
-        **kwargs
+        **kwargs,
     ) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
@@ -149,7 +159,7 @@ class Seedream4Model(BaseModel):
             "sequential_image_generation": (
                 params["sequential_image_generation"]
             ),
-            "image_input": reference_images or []
+            "image_input": reference_images or [],
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
@@ -164,7 +174,7 @@ class Seedream4Model(BaseModel):
                 label=_("Image Size"),
                 description=_("Resolution preset for generated images"),
                 choices=["1K", "2K", "4K", "custom"],
-                supported_modes=[ParameterMode.BOTH]
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="width",
@@ -175,7 +185,7 @@ class Seedream4Model(BaseModel):
                 min_value=1024,
                 max_value=4096,
                 step=1,
-                supported_modes=[ParameterMode.BOTH]
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="height",
@@ -186,7 +196,7 @@ class Seedream4Model(BaseModel):
                 min_value=1024,
                 max_value=4096,
                 step=1,
-                supported_modes=[ParameterMode.BOTH]
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="aspect_ratio",
@@ -194,9 +204,18 @@ class Seedream4Model(BaseModel):
                 default_value="match_input_image",
                 label=_("Aspect Ratio"),
                 description=_("Control aspect ratio of generated images"),
-                choices=["match_input_image", "1:1", "4:3", "3:4", "16:9",
-                         "9:16", "3:2", "2:3", "21.9"],
-                supported_modes=[ParameterMode.GENERATE]
+                choices=[
+                    "match_input_image",
+                    "1:1",
+                    "4:3",
+                    "3:4",
+                    "16:9",
+                    "9:16",
+                    "3:2",
+                    "2:3",
+                    "21.9",
+                ],
+                supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="max_images",
@@ -206,7 +225,7 @@ class Seedream4Model(BaseModel):
                 description=_("Maximum number of images to generate"),
                 min_value=1,
                 max_value=15,
-                supported_modes=[ParameterMode.BOTH]
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="sequential_image_generation",
@@ -215,8 +234,8 @@ class Seedream4Model(BaseModel):
                 label=_("Sequential Generation"),
                 description=_("Generate images sequentially or in parallel"),
                 choices=["disabled", "auto"],
-                supported_modes=[ParameterMode.BOTH]
-            )
+                supported_modes=[ParameterMode.BOTH],
+            ),
         ]
 
 

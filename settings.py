@@ -32,7 +32,7 @@ DEFAULT_SETTINGS: SettingsDict = {
     "prompt": "",
     "api_key_visible": DEFAULT_API_KEY_VISIBLE,
     "model": "",
-    "model_settings": {}
+    "model_settings": {},
 }
 
 
@@ -62,8 +62,9 @@ def get_default_model_name() -> str:
     return "google/nano-banana"
 
 
-def get_model_parameter(model_name: str, parameter: str,
-                        default_value: Any = None) -> Any:
+def get_model_parameter(
+    model_name: str, parameter: str, default_value: Any = None
+) -> Any:
     """
     Get a specific parameter value for a model
 
@@ -105,7 +106,7 @@ def load_settings() -> SettingsDict:
     try:
         config_file = get_config_file()
         if os.path.exists(config_file):
-            with open(config_file, 'r', encoding='utf-8') as f:
+            with open(config_file, "r", encoding="utf-8") as f:
                 loaded_settings = cast(SettingsDict, json.load(f))
                 for key, default_value in DEFAULT_SETTINGS.items():
                     if key not in loaded_settings:
@@ -139,8 +140,9 @@ def set_model_parameter(model_name: str, parameter: str, value: Any) -> None:
     store_model_settings(model_name, model_settings)
 
 
-def store_model_settings(model_name: str,
-                         model_settings: ModelSettingsDict) -> None:
+def store_model_settings(
+    model_name: str, model_settings: ModelSettingsDict
+) -> None:
     """
     Store settings for a specific model
 
@@ -159,14 +161,15 @@ def store_model_settings(model_name: str,
             api_key=str(current_settings.get("api_key", "")),
             mode=str(current_settings.get("mode", DEFAULT_MODE)),
             prompt=str(current_settings.get("prompt", "")),
-            api_key_visible=bool(current_settings.get(
-                "api_key_visible", DEFAULT_API_KEY_VISIBLE
-            )),
+            api_key_visible=bool(
+                current_settings.get("api_key_visible", DEFAULT_API_KEY_VISIBLE)
+            ),
             model=str(current_settings.get("model", "")),
             model_settings=(
-                all_model_settings if isinstance(all_model_settings, dict)
+                all_model_settings
+                if isinstance(all_model_settings, dict)
                 else None
-            )
+            ),
         )
     except Exception as e:
         print(f"Error storing model settings for {model_name}: {e}")
@@ -178,7 +181,7 @@ def store_settings(
     prompt: str,
     api_key_visible: bool,
     model: str = "",
-    model_settings: Optional[Dict[str, Dict[str, Any]]] = None
+    model_settings: Optional[Dict[str, Dict[str, Any]]] = None,
 ) -> None:
     """Store settings to config file"""
     if mode not in ("edit", "generate"):
@@ -201,12 +204,12 @@ def store_settings(
             "prompt": prompt,
             "api_key_visible": api_key_visible,
             "model": model,
-            "model_settings": existing_model_settings
+            "model_settings": existing_model_settings,
         }
 
         config_file = get_config_file()
 
-        with open(config_file, 'w', encoding='utf-8') as f:
+        with open(config_file, "w", encoding="utf-8") as f:
             json.dump(settings, f, indent=2)
 
         if platform.system() != "Windows":
@@ -223,7 +226,7 @@ def store_settings(
 def _get_linux_config_dir() -> str:
     """Get Linux config directory"""
     return os.path.join(
-        os.path.expanduser("~"), '.config', 'GIMP', GIMP_VERSION
+        os.path.expanduser("~"), ".config", "GIMP", GIMP_VERSION
     )
 
 
@@ -231,13 +234,13 @@ def _get_macos_config_dir() -> str:
     """Get macOS config directory"""
     home = os.path.expanduser("~")
     return os.path.join(
-        home, 'Library', 'Application Support', 'GIMP', GIMP_VERSION
+        home, "Library", "Application Support", "GIMP", GIMP_VERSION
     )
 
 
 def _get_windows_config_dir() -> str:
     """Get Windows config directory"""
-    appdata = os.environ.get('APPDATA')
+    appdata = os.environ.get("APPDATA")
     if not appdata:
         appdata = os.path.expanduser("~\\AppData\\Roaming")
-    return os.path.join(appdata, 'GIMP', GIMP_VERSION)
+    return os.path.join(appdata, "GIMP", GIMP_VERSION)

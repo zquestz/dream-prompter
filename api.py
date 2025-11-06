@@ -31,11 +31,13 @@ PROGRESS_UPLOAD = 0.5
 try:
     from replicate.client import Client
     from replicate.exceptions import ModelError, ReplicateError
+
     REPLICATE_AVAILABLE = True
 except ImportError:
     REPLICATE_AVAILABLE = False
-    print("Warning: replicate package not installed. "
-          "Run: pip install replicate")
+    print(
+        "Warning: replicate package not installed. Run: pip install replicate"
+    )
 
 
 class ReplicateAPI:
@@ -79,7 +81,7 @@ class ReplicateAPI:
         reference_images: Optional[List[str]] = None,
         progress_callback: Optional[
             Callable[[str, Optional[float]], bool]
-        ] = None
+        ] = None,
     ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
         """
         Edit an image using AI model based on text prompt.
@@ -107,10 +109,9 @@ class ReplicateAPI:
             return None, _("No GIMP image provided for editing")
 
         try:
-            if (progress_callback and not progress_callback(
-                _("Preparing current image for Replicate..."),
-                PROGRESS_PREPARE
-            )):
+            if progress_callback and not progress_callback(
+                _("Preparing current image for Replicate..."), PROGRESS_PREPARE
+            ):
                 return None, _("Operation cancelled")
 
             current_image_data = integrator.export_current_region_to_bytes(
@@ -122,9 +123,9 @@ class ReplicateAPI:
             with self._prepare_reference_images(
                 reference_images, self.model.max_reference_images_edit
             ) as ref_files:
-                if (progress_callback and not progress_callback(
+                if progress_callback and not progress_callback(
                     _("Building Replicate edit request..."), PROGRESS_UPLOAD
-                )):
+                ):
                     return None, _("Operation cancelled")
 
                 user_settings = get_model_settings(self.model.name)
@@ -132,12 +133,12 @@ class ReplicateAPI:
                     prompt=prompt,
                     main_image=io.BytesIO(current_image_data),
                     reference_images=ref_files if ref_files else None,
-                    user_settings=user_settings
+                    user_settings=user_settings,
                 )
 
-                if (progress_callback and not progress_callback(
+                if progress_callback and not progress_callback(
                     _("Sending edit request to Replicate..."), PROGRESS_PROCESS
-                )):
+                ):
                     return None, _("Operation cancelled")
 
                 output = self._execute_api_call(model_input)
@@ -155,7 +156,7 @@ class ReplicateAPI:
         reference_images: Optional[List[str]] = None,
         progress_callback: Optional[
             Callable[[str, Optional[float]], bool]
-        ] = None
+        ] = None,
     ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
         """
         Generate a new image using AI model based on text prompt.
@@ -182,21 +183,21 @@ class ReplicateAPI:
             with self._prepare_reference_images(
                 reference_images, self.model.max_reference_images
             ) as ref_files:
-                if (progress_callback and not progress_callback(
+                if progress_callback and not progress_callback(
                     _("Generating image with Replicate..."), PROGRESS_PREPARE
-                )):
+                ):
                     return None, _("Operation cancelled")
 
                 user_settings = get_model_settings(self.model.name)
                 model_input = self.model.build_generation_input(
                     prompt=prompt,
                     reference_images=ref_files if reference_images else None,
-                    user_settings=user_settings
+                    user_settings=user_settings,
                 )
 
-                if (progress_callback and not progress_callback(
+                if progress_callback and not progress_callback(
                     _("Sending request to Replicate..."), PROGRESS_PROCESS
-                )):
+                ):
                     return None, _("Operation cancelled")
 
                 output = self._execute_api_call(model_input)
@@ -262,8 +263,8 @@ class ReplicateAPI:
 
         except ModelError as e:
             error_msg = _("Model error: {error}").format(error=str(e))
-            if hasattr(e, 'prediction') and e.prediction:
-                if hasattr(e.prediction, 'logs') and e.prediction.logs:
+            if hasattr(e, "prediction") and e.prediction:
+                if hasattr(e.prediction, "logs") and e.prediction.logs:
                     error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
             return error_msg
 
@@ -272,9 +273,7 @@ class ReplicateAPI:
 
     @contextmanager
     def _prepare_reference_images(
-        self,
-        reference_images: Optional[List[str]],
-        max_count: int
+        self, reference_images: Optional[List[str]], max_count: int
     ):
         """
         Context manager for preparing reference images.
@@ -295,11 +294,13 @@ class ReplicateAPI:
             for img_path in reference_images[:max_count]:
                 if self._validate_reference_image(img_path):
                     try:
-                        file_handle = open(img_path, 'rb')
+                        file_handle = open(img_path, "rb")
                         file_handles.append(file_handle)
                     except (OSError, IOError) as e:
-                        print(f"Warning: Could not open reference image "
-                              f"{img_path}: {e}")
+                        print(
+                            f"Warning: Could not open reference image "
+                            f"{img_path}: {e}"
+                        )
 
             yield file_handles
 
@@ -334,14 +335,14 @@ class ReplicateAPI:
                         image_bytes_list.append(downloaded_bytes)
                 elif isinstance(item, bytes):
                     image_bytes_list.append(item)
-                elif hasattr(item, 'read'):
+                elif hasattr(item, "read"):
                     try:
                         image_bytes_list.append(item.read())
                     except Exception as e:
                         print(f"Error reading from file-like object: {e}")
-        elif hasattr(output, '__iter__'):
+        elif hasattr(output, "__iter__"):
             try:
-                chunk_bytes = b''.join(chunk for chunk in output)
+                chunk_bytes = b"".join(chunk for chunk in output)
                 if chunk_bytes:
                     image_bytes_list.append(chunk_bytes)
             except (TypeError, ValueError) as e:
@@ -354,7 +355,7 @@ class ReplicateAPI:
         output,
         progress_callback: Optional[
             Callable[[str, Optional[float]], bool]
-        ] = None
+        ] = None,
     ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
         """
         Process API response and convert to pixbufs.
@@ -366,17 +367,17 @@ class ReplicateAPI:
         Returns:
             Tuple of (pixbufs, error_message)
         """
-        if (progress_callback and not progress_callback(
+        if progress_callback and not progress_callback(
             _("Processing Replicate response..."), PROGRESS_DOWNLOAD
-        )):
+        ):
             return None, _("Operation cancelled")
 
         if not output:
             return None, _("No output received from API")
 
-        if (progress_callback and not progress_callback(
+        if progress_callback and not progress_callback(
             _("Downloading result..."), PROGRESS_DOWNLOAD
-        )):
+        ):
             return None, _("Operation cancelled")
 
         image_bytes_list = self._process_api_response(output)
@@ -396,7 +397,7 @@ class ReplicateAPI:
         if progress_callback:
             operation_complete_msg = (
                 _("Image editing complete!")
-                if hasattr(self, '_is_edit_operation')
+                if hasattr(self, "_is_edit_operation")
                 else _("Image generation complete!")
             )
             progress_callback(operation_complete_msg, PROGRESS_COMPLETE)
@@ -415,32 +416,40 @@ class ReplicateAPI:
         """
         try:
             if not os.path.exists(img_path):
-                print(f"Warning: Image file {img_path} does not exist. "
-                      "Skipping.")
+                print(
+                    f"Warning: Image file {img_path} does not exist. Skipping."
+                )
                 return False
 
             file_size = os.path.getsize(img_path)
             if not self.model.validate_file_size(file_size):
                 file_size_mb = file_size / (1024 * 1024)
                 max_size_mb = self.model.max_file_size_mb
-                print(f"Warning: Image {img_path} is {file_size_mb:.1f} MB, "
-                      f"exceeds {max_size_mb} MB limit. Skipping.")
+                print(
+                    f"Warning: Image {img_path} is {file_size_mb:.1f} MB, "
+                    f"exceeds {max_size_mb} MB limit. Skipping."
+                )
                 return False
 
             mime_type, encoding = mimetypes.guess_type(img_path)
             if not mime_type:
-                print(f"Warning: Could not determine MIME type for "
-                      f"{img_path}. Skipping.")
+                print(
+                    f"Warning: Could not determine MIME type for "
+                    f"{img_path}. Skipping."
+                )
                 return False
 
             if not self.model.validate_mime_type(mime_type):
-                print(f"Warning: Image {img_path} has unsupported MIME type "
-                      f"{mime_type}. Skipping.")
+                print(
+                    f"Warning: Image {img_path} has unsupported MIME type "
+                    f"{mime_type}. Skipping."
+                )
                 return False
 
             return True
 
         except Exception as e:
-            print(f"Warning: Could not validate reference image "
-                  f"{img_path}: {e}")
+            print(
+                f"Warning: Could not validate reference image {img_path}: {e}"
+            )
             return False

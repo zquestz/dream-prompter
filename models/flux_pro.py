@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Stable Diffusion 3.5 Large Turbo model implementation
-A text-to-image model that generates high-resolution images
-with fine details. It supports various artistic styles and
-produces diverse outputs from the same prompt, with a focus
-on fewer inference steps
+Flux 1.1 Pro model implementation
+Faster, better FLUX Pro. Text-to-image model with excellent image quality,
+prompt adherence, and output diversity.
+Available through Replicate API
 """
 
-import io
 from typing import List, Dict, Any, Optional
 
 from . import (
@@ -24,28 +22,28 @@ from . import (
 from i18n import _
 
 
-class StableDiffusion3_5LargeTurbo(BaseModel):
-    """Stable Diffusion 3.5 Large Turbo model implementation"""
+class FluxProModel(BaseModel):
+    """Flux 1.1 Pro implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Stable Diffusion 3.5 Large Turbo supports editing and generation"""
-        return ModelCapability.BOTH
+        """Flux 1.1 Pro supports image generation"""
+        return ModelCapability.GENERATE
 
     @property
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        return OutputFormat.PNG
+        return OutputFormat.WEBP
 
     @property
     def description(self) -> str:
         """Model description"""
-        return _("Stability AI's high-resolution image generation model")
+        return _("Text-to-image model with excellent image quality")
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Stable Diffusion 3.5 Large Turbo")
+        return _("Flux 1.1 Pro")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -65,12 +63,12 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "stability-ai/stable-diffusion-3.5-large-turbo"
+        return "black-forest-labs/flux-1.1-pro"
 
     @property
     def supported_mime_types(self) -> List[str]:
         """List of supported MIME types for reference images"""
-        return ["image/png", "image/jpeg", "image/webp"]
+        return ["image/gif", "image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
         self,
@@ -94,30 +92,8 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
         Returns:
             Dictionary of input parameters for the Replicate API
         """
-        image = ""
-        if isinstance(main_image, bytes):
-            image = io.BytesIO(main_image)
-        else:
-            image = main_image
 
-        params = self.build_parameters_dict(user_settings or {})
-
-        for key, value in kwargs.items():
-            if key in params:
-                params[key] = value
-
-        model_input = {
-            "prompt": prompt,
-            "negative_prompt": params["negative_prompt"],
-            "aspect_ratio": params["aspect_ratio"],
-            "cfg": params["cfg"],
-            "image": image,
-            "prompt_strength": params["prompt_strength"],
-            "seed": params["seed"],
-            "output_format": params["output_format"],
-        }
-
-        return {k: v for k, v in model_input.items() if v is not None}
+        return {}
 
     def build_generation_input(
         self,
@@ -146,72 +122,84 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
 
         model_input = {
             "prompt": prompt,
-            "negative_prompt": params["negative_prompt"],
             "aspect_ratio": params["aspect_ratio"],
-            "cfg": params["cfg"],
-            "prompt_strength": params["prompt_strength"],
+            "width": params["width"],
+            "height": params["height"],
+            "safety_tolerance": params["safety_tolerance"],
+            "prompt_upsampling": params["prompt_upsampling"],
             "output_format": params["output_format"],
+            "output_quality": params["output_quality"],
         }
 
         if params.get("seed", -1) != -1:
             model_input["seed"] = params["seed"]
 
-        if reference_images:
-            model_input["image"] = reference_images[0]
+        if reference_images and len(reference_images) > 0:
+            model_input["image_input"] = reference_images[0]
 
         return {k: v for k, v in model_input.items() if v is not None}
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Stable Diffusion 3.5"""
+        """Get list of configurable parameters for Flux 1.1 Pro"""
         return [
-            ParameterDefinition(
-                name="negative_prompt",
-                param_type=ParameterType.STRING,
-                default_value="",
-                label=_("Negative Prompt"),
-                description=_("What you do not want to see in the image"),
-                supported_modes=[ParameterMode.BOTH],
-            ),
             ParameterDefinition(
                 name="aspect_ratio",
                 param_type=ParameterType.CHOICE,
                 default_value="1:1",
                 label=_("Aspect Ratio"),
-                description=_("Control aspect ratio of generated images"),
+                description=_("Aspect ratio for the generated image"),
                 choices=[
-                    "16:9",
+                    "custom",
                     "1:1",
-                    "21:9",
-                    "2:3",
+                    "16:9",
                     "3:2",
+                    "2:3",
                     "4:5",
                     "5:4",
                     "9:16",
-                    "9:21",
+                    "3:4",
+                    "4:3",
                 ],
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
-                name="cfg",
+                name="width",
                 param_type=ParameterType.INTEGER,
-                default_value=1,
-                label=_("Cfg"),
-                description=_("How similar the output should be to the prompt"),
-                min_value=1,
-                max_value=10,
-                step=1,
-                supported_modes=[ParameterMode.BOTH],
+                default_value=1440,
+                label=_("Width"),
+                description=_(
+                    "Width of the generated image in text-to-image mode."
+                ),
+                min_value=256,
+                max_value=1440,
+                step=32,
+                supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
-                name="prompt_strength",
-                param_type=ParameterType.FLOAT,
-                default_value=0.85,
-                label=_("Prompt Strength"),
-                description=_("Prompt strength (or denoising strength)"),
-                min_value=0,
-                max_value=1,
-                step=0.01,
-                supported_modes=[ParameterMode.BOTH],
+                name="height",
+                param_type=ParameterType.INTEGER,
+                default_value=1440,
+                label=_("Height"),
+                description=_(
+                    "Height of the generated image in text-to-image mode."
+                ),
+                min_value=256,
+                max_value=1440,
+                step=32,
+                supported_modes=[ParameterMode.GENERATE],
+            ),
+            ParameterDefinition(
+                name="safety_tolerance",
+                param_type=ParameterType.INTEGER,
+                default_value=2,
+                label=_("Safety Tolerance"),
+                description=_(
+                    "Safety tolerance, 1 is most strict and 6 is most "
+                    "permissive"
+                ),
+                min_value=1,
+                max_value=6,
+                supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="seed",
@@ -222,19 +210,40 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
                 step=1,
                 min_value=-1,
                 max_value=999999999,
-                supported_modes=[ParameterMode.BOTH],
+                supported_modes=[ParameterMode.GENERATE],
+            ),
+            ParameterDefinition(
+                name="prompt_upsampling",
+                param_type=ParameterType.BOOLEAN,
+                default_value=False,
+                label=_("Prompt Upsampling"),
+                description=_(
+                    "Automatically modify the prompt for more creative "
+                    "generation"
+                ),
+                supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="output_format",
                 param_type=ParameterType.CHOICE,
-                default_value="png",
+                default_value="webp",
                 label=_("Output Format"),
-                description=_("Format for generated images"),
+                description=_("Format of the output images."),
                 choices=["png", "jpg", "webp"],
-                supported_modes=[ParameterMode.BOTH],
+                supported_modes=[ParameterMode.GENERATE],
+            ),
+            ParameterDefinition(
+                name="output_quality",
+                param_type=ParameterType.INTEGER,
+                default_value=80,
+                label=_("Output Quality"),
+                description=_("Quality when saving the output image"),
+                min_value=0,
+                max_value=100,
+                supported_modes=[ParameterMode.GENERATE],
             ),
         ]
 
 
-stable_diffusion_3_5_large_turbo = StableDiffusion3_5LargeTurbo()
-register_model(stable_diffusion_3_5_large_turbo)
+flux_pro = FluxProModel()
+register_model(flux_pro)

@@ -19,11 +19,12 @@ def compile_translations() -> bool:
     plugin_dir = Path(__file__).parent.parent
     os.chdir(plugin_dir)
 
-    locale_dir = Path('locale')
+    locale_dir = Path("locale")
     if not locale_dir.exists():
         print("No locale directory found!")
-        print("Run 'python3 scripts/update-pot.py' first to create "
-              "translations")
+        print(
+            "Run 'python3 scripts/update-pot.py' first to create translations"
+        )
         return False
 
     po_files = get_po_files(locale_dir)
@@ -39,14 +40,14 @@ def compile_translations() -> bool:
     for po_file in sorted(po_files):
         lang_code = po_file.stem
 
-        target_dir = locale_dir / lang_code / 'LC_MESSAGES'
+        target_dir = locale_dir / lang_code / "LC_MESSAGES"
         target_dir.mkdir(parents=True, exist_ok=True)
-        mo_file = target_dir / 'dream-prompter.mo'
+        mo_file = target_dir / "dream-prompter.mo"
 
         print(f"Compiling {po_file.name} -> {mo_file.relative_to(locale_dir)}")
 
         try:
-            cmd = ['msgfmt', '-o', str(mo_file), str(po_file)]
+            cmd = ["msgfmt", "-o", str(mo_file), str(po_file)]
             result = subprocess.run(
                 cmd, check=True, capture_output=True, text=True
             )
@@ -80,7 +81,7 @@ def create_template_files() -> bool:
     plugin_dir = Path(__file__).parent.parent
     os.chdir(plugin_dir)
 
-    pot_file = Path('locale/dream-prompter.pot')
+    pot_file = Path("locale/dream-prompter.pot")
     if not pot_file.exists():
         print("No template found: locale/dream-prompter.pot")
         print("Run 'python3 scripts/update-pot.py' first")
@@ -97,8 +98,7 @@ def create_template_files() -> bool:
 def get_po_files(locale_dir: Path) -> List[Path]:
     """Get list of .po files in the locale directory"""
     return [
-        f for f in locale_dir.iterdir()
-        if f.is_file() and f.suffix == '.po'
+        f for f in locale_dir.iterdir() if f.is_file() and f.suffix == ".po"
     ]
 
 
@@ -107,12 +107,14 @@ def print_usage() -> None:
     print("Dream Prompter Translation Builder")
     print("")
     print("Usage:")
-    print("  python3 scripts/build-translations.py        "
-          "# Compile translations")
-    print("  python3 scripts/build-translations.py --init "
-          "# Show setup instructions")
-    print("  python3 scripts/build-translations.py --help "
-          "# Show help")
+    print(
+        "  python3 scripts/build-translations.py        # Compile translations"
+    )
+    print(
+        "  python3 scripts/build-translations.py --init "
+        "# Show setup instructions"
+    )
+    print("  python3 scripts/build-translations.py --help # Show help")
     print("")
     print("This script compiles .po translation files to .mo binary files")
     print("that can be used by the Dream Prompter plugin.")
@@ -120,9 +122,9 @@ def print_usage() -> None:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        if sys.argv[1] == '--init':
+        if sys.argv[1] == "--init":
             _ = create_template_files()
-        elif sys.argv[1] in ['--help', '-h']:
+        elif sys.argv[1] in ["--help", "-h"]:
             print_usage()
         else:
             print(f"Unknown option: {sys.argv[1]}")

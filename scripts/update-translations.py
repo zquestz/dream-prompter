@@ -15,14 +15,13 @@ from pathlib import Path
 def find_po_files() -> list[Path]:
     """Find all .po files directly in the locale directory"""
 
-    locale_dir = Path('locale')
+    locale_dir = Path("locale")
     if not locale_dir.exists():
         print("No locale directory found!")
         return []
 
     po_files = [
-        f for f in locale_dir.iterdir()
-        if f.is_file() and f.suffix == '.po'
+        f for f in locale_dir.iterdir() if f.is_file() and f.suffix == ".po"
     ]
 
     if not po_files:
@@ -38,7 +37,7 @@ def update_all_translations() -> bool:
     plugin_dir = Path(__file__).parent.parent
     os.chdir(plugin_dir)
 
-    pot_file = Path('locale/dream-prompter.pot')
+    pot_file = Path("locale/dream-prompter.pot")
     if not pot_file.exists():
         print("Translation template not found: locale/dream-prompter.pot")
         print("Run 'python3 scripts/update-pot.py' first")
@@ -67,12 +66,12 @@ def update_po_file(po_file: Path, pot_file: Path) -> bool:
 
     try:
         cmd = [
-            'msgmerge',
-            '--update',
-            '--backup=off',
-            '--sort-output',
+            "msgmerge",
+            "--update",
+            "--backup=off",
+            "--sort-output",
             str(po_file),
-            str(pot_file)
+            str(pot_file),
         ]
 
         _ = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -88,7 +87,7 @@ def update_po_file(po_file: Path, pot_file: Path) -> bool:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if update_all_translations():
         print("✓ All translations updated successfully!")
     else:

@@ -9,8 +9,15 @@ Available through Replicate API
 import io
 from typing import List, Dict, Any, Optional
 
-from . import (BaseModel, ModelCapability, OutputFormat, ParameterDefinition,
-               ParameterType, ParameterMode, register_model)
+from . import (
+    BaseModel,
+    ModelCapability,
+    OutputFormat,
+    ParameterDefinition,
+    ParameterType,
+    ParameterMode,
+    register_model,
+)
 from i18n import _
 
 
@@ -60,12 +67,16 @@ class NanaBananaModel(BaseModel):
     @property
     def supported_mime_types(self) -> List[str]:
         """List of supported MIME types for reference images"""
-        return ['image/png', 'image/jpeg', 'image/webp']
+        return ["image/png", "image/jpeg", "image/webp"]
 
-    def build_edit_input(self, prompt: str, main_image,
-                         reference_images: Optional[List] = None,
-                         user_settings: Optional[Dict[str, Any]] = None,
-                         **kwargs) -> Dict[str, Any]:
+    def build_edit_input(
+        self,
+        prompt: str,
+        main_image,
+        reference_images: Optional[List] = None,
+        user_settings: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -102,15 +113,18 @@ class NanaBananaModel(BaseModel):
         model_input = {
             "prompt": prompt,
             "image_input": image_input,
-            "output_format": output_format
+            "output_format": output_format,
         }
 
         return model_input
 
-    def build_generation_input(self, prompt: str,
-                               reference_images: Optional[List] = None,
-                               user_settings: Optional[Dict[str, Any]] = None,
-                               **kwargs) -> Dict[str, Any]:
+    def build_generation_input(
+        self,
+        prompt: str,
+        reference_images: Optional[List] = None,
+        user_settings: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -136,7 +150,7 @@ class NanaBananaModel(BaseModel):
         model_input = {
             "prompt": prompt,
             "image_input": reference_images or [],
-            "output_format": output_format
+            "output_format": output_format,
         }
 
         return model_input
@@ -151,7 +165,7 @@ class NanaBananaModel(BaseModel):
                 label=_("Output Format"),
                 description=_("Format for generated images"),
                 choices=["png", "jpg"],
-                supported_modes=[ParameterMode.BOTH]
+                supported_modes=[ParameterMode.BOTH],
             )
         ]
 

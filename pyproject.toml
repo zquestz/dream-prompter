@@ -2,3 +2,6 @@
 stubPath = "./stubs"
 typeCheckingMode = "basic"
 reportMissingModuleSource = false
+
+[tool.ruff]
+line-length = 80

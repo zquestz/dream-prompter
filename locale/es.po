@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.1.1\n"
+"Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-10-18 12:48-1000\n"
+"POT-Creation-Date: 2025-11-06 10:00-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:707
+#: dialog_gtk.py:730
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:703
+#: dialog_gtk.py:726
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:359 integrator.py:120
+#: dialog_threads.py:383 integrator.py:118
 msgid "AI Generated"
 msgstr "Generado por IA"
 
-#: dialog_threads.py:357
+#: dialog_threads.py:381
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "IA Generada {num}"
 
-#: dialog_threads.py:296
+#: dialog_threads.py:317
 #, python-brace-format
 msgid "AI Generated: {prompt}"
 msgstr "Generado por IA: {prompt}"
 
-#: dialog_threads.py:298 integrator.py:350
+#: dialog_threads.py:319 integrator.py:342
 msgid "AI Layer"
 msgstr "Capa IA"
 
-#: dialog_gtk.py:463
+#: dialog_gtk.py:467
 msgid "AI Model"
 msgstr "Modelo de IA"
 
-#: dialog_gtk.py:632
+#: dialog_gtk.py:653
 msgid "AI Prompt"
 msgstr "Prompt de AI"
 
@@ -57,50 +57,59 @@ msgstr "Prompt de AI"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Creación/edición de imágenes con IA usando modelos de Replicate"
 
-#: api.py:62 dialog_threads.py:103 dialog_threads.py:137
+#: api.py:64 dialog_threads.py:109 dialog_threads.py:147
 msgid "API key is required"
 msgstr "Se requiere clave API"
 
-#: dialog_threads.py:333
+#: dialog_threads.py:356
 #, python-brace-format
 msgid "Added {count} layers"
 msgstr "Agregadas {count} capas"
 
-#: dialog_threads.py:323
+#: dialog_threads.py:345
 #, python-brace-format
 msgid "Adding layer {num}..."
 msgstr "Agregando capa {num}..."
 
-#: dialog_gtk.py:311
+#: dialog_gtk.py:313
 msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
-#: models/imagen4.py:145 models/qwen_image_edit_plus.py:158
-#: models/seedream4.py:195 models/stable_diffusion_3_5_large_turbo.py:178
+#: models/flux_pro.py:149 models/imagen4.py:145
+#: models/qwen_image_edit_plus.py:158 models/seedream4.py:205
+#: models/stable_diffusion_3_5_large_turbo.py:179
 msgid "Aspect Ratio"
 msgstr "Relación de Aspecto"
 
-#: api.py:126
+#: models/flux_pro.py:150
+msgid "Aspect ratio for the generated image"
+msgstr "Relación de aspecto para la imagen generada"
+
+#: models/flux_pro.py:221
+msgid "Automatically modify the prompt for more creative generation"
+msgstr "Modificar automáticamente el prompt para una generación más creativa"
+
+#: api.py:127
 msgid "Building Replicate edit request..."
 msgstr "Construyendo solicitud de edición para Replicate..."
 
-#: models/qwen_image_edit_plus.py:209
+#: models/qwen_image_edit_plus.py:215
 msgid "Bypass safety checks"
 msgstr "Omitir verificaciones de seguridad"
 
-#: models/seedream4.py:34
+#: models/seedream4.py:41
 msgid "ByteDance's unified generation and editing model"
 msgstr "Modelo unificado de generación y edición de ByteDance"
 
-#: dialog_events.py:202 dialog_gtk.py:408
+#: dialog_events.py:202 dialog_gtk.py:411
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: dialog_threads.py:50
+#: dialog_threads.py:51
 msgid "Cancelling..."
 msgstr "Cancelando..."
 
-#: dialog_events.py:232
+#: dialog_events.py:233
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -109,23 +118,23 @@ msgstr ""
 "No se pueden agregar {count} archivos. Máximo {max} imágenes de referencia "
 "permitidas en modo edición."
 
-#: dialog_events.py:237
+#: dialog_events.py:240
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "No se pueden agregar {count} archivos. Máximo {max} imágenes de referencia "
 "permitidas."
 
-#: models/stable_diffusion_3_5_large_turbo.py:190
+#: models/stable_diffusion_3_5_large_turbo.py:198
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:338
+#: dialog_gtk.py:341
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
 #: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
-#: models/seedream4.py:196 models/stable_diffusion_3_5_large_turbo.py:179
+#: models/seedream4.py:206 models/stable_diffusion_3_5_large_turbo.py:180
 msgid "Control aspect ratio of generated images"
 msgstr "Controlar relación de aspecto de imágenes generadas"
 
@@ -133,110 +142,118 @@ msgstr "Controlar relación de aspecto de imágenes generadas"
 msgid "Control safety of generated images"
 msgstr "Controlar la seguridad de imágenes generadas"
 
-#: dialog_threads.py:352
+#: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "Creando imagen {num}..."
 
-#: models/seedream4.py:185
+#: models/seedream4.py:195
 msgid "Custom height in pixels"
 msgstr "Alto personalizado en píxeles"
 
-#: models/seedream4.py:174
+#: models/seedream4.py:184
 msgid "Custom width in pixels"
 msgstr "Ancho personalizado en píxeles"
 
-#: models/qwen_image_edit_plus.py:208
+#: models/qwen_image_edit_plus.py:214
 msgid "Disable Safety Checker"
 msgstr "Desactivar Verificador de Seguridad"
 
-#: api.py:378
+#: api.py:379
 msgid "Downloading result..."
 msgstr "Descargando resultado..."
 
-#: dialog.py:24
+#: dialog.py:26
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - Creador/Editor de Imágenes AI"
 
-#: dream-prompter.py:53
+#: dream-prompter.py:55
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:518
+#: dialog_gtk.py:521
 msgid "Edit Image"
 msgstr "Editar Imagen"
 
-#: dialog_events.py:119
+#: dialog_events.py:116
 msgid "Edit mode requires a selected layer"
 msgstr "El modo de edición requiere una capa seleccionada"
 
-#: models/qwen_image_edit_plus.py:170
+#: models/qwen_image_edit_plus.py:175
 msgid "Enable speed optimizations"
 msgstr "Habilitar optimizaciones de velocidad"
 
-#: dialog_gtk.py:371
+#: dialog_gtk.py:374
 msgid "Enter your Replicate API key"
 msgstr "Ingresa tu clave API de Replicate"
 
-#: dialog_threads.py:338
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "Error al agregar capas: {error}"
 
-#: dialog_threads.py:373
+#: dialog_threads.py:395
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "Error al crear imágenes: {error}"
 
-#: dream-prompter.py:96
+#: dream-prompter.py:100
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
 
-#: api.py:394
+#: api.py:395
 msgid "Failed to convert any images from API response"
 msgstr "Error al convertir imágenes de la respuesta de la API"
 
-#: api.py:120
+#: api.py:121
 msgid "Failed to export current image"
 msgstr "Error al exportar imagen actual"
 
-#: models/imagen4.py:155 models/nano_banana.py:152
-#: models/stable_diffusion_3_5_large_turbo.py:224
+#: models/flux_pro.py:46
+msgid "Flux 1.1 Pro"
+msgstr "Flux 1.1 Pro"
+
+#: models/imagen4.py:155 models/nano_banana.py:166
+#: models/stable_diffusion_3_5_large_turbo.py:232
 msgid "Format for generated images"
 msgstr "Formato para imágenes generadas"
 
-#: dialog_events.py:172 dialog_gtk.py:413
+#: models/flux_pro.py:231
+msgid "Format of the output images."
+msgstr "Formato de las imágenes de salida."
+
+#: dialog_events.py:172 dialog_gtk.py:416
 msgid "Generate Edit"
 msgstr "Generar Edición"
 
-#: dialog_events.py:175 dialog_gtk.py:523
+#: dialog_events.py:175 dialog_gtk.py:526
 msgid "Generate Image"
 msgstr "Generar Imagen"
 
-#: models/seedream4.py:216
+#: models/seedream4.py:235
 msgid "Generate images sequentially or in parallel"
 msgstr "Generar imágenes secuencialmente o en paralelo"
 
-#: dialog_threads.py:366
+#: dialog_threads.py:390
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "Generadas {count} imágenes"
 
-#: api.py:186
+#: api.py:187
 msgid "Generating image with Replicate..."
 msgstr "Generando imagen con Replicate..."
 
-#: dialog_gtk.py:391
+#: dialog_gtk.py:394
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Obtén tu clave API desde <a href=\"{url}\">Replicate</a>"
 
-#: models/qwen_image_edit_plus.py:169
+#: models/qwen_image_edit_plus.py:174
 msgid "Go Fast"
 msgstr "Ir Rápido"
 
-#: models/nano_banana.py:33
+#: models/nano_banana.py:40
 msgid "Google's advanced image generation and editing model"
 msgstr "Modelo avanzado de generación y edición de imágenes de Google"
 
@@ -244,27 +261,31 @@ msgstr "Modelo avanzado de generación y edición de imágenes de Google"
 msgid "Google's advanced image generation model"
 msgstr "Modelo avanzado de generación de imágenes de Google"
 
-#: models/seedream4.py:184
+#: models/flux_pro.py:182 models/seedream4.py:194
 msgid "Height"
 msgstr "Alto"
 
-#: dialog_events.py:254
+#: models/flux_pro.py:184
+msgid "Height of the generated image in text-to-image mode."
+msgstr "Altura de la imagen generada en modo texto-a-imagen."
+
+#: dialog_events.py:258
 msgid "Hide API key"
 msgstr "Ocultar clave API"
 
-#: models/stable_diffusion_3_5_large_turbo.py:192
+#: models/stable_diffusion_3_5_large_turbo.py:199
 msgid "How similar the output should be to the prompt"
 msgstr "Qué tan similar debe ser la salida al prompt"
 
-#: models/seedream4.py:164
+#: models/seedream4.py:174
 msgid "Image Size"
 msgstr "Tamaño de Imagen"
 
-#: api.py:398
+#: api.py:399
 msgid "Image editing complete!"
 msgstr "¡Edición de imagen completada!"
 
-#: api.py:400
+#: api.py:401
 msgid "Image generation complete!"
 msgstr "¡Generación de imagen completada!"
 
@@ -272,128 +293,136 @@ msgstr "¡Generación de imagen completada!"
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: dialog_events.py:129
+#: dialog_events.py:127
 msgid "Initializing API request..."
 msgstr "Inicializando solicitud a la API..."
 
-#: models/qwen_image_edit_plus.py:199
+#: models/qwen_image_edit_plus.py:205
 msgid "JPEG quality (0-100, ignored for PNG)"
 msgstr "Calidad JPEG (0-100, ignorado para PNG)"
 
-#: api.py:267
+#: api.py:268
 msgid "Logs"
 msgstr "Registros"
 
-#: models/seedream4.py:205
+#: models/seedream4.py:224
 msgid "Max Images"
 msgstr "Máximo de Imágenes"
 
-#: models/seedream4.py:206
+#: models/seedream4.py:225
 msgid "Maximum number of images to generate"
 msgstr "Número máximo de imágenes a generar"
 
-#: dialog_gtk.py:262
+#: dialog_gtk.py:265
 msgid "Model Settings"
 msgstr "Configuración del Modelo"
 
-#: api.py:264
+#: api.py:265
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
 
-#: models/nano_banana.py:38
+#: models/nano_banana.py:45
 msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
 
-#: models/stable_diffusion_3_5_large_turbo.py:170
+#: models/stable_diffusion_3_5_large_turbo.py:171
 msgid "Negative Prompt"
 msgstr "Prompt Negativo"
 
-#: model_settings.py:244
+#: model_settings.py:250
 msgid "No"
 msgstr "No"
 
-#: api.py:107
+#: api.py:109
 msgid "No GIMP image provided for editing"
 msgstr "No se proporcionó imagen de GIMP para editar"
 
-#: dialog_gtk.py:328 dialog_gtk.py:763
+#: dialog_gtk.py:330 dialog_gtk.py:788
 msgid "No additional images selected"
 msgstr "No hay imágenes adicionales seleccionadas"
 
-#: dialog_threads.py:99 dialog_threads.py:174
+#: dialog_threads.py:105 dialog_threads.py:188
 msgid "No image available for editing"
 msgstr "No hay imagen disponible para editar"
 
-#: dialog_threads.py:205 dialog_threads.py:262
+#: dialog_threads.py:220 dialog_threads.py:282
 msgid "No image data received from API"
 msgstr "No se recibieron datos de imagen de la API"
 
-#: dialog_threads.py:95
+#: dialog_threads.py:101
 msgid "No layer available for editing"
 msgstr "No hay capa disponible para editar"
 
-#: api.py:375
+#: api.py:376
 msgid "No output received from API"
 msgstr "No se recibió salida de la API"
 
-#: api.py:384
+#: api.py:385
 msgid "No valid image data in API response"
 msgstr "No hay datos de imagen válidos en la respuesta de la API"
 
-#: model_settings.py:241
+#: model_settings.py:247
 msgid "Not set"
 msgstr "No establecido"
 
-#: dialog_gtk.py:511
+#: dialog_gtk.py:514
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: api.py:114 api.py:128 api.py:141 api.py:188 api.py:200 api.py:372 api.py:380
+#: api.py:115 api.py:129 api.py:142 api.py:189 api.py:201 api.py:373 api.py:381
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
-#: models/imagen4.py:154 models/nano_banana.py:151
-#: models/qwen_image_edit_plus.py:189
-#: models/stable_diffusion_3_5_large_turbo.py:223
+#: models/flux_pro.py:230 models/imagen4.py:154 models/nano_banana.py:165
+#: models/qwen_image_edit_plus.py:195
+#: models/stable_diffusion_3_5_large_turbo.py:231
 msgid "Output Format"
 msgstr "Formato de Salida"
 
-#: models/qwen_image_edit_plus.py:198
+#: models/flux_pro.py:239 models/qwen_image_edit_plus.py:204
 msgid "Output Quality"
 msgstr "Calidad de Salida"
 
-#: models/qwen_image_edit_plus.py:190
+#: models/qwen_image_edit_plus.py:196
 msgid "Output image format"
 msgstr "Formato de imagen de salida"
 
-#: dialog_events.py:113
+#: dialog_events.py:110
 msgid "Please enter a prompt"
 msgstr "Por favor ingresa un prompt"
 
-#: dialog_events.py:109
+#: dialog_events.py:106
 msgid "Please enter your Replicate API key"
 msgstr "Por favor ingresa tu clave API de Replicate"
 
-#: api.py:111
+#: api.py:113
 msgid "Preparing current image for Replicate..."
 msgstr "Preparando imagen actual para Replicate..."
 
-#: api.py:370
+#: api.py:371
 msgid "Processing Replicate response..."
 msgstr "Procesando respuesta de Replicate..."
 
-#: models/stable_diffusion_3_5_large_turbo.py:203
+#: models/stable_diffusion_3_5_large_turbo.py:209
 msgid "Prompt Strength"
 msgstr "Fuerza del Prompt"
 
-#: dialog_threads.py:107 dialog_threads.py:141
+#: models/flux_pro.py:219
+msgid "Prompt Upsampling"
+msgstr "Mejora de Prompt"
+
+#: dialog_threads.py:113 dialog_threads.py:151
 msgid "Prompt is required"
 msgstr "Se requiere un prompt"
 
-#: models/stable_diffusion_3_5_large_turbo.py:204
+#: models/stable_diffusion_3_5_large_turbo.py:210
 msgid "Prompt strength (or denoising strength)"
 msgstr "Fuerza del prompt (o intensidad de eliminación de ruido)"
+
+#: models/flux_pro.py:240
+msgid "Quality when saving the output image"
+msgstr "Calidad al guardar la imagen de salida"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -403,11 +432,11 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Modelo avanzado de edición de imágenes de Qwen"
 
-#: models/qwen_image_edit_plus.py:179
-msgid "Random seed for reproducible results (0 = random)"
-msgstr "Semilla aleatoria para resultados reproducibles (0 = aleatorio)"
+#: models/qwen_image_edit_plus.py:184
+msgid "Random seed for reproducible results (-1 = random)"
+msgstr "Semilla aleatoria para resultados reproducibles (-1 = aleatorio)"
 
-#: dialog_gtk.py:679
+#: dialog_gtk.py:702
 msgid "Ready"
 msgstr "Listo"
 
@@ -416,20 +445,20 @@ msgstr "Listo"
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "Reducido a {max} imágenes de referencia para modo edición"
 
-#: dialog_gtk.py:362
+#: dialog_gtk.py:365
 msgid "Replicate API Key"
 msgstr "Clave API de Replicate"
 
-#: api.py:271
+#: api.py:272
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Error de API Replicate: {error}"
 
-#: api.py:58 api.py:103 api.py:178
+#: api.py:60 api.py:105 api.py:179
 msgid "Replicate API not available. Please install replicate"
 msgstr "API de Replicate no disponible. Por favor instala replicate"
 
-#: models/seedream4.py:165
+#: models/seedream4.py:175
 msgid "Resolution preset for generated images"
 msgstr "Preset de resolución para imágenes generadas"
 
@@ -437,12 +466,20 @@ msgstr "Preset de resolución para imágenes generadas"
 msgid "Safety Filter Level"
 msgstr "Nivel de Filtro de Seguridad"
 
-#: models/qwen_image_edit_plus.py:177
-#: models/stable_diffusion_3_5_large_turbo.py:214
+#: models/flux_pro.py:195
+msgid "Safety Tolerance"
+msgstr "Tolerancia de Seguridad"
+
+#: models/flux_pro.py:197
+msgid "Safety tolerance, 1 is most strict and 6 is most permissive"
+msgstr "Tolerancia de seguridad, 1 es lo más estricto y 6 es lo más permisivo"
+
+#: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
+#: models/stable_diffusion_3_5_large_turbo.py:220
 msgid "Seed"
 msgstr "Semilla"
 
-#: models/seedream4.py:39
+#: models/seedream4.py:46
 msgid "Seedream 4"
 msgstr "Seedream 4"
 
@@ -450,7 +487,7 @@ msgstr "Seedream 4"
 msgid "Select"
 msgstr "Seleccionar"
 
-#: dialog_gtk.py:321
+#: dialog_gtk.py:322
 msgid "Select Images..."
 msgstr "Seleccionar Imágenes..."
 
@@ -458,40 +495,40 @@ msgstr "Seleccionar Imágenes..."
 msgid "Select Reference Images"
 msgstr "Seleccionar Imágenes de Referencia"
 
-#: dialog_events.py:309 dialog_events.py:317
+#: dialog_events.py:316 dialog_events.py:324
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "Selecciona hasta {max} imágenes adicionales"
 
-#: api.py:139
+#: api.py:140
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitud de edición a Replicate..."
 
-#: api.py:198
+#: api.py:199
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitud a Replicate..."
 
-#: models/seedream4.py:215
+#: models/seedream4.py:234
 msgid "Sequential Generation"
 msgstr "Generación Secuencial"
 
-#: models/stable_diffusion_3_5_large_turbo.py:215
-msgid "Set a seed for reproducibility"
-msgstr "Establecer una semilla para reproducibilidad"
+#: models/flux_pro.py:209 models/stable_diffusion_3_5_large_turbo.py:221
+msgid "Set a seed for reproducibility (-1 = random)"
+msgstr "Establecer una semilla para reproducibilidad (-1 = aleatorio)"
 
-#: dialog_events.py:261
+#: dialog_events.py:265
 msgid "Show API key"
 msgstr "Mostrar clave API"
 
-#: dialog_gtk.py:383
+#: dialog_gtk.py:386
 msgid "Show/Hide API key"
 msgstr "Mostrar/Ocultar clave API"
 
-#: models/stable_diffusion_3_5_large_turbo.py:44
+#: models/stable_diffusion_3_5_large_turbo.py:43
 msgid "Stability AI's high-resolution image generation model"
 msgstr "Modelo de generación de imágenes de alta resolución de Stability AI"
 
-#: models/stable_diffusion_3_5_large_turbo.py:49
+#: models/stable_diffusion_3_5_large_turbo.py:48
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
@@ -499,7 +536,11 @@ msgstr "Stable Diffusion 3.5 Large Turbo"
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Imágenes Compatibles (PNG, JPEG, WebP)"
 
-#: dream-prompter.py:46
+#: models/flux_pro.py:41
+msgid "Text-to-image model with excellent image quality"
+msgstr "Modelo texto-a-imagen con excelente calidad de imagen"
+
+#: dream-prompter.py:47
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
@@ -511,49 +552,53 @@ msgstr ""
 "múltiples modelos incluyendo Imagen 4, Nano Banana, Qwen Image Edit Plus, "
 "Seedream 4 y Stable Diffusion 3.5 Large Turbo."
 
-#: dialog_threads.py:215
+#: dialog_threads.py:230
 #, python-brace-format
 msgid "Unexpected error during image editing: {error}"
 msgstr "Error inesperado durante la edición de imagen: {error}"
 
-#: dialog_threads.py:271
+#: dialog_threads.py:291
 #, python-brace-format
 msgid "Unexpected error during image generation: {error}"
 msgstr "Error inesperado durante la generación de imagen: {error}"
 
-#: api.py:150 api.py:209
+#: api.py:151 api.py:210
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Error inesperado: {error}"
 
-#: models/stable_diffusion_3_5_large_turbo.py:171
+#: models/stable_diffusion_3_5_large_turbo.py:172
 msgid "What you do not want to see in the image"
 msgstr "Lo que no quieres ver en la imagen"
 
-#: models/seedream4.py:173
+#: models/flux_pro.py:169 models/seedream4.py:183
 msgid "Width"
 msgstr "Ancho"
 
-#: model_settings.py:244
+#: models/flux_pro.py:171
+msgid "Width of the generated image in text-to-image mode."
+msgstr "Ancho de la imagen generada en modo texto-a-imagen."
+
+#: model_settings.py:250
 msgid "Yes"
 msgstr "Sí"
 
-#: dialog_gtk.py:776
+#: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} imagen seleccionada"
 
-#: dialog_gtk.py:778
+#: dialog_gtk.py:803
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} imágenes seleccionadas"
 
-#: dialog_threads.py:289
+#: dialog_threads.py:310
 #, python-brace-format
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Edición IA: {prompt})"
 
-#: dialog_gtk.py:700
+#: dialog_gtk.py:723
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - Tamaño Máximo Excedido)"
