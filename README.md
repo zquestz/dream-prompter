@@ -201,17 +201,21 @@ If you get the **"replicate not installed"** error on Windows:
    import sys; print(sys.executable)
    ```
 
-You should see something like:
-
-```
-C:\Program Files\GIMP 3\bin\python.exe
-```
+   You should see something like:
+    
+   ```
+   C:\Users\quest\AppData\Local\Programs\GIMP 3\bin\pythonw.exe
+   ```
 
 3. **Install replicate using GIMP's Python** from Command Prompt or PowerShell:
 
    ```cmd
+   # First make sure we can adjust the python installation
+   cd C:\Users\quest\AppData\Local\Programs\"GIMP 3"\lib\python3.12\
+   mv EXTERNALLY-MANAGED EXTERNALLY-MANAGED.bak
+
    # Change to GIMP's bin directory
-   cd "C:\Program Files\GIMP 3\bin"
+   cd C:\Users\quest\AppData\Local\Programs\"GIMP 3"\bin
 
    # Ensure pip is installed
    python.exe -m ensurepip
