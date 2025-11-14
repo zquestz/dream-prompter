@@ -41,19 +41,20 @@ pip install replicate
 3. **Move to your GIMP plugins folder with the correct name:**
 
    Rename and move the extracted folder to exactly `dream-prompter` in your GIMP plugins directory:
-  - **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/` (Snap: `~/snap/gimp/current/GIMP/3.0/plug-ins/dream-prompter/`)
-   - **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
-   - **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
 
-   Example for Linux:
+- **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/` (Snap: `~/snap/gimp/current/GIMP/3.0/plug-ins/dream-prompter/`)
+- **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
+- **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
 
-   ```bash
-   # Extract creates dream-prompter-1.1.5/
-   unzip dream-prompter-1.1.5.zip
-   # Move to correct location with correct name
-   # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   mv dream-prompter-1.1.5 ~/.config/GIMP/3.0/plug-ins/dream-prompter
-   ```
+Example for Linux:
+
+```bash
+# Extract creates dream-prompter-1.1.5/
+unzip dream-prompter-1.1.5.zip
+# Move to correct location with correct name
+# Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
+mv dream-prompter-1.1.5 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+```
 
 4. **Make executable** (Linux/macOS only):
 
@@ -188,6 +189,38 @@ If you get the **"replicate not installed"** error on macOS:
    # Install replicate
    ./python3 -m pip install replicate
    ```
+
+#### Windows Instructions
+
+If you get the **"replicate not installed"** error on Windows:
+
+1. **Locate GIMP's Python** by opening the Python Console: `Filters → Development → Python-Fu`
+2. **Run this command** in the console:
+
+   ```python
+   import sys; print(sys.executable)
+   ```
+
+You should see something like:
+
+```
+C:\Program Files\GIMP 3\bin\python.exe
+```
+
+3. **Install replicate using GIMP's Python** from Command Prompt or PowerShell:
+
+   ```cmd
+   # Change to GIMP's bin directory
+   cd "C:\Program Files\GIMP 3\bin"
+
+   # Ensure pip is installed
+   python.exe -m ensurepip
+
+   # Install replicate
+   python.exe -m pip install replicate --only-binary=:all:
+   ```
+
+**Note**: You may need to run Command Prompt or PowerShell as Administrator if you encounter permission errors.
 
 ## Getting Your API Key
 
