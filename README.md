@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.1.5`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.2.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -49,11 +49,11 @@ pip install replicate
 Example for Linux:
 
 ```bash
-# Extract creates dream-prompter-1.1.5/
-unzip dream-prompter-1.1.5.zip
+# Extract creates dream-prompter-1.2.0/
+unzip dream-prompter-1.2.0.zip
 # Move to correct location with correct name
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-mv dream-prompter-1.1.5 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+mv dream-prompter-1.2.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
 ```
 
 4. **Make executable** (Linux/macOS only):
