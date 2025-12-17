@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Flux 1.1 Pro model implementation
-Faster, better FLUX Pro. Text-to-image model with excellent image quality,
-prompt adherence, and output diversity.
+Flux 2 Pro model implementation
+High-quality image generation and editing with support for eight reference images.
 Available through Replicate API
 """
 
+import io
 from typing import List, Dict, Any, Optional
 
 from . import (
@@ -23,12 +23,12 @@ from i18n import _
 
 
 class FluxProModel(BaseModel):
-    """Flux 1.1 Pro implementation for Replicate"""
+    """Flux 2 Pro implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Flux 1.1 Pro supports image generation"""
-        return ModelCapability.GENERATE
+        """Flux 2 Pro supports both generation and editing"""
+        return ModelCapability.BOTH
 
     @property
     def default_output_format(self) -> OutputFormat:
@@ -38,12 +38,12 @@ class FluxProModel(BaseModel):
     @property
     def description(self) -> str:
         """Model description"""
-        return _("Text-to-image model with excellent image quality")
+        return _("High-quality image generation and editing model")
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Flux 1.1 Pro")
+        return _("Flux 2 Pro")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -53,17 +53,17 @@ class FluxProModel(BaseModel):
     @property
     def max_reference_images(self) -> int:
         """Maximum number of reference images for generation"""
-        return 1
+        return 8
 
     @property
     def max_reference_images_edit(self) -> int:
         """Maximum number of reference images for editing"""
-        return 0
+        return 7
 
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "black-forest-labs/flux-1.1-pro"
+        return "black-forest-labs/flux-2-pro"
 
     @property
     def supported_mime_types(self) -> List[str]:
@@ -83,7 +83,7 @@ class FluxProModel(BaseModel):
 
         Args:
             prompt: Text prompt for editing
-                (e.g., "Remove the boy in this picture")
+                (e.g., "Replace the background with a beach")
             main_image: Main image to edit (file object or bytes)
             reference_images: Optional list of reference image file objects
             user_settings: User's saved settings for this model
@@ -92,8 +92,38 @@ class FluxProModel(BaseModel):
         Returns:
             Dictionary of input parameters for the Replicate API
         """
+        input_images = []
 
-        return {}
+        if isinstance(main_image, bytes):
+            input_images.append(io.BytesIO(main_image))
+        else:
+            input_images.append(main_image)
+
+        if reference_images:
+            input_images.extend(
+                reference_images[: self.max_reference_images_edit]
+            )
+
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
+        model_input = {
+            "prompt": prompt,
+            "input_images": input_images,
+            "aspect_ratio": "match_input_image",
+            "resolution": params["resolution"],
+            "safety_tolerance": params["safety_tolerance"],
+            "output_format": params["output_format"],
+            "output_quality": params["output_quality"],
+        }
+
+        if params.get("seed", -1) != -1:
+            model_input["seed"] = params["seed"]
+
+        return {k: v for k, v in model_input.items() if v is not None}
 
     def build_generation_input(
         self,
@@ -123,10 +153,10 @@ class FluxProModel(BaseModel):
         model_input = {
             "prompt": prompt,
             "aspect_ratio": params["aspect_ratio"],
+            "resolution": params["resolution"],
             "width": params["width"],
             "height": params["height"],
             "safety_tolerance": params["safety_tolerance"],
-            "prompt_upsampling": params["prompt_upsampling"],
             "output_format": params["output_format"],
             "output_quality": params["output_quality"],
         }
@@ -135,12 +165,12 @@ class FluxProModel(BaseModel):
             model_input["seed"] = params["seed"]
 
         if reference_images and len(reference_images) > 0:
-            model_input["image_input"] = reference_images[0]
+            model_input["input_images"] = reference_images
 
         return {k: v for k, v in model_input.items() if v is not None}
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Flux 1.1 Pro"""
+        """Get list of configurable parameters for Flux 2 Pro"""
         return [
             ParameterDefinition(
                 name="aspect_ratio",
@@ -149,6 +179,7 @@ class FluxProModel(BaseModel):
                 label=_("Aspect Ratio"),
                 description=_("Aspect ratio for the generated image"),
                 choices=[
+                    "match_input_image",
                     "custom",
                     "1:1",
                     "16:9",
@@ -163,28 +194,48 @@ class FluxProModel(BaseModel):
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
+                name="resolution",
+                param_type=ParameterType.CHOICE,
+                default_value="1 MP",
+                label=_("Resolution"),
+                description=_(
+                    "Resolution in megapixels. Up to 4 MP is possible, "
+                    "but 2 MP or below is recommended."
+                ),
+                choices=[
+                    "match_input_image",
+                    "0.5 MP",
+                    "1 MP",
+                    "2 MP",
+                    "4 MP",
+                ],
+                supported_modes=[ParameterMode.BOTH],
+            ),
+            ParameterDefinition(
                 name="width",
                 param_type=ParameterType.INTEGER,
-                default_value=1440,
+                default_value=1024,
                 label=_("Width"),
                 description=_(
-                    "Width of the generated image in text-to-image mode."
+                    "Width of the generated image. Only used when "
+                    "aspect_ratio=custom. Must be a multiple of 32."
                 ),
                 min_value=256,
-                max_value=1440,
+                max_value=2048,
                 step=32,
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="height",
                 param_type=ParameterType.INTEGER,
-                default_value=1440,
+                default_value=1024,
                 label=_("Height"),
                 description=_(
-                    "Height of the generated image in text-to-image mode."
+                    "Height of the generated image. Only used when "
+                    "aspect_ratio=custom. Must be a multiple of 32."
                 ),
                 min_value=256,
-                max_value=1440,
+                max_value=2048,
                 step=32,
                 supported_modes=[ParameterMode.GENERATE],
             ),
@@ -194,12 +245,12 @@ class FluxProModel(BaseModel):
                 default_value=2,
                 label=_("Safety Tolerance"),
                 description=_(
-                    "Safety tolerance, 1 is most strict and 6 is most "
+                    "Safety tolerance, 1 is most strict and 5 is most "
                     "permissive"
                 ),
                 min_value=1,
-                max_value=6,
-                supported_modes=[ParameterMode.GENERATE],
+                max_value=5,
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="seed",
@@ -210,18 +261,7 @@ class FluxProModel(BaseModel):
                 step=1,
                 min_value=-1,
                 max_value=999999999,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="prompt_upsampling",
-                param_type=ParameterType.BOOLEAN,
-                default_value=False,
-                label=_("Prompt Upsampling"),
-                description=_(
-                    "Automatically modify the prompt for more creative "
-                    "generation"
-                ),
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="output_format",
@@ -230,7 +270,7 @@ class FluxProModel(BaseModel):
                 label=_("Output Format"),
                 description=_("Format of the output images."),
                 choices=["png", "jpg", "webp"],
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="output_quality",
@@ -240,7 +280,7 @@ class FluxProModel(BaseModel):
                 description=_("Quality when saving the output image"),
                 min_value=0,
                 max_value=100,
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
         ]
 

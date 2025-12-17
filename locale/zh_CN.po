@@ -207,8 +207,8 @@ msgid "Failed to export current image"
 msgstr "导出当前图像失败"
 
 #: models/flux_pro.py:46
-msgid "Flux 1.1 Pro"
-msgstr "Flux 1.1 Pro"
+msgid "Flux 2 Pro"
+msgstr "Flux 2 Pro"
 
 #: models/imagen4.py:155 models/nano_banana.py:166
 #: models/stable_diffusion_3_5_large_turbo.py:232
@@ -262,7 +262,7 @@ msgid "Height"
 msgstr "高度"
 
 #: models/flux_pro.py:184
-msgid "Height of the generated image in text-to-image mode."
+msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr "文本转图像模式下生成图像的高度。"
 
 #: dialog_events.py:258
@@ -467,7 +467,7 @@ msgid "Safety Tolerance"
 msgstr "安全容忍度"
 
 #: models/flux_pro.py:197
-msgid "Safety tolerance, 1 is most strict and 6 is most permissive"
+msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr "安全容忍度，1 最严格，6 最宽松"
 
 #: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
@@ -533,7 +533,7 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支持的图像格式（PNG、JPEG、WebP）"
 
 #: models/flux_pro.py:41
-msgid "Text-to-image model with excellent image quality"
+msgid "High-quality image generation and editing model"
 msgstr "具有优秀图像质量的文本转图像模型"
 
 #: dream-prompter.py:47
@@ -571,7 +571,7 @@ msgid "Width"
 msgstr "宽度"
 
 #: models/flux_pro.py:171
-msgid "Width of the generated image in text-to-image mode."
+msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr "文本转图像模式下生成图像的宽度。"
 
 #: model_settings.py:250

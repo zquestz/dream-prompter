@@ -209,8 +209,8 @@ msgid "Failed to export current image"
 msgstr "বর্তমান ছবি রপ্তানি করতে ব্যর্থ"
 
 #: models/flux_pro.py:46
-msgid "Flux 1.1 Pro"
-msgstr "Flux 1.1 Pro"
+msgid "Flux 2 Pro"
+msgstr "Flux 2 Pro"
 
 #: models/imagen4.py:155 models/nano_banana.py:166
 #: models/stable_diffusion_3_5_large_turbo.py:232
@@ -264,7 +264,7 @@ msgid "Height"
 msgstr "উচ্চতা"
 
 #: models/flux_pro.py:184
-msgid "Height of the generated image in text-to-image mode."
+msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr "টেক্সট-টু-ইমেজ মোডে উত্পন্ন চিত্রের উচ্চতা।"
 
 #: dialog_events.py:258
@@ -469,7 +469,7 @@ msgid "Safety Tolerance"
 msgstr "নিরাপত্তা সহনশীলতা"
 
 #: models/flux_pro.py:197
-msgid "Safety tolerance, 1 is most strict and 6 is most permissive"
+msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr "নিরাপত্তা সহনশীলতা, 1 সবচেয়ে কঠোর এবং 6 সবচেয়ে অনুমোদনশীল"
 
 #: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
@@ -535,7 +535,7 @@ msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "সমর্থিত ছবি (PNG, JPEG, WebP)"
 
 #: models/flux_pro.py:41
-msgid "Text-to-image model with excellent image quality"
+msgid "High-quality image generation and editing model"
 msgstr "চমৎকার চিত্র মানের সাথে টেক্সট-টু-ইমেজ মডেল"
 
 #: dream-prompter.py:47
@@ -573,7 +573,7 @@ msgid "Width"
 msgstr "প্রস্থ"
 
 #: models/flux_pro.py:171
-msgid "Width of the generated image in text-to-image mode."
+msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr "টেক্সট-টু-ইমেজ মোডে উত্পন্ন চিত্রের প্রস্থ।"
 
 #: model_settings.py:250

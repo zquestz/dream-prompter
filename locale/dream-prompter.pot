@@ -377,11 +377,11 @@ msgid "No"
 msgstr ""
 
 #: models/flux_pro.py:41
-msgid "Text-to-image model with excellent image quality"
+msgid "High-quality image generation and editing model"
 msgstr ""
 
 #: models/flux_pro.py:46
-msgid "Flux 1.1 Pro"
+msgid "Flux 2 Pro"
 msgstr ""
 
 #: models/flux_pro.py:149 models/imagen4.py:145
@@ -394,58 +394,58 @@ msgstr ""
 msgid "Aspect ratio for the generated image"
 msgstr ""
 
-#: models/flux_pro.py:169 models/seedream4.py:183
+#: models/flux_pro.py:194
+msgid "Resolution"
+msgstr ""
+
+#: models/flux_pro.py:196
+msgid "Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is recommended."
+msgstr ""
+
+#: models/flux_pro.py:214 models/seedream4.py:183
 msgid "Width"
 msgstr ""
 
-#: models/flux_pro.py:171
-msgid "Width of the generated image in text-to-image mode."
+#: models/flux_pro.py:216
+msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr ""
 
-#: models/flux_pro.py:182 models/seedream4.py:194
+#: models/flux_pro.py:227 models/seedream4.py:194
 msgid "Height"
 msgstr ""
 
-#: models/flux_pro.py:184
-msgid "Height of the generated image in text-to-image mode."
+#: models/flux_pro.py:229
+msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
 msgstr ""
 
-#: models/flux_pro.py:195
+#: models/flux_pro.py:240
 msgid "Safety Tolerance"
 msgstr ""
 
-#: models/flux_pro.py:197
-msgid "Safety tolerance, 1 is most strict and 6 is most permissive"
+#: models/flux_pro.py:242
+msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr ""
 
-#: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
+#: models/flux_pro.py:253 models/qwen_image_edit_plus.py:182
 #: models/stable_diffusion_3_5_large_turbo.py:220
 msgid "Seed"
 msgstr ""
 
-#: models/flux_pro.py:209 models/stable_diffusion_3_5_large_turbo.py:221
+#: models/flux_pro.py:254 models/stable_diffusion_3_5_large_turbo.py:221
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr ""
 
-#: models/flux_pro.py:219
-msgid "Prompt Upsampling"
-msgstr ""
-
-#: models/flux_pro.py:221
-msgid "Automatically modify the prompt for more creative generation"
-msgstr ""
-
-#: models/flux_pro.py:230 models/imagen4.py:154 models/nano_banana.py:165
+#: models/flux_pro.py:265 models/imagen4.py:154 models/nano_banana.py:165
 #: models/qwen_image_edit_plus.py:195
 #: models/stable_diffusion_3_5_large_turbo.py:231
 msgid "Output Format"
 msgstr ""
 
-#: models/flux_pro.py:231
+#: models/flux_pro.py:266
 msgid "Format of the output images."
 msgstr ""
 
-#: models/flux_pro.py:239 models/qwen_image_edit_plus.py:204
+#: models/flux_pro.py:274 models/qwen_image_edit_plus.py:204
 msgid "Output Quality"
 msgstr ""
 

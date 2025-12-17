@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 1.1 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Flux 1.1 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -234,14 +234,14 @@ If you get the **"replicate not installed"** error on Windows:
 
 ### Available AI Models
 
-**Flux 1.1 Pro** (`black-forest-labs/flux-1.1-pro`) - Faster, better FLUX Pro with excellent image quality:
+**Flux 2 Pro** (`black-forest-labs/flux-2-pro`) - High-quality image generation and editing model:
 
-- **Capabilities**: Generation only
-- **Reference Images**: Up to 1 for generation
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 8 for generation, 7 for editing
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP, GIF
-- **Special Features**: 6x faster than predecessor, superior prompt adherence, excellent output diversity
-- **More Info**: [Replicate Model Page](https://replicate.com/black-forest-labs/flux-1.1-pro)
+- **Special Features**: Excellent text rendering, photorealism, character consistency, up to 4MP resolution
+- **More Info**: [Replicate Model Page](https://replicate.com/black-forest-labs/flux-2-pro)
 
 **Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
 
@@ -379,7 +379,7 @@ The plugin is organized into focused modules with a clean model-driven architect
 
 - **`models/__init__.py`** - Base model classes and registry system
 - **`models/factory.py`** - Model factory for centralized model management
-- **`models/flux_pro.py`** - Flux 1.1 Pro model implementation
+- **`models/flux_pro.py`** - Flux 2 Pro model implementation
 - **`models/imagen4.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
 - **`models/qwen_image_edit_plus.py`** - Qwen Image Edit Plus model implementation
@@ -504,4 +504,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 1.1 Pro, Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.
