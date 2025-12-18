@@ -3,8 +3,8 @@
 
 """
 Flux 2 Pro model implementation
-High-quality image generation and editing with support for eight reference images.
-Available through Replicate API
+High-quality image generation and editing with support for
+eight reference images. Available through Replicate API
 """
 
 import io

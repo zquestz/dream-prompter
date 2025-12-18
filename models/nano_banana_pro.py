@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Imagen 4 model implementation
+Nano Banana Pro (Google Gemini 3 Pro) model implementation
+Google's state of the art image generation and editing model
 Available through Replicate API
 """
 
+import io
 from typing import List, Dict, Any, Optional
 
 from . import (
@@ -20,53 +22,53 @@ from . import (
 from i18n import _
 
 
-class Imagen4Model(BaseModel):
-    """Google's Imagen 4 model implementation for Replicate"""
+class NanoBananaProModel(BaseModel):
+    """Google's Nano Banana Pro model implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Imagen 4 only supports generation"""
-        return ModelCapability.GENERATE
+        """Nano Banana Pro supports editing and generation"""
+        return ModelCapability.BOTH
 
     @property
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        return OutputFormat.PNG
+        return OutputFormat.JPEG
 
     @property
     def description(self) -> str:
         """Model description"""
-        return _("Google's advanced image generation model")
+        return _("Google's state of the art image generation and editing model")
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Imagen 4")
+        return _("Nano Banana Pro (Gemini 3 Pro)")
 
     @property
     def max_file_size_mb(self) -> int:
         """Maximum file size in MB for reference images"""
-        return 7
+        return 10
 
     @property
     def max_reference_images(self) -> int:
         """Maximum number of reference images for generation"""
-        return 0
+        return 14
 
     @property
     def max_reference_images_edit(self) -> int:
         """Maximum number of reference images for editing"""
-        return 0
+        return 13
 
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "google/imagen-4"
+        return "google/nano-banana-pro"
 
     @property
     def supported_mime_types(self) -> List[str]:
         """List of supported MIME types for reference images"""
-        return []
+        return ["image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(
         self,
@@ -89,8 +91,36 @@ class Imagen4Model(BaseModel):
         Returns:
             Dictionary of input parameters for the Replicate API
         """
+        image_input = []
 
-        return {}
+        if isinstance(main_image, bytes):
+            image_input.append(io.BytesIO(main_image))
+        else:
+            image_input.append(main_image)
+
+        if reference_images:
+            image_input.extend(
+                reference_images[: self.max_reference_images_edit]
+            )
+
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
+        model_input = {
+            "prompt": prompt,
+            "image_input": image_input,
+            "resolution": params.get("resolution", "2K"),
+            "aspect_ratio": "match_input_image",
+            "output_format": params.get("output_format", "jpg"),
+            "safety_filter_level": params.get(
+                "safety_filter_level", "block_only_high"
+            ),
+        }
+
+        return model_input
 
     def build_generation_input(
         self,
@@ -117,60 +147,75 @@ class Imagen4Model(BaseModel):
             if key in params:
                 params[key] = value
 
-        default_format = self.get_output_format_string(
-            self.default_output_format
-        )
-        output_format = params.get("output_format", default_format)
-        aspect_ratio = params.get("aspect_ratio", "1:1")
-        safety_filter_level = params.get(
-            "safety_filter_level", "block_only_high"
-        )
         model_input = {
             "prompt": prompt,
             "image_input": reference_images or [],
-            "output_format": output_format,
-            "aspect_ratio": aspect_ratio,
-            "safety_filter_level": safety_filter_level,
+            "resolution": params.get("resolution", "2K"),
+            "aspect_ratio": params.get("aspect_ratio", "1:1"),
+            "output_format": params.get("output_format", "jpg"),
+            "safety_filter_level": params.get(
+                "safety_filter_level", "block_only_high"
+            ),
         }
 
         return model_input
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Imagen 4"""
+        """Get list of configurable parameters for Nano Banana Pro"""
         return [
+            ParameterDefinition(
+                name="resolution",
+                param_type=ParameterType.CHOICE,
+                default_value="2K",
+                label=_("Resolution"),
+                description=_("Resolution of the generated image"),
+                choices=["1K", "2K", "4K"],
+                supported_modes=[ParameterMode.BOTH],
+            ),
             ParameterDefinition(
                 name="aspect_ratio",
                 param_type=ParameterType.CHOICE,
                 default_value="1:1",
                 label=_("Aspect Ratio"),
-                description=_("Control aspect ratio of generated images"),
-                choices=["1:1", "9:16", "16:9", "3:4", "4:3"],
+                description=_("Aspect ratio of the generated image"),
+                choices=[
+                    "1:1",
+                    "2:3",
+                    "3:2",
+                    "3:4",
+                    "4:3",
+                    "4:5",
+                    "5:4",
+                    "9:16",
+                    "16:9",
+                    "21:9",
+                ],
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
                 name="output_format",
                 param_type=ParameterType.CHOICE,
-                default_value="png",
+                default_value="jpg",
                 label=_("Output Format"),
-                description=_("Format for generated images"),
-                choices=["png", "jpg"],
-                supported_modes=[ParameterMode.GENERATE],
+                description=_("Format of the output image"),
+                choices=["jpg", "png"],
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="safety_filter_level",
                 param_type=ParameterType.CHOICE,
                 default_value="block_only_high",
                 label=_("Safety Filter Level"),
-                description=_("Control safety of generated images"),
+                description=_("Control safety filtering of generated images"),
                 choices=[
                     "block_low_and_above",
                     "block_medium_and_above",
                     "block_only_high",
                 ],
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
         ]
 
 
-imagen4 = Imagen4Model()
-register_model(imagen4)
+nano_banana_pro = NanoBananaProModel()
+register_model(nano_banana_pro)

@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Seedream 4 model implementation
-ByteDance's unified text-to-image generation and editing model
-Available through Replicate API
+Seedream 4.5 model implementation
+ByteDance's upgraded image model with stronger spatial understanding
+and world knowledge. Available through Replicate API
 """
 
 import io
@@ -22,12 +22,12 @@ from . import (
 from i18n import _
 
 
-class Seedream4Model(BaseModel):
-    """ByteDance Seedream 4 model implementation for Replicate"""
+class SeedreamModel(BaseModel):
+    """ByteDance Seedream 4.5 model implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Seedream 4 supports editing and generation"""
+        """Seedream 4.5 supports editing and generation"""
         return ModelCapability.BOTH
 
     @property
@@ -38,12 +38,14 @@ class Seedream4Model(BaseModel):
     @property
     def description(self) -> str:
         """Model description"""
-        return _("ByteDance's unified generation and editing model")
+        return _(
+            "ByteDance's upgraded model with stronger spatial understanding"
+        )
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Seedream 4")
+        return _("Seedream 4.5")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -53,17 +55,17 @@ class Seedream4Model(BaseModel):
     @property
     def max_reference_images(self) -> int:
         """Maximum number of reference images for generation"""
-        return 10
+        return 14
 
     @property
     def max_reference_images_edit(self) -> int:
         """Maximum number of reference images for editing"""
-        return 9
+        return 13
 
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "bytedance/seedream-4"
+        return "bytedance/seedream-4.5"
 
     @property
     def supported_mime_types(self) -> List[str]:
@@ -111,15 +113,15 @@ class Seedream4Model(BaseModel):
 
         model_input = {
             "prompt": prompt,
+            "image_input": image_input,
             "size": params["size"],
+            "aspect_ratio": "match_input_image",
             "width": params["width"],
             "height": params["height"],
-            "aspect_ratio": "match_input_image",
-            "max_images": params["max_images"],
             "sequential_image_generation": (
                 params["sequential_image_generation"]
             ),
-            "image_input": image_input,
+            "max_images": params["max_images"],
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
@@ -151,29 +153,31 @@ class Seedream4Model(BaseModel):
 
         model_input = {
             "prompt": prompt,
+            "image_input": reference_images or [],
             "size": params["size"],
+            "aspect_ratio": params["aspect_ratio"],
             "width": params["width"],
             "height": params["height"],
-            "aspect_ratio": params["aspect_ratio"],
-            "max_images": params["max_images"],
             "sequential_image_generation": (
                 params["sequential_image_generation"]
             ),
-            "image_input": reference_images or [],
+            "max_images": params["max_images"],
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
 
     def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Seedream 4"""
+        """Get list of configurable parameters for Seedream 4.5"""
         return [
             ParameterDefinition(
                 name="size",
                 param_type=ParameterType.CHOICE,
                 default_value="2K",
                 label=_("Image Size"),
-                description=_("Resolution preset for generated images"),
-                choices=["1K", "2K", "4K", "custom"],
+                description=_(
+                    "Resolution preset: 2K (2048px), 4K (4096px), or custom"
+                ),
+                choices=["2K", "4K", "custom"],
                 supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
@@ -181,7 +185,9 @@ class Seedream4Model(BaseModel):
                 param_type=ParameterType.INTEGER,
                 default_value=2048,
                 label=_("Width"),
-                description=_("Custom width in pixels"),
+                description=_(
+                    "Custom width in pixels (only used when size='custom')"
+                ),
                 min_value=1024,
                 max_value=4096,
                 step=1,
@@ -192,7 +198,9 @@ class Seedream4Model(BaseModel):
                 param_type=ParameterType.INTEGER,
                 default_value=2048,
                 label=_("Height"),
-                description=_("Custom height in pixels"),
+                description=_(
+                    "Custom height in pixels (only used when size='custom')"
+                ),
                 min_value=1024,
                 max_value=4096,
                 step=1,
@@ -213,7 +221,7 @@ class Seedream4Model(BaseModel):
                     "9:16",
                     "3:2",
                     "2:3",
-                    "21.9",
+                    "21:9",
                 ],
                 supported_modes=[ParameterMode.GENERATE],
             ),
@@ -239,5 +247,5 @@ class Seedream4Model(BaseModel):
         ]
 
 
-seedream4 = Seedream4Model()
-register_model(seedream4)
+seedream = SeedreamModel()
+register_model(seedream)

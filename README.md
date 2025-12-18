@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -125,11 +125,14 @@ yay -S dream-prompter
 │   ├── __init__.py
 │   ├── factory.py
 │   ├── flux_pro.py
-│   ├── imagen4.py
+│   ├── gpt_image.py
+│   ├── imagen.py
 │   ├── nano_banana.py
+│   ├── nano_banana_pro.py
+│   ├── qwen_image.py
 │   ├── qwen_image_edit_plus.py
-│   ├── seedream4.py
-│   └── stable_diffusion_3_5_large_turbo.py
+│   ├── seedream.py
+│   └── stable_diffusion_large_turbo.py
 └── locale/ (optional)
     └── ...
 ```
@@ -243,6 +246,14 @@ If you get the **"replicate not installed"** error on Windows:
 - **Special Features**: Excellent text rendering, photorealism, character consistency, up to 4MP resolution
 - **More Info**: [Replicate Model Page](https://replicate.com/black-forest-labs/flux-2-pro)
 
+**GPT Image 1.5** (`openai/gpt-image-1.5`) - OpenAI's advanced image generation model:
+
+- **Capabilities**: Generation only
+- **Reference Images**: Up to 10 for generation
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: Transparent backgrounds, quality control, input fidelity options
+
 **Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
 
 - **Capabilities**: Generation only
@@ -251,12 +262,29 @@ If you get the **"replicate not installed"** error on Windows:
 - **Formats**: PNG, JPEG
 - **Special Features**: Advanced safety filtering, high-quality generation
 
-**Nano Banana** (`google/nano-banana`) - Google's Gemini 2.5 Flash Image Preview:
+**Nano Banana** (`google/nano-banana`) - Google's Gemini 2.5 Flash Image model for fast, conversational workflows:
 
 - **Capabilities**: Both generation and editing
 - **Reference Images**: Up to 10 for generation, 9 for editing
 - **File Size**: Maximum 7MB per image
 - **Formats**: PNG, JPEG, WebP
+- **Special Features**: Character consistency, multi-image fusion, conversational editing, native image understanding
+
+**Nano Banana Pro** (`google/nano-banana-pro`) - Google's Gemini 3 Pro state of the art model:
+
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 14 for generation, 13 for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: 4K resolution, accurate text rendering, multi-image fusion, real-time Google Search integration
+
+**Qwen Image** (`qwen/qwen-image`) - Qwen's advanced image generation model:
+
+- **Capabilities**: Generation only
+- **Reference Images**: Up to 1 for img2img
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: Guidance control, prompt enhancement, LoRA support
 
 **Qwen Image Edit Plus** (`qwen/qwen-image-edit-plus`) - Qwen's advanced image editing model:
 
@@ -266,13 +294,13 @@ If you get the **"replicate not installed"** error on Windows:
 - **Formats**: PNG, JPEG, WebP, GIF
 - **Special Features**: Specialized for image editing and transformation
 
-**Seedream 4** (`bytedance/seedream-4`) - ByteDance's unified generation and editing model:
+**Seedream 4.5** (`bytedance/seedream-4.5`) - ByteDance's upgraded image model with stronger spatial understanding:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 10 for generation, 9 for editing
+- **Reference Images**: Up to 14 for generation, 13 for editing
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
-- **Special Features**: 4K resolution support, unified architecture
+- **Special Features**: 4K resolution support, enhanced prompt option, improved spatial understanding and world knowledge
 
 **Stable Diffusion 3.5 Large Turbo** (`stability-ai/stable-diffusion-3.5-large-turbo`) - Stability AI's high-resolution image generation model:
 
@@ -380,10 +408,14 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`models/__init__.py`** - Base model classes and registry system
 - **`models/factory.py`** - Model factory for centralized model management
 - **`models/flux_pro.py`** - Flux 2 Pro model implementation
-- **`models/imagen4.py`** - Imagen 4 model implementation
+- **`models/gpt_image.py`** - GPT Image 1.5 model implementation
+- **`models/imagen.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
+- **`models/nano_banana_pro.py`** - Nano Banana Pro model implementation
+- **`models/qwen_image.py`** - Qwen Image model implementation
 - **`models/qwen_image_edit_plus.py`** - Qwen Image Edit Plus model implementation
-- **`models/seedream4.py`** - Seedream 4 model implementation
+- **`models/seedream.py`** - Seedream 4.5 model implementation
+- **`models/stable_diffusion_large_turbo.py`** - Stable Diffusion 3.5 Large Turbo model implementation
 
 The model system provides a clean abstraction for AI models, making it easy to:
 
@@ -504,4 +536,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, Google's Imagen 4, Google's Nano Banana, Qwen's Image Edit Plus, ByteDance's Seedream 4, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana Pro, Qwen's Image, Qwen's Image Edit Plus, ByteDance's Seedream 4.5, and Stability AI's Stable Diffusion 3.5 Large Turbo.

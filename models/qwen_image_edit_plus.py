@@ -33,7 +33,7 @@ class QwenImageEditModel(BaseModel):
     @property
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        return OutputFormat.PNG
+        return OutputFormat.WEBP
 
     @property
     def description(self) -> str:
@@ -106,23 +106,20 @@ class QwenImageEditModel(BaseModel):
             if key in params:
                 params[key] = value
 
-        model_input = {"prompt": prompt, "image": image}
+        model_input = {
+            "prompt": prompt,
+            "image": image,
+            "aspect_ratio": "match_input_image",
+            "go_fast": params.get("go_fast", True),
+            "output_format": params.get("output_format", "webp"),
+            "output_quality": params.get("output_quality", 95),
+            "disable_safety_checker": params.get(
+                "disable_safety_checker", False
+            ),
+        }
 
-        if params.get("go_fast") is not None:
-            model_input["go_fast"] = params["go_fast"]
         if params.get("seed", -1) != -1:
             model_input["seed"] = params["seed"]
-        if params.get("output_format"):
-            model_input["output_format"] = params["output_format"]
-        if (
-            params.get("output_quality")
-            and params.get("output_format") == "jpg"
-        ):
-            model_input["output_quality"] = params["output_quality"]
-        if params.get("disable_safety_checker") is not None:
-            model_input["disable_safety_checker"] = params[
-                "disable_safety_checker"
-            ]
 
         return {k: v for k, v in model_input.items() if v is not None}
 
@@ -152,22 +149,6 @@ class QwenImageEditModel(BaseModel):
         """Get list of configurable parameters for Qwen Image Edit Plus"""
         return [
             ParameterDefinition(
-                name="aspect_ratio",
-                param_type=ParameterType.CHOICE,
-                default_value="match_input_image",
-                label=_("Aspect Ratio"),
-                description=_("Control aspect ratio of generated images"),
-                choices=[
-                    "match_input_image",
-                    "1:1",
-                    "4:3",
-                    "3:4",
-                    "16:9",
-                    "9:16",
-                ],
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
                 name="go_fast",
                 param_type=ParameterType.BOOLEAN,
                 default_value=True,
@@ -191,29 +172,33 @@ class QwenImageEditModel(BaseModel):
             ParameterDefinition(
                 name="output_format",
                 param_type=ParameterType.CHOICE,
-                default_value="png",
+                default_value="webp",
                 label=_("Output Format"),
-                description=_("Output image format"),
-                choices=["jpg", "png", "webp"],
-                supported_modes=[ParameterMode.BOTH],
+                description=_("Format of the output images"),
+                choices=["webp", "jpg", "png"],
+                supported_modes=[ParameterMode.EDIT],
             ),
             ParameterDefinition(
                 name="output_quality",
                 param_type=ParameterType.INTEGER,
                 default_value=95,
                 label=_("Output Quality"),
-                description=_("JPEG quality (0-100, ignored for PNG)"),
+                description=_(
+                    "Quality when saving the output images, from 0 to 100. "
+                    "100 is best quality, 0 is lowest quality. "
+                    "Not relevant for .png outputs"
+                ),
                 min_value=0,
                 max_value=100,
-                supported_modes=[ParameterMode.BOTH],
+                supported_modes=[ParameterMode.EDIT],
             ),
             ParameterDefinition(
                 name="disable_safety_checker",
                 param_type=ParameterType.BOOLEAN,
-                default_value=True,
+                default_value=False,
                 label=_("Disable Safety Checker"),
-                description=_("Bypass safety checks"),
-                supported_modes=[ParameterMode.BOTH],
+                description=_("Disable safety checker for generated images."),
+                supported_modes=[ParameterMode.EDIT],
             ),
         ]
 

@@ -61,6 +61,7 @@ class ParameterDefinition:
         max_value: Any = None,
         step: Any = None,
         supported_modes: Optional[List[ParameterMode]] = None,
+        is_secret: bool = False,
     ):
         self.name = name
         self.param_type = param_type
@@ -72,6 +73,7 @@ class ParameterDefinition:
         self.max_value = max_value
         self.step = step
         self.supported_modes = supported_modes or [ParameterMode.BOTH]
+        self.is_secret = is_secret
 
     def supports_mode(self, mode: str) -> bool:
         """Check if this parameter supports the given mode"""

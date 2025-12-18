@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-11-06 10:00-1000\n"
+"POT-Creation-Date: 2025-12-17 14:52-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:733
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:729
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
@@ -49,7 +49,7 @@ msgstr "AI परत"
 msgid "AI Model"
 msgstr "एआई मॉडल"
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:656
 msgid "AI Prompt"
 msgstr "AI प्रॉम्प्ट"
 
@@ -75,33 +75,34 @@ msgstr "परत {num} जोड़ी जा रही है..."
 msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
-#: models/flux_pro.py:149 models/imagen4.py:145
-#: models/qwen_image_edit_plus.py:158 models/seedream4.py:205
-#: models/stable_diffusion_3_5_large_turbo.py:179
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
+#: models/nano_banana.py:164 models/nano_banana_pro.py:179
+#: models/qwen_image.py:144 models/seedream.py:213
+#: models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
 msgstr "पहलू अनुपात"
 
-#: models/flux_pro.py:150
+#: models/flux_pro.py:180 models/qwen_image.py:145
 msgid "Aspect ratio for the generated image"
 msgstr "उत्पन्न छवि के लिए पहलू अनुपात"
 
-#: models/flux_pro.py:221
-msgid "Automatically modify the prompt for more creative generation"
-msgstr "अधिक रचनात्मक निर्माण के लिए संकेत को स्वचालित रूप से संशोधित करें"
+#: models/nano_banana.py:165 models/nano_banana_pro.py:180
+msgid "Aspect ratio of the generated image"
+msgstr "जेनेरेट की गई छवि का पहलू अनुपात"
+
+#: models/gpt_image.py:191
+msgid "Background"
+msgstr "पृष्ठभूमि"
 
 #: api.py:127
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
-#: models/qwen_image_edit_plus.py:215
-msgid "Bypass safety checks"
-msgstr "सुरक्षा जांच को दरकिनार करें"
+#: models/seedream.py:42
+msgid "ByteDance's upgraded model with stronger spatial understanding"
+msgstr "ByteDance का मजबूत स्थानिक समझ के साथ अपग्रेडेड मॉडल"
 
-#: models/seedream4.py:41
-msgid "ByteDance's unified generation and editing model"
-msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
-
-#: dialog_events.py:202 dialog_gtk.py:411
+#: dialog_events.py:211 dialog_gtk.py:411
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -109,7 +110,7 @@ msgstr "रद्द करें"
 msgid "Cancelling..."
 msgstr "रद्द किया जा रहा है..."
 
-#: dialog_events.py:233
+#: dialog_events.py:242
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -118,12 +119,12 @@ msgstr ""
 "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। संपादन मोड में अधिकतम {max} संदर्भ छवियों की अनुमति "
 "है।"
 
-#: dialog_events.py:240
+#: dialog_events.py:249
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr "{count} फ़ाइलें नहीं जोड़ी जा सकतीं। अधिकतम {max} संदर्भ छवियों की अनुमति है।"
 
-#: models/stable_diffusion_3_5_large_turbo.py:198
+#: models/stable_diffusion_large_turbo.py:198
 msgid "Cfg"
 msgstr "Cfg"
 
@@ -131,12 +132,32 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "चयनित फ़ाइलें साफ़ करें"
 
-#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
-#: models/seedream4.py:206 models/stable_diffusion_3_5_large_turbo.py:180
+#: models/gpt_image.py:203
+msgid "Compression level (0-100%)"
+msgstr "संपीड़न स्तर (0-100%)"
+
+#: models/gpt_image.py:222
+msgid "Content moderation level"
+msgstr "सामग्री मॉडरेशन स्तर"
+
+#: models/imagen.py:145 models/seedream.py:214
+#: models/stable_diffusion_large_turbo.py:180
 msgid "Control aspect ratio of generated images"
 msgstr "जेनेरेट की गई छवियों का पहलू अनुपात नियंत्रित करें"
 
-#: models/imagen4.py:164
+#: models/gpt_image.py:162
+msgid ""
+"Control how much effort the model will exert to match the style and features "
+"of input images"
+msgstr ""
+"इनपुट छवियों की शैली और विशेषताओं से मेल खाने के लिए मॉडल कितना प्रयास करेगा इसे नियंत्रित "
+"करें"
+
+#: models/nano_banana_pro.py:209
+msgid "Control safety filtering of generated images"
+msgstr "जेनेरेट की गई छवियों की सुरक्षा फ़िल्टरिंग नियंत्रित करें"
+
+#: models/imagen.py:163
 msgid "Control safety of generated images"
 msgstr "जेनेरेट की गई छवियों की सुरक्षा नियंत्रित करें"
 
@@ -145,17 +166,21 @@ msgstr "जेनेरेट की गई छवियों की सुर�
 msgid "Creating image {num}..."
 msgstr "छवि {num} बनाई जा रही है..."
 
-#: models/seedream4.py:195
-msgid "Custom height in pixels"
-msgstr "पिक्सेल में कस्टम ऊंचाई"
+#: models/seedream.py:202
+msgid "Custom height in pixels (only used when size='custom')"
+msgstr "पिक्सेल में कस्टम ऊंचाई (केवल size='custom' होने पर उपयोग किया जाता है)"
 
-#: models/seedream4.py:184
-msgid "Custom width in pixels"
-msgstr "पिक्सेल में कस्टम चौड़ाई"
+#: models/seedream.py:189
+msgid "Custom width in pixels (only used when size='custom')"
+msgstr "पिक्सेल में कस्टम चौड़ाई (केवल size='custom' होने पर उपयोग किया जाता है)"
 
-#: models/qwen_image_edit_plus.py:214
+#: models/qwen_image.py:269 models/qwen_image_edit_plus.py:199
 msgid "Disable Safety Checker"
 msgstr "सुरक्षा चेकर को निष्क्रिय करें"
+
+#: models/qwen_image.py:270 models/qwen_image_edit_plus.py:200
+msgid "Disable safety checker for generated images."
+msgstr "जेनेरेट की गई छवियों के लिए सुरक्षा चेकर अक्षम करें।"
 
 #: api.py:379
 msgid "Downloading result..."
@@ -165,7 +190,7 @@ msgstr "परिणाम डाउनलोड किया जा रहा �
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI छवि निर्माता/संपादक"
 
-#: dream-prompter.py:55
+#: dream-prompter.py:56
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -173,13 +198,21 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "छवि संपादित करें"
 
-#: dialog_events.py:116
+#: dialog_events.py:125
 msgid "Edit mode requires a selected layer"
 msgstr "संपादन मोड के लिए चयनित परत आवश्यक है"
 
-#: models/qwen_image_edit_plus.py:175
+#: models/qwen_image_edit_plus.py:156
 msgid "Enable speed optimizations"
 msgstr "गति अनुकूलन सक्षम करें"
+
+#: models/qwen_image.py:220
+msgid "Enhance Prompt"
+msgstr "प्रॉम्प्ट बेहतर करें"
+
+#: models/qwen_image.py:221
+msgid "Enhance the prompt with positive magic."
+msgstr "सकारात्मक जादू के साथ प्रॉम्प्ट को बेहतर करें।"
 
 #: dialog_gtk.py:374
 msgid "Enter your Replicate API key"
@@ -195,7 +228,7 @@ msgstr "परतें जोड़ने में त्रुटि: {error}
 msgid "Error creating images: {error}"
 msgstr "छवियां बनाने में त्रुटि: {error}"
 
-#: dream-prompter.py:100
+#: dream-prompter.py:101
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
@@ -212,24 +245,33 @@ msgstr "वर्तमान छवि निर्यात करने म�
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/imagen4.py:155 models/nano_banana.py:166
-#: models/stable_diffusion_3_5_large_turbo.py:232
-msgid "Format for generated images"
-msgstr "जेनेरेट की गई छवियों का प्रारूप"
+#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
+#: models/nano_banana_pro.py:200
+msgid "Format of the output image"
+msgstr "आउटपुट छवि का प्रारूप"
 
-#: models/flux_pro.py:231
+#: models/qwen_image.py:248 models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_large_turbo.py:232
+msgid "Format of the output images"
+msgstr "आउटपुट छवियों का प्रारूप"
+
+#: models/flux_pro.py:271
 msgid "Format of the output images."
 msgstr "आउटपुट छवियों का प्रारूप।"
 
-#: dialog_events.py:172 dialog_gtk.py:416
+#: models/gpt_image.py:45
+msgid "GPT Image 1.5"
+msgstr "GPT Image 1.5"
+
+#: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
 msgstr "संपादन उत्पन्न करें"
 
-#: dialog_events.py:175 dialog_gtk.py:526
+#: dialog_events.py:184 dialog_gtk.py:526
 msgid "Generate Image"
 msgstr "छवि उत्पन्न करें"
 
-#: models/seedream4.py:235
+#: models/seedream.py:243
 msgid "Generate images sequentially or in parallel"
 msgstr "छवियों को क्रमिक या समानांतर में जेनेरेट करें"
 
@@ -247,35 +289,58 @@ msgstr "Replicate के साथ छवि उत्पन्न की जा
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a> से अपनी API कुंजी प्राप्त करें"
 
-#: models/qwen_image_edit_plus.py:174
+#: models/qwen_image.py:210 models/qwen_image_edit_plus.py:155
 msgid "Go Fast"
 msgstr "तेज़ मोड"
 
-#: models/nano_banana.py:40
-msgid "Google's advanced image generation and editing model"
-msgstr "Google का उन्नत चित्र निर्माण और संपादन मॉडल"
-
-#: models/imagen4.py:39
+#: models/imagen.py:39
 msgid "Google's advanced image generation model"
 msgstr "Google का उन्नत चित्र निर्माण मॉडल"
 
-#: models/flux_pro.py:182 models/seedream4.py:194
+#: models/nano_banana_pro.py:41
+msgid "Google's state of the art image generation and editing model"
+msgstr "Google का अत्याधुनिक छवि निर्माण और संपादन मॉडल"
+
+#: models/nano_banana.py:43
+msgid ""
+"Google's state-of-the-art image generation and editing model for fast, "
+"conversational workflows"
+msgstr ""
+"तेज़, संवादात्मक कार्यप्रवाहों के लिए Google का अत्याधुनिक छवि निर्माण और संपादन मॉडल"
+
+#: models/qwen_image.py:170
+msgid "Guidance"
+msgstr "गाइडेंस"
+
+#: models/qwen_image.py:172
+msgid ""
+"Guidance scale. Lower values give more realistic images. Good values: 2, "
+"2.5, 3, 3.5"
+msgstr "गाइडेंस स्केल। कम मान अधिक यथार्थवादी छवियां देते हैं। अच्छे मान: 2, 2.5, 3, 3.5"
+
+#: models/flux_pro.py:232 models/seedream.py:200
 msgid "Height"
 msgstr "ऊंचाई"
 
-#: models/flux_pro.py:184
-msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:234
+msgid ""
+"Height of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr "टेक्स्ट-टू-इमेज मोड में उत्पन्न छवि की ऊंचाई।"
 
-#: dialog_events.py:258
+#: dialog_events.py:267
 msgid "Hide API key"
 msgstr "API कुंजी छुपाएं"
 
-#: models/stable_diffusion_3_5_large_turbo.py:199
+#: models/flux_pro.py:41
+msgid "High-quality image generation and editing model"
+msgstr "उत्कृष्ट छवि गुणवत्ता के साथ टेक्स्ट-टू-इमेज मॉडल"
+
+#: models/stable_diffusion_large_turbo.py:199
 msgid "How similar the output should be to the prompt"
 msgstr "आउटपुट प्रॉम्प्ट के कितने समान होना चाहिए"
 
-#: models/seedream4.py:174
+#: models/qwen_image.py:161 models/seedream.py:176
 msgid "Image Size"
 msgstr "छवि का आकार"
 
@@ -287,27 +352,35 @@ msgstr "छवि संपादन पूर्ण!"
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
-#: models/imagen4.py:44
+#: models/qwen_image.py:162
+msgid "Image size optimization mode"
+msgstr "छवि आकार अनुकूलन मोड"
+
+#: models/imagen.py:44
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: dialog_events.py:127
+#: models/qwen_image.py:184
+msgid "Inference Steps"
+msgstr "इनफरेंस स्टेप्स"
+
+#: dialog_events.py:136
 msgid "Initializing API request..."
 msgstr "API अनुरोध आरंभ किया जा रहा है..."
 
-#: models/qwen_image_edit_plus.py:205
-msgid "JPEG quality (0-100, ignored for PNG)"
-msgstr "JPEG गुणवत्ता (0-100, PNG के लिए अनदेखा)"
+#: models/gpt_image.py:160
+msgid "Input Fidelity"
+msgstr "इनपुट फिडेलिटी"
 
 #: api.py:268
 msgid "Logs"
 msgstr "लॉग"
 
-#: models/seedream4.py:224
+#: models/seedream.py:232
 msgid "Max Images"
 msgstr "अधिकतम छवियां"
 
-#: models/seedream4.py:225
+#: models/seedream.py:233
 msgid "Maximum number of images to generate"
 msgstr "जेनेरेट करने के लिए छवियों की अधिकतम संख्या"
 
@@ -320,13 +393,25 @@ msgstr "मॉडल सेटिंग्स"
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
 
-#: models/nano_banana.py:45
-msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
-msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
+#: models/gpt_image.py:221
+msgid "Moderation"
+msgstr "मॉडरेशन"
 
-#: models/stable_diffusion_3_5_large_turbo.py:171
+#: models/nano_banana.py:50
+msgid "Nano Banana (Gemini 2.5 Flash Image)"
+msgstr "Nano Banana (Gemini 2.5 Flash Image)"
+
+#: models/nano_banana_pro.py:46
+msgid "Nano Banana Pro (Gemini 3 Pro)"
+msgstr "Nano Banana Pro (Gemini 3 Pro)"
+
+#: models/qwen_image.py:228 models/stable_diffusion_large_turbo.py:171
 msgid "Negative Prompt"
 msgstr "नकारात्मक प्रॉम्प्ट"
+
+#: models/qwen_image.py:229
+msgid "Negative prompt for generated image"
+msgstr "जेनेरेट की गई छवि के लिए नकारात्मक प्रॉम्प्ट"
 
 #: model_settings.py:250
 msgid "No"
@@ -336,7 +421,7 @@ msgstr "नहीं"
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
-#: dialog_gtk.py:330 dialog_gtk.py:788
+#: dialog_gtk.py:330 dialog_gtk.py:791
 msgid "No additional images selected"
 msgstr "कोई अतिरिक्त छवियां चयनित नहीं"
 
@@ -364,6 +449,26 @@ msgstr "API प्रतिक्रिया में कोई वैध छ�
 msgid "Not set"
 msgstr "सेट नहीं किया गया"
 
+#: models/gpt_image.py:172
+msgid "Number of Images"
+msgstr "छवियों की संख्या"
+
+#: models/qwen_image.py:186
+msgid "Number of denoising steps. Recommended range is 28-50."
+msgstr "डीनॉइज़िंग स्टेप्स की संख्या। अनुशंसित रेंज 28-50 है।"
+
+#: models/gpt_image.py:173
+msgid "Number of images to generate (1-10)"
+msgstr "जेनेरेट करने के लिए छवियों की संख्या (1-10)"
+
+#: models/gpt_image.py:139
+msgid "OpenAI API Key"
+msgstr "OpenAI API कुंजी"
+
+#: models/gpt_image.py:40
+msgid "OpenAI's advanced image generation model"
+msgstr "OpenAI का उन्नत छवि निर्माण मॉडल"
+
 #: dialog_gtk.py:514
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
@@ -372,25 +477,27 @@ msgstr "ऑपरेशन मोड"
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
-#: models/flux_pro.py:230 models/imagen4.py:154 models/nano_banana.py:165
-#: models/qwen_image_edit_plus.py:195
-#: models/stable_diffusion_3_5_large_turbo.py:231
+#: models/gpt_image.py:202
+msgid "Output Compression"
+msgstr "आउटपुट संपीड़न"
+
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
+#: models/nano_banana.py:184 models/nano_banana_pro.py:199
+#: models/qwen_image.py:247 models/qwen_image_edit_plus.py:176
+#: models/stable_diffusion_large_turbo.py:231
 msgid "Output Format"
 msgstr "आउटपुट प्रारूप"
 
-#: models/flux_pro.py:239 models/qwen_image_edit_plus.py:204
+#: models/flux_pro.py:279 models/qwen_image.py:256
+#: models/qwen_image_edit_plus.py:185
 msgid "Output Quality"
 msgstr "आउटपुट गुणवत्ता"
 
-#: models/qwen_image_edit_plus.py:196
-msgid "Output image format"
-msgstr "आउटपुट छवि प्रारूप"
-
-#: dialog_events.py:110
+#: dialog_events.py:119
 msgid "Please enter a prompt"
 msgstr "कृपया एक प्रॉम्प्ट दर्ज करें"
 
-#: dialog_events.py:106
+#: dialog_events.py:115
 msgid "Please enter your Replicate API key"
 msgstr "कृपया अपनी Replicate API कुंजी दर्ज करें"
 
@@ -402,25 +509,44 @@ msgstr "Replicate के लिए वर्तमान छवि तैया�
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
-#: models/stable_diffusion_3_5_large_turbo.py:209
+#: models/stable_diffusion_large_turbo.py:209
 msgid "Prompt Strength"
 msgstr "प्रॉम्प्ट की शक्ति"
-
-#: models/flux_pro.py:219
-msgid "Prompt Upsampling"
-msgstr "प्रॉम्प्ट अपसैंपलिंग"
 
 #: dialog_threads.py:113 dialog_threads.py:151
 msgid "Prompt is required"
 msgstr "प्रॉम्प्ट आवश्यक है"
 
-#: models/stable_diffusion_3_5_large_turbo.py:210
+#: models/stable_diffusion_large_turbo.py:210
 msgid "Prompt strength (or denoising strength)"
 msgstr "प्रॉम्प्ट की शक्ति (या डीनॉइज़िंग की शक्ति)"
 
-#: models/flux_pro.py:240
+#: models/gpt_image.py:182
+msgid "Quality"
+msgstr "गुणवत्ता"
+
+#: models/flux_pro.py:280
 msgid "Quality when saving the output image"
 msgstr "आउटपुट छवि को सहेजते समय गुणवत्ता"
+
+#: models/qwen_image_edit_plus.py:187
+msgid ""
+"Quality when saving the output images, from 0 to 100. 100 is best quality, 0 "
+"is lowest quality. Not relevant for .png outputs"
+msgstr ""
+"आउटपुट छवियों को सहेजते समय गुणवत्ता, 0 से 100 तक। 100 सबसे अच्छी गुणवत्ता है, 0 सबसे कम "
+"है। .png आउटपुट के लिए प्रासंगिक नहीं"
+
+#: models/qwen_image.py:258
+msgid ""
+"Quality when saving the output images, from 0 to 100. Not relevant for .png "
+"outputs"
+msgstr ""
+"आउटपुट छवियों को सहेजते समय गुणवत्ता, 0 से 100 तक। .png आउटपुट के लिए प्रासंगिक नहीं"
+
+#: models/qwen_image.py:45
+msgid "Qwen Image"
+msgstr "Qwen Image"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -430,15 +556,19 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Qwen का उन्नत छवि संपादन मॉडल"
 
-#: models/qwen_image_edit_plus.py:184
+#: models/qwen_image.py:40
+msgid "Qwen's advanced image generation model"
+msgstr "Qwen का उन्नत छवि निर्माण मॉडल"
+
+#: models/qwen_image_edit_plus.py:165
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr "पुनरुत्पादन योग्य परिणामों के लिए यादृच्छिक बीज (-1 = यादृच्छिक)"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:705
 msgid "Ready"
 msgstr "तैयार"
 
-#: dialog_events.py:168
+#: dialog_events.py:177
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "संपादन मोड के लिए {max} संदर्भ छवियों को कम कर दिया गया"
@@ -456,32 +586,51 @@ msgstr "Replicate API त्रुटि: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया google-genai स्थापित करें"
 
-#: models/seedream4.py:175
-msgid "Resolution preset for generated images"
-msgstr "जेनेरेट की गई छवियों के लिए रिज़ॉल्यूशन प्रीसेट"
+#: models/flux_pro.py:200 models/nano_banana_pro.py:170
+msgid "Resolution"
+msgstr "रिज़ॉल्यूशन"
 
-#: models/imagen4.py:163
+#: models/flux_pro.py:202
+msgid ""
+"Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is "
+"recommended."
+msgstr "मेगापिक्सेल में रिज़ॉल्यूशन। 4 MP तक संभव है, लेकिन 2 MP या उससे कम अनुशंसित है।"
+
+#: models/nano_banana_pro.py:171
+msgid "Resolution of the generated image"
+msgstr "जेनेरेट की गई छवि का रिज़ॉल्यूशन"
+
+#: models/seedream.py:178
+msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
+msgstr "रिज़ॉल्यूशन प्रीसेट: 2K (2048px), 4K (4096px), या कस्टम"
+
+#: models/qwen_image.py:212
+msgid "Run faster predictions with additional optimizations."
+msgstr "अतिरिक्त अनुकूलन के साथ तेज़ भविष्यवाणियां चलाएं।"
+
+#: models/imagen.py:162 models/nano_banana_pro.py:208
 msgid "Safety Filter Level"
 msgstr "सुरक्षा फिल्टर स्तर"
 
-#: models/flux_pro.py:195
+#: models/flux_pro.py:246
 msgid "Safety Tolerance"
 msgstr "सुरक्षा सहिष्णुता"
 
-#: models/flux_pro.py:197
+#: models/flux_pro.py:248
 msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr "सुरक्षा सहिष्णुता, 1 सबसे सख्त और 6 सबसे अनुमोदक है"
 
-#: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
-#: models/stable_diffusion_3_5_large_turbo.py:220
+#: models/flux_pro.py:259 models/qwen_image.py:236
+#: models/qwen_image_edit_plus.py:163
+#: models/stable_diffusion_large_turbo.py:220
 msgid "Seed"
 msgstr "सीड"
 
-#: models/seedream4.py:46
-msgid "Seedream 4"
-msgstr "Seedream 4"
+#: models/seedream.py:48
+msgid "Seedream 4.5"
+msgstr "Seedream 4.5"
 
-#: dialog_events.py:203
+#: dialog_events.py:212
 msgid "Select"
 msgstr "चुनें"
 
@@ -489,11 +638,11 @@ msgstr "चुनें"
 msgid "Select Images..."
 msgstr "छवियां चुनें..."
 
-#: dialog_events.py:197
+#: dialog_events.py:206
 msgid "Select Reference Images"
 msgstr "संदर्भ छवियां चुनें"
 
-#: dialog_events.py:316 dialog_events.py:324
+#: dialog_events.py:325 dialog_events.py:333
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "अधिकतम {max} अतिरिक्त छवियां चुनें"
@@ -506,15 +655,20 @@ msgstr "Replicate को संपादन अनुरोध भेजा ज�
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
-#: models/seedream4.py:234
+#: models/seedream.py:242
 msgid "Sequential Generation"
 msgstr "क्रमिक जेनेरेशन"
 
-#: models/flux_pro.py:209 models/stable_diffusion_3_5_large_turbo.py:221
+#: models/flux_pro.py:260 models/qwen_image.py:237
+#: models/stable_diffusion_large_turbo.py:221
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "पुनरुत्पादन के लिए बीज सेट करें (-1 = यादृच्छिक)"
 
-#: dialog_events.py:265
+#: models/gpt_image.py:193
+msgid "Set whether the background is transparent or opaque"
+msgstr "सेट करें कि पृष्ठभूमि पारदर्शी है या अपारदर्शी"
+
+#: dialog_events.py:274
 msgid "Show API key"
 msgstr "API कुंजी दिखाएं"
 
@@ -522,32 +676,45 @@ msgstr "API कुंजी दिखाएं"
 msgid "Show/Hide API key"
 msgstr "API कुंजी दिखाएं/छुपाएं"
 
-#: models/stable_diffusion_3_5_large_turbo.py:43
+#: models/stable_diffusion_large_turbo.py:43
 msgid "Stability AI's high-resolution image generation model"
 msgstr "Stability AI का उच्च-रिज़ॉल्यूशन छवि निर्माण मॉडल"
 
-#: models/stable_diffusion_3_5_large_turbo.py:48
+#: models/stable_diffusion_large_turbo.py:48
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:206
+#: models/qwen_image.py:197
+msgid "Strength"
+msgstr "शक्ति"
+
+#: models/qwen_image.py:199
+msgid "Strength for img2img (only used with reference image)"
+msgstr "img2img के लिए शक्ति (केवल संदर्भ छवि के साथ उपयोग किया जाता है)"
+
+#: dialog_events.py:215
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "समर्थित छवियां (PNG, JPEG, WebP)"
 
-#: models/flux_pro.py:41
-msgid "High-quality image generation and editing model"
-msgstr "उत्कृष्ट छवि गुणवत्ता के साथ टेक्स्ट-टू-इमेज मॉडल"
+#: models/gpt_image.py:152
+msgid "The aspect ratio of the generated image"
+msgstr "जेनेरेट की गई छवि का पहलू अनुपात"
+
+#: models/gpt_image.py:183
+msgid "The quality of the generated image"
+msgstr "जेनेरेट की गई छवि की गुणवत्ता"
 
 #: dream-prompter.py:47
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
-"Stable Diffusion 3.5 Large Turbo."
+"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, "
+"Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
-"प्राकृतिक भाषा प्रॉम्प्ट्स के साथ Replicate से उन्नत AI मॉडल का उपयोग करके मौजूदा छवियों "
-"को रूपांतरित करें या नई छवियां जेनरेट करें। Imagen 4, Nano Banana, Qwen Image Edit "
-"Plus, Seedream 4 और Stable Diffusion 3.5 Large Turbo सहित कई मॉडलों में से चुनें।"
+"प्राकृतिक भाषा प्रॉम्प्ट के साथ Replicate के उन्नत AI मॉडल का उपयोग करके मौजूदा छवियों "
+"को रूपांतरित करें या नई छवियां बनाएं। GPT Image 1.5, Imagen 4, Nano Banana, Nano "
+"Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5 और Stable "
+"Diffusion 3.5 Large Turbo सहित कई मॉडलों में से चुनें।"
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -564,28 +731,35 @@ msgstr "छवि उत्पादन के दौरान अप्रत�
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
 
-#: models/stable_diffusion_3_5_large_turbo.py:172
+#: models/stable_diffusion_large_turbo.py:172
 msgid "What you do not want to see in the image"
 msgstr "आप छवि में क्या नहीं देखना चाहते"
 
-#: models/flux_pro.py:169 models/seedream4.py:183
+#: models/flux_pro.py:218 models/seedream.py:187
 msgid "Width"
 msgstr "चौड़ाई"
 
-#: models/flux_pro.py:171
-msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:220
+msgid ""
+"Width of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr "टेक्स्ट-टू-इमेज मोड में उत्पन्न छवि की चौड़ाई।"
 
 #: model_settings.py:250
 msgid "Yes"
 msgstr "हाँ"
 
-#: dialog_gtk.py:801
+#: models/gpt_image.py:141
+msgid "Your OpenAI API key (optional - uses proxy if not provided)"
+msgstr ""
+"आपकी OpenAI API कुंजी (वैकल्पिक - यदि प्रदान नहीं की गई तो प्रॉक्सी का उपयोग करता है)"
+
+#: dialog_gtk.py:804
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} छवि चयनित"
 
-#: dialog_gtk.py:803
+#: dialog_gtk.py:806
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} छवियां चयनित"
@@ -595,7 +769,51 @@ msgstr "{count} छवियां चयनित"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI संपादन: {prompt})"
 
-#: dialog_gtk.py:723
+#: dialog_gtk.py:726
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - अधिकतम आकार पार हो गया)"
+
+#~ msgid "Automatically modify the prompt for more creative generation"
+#~ msgstr "अधिक रचनात्मक निर्माण के लिए संकेत को स्वचालित रूप से संशोधित करें"
+
+#~ msgid "Bypass safety checks"
+#~ msgstr "सुरक्षा जांच को दरकिनार करें"
+
+#~ msgid "ByteDance's unified generation and editing model"
+#~ msgstr "ByteDance का एकीकृत चित्र निर्माण और संपादन मॉडल"
+
+#~ msgid "Custom height in pixels"
+#~ msgstr "पिक्सेल में कस्टम ऊंचाई"
+
+#~ msgid "Custom width in pixels"
+#~ msgstr "पिक्सेल में कस्टम चौड़ाई"
+
+#~ msgid "Format for generated images"
+#~ msgstr "जेनेरेट की गई छवियों का प्रारूप"
+
+#~ msgid "JPEG quality (0-100, ignored for PNG)"
+#~ msgstr "JPEG गुणवत्ता (0-100, PNG के लिए अनदेखा)"
+
+#~ msgid "Output image format"
+#~ msgstr "आउटपुट छवि प्रारूप"
+
+#~ msgid "Prompt Upsampling"
+#~ msgstr "प्रॉम्प्ट अपसैंपलिंग"
+
+#~ msgid "Resolution preset for generated images"
+#~ msgstr "जेनेरेट की गई छवियों के लिए रिज़ॉल्यूशन प्रीसेट"
+
+#~ msgid "Seedream 4"
+#~ msgstr "Seedream 4"
+
+#~ msgid ""
+#~ "Transform existing images or generate new images using advanced AI models "
+#~ "from Replicate with natural language prompts. Choose from multiple models "
+#~ "including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+#~ "Stable Diffusion 3.5 Large Turbo."
+#~ msgstr ""
+#~ "प्राकृतिक भाषा प्रॉम्प्ट्स के साथ Replicate से उन्नत AI मॉडल का उपयोग करके मौजूदा "
+#~ "छवियों को रूपांतरित करें या नई छवियां जेनरेट करें। Imagen 4, Nano Banana, Qwen "
+#~ "Image Edit Plus, Seedream 4 और Stable Diffusion 3.5 Large Turbo सहित कई "
+#~ "मॉडलों में से चुनें।"

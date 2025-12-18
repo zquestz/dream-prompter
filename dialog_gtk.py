@@ -631,6 +631,9 @@ class DreamPrompterUI:
                 else str(param_def.default_value)
             )
             widget.set_text(text_value)
+            if param_def.is_secret:
+                widget.set_visibility(False)
+                widget.set_input_purpose(Gtk.InputPurpose.PASSWORD)
             widget.connect(
                 "changed", self._on_parameter_changed, param_def.name
             )

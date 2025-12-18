@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-11-06 10:00-1000\n"
+"POT-Creation-Date: 2025-12-17 14:52-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Russian\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:733
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KБ)"
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:729
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} МБ)"
@@ -50,7 +50,7 @@ msgstr "Слой ИИ"
 msgid "AI Model"
 msgstr "ИИ Модель"
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:656
 msgid "AI Prompt"
 msgstr "Промпт ИИ"
 
@@ -76,33 +76,34 @@ msgstr "Добавление слоя {num}..."
 msgid "Additional Images (Optional)"
 msgstr "Дополнительные изображения (необязательно)"
 
-#: models/flux_pro.py:149 models/imagen4.py:145
-#: models/qwen_image_edit_plus.py:158 models/seedream4.py:205
-#: models/stable_diffusion_3_5_large_turbo.py:179
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
+#: models/nano_banana.py:164 models/nano_banana_pro.py:179
+#: models/qwen_image.py:144 models/seedream.py:213
+#: models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
 msgstr "Соотношение Сторон"
 
-#: models/flux_pro.py:150
+#: models/flux_pro.py:180 models/qwen_image.py:145
 msgid "Aspect ratio for the generated image"
 msgstr "Соотношение сторон для генерируемого изображения"
 
-#: models/flux_pro.py:221
-msgid "Automatically modify the prompt for more creative generation"
-msgstr "Автоматически изменять запрос для более креативной генерации"
+#: models/nano_banana.py:165 models/nano_banana_pro.py:180
+msgid "Aspect ratio of the generated image"
+msgstr "Соотношение сторон генерируемого изображения"
+
+#: models/gpt_image.py:191
+msgid "Background"
+msgstr "Фон"
 
 #: api.py:127
 msgid "Building Replicate edit request..."
 msgstr "Построение запроса редактирования Replicate..."
 
-#: models/qwen_image_edit_plus.py:215
-msgid "Bypass safety checks"
-msgstr "Обходить проверки безопасности"
+#: models/seedream.py:42
+msgid "ByteDance's upgraded model with stronger spatial understanding"
+msgstr "Улучшенная модель ByteDance с усиленным пространственным пониманием"
 
-#: models/seedream4.py:41
-msgid "ByteDance's unified generation and editing model"
-msgstr "Единая модель генерации и редактирования ByteDance"
-
-#: dialog_events.py:202 dialog_gtk.py:411
+#: dialog_events.py:211 dialog_gtk.py:411
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -110,7 +111,7 @@ msgstr "Отмена"
 msgid "Cancelling..."
 msgstr "Отмена..."
 
-#: dialog_events.py:233
+#: dialog_events.py:242
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -119,14 +120,14 @@ msgstr ""
 "Невозможно добавить {count} файлов. Максимум {max} дополнительных "
 "изображений разрешено в режиме редактирования."
 
-#: dialog_events.py:240
+#: dialog_events.py:249
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "Невозможно добавить {count} файлов. Максимум {max} дополнительных "
 "изображений разрешено."
 
-#: models/stable_diffusion_3_5_large_turbo.py:198
+#: models/stable_diffusion_large_turbo.py:198
 msgid "Cfg"
 msgstr "Cfg"
 
@@ -134,12 +135,32 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "Очистить выбранные файлы"
 
-#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
-#: models/seedream4.py:206 models/stable_diffusion_3_5_large_turbo.py:180
+#: models/gpt_image.py:203
+msgid "Compression level (0-100%)"
+msgstr "Уровень сжатия (0-100%)"
+
+#: models/gpt_image.py:222
+msgid "Content moderation level"
+msgstr "Уровень модерации контента"
+
+#: models/imagen.py:145 models/seedream.py:214
+#: models/stable_diffusion_large_turbo.py:180
 msgid "Control aspect ratio of generated images"
 msgstr "Управление соотношением сторон генерируемых изображений"
 
-#: models/imagen4.py:164
+#: models/gpt_image.py:162
+msgid ""
+"Control how much effort the model will exert to match the style and features "
+"of input images"
+msgstr ""
+"Управление тем, сколько усилий модель приложит для соответствия стилю и "
+"особенностям входных изображений"
+
+#: models/nano_banana_pro.py:209
+msgid "Control safety filtering of generated images"
+msgstr "Управление фильтрацией безопасности генерируемых изображений"
+
+#: models/imagen.py:163
 msgid "Control safety of generated images"
 msgstr "Управление безопасностью генерируемых изображений"
 
@@ -148,17 +169,21 @@ msgstr "Управление безопасностью генерируемых
 msgid "Creating image {num}..."
 msgstr "Создание изображения {num}..."
 
-#: models/seedream4.py:195
-msgid "Custom height in pixels"
-msgstr "Пользовательская высота в пикселях"
+#: models/seedream.py:202
+msgid "Custom height in pixels (only used when size='custom')"
+msgstr "Пользовательская высота в пикселях (только при size='custom')"
 
-#: models/seedream4.py:184
-msgid "Custom width in pixels"
-msgstr "Пользовательская ширина в пикселях"
+#: models/seedream.py:189
+msgid "Custom width in pixels (only used when size='custom')"
+msgstr "Пользовательская ширина в пикселях (только при size='custom')"
 
-#: models/qwen_image_edit_plus.py:214
+#: models/qwen_image.py:269 models/qwen_image_edit_plus.py:199
 msgid "Disable Safety Checker"
 msgstr "Отключить Проверку Безопасности"
+
+#: models/qwen_image.py:270 models/qwen_image_edit_plus.py:200
+msgid "Disable safety checker for generated images."
+msgstr "Отключить проверку безопасности для генерируемых изображений."
 
 #: api.py:379
 msgid "Downloading result..."
@@ -168,7 +193,7 @@ msgstr "Загрузка результата..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - Создатель/Редактор изображений ИИ"
 
-#: dream-prompter.py:55
+#: dream-prompter.py:56
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -176,13 +201,21 @@ msgstr "Dream Prompter..."
 msgid "Edit Image"
 msgstr "Редактировать изображение"
 
-#: dialog_events.py:116
+#: dialog_events.py:125
 msgid "Edit mode requires a selected layer"
 msgstr "Режим редактирования требует выбранного слоя"
 
-#: models/qwen_image_edit_plus.py:175
+#: models/qwen_image_edit_plus.py:156
 msgid "Enable speed optimizations"
 msgstr "Включить оптимизацию скорости"
+
+#: models/qwen_image.py:220
+msgid "Enhance Prompt"
+msgstr "Улучшить Промпт"
+
+#: models/qwen_image.py:221
+msgid "Enhance the prompt with positive magic."
+msgstr "Улучшить промпт позитивной магией."
 
 #: dialog_gtk.py:374
 msgid "Enter your Replicate API key"
@@ -198,7 +231,7 @@ msgstr "Ошибка добавления слоёв: {error}"
 msgid "Error creating images: {error}"
 msgstr "Ошибка создания изображений: {error}"
 
-#: dream-prompter.py:100
+#: dream-prompter.py:101
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Ошибка запуска Dream Prompter: {error}"
@@ -215,24 +248,33 @@ msgstr "Не удалось экспортировать текущее изоб
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/imagen4.py:155 models/nano_banana.py:166
-#: models/stable_diffusion_3_5_large_turbo.py:232
-msgid "Format for generated images"
-msgstr "Формат для генерируемых изображений"
+#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
+#: models/nano_banana_pro.py:200
+msgid "Format of the output image"
+msgstr "Формат выходного изображения"
 
-#: models/flux_pro.py:231
+#: models/qwen_image.py:248 models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_large_turbo.py:232
+msgid "Format of the output images"
+msgstr "Формат выходных изображений"
+
+#: models/flux_pro.py:271
 msgid "Format of the output images."
 msgstr "Формат выходных изображений."
 
-#: dialog_events.py:172 dialog_gtk.py:416
+#: models/gpt_image.py:45
+msgid "GPT Image 1.5"
+msgstr "GPT Image 1.5"
+
+#: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
 msgstr "Генерировать редактирование"
 
-#: dialog_events.py:175 dialog_gtk.py:526
+#: dialog_events.py:184 dialog_gtk.py:526
 msgid "Generate Image"
 msgstr "Генерировать изображение"
 
-#: models/seedream4.py:235
+#: models/seedream.py:243
 msgid "Generate images sequentially or in parallel"
 msgstr "Генерировать изображения последовательно или параллельно"
 
@@ -250,35 +292,61 @@ msgstr "Генерация изображения с Replicate..."
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Получите ваш ключ API из <a href=\"{url}\">Replicate</a>"
 
-#: models/qwen_image_edit_plus.py:174
+#: models/qwen_image.py:210 models/qwen_image_edit_plus.py:155
 msgid "Go Fast"
 msgstr "Быстрый Режим"
 
-#: models/nano_banana.py:40
-msgid "Google's advanced image generation and editing model"
-msgstr "Продвинутая модель генерации и редактирования изображений Google"
-
-#: models/imagen4.py:39
+#: models/imagen.py:39
 msgid "Google's advanced image generation model"
 msgstr "Продвинутая модель генерации изображений Google"
 
-#: models/flux_pro.py:182 models/seedream4.py:194
+#: models/nano_banana_pro.py:41
+msgid "Google's state of the art image generation and editing model"
+msgstr "Передовая модель генерации и редактирования изображений от Google"
+
+#: models/nano_banana.py:43
+msgid ""
+"Google's state-of-the-art image generation and editing model for fast, "
+"conversational workflows"
+msgstr ""
+"Передовая модель генерации и редактирования изображений Google для быстрых "
+"разговорных рабочих процессов"
+
+#: models/qwen_image.py:170
+msgid "Guidance"
+msgstr "Направляющая"
+
+#: models/qwen_image.py:172
+msgid ""
+"Guidance scale. Lower values give more realistic images. Good values: 2, "
+"2.5, 3, 3.5"
+msgstr ""
+"Шкала направляющей. Низкие значения дают более реалистичные изображения. "
+"Хорошие значения: 2, 2.5, 3, 3.5"
+
+#: models/flux_pro.py:232 models/seedream.py:200
 msgid "Height"
 msgstr "Высота"
 
-#: models/flux_pro.py:184
-msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:234
+msgid ""
+"Height of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr "Высота генерируемого изображения в режиме текст-в-изображение."
 
-#: dialog_events.py:258
+#: dialog_events.py:267
 msgid "Hide API key"
 msgstr "Скрыть ключ API"
 
-#: models/stable_diffusion_3_5_large_turbo.py:199
+#: models/flux_pro.py:41
+msgid "High-quality image generation and editing model"
+msgstr "Модель текст-в-изображение с отличным качеством изображения"
+
+#: models/stable_diffusion_large_turbo.py:199
 msgid "How similar the output should be to the prompt"
 msgstr "Насколько похожим должен быть результат на промпт"
 
-#: models/seedream4.py:174
+#: models/qwen_image.py:161 models/seedream.py:176
 msgid "Image Size"
 msgstr "Размер Изображения"
 
@@ -290,27 +358,35 @@ msgstr "Редактирование изображения завершено!"
 msgid "Image generation complete!"
 msgstr "Генерация изображения завершена!"
 
-#: models/imagen4.py:44
+#: models/qwen_image.py:162
+msgid "Image size optimization mode"
+msgstr "Режим оптимизации размера изображения"
+
+#: models/imagen.py:44
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: dialog_events.py:127
+#: models/qwen_image.py:184
+msgid "Inference Steps"
+msgstr "Шаги Инференса"
+
+#: dialog_events.py:136
 msgid "Initializing API request..."
 msgstr "Инициализация запроса API..."
 
-#: models/qwen_image_edit_plus.py:205
-msgid "JPEG quality (0-100, ignored for PNG)"
-msgstr "Качество JPEG (0-100, игнорируется для PNG)"
+#: models/gpt_image.py:160
+msgid "Input Fidelity"
+msgstr "Точность Ввода"
 
 #: api.py:268
 msgid "Logs"
 msgstr "Журналы"
 
-#: models/seedream4.py:224
+#: models/seedream.py:232
 msgid "Max Images"
 msgstr "Макс Изображений"
 
-#: models/seedream4.py:225
+#: models/seedream.py:233
 msgid "Maximum number of images to generate"
 msgstr "Максимальное количество изображений для генерации"
 
@@ -323,13 +399,25 @@ msgstr "Настройки Модели"
 msgid "Model error: {error}"
 msgstr "Ошибка модели: {error}"
 
-#: models/nano_banana.py:45
-msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
-msgstr "Nano Banana (Gemini 2.5 Flash Image Preview)"
+#: models/gpt_image.py:221
+msgid "Moderation"
+msgstr "Модерация"
 
-#: models/stable_diffusion_3_5_large_turbo.py:171
+#: models/nano_banana.py:50
+msgid "Nano Banana (Gemini 2.5 Flash Image)"
+msgstr "Nano Banana (Gemini 2.5 Flash Image)"
+
+#: models/nano_banana_pro.py:46
+msgid "Nano Banana Pro (Gemini 3 Pro)"
+msgstr "Nano Banana Pro (Gemini 3 Pro)"
+
+#: models/qwen_image.py:228 models/stable_diffusion_large_turbo.py:171
 msgid "Negative Prompt"
 msgstr "Негативный Промпт"
+
+#: models/qwen_image.py:229
+msgid "Negative prompt for generated image"
+msgstr "Негативный промпт для генерируемого изображения"
 
 #: model_settings.py:250
 msgid "No"
@@ -339,7 +427,7 @@ msgstr "Нет"
 msgid "No GIMP image provided for editing"
 msgstr "Не предоставлено изображение GIMP для редактирования"
 
-#: dialog_gtk.py:330 dialog_gtk.py:788
+#: dialog_gtk.py:330 dialog_gtk.py:791
 msgid "No additional images selected"
 msgstr "Не выбрано дополнительных изображений"
 
@@ -367,6 +455,26 @@ msgstr "Нет действительных данных изображения 
 msgid "Not set"
 msgstr "Не установлено"
 
+#: models/gpt_image.py:172
+msgid "Number of Images"
+msgstr "Количество Изображений"
+
+#: models/qwen_image.py:186
+msgid "Number of denoising steps. Recommended range is 28-50."
+msgstr "Количество шагов шумоподавления. Рекомендуемый диапазон 28-50."
+
+#: models/gpt_image.py:173
+msgid "Number of images to generate (1-10)"
+msgstr "Количество изображений для генерации (1-10)"
+
+#: models/gpt_image.py:139
+msgid "OpenAI API Key"
+msgstr "API Ключ OpenAI"
+
+#: models/gpt_image.py:40
+msgid "OpenAI's advanced image generation model"
+msgstr "Продвинутая модель генерации изображений OpenAI"
+
 #: dialog_gtk.py:514
 msgid "Operation Mode"
 msgstr "Режим операции"
@@ -375,25 +483,27 @@ msgstr "Режим операции"
 msgid "Operation cancelled"
 msgstr "Операция отменена"
 
-#: models/flux_pro.py:230 models/imagen4.py:154 models/nano_banana.py:165
-#: models/qwen_image_edit_plus.py:195
-#: models/stable_diffusion_3_5_large_turbo.py:231
+#: models/gpt_image.py:202
+msgid "Output Compression"
+msgstr "Сжатие Вывода"
+
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
+#: models/nano_banana.py:184 models/nano_banana_pro.py:199
+#: models/qwen_image.py:247 models/qwen_image_edit_plus.py:176
+#: models/stable_diffusion_large_turbo.py:231
 msgid "Output Format"
 msgstr "Формат Вывода"
 
-#: models/flux_pro.py:239 models/qwen_image_edit_plus.py:204
+#: models/flux_pro.py:279 models/qwen_image.py:256
+#: models/qwen_image_edit_plus.py:185
 msgid "Output Quality"
 msgstr "Качество Вывода"
 
-#: models/qwen_image_edit_plus.py:196
-msgid "Output image format"
-msgstr "Формат выходного изображения"
-
-#: dialog_events.py:110
+#: dialog_events.py:119
 msgid "Please enter a prompt"
 msgstr "Пожалуйста введите промпт"
 
-#: dialog_events.py:106
+#: dialog_events.py:115
 msgid "Please enter your Replicate API key"
 msgstr "Пожалуйста введите ваш ключ API Replicate"
 
@@ -405,25 +515,45 @@ msgstr "Подготовка текущего изображения для Repl
 msgid "Processing Replicate response..."
 msgstr "Обработка ответа Replicate..."
 
-#: models/stable_diffusion_3_5_large_turbo.py:209
+#: models/stable_diffusion_large_turbo.py:209
 msgid "Prompt Strength"
 msgstr "Сила Промпта"
-
-#: models/flux_pro.py:219
-msgid "Prompt Upsampling"
-msgstr "Улучшение Запроса"
 
 #: dialog_threads.py:113 dialog_threads.py:151
 msgid "Prompt is required"
 msgstr "Промпт обязателен"
 
-#: models/stable_diffusion_3_5_large_turbo.py:210
+#: models/stable_diffusion_large_turbo.py:210
 msgid "Prompt strength (or denoising strength)"
 msgstr "Сила промпта (или интенсивность шумоподавления)"
 
-#: models/flux_pro.py:240
+#: models/gpt_image.py:182
+msgid "Quality"
+msgstr "Качество"
+
+#: models/flux_pro.py:280
 msgid "Quality when saving the output image"
 msgstr "Качество при сохранении выходного изображения"
+
+#: models/qwen_image_edit_plus.py:187
+msgid ""
+"Quality when saving the output images, from 0 to 100. 100 is best quality, 0 "
+"is lowest quality. Not relevant for .png outputs"
+msgstr ""
+"Качество при сохранении выходных изображений, от 0 до 100. 100 - лучшее "
+"качество, 0 - самое низкое. Не актуально для вывода .png"
+
+#: models/qwen_image.py:258
+msgid ""
+"Quality when saving the output images, from 0 to 100. Not relevant for .png "
+"outputs"
+msgstr ""
+"Качество при сохранении выходных изображений, от 0 до 100. Не актуально для "
+"вывода .png"
+
+#: models/qwen_image.py:45
+msgid "Qwen Image"
+msgstr "Qwen Image"
 
 #: models/qwen_image_edit_plus.py:46
 msgid "Qwen Image Edit Plus"
@@ -433,15 +563,19 @@ msgstr "Qwen Image Edit Plus"
 msgid "Qwen's advanced image editing model"
 msgstr "Продвинутая модель редактирования изображений Qwen"
 
-#: models/qwen_image_edit_plus.py:184
+#: models/qwen_image.py:40
+msgid "Qwen's advanced image generation model"
+msgstr "Продвинутая модель генерации изображений Qwen"
+
+#: models/qwen_image_edit_plus.py:165
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr "Случайное зерно для воспроизводимых результатов (-1 = случайное)"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:705
 msgid "Ready"
 msgstr "Готово"
 
-#: dialog_events.py:168
+#: dialog_events.py:177
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "Уменьшено до {max} опорных изображений для режима редактирования"
@@ -459,32 +593,52 @@ msgstr "Ошибка API Replicate: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana недоступен. Пожалуйста установите google-genai"
 
-#: models/seedream4.py:175
-msgid "Resolution preset for generated images"
-msgstr "Предустановка разрешения для генерируемых изображений"
+#: models/flux_pro.py:200 models/nano_banana_pro.py:170
+msgid "Resolution"
+msgstr "Разрешение"
 
-#: models/imagen4.py:163
+#: models/flux_pro.py:202
+msgid ""
+"Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is "
+"recommended."
+msgstr ""
+"Разрешение в мегапикселях. Возможно до 4 МП, но рекомендуется 2 МП или ниже."
+
+#: models/nano_banana_pro.py:171
+msgid "Resolution of the generated image"
+msgstr "Разрешение генерируемого изображения"
+
+#: models/seedream.py:178
+msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
+msgstr "Пресет разрешения: 2K (2048px), 4K (4096px) или пользовательский"
+
+#: models/qwen_image.py:212
+msgid "Run faster predictions with additional optimizations."
+msgstr "Запускать более быстрые предсказания с дополнительными оптимизациями."
+
+#: models/imagen.py:162 models/nano_banana_pro.py:208
 msgid "Safety Filter Level"
 msgstr "Уровень Фильтра Безопасности"
 
-#: models/flux_pro.py:195
+#: models/flux_pro.py:246
 msgid "Safety Tolerance"
 msgstr "Допуск Безопасности"
 
-#: models/flux_pro.py:197
+#: models/flux_pro.py:248
 msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr "Допуск безопасности, 1 - самый строгий, 6 - самый мягкий"
 
-#: models/flux_pro.py:208 models/qwen_image_edit_plus.py:182
-#: models/stable_diffusion_3_5_large_turbo.py:220
+#: models/flux_pro.py:259 models/qwen_image.py:236
+#: models/qwen_image_edit_plus.py:163
+#: models/stable_diffusion_large_turbo.py:220
 msgid "Seed"
 msgstr "Семя"
 
-#: models/seedream4.py:46
-msgid "Seedream 4"
-msgstr "Seedream 4"
+#: models/seedream.py:48
+msgid "Seedream 4.5"
+msgstr "Seedream 4.5"
 
-#: dialog_events.py:203
+#: dialog_events.py:212
 msgid "Select"
 msgstr "Выбрать"
 
@@ -492,11 +646,11 @@ msgstr "Выбрать"
 msgid "Select Images..."
 msgstr "Выбрать изображения..."
 
-#: dialog_events.py:197
+#: dialog_events.py:206
 msgid "Select Reference Images"
 msgstr "Выбрать эталонные изображения"
 
-#: dialog_events.py:316 dialog_events.py:324
+#: dialog_events.py:325 dialog_events.py:333
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "Выберите до {max} дополнительных изображений"
@@ -509,15 +663,20 @@ msgstr "Отправка запроса редактирования в Replicat
 msgid "Sending request to Replicate..."
 msgstr "Отправка запроса в Replicate..."
 
-#: models/seedream4.py:234
+#: models/seedream.py:242
 msgid "Sequential Generation"
 msgstr "Последовательная Генерация"
 
-#: models/flux_pro.py:209 models/stable_diffusion_3_5_large_turbo.py:221
+#: models/flux_pro.py:260 models/qwen_image.py:237
+#: models/stable_diffusion_large_turbo.py:221
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "Установить зерно для воспроизводимости (-1 = случайное)"
 
-#: dialog_events.py:265
+#: models/gpt_image.py:193
+msgid "Set whether the background is transparent or opaque"
+msgstr "Установить прозрачный или непрозрачный фон"
+
+#: dialog_events.py:274
 msgid "Show API key"
 msgstr "Показать ключ API"
 
@@ -525,33 +684,46 @@ msgstr "Показать ключ API"
 msgid "Show/Hide API key"
 msgstr "Показать/Скрыть ключ API"
 
-#: models/stable_diffusion_3_5_large_turbo.py:43
+#: models/stable_diffusion_large_turbo.py:43
 msgid "Stability AI's high-resolution image generation model"
 msgstr "Модель генерации изображений высокого разрешения от Stability AI"
 
-#: models/stable_diffusion_3_5_large_turbo.py:48
+#: models/stable_diffusion_large_turbo.py:48
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:206
+#: models/qwen_image.py:197
+msgid "Strength"
+msgstr "Сила"
+
+#: models/qwen_image.py:199
+msgid "Strength for img2img (only used with reference image)"
+msgstr "Сила для img2img (используется только с референсным изображением)"
+
+#: dialog_events.py:215
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Поддерживаемые изображения (PNG, JPEG, WebP)"
 
-#: models/flux_pro.py:41
-msgid "High-quality image generation and editing model"
-msgstr "Модель текст-в-изображение с отличным качеством изображения"
+#: models/gpt_image.py:152
+msgid "The aspect ratio of the generated image"
+msgstr "Соотношение сторон генерируемого изображения"
+
+#: models/gpt_image.py:183
+msgid "The quality of the generated image"
+msgstr "Качество генерируемого изображения"
 
 #: dream-prompter.py:47
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
-"Stable Diffusion 3.5 Large Turbo."
+"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, "
+"Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
-"Преобразуйте существующие изображения или создавайте новые изображения с "
-"помощью продвинутых ИИ моделей от Replicate с естественными языковыми "
-"подсказками. Выберите из нескольких моделей, включая Imagen 4, Nano Banana, "
-"Qwen Image Edit Plus, Seedream 4 и Stable Diffusion 3.5 Large Turbo."
+"Преобразуйте существующие изображения или создавайте новые с помощью "
+"продвинутых моделей ИИ от Replicate с промптами на естественном языке. "
+"Выбирайте из нескольких моделей, включая GPT Image 1.5, Imagen 4, Nano "
+"Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5 и "
+"Stable Diffusion 3.5 Large Turbo."
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -568,28 +740,34 @@ msgstr "Неожиданная ошибка во время генерации �
 msgid "Unexpected error: {error}"
 msgstr "Неожиданная ошибка: {error}"
 
-#: models/stable_diffusion_3_5_large_turbo.py:172
+#: models/stable_diffusion_large_turbo.py:172
 msgid "What you do not want to see in the image"
 msgstr "Что вы не хотите видеть на изображении"
 
-#: models/flux_pro.py:169 models/seedream4.py:183
+#: models/flux_pro.py:218 models/seedream.py:187
 msgid "Width"
 msgstr "Ширина"
 
-#: models/flux_pro.py:171
-msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:220
+msgid ""
+"Width of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr "Ширина генерируемого изображения в режиме текст-в-изображение."
 
 #: model_settings.py:250
 msgid "Yes"
 msgstr "Да"
 
-#: dialog_gtk.py:801
+#: models/gpt_image.py:141
+msgid "Your OpenAI API key (optional - uses proxy if not provided)"
+msgstr "Ваш API ключ OpenAI (необязательно - использует прокси если не указан)"
+
+#: dialog_gtk.py:804
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count} изображение выбрано"
 
-#: dialog_gtk.py:803
+#: dialog_gtk.py:806
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count} изображений выбрано"
@@ -599,7 +777,52 @@ msgstr "{count} изображений выбрано"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Редактирование ИИ: {prompt})"
 
-#: dialog_gtk.py:723
+#: dialog_gtk.py:726
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} МБ - Превышен максимальный размер)"
+
+#~ msgid "Automatically modify the prompt for more creative generation"
+#~ msgstr "Автоматически изменять запрос для более креативной генерации"
+
+#~ msgid "Bypass safety checks"
+#~ msgstr "Обходить проверки безопасности"
+
+#~ msgid "ByteDance's unified generation and editing model"
+#~ msgstr "Единая модель генерации и редактирования ByteDance"
+
+#~ msgid "Custom height in pixels"
+#~ msgstr "Пользовательская высота в пикселях"
+
+#~ msgid "Custom width in pixels"
+#~ msgstr "Пользовательская ширина в пикселях"
+
+#~ msgid "Format for generated images"
+#~ msgstr "Формат для генерируемых изображений"
+
+#~ msgid "JPEG quality (0-100, ignored for PNG)"
+#~ msgstr "Качество JPEG (0-100, игнорируется для PNG)"
+
+#~ msgid "Output image format"
+#~ msgstr "Формат выходного изображения"
+
+#~ msgid "Prompt Upsampling"
+#~ msgstr "Улучшение Запроса"
+
+#~ msgid "Resolution preset for generated images"
+#~ msgstr "Предустановка разрешения для генерируемых изображений"
+
+#~ msgid "Seedream 4"
+#~ msgstr "Seedream 4"
+
+#~ msgid ""
+#~ "Transform existing images or generate new images using advanced AI models "
+#~ "from Replicate with natural language prompts. Choose from multiple models "
+#~ "including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+#~ "Stable Diffusion 3.5 Large Turbo."
+#~ msgstr ""
+#~ "Преобразуйте существующие изображения или создавайте новые изображения с "
+#~ "помощью продвинутых ИИ моделей от Replicate с естественными языковыми "
+#~ "подсказками. Выберите из нескольких моделей, включая Imagen 4, Nano "
+#~ "Banana, Qwen Image Edit Plus, Seedream 4 и Stable Diffusion 3.5 Large "
+#~ "Turbo."

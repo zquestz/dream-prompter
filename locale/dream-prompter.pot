@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.1.5\n"
+"Project-Id-Version: Dream Prompter 1.2.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-11-06 10:00-1000\n"
+"POT-Creation-Date: 2025-12-17 14:52-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,72 +108,72 @@ msgstr ""
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr ""
 
-#: dialog_events.py:106
+#: dialog_events.py:115
 msgid "Please enter your Replicate API key"
 msgstr ""
 
-#: dialog_events.py:110
+#: dialog_events.py:119
 msgid "Please enter a prompt"
 msgstr ""
 
-#: dialog_events.py:116
+#: dialog_events.py:125
 msgid "Edit mode requires a selected layer"
 msgstr ""
 
-#: dialog_events.py:127
+#: dialog_events.py:136
 msgid "Initializing API request..."
 msgstr ""
 
-#: dialog_events.py:168
+#: dialog_events.py:177
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr ""
 
-#: dialog_events.py:172 dialog_gtk.py:416
+#: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:175 dialog_gtk.py:526
+#: dialog_events.py:184 dialog_gtk.py:526
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:197
+#: dialog_events.py:206
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:202 dialog_gtk.py:411
+#: dialog_events.py:211 dialog_gtk.py:411
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:203
+#: dialog_events.py:212
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:206
+#: dialog_events.py:215
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr ""
 
-#: dialog_events.py:233
+#: dialog_events.py:242
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
 "mode."
 msgstr ""
 
-#: dialog_events.py:240
+#: dialog_events.py:249
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 
-#: dialog_events.py:258
+#: dialog_events.py:267
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:265
+#: dialog_events.py:274
 msgid "Show API key"
 msgstr ""
 
-#: dialog_events.py:316 dialog_events.py:324
+#: dialog_events.py:325 dialog_events.py:333
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr ""
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:330 dialog_gtk.py:788
+#: dialog_gtk.py:330 dialog_gtk.py:791
 msgid "No additional images selected"
 msgstr ""
 
@@ -227,35 +227,35 @@ msgstr ""
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:656
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:705
 msgid "Ready"
-msgstr ""
-
-#: dialog_gtk.py:723
-#, python-brace-format
-msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr ""
 
 #: dialog_gtk.py:726
 #, python-brace-format
+msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
+msgstr ""
+
+#: dialog_gtk.py:729
+#, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr ""
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:733
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr ""
 
-#: dialog_gtk.py:801
+#: dialog_gtk.py:804
 #, python-brace-format
 msgid "{count} image selected"
 msgstr ""
 
-#: dialog_gtk.py:803
+#: dialog_gtk.py:806
 #, python-brace-format
 msgid "{count} images selected"
 msgstr ""
@@ -351,15 +351,15 @@ msgstr ""
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
-"Stable Diffusion 3.5 Large Turbo."
+"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, "
+"Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 
-#: dream-prompter.py:55
+#: dream-prompter.py:56
 msgid "Dream Prompter..."
 msgstr ""
 
-#: dream-prompter.py:100
+#: dream-prompter.py:101
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr ""
@@ -384,107 +384,295 @@ msgstr ""
 msgid "Flux 2 Pro"
 msgstr ""
 
-#: models/flux_pro.py:149 models/imagen4.py:145
-#: models/qwen_image_edit_plus.py:158 models/seedream4.py:205
-#: models/stable_diffusion_3_5_large_turbo.py:179
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
+#: models/nano_banana.py:164 models/nano_banana_pro.py:179
+#: models/qwen_image.py:144 models/seedream.py:213
+#: models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
 msgstr ""
 
-#: models/flux_pro.py:150
+#: models/flux_pro.py:180 models/qwen_image.py:145
 msgid "Aspect ratio for the generated image"
 msgstr ""
 
-#: models/flux_pro.py:194
+#: models/flux_pro.py:200 models/nano_banana_pro.py:170
 msgid "Resolution"
 msgstr ""
 
-#: models/flux_pro.py:196
-msgid "Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is recommended."
+#: models/flux_pro.py:202
+msgid ""
+"Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is "
+"recommended."
 msgstr ""
 
-#: models/flux_pro.py:214 models/seedream4.py:183
+#: models/flux_pro.py:218 models/seedream.py:187
 msgid "Width"
 msgstr ""
 
-#: models/flux_pro.py:216
-msgid "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:220
+msgid ""
+"Width of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr ""
 
-#: models/flux_pro.py:227 models/seedream4.py:194
+#: models/flux_pro.py:232 models/seedream.py:200
 msgid "Height"
 msgstr ""
 
-#: models/flux_pro.py:229
-msgid "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 32."
+#: models/flux_pro.py:234
+msgid ""
+"Height of the generated image. Only used when aspect_ratio=custom. Must be a "
+"multiple of 32."
 msgstr ""
 
-#: models/flux_pro.py:240
+#: models/flux_pro.py:246
 msgid "Safety Tolerance"
 msgstr ""
 
-#: models/flux_pro.py:242
+#: models/flux_pro.py:248
 msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr ""
 
-#: models/flux_pro.py:253 models/qwen_image_edit_plus.py:182
-#: models/stable_diffusion_3_5_large_turbo.py:220
+#: models/flux_pro.py:259 models/qwen_image.py:236
+#: models/qwen_image_edit_plus.py:163
+#: models/stable_diffusion_large_turbo.py:220
 msgid "Seed"
 msgstr ""
 
-#: models/flux_pro.py:254 models/stable_diffusion_3_5_large_turbo.py:221
+#: models/flux_pro.py:260 models/qwen_image.py:237
+#: models/stable_diffusion_large_turbo.py:221
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr ""
 
-#: models/flux_pro.py:265 models/imagen4.py:154 models/nano_banana.py:165
-#: models/qwen_image_edit_plus.py:195
-#: models/stable_diffusion_3_5_large_turbo.py:231
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
+#: models/nano_banana.py:184 models/nano_banana_pro.py:199
+#: models/qwen_image.py:247 models/qwen_image_edit_plus.py:176
+#: models/stable_diffusion_large_turbo.py:231
 msgid "Output Format"
 msgstr ""
 
-#: models/flux_pro.py:266
+#: models/flux_pro.py:271
 msgid "Format of the output images."
 msgstr ""
 
-#: models/flux_pro.py:274 models/qwen_image_edit_plus.py:204
+#: models/flux_pro.py:279 models/qwen_image.py:256
+#: models/qwen_image_edit_plus.py:185
 msgid "Output Quality"
 msgstr ""
 
-#: models/flux_pro.py:240
+#: models/flux_pro.py:280
 msgid "Quality when saving the output image"
 msgstr ""
 
-#: models/imagen4.py:39
+#: models/gpt_image.py:40
+msgid "OpenAI's advanced image generation model"
+msgstr ""
+
+#: models/gpt_image.py:45
+msgid "GPT Image 1.5"
+msgstr ""
+
+#: models/gpt_image.py:139
+msgid "OpenAI API Key"
+msgstr ""
+
+#: models/gpt_image.py:141
+msgid "Your OpenAI API key (optional - uses proxy if not provided)"
+msgstr ""
+
+#: models/gpt_image.py:152
+msgid "The aspect ratio of the generated image"
+msgstr ""
+
+#: models/gpt_image.py:160
+msgid "Input Fidelity"
+msgstr ""
+
+#: models/gpt_image.py:162
+msgid ""
+"Control how much effort the model will exert to match the style and features "
+"of input images"
+msgstr ""
+
+#: models/gpt_image.py:172
+msgid "Number of Images"
+msgstr ""
+
+#: models/gpt_image.py:173
+msgid "Number of images to generate (1-10)"
+msgstr ""
+
+#: models/gpt_image.py:182
+msgid "Quality"
+msgstr ""
+
+#: models/gpt_image.py:183
+msgid "The quality of the generated image"
+msgstr ""
+
+#: models/gpt_image.py:191
+msgid "Background"
+msgstr ""
+
+#: models/gpt_image.py:193
+msgid "Set whether the background is transparent or opaque"
+msgstr ""
+
+#: models/gpt_image.py:202
+msgid "Output Compression"
+msgstr ""
+
+#: models/gpt_image.py:203
+msgid "Compression level (0-100%)"
+msgstr ""
+
+#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
+#: models/nano_banana_pro.py:200
+msgid "Format of the output image"
+msgstr ""
+
+#: models/gpt_image.py:221
+msgid "Moderation"
+msgstr ""
+
+#: models/gpt_image.py:222
+msgid "Content moderation level"
+msgstr ""
+
+#: models/imagen.py:39
 msgid "Google's advanced image generation model"
 msgstr ""
 
-#: models/imagen4.py:44
+#: models/imagen.py:44
 msgid "Imagen 4"
 msgstr ""
 
-#: models/imagen4.py:146 models/qwen_image_edit_plus.py:159
-#: models/seedream4.py:206 models/stable_diffusion_3_5_large_turbo.py:180
+#: models/imagen.py:145 models/seedream.py:214
+#: models/stable_diffusion_large_turbo.py:180
 msgid "Control aspect ratio of generated images"
 msgstr ""
 
-#: models/imagen4.py:155 models/nano_banana.py:166
-#: models/stable_diffusion_3_5_large_turbo.py:232
-msgid "Format for generated images"
-msgstr ""
-
-#: models/imagen4.py:163
+#: models/imagen.py:162 models/nano_banana_pro.py:208
 msgid "Safety Filter Level"
 msgstr ""
 
-#: models/imagen4.py:164
+#: models/imagen.py:163
 msgid "Control safety of generated images"
 msgstr ""
 
-#: models/nano_banana.py:40
-msgid "Google's advanced image generation and editing model"
+#: models/nano_banana.py:43
+msgid ""
+"Google's state-of-the-art image generation and editing model for fast, "
+"conversational workflows"
 msgstr ""
 
-#: models/nano_banana.py:45
-msgid "Nano Banana (Gemini 2.5 Flash Image Preview)"
+#: models/nano_banana.py:50
+msgid "Nano Banana (Gemini 2.5 Flash Image)"
+msgstr ""
+
+#: models/nano_banana.py:165 models/nano_banana_pro.py:180
+msgid "Aspect ratio of the generated image"
+msgstr ""
+
+#: models/nano_banana_pro.py:41
+msgid "Google's state of the art image generation and editing model"
+msgstr ""
+
+#: models/nano_banana_pro.py:46
+msgid "Nano Banana Pro (Gemini 3 Pro)"
+msgstr ""
+
+#: models/nano_banana_pro.py:171
+msgid "Resolution of the generated image"
+msgstr ""
+
+#: models/nano_banana_pro.py:209
+msgid "Control safety filtering of generated images"
+msgstr ""
+
+#: models/qwen_image.py:40
+msgid "Qwen's advanced image generation model"
+msgstr ""
+
+#: models/qwen_image.py:45
+msgid "Qwen Image"
+msgstr ""
+
+#: models/qwen_image.py:161 models/seedream.py:176
+msgid "Image Size"
+msgstr ""
+
+#: models/qwen_image.py:162
+msgid "Image size optimization mode"
+msgstr ""
+
+#: models/qwen_image.py:170
+msgid "Guidance"
+msgstr ""
+
+#: models/qwen_image.py:172
+msgid ""
+"Guidance scale. Lower values give more realistic images. Good values: 2, "
+"2.5, 3, 3.5"
+msgstr ""
+
+#: models/qwen_image.py:184
+msgid "Inference Steps"
+msgstr ""
+
+#: models/qwen_image.py:186
+msgid "Number of denoising steps. Recommended range is 28-50."
+msgstr ""
+
+#: models/qwen_image.py:197
+msgid "Strength"
+msgstr ""
+
+#: models/qwen_image.py:199
+msgid "Strength for img2img (only used with reference image)"
+msgstr ""
+
+#: models/qwen_image.py:210 models/qwen_image_edit_plus.py:155
+msgid "Go Fast"
+msgstr ""
+
+#: models/qwen_image.py:212
+msgid "Run faster predictions with additional optimizations."
+msgstr ""
+
+#: models/qwen_image.py:220
+msgid "Enhance Prompt"
+msgstr ""
+
+#: models/qwen_image.py:221
+msgid "Enhance the prompt with positive magic."
+msgstr ""
+
+#: models/qwen_image.py:228 models/stable_diffusion_large_turbo.py:171
+msgid "Negative Prompt"
+msgstr ""
+
+#: models/qwen_image.py:229
+msgid "Negative prompt for generated image"
+msgstr ""
+
+#: models/qwen_image.py:248 models/qwen_image_edit_plus.py:177
+#: models/stable_diffusion_large_turbo.py:232
+msgid "Format of the output images"
+msgstr ""
+
+#: models/qwen_image.py:258
+msgid ""
+"Quality when saving the output images, from 0 to 100. Not relevant for .png "
+"outputs"
+msgstr ""
+
+#: models/qwen_image.py:269 models/qwen_image_edit_plus.py:199
+msgid "Disable Safety Checker"
+msgstr ""
+
+#: models/qwen_image.py:270 models/qwen_image_edit_plus.py:200
+msgid "Disable safety checker for generated images."
 msgstr ""
 
 #: models/qwen_image_edit_plus.py:41
@@ -495,102 +683,80 @@ msgstr ""
 msgid "Qwen Image Edit Plus"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:174
-msgid "Go Fast"
-msgstr ""
-
-#: models/qwen_image_edit_plus.py:175
+#: models/qwen_image_edit_plus.py:156
 msgid "Enable speed optimizations"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:184
+#: models/qwen_image_edit_plus.py:165
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:196
-msgid "Output image format"
+#: models/qwen_image_edit_plus.py:187
+msgid ""
+"Quality when saving the output images, from 0 to 100. 100 is best quality, 0 "
+"is lowest quality. Not relevant for .png outputs"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:205
-msgid "JPEG quality (0-100, ignored for PNG)"
+#: models/seedream.py:42
+msgid "ByteDance's upgraded model with stronger spatial understanding"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:214
-msgid "Disable Safety Checker"
+#: models/seedream.py:48
+msgid "Seedream 4.5"
 msgstr ""
 
-#: models/qwen_image_edit_plus.py:215
-msgid "Bypass safety checks"
+#: models/seedream.py:178
+msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
 msgstr ""
 
-#: models/seedream4.py:41
-msgid "ByteDance's unified generation and editing model"
+#: models/seedream.py:189
+msgid "Custom width in pixels (only used when size='custom')"
 msgstr ""
 
-#: models/seedream4.py:46
-msgid "Seedream 4"
+#: models/seedream.py:202
+msgid "Custom height in pixels (only used when size='custom')"
 msgstr ""
 
-#: models/seedream4.py:174
-msgid "Image Size"
-msgstr ""
-
-#: models/seedream4.py:175
-msgid "Resolution preset for generated images"
-msgstr ""
-
-#: models/seedream4.py:184
-msgid "Custom width in pixels"
-msgstr ""
-
-#: models/seedream4.py:195
-msgid "Custom height in pixels"
-msgstr ""
-
-#: models/seedream4.py:224
+#: models/seedream.py:232
 msgid "Max Images"
 msgstr ""
 
-#: models/seedream4.py:225
+#: models/seedream.py:233
 msgid "Maximum number of images to generate"
 msgstr ""
 
-#: models/seedream4.py:234
+#: models/seedream.py:242
 msgid "Sequential Generation"
 msgstr ""
 
-#: models/seedream4.py:235
+#: models/seedream.py:243
 msgid "Generate images sequentially or in parallel"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:43
+#: models/stable_diffusion_large_turbo.py:43
 msgid "Stability AI's high-resolution image generation model"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:48
+#: models/stable_diffusion_large_turbo.py:48
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:171
-msgid "Negative Prompt"
-msgstr ""
-
-#: models/stable_diffusion_3_5_large_turbo.py:172
+#: models/stable_diffusion_large_turbo.py:172
 msgid "What you do not want to see in the image"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:198
+#: models/stable_diffusion_large_turbo.py:198
 msgid "Cfg"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:199
+#: models/stable_diffusion_large_turbo.py:199
 msgid "How similar the output should be to the prompt"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:209
+#: models/stable_diffusion_large_turbo.py:209
 msgid "Prompt Strength"
 msgstr ""
 
-#: models/stable_diffusion_3_5_large_turbo.py:210
+#: models/stable_diffusion_large_turbo.py:210
 msgid "Prompt strength (or denoising strength)"
 msgstr ""

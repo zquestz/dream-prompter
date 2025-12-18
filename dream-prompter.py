@@ -46,8 +46,9 @@ class DreamPrompter(Gimp.PlugIn):
                 _(
                     "Transform existing images or generate new images using "
                     "advanced AI models from Replicate with natural language "
-                    "prompts. Choose from multiple models including Imagen 4, "
-                    "Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
+                    "prompts. Choose from multiple models including "
+                    "GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, "
+                    "Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and "
                     "Stable Diffusion 3.5 Large Turbo."
                 ),
                 name,

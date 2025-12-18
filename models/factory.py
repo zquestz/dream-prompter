@@ -10,12 +10,15 @@ from typing import Optional, Dict
 from . import BaseModel, get_model, get_all_models
 
 # Import models to register them
-from . import imagen4  # noqa: F401
-from . import nano_banana  # noqa: F401
-from . import qwen_image_edit_plus  # noqa: F401
-from . import seedream4  # noqa: F401
-from . import stable_diffusion_3_5_large_turbo  # noqa: F401
 from . import flux_pro  # noqa: F401
+from . import gpt_image  # noqa: F401
+from . import imagen  # noqa: F401
+from . import nano_banana  # noqa: F401
+from . import nano_banana_pro  # noqa: F401
+from . import qwen_image  # noqa: F401
+from . import qwen_image_edit_plus  # noqa: F401
+from . import seedream  # noqa: F401
+from . import stable_diffusion_large_turbo  # noqa: F401
 
 
 class ModelFactory:

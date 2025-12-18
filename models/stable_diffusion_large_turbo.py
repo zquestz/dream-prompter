@@ -24,7 +24,7 @@ from . import (
 from i18n import _
 
 
-class StableDiffusion3_5LargeTurbo(BaseModel):
+class StableDiffusionLargeTurbo(BaseModel):
     """Stable Diffusion 3.5 Large Turbo model implementation"""
 
     @property
@@ -35,7 +35,7 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
     @property
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        return OutputFormat.PNG
+        return OutputFormat.WEBP
 
     @property
     def description(self) -> str:
@@ -193,13 +193,13 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
             ),
             ParameterDefinition(
                 name="cfg",
-                param_type=ParameterType.INTEGER,
+                param_type=ParameterType.FLOAT,
                 default_value=1,
                 label=_("Cfg"),
                 description=_("How similar the output should be to the prompt"),
                 min_value=1,
                 max_value=10,
-                step=1,
+                step=0.1,
                 supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
@@ -227,14 +227,14 @@ class StableDiffusion3_5LargeTurbo(BaseModel):
             ParameterDefinition(
                 name="output_format",
                 param_type=ParameterType.CHOICE,
-                default_value="png",
+                default_value="webp",
                 label=_("Output Format"),
-                description=_("Format for generated images"),
-                choices=["png", "jpg", "webp"],
+                description=_("Format of the output images"),
+                choices=["webp", "jpg", "png"],
                 supported_modes=[ParameterMode.BOTH],
             ),
         ]
 
 
-stable_diffusion_3_5_large_turbo = StableDiffusion3_5LargeTurbo()
-register_model(stable_diffusion_3_5_large_turbo)
+stable_diffusion_large_turbo = StableDiffusionLargeTurbo()
+register_model(stable_diffusion_large_turbo)
