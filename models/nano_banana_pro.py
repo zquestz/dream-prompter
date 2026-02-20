@@ -11,6 +11,7 @@ import io
 from typing import List, Dict, Any, Optional
 
 from . import (
+    APIProvider,
     BaseModel,
     ModelCapability,
     OutputFormat,
@@ -23,7 +24,12 @@ from i18n import _
 
 
 class NanoBananaProModel(BaseModel):
-    """Google's Nano Banana Pro model implementation for Replicate"""
+    """Google's Nano Banana Pro model implementation using Google Cloud API"""
+
+    @property
+    def api_provider(self) -> APIProvider:
+        """This model uses Google Cloud API"""
+        return APIProvider.GOOGLE_CLOUD
 
     @property
     def capabilities(self) -> ModelCapability:
@@ -113,7 +119,7 @@ class NanoBananaProModel(BaseModel):
             "prompt": prompt,
             "image_input": image_input,
             "resolution": params.get("resolution", "2K"),
-            "aspect_ratio": "match_input_image",
+            "aspect_ratio": params.get("aspect_ratio", "match_input_image"),
             "output_format": params.get("output_format", "jpg"),
             "safety_filter_level": params.get(
                 "safety_filter_level", "block_only_high"
@@ -175,10 +181,11 @@ class NanoBananaProModel(BaseModel):
             ParameterDefinition(
                 name="aspect_ratio",
                 param_type=ParameterType.CHOICE,
-                default_value="1:1",
+                default_value="original",
                 label=_("Aspect Ratio"),
-                description=_("Aspect ratio of the generated image"),
+                description=_("Aspect ratio of the generated image. Use 'Original (Auto)' for edit mode to keep input size."),
                 choices=[
+                    "original",  # Special value: don't pass aspect_ratio (keeps original for edit)
                     "1:1",
                     "2:3",
                     "3:2",
@@ -190,7 +197,7 @@ class NanoBananaProModel(BaseModel):
                     "16:9",
                     "21:9",
                 ],
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="output_format",

@@ -25,11 +25,16 @@ FILE_PERMISSIONS = 0o600
 
 DEFAULT_MODE = "edit"
 DEFAULT_API_KEY_VISIBLE = False
+DEFAULT_API_PROVIDER = "replicate"
 
 DEFAULT_SETTINGS: SettingsDict = {
-    "api_key": "",
+    "api_key": "",  # Replicate API key (legacy)
+    "google_api_key": "",  # Google Cloud API key
+    "api_provider": DEFAULT_API_PROVIDER,  # "replicate" or "google_cloud"
     "mode": DEFAULT_MODE,
     "prompt": "",
+    "prompt_prefix": "",  # Style prefix for prompt
+    "prompt_suffix": "",  # Suffix for prompt
     "api_key_visible": DEFAULT_API_KEY_VISIBLE,
     "model": "",
     "model_settings": {},
@@ -170,6 +175,10 @@ def store_model_settings(
                 if isinstance(all_model_settings, dict)
                 else None
             ),
+            google_api_key=str(current_settings.get("google_api_key", "")),
+            api_provider=str(current_settings.get("api_provider", DEFAULT_API_PROVIDER)),
+            prompt_prefix=str(current_settings.get("prompt_prefix", "")),
+            prompt_suffix=str(current_settings.get("prompt_suffix", "")),
         )
     except Exception as e:
         print(f"Error storing model settings for {model_name}: {e}")
@@ -182,6 +191,10 @@ def store_settings(
     api_key_visible: bool,
     model: str = "",
     model_settings: Optional[Dict[str, Dict[str, Any]]] = None,
+    google_api_key: str = "",
+    api_provider: str = DEFAULT_API_PROVIDER,
+    prompt_prefix: str = "",
+    prompt_suffix: str = "",
 ) -> None:
     """Store settings to config file"""
     if mode not in ("edit", "generate"):
@@ -200,8 +213,12 @@ def store_settings(
 
         settings = {
             "api_key": api_key,
+            "google_api_key": google_api_key,
+            "api_provider": api_provider,
             "mode": mode,
             "prompt": prompt,
+            "prompt_prefix": prompt_prefix,
+            "prompt_suffix": prompt_suffix,
             "api_key_visible": api_key_visible,
             "model": model,
             "model_settings": existing_model_settings,

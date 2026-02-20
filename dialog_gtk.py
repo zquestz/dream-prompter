@@ -23,21 +23,45 @@ class DreamPrompterUI:
         self.selected_files = []
         self.event_handler = None
 
+        # API provider widgets
+        self.api_provider_dropdown = None
         self.api_key_entry = None
+        self.google_api_key_entry = None
         self.toggle_visibility_btn = None
+        self.toggle_google_visibility_btn = None
+        self.replicate_key_box = None
+        self.google_key_box = None
+        
+        # Mode and input widgets
         self.edit_mode_radio = None
         self.generate_mode_radio = None
         self.prompt_textview = None
         self.prompt_buffer = None
+        self.prefix_textview = None
+        self.prefix_buffer = None
+        self.suffix_textview = None
+        self.suffix_buffer = None
         self.file_chooser_btn = None
         self.files_info_label = None
         self.clear_files_btn = None
         self.files_listbox = None
         self.images_help_label = None
+        
+        # Template widgets
+        self.template_dropdown = None
+        self.save_template_btn = None
+        self.delete_template_btn = None
+        
+        # Number of images to generate
+        self.num_images_spinbutton = None
+        
+        # Action buttons and status
         self.cancel_btn = None
         self.generate_btn = None
         self.status_label = None
         self.progress_bar = None
+        
+        # Model widgets
         self.model_dropdown = None
         self.model_description_label = None
         self.model_settings_section = None
@@ -73,6 +97,9 @@ class DreamPrompterUI:
 
             model_section = self._create_model_selection_section()
             left_column.pack_start(model_section, False, False, 0)
+            
+            num_images_section = self._create_num_images_section()
+            left_column.pack_start(num_images_section, False, False, 0)
 
             mode_section = self._create_mode_section()
             left_column.pack_start(mode_section, False, False, 0)
@@ -361,12 +388,29 @@ class DreamPrompterUI:
         """Create API key input section"""
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
-        title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{_('Replicate API Key')}</b>")
-        title_label.set_halign(Gtk.Align.START)
-        section_box.pack_start(title_label, False, False, 0)
+        # API Provider selection
+        provider_label = Gtk.Label()
+        provider_label.set_markup(f"<b>{_('API Provider')}</b>")
+        provider_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(provider_label, False, False, 0)
 
-        key_container = Gtk.Box(
+        self.api_provider_dropdown = Gtk.ComboBoxText()
+        self.api_provider_dropdown.append("replicate", "Replicate")
+        self.api_provider_dropdown.append("google_cloud", "Google Cloud")
+        self.api_provider_dropdown.set_active_id("replicate")
+        section_box.pack_start(self.api_provider_dropdown, False, False, 0)
+
+        # Replicate API Key section
+        self.replicate_key_box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL, spacing=8
+        )
+        
+        replicate_title = Gtk.Label()
+        replicate_title.set_markup(f"<b>{_('Replicate API Key')}</b>")
+        replicate_title.set_halign(Gtk.Align.START)
+        self.replicate_key_box.pack_start(replicate_title, False, False, 0)
+
+        replicate_container = Gtk.Box(
             orientation=Gtk.Orientation.HORIZONTAL, spacing=8
         )
 
@@ -375,7 +419,7 @@ class DreamPrompterUI:
         self.api_key_entry.set_placeholder_text(placeholder)
         self.api_key_entry.set_visibility(False)
         self.api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
-        key_container.pack_start(self.api_key_entry, True, True, 0)
+        replicate_container.pack_start(self.api_key_entry, True, True, 0)
 
         self.toggle_visibility_btn = Gtk.ToggleButton()
         self.toggle_visibility_btn.set_image(
@@ -385,18 +429,66 @@ class DreamPrompterUI:
         )
         tooltip_text = _("Show/Hide API key")
         self.toggle_visibility_btn.set_tooltip_text(tooltip_text)
-        key_container.pack_start(self.toggle_visibility_btn, False, False, 0)
+        replicate_container.pack_start(self.toggle_visibility_btn, False, False, 0)
 
-        section_box.pack_start(key_container, False, False, 0)
+        self.replicate_key_box.pack_start(replicate_container, False, False, 0)
 
-        help_label = Gtk.Label()
-        help_url = "https://replicate.com/account/api-tokens"
-        help_text = _('Get your API key from <a href="{url}">Replicate</a>')
-        help_text = help_text.format(url=help_url)
-        help_label.set_markup(f"<small>{help_text}</small>")
-        help_label.set_halign(Gtk.Align.START)
-        help_label.set_line_wrap(True)
-        section_box.pack_start(help_label, False, False, 0)
+        replicate_help = Gtk.Label()
+        replicate_url = "https://replicate.com/account/api-tokens"
+        replicate_help_text = _('Get your API key from <a href="{url}">Replicate</a>')
+        replicate_help_text = replicate_help_text.format(url=replicate_url)
+        replicate_help.set_markup(f"<small>{replicate_help_text}</small>")
+        replicate_help.set_halign(Gtk.Align.START)
+        replicate_help.set_line_wrap(True)
+        self.replicate_key_box.pack_start(replicate_help, False, False, 0)
+
+        section_box.pack_start(self.replicate_key_box, False, False, 0)
+
+        # Google Cloud API Key section
+        self.google_key_box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL, spacing=8
+        )
+        
+        google_title = Gtk.Label()
+        google_title.set_markup(f"<b>{_('Google Cloud API Key')}</b>")
+        google_title.set_halign(Gtk.Align.START)
+        self.google_key_box.pack_start(google_title, False, False, 0)
+
+        google_container = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=8
+        )
+
+        self.google_api_key_entry = Gtk.Entry()
+        google_placeholder = _("Enter your Google API key")
+        self.google_api_key_entry.set_placeholder_text(google_placeholder)
+        self.google_api_key_entry.set_visibility(False)
+        self.google_api_key_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
+        google_container.pack_start(self.google_api_key_entry, True, True, 0)
+
+        self.toggle_google_visibility_btn = Gtk.ToggleButton()
+        self.toggle_google_visibility_btn.set_image(
+            Gtk.Image.new_from_icon_name(
+                "view-conceal-symbolic", Gtk.IconSize.BUTTON
+            )
+        )
+        self.toggle_google_visibility_btn.set_tooltip_text(tooltip_text)
+        google_container.pack_start(self.toggle_google_visibility_btn, False, False, 0)
+
+        self.google_key_box.pack_start(google_container, False, False, 0)
+
+        google_help = Gtk.Label()
+        google_url = "https://console.cloud.google.com/apis/credentials"
+        google_help_text = _('Get your API key from <a href="{url}">Google Cloud Console</a>')
+        google_help_text = google_help_text.format(url=google_url)
+        google_help.set_markup(f"<small>{google_help_text}</small>")
+        google_help.set_halign(Gtk.Align.START)
+        google_help.set_line_wrap(True)
+        self.google_key_box.pack_start(google_help, False, False, 0)
+
+        section_box.pack_start(self.google_key_box, False, False, 0)
+        
+        # Initially hide Google Cloud fields
+        self.google_key_box.set_visible(False)
 
         return section_box
 
@@ -505,6 +597,43 @@ class DreamPrompterUI:
             orientation=orientation, spacing=6
         )
         return self.model_settings_section
+    
+    def _create_num_images_section(self):
+        """Create number of images selection section"""
+        section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{_('Number of Images')}</b>")
+        title_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(title_label, False, False, 0)
+        
+        # Create spin button (1-10 range, default 3)
+        adjustment = Gtk.Adjustment(
+            value=3,      # default value
+            lower=1,      # minimum
+            upper=10,     # maximum
+            step_increment=1,
+            page_increment=1,
+            page_size=0
+        )
+        self.num_images_spinbutton = Gtk.SpinButton()
+        self.num_images_spinbutton.set_adjustment(adjustment)
+        self.num_images_spinbutton.set_digits(0)  # No decimal places
+        self.num_images_spinbutton.set_value(3)
+        
+        section_box.pack_start(self.num_images_spinbutton, False, False, 0)
+        
+        # Add help text
+        help_label = Gtk.Label()
+        help_label.set_markup(
+            f"<small>{_('Generate 1-10 images in parallel')}</small>"
+        )
+        help_label.set_halign(Gtk.Align.START)
+        help_label.set_line_wrap(True)
+        help_label.get_style_context().add_class("dim-label")
+        section_box.pack_start(help_label, False, False, 0)
+        
+        return section_box
 
     def _create_mode_section(self):
         """Create mode selection section"""
@@ -547,7 +676,12 @@ class DreamPrompterUI:
         if param_def.param_type == ParameterType.CHOICE:
             widget = Gtk.ComboBoxText()
             for choice in param_def.choices:
-                widget.append(str(choice), str(choice))
+                # Special display name for "original" aspect ratio
+                if param_def.name == "aspect_ratio" and str(choice) == "original":
+                    display_text = "Original (Auto)"
+                else:
+                    display_text = str(choice)
+                widget.append(str(choice), display_text)
             if current_value is not None:
                 widget.set_active_id(str(current_value))
             else:
@@ -649,26 +783,87 @@ class DreamPrompterUI:
         return container
 
     def _create_prompt_section(self):
-        """Create prompt input section"""
+        """Create prompt input section with template support"""
         section_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
 
+        # Title and template controls row
+        header_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        
         title_label = Gtk.Label()
         title_label.set_markup(f"<b>{_('AI Prompt')}</b>")
         title_label.set_halign(Gtk.Align.START)
-        section_box.pack_start(title_label, False, False, 0)
+        header_box.pack_start(title_label, False, False, 0)
+        
+        # Template dropdown
+        self.template_dropdown = Gtk.ComboBoxText()
+        self.template_dropdown.append("", _("-- No Template --"))
+        self.template_dropdown.set_active_id("")
+        self.template_dropdown.set_size_request(150, -1)
+        header_box.pack_start(self.template_dropdown, False, False, 8)
+        
+        # Save template button
+        self.save_template_btn = Gtk.Button(label=_("Save"))
+        self.save_template_btn.set_tooltip_text(_("Save current prompt as template"))
+        header_box.pack_start(self.save_template_btn, False, False, 0)
+        
+        # Delete template button
+        self.delete_template_btn = Gtk.Button(label=_("Delete"))
+        self.delete_template_btn.set_tooltip_text(_("Delete selected template"))
+        self.delete_template_btn.set_sensitive(False)
+        header_box.pack_start(self.delete_template_btn, False, False, 0)
+        
+        section_box.pack_start(header_box, False, False, 0)
 
-        scroll_window = Gtk.ScrolledWindow()
-        scroll_window.set_policy(
-            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC
-        )
-        scroll_window.set_min_content_height(120)
+        # Prefix section
+        prefix_label = Gtk.Label()
+        prefix_label.set_markup(_("<i>Style Prefix (prepended):</i>"))
+        prefix_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(prefix_label, False, False, 0)
+        
+        prefix_scroll = Gtk.ScrolledWindow()
+        prefix_scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        prefix_scroll.set_min_content_height(60)
+        
+        self.prefix_textview = Gtk.TextView()
+        self.prefix_textview.set_wrap_mode(Gtk.WrapMode.WORD)
+        self.prefix_buffer = self.prefix_textview.get_buffer()
+        
+        prefix_scroll.add(self.prefix_textview)
+        section_box.pack_start(prefix_scroll, False, False, 0)
+
+        # Main prompt section
+        main_label = Gtk.Label()
+        main_label.set_markup(_("<i>Main Prompt:</i>"))
+        main_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(main_label, False, False, 0)
+        
+        main_scroll = Gtk.ScrolledWindow()
+        main_scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        main_scroll.set_min_content_height(80)
 
         self.prompt_textview = Gtk.TextView()
         self.prompt_textview.set_wrap_mode(Gtk.WrapMode.WORD)
         self.prompt_buffer = self.prompt_textview.get_buffer()
 
-        scroll_window.add(self.prompt_textview)
-        section_box.pack_start(scroll_window, True, True, 0)
+        main_scroll.add(self.prompt_textview)
+        section_box.pack_start(main_scroll, True, True, 0)
+
+        # Suffix section
+        suffix_label = Gtk.Label()
+        suffix_label.set_markup(_("<i>Suffix (appended):</i>"))
+        suffix_label.set_halign(Gtk.Align.START)
+        section_box.pack_start(suffix_label, False, False, 0)
+        
+        suffix_scroll = Gtk.ScrolledWindow()
+        suffix_scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        suffix_scroll.set_min_content_height(60)
+        
+        self.suffix_textview = Gtk.TextView()
+        self.suffix_textview.set_wrap_mode(Gtk.WrapMode.WORD)
+        self.suffix_buffer = self.suffix_textview.get_buffer()
+        
+        suffix_scroll.add(self.suffix_textview)
+        section_box.pack_start(suffix_scroll, False, False, 0)
 
         return section_box
 
