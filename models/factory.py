@@ -14,6 +14,7 @@ from . import flux_pro  # noqa: F401
 from . import gpt_image  # noqa: F401
 from . import imagen  # noqa: F401
 from . import nano_banana  # noqa: F401
+from . import nano_banana_2  # noqa: F401
 from . import nano_banana_pro  # noqa: F401
 from . import qwen_image  # noqa: F401
 from . import qwen_image_edit_plus  # noqa: F401

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2025-12-17 14:52-1000\n"
+"POT-Creation-Date: 2026-02-28 11:56-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Portuguese\n"
@@ -76,9 +76,9 @@ msgid "Additional Images (Optional)"
 msgstr "Imagens Adicionais (Opcional)"
 
 #: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
-#: models/nano_banana.py:164 models/nano_banana_pro.py:179
-#: models/qwen_image.py:144 models/seedream.py:213
-#: models/stable_diffusion_large_turbo.py:179
+#: models/nano_banana.py:164 models/nano_banana_2.py:184
+#: models/nano_banana_pro.py:179 models/qwen_image.py:144
+#: models/seedream.py:213 models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
 msgstr "Proporção"
 
@@ -86,7 +86,8 @@ msgstr "Proporção"
 msgid "Aspect ratio for the generated image"
 msgstr "Proporção de aspecto para a imagem gerada"
 
-#: models/nano_banana.py:165 models/nano_banana_pro.py:180
+#: models/nano_banana.py:165 models/nano_banana_2.py:185
+#: models/nano_banana_pro.py:180
 msgid "Aspect ratio of the generated image"
 msgstr "Proporção da imagem gerada"
 
@@ -248,7 +249,7 @@ msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
 #: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
-#: models/nano_banana_pro.py:200
+#: models/nano_banana_2.py:209 models/nano_banana_pro.py:200
 msgid "Format of the output image"
 msgstr "Formato da imagem de saída"
 
@@ -295,9 +296,21 @@ msgstr "Obtenha sua chave API do <a href=\"{url}\">Replicate</a>"
 msgid "Go Fast"
 msgstr "Ir Rápido"
 
+#: models/nano_banana_2.py:217
+msgid "Google Search"
+msgstr "Pesquisa Google"
+
 #: models/imagen.py:39
 msgid "Google's advanced image generation model"
 msgstr "Modelo avançado de geração de imagens do Google"
+
+#: models/nano_banana_2.py:43
+msgid ""
+"Google's fast image generation model with conversational editing, multi-"
+"image fusion, and character consistency"
+msgstr ""
+"Modelo rápido de geração de imagens do Google com edição conversacional, "
+"fusão de múltiplas imagens e consistência de personagens"
 
 #: models/nano_banana_pro.py:41
 msgid "Google's state of the art image generation and editing model"
@@ -344,6 +357,10 @@ msgstr "Modelo texto-para-imagem com excelente qualidade de imagem"
 #: models/stable_diffusion_large_turbo.py:199
 msgid "How similar the output should be to the prompt"
 msgstr "Quão similar a saída deve ser ao prompt"
+
+#: models/nano_banana_2.py:228
+msgid "Image Search"
+msgstr "Pesquisa de Imagens"
 
 #: models/qwen_image.py:161 models/seedream.py:176
 msgid "Image Size"
@@ -405,6 +422,10 @@ msgstr "Moderação"
 #: models/nano_banana.py:50
 msgid "Nano Banana (Gemini 2.5 Flash Image)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image)"
+
+#: models/nano_banana_2.py:50
+msgid "Nano Banana 2 (Gemini 3.1 Flash Image)"
+msgstr "Nano Banana 2 (Gemini 3.1 Flash Image)"
 
 #: models/nano_banana_pro.py:46
 msgid "Nano Banana Pro (Gemini 3 Pro)"
@@ -487,8 +508,9 @@ msgid "Output Compression"
 msgstr "Compressão de Saída"
 
 #: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
-#: models/nano_banana.py:184 models/nano_banana_pro.py:199
-#: models/qwen_image.py:247 models/qwen_image_edit_plus.py:176
+#: models/nano_banana.py:184 models/nano_banana_2.py:208
+#: models/nano_banana_pro.py:199 models/qwen_image.py:247
+#: models/qwen_image_edit_plus.py:176
 #: models/stable_diffusion_large_turbo.py:231
 msgid "Output Format"
 msgstr "Formato de Saída"
@@ -592,7 +614,8 @@ msgstr "Erro da API Replicate: {error}"
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Nano Banana não disponível. Por favor instale google-genai"
 
-#: models/flux_pro.py:200 models/nano_banana_pro.py:170
+#: models/flux_pro.py:200 models/nano_banana_2.py:172
+#: models/nano_banana_pro.py:170
 msgid "Resolution"
 msgstr "Resolução"
 
@@ -607,6 +630,14 @@ msgstr ""
 #: models/nano_banana_pro.py:171
 msgid "Resolution of the generated image"
 msgstr "Resolução da imagem gerada"
+
+#: models/nano_banana_2.py:174
+msgid ""
+"Resolution of the generated image. Higher resolutions take longer to "
+"generate."
+msgstr ""
+"Resolução da imagem gerada. Resoluções mais altas demoram mais para "
+"serem geradas."
 
 #: models/seedream.py:178
 msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
@@ -716,14 +747,15 @@ msgstr "A qualidade da imagem gerada"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, "
-"Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo."
+"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana "
+"Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 "Transforme imagens existentes ou gere novas imagens usando modelos avançados "
 "de IA do Replicate com prompts em linguagem natural. Escolha entre vários "
-"modelos incluindo GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, "
-"Qwen Image, Qwen Image Edit Plus, Seedream 4.5 e Stable Diffusion 3.5 Large "
-"Turbo."
+"modelos incluindo GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana 2, "
+"Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5 e Stable "
+"Diffusion 3.5 Large Turbo."
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -739,6 +771,22 @@ msgstr "Erro inesperado durante geração de imagem: {error}"
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Erro inesperado: {error}"
+
+#: models/nano_banana_2.py:230
+msgid ""
+"Use Google Image Search grounding to find web images as visual context for "
+"generation"
+msgstr ""
+"Usar pesquisa de imagens do Google para encontrar imagens da web como "
+"contexto visual para a geração"
+
+#: models/nano_banana_2.py:219
+msgid ""
+"Use Google Web Search grounding to generate images based on real-time "
+"information"
+msgstr ""
+"Usar pesquisa web do Google para gerar imagens baseadas em informações "
+"em tempo real"
 
 #: models/stable_diffusion_large_turbo.py:172
 msgid "What you do not want to see in the image"

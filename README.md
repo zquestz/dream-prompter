@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.2.0`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.3.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -49,11 +49,11 @@ pip install replicate
 Example for Linux:
 
 ```bash
-# Extract creates dream-prompter-1.2.0/
-unzip dream-prompter-1.2.0.zip
+# Extract creates dream-prompter-1.3.0/
+unzip dream-prompter-1.3.0.zip
 # Move to correct location with correct name
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-mv dream-prompter-1.2.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+mv dream-prompter-1.3.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
 ```
 
 4. **Make executable** (Linux/macOS only):
@@ -269,6 +269,14 @@ If you get the **"replicate not installed"** error on Windows:
 - **File Size**: Maximum 7MB per image
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Character consistency, multi-image fusion, conversational editing, native image understanding
+
+**Nano Banana 2** (`google/nano-banana-2`) - Google's Gemini 3.1 Flash Image model:
+
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 14 for generation, 13 for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: Multiple resolutions (1K/2K/4K), extended aspect ratios (including 1:4, 4:1, 1:8, 8:1), Google Search and Image Search grounding, improved text rendering
 
 **Nano Banana Pro** (`google/nano-banana-pro`) - Google's Gemini 3 Pro state of the art model:
 
