@@ -12,7 +12,7 @@ from typing import Dict, Callable, Optional, Any, List
 from gi.repository import GLib, GdkPixbuf
 
 import integrator
-from api import ReplicateAPI
+from api import create_api_client, APIProvider
 from dialog_gtk import DreamPrompterUI
 from i18n import _
 
@@ -84,15 +84,18 @@ class DreamPrompterThreads:
         prompt: str,
         reference_images: Optional[List[str]] = None,
         model_name: Optional[str] = None,
+        api_provider: str = "replicate",
+        num_images: int = 3,
     ) -> None:
         """
         Start image editing in background thread
 
         Args:
-            api_key: Replicate API key
+            api_key: API key for the selected provider
             prompt: Text prompt for image editing
             reference_images: Optional list of reference image paths
             model_name: Optional model name to use
+            api_provider: API provider to use ("replicate" or "google_cloud")
         """
         if not self.ui or self._processing:
             return
@@ -119,7 +122,7 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._edit_image_worker,
-            args=(api_key, prompt, reference_images, model_name),
+            args=(api_key, prompt, reference_images, model_name, api_provider, num_images),
         )
         self._current_thread.daemon = True
         self._current_thread.start()
@@ -130,15 +133,18 @@ class DreamPrompterThreads:
         prompt: str,
         reference_images: Optional[List[str]] = None,
         model_name: Optional[str] = None,
+        api_provider: str = "replicate",
+        num_images: int = 3,
     ) -> None:
         """
         Start image generation in background thread
 
         Args:
-            api_key: Replicate API key
+            api_key: API key for the selected provider
             prompt: Text prompt for image generation
             reference_images: Optional list of reference image paths
             model_name: Optional model name to use
+            api_provider: API provider to use ("replicate" or "google_cloud")
         """
         if not self.ui or self._processing:
             return
@@ -157,7 +163,7 @@ class DreamPrompterThreads:
 
         self._current_thread = threading.Thread(
             target=self._generate_image_worker,
-            args=(api_key, prompt, reference_images, model_name),
+            args=(api_key, prompt, reference_images, model_name, api_provider, num_images),
         )
         self._current_thread.daemon = True
         self._current_thread.start()
@@ -168,15 +174,18 @@ class DreamPrompterThreads:
         prompt: str,
         reference_images: Optional[List[str]],
         model_name: Optional[str],
+        api_provider: str = "replicate",
+        num_images: int = 3,
     ) -> None:
         """
         Edit image in background thread
 
         Args:
-            api_key: Replicate API key
+            api_key: API key for the selected provider
             prompt: Text prompt for image editing
             reference_images: List of reference image paths
             model_name: Optional model name to use
+            api_provider: API provider to use ("replicate" or "google_cloud")
         """
         try:
             if self._cancel_requested:
@@ -189,7 +198,14 @@ class DreamPrompterThreads:
                 )
                 return
 
-            api = ReplicateAPI(api_key, model_name)
+            # Convert string to APIProvider enum
+            provider_enum = (
+                APIProvider.GOOGLE_CLOUD
+                if api_provider == "google_cloud"
+                else APIProvider.REPLICATE
+            )
+            
+            api = create_api_client(provider_enum, api_key, model_name)
 
             def progress_callback(
                 message: str, percentage: Optional[float] = None
@@ -205,6 +221,7 @@ class DreamPrompterThreads:
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback,
+                num_images=num_images,
             )
 
             if self._cancel_requested:
@@ -237,22 +254,32 @@ class DreamPrompterThreads:
         prompt: str,
         reference_images: Optional[List[str]],
         model_name: Optional[str],
+        api_provider: str = "replicate",
+        num_images: int = 3,
     ) -> None:
         """
         Generate image in background thread
 
         Args:
-            api_key: Replicate API key
+            api_key: API key for the selected provider
             prompt: Text prompt for image generation
             reference_images: List of reference image paths
             model_name: Optional model name to use
+            api_provider: API provider to use ("replicate" or "google_cloud")
         """
         try:
             if self._cancel_requested:
                 GLib.idle_add(self._handle_cancelled)
                 return
 
-            api = ReplicateAPI(api_key, model_name)
+            # Convert string to APIProvider enum
+            provider_enum = (
+                APIProvider.GOOGLE_CLOUD
+                if api_provider == "google_cloud"
+                else APIProvider.REPLICATE
+            )
+            
+            api = create_api_client(provider_enum, api_key, model_name)
 
             def progress_callback(
                 message: str, percentage: Optional[float] = None
@@ -267,6 +294,7 @@ class DreamPrompterThreads:
                 prompt=prompt,
                 reference_images=reference_images,
                 progress_callback=progress_callback,
+                num_images=num_images,
             )
 
             if self._cancel_requested:

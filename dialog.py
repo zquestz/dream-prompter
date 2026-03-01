@@ -41,10 +41,28 @@ class DreamPrompterDialog(GimpUi.Dialog):
         self._initialize()
 
     def get_api_key(self):
-        """Get the API key from the UI"""
+        """Get the Replicate API key from the UI"""
         if self.ui.api_key_entry:
             return self.ui.api_key_entry.get_text().strip()
         return ""
+
+    def get_google_api_key(self):
+        """Get the Google API key from the UI"""
+        if self.ui.google_api_key_entry:
+            return self.ui.google_api_key_entry.get_text().strip()
+        return ""
+    
+    def get_num_images(self):
+        """Get the number of images to generate from the UI"""
+        if self.ui.num_images_spinbutton:
+            return int(self.ui.num_images_spinbutton.get_value())
+        return 3  # Default to 3 if not set
+
+    def get_api_provider(self):
+        """Get the selected API provider from the UI"""
+        if self.ui.api_provider_dropdown:
+            return self.ui.api_provider_dropdown.get_active_id() or "replicate"
+        return "replicate"
 
     def get_api_key_visible(self):
         """Get the API key visibility state"""
@@ -60,13 +78,57 @@ class DreamPrompterDialog(GimpUi.Dialog):
         return "edit"
 
     def get_prompt(self):
-        """Get the current prompt text"""
+        """Get the current prompt text (combined from prefix + main + suffix)"""
+        parts = []
+        
+        # Get prefix
+        if self.ui.prefix_buffer:
+            start_iter = self.ui.prefix_buffer.get_start_iter()
+            end_iter = self.ui.prefix_buffer.get_end_iter()
+            prefix = self.ui.prefix_buffer.get_text(start_iter, end_iter, False).strip()
+            if prefix:
+                parts.append(prefix)
+        
+        # Get main prompt
         if self.ui.prompt_buffer:
             start_iter = self.ui.prompt_buffer.get_start_iter()
             end_iter = self.ui.prompt_buffer.get_end_iter()
-            return self.ui.prompt_buffer.get_text(
-                start_iter, end_iter, False
-            ).strip()
+            main = self.ui.prompt_buffer.get_text(start_iter, end_iter, False).strip()
+            if main:
+                parts.append(main)
+        
+        # Get suffix
+        if self.ui.suffix_buffer:
+            start_iter = self.ui.suffix_buffer.get_start_iter()
+            end_iter = self.ui.suffix_buffer.get_end_iter()
+            suffix = self.ui.suffix_buffer.get_text(start_iter, end_iter, False).strip()
+            if suffix:
+                parts.append(suffix)
+        
+        return " ".join(parts)
+    
+    def get_prompt_prefix(self):
+        """Get just the prefix part"""
+        if self.ui.prefix_buffer:
+            start_iter = self.ui.prefix_buffer.get_start_iter()
+            end_iter = self.ui.prefix_buffer.get_end_iter()
+            return self.ui.prefix_buffer.get_text(start_iter, end_iter, False).strip()
+        return ""
+    
+    def get_prompt_main(self):
+        """Get just the main prompt part"""
+        if self.ui.prompt_buffer:
+            start_iter = self.ui.prompt_buffer.get_start_iter()
+            end_iter = self.ui.prompt_buffer.get_end_iter()
+            return self.ui.prompt_buffer.get_text(start_iter, end_iter, False).strip()
+        return ""
+    
+    def get_prompt_suffix(self):
+        """Get just the suffix part"""
+        if self.ui.suffix_buffer:
+            start_iter = self.ui.suffix_buffer.get_start_iter()
+            end_iter = self.ui.suffix_buffer.get_end_iter()
+            return self.ui.suffix_buffer.get_text(start_iter, end_iter, False).strip()
         return ""
 
     def _initialize(self):
@@ -81,8 +143,20 @@ class DreamPrompterDialog(GimpUi.Dialog):
         try:
             settings = load_settings()
 
+            # Load API provider
+            if self.ui.api_provider_dropdown:
+                provider = str(settings.get("api_provider", "replicate"))
+                self.ui.api_provider_dropdown.set_active_id(provider)
+                # Update visibility of API key fields
+                self.events.on_api_provider_changed(self.ui.api_provider_dropdown)
+
+            # Load Replicate API key
             if settings.get("api_key") and self.ui.api_key_entry:
                 self.ui.api_key_entry.set_text(str(settings["api_key"]))
+
+            # Load Google API key
+            if settings.get("google_api_key") and self.ui.google_api_key_entry:
+                self.ui.google_api_key_entry.set_text(str(settings["google_api_key"]))
 
             if "api_key_visible" in settings and self.ui.toggle_visibility_btn:
                 api_key_visible = bool(settings["api_key_visible"])
@@ -123,9 +197,37 @@ class DreamPrompterDialog(GimpUi.Dialog):
 
             if settings.get("prompt") and self.ui.prompt_buffer:
                 self.ui.prompt_buffer.set_text(str(settings["prompt"]))
+            
+            if settings.get("prompt_prefix") and self.ui.prefix_buffer:
+                self.ui.prefix_buffer.set_text(str(settings["prompt_prefix"]))
+            
+            if settings.get("prompt_suffix") and self.ui.suffix_buffer:
+                self.ui.suffix_buffer.set_text(str(settings["prompt_suffix"]))
+            
+            # Load templates into dropdown
+            if self.ui.template_dropdown:
+                self._load_templates()
 
         except Exception as e:
             print(f"Error loading settings: {e}")
+    
+    def _load_templates(self):
+        """Load template names into dropdown"""
+        try:
+            from prompt_templates import get_template_names
+            
+            # Clear existing items except the first (-- No Template --)
+            self.ui.template_dropdown.remove_all()
+            self.ui.template_dropdown.append("", _("-- No Template --"))
+            
+            # Add all template names
+            template_names = get_template_names()
+            for name in template_names:
+                self.ui.template_dropdown.append(name, name)
+            
+            self.ui.template_dropdown.set_active_id("")
+        except Exception as e:
+            print(f"Error loading templates: {e}")
 
     def _set_initial_mode(self):
         """Set initial mode based on available image/drawable"""
