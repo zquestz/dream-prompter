@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-04-21 17:40-1000\n"
+"POT-Creation-Date: 2026-04-21 19:10-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -135,11 +135,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
-#: models/gpt_image.py:203 models/gpt_image_2.py:190
+#: models/gpt_image.py:203 models/gpt_image_2.py:188
 msgid "Compression level (0-100%)"
 msgstr "압축 수준 (0-100%)"
 
-#: models/gpt_image.py:222 models/gpt_image_2.py:209
+#: models/gpt_image.py:222 models/gpt_image_2.py:207
 msgid "Content moderation level"
 msgstr "콘텐츠 검토 수준"
 
@@ -246,7 +246,7 @@ msgstr "현재 이미지 내보내기 실패"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/gpt_image.py:213 models/gpt_image_2.py:198 models/imagen.py:154
 #: models/nano_banana.py:185 models/nano_banana_2.py:209
 #: models/nano_banana_pro.py:200
 msgid "Format of the output image"
@@ -417,7 +417,7 @@ msgstr "모델 설정"
 msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
 
-#: models/gpt_image.py:221 models/gpt_image_2.py:208
+#: models/gpt_image.py:221 models/gpt_image_2.py:206
 msgid "Moderation"
 msgstr "콘텐츠 검토"
 
@@ -509,11 +509,11 @@ msgstr "작업 모드"
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
-#: models/gpt_image.py:202 models/gpt_image_2.py:189
+#: models/gpt_image.py:202 models/gpt_image_2.py:187
 msgid "Output Compression"
 msgstr "출력 압축"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:197
 #: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
@@ -617,7 +617,7 @@ msgstr "Replicate API 오류: {error}"
 
 #: api.py:60 api.py:105 api.py:179
 msgid "Replicate API not available. Please install replicate"
-msgstr "Replicate API를 사용할 수 없습니다. google-genai를 설치해주세요"
+msgstr "Replicate API를 사용할 수 없습니다. replicate를 설치해주세요"
 
 #: models/flux_pro.py:200 models/nano_banana_2.py:172
 #: models/nano_banana_pro.py:170
@@ -704,7 +704,11 @@ msgstr "순차 생성"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "재현성을 위한 시드 설정 (-1 = 랜덤)"
 
-#: models/gpt_image.py:193 models/gpt_image_2.py:180
+#: models/gpt_image_2.py:179
+msgid "Set the background mode"
+msgstr "배경 모드 설정"
+
+#: models/gpt_image.py:193
 msgid "Set whether the background is transparent or opaque"
 msgstr "배경을 투명 또는 불투명으로 설정"
 
@@ -753,9 +757,10 @@ msgid ""
 "Diffusion 3.5 Large Turbo."
 msgstr ""
 "자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거"
-"나 새 이미지를 생성합니다. GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream "
-"4.5, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택하세요."
+"나 새 이미지를 생성합니다. GPT Image 1.5, GPT Image 2, Imagen 4, Nano "
+"Banana, Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, "
+"Seedream 4.5, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택"
+"하세요."
 
 #: dialog_threads.py:230
 #, python-brace-format

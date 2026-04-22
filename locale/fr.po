@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-04-21 17:40-1000\n"
+"POT-Creation-Date: 2026-04-21 19:10-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: French\n"
@@ -135,11 +135,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "Effacer les fichiers sélectionnés"
 
-#: models/gpt_image.py:203 models/gpt_image_2.py:190
+#: models/gpt_image.py:203 models/gpt_image_2.py:188
 msgid "Compression level (0-100%)"
 msgstr "Niveau de compression (0-100%)"
 
-#: models/gpt_image.py:222 models/gpt_image_2.py:209
+#: models/gpt_image.py:222 models/gpt_image_2.py:207
 msgid "Content moderation level"
 msgstr "Niveau de modération du contenu"
 
@@ -250,7 +250,7 @@ msgstr "Échec de l'exportation de l'image actuelle"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/gpt_image.py:213 models/gpt_image_2.py:198 models/imagen.py:154
 #: models/nano_banana.py:185 models/nano_banana_2.py:209
 #: models/nano_banana_pro.py:200
 msgid "Format of the output image"
@@ -422,7 +422,7 @@ msgstr "Paramètres du Modèle"
 msgid "Model error: {error}"
 msgstr "Erreur de modèle : {error}"
 
-#: models/gpt_image.py:221 models/gpt_image_2.py:208
+#: models/gpt_image.py:221 models/gpt_image_2.py:206
 msgid "Moderation"
 msgstr "Modération"
 
@@ -514,11 +514,11 @@ msgstr "Mode d'Opération"
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
-#: models/gpt_image.py:202 models/gpt_image_2.py:189
+#: models/gpt_image.py:202 models/gpt_image_2.py:187
 msgid "Output Compression"
 msgstr "Compression de Sortie"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:197
 #: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
@@ -623,7 +623,7 @@ msgstr "Erreur de l'API Replicate : {error}"
 
 #: api.py:60 api.py:105 api.py:179
 msgid "Replicate API not available. Please install replicate"
-msgstr "API Nano Banana non disponible. Veuillez installer google-genai"
+msgstr "API Replicate non disponible. Veuillez installer replicate"
 
 #: models/flux_pro.py:200 models/nano_banana_2.py:172
 #: models/nano_banana_pro.py:170
@@ -715,7 +715,11 @@ msgstr "Génération Séquentielle"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "Définir une graine pour la reproductibilité (-1 = aléatoire)"
 
-#: models/gpt_image.py:193 models/gpt_image_2.py:180
+#: models/gpt_image_2.py:179
+msgid "Set the background mode"
+msgstr "Définir le mode d'arrière-plan"
+
+#: models/gpt_image.py:193
 msgid "Set whether the background is transparent or opaque"
 msgstr "Définir si l'arrière-plan est transparent ou opaque"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-04-21 17:40-1000\n"
+"POT-Creation-Date: 2026-04-21 19:10-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -135,11 +135,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
-#: models/gpt_image.py:203 models/gpt_image_2.py:190
+#: models/gpt_image.py:203 models/gpt_image_2.py:188
 msgid "Compression level (0-100%)"
 msgstr "Nivel de compresión (0-100%)"
 
-#: models/gpt_image.py:222 models/gpt_image_2.py:209
+#: models/gpt_image.py:222 models/gpt_image_2.py:207
 msgid "Content moderation level"
 msgstr "Nivel de moderación de contenido"
 
@@ -248,7 +248,7 @@ msgstr "Error al exportar imagen actual"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/gpt_image.py:213 models/gpt_image_2.py:198 models/imagen.py:154
 #: models/nano_banana.py:185 models/nano_banana_2.py:209
 #: models/nano_banana_pro.py:200
 msgid "Format of the output image"
@@ -420,7 +420,7 @@ msgstr "Configuración del Modelo"
 msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
 
-#: models/gpt_image.py:221 models/gpt_image_2.py:208
+#: models/gpt_image.py:221 models/gpt_image_2.py:206
 msgid "Moderation"
 msgstr "Moderación"
 
@@ -513,11 +513,11 @@ msgstr "Modo de Operación"
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
-#: models/gpt_image.py:202 models/gpt_image_2.py:189
+#: models/gpt_image.py:202 models/gpt_image_2.py:187
 msgid "Output Compression"
 msgstr "Compresión de Salida"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:197
 #: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
@@ -713,7 +713,11 @@ msgstr "Generación Secuencial"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "Establecer una semilla para reproducibilidad (-1 = aleatorio)"
 
-#: models/gpt_image.py:193 models/gpt_image_2.py:180
+#: models/gpt_image_2.py:179
+msgid "Set the background mode"
+msgstr "Establecer el modo de fondo"
+
+#: models/gpt_image.py:193
 msgid "Set whether the background is transparent or opaque"
 msgstr "Establecer si el fondo es transparente u opaco"
 

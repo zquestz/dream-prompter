@@ -176,10 +176,8 @@ class GPTImage2Model(BaseModel):
                 param_type=ParameterType.CHOICE,
                 default_value="auto",
                 label=_("Background"),
-                description=_(
-                    "Set whether the background is transparent or opaque"
-                ),
-                choices=["auto", "transparent", "opaque"],
+                description=_("Set the background mode"),
+                choices=["auto", "opaque"],
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(

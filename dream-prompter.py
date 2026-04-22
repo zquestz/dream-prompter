@@ -22,7 +22,7 @@ from dialog import DreamPrompterDialog  # noqa: E402
 from i18n import _, DOMAIN  # noqa: E402
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.4.0"
+PLUGIN_VERSION = "1.4.1"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Replicate models"
 
 
