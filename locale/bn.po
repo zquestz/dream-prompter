@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-02-28 11:56-1000\n"
+"POT-Creation-Date: 2026-04-21 17:40-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
@@ -75,8 +75,8 @@ msgstr "স্তর {num} যোগ করা হচ্ছে..."
 msgid "Additional Images (Optional)"
 msgstr "অতিরিক্ত ছবি (ঐচ্ছিক)"
 
-#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
-#: models/nano_banana.py:164 models/nano_banana_2.py:184
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/gpt_image_2.py:150
+#: models/imagen.py:144 models/nano_banana.py:164 models/nano_banana_2.py:184
 #: models/nano_banana_pro.py:179 models/qwen_image.py:144
 #: models/seedream.py:213 models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
@@ -91,7 +91,7 @@ msgstr "উত্পন্ন চিত্রের জন্য দিক অ�
 msgid "Aspect ratio of the generated image"
 msgstr "জেনারেট করা ছবির দিক অনুপাত"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2.py:178
 msgid "Background"
 msgstr "পটভূমি"
 
@@ -133,11 +133,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "নির্বাচিত ফাইলগুলি সাফ করুন"
 
-#: models/gpt_image.py:203
+#: models/gpt_image.py:203 models/gpt_image_2.py:190
 msgid "Compression level (0-100%)"
 msgstr "কম্প্রেশন স্তর (0-100%)"
 
-#: models/gpt_image.py:222
+#: models/gpt_image.py:222 models/gpt_image_2.py:209
 msgid "Content moderation level"
 msgstr "কনটেন্ট মডারেশন স্তর"
 
@@ -191,7 +191,7 @@ msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI ছবি তৈরিকারী/সম্পাদক"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -229,7 +229,7 @@ msgstr "স্তর যোগ করতে ত্রুটি: {error}"
 msgid "Error creating images: {error}"
 msgstr "ছবি তৈরি করতে ত্রুটি: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
@@ -246,8 +246,9 @@ msgstr "বর্তমান ছবি রপ্তানি করতে ব�
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
-#: models/nano_banana_2.py:209 models/nano_banana_pro.py:200
+#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/nano_banana.py:185 models/nano_banana_2.py:209
+#: models/nano_banana_pro.py:200
 msgid "Format of the output image"
 msgstr "আউটপুট ছবির ফরম্যাট"
 
@@ -263,6 +264,10 @@ msgstr "আউটপুট চিত্রের ফরম্যাট।"
 #: models/gpt_image.py:45
 msgid "GPT Image 1.5"
 msgstr "GPT Image 1.5"
+
+#: models/gpt_image_2.py:45
+msgid "GPT Image 2"
+msgstr "GPT Image 2"
 
 #: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
@@ -307,8 +312,8 @@ msgid ""
 "Google's fast image generation model with conversational editing, multi-"
 "image fusion, and character consistency"
 msgstr ""
-"কথোপকথনমূলক সম্পাদনা, মাল্টি-ইমেজ ফিউশন এবং চরিত্রের সামঞ্জস্য সহ Google এর "
-"দ্রুত ছবি তৈরি মডেল"
+"কথোপকথনমূলক সম্পাদনা, মাল্টি-ইমেজ ফিউশন এবং চরিত্রের সামঞ্জস্য সহ Google এর দ্রুত "
+"ছবি তৈরি মডেল"
 
 #: models/nano_banana_pro.py:41
 msgid "Google's state of the art image generation and editing model"
@@ -410,7 +415,7 @@ msgstr "মডেল সেটিংস"
 msgid "Model error: {error}"
 msgstr "মডেল ত্রুটি: {error}"
 
-#: models/gpt_image.py:221
+#: models/gpt_image.py:221 models/gpt_image_2.py:208
 msgid "Moderation"
 msgstr "মডারেশন"
 
@@ -470,7 +475,7 @@ msgstr "API প্রতিক্রিয়ায় কোনো বৈধ �
 msgid "Not set"
 msgstr "সেট করা হয়নি"
 
-#: models/gpt_image.py:172
+#: models/gpt_image.py:172 models/gpt_image_2.py:159
 msgid "Number of Images"
 msgstr "ছবির সংখ্যা"
 
@@ -478,17 +483,21 @@ msgstr "ছবির সংখ্যা"
 msgid "Number of denoising steps. Recommended range is 28-50."
 msgstr "ডিনয়েজিং স্টেপের সংখ্যা। প্রস্তাবিত রেঞ্জ 28-50।"
 
-#: models/gpt_image.py:173
+#: models/gpt_image.py:173 models/gpt_image_2.py:160
 msgid "Number of images to generate (1-10)"
 msgstr "জেনারেট করার ছবির সংখ্যা (1-10)"
 
-#: models/gpt_image.py:139
+#: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "OpenAI API Key"
 msgstr "OpenAI API কী"
 
 #: models/gpt_image.py:40
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI এর উন্নত ছবি তৈরি মডেল"
+
+#: models/gpt_image_2.py:40
+msgid "OpenAI's next generation image generation model"
+msgstr "OpenAI এর পরবর্তী প্রজন্মের ছবি তৈরি মডেল"
 
 #: dialog_gtk.py:514
 msgid "Operation Mode"
@@ -498,12 +507,12 @@ msgstr "অপারেশন মোড"
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
-#: models/gpt_image.py:202
+#: models/gpt_image.py:202 models/gpt_image_2.py:189
 msgid "Output Compression"
 msgstr "আউটপুট কম্প্রেশন"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
-#: models/nano_banana.py:184 models/nano_banana_2.py:208
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
 #: models/stable_diffusion_large_turbo.py:231
@@ -543,7 +552,7 @@ msgstr "প্রম্পট প্রয়োজন"
 msgid "Prompt strength (or denoising strength)"
 msgstr "প্রম্পট শক্তি (বা ডিনয়েজিং শক্তি)"
 
-#: models/gpt_image.py:182
+#: models/gpt_image.py:182 models/gpt_image_2.py:169
 msgid "Quality"
 msgstr "গুণমান"
 
@@ -626,8 +635,7 @@ msgstr "জেনারেট করা ছবির রেজোলিউশন
 msgid ""
 "Resolution of the generated image. Higher resolutions take longer to "
 "generate."
-msgstr ""
-"জেনারেট করা ছবির রেজোলিউশন। উচ্চ রেজোলিউশন জেনারেট করতে বেশি সময় লাগে।"
+msgstr "জেনারেট করা ছবির রেজোলিউশন। উচ্চ রেজোলিউশন জেনারেট করতে বেশি সময় লাগে।"
 
 #: models/seedream.py:178
 msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
@@ -693,7 +701,7 @@ msgstr "ক্রমিক জেনারেশন"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "পুনরুৎপাদনযোগ্যতার জন্য একটি বীজ সেট করুন (-1 = এলোমেলো)"
 
-#: models/gpt_image.py:193
+#: models/gpt_image.py:193 models/gpt_image_2.py:180
 msgid "Set whether the background is transparent or opaque"
 msgstr "পটভূমি স্বচ্ছ বা অস্বচ্ছ কিনা সেট করুন"
 
@@ -725,11 +733,11 @@ msgstr "img2img এর জন্য শক্তি (শুধুমাত্র
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "সমর্থিত ছবি (PNG, JPEG, WebP)"
 
-#: models/gpt_image.py:152
+#: models/gpt_image.py:152 models/gpt_image_2.py:151
 msgid "The aspect ratio of the generated image"
 msgstr "জেনারেট করা ছবির দিক অনুপাত"
 
-#: models/gpt_image.py:183
+#: models/gpt_image.py:183 models/gpt_image_2.py:170
 msgid "The quality of the generated image"
 msgstr "জেনারেট করা ছবির গুণমান"
 
@@ -737,14 +745,14 @@ msgstr "জেনারেট করা ছবির গুণমান"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana "
-"Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion "
-"3.5 Large Turbo."
+"including GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, "
+"Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable "
+"Diffusion 3.5 Large Turbo."
 msgstr ""
 "প্রাকৃতিক ভাষার প্রম্পট দিয়ে Replicate এর উন্নত AI মডেল ব্যবহার করে বিদ্যমান ছবি "
-"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। GPT Image 1.5, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream "
-"4.5 এবং Stable Diffusion 3.5 Large Turbo সহ একাধিক মডেল থেকে বেছে নিন।"
+"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। GPT Image 1.5, GPT Image 2, Imagen 4, Nano "
+"Banana, Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, "
+"Seedream 4.5 এবং Stable Diffusion 3.5 Large Turbo সহ একাধিক মডেল থেকে বেছে নিন।"
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -795,7 +803,7 @@ msgstr "টেক্সট-টু-ইমেজ মোডে উত্পন্�
 msgid "Yes"
 msgstr "হ্যাঁ"
 
-#: models/gpt_image.py:141
+#: models/gpt_image.py:141 models/gpt_image_2.py:140
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "আপনার OpenAI API কী (ঐচ্ছিক - প্রদান না করলে প্রক্সি ব্যবহার করে)"
 

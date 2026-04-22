@@ -12,6 +12,7 @@ from . import BaseModel, get_model, get_all_models
 # Import models to register them
 from . import flux_pro  # noqa: F401
 from . import gpt_image  # noqa: F401
+from . import gpt_image_2  # noqa: F401
 from . import imagen  # noqa: F401
 from . import nano_banana  # noqa: F401
 from . import nano_banana_2  # noqa: F401

@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -20,7 +20,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 ### Prerequisites
 
-- **GIMP 3.0.x**
+- **GIMP 3.0+**
 - **Python 3.8+**
 - **Replicate API key** (paid account required)
 
@@ -36,31 +36,33 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.3.0`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.4.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
    Rename and move the extracted folder to exactly `dream-prompter` in your GIMP plugins directory:
 
-- **Linux**: `~/.config/GIMP/3.0/plug-ins/dream-prompter/` (Snap: `~/snap/gimp/current/GIMP/3.0/plug-ins/dream-prompter/`)
-- **Windows**: `%APPDATA%\GIMP\3.0\plug-ins\dream-prompter\`
-- **macOS**: `~/Library/Application Support/GIMP/3.0/plug-ins/dream-prompter/`
+   > **Note:** In paths below, replace `<version>` with your installed GIMP's major.minor version — e.g. `3.0` or `3.2`. The plugin itself auto-detects the running GIMP version at runtime.
+
+- **Linux**: `~/.config/GIMP/<version>/plug-ins/dream-prompter/` (Snap: `~/snap/gimp/current/GIMP/<version>/plug-ins/dream-prompter/`)
+- **Windows**: `%APPDATA%\GIMP\<version>\plug-ins\dream-prompter\`
+- **macOS**: `~/Library/Application Support/GIMP/<version>/plug-ins/dream-prompter/`
 
 Example for Linux:
 
 ```bash
-# Extract creates dream-prompter-1.3.0/
-unzip dream-prompter-1.3.0.zip
+# Extract creates dream-prompter-1.4.0/
+unzip dream-prompter-1.4.0.zip
 # Move to correct location with correct name
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-mv dream-prompter-1.3.0 ~/.config/GIMP/3.0/plug-ins/dream-prompter
+mv dream-prompter-1.4.0 ~/.config/GIMP/<version>/plug-ins/dream-prompter
 ```
 
 4. **Make executable** (Linux/macOS only):
 
    ```bash
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
+   chmod +x ~/.config/GIMP/<version>/plug-ins/dream-prompter/dream-prompter.py
    ```
 
 5. **Restart GIMP**
@@ -86,15 +88,15 @@ yay -S dream-prompter
 
    ```bash
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   mkdir -p ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   mkdir -p ~/.config/GIMP/<version>/plug-ins/dream-prompter/
    ```
 
 3. **Copy all Python files and the models directory:**
 
    ```bash
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   cp *.py ~/.config/GIMP/3.0/plug-ins/dream-prompter/
-   cp -r models ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   cp *.py ~/.config/GIMP/<version>/plug-ins/dream-prompter/
+   cp -r models ~/.config/GIMP/<version>/plug-ins/dream-prompter/
    ```
 
 4. **Build and install translations (Optional):**
@@ -102,19 +104,19 @@ yay -S dream-prompter
    ```bash
    python3 scripts/build-translations.py
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   cp -r locale ~/.config/GIMP/3.0/plug-ins/dream-prompter/
+   cp -r locale ~/.config/GIMP/<version>/plug-ins/dream-prompter/
    ```
 
 5. **Make executable:**
    ```bash
    # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-   chmod +x ~/.config/GIMP/3.0/plug-ins/dream-prompter/dream-prompter.py
+   chmod +x ~/.config/GIMP/<version>/plug-ins/dream-prompter/dream-prompter.py
    ```
 
 **Note:** Your final directory structure should look like:
 
 ```
-~/.config/GIMP/3.0/plug-ins/dream-prompter/
+~/.config/GIMP/<version>/plug-ins/dream-prompter/
 ├── dream-prompter.py
 ├── api.py
 ├── dialog*.py
@@ -126,6 +128,7 @@ yay -S dream-prompter
 │   ├── factory.py
 │   ├── flux_pro.py
 │   ├── gpt_image.py
+│   ├── gpt_image_2.py
 │   ├── imagen.py
 │   ├── nano_banana.py
 │   ├── nano_banana_pro.py
@@ -145,7 +148,7 @@ cd dream-prompter
 pip install replicate
 python3 scripts/build-translations.py # optional, defaults to English
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-ln -s $(pwd) ~/.config/GIMP/3.0/plug-ins/dream-prompter
+ln -s $(pwd) ~/.config/GIMP/<version>/plug-ins/dream-prompter
 ```
 
 ### Python Dependencies Note
@@ -253,6 +256,14 @@ If you get the **"replicate not installed"** error on Windows:
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Transparent backgrounds, quality control, input fidelity options
+
+**GPT Image 2** (`openai/gpt-image-2`) - OpenAI's next generation image generation model:
+
+- **Capabilities**: Generation only
+- **Reference Images**: Up to 10 for generation
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: Transparent backgrounds, quality control, improved prompt understanding
 
 **Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
 
@@ -417,6 +428,7 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`models/factory.py`** - Model factory for centralized model management
 - **`models/flux_pro.py`** - Flux 2 Pro model implementation
 - **`models/gpt_image.py`** - GPT Image 1.5 model implementation
+- **`models/gpt_image_2.py`** - GPT Image 2 model implementation
 - **`models/imagen.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
 - **`models/nano_banana_pro.py`** - Nano Banana Pro model implementation
@@ -544,4 +556,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana Pro, Qwen's Image, Qwen's Image Edit Plus, ByteDance's Seedream 4.5, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, OpenAI's GPT Image 2, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana Pro, Qwen's Image, Qwen's Image Edit Plus, ByteDance's Seedream 4.5, and Stability AI's Stable Diffusion 3.5 Large Turbo.

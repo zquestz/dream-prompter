@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-02-28 11:56-1000\n"
+"POT-Creation-Date: 2026-04-21 17:40-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -75,8 +75,8 @@ msgstr "正在新增圖層 {num}..."
 msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
 
-#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
-#: models/nano_banana.py:164 models/nano_banana_2.py:184
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/gpt_image_2.py:150
+#: models/imagen.py:144 models/nano_banana.py:164 models/nano_banana_2.py:184
 #: models/nano_banana_pro.py:179 models/qwen_image.py:144
 #: models/seedream.py:213 models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
@@ -91,7 +91,7 @@ msgstr "生成圖像的縱橫比"
 msgid "Aspect ratio of the generated image"
 msgstr "生成圖像的長寬比"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2.py:178
 msgid "Background"
 msgstr "背景"
 
@@ -131,11 +131,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
-#: models/gpt_image.py:203
+#: models/gpt_image.py:203 models/gpt_image_2.py:190
 msgid "Compression level (0-100%)"
 msgstr "壓縮級別（0-100%）"
 
-#: models/gpt_image.py:222
+#: models/gpt_image.py:222 models/gpt_image_2.py:209
 msgid "Content moderation level"
 msgstr "內容審核級別"
 
@@ -187,7 +187,7 @@ msgstr "正在下載結果..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI圖像創建器/編輯器"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -225,7 +225,7 @@ msgstr "新增圖層錯誤: {error}"
 msgid "Error creating images: {error}"
 msgstr "建立影像錯誤: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
@@ -242,8 +242,9 @@ msgstr "匯出當前圖像失敗"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
-#: models/nano_banana_2.py:209 models/nano_banana_pro.py:200
+#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/nano_banana.py:185 models/nano_banana_2.py:209
+#: models/nano_banana_pro.py:200
 msgid "Format of the output image"
 msgstr "輸出圖像的格式"
 
@@ -259,6 +260,10 @@ msgstr "輸出圖像的格式。"
 #: models/gpt_image.py:45
 msgid "GPT Image 1.5"
 msgstr "GPT Image 1.5"
+
+#: models/gpt_image_2.py:45
+msgid "GPT Image 2"
+msgstr "GPT Image 2"
 
 #: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
@@ -302,8 +307,7 @@ msgstr "Google的高級圖像生成模型"
 msgid ""
 "Google's fast image generation model with conversational editing, multi-"
 "image fusion, and character consistency"
-msgstr ""
-"Google 的快速圖像生成模型，支援對話式編輯、多圖像融合和角色一致性"
+msgstr "Google 的快速圖像生成模型，支援對話式編輯、多圖像融合和角色一致性"
 
 #: models/nano_banana_pro.py:41
 msgid "Google's state of the art image generation and editing model"
@@ -404,7 +408,7 @@ msgstr "模型設定"
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
 
-#: models/gpt_image.py:221
+#: models/gpt_image.py:221 models/gpt_image_2.py:208
 msgid "Moderation"
 msgstr "內容審核"
 
@@ -464,7 +468,7 @@ msgstr "API響應中沒有有效圖像數據"
 msgid "Not set"
 msgstr "未設置"
 
-#: models/gpt_image.py:172
+#: models/gpt_image.py:172 models/gpt_image_2.py:159
 msgid "Number of Images"
 msgstr "圖像數量"
 
@@ -472,17 +476,21 @@ msgstr "圖像數量"
 msgid "Number of denoising steps. Recommended range is 28-50."
 msgstr "去噪步數。建議範圍是28-50。"
 
-#: models/gpt_image.py:173
+#: models/gpt_image.py:173 models/gpt_image_2.py:160
 msgid "Number of images to generate (1-10)"
 msgstr "要生成的圖像數量（1-10）"
 
-#: models/gpt_image.py:139
+#: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "OpenAI API Key"
 msgstr "OpenAI API金鑰"
 
 #: models/gpt_image.py:40
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI的高級圖像生成模型"
+
+#: models/gpt_image_2.py:40
+msgid "OpenAI's next generation image generation model"
+msgstr "OpenAI的新一代圖像生成模型"
 
 #: dialog_gtk.py:514
 msgid "Operation Mode"
@@ -492,12 +500,12 @@ msgstr "操作模式"
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: models/gpt_image.py:202
+#: models/gpt_image.py:202 models/gpt_image_2.py:189
 msgid "Output Compression"
 msgstr "輸出壓縮"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
-#: models/nano_banana.py:184 models/nano_banana_2.py:208
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
 #: models/stable_diffusion_large_turbo.py:231
@@ -537,7 +545,7 @@ msgstr "需要提示詞"
 msgid "Prompt strength (or denoising strength)"
 msgstr "提示強度（或去噪強度）"
 
-#: models/gpt_image.py:182
+#: models/gpt_image.py:182 models/gpt_image_2.py:169
 msgid "Quality"
 msgstr "品質"
 
@@ -685,7 +693,7 @@ msgstr "順序生成"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "設置種子以實現可重現性（-1 = 隨機）"
 
-#: models/gpt_image.py:193
+#: models/gpt_image.py:193 models/gpt_image_2.py:180
 msgid "Set whether the background is transparent or opaque"
 msgstr "設定背景是透明還是不透明"
 
@@ -717,11 +725,11 @@ msgstr "img2img的強度（僅與參考圖像一起使用）"
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "支援的圖像格式（PNG、JPEG、WebP）"
 
-#: models/gpt_image.py:152
+#: models/gpt_image.py:152 models/gpt_image_2.py:151
 msgid "The aspect ratio of the generated image"
 msgstr "生成圖像的長寬比"
 
-#: models/gpt_image.py:183
+#: models/gpt_image.py:183 models/gpt_image_2.py:170
 msgid "The quality of the generated image"
 msgstr "生成圖像的品質"
 
@@ -729,14 +737,14 @@ msgstr "生成圖像的品質"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana "
-"Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion "
-"3.5 Large Turbo."
+"including GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, "
+"Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable "
+"Diffusion 3.5 Large Turbo."
 msgstr ""
 "使用Replicate的高級AI模型和自然語言提示轉換現有圖像或生成新圖像。可從多個模型"
-"中選擇，包括GPT Image 1.5、Imagen 4、Nano Banana、Nano Banana 2、Nano "
-"Banana Pro、Qwen Image、Qwen Image Edit Plus、Seedream 4.5和Stable Diffusion "
-"3.5 Large Turbo。"
+"中選擇，包括GPT Image 1.5、GPT Image 2、Imagen 4、Nano Banana、Nano Banana "
+"2、Nano Banana Pro、Qwen Image、Qwen Image Edit Plus、Seedream 4.5和Stable "
+"Diffusion 3.5 Large Turbo。"
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -783,7 +791,7 @@ msgstr "文本轉圖像模式下生成圖像的寬度。"
 msgid "Yes"
 msgstr "是"
 
-#: models/gpt_image.py:141
+#: models/gpt_image.py:141 models/gpt_image_2.py:140
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "您的OpenAI API金鑰（可選 - 如未提供則使用代理）"
 

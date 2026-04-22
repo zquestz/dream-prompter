@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-02-28 11:56-1000\n"
+"POT-Creation-Date: 2026-04-21 17:40-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: French\n"
@@ -75,8 +75,8 @@ msgstr "Ajout du calque {num}..."
 msgid "Additional Images (Optional)"
 msgstr "Images Supplémentaires (Optionnel)"
 
-#: models/flux_pro.py:179 models/gpt_image.py:151 models/imagen.py:144
-#: models/nano_banana.py:164 models/nano_banana_2.py:184
+#: models/flux_pro.py:179 models/gpt_image.py:151 models/gpt_image_2.py:150
+#: models/imagen.py:144 models/nano_banana.py:164 models/nano_banana_2.py:184
 #: models/nano_banana_pro.py:179 models/qwen_image.py:144
 #: models/seedream.py:213 models/stable_diffusion_large_turbo.py:179
 msgid "Aspect Ratio"
@@ -91,7 +91,7 @@ msgstr "Rapport d'aspect pour l'image générée"
 msgid "Aspect ratio of the generated image"
 msgstr "Rapport d'aspect de l'image générée"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2.py:178
 msgid "Background"
 msgstr "Arrière-plan"
 
@@ -135,11 +135,11 @@ msgstr "Cfg"
 msgid "Clear selected files"
 msgstr "Effacer les fichiers sélectionnés"
 
-#: models/gpt_image.py:203
+#: models/gpt_image.py:203 models/gpt_image_2.py:190
 msgid "Compression level (0-100%)"
 msgstr "Niveau de compression (0-100%)"
 
-#: models/gpt_image.py:222
+#: models/gpt_image.py:222 models/gpt_image_2.py:209
 msgid "Content moderation level"
 msgstr "Niveau de modération du contenu"
 
@@ -195,7 +195,7 @@ msgstr "Téléchargement du résultat..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - Créateur/Éditeur d'Images IA"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -233,7 +233,7 @@ msgstr "Erreur lors de l'ajout des calques : {error}"
 msgid "Error creating images: {error}"
 msgstr "Erreur lors de la création des images : {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Erreur lors de l'exécution de Dream Prompter : {error}"
@@ -250,8 +250,9 @@ msgstr "Échec de l'exportation de l'image actuelle"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/imagen.py:154 models/nano_banana.py:185
-#: models/nano_banana_2.py:209 models/nano_banana_pro.py:200
+#: models/gpt_image.py:213 models/gpt_image_2.py:200 models/imagen.py:154
+#: models/nano_banana.py:185 models/nano_banana_2.py:209
+#: models/nano_banana_pro.py:200
 msgid "Format of the output image"
 msgstr "Format de l'image de sortie"
 
@@ -267,6 +268,10 @@ msgstr "Format des images de sortie."
 #: models/gpt_image.py:45
 msgid "GPT Image 1.5"
 msgstr "GPT Image 1.5"
+
+#: models/gpt_image_2.py:45
+msgid "GPT Image 2"
+msgstr "GPT Image 2"
 
 #: dialog_events.py:181 dialog_gtk.py:416
 msgid "Generate Edit"
@@ -311,8 +316,8 @@ msgid ""
 "Google's fast image generation model with conversational editing, multi-"
 "image fusion, and character consistency"
 msgstr ""
-"Modèle rapide de génération d'images de Google avec édition conversationnelle, "
-"fusion multi-images et cohérence des personnages"
+"Modèle rapide de génération d'images de Google avec édition "
+"conversationnelle, fusion multi-images et cohérence des personnages"
 
 #: models/nano_banana_pro.py:41
 msgid "Google's state of the art image generation and editing model"
@@ -417,7 +422,7 @@ msgstr "Paramètres du Modèle"
 msgid "Model error: {error}"
 msgstr "Erreur de modèle : {error}"
 
-#: models/gpt_image.py:221
+#: models/gpt_image.py:221 models/gpt_image_2.py:208
 msgid "Moderation"
 msgstr "Modération"
 
@@ -477,7 +482,7 @@ msgstr "Aucune donnée d'image valide dans la réponse de l'API"
 msgid "Not set"
 msgstr "Non défini"
 
-#: models/gpt_image.py:172
+#: models/gpt_image.py:172 models/gpt_image_2.py:159
 msgid "Number of Images"
 msgstr "Nombre d'Images"
 
@@ -485,17 +490,21 @@ msgstr "Nombre d'Images"
 msgid "Number of denoising steps. Recommended range is 28-50."
 msgstr "Nombre d'étapes de débruitage. La plage recommandée est 28-50."
 
-#: models/gpt_image.py:173
+#: models/gpt_image.py:173 models/gpt_image_2.py:160
 msgid "Number of images to generate (1-10)"
 msgstr "Nombre d'images à générer (1-10)"
 
-#: models/gpt_image.py:139
+#: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "OpenAI API Key"
 msgstr "Clé API OpenAI"
 
 #: models/gpt_image.py:40
 msgid "OpenAI's advanced image generation model"
 msgstr "Modèle avancé de génération d'images d'OpenAI"
+
+#: models/gpt_image_2.py:40
+msgid "OpenAI's next generation image generation model"
+msgstr "Modèle de génération d'images de nouvelle génération d'OpenAI"
 
 #: dialog_gtk.py:514
 msgid "Operation Mode"
@@ -505,12 +514,12 @@ msgstr "Mode d'Opération"
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
-#: models/gpt_image.py:202
+#: models/gpt_image.py:202 models/gpt_image_2.py:189
 msgid "Output Compression"
 msgstr "Compression de Sortie"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/imagen.py:153
-#: models/nano_banana.py:184 models/nano_banana_2.py:208
+#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:199
+#: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
 #: models/nano_banana_pro.py:199 models/qwen_image.py:247
 #: models/qwen_image_edit_plus.py:176
 #: models/stable_diffusion_large_turbo.py:231
@@ -550,7 +559,7 @@ msgstr "Invite requise"
 msgid "Prompt strength (or denoising strength)"
 msgstr "Force du prompt (ou intensité de débruitage)"
 
-#: models/gpt_image.py:182
+#: models/gpt_image.py:182 models/gpt_image_2.py:169
 msgid "Quality"
 msgstr "Qualité"
 
@@ -706,7 +715,7 @@ msgstr "Génération Séquentielle"
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "Définir une graine pour la reproductibilité (-1 = aléatoire)"
 
-#: models/gpt_image.py:193
+#: models/gpt_image.py:193 models/gpt_image_2.py:180
 msgid "Set whether the background is transparent or opaque"
 msgstr "Définir si l'arrière-plan est transparent ou opaque"
 
@@ -738,11 +747,11 @@ msgstr "Force pour img2img (utilisé uniquement avec une image de référence)"
 msgid "Supported Images (PNG, JPEG, WebP)"
 msgstr "Images supportées (PNG, JPEG, WebP)"
 
-#: models/gpt_image.py:152
+#: models/gpt_image.py:152 models/gpt_image_2.py:151
 msgid "The aspect ratio of the generated image"
 msgstr "Le rapport d'aspect de l'image générée"
 
-#: models/gpt_image.py:183
+#: models/gpt_image.py:183 models/gpt_image_2.py:170
 msgid "The quality of the generated image"
 msgstr "La qualité de l'image générée"
 
@@ -750,15 +759,15 @@ msgstr "La qualité de l'image générée"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including GPT Image 1.5, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana "
-"Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion "
-"3.5 Large Turbo."
+"including GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, "
+"Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable "
+"Diffusion 3.5 Large Turbo."
 msgstr ""
 "Transformez des images existantes ou générez de nouvelles images en "
 "utilisant des modèles IA avancés de Replicate avec des prompts en langage "
-"naturel. Choisissez parmi plusieurs modèles incluant GPT Image 1.5, Imagen "
-"4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image "
-"Edit Plus, Seedream 4.5 et Stable Diffusion 3.5 Large Turbo."
+"naturel. Choisissez parmi plusieurs modèles incluant GPT Image 1.5, GPT "
+"Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image, "
+"Qwen Image Edit Plus, Seedream 4.5 et Stable Diffusion 3.5 Large Turbo."
 
 #: dialog_threads.py:230
 #, python-brace-format
@@ -809,7 +818,7 @@ msgstr "Largeur de l'image générée en mode texte-à-image."
 msgid "Yes"
 msgstr "Oui"
 
-#: models/gpt_image.py:141
+#: models/gpt_image.py:141 models/gpt_image_2.py:140
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "Votre clé API OpenAI (optionnel - utilise un proxy si non fournie)"
 

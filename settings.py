@@ -8,7 +8,10 @@ Settings management for Dream Prompter plugin
 import json
 import os
 import platform
+import shutil
 from typing import cast, Dict, Union, Literal, Any, Optional
+
+from gi.repository import Gimp
 
 try:
     from models.factory import model_factory
@@ -20,7 +23,6 @@ SettingsDict = Dict[str, Union[str, bool, Dict[str, Any]]]
 ModelSettingsDict = Dict[str, Any]
 
 CONFIG_FILE_NAME = "dream-prompter-config.json"
-GIMP_VERSION = "3.0"
 FILE_PERMISSIONS = 0o600
 
 DEFAULT_MODE = "edit"
@@ -38,20 +40,11 @@ DEFAULT_SETTINGS: SettingsDict = {
 
 def get_config_file() -> str:
     """Get path to config file in GIMP's user directory"""
-    system = platform.system()
-
-    if system == "Windows":
-        gimp_dir = _get_windows_config_dir()
-    elif system == "Darwin":
-        gimp_dir = _get_macos_config_dir()
-    else:
-        gimp_dir = _get_linux_config_dir()
-
+    gimp_dir = Gimp.directory()
     try:
         os.makedirs(gimp_dir, exist_ok=True)
     except (OSError, PermissionError) as e:
         print(f"Warning: Could not create config directory {gimp_dir}: {e}")
-
     return os.path.join(gimp_dir, CONFIG_FILE_NAME)
 
 
@@ -104,6 +97,7 @@ def get_model_settings(model_name: str) -> ModelSettingsDict:
 def load_settings() -> SettingsDict:
     """Load settings from config file"""
     try:
+        _migrate_legacy_config()
         config_file = get_config_file()
         if os.path.exists(config_file):
             with open(config_file, "r", encoding="utf-8") as f:
@@ -223,24 +217,35 @@ def store_settings(
         print(f"Unexpected error storing settings: {e}")
 
 
-def _get_linux_config_dir() -> str:
-    """Get Linux config directory"""
-    return os.path.join(
-        os.path.expanduser("~"), ".config", "GIMP", GIMP_VERSION
-    )
-
-
-def _get_macos_config_dir() -> str:
-    """Get macOS config directory"""
+def _get_legacy_config_file() -> str:
+    """Path where older plugin versions (hardcoded GIMP 3.0) stored the config"""
+    system = platform.system()
     home = os.path.expanduser("~")
-    return os.path.join(
-        home, "Library", "Application Support", "GIMP", GIMP_VERSION
-    )
+    if system == "Windows":
+        appdata = os.environ.get("APPDATA") or os.path.expanduser(
+            "~\\AppData\\Roaming"
+        )
+        base = os.path.join(appdata, "GIMP", "3.0")
+    elif system == "Darwin":
+        base = os.path.join(
+            home, "Library", "Application Support", "GIMP", "3.0"
+        )
+    else:
+        base = os.path.join(home, ".config", "GIMP", "3.0")
+    return os.path.join(base, CONFIG_FILE_NAME)
 
 
-def _get_windows_config_dir() -> str:
-    """Get Windows config directory"""
-    appdata = os.environ.get("APPDATA")
-    if not appdata:
-        appdata = os.path.expanduser("~\\AppData\\Roaming")
-    return os.path.join(appdata, "GIMP", GIMP_VERSION)
+def _migrate_legacy_config() -> None:
+    """One-time copy of legacy config into GIMP's current user dir"""
+    new_path = get_config_file()
+    if os.path.exists(new_path):
+        return
+    legacy_path = _get_legacy_config_file()
+    if legacy_path == new_path or not os.path.exists(legacy_path):
+        return
+    try:
+        shutil.copy2(legacy_path, new_path)
+        if platform.system() != "Windows":
+            os.chmod(new_path, FILE_PERMISSIONS)
+    except (OSError, PermissionError) as e:
+        print(f"Failed to migrate legacy config from {legacy_path}: {e}")
