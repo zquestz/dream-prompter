@@ -11,6 +11,12 @@ from typing import List, Dict, Any, Optional
 from enum import Enum
 
 
+class APIProvider(Enum):
+    """API provider for models"""
+    REPLICATE = "replicate"
+    GOOGLE_CLOUD = "google_cloud"
+
+
 class ModelCapability(Enum):
     """Model capabilities for different operations"""
 
@@ -151,6 +157,14 @@ class ParameterDefinition:
 
 class BaseModel(ABC):
     """Abstract base class for all AI models"""
+
+    @property
+    def api_provider(self) -> APIProvider:
+        """
+        Get the API provider for this model (default: Replicate)
+        Override in subclasses for models that use different providers
+        """
+        return APIProvider.REPLICATE
 
     @property
     @abstractmethod
