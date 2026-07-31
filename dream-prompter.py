@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """
 Dream Prompter - AI Image Generation GIMP Plugin
@@ -16,13 +15,13 @@ gi.require_version("Gimp", "3.0")
 gi.require_version("GimpUi", "3.0")
 gi.require_version("GLib", "2.0")
 gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import Gimp, GimpUi, Gtk, GLib  # noqa: E402
+from gi.repository import Gimp, GimpUi, GLib, Gtk  # noqa: E402
 
 from dialog import DreamPrompterDialog  # noqa: E402
-from i18n import _, DOMAIN  # noqa: E402
+from i18n import DOMAIN, _  # noqa: E402
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.4.1"
+PLUGIN_VERSION = "1.5.0"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Replicate models"
 
 
@@ -47,10 +46,10 @@ class DreamPrompter(Gimp.PlugIn):
                     "Transform existing images or generate new images using "
                     "advanced AI models from Replicate with natural language "
                     "prompts. Choose from multiple models including "
-                    "GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-                    "Nano Banana 2, Nano Banana Pro, Qwen Image, "
-                    "Qwen Image Edit Plus, Seedream 4.5, and "
-                    "Stable Diffusion 3.5 Large Turbo."
+                    "Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, "
+                    "Nano Banana, Nano Banana 2, Nano Banana Pro, "
+                    "Qwen Image 2 Pro, Qwen Image Edit 2511, "
+                    "Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
                 ),
                 name,
             )

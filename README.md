@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -21,7 +21,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 ### Prerequisites
 
 - **GIMP 3.0+**
-- **Python 3.8+**
+- **Python 3.10+** (bundled with GIMP 3)
 - **Replicate API key** (paid account required)
 
 Install the required Python library:
@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.4.1`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.5.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -51,11 +51,11 @@ pip install replicate
 Example for Linux:
 
 ```bash
-# Extract creates dream-prompter-1.4.1/
-unzip dream-prompter-1.4.1.zip
+# Extract creates dream-prompter-1.5.0/
+unzip dream-prompter-1.5.0.zip
 # Move to correct location with correct name
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-mv dream-prompter-1.4.1 ~/.config/GIMP/<version>/plug-ins/dream-prompter
+mv dream-prompter-1.5.0 ~/.config/GIMP/<version>/plug-ins/dream-prompter
 ```
 
 4. **Make executable** (Linux/macOS only):
@@ -121,6 +121,7 @@ yay -S dream-prompter
 ├── api.py
 ├── dialog*.py
 ├── integrator.py
+├── model_settings.py
 ├── settings.py
 ├── i18n.py
 ├── models/
@@ -131,6 +132,7 @@ yay -S dream-prompter
 │   ├── gpt_image_2.py
 │   ├── imagen.py
 │   ├── nano_banana.py
+│   ├── nano_banana_2.py
 │   ├── nano_banana_pro.py
 │   ├── qwen_image.py
 │   ├── qwen_image_edit_plus.py
@@ -297,15 +299,15 @@ If you get the **"replicate not installed"** error on Windows:
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: 4K resolution, accurate text rendering, multi-image fusion, real-time Google Search integration
 
-**Qwen Image** (`qwen/qwen-image`) - Qwen's advanced image generation model:
+**Qwen Image 2 Pro** (`qwen/qwen-image-2-pro`) - Qwen's next-generation image generation and editing model:
 
-- **Capabilities**: Generation only
-- **Reference Images**: Up to 1 for img2img
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 1 for img2img, none for editing
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
-- **Special Features**: Guidance control, prompt enhancement, LoRA support
+- **Special Features**: Enhanced text rendering, prompt expansion, negative prompts
 
-**Qwen Image Edit Plus** (`qwen/qwen-image-edit-plus`) - Qwen's advanced image editing model:
+**Qwen Image Edit 2511** (`qwen/qwen-image-edit-2511`) - Qwen's advanced image editing model:
 
 - **Capabilities**: Editing only
 - **Reference Images**: Up to 9 for editing
@@ -313,13 +315,13 @@ If you get the **"replicate not installed"** error on Windows:
 - **Formats**: PNG, JPEG, WebP, GIF
 - **Special Features**: Specialized for image editing and transformation
 
-**Seedream 4.5** (`bytedance/seedream-4.5`) - ByteDance's upgraded image model with stronger spatial understanding:
+**Seedream 5 Pro** (`bytedance/seedream-5-pro`) - ByteDance's flagship image generation and editing model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 14 for generation, 13 for editing
+- **Reference Images**: Up to 10 for generation, 9 for editing
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
-- **Special Features**: 4K resolution support, enhanced prompt option, improved spatial understanding and world knowledge
+- **Special Features**: 1K and 2K resolution, multi-reference composition, character consistency
 
 **Stable Diffusion 3.5 Large Turbo** (`stability-ai/stable-diffusion-3.5-large-turbo`) - Stability AI's high-resolution image generation model:
 
@@ -414,11 +416,13 @@ The plugin is organized into focused modules with a clean model-driven architect
 ### Core Plugin Files
 
 - **`dream-prompter.py`** - Main GIMP plugin entry point
+- **`dialog.py`** - Main dialog coordinator
 - **`dialog_gtk.py`** - GTK user interface components
 - **`dialog_events.py`** - Event handling and user interactions
 - **`dialog_threads.py`** - Background processing and threading
 - **`api.py`** - Replicate API integration
 - **`integrator.py`** - GIMP-specific operations
+- **`model_settings.py`** - Model parameter management utilities
 - **`settings.py`** - Configuration persistence
 - **`i18n.py`** - Internationalization support
 
@@ -431,10 +435,11 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`models/gpt_image_2.py`** - GPT Image 2 model implementation
 - **`models/imagen.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
+- **`models/nano_banana_2.py`** - Nano Banana 2 model implementation
 - **`models/nano_banana_pro.py`** - Nano Banana Pro model implementation
-- **`models/qwen_image.py`** - Qwen Image model implementation
-- **`models/qwen_image_edit_plus.py`** - Qwen Image Edit Plus model implementation
-- **`models/seedream.py`** - Seedream 4.5 model implementation
+- **`models/qwen_image.py`** - Qwen Image 2 Pro model implementation
+- **`models/qwen_image_edit_plus.py`** - Qwen Image Edit 2511 model implementation
+- **`models/seedream.py`** - Seedream 5 Pro model implementation
 - **`models/stable_diffusion_large_turbo.py`** - Stable Diffusion 3.5 Large Turbo model implementation
 
 The model system provides a clean abstraction for AI models, making it easy to:
@@ -514,7 +519,7 @@ The `nano_banana.py` file serves as a complete reference implementation.
 
 - **Edit mode disabled**: Some models (like Imagen 4) only support generation - select a different model or use Generate mode
 - **Model missing from dropdown**: Models are filtered based on context - edit-only models won't appear when no image is open
-- **Generate mode disabled**: Some models (like Qwen Image Edit Plus) only support editing - open an image first or select a different model
+- **Generate mode disabled**: Some models (like Qwen Image Edit 2511) only support editing - open an image first or select a different model
 
 ### Getting Help
 
@@ -556,4 +561,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, OpenAI's GPT Image 2, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana Pro, Qwen's Image, Qwen's Image Edit Plus, ByteDance's Seedream 4.5, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, OpenAI's GPT Image 2, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana 2, Google's Nano Banana Pro, Qwen's Image 2 Pro, Qwen's Image Edit 2511, ByteDance's Seedream 5 Pro, and Stability AI's Stable Diffusion 3.5 Large Turbo.

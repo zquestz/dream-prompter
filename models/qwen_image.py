@@ -1,33 +1,33 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
-Qwen Image model implementation
-Qwen's advanced image generation model
+Qwen Image 2 Pro model implementation
+Qwen's next-generation image generation and editing model with enhanced
+text rendering, realism and semantic adherence
 Available through Replicate API
 """
 
-from typing import List, Dict, Any, Optional
+import io
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class QwenImageModel(BaseModel):
-    """Qwen Image model implementation for Replicate"""
+    """Qwen Image 2 Pro model implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Qwen Image supports generation only"""
-        return ModelCapability.GENERATE
+        """Qwen Image 2 Pro supports generation and editing"""
+        return ModelCapability.BOTH
 
     @property
     def default_output_format(self) -> OutputFormat:
@@ -37,12 +37,14 @@ class QwenImageModel(BaseModel):
     @property
     def description(self) -> str:
         """Model description"""
-        return _("Qwen's advanced image generation model")
+        return _(
+            "Qwen's next-generation model with enhanced text rendering"
+        )
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Qwen Image")
+        return _("Qwen Image 2 Pro")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -56,16 +58,20 @@ class QwenImageModel(BaseModel):
 
     @property
     def max_reference_images_edit(self) -> int:
-        """Maximum number of reference images for editing"""
+        """
+        Maximum number of reference images for editing
+
+        The model accepts a single image, which the edited image occupies.
+        """
         return 0
 
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "qwen/qwen-image"
+        return "qwen/qwen-image-2-pro"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/png", "image/jpeg", "image/webp"]
 
@@ -73,24 +79,56 @@ class QwenImageModel(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
-        This model does not support editing.
+        Args:
+            prompt: Text prompt for editing
+            main_image: Main image to edit (file object or bytes)
+            reference_images: Unused, the model accepts a single image
+            user_settings: User's saved settings for this model
+            **kwargs: Additional parameters (override user_settings)
+
+        Returns:
+            Dictionary of input parameters for the Replicate API
         """
-        return {}
+        if isinstance(main_image, bytes):
+            image = io.BytesIO(main_image)
+        else:
+            image = main_image
+
+        params = self.build_parameters_dict(user_settings or {})
+
+        for key, value in kwargs.items():
+            if key in params:
+                params[key] = value
+
+        model_input = {
+            "prompt": prompt,
+            "image": image,
+            "match_input_image": True,
+            "enable_prompt_expansion": params.get(
+                "enable_prompt_expansion", True
+            ),
+            "negative_prompt": params.get("negative_prompt", ""),
+        }
+
+        if params.get("seed", -1) != -1:
+            model_input["seed"] = params["seed"]
+
+        return {k: v for k, v in model_input.items() if v is not None}
 
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -111,18 +149,11 @@ class QwenImageModel(BaseModel):
 
         model_input = {
             "prompt": prompt,
-            "aspect_ratio": params.get("aspect_ratio", "16:9"),
-            "image_size": params.get("image_size", "optimize_for_quality"),
-            "guidance": params.get("guidance", 3),
-            "num_inference_steps": params.get("num_inference_steps", 30),
-            "go_fast": params.get("go_fast", True),
-            "enhance_prompt": params.get("enhance_prompt", False),
-            "negative_prompt": params.get("negative_prompt", " "),
-            "output_format": params.get("output_format", "webp"),
-            "output_quality": params.get("output_quality", 80),
-            "disable_safety_checker": params.get(
-                "disable_safety_checker", False
+            "aspect_ratio": params.get("aspect_ratio", "1:1"),
+            "enable_prompt_expansion": params.get(
+                "enable_prompt_expansion", True
             ),
+            "negative_prompt": params.get("negative_prompt", ""),
         }
 
         if params.get("seed", -1) != -1:
@@ -130,17 +161,19 @@ class QwenImageModel(BaseModel):
 
         if reference_images and len(reference_images) > 0:
             model_input["image"] = reference_images[0]
-            model_input["strength"] = params.get("strength", 0.9)
+            model_input["match_input_image"] = params.get(
+                "match_input_image", False
+            )
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Qwen Image"""
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
+        """Get list of configurable parameters for Qwen Image 2 Pro"""
         return [
             ParameterDefinition(
                 name="aspect_ratio",
                 param_type=ParameterType.CHOICE,
-                default_value="16:9",
+                default_value="1:1",
                 label=_("Aspect Ratio"),
                 description=_("Aspect ratio for the generated image"),
                 choices=[
@@ -151,75 +184,32 @@ class QwenImageModel(BaseModel):
                     "3:4",
                     "3:2",
                     "2:3",
+                    "2:1",
+                    "1:2",
                 ],
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
-                name="image_size",
-                param_type=ParameterType.CHOICE,
-                default_value="optimize_for_quality",
-                label=_("Image Size"),
-                description=_("Image size optimization mode"),
-                choices=["optimize_for_quality", "optimize_for_speed"],
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="guidance",
-                param_type=ParameterType.FLOAT,
-                default_value=3,
-                label=_("Guidance"),
-                description=_(
-                    "Guidance scale. Lower values give more realistic images. "
-                    "Good values: 2, 2.5, 3, 3.5"
-                ),
-                min_value=0,
-                max_value=10,
-                step=0.5,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="num_inference_steps",
-                param_type=ParameterType.INTEGER,
-                default_value=30,
-                label=_("Inference Steps"),
-                description=_(
-                    "Number of denoising steps. "
-                    "Recommended range is 28-50."
-                ),
-                min_value=1,
-                max_value=50,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="strength",
-                param_type=ParameterType.FLOAT,
-                default_value=0.9,
-                label=_("Strength"),
-                description=_(
-                    "Strength for img2img (only used with reference image)"
-                ),
-                min_value=0,
-                max_value=1,
-                step=0.05,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="go_fast",
-                param_type=ParameterType.BOOLEAN,
-                default_value=True,
-                label=_("Go Fast"),
-                description=_(
-                    "Run faster predictions with additional optimizations."
-                ),
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="enhance_prompt",
+                name="match_input_image",
                 param_type=ParameterType.BOOLEAN,
                 default_value=False,
-                label=_("Enhance Prompt"),
-                description=_("Enhance the prompt with positive magic."),
+                label=_("Match Reference Image"),
+                description=_(
+                    "Use the reference image's aspect ratio and resolution "
+                    "instead of the aspect ratio setting"
+                ),
                 supported_modes=[ParameterMode.GENERATE],
+            ),
+            ParameterDefinition(
+                name="enable_prompt_expansion",
+                param_type=ParameterType.BOOLEAN,
+                default_value=True,
+                label=_("Expand Prompt"),
+                description=_(
+                    "Automatically expand and optimize the prompt for "
+                    "better results"
+                ),
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="negative_prompt",
@@ -227,7 +217,7 @@ class QwenImageModel(BaseModel):
                 default_value="",
                 label=_("Negative Prompt"),
                 description=_("Negative prompt for generated image"),
-                supported_modes=[ParameterMode.GENERATE],
+                supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
                 name="seed",
@@ -237,38 +227,8 @@ class QwenImageModel(BaseModel):
                 description=_("Set a seed for reproducibility (-1 = random)"),
                 step=1,
                 min_value=-1,
-                max_value=999999999,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="output_format",
-                param_type=ParameterType.CHOICE,
-                default_value="webp",
-                label=_("Output Format"),
-                description=_("Format of the output images"),
-                choices=["webp", "jpg", "png"],
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="output_quality",
-                param_type=ParameterType.INTEGER,
-                default_value=80,
-                label=_("Output Quality"),
-                description=_(
-                    "Quality when saving the output images, from 0 to 100. "
-                    "Not relevant for .png outputs"
-                ),
-                min_value=0,
-                max_value=100,
-                supported_modes=[ParameterMode.GENERATE],
-            ),
-            ParameterDefinition(
-                name="disable_safety_checker",
-                param_type=ParameterType.BOOLEAN,
-                default_value=False,
-                label=_("Disable Safety Checker"),
-                description=_("Disable safety checker for generated images."),
-                supported_modes=[ParameterMode.GENERATE],
+                max_value=2147483647,
+                supported_modes=[ParameterMode.BOTH],
             ),
         ]
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-04-21 19:10-1000\n"
+"POT-Creation-Date: 2026-07-31 13:05-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -17,101 +17,105 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:733
+#: dialog_gtk.py:730
 #, python-brace-format
 msgid "({size:.0f} KB)"
 msgstr "({size:.0f} KB)"
 
-#: dialog_gtk.py:729
+#: dialog_gtk.py:726
 #, python-brace-format
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:383 integrator.py:118
+#: dialog_threads.py:381 integrator.py:113
 msgid "AI Generated"
 msgstr "AI 생성"
 
-#: dialog_threads.py:381
+#: dialog_threads.py:379
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "AI 생성 {num}"
 
-#: dialog_threads.py:317
+#: dialog_threads.py:315
 #, python-brace-format
 msgid "AI Generated: {prompt}"
 msgstr "AI 생성: {prompt}"
 
-#: dialog_threads.py:319 integrator.py:342
+#: dialog_threads.py:317 integrator.py:339
 msgid "AI Layer"
 msgstr "AI 레이어"
 
-#: dialog_gtk.py:467
+#: dialog_gtk.py:464
 msgid "AI Model"
 msgstr "AI 모델"
 
-#: dialog_gtk.py:656
+#: dialog_gtk.py:653
 msgid "AI Prompt"
 msgstr "AI 프롬프트"
 
-#: dream-prompter.py:45
+#: dream-prompter.py:44
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Replicate 모델을 사용한 AI 이미지 생성/편집"
 
-#: api.py:64 dialog_threads.py:109 dialog_threads.py:147
+#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "API 키가 필요합니다"
 
-#: dialog_threads.py:356
+#: dialog_threads.py:354
 #, python-brace-format
 msgid "Added {count} layers"
 msgstr "{count}개 레이어 추가됨"
 
-#: dialog_threads.py:345
+#: dialog_threads.py:343
 #, python-brace-format
 msgid "Adding layer {num}..."
 msgstr "레이어 {num} 추가 중..."
 
-#: dialog_gtk.py:313
+#: dialog_gtk.py:310
 msgid "Additional Images (Optional)"
 msgstr "추가 이미지 (선택사항)"
 
-#: models/flux_pro.py:179 models/gpt_image.py:151 models/gpt_image_2.py:150
-#: models/imagen.py:144 models/nano_banana.py:164 models/nano_banana_2.py:184
-#: models/nano_banana_pro.py:179 models/qwen_image.py:144
-#: models/seedream.py:213 models/stable_diffusion_large_turbo.py:179
+#: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
+#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/nano_banana_pro.py:177 models/qwen_image.py:177
+#: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
 msgstr "종횡비"
 
-#: models/flux_pro.py:180 models/qwen_image.py:145
+#: models/flux_pro.py:178 models/qwen_image.py:178
 msgid "Aspect ratio for the generated image"
 msgstr "생성된 이미지의 종횡비"
 
-#: models/nano_banana.py:165 models/nano_banana_2.py:185
-#: models/nano_banana_pro.py:180
+#: models/nano_banana.py:163 models/nano_banana_2.py:183
+#: models/nano_banana_pro.py:178
 msgid "Aspect ratio of the generated image"
 msgstr "생성된 이미지의 종횡비"
 
-#: models/gpt_image.py:191 models/gpt_image_2.py:178
+#: models/qwen_image.py:209
+msgid "Automatically expand and optimize the prompt for better results"
+msgstr "더 나은 결과를 위해 프롬프트를 자동으로 확장하고 최적화"
+
+#: models/gpt_image.py:189 models/gpt_image_2.py:176
 msgid "Background"
 msgstr "배경"
 
-#: api.py:127
+#: api.py:122
 msgid "Building Replicate edit request..."
 msgstr "Replicate 편집 요청 구축 중..."
 
-#: models/seedream.py:42
-msgid "ByteDance's upgraded model with stronger spatial understanding"
-msgstr "ByteDance의 강화된 공간 이해 능력을 갖춘 업그레이드 모델"
+#: models/seedream.py:40
+msgid "ByteDance's flagship model for sharp 1K and 2K images"
+msgstr "선명한 1K 및 2K 이미지를 위한 ByteDance의 플래그십 모델"
 
-#: dialog_events.py:211 dialog_gtk.py:411
+#: dialog_events.py:215 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "취소"
 
-#: dialog_threads.py:51
+#: dialog_threads.py:49
 msgid "Cancelling..."
 msgstr "취소 중..."
 
-#: dialog_events.py:242
+#: dialog_events.py:253
 #, python-brace-format
 msgid ""
 "Cannot add {count} files. Maximum {max} reference images allowed in edit "
@@ -120,194 +124,178 @@ msgstr ""
 "{count}개의 파일을 추가할 수 없습니다. 편집 모드에서는 최대 {max}개의 참조 이"
 "미지가 허용됩니다."
 
-#: dialog_events.py:249
+#: dialog_events.py:260
 #, python-brace-format
 msgid "Cannot add {count} files. Maximum {max} reference images allowed."
 msgstr ""
 "{count}개의 파일을 추가할 수 없습니다. 최대 {max}개의 참조 이미지가 허용됩니"
 "다."
 
-#: models/stable_diffusion_large_turbo.py:198
+#: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:341
+#: dialog_gtk.py:338
 msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
-#: models/gpt_image.py:203 models/gpt_image_2.py:188
+#: models/gpt_image.py:201 models/gpt_image_2.py:186
 msgid "Compression level (0-100%)"
 msgstr "압축 수준 (0-100%)"
 
-#: models/gpt_image.py:222 models/gpt_image_2.py:207
+#: models/gpt_image.py:220 models/gpt_image_2.py:205
 msgid "Content moderation level"
 msgstr "콘텐츠 검토 수준"
 
-#: models/imagen.py:145 models/seedream.py:214
-#: models/stable_diffusion_large_turbo.py:180
+#: models/imagen.py:143 models/seedream.py:177
+#: models/stable_diffusion_large_turbo.py:178
 msgid "Control aspect ratio of generated images"
 msgstr "생성 이미지의 종횡비 제어"
 
-#: models/gpt_image.py:162
+#: models/gpt_image.py:160
 msgid ""
 "Control how much effort the model will exert to match the style and features "
 "of input images"
 msgstr "입력 이미지의 스타일과 특징을 맞추기 위해 모델이 얼마나 노력할지 제어"
 
-#: models/nano_banana_pro.py:209
+#: models/nano_banana_pro.py:207
 msgid "Control safety filtering of generated images"
 msgstr "생성된 이미지의 안전 필터링 제어"
 
-#: models/imagen.py:163
+#: models/imagen.py:161
 msgid "Control safety of generated images"
 msgstr "생성 이미지의 안전성 제어"
 
-#: dialog_threads.py:376
+#: dialog_threads.py:374
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "이미지 {num} 생성 중..."
 
-#: models/seedream.py:202
-msgid "Custom height in pixels (only used when size='custom')"
-msgstr "픽셀 단위 사용자 정의 높이 (size='custom'일 때만 사용)"
-
-#: models/seedream.py:189
-msgid "Custom width in pixels (only used when size='custom')"
-msgstr "픽셀 단위 사용자 정의 너비 (size='custom'일 때만 사용)"
-
-#: models/qwen_image.py:269 models/qwen_image_edit_plus.py:199
+#: models/qwen_image_edit_plus.py:198
 msgid "Disable Safety Checker"
 msgstr "안전 검사기 비활성화"
 
-#: models/qwen_image.py:270 models/qwen_image_edit_plus.py:200
+#: models/qwen_image_edit_plus.py:199
 msgid "Disable safety checker for generated images."
 msgstr "생성된 이미지에 대한 안전 검사기 비활성화."
 
-#: api.py:379
+#: api.py:376
 msgid "Downloading result..."
 msgstr "결과 다운로드 중..."
 
-#: dialog.py:26
+#: dialog.py:23
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI 이미지 생성기/편집기"
 
-#: dream-prompter.py:57
+#: dream-prompter.py:56
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:521
+#: dialog_gtk.py:518
 msgid "Edit Image"
 msgstr "이미지 편집"
 
-#: dialog_events.py:125
+#: dialog_events.py:129
 msgid "Edit mode requires a selected layer"
 msgstr "편집 모드에는 선택된 레이어가 필요합니다"
 
-#: models/qwen_image_edit_plus.py:156
+#: models/qwen_image_edit_plus.py:155
 msgid "Enable speed optimizations"
 msgstr "속도 최적화 활성화"
 
-#: models/qwen_image.py:220
-msgid "Enhance Prompt"
-msgstr "프롬프트 향상"
-
-#: models/qwen_image.py:221
-msgid "Enhance the prompt with positive magic."
-msgstr "긍정적인 마법으로 프롬프트를 향상시킵니다."
-
-#: dialog_gtk.py:374
+#: dialog_gtk.py:371
 msgid "Enter your Replicate API key"
 msgstr "Replicate API 키를 입력하세요"
 
-#: dialog_threads.py:361
+#: dialog_threads.py:359
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "레이어 추가 오류: {error}"
 
-#: dialog_threads.py:395
+#: dialog_threads.py:393
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "이미지 생성 오류: {error}"
 
-#: dream-prompter.py:102
+#: dream-prompter.py:101
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
 
-#: api.py:395
+#: models/qwen_image.py:207
+msgid "Expand Prompt"
+msgstr "프롬프트 확장"
+
+#: api.py:392
 msgid "Failed to convert any images from API response"
 msgstr "API 응답에서 이미지 변환 실패"
 
-#: api.py:121
+#: api.py:116
 msgid "Failed to export current image"
 msgstr "현재 이미지 내보내기 실패"
 
-#: models/flux_pro.py:46
+#: models/flux_pro.py:44
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:213 models/gpt_image_2.py:198 models/imagen.py:154
-#: models/nano_banana.py:185 models/nano_banana_2.py:209
-#: models/nano_banana_pro.py:200
+#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/nano_banana.py:183 models/nano_banana_2.py:207
+#: models/nano_banana_pro.py:198
 msgid "Format of the output image"
 msgstr "출력 이미지의 형식"
 
-#: models/qwen_image.py:248 models/qwen_image_edit_plus.py:177
-#: models/stable_diffusion_large_turbo.py:232
+#: models/qwen_image_edit_plus.py:176 models/seedream.py:196
+#: models/stable_diffusion_large_turbo.py:230
 msgid "Format of the output images"
 msgstr "출력 이미지들의 형식"
 
-#: models/flux_pro.py:271
+#: models/flux_pro.py:269
 msgid "Format of the output images."
 msgstr "출력 이미지의 형식."
 
-#: models/gpt_image.py:45
+#: models/gpt_image.py:43
 msgid "GPT Image 1.5"
 msgstr "GPT Image 1.5"
 
-#: models/gpt_image_2.py:45
+#: models/gpt_image_2.py:43
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
 
-#: dialog_events.py:181 dialog_gtk.py:416
+#: dialog_events.py:185 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "편집 생성"
 
-#: dialog_events.py:184 dialog_gtk.py:526
+#: dialog_events.py:188 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "이미지 생성"
 
-#: models/seedream.py:243
-msgid "Generate images sequentially or in parallel"
-msgstr "이미지를 순차적으로 또는 병렬로 생성"
-
-#: dialog_threads.py:390
+#: dialog_threads.py:388
 #, python-brace-format
 msgid "Generated {count} images"
 msgstr "{count}개 이미지 생성됨"
 
-#: api.py:187
+#: api.py:180
 msgid "Generating image with Replicate..."
 msgstr "Replicate로 이미지 생성 중..."
 
-#: dialog_gtk.py:394
+#: dialog_gtk.py:391
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "<a href=\"{url}\">Replicate</a>에서 API 키를 가져오세요"
 
-#: models/qwen_image.py:210 models/qwen_image_edit_plus.py:155
+#: models/qwen_image_edit_plus.py:154
 msgid "Go Fast"
 msgstr "빠른 모드"
 
-#: models/nano_banana_2.py:217
+#: models/nano_banana_2.py:215
 msgid "Google Search"
 msgstr "Google 검색"
 
-#: models/imagen.py:39
+#: models/imagen.py:37
 msgid "Google's advanced image generation model"
 msgstr "Google의 고급 이미지 생성 모델"
 
-#: models/nano_banana_2.py:43
+#: models/nano_banana_2.py:41
 msgid ""
 "Google's fast image generation model with conversational editing, multi-"
 "image fusion, and character consistency"
@@ -315,254 +303,228 @@ msgstr ""
 "대화형 편집, 다중 이미지 융합 및 캐릭터 일관성을 갖춘 Google의 빠른 이미지 생"
 "성 모델"
 
-#: models/nano_banana_pro.py:41
+#: models/nano_banana_pro.py:39
 msgid "Google's state of the art image generation and editing model"
 msgstr "Google의 최첨단 이미지 생성 및 편집 모델"
 
-#: models/nano_banana.py:43
+#: models/nano_banana.py:41
 msgid ""
 "Google's state-of-the-art image generation and editing model for fast, "
 "conversational workflows"
 msgstr ""
 "빠르고 대화형 워크플로우를 위한 Google의 최첨단 이미지 생성 및 편집 모델"
 
-#: models/qwen_image.py:170
-msgid "Guidance"
-msgstr "가이던스"
-
-#: models/qwen_image.py:172
-msgid ""
-"Guidance scale. Lower values give more realistic images. Good values: 2, "
-"2.5, 3, 3.5"
-msgstr ""
-"가이던스 스케일. 낮은 값이 더 사실적인 이미지를 제공합니다. 좋은 값: 2, 2.5, "
-"3, 3.5"
-
-#: models/flux_pro.py:232 models/seedream.py:200
+#: models/flux_pro.py:230
 msgid "Height"
 msgstr "높이"
 
-#: models/flux_pro.py:234
+#: models/flux_pro.py:232
 msgid ""
 "Height of the generated image. Only used when aspect_ratio=custom. Must be a "
 "multiple of 32."
 msgstr "텍스트-이미지 모드에서 생성된 이미지의 높이."
 
-#: dialog_events.py:267
+#: dialog_events.py:278
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
-#: models/flux_pro.py:41
+#: models/flux_pro.py:39
 msgid "High-quality image generation and editing model"
 msgstr "우수한 이미지 품질의 텍스트-이미지 모델"
 
-#: models/stable_diffusion_large_turbo.py:199
+#: models/stable_diffusion_large_turbo.py:197
 msgid "How similar the output should be to the prompt"
 msgstr "출력이 프롬프트와 얼마나 비슷해야 하는지"
 
-#: models/nano_banana_2.py:228
+#: models/nano_banana_2.py:226
 msgid "Image Search"
 msgstr "이미지 검색"
 
-#: models/qwen_image.py:161 models/seedream.py:176
+#: models/seedream.py:164
 msgid "Image Size"
 msgstr "이미지 크기"
 
-#: api.py:399
+#: api.py:396
 msgid "Image editing complete!"
 msgstr "이미지 편집 완료!"
 
-#: api.py:401
+#: api.py:398
 msgid "Image generation complete!"
 msgstr "이미지 생성 완료!"
 
-#: models/qwen_image.py:162
-msgid "Image size optimization mode"
-msgstr "이미지 크기 최적화 모드"
+#: models/seedream.py:166
+msgid "Image resolution: 1K (~2 megapixels) or 2K (~4 megapixels)"
+msgstr "이미지 해상도: 1K (~2메가픽셀) 또는 2K (~4메가픽셀)"
 
-#: models/imagen.py:44
+#: models/imagen.py:42
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: models/qwen_image.py:184
-msgid "Inference Steps"
-msgstr "추론 단계"
-
-#: dialog_events.py:136
+#: dialog_events.py:140
 msgid "Initializing API request..."
 msgstr "API 요청 초기화 중..."
 
-#: models/gpt_image.py:160
+#: models/gpt_image.py:158
 msgid "Input Fidelity"
 msgstr "입력 충실도"
 
-#: api.py:268
+#: api.py:265
 msgid "Logs"
 msgstr "로그"
 
-#: models/seedream.py:232
-msgid "Max Images"
-msgstr "최대 이미지 수"
+#: models/qwen_image.py:196
+msgid "Match Reference Image"
+msgstr "참조 이미지에 맞추기"
 
-#: models/seedream.py:233
-msgid "Maximum number of images to generate"
-msgstr "생성할 최대 이미지 수"
-
-#: dialog_gtk.py:265
+#: dialog_gtk.py:262
 msgid "Model Settings"
 msgstr "모델 설정"
 
-#: api.py:265
+#: api.py:258
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
 
-#: models/gpt_image.py:221 models/gpt_image_2.py:206
+#: models/gpt_image.py:219 models/gpt_image_2.py:204
 msgid "Moderation"
 msgstr "콘텐츠 검토"
 
-#: models/nano_banana.py:50
+#: models/nano_banana.py:48
 msgid "Nano Banana (Gemini 2.5 Flash Image)"
 msgstr "Nano Banana (Gemini 2.5 Flash Image)"
 
-#: models/nano_banana_2.py:50
+#: models/nano_banana_2.py:48
 msgid "Nano Banana 2 (Gemini 3.1 Flash Image)"
 msgstr "Nano Banana 2 (Gemini 3.1 Flash Image)"
 
-#: models/nano_banana_pro.py:46
+#: models/nano_banana_pro.py:44
 msgid "Nano Banana Pro (Gemini 3 Pro)"
 msgstr "Nano Banana Pro (Gemini 3 Pro)"
 
-#: models/qwen_image.py:228 models/stable_diffusion_large_turbo.py:171
+#: models/qwen_image.py:218 models/stable_diffusion_large_turbo.py:169
 msgid "Negative Prompt"
 msgstr "네거티브 프롬프트"
 
-#: models/qwen_image.py:229
+#: models/qwen_image.py:219
 msgid "Negative prompt for generated image"
 msgstr "생성된 이미지의 네거티브 프롬프트"
 
-#: model_settings.py:250
+#: model_settings.py:248
 msgid "No"
 msgstr "아니요"
 
-#: api.py:109
+#: api.py:104
 msgid "No GIMP image provided for editing"
 msgstr "편집할 GIMP 이미지가 제공되지 않았습니다"
 
-#: dialog_gtk.py:330 dialog_gtk.py:791
+#: dialog_gtk.py:327 dialog_gtk.py:788
 msgid "No additional images selected"
 msgstr "추가 이미지가 선택되지 않았습니다"
 
-#: dialog_threads.py:105 dialog_threads.py:188
+#: dialog_threads.py:103 dialog_threads.py:186
 msgid "No image available for editing"
 msgstr "편집할 이미지가 없습니다"
 
-#: dialog_threads.py:220 dialog_threads.py:282
+#: dialog_threads.py:218 dialog_threads.py:280
 msgid "No image data received from API"
 msgstr "API에서 이미지 데이터를 받지 못했습니다"
 
-#: dialog_threads.py:101
+#: dialog_threads.py:99
 msgid "No layer available for editing"
 msgstr "편집할 레이어가 없습니다"
 
-#: api.py:376
+#: api.py:373
 msgid "No output received from API"
 msgstr "API에서 출력을 받지 못했습니다"
 
-#: api.py:385
+#: api.py:382
 msgid "No valid image data in API response"
 msgstr "API 응답에 유효한 이미지 데이터가 없습니다"
 
-#: model_settings.py:247
+#: model_settings.py:245
 msgid "Not set"
 msgstr "설정되지 않음"
 
-#: models/gpt_image.py:172 models/gpt_image_2.py:159
+#: models/gpt_image.py:170 models/gpt_image_2.py:157
 msgid "Number of Images"
 msgstr "이미지 수"
 
-#: models/qwen_image.py:186
-msgid "Number of denoising steps. Recommended range is 28-50."
-msgstr "노이즈 제거 단계 수. 권장 범위는 28-50입니다."
-
-#: models/gpt_image.py:173 models/gpt_image_2.py:160
+#: models/gpt_image.py:171 models/gpt_image_2.py:158
 msgid "Number of images to generate (1-10)"
 msgstr "생성할 이미지 수 (1-10)"
 
-#: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image.py:137 models/gpt_image_2.py:136
 msgid "OpenAI API Key"
 msgstr "OpenAI API 키"
 
-#: models/gpt_image.py:40
+#: models/gpt_image.py:38
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI의 고급 이미지 생성 모델"
 
-#: models/gpt_image_2.py:40
+#: models/gpt_image_2.py:38
 msgid "OpenAI's next generation image generation model"
 msgstr "OpenAI의 차세대 이미지 생성 모델"
 
-#: dialog_gtk.py:514
+#: dialog_gtk.py:511
 msgid "Operation Mode"
 msgstr "작업 모드"
 
-#: api.py:115 api.py:129 api.py:142 api.py:189 api.py:201 api.py:373 api.py:381
+#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
-#: models/gpt_image.py:202 models/gpt_image_2.py:187
+#: models/gpt_image.py:200 models/gpt_image_2.py:185
 msgid "Output Compression"
 msgstr "출력 압축"
 
-#: models/flux_pro.py:270 models/gpt_image.py:212 models/gpt_image_2.py:197
-#: models/imagen.py:153 models/nano_banana.py:184 models/nano_banana_2.py:208
-#: models/nano_banana_pro.py:199 models/qwen_image.py:247
-#: models/qwen_image_edit_plus.py:176
-#: models/stable_diffusion_large_turbo.py:231
+#: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
+#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
+#: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
 msgstr "출력 형식"
 
-#: models/flux_pro.py:279 models/qwen_image.py:256
-#: models/qwen_image_edit_plus.py:185
+#: models/flux_pro.py:277 models/qwen_image_edit_plus.py:184
 msgid "Output Quality"
 msgstr "출력 품질"
 
-#: dialog_events.py:119
+#: dialog_events.py:123
 msgid "Please enter a prompt"
 msgstr "프롬프트를 입력해주세요"
 
-#: dialog_events.py:115
+#: dialog_events.py:119
 msgid "Please enter your Replicate API key"
 msgstr "Replicate API 키를 입력해주세요"
 
-#: api.py:113
+#: api.py:108
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate용 현재 이미지 준비 중..."
 
-#: api.py:371
+#: api.py:368
 msgid "Processing Replicate response..."
 msgstr "Replicate 응답 처리 중..."
 
-#: models/stable_diffusion_large_turbo.py:209
+#: models/stable_diffusion_large_turbo.py:207
 msgid "Prompt Strength"
 msgstr "프롬프트 강도"
 
-#: dialog_threads.py:113 dialog_threads.py:151
+#: dialog_threads.py:111 dialog_threads.py:149
 msgid "Prompt is required"
 msgstr "프롬프트가 필요합니다"
 
-#: models/stable_diffusion_large_turbo.py:210
+#: models/stable_diffusion_large_turbo.py:208
 msgid "Prompt strength (or denoising strength)"
 msgstr "프롬프트 강도 (또는 디노이징 강도)"
 
-#: models/gpt_image.py:182 models/gpt_image_2.py:169
+#: models/gpt_image.py:180 models/gpt_image_2.py:167
 msgid "Quality"
 msgstr "품질"
 
-#: models/flux_pro.py:280
+#: models/flux_pro.py:278
 msgid "Quality when saving the output image"
 msgstr "출력 이미지를 저장할 때의 품질"
 
-#: models/qwen_image_edit_plus.py:187
+#: models/qwen_image_edit_plus.py:186
 msgid ""
 "Quality when saving the output images, from 0 to 100. 100 is best quality, 0 "
 "is lowest quality. Not relevant for .png outputs"
@@ -570,214 +532,187 @@ msgstr ""
 "출력 이미지를 저장할 때의 품질, 0에서 100까지. 100이 최고 품질, 0이 최저 품"
 "질. .png 출력에는 해당되지 않음"
 
-#: models/qwen_image.py:258
-msgid ""
-"Quality when saving the output images, from 0 to 100. Not relevant for .png "
-"outputs"
-msgstr ""
-"출력 이미지를 저장할 때의 품질, 0에서 100까지. .png 출력에는 해당되지 않음"
+#: models/qwen_image.py:47
+msgid "Qwen Image 2 Pro"
+msgstr "Qwen Image 2 Pro"
 
-#: models/qwen_image.py:45
-msgid "Qwen Image"
-msgstr "Qwen Image"
+#: models/qwen_image_edit_plus.py:45
+msgid "Qwen Image Edit 2511"
+msgstr "Qwen Image Edit 2511"
 
-#: models/qwen_image_edit_plus.py:46
-msgid "Qwen Image Edit Plus"
-msgstr "Qwen Image Edit Plus"
-
-#: models/qwen_image_edit_plus.py:41
+#: models/qwen_image_edit_plus.py:40
 msgid "Qwen's advanced image editing model"
 msgstr "Qwen의 고급 이미지 편집 모델"
 
-#: models/qwen_image.py:40
-msgid "Qwen's advanced image generation model"
-msgstr "Qwen의 고급 이미지 생성 모델"
+#: models/qwen_image.py:41
+msgid "Qwen's next-generation model with enhanced text rendering"
+msgstr "향상된 텍스트 렌더링을 갖춘 Qwen의 차세대 모델"
 
-#: models/qwen_image_edit_plus.py:165
+#: models/qwen_image_edit_plus.py:164
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr "재현 가능한 결과를 위한 랜덤 시드 (-1 = 랜덤)"
 
-#: dialog_gtk.py:705
+#: dialog_gtk.py:702
 msgid "Ready"
 msgstr "준비"
 
-#: dialog_events.py:177
+#: dialog_events.py:181
 #, python-brace-format
 msgid "Reduced to {max} reference images for edit mode"
 msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
 
-#: dialog_gtk.py:365
+#: dialog_gtk.py:362
 msgid "Replicate API Key"
 msgstr "Replicate API 키"
 
-#: api.py:272
+#: api.py:269
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API 오류: {error}"
 
-#: api.py:60 api.py:105 api.py:179
+#: api.py:57 api.py:100 api.py:172
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API를 사용할 수 없습니다. replicate를 설치해주세요"
 
-#: models/flux_pro.py:200 models/nano_banana_2.py:172
-#: models/nano_banana_pro.py:170
+#: models/flux_pro.py:198 models/nano_banana_2.py:170
+#: models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr "해상도"
 
-#: models/flux_pro.py:202
+#: models/flux_pro.py:200
 msgid ""
 "Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is "
 "recommended."
 msgstr "메가픽셀 단위의 해상도. 최대 4MP까지 가능하지만 2MP 이하를 권장합니다."
 
-#: models/nano_banana_pro.py:171
+#: models/nano_banana_pro.py:169
 msgid "Resolution of the generated image"
 msgstr "생성된 이미지의 해상도"
 
-#: models/nano_banana_2.py:174
+#: models/nano_banana_2.py:172
 msgid ""
 "Resolution of the generated image. Higher resolutions take longer to "
 "generate."
 msgstr "생성된 이미지의 해상도. 높은 해상도는 생성하는 데 더 오래 걸립니다."
 
-#: models/seedream.py:178
-msgid "Resolution preset: 2K (2048px), 4K (4096px), or custom"
-msgstr "해상도 프리셋: 2K (2048px), 4K (4096px), 또는 사용자 정의"
-
-#: models/qwen_image.py:212
-msgid "Run faster predictions with additional optimizations."
-msgstr "추가 최적화로 더 빠른 예측을 실행합니다."
-
-#: models/imagen.py:162 models/nano_banana_pro.py:208
+#: models/imagen.py:160 models/nano_banana_pro.py:206
 msgid "Safety Filter Level"
 msgstr "안전 필터 레벨"
 
-#: models/flux_pro.py:246
+#: models/flux_pro.py:244
 msgid "Safety Tolerance"
 msgstr "안전 허용 범위"
 
-#: models/flux_pro.py:248
+#: models/flux_pro.py:246
 msgid "Safety tolerance, 1 is most strict and 5 is most permissive"
 msgstr "안전 허용 범위, 1이 가장 엄격하고 6이 가장 관대함"
 
-#: models/flux_pro.py:259 models/qwen_image.py:236
-#: models/qwen_image_edit_plus.py:163
-#: models/stable_diffusion_large_turbo.py:220
+#: models/flux_pro.py:257 models/qwen_image.py:226
+#: models/qwen_image_edit_plus.py:162
+#: models/stable_diffusion_large_turbo.py:218
 msgid "Seed"
 msgstr "시드"
 
-#: models/seedream.py:48
-msgid "Seedream 4.5"
-msgstr "Seedream 4.5"
+#: models/seedream.py:46
+msgid "Seedream 5 Pro"
+msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:212
+#: dialog_events.py:216
 msgid "Select"
 msgstr "선택"
 
-#: dialog_gtk.py:322
+#: dialog_gtk.py:319
 msgid "Select Images..."
 msgstr "이미지 선택..."
 
-#: dialog_events.py:206
+#: dialog_events.py:210
 msgid "Select Reference Images"
 msgstr "참조 이미지 선택"
 
-#: dialog_events.py:325 dialog_events.py:333
+#: dialog_events.py:339
 #, python-brace-format
 msgid "Select up to {max} additional images"
 msgstr "최대 {max}개의 추가 이미지 선택"
 
-#: api.py:140
+#: api.py:135
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate에 편집 요청 전송 중..."
 
-#: api.py:199
+#: api.py:192
 msgid "Sending request to Replicate..."
 msgstr "Replicate에 요청 전송 중..."
 
-#: models/seedream.py:242
-msgid "Sequential Generation"
-msgstr "순차 생성"
-
-#: models/flux_pro.py:260 models/qwen_image.py:237
-#: models/stable_diffusion_large_turbo.py:221
+#: models/flux_pro.py:258 models/qwen_image.py:227
+#: models/stable_diffusion_large_turbo.py:219
 msgid "Set a seed for reproducibility (-1 = random)"
 msgstr "재현성을 위한 시드 설정 (-1 = 랜덤)"
 
-#: models/gpt_image_2.py:179
+#: models/gpt_image_2.py:177
 msgid "Set the background mode"
 msgstr "배경 모드 설정"
 
-#: models/gpt_image.py:193
+#: models/gpt_image.py:191
 msgid "Set whether the background is transparent or opaque"
 msgstr "배경을 투명 또는 불투명으로 설정"
 
-#: dialog_events.py:274
+#: dialog_events.py:285
 msgid "Show API key"
 msgstr "API 키 표시"
 
-#: dialog_gtk.py:386
+#: dialog_gtk.py:383
 msgid "Show/Hide API key"
 msgstr "API 키 표시/숨기기"
 
-#: models/stable_diffusion_large_turbo.py:43
+#: models/stable_diffusion_large_turbo.py:41
 msgid "Stability AI's high-resolution image generation model"
 msgstr "Stability AI의 고해상도 이미지 생성 모델"
 
-#: models/stable_diffusion_large_turbo.py:48
+#: models/stable_diffusion_large_turbo.py:46
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: models/qwen_image.py:197
-msgid "Strength"
-msgstr "강도"
+#: dialog_events.py:226
+#, python-brace-format
+msgid "Supported Images ({formats})"
+msgstr "지원되는 이미지 ({formats})"
 
-#: models/qwen_image.py:199
-msgid "Strength for img2img (only used with reference image)"
-msgstr "img2img의 강도 (참조 이미지와 함께 사용할 때만)"
-
-#: dialog_events.py:215
-msgid "Supported Images (PNG, JPEG, WebP)"
-msgstr "지원되는 이미지 (PNG, JPEG, WebP)"
-
-#: models/gpt_image.py:152 models/gpt_image_2.py:151
+#: models/gpt_image.py:150 models/gpt_image_2.py:149
 msgid "The aspect ratio of the generated image"
 msgstr "생성된 이미지의 종횡비"
 
-#: models/gpt_image.py:183 models/gpt_image_2.py:170
+#: models/gpt_image.py:181 models/gpt_image_2.py:168
 msgid "The quality of the generated image"
 msgstr "생성된 이미지의 품질"
 
-#: dream-prompter.py:47
+#: dialog_events.py:343
+msgid "This model does not support reference images"
+msgstr "이 모델은 참조 이미지를 지원하지 않습니다"
+
+#: dream-prompter.py:46
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, "
-"Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, Seedream 4.5, and Stable "
-"Diffusion 3.5 Large Turbo."
-msgstr ""
-"자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거"
-"나 새 이미지를 생성합니다. GPT Image 1.5, GPT Image 2, Imagen 4, Nano "
-"Banana, Nano Banana 2, Nano Banana Pro, Qwen Image, Qwen Image Edit Plus, "
-"Seedream 4.5, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택"
-"하세요."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
+"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
+"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+msgstr "자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거나 새 이미지를 생성합니다. Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택하세요."
 
-#: dialog_threads.py:230
+#: dialog_threads.py:228
 #, python-brace-format
 msgid "Unexpected error during image editing: {error}"
 msgstr "이미지 편집 중 예상치 못한 오류: {error}"
 
-#: dialog_threads.py:291
+#: dialog_threads.py:289
 #, python-brace-format
 msgid "Unexpected error during image generation: {error}"
 msgstr "이미지 생성 중 예상치 못한 오류: {error}"
 
-#: api.py:151 api.py:210
+#: api.py:146 api.py:203
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "예상치 못한 오류: {error}"
 
-#: models/nano_banana_2.py:230
+#: models/nano_banana_2.py:228
 msgid ""
 "Use Google Image Search grounding to find web images as visual context for "
 "generation"
@@ -785,7 +720,7 @@ msgstr ""
 "생성을 위한 시각적 컨텍스트로 웹 이미지를 찾기 위해 Google 이미지 검색 그라운"
 "딩을 사용합니다"
 
-#: models/nano_banana_2.py:219
+#: models/nano_banana_2.py:217
 msgid ""
 "Use Google Web Search grounding to generate images based on real-time "
 "information"
@@ -793,88 +728,50 @@ msgstr ""
 "실시간 정보를 기반으로 이미지를 생성하기 위해 Google 웹 검색 그라운딩을 사용"
 "합니다"
 
-#: models/stable_diffusion_large_turbo.py:172
+#: models/qwen_image.py:198
+msgid ""
+"Use the reference image's aspect ratio and resolution instead of the aspect "
+"ratio setting"
+msgstr "종횡비 설정 대신 참조 이미지의 종횡비와 해상도를 사용"
+
+#: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
 msgstr "이미지에서 보고 싶지 않은 것"
 
-#: models/flux_pro.py:218 models/seedream.py:187
+#: models/flux_pro.py:216
 msgid "Width"
 msgstr "너비"
 
-#: models/flux_pro.py:220
+#: models/flux_pro.py:218
 msgid ""
 "Width of the generated image. Only used when aspect_ratio=custom. Must be a "
 "multiple of 32."
 msgstr "텍스트-이미지 모드에서 생성된 이미지의 너비."
 
-#: model_settings.py:250
+#: model_settings.py:248
 msgid "Yes"
 msgstr "예"
 
-#: models/gpt_image.py:141 models/gpt_image_2.py:140
+#: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "OpenAI API 키 (선택 사항 - 제공되지 않으면 프록시 사용)"
 
-#: dialog_gtk.py:804
+#: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_gtk.py:806
+#: dialog_gtk.py:803
 #, python-brace-format
 msgid "{count} images selected"
 msgstr "{count}개 이미지 선택됨"
 
-#: dialog_threads.py:310
+#: dialog_threads.py:308
 #, python-brace-format
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (AI 편집: {prompt})"
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:723
 #, python-brace-format
 msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
 msgstr "⚠️ ({size:.1f} MB - 최대 크기 초과)"
-
-#~ msgid "Automatically modify the prompt for more creative generation"
-#~ msgstr "더 창의적인 생성을 위해 프롬프트를 자동으로 수정"
-
-#~ msgid "Bypass safety checks"
-#~ msgstr "안전 검사 우회"
-
-#~ msgid "ByteDance's unified generation and editing model"
-#~ msgstr "ByteDance의 통합 생성 및 편집 모델"
-
-#~ msgid "Custom height in pixels"
-#~ msgstr "픽셀 단위 사용자 정의 높이"
-
-#~ msgid "Custom width in pixels"
-#~ msgstr "픽셀 단위 사용자 정의 너비"
-
-#~ msgid "Format for generated images"
-#~ msgstr "생성 이미지의 형식"
-
-#~ msgid "JPEG quality (0-100, ignored for PNG)"
-#~ msgstr "JPEG 품질 (0-100, PNG는 무시됨)"
-
-#~ msgid "Output image format"
-#~ msgstr "출력 이미지 형식"
-
-#~ msgid "Prompt Upsampling"
-#~ msgstr "프롬프트 업샘플링"
-
-#~ msgid "Resolution preset for generated images"
-#~ msgstr "생성 이미지용 해상도 프리셋"
-
-#~ msgid "Seedream 4"
-#~ msgstr "Seedream 4"
-
-#~ msgid ""
-#~ "Transform existing images or generate new images using advanced AI models "
-#~ "from Replicate with natural language prompts. Choose from multiple models "
-#~ "including Imagen 4, Nano Banana, Qwen Image Edit Plus, Seedream 4, and "
-#~ "Stable Diffusion 3.5 Large Turbo."
-#~ msgstr ""
-#~ "자연어 프롬프트로 Replicate의 고급 AI 모델을 사용하여 기존 이미지를 변환하"
-#~ "거나 새로운 이미지를 생성합니다. Imagen 4, Nano Banana, Qwen Image Edit "
-#~ "Plus, Seedream 4, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에"
-#~ "서 선택하세요."

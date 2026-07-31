@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """
 Extract translatable strings from Dream Prompter plugin
@@ -56,7 +55,7 @@ def extract_strings() -> bool:
         "--from-code=UTF-8",
         "--copyright-holder=Josh Ellithorpe",
         "--package-name=Dream Prompter",
-        "--package-version=1.4.1",
+        "--package-version=1.5.0",
         "--msgid-bugs-address=quest@mac.com",
         "--add-comments=TRANSLATORS",
     ] + python_files

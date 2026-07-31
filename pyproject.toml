@@ -5,3 +5,14 @@ reportMissingModuleSource = false
 
 [tool.ruff]
 line-length = 80
+target-version = "py310"
+# Vendored GObject introspection type stubs, not maintained here
+extend-exclude = ["stubs"]
+
+[tool.ruff.lint]
+# Keep parity with .flake8: E501 enforces line-length in the linter (not
+# just the formatter), E402/F401 keep the inline noqa directives meaningful
+extend-select = ["E402", "E501", "F401"]
+# BLE001/S110: broad and silent exception handling is deliberate. A GIMP
+# plugin must never let an error escape into the host application.
+ignore = ["BLE001", "S110"]

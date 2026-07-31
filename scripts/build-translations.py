@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """
 Build translation files for Dream Prompter plugin
@@ -10,7 +9,6 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import List
 
 
 def compile_translations() -> bool:
@@ -95,7 +93,7 @@ def create_template_files() -> bool:
     return True
 
 
-def get_po_files(locale_dir: Path) -> List[Path]:
+def get_po_files(locale_dir: Path) -> list[Path]:
     """Get list of .po files in the locale directory"""
     return [
         f for f in locale_dir.iterdir() if f.is_file() and f.suffix == ".po"
@@ -105,7 +103,7 @@ def get_po_files(locale_dir: Path) -> List[Path]:
 def print_usage() -> None:
     """Print usage information"""
     print("Dream Prompter Translation Builder")
-    print("")
+    print()
     print("Usage:")
     print(
         "  python3 scripts/build-translations.py        # Compile translations"
@@ -115,7 +113,7 @@ def print_usage() -> None:
         "# Show setup instructions"
     )
     print("  python3 scripts/build-translations.py --help # Show help")
-    print("")
+    print()
     print("This script compiles .po translation files to .mo binary files")
     print("that can be used by the Dream Prompter plugin.")
 

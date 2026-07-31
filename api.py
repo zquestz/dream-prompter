@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Replicate API integration for Dream Prompter plugin.
 
@@ -12,8 +9,8 @@ import io
 import mimetypes
 import os
 import urllib.request
+from collections.abc import Callable
 from contextlib import contextmanager
-from typing import Callable, List, Optional, Tuple, Union
 
 from gi.repository import GdkPixbuf, Gimp
 
@@ -43,7 +40,7 @@ except ImportError:
 class ReplicateAPI:
     """Handles Replicate API communication for image generation and editing."""
 
-    def __init__(self, api_key: str, model_name: Optional[str] = None) -> None:
+    def __init__(self, api_key: str, model_name: str | None = None) -> None:
         """
         Initialize the Replicate API client.
 
@@ -78,11 +75,9 @@ class ReplicateAPI:
         self,
         image: Gimp.Image,
         prompt: str,
-        reference_images: Optional[List[str]] = None,
-        progress_callback: Optional[
-            Callable[[str, Optional[float]], bool]
-        ] = None,
-    ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
+        reference_images: list[str] | None = None,
+        progress_callback: Callable[[str, float | None], bool] | None = None,
+    ) -> tuple[list[GdkPixbuf.Pixbuf] | None, str | None]:
         """
         Edit an image using AI model based on text prompt.
 
@@ -96,7 +91,7 @@ class ReplicateAPI:
 
         Returns:
             Tuple of (pixbufs, error_message):
-            - If successful: (List[GdkPixbuf.Pixbuf], None)
+            - If successful: (list[GdkPixbuf.Pixbuf], None)
             - If failed: (None, error_message)
             - If cancelled: (None, "Operation cancelled")
         """
@@ -153,11 +148,9 @@ class ReplicateAPI:
     def generate_image(
         self,
         prompt: str,
-        reference_images: Optional[List[str]] = None,
-        progress_callback: Optional[
-            Callable[[str, Optional[float]], bool]
-        ] = None,
-    ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
+        reference_images: list[str] | None = None,
+        progress_callback: Callable[[str, float | None], bool] | None = None,
+    ) -> tuple[list[GdkPixbuf.Pixbuf] | None, str | None]:
         """
         Generate a new image using AI model based on text prompt.
 
@@ -170,7 +163,7 @@ class ReplicateAPI:
 
         Returns:
             Tuple of (pixbufs, error_message):
-            - If successful: (List[GdkPixbuf.Pixbuf], None)
+            - If successful: (list[GdkPixbuf.Pixbuf], None)
             - If failed: (None, error_message)
             - If cancelled: (None, "Operation cancelled")
         """
@@ -211,7 +204,7 @@ class ReplicateAPI:
 
     def _bytes_to_pixbuf(
         self, image_bytes: bytes
-    ) -> Optional[GdkPixbuf.Pixbuf]:
+    ) -> GdkPixbuf.Pixbuf | None:
         """
         Convert image bytes to GdkPixbuf.
 
@@ -231,7 +224,7 @@ class ReplicateAPI:
             print(f"Error converting bytes to pixbuf: {e}")
             return None
 
-    def _download_from_url(self, url: str) -> Optional[bytes]:
+    def _download_from_url(self, url: str) -> bytes | None:
         """
         Download image data from URL.
 
@@ -248,7 +241,7 @@ class ReplicateAPI:
             print(f"Error downloading from URL {url}: {e}")
             return None
 
-    def _execute_api_call(self, model_input: dict) -> Union[object, str]:
+    def _execute_api_call(self, model_input: dict) -> object | str:
         """
         Execute API call with proper error handling.
 
@@ -263,9 +256,13 @@ class ReplicateAPI:
 
         except ModelError as e:
             error_msg = _("Model error: {error}").format(error=str(e))
-            if hasattr(e, "prediction") and e.prediction:
-                if hasattr(e.prediction, "logs") and e.prediction.logs:
-                    error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
+            if (
+                hasattr(e, "prediction")
+                and e.prediction
+                and hasattr(e.prediction, "logs")
+                and e.prediction.logs
+            ):
+                error_msg += f"\n{_('Logs')}: {e.prediction.logs}"
             return error_msg
 
         except ReplicateError as e:
@@ -273,7 +270,7 @@ class ReplicateAPI:
 
     @contextmanager
     def _prepare_reference_images(
-        self, reference_images: Optional[List[str]], max_count: int
+        self, reference_images: list[str] | None, max_count: int
     ):
         """
         Context manager for preparing reference images.
@@ -294,9 +291,11 @@ class ReplicateAPI:
             for img_path in reference_images[:max_count]:
                 if self._validate_reference_image(img_path):
                     try:
-                        file_handle = open(img_path, "rb")
+                        # Deliberate: handles must stay open across the
+                        # yield below; they are closed in the finally
+                        file_handle = open(img_path, "rb")  # noqa: SIM115
                         file_handles.append(file_handle)
-                    except (OSError, IOError) as e:
+                    except OSError as e:
                         print(
                             f"Warning: Could not open reference image "
                             f"{img_path}: {e}"
@@ -311,7 +310,7 @@ class ReplicateAPI:
                 except Exception as e:
                     print(f"Error closing file handle: {e}")
 
-    def _process_api_response(self, output) -> List[bytes]:
+    def _process_api_response(self, output) -> list[bytes]:
         """
         Process API response and extract image bytes.
 
@@ -353,10 +352,8 @@ class ReplicateAPI:
     def _process_response(
         self,
         output,
-        progress_callback: Optional[
-            Callable[[str, Optional[float]], bool]
-        ] = None,
-    ) -> Tuple[Optional[List[GdkPixbuf.Pixbuf]], Optional[str]]:
+        progress_callback: Callable[[str, float | None], bool] | None = None,
+    ) -> tuple[list[GdkPixbuf.Pixbuf] | None, str | None]:
         """
         Process API response and convert to pixbufs.
 
@@ -431,7 +428,7 @@ class ReplicateAPI:
                 )
                 return False
 
-            mime_type, encoding = mimetypes.guess_type(img_path)
+            mime_type, _encoding = mimetypes.guess_type(img_path)
             if not mime_type:
                 print(
                     f"Warning: Could not determine MIME type for "

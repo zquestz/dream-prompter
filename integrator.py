@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 GIMP integration functions for Dream Prompter plugin
 Handles all GIMP-specific operations like creating images and layers
@@ -91,8 +88,6 @@ def create_edit_layer(image, drawable, pixbuf, layer_name):
     except Exception as e:
         print(f"Error creating edit layer: {e}")
         return None
-
-    return None
 
 
 def create_new_image(pixbuf, prompt):
@@ -318,10 +313,12 @@ def has_active_selection(image):
         img_width = image.get_width()
         img_height = image.get_height()
 
-        if x == 0 and y == 0 and width == img_width and height == img_height:
-            return False
-
-        return True
+        return not (
+            x == 0
+            and y == 0
+            and width == img_width
+            and height == img_height
+        )
 
     except Exception as e:
         print(f"Error checking selection: {e}")

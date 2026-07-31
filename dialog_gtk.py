@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 GTK UI components for Dream Prompter dialog
 Handles all GTK interface creation and layout
@@ -11,9 +8,9 @@ import os
 from gi.repository import Gtk, Pango
 
 from i18n import _
+from model_settings import ModelParameterManager
 from models import ParameterType
 from models.factory import get_model_by_name, get_models_for_context
-from model_settings import ModelParameterManager
 
 
 class DreamPrompterUI:

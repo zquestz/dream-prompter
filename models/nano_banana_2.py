@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Nano Banana 2 (Google Gemini 3.1 Flash Image) model implementation
 Google's fast image generation model with conversational editing,
@@ -9,18 +6,19 @@ Available through Replicate API
 """
 
 import io
-from typing import List, Dict, Any, Optional
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class NanaBanana2Model(BaseModel):
@@ -70,7 +68,7 @@ class NanaBanana2Model(BaseModel):
         return "google/nano-banana-2"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/png", "image/jpeg", "image/webp"]
 
@@ -78,10 +76,10 @@ class NanaBanana2Model(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -128,10 +126,10 @@ class NanaBanana2Model(BaseModel):
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -162,7 +160,7 @@ class NanaBanana2Model(BaseModel):
 
         return model_input
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
         """Get list of configurable parameters for Nano Banana 2"""
         return [
             ParameterDefinition(

@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Settings management for Dream Prompter plugin
 """
@@ -9,7 +6,7 @@ import json
 import os
 import platform
 import shutil
-from typing import cast, Dict, Union, Literal, Any, Optional
+from typing import Any, Literal, cast
 
 from gi.repository import Gimp
 
@@ -19,8 +16,8 @@ except ImportError:
     model_factory = None
 
 ModeKey = Literal["edit", "generate"]
-SettingsDict = Dict[str, Union[str, bool, Dict[str, Any]]]
-ModelSettingsDict = Dict[str, Any]
+SettingsDict = dict[str, str | bool | dict[str, Any]]
+ModelSettingsDict = dict[str, Any]
 
 CONFIG_FILE_NAME = "dream-prompter-config.json"
 FILE_PERMISSIONS = 0o600
@@ -175,7 +172,7 @@ def store_settings(
     prompt: str,
     api_key_visible: bool,
     model: str = "",
-    model_settings: Optional[Dict[str, Dict[str, Any]]] = None,
+    model_settings: dict[str, dict[str, Any]] | None = None,
 ) -> None:
     """Store settings to config file"""
     if mode not in ("edit", "generate"):
@@ -188,9 +185,8 @@ def store_settings(
         existing_settings = load_settings()
         existing_model_settings = existing_settings.get("model_settings", {})
 
-        if model_settings:
-            if isinstance(existing_model_settings, dict):
-                existing_model_settings.update(model_settings)
+        if model_settings and isinstance(existing_model_settings, dict):
+            existing_model_settings.update(model_settings)
 
         settings = {
             "api_key": api_key,
@@ -218,7 +214,9 @@ def store_settings(
 
 
 def _get_legacy_config_file() -> str:
-    """Path where older plugin versions (hardcoded GIMP 3.0) stored the config"""
+    """
+    Path where older plugin versions (hardcoded GIMP 3.0) stored the config
+    """
     system = platform.system()
     home = os.path.expanduser("~")
     if system == "Windows":

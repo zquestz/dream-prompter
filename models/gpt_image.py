@@ -1,24 +1,22 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 GPT Image 1.5 model implementation
 OpenAI's image generation model
 Available through Replicate API
 """
 
-from typing import List, Dict, Any, Optional
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class GPTImageModel(BaseModel):
@@ -65,7 +63,7 @@ class GPTImageModel(BaseModel):
         return "openai/gpt-image-1.5"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/png", "image/jpeg", "image/webp"]
 
@@ -73,10 +71,10 @@ class GPTImageModel(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -87,10 +85,10 @@ class GPTImageModel(BaseModel):
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -129,7 +127,7 @@ class GPTImageModel(BaseModel):
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
         """Get list of configurable parameters for GPT Image 1.5"""
         return [
             ParameterDefinition(

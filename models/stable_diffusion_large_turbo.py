@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Stable Diffusion 3.5 Large Turbo model implementation
 A text-to-image model that generates high-resolution images
@@ -10,18 +7,19 @@ on fewer inference steps
 """
 
 import io
-from typing import List, Dict, Any, Optional
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class StableDiffusionLargeTurbo(BaseModel):
@@ -68,7 +66,7 @@ class StableDiffusionLargeTurbo(BaseModel):
         return "stability-ai/stable-diffusion-3.5-large-turbo"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/png", "image/jpeg", "image/webp"]
 
@@ -76,10 +74,10 @@ class StableDiffusionLargeTurbo(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -122,10 +120,10 @@ class StableDiffusionLargeTurbo(BaseModel):
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -161,7 +159,7 @@ class StableDiffusionLargeTurbo(BaseModel):
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
         """Get list of configurable parameters for Stable Diffusion 3.5"""
         return [
             ParameterDefinition(

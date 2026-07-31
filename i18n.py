@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Internationalization support for Dream Prompter plugin
 """
@@ -8,7 +5,7 @@ Internationalization support for Dream Prompter plugin
 import gettext
 import locale
 import os
-from typing import Callable
+from collections.abc import Callable
 
 DOMAIN = "dream-prompter"
 
@@ -30,7 +27,7 @@ def setup_i18n() -> Callable[[str], str]:
         translation = gettext.translation(DOMAIN, locale_dir, fallback=True)
         translation.install()
         return translation.gettext
-    except (OSError, IOError) as e:
+    except OSError as e:
         print(f"Translation files not found: {e}")
         import builtins
 

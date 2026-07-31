@@ -1,33 +1,32 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
-Qwen Image Edit Plus model implementation
-Qwen's advanced image editing model with generation capabilities
+Qwen Image Edit 2511 model implementation
+Qwen's advanced image editing model, an enhanced version over
+Qwen-Image-Edit-2509 with notably better consistency
 Available through Replicate API
 """
 
 import io
-from typing import List, Dict, Any, Optional
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class QwenImageEditModel(BaseModel):
-    """Qwen Image Edit Plus model implementation for Replicate"""
+    """Qwen Image Edit 2511 model implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Qwen Image Edit Plus only supports editing, not generation"""
+        """Qwen Image Edit 2511 only supports editing, not generation"""
         return ModelCapability.EDIT
 
     @property
@@ -43,7 +42,7 @@ class QwenImageEditModel(BaseModel):
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Qwen Image Edit Plus")
+        return _("Qwen Image Edit 2511")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -63,10 +62,10 @@ class QwenImageEditModel(BaseModel):
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "qwen/qwen-image-edit-plus"
+        return "qwen/qwen-image-edit-2511"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/gif", "image/png", "image/jpeg", "image/webp"]
 
@@ -74,10 +73,10 @@ class QwenImageEditModel(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -126,10 +125,10 @@ class QwenImageEditModel(BaseModel):
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -145,8 +144,8 @@ class QwenImageEditModel(BaseModel):
 
         return {}
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Qwen Image Edit Plus"""
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
+        """Get list of configurable parameters for Qwen Image Edit 2511"""
         return [
             ParameterDefinition(
                 name="go_fast",

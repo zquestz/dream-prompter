@@ -1,17 +1,21 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Event handlers for Dream Prompter dialog
 Handles all user interactions and UI events
 """
 
-from gi.repository import Gtk, GLib
+from gi.repository import GLib, Gtk
 
 from dialog_threads import DreamPrompterThreads
 from i18n import _
 from models.factory import get_default_model, get_model_by_name
-from settings import store_settings, load_settings
+from settings import load_settings, store_settings
+
+MIME_TYPE_LABELS = {
+    "image/gif": "GIF",
+    "image/jpeg": "JPEG",
+    "image/png": "PNG",
+    "image/webp": "WebP",
+}
 
 
 class DreamPrompterEventHandler:
@@ -211,12 +215,19 @@ class DreamPrompterEventHandler:
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         dialog.add_button(_("Select"), Gtk.ResponseType.OK)
 
-        image_filter = Gtk.FileFilter()
-        image_filter.set_name(_("Supported Images (PNG, JPEG, WebP)"))
-        image_filter.add_mime_type("image/png")
-        image_filter.add_mime_type("image/jpeg")
-        image_filter.add_mime_type("image/webp")
-        dialog.add_filter(image_filter)
+        mime_types = self.model.supported_mime_types
+        if mime_types:
+            image_filter = Gtk.FileFilter()
+            labels = ", ".join(
+                MIME_TYPE_LABELS.get(m, m.split("/")[-1].upper())
+                for m in mime_types
+            )
+            image_filter.set_name(
+                _("Supported Images ({formats})").format(formats=labels)
+            )
+            for mime_type in mime_types:
+                image_filter.add_mime_type(mime_type)
+            dialog.add_filter(image_filter)
 
         dialog.set_select_multiple(True)
 
@@ -315,23 +326,21 @@ class DreamPrompterEventHandler:
 
     def update_ui_limits(self):
         """Update UI text to reflect current model limits"""
-        if not self.model:
+        if not self.model or not self.ui.images_help_label:
             return
 
         current_mode = self.dialog.get_current_mode()
         if current_mode == "edit":
-            if self.ui.images_help_label:
-                max_imgs = self.model.max_reference_images_edit
-                text = _("Select up to {max} additional images").format(
-                    max=max_imgs
-                )
-                markup = f"<small>{text}</small>"
-                self.ui.images_help_label.set_markup(markup)
+            max_imgs = self.model.max_reference_images_edit
         else:
-            if self.ui.images_help_label:
-                max_imgs = self.model.max_reference_images
-                text = _("Select up to {max} additional images").format(
-                    max=max_imgs
-                )
-                markup = f"<small>{text}</small>"
-                self.ui.images_help_label.set_markup(markup)
+            max_imgs = self.model.max_reference_images
+
+        if max_imgs > 0:
+            text = _("Select up to {max} additional images").format(
+                max=max_imgs
+            )
+        else:
+            text = _("This model does not support reference images")
+
+        markup = f"<small>{text}</small>"
+        self.ui.images_help_label.set_markup(markup)

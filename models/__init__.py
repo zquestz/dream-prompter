@@ -1,14 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Model classes for Dream Prompter plugin
 Defines interfaces and implementations for different AI models
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
 from enum import Enum
+from typing import Any
 
 
 class ModelCapability(Enum):
@@ -54,13 +51,13 @@ class ParameterDefinition:
         name: str,
         param_type: ParameterType,
         default_value: Any,
-        label: Optional[str] = None,
-        description: Optional[str] = None,
-        choices: Optional[List[Any]] = None,
+        label: str | None = None,
+        description: str | None = None,
+        choices: list[Any] | None = None,
         min_value: Any = None,
         max_value: Any = None,
         step: Any = None,
-        supported_modes: Optional[List[ParameterMode]] = None,
+        supported_modes: list[ParameterMode] | None = None,
         is_secret: bool = False,
     ):
         self.name = name
@@ -165,31 +162,26 @@ class BaseModel(ABC):
     @abstractmethod
     def default_output_format(self) -> OutputFormat:
         """Default output format for generated images"""
-        pass
 
     @property
     @abstractmethod
     def description(self) -> str:
         """Model description"""
-        pass
 
     @property
     @abstractmethod
     def display_name(self) -> str:
         """Human-readable model name"""
-        pass
 
     @property
     @abstractmethod
     def max_file_size_mb(self) -> int:
         """Maximum file size in MB for reference images"""
-        pass
 
     @property
     @abstractmethod
     def max_reference_images(self) -> int:
         """Maximum number of reference images for generation"""
-        pass
 
     @property
     def max_reference_images_edit(self) -> int:
@@ -200,23 +192,21 @@ class BaseModel(ABC):
     @abstractmethod
     def name(self) -> str:
         """Model name/identifier"""
-        pass
 
     @property
     @abstractmethod
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
-        pass
 
     @abstractmethod
     def build_edit_input(
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -231,16 +221,15 @@ class BaseModel(ABC):
         Returns:
             Dictionary of input parameters for the model API
         """
-        pass
 
     @abstractmethod
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -254,11 +243,10 @@ class BaseModel(ABC):
         Returns:
             Dictionary of input parameters for the model API
         """
-        pass
 
     def build_parameters_dict(
-        self, user_settings: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, user_settings: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
         """
         Build dictionary of all parameter values for API calls
 
@@ -288,7 +276,7 @@ class BaseModel(ABC):
         """
         return format_enum.value
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
         """
         Get list of configurable parameters for this model
 
@@ -300,7 +288,7 @@ class BaseModel(ABC):
     def get_parameter_value(
         self,
         parameter_name: str,
-        user_settings: Optional[Dict[str, Any]] = None,
+        user_settings: dict[str, Any] | None = None,
     ) -> Any:
         """
         Get parameter value from user settings or default
@@ -367,7 +355,7 @@ class BaseModel(ABC):
 
     def _get_parameter_definition(
         self, parameter_name: str
-    ) -> Optional[ParameterDefinition]:
+    ) -> ParameterDefinition | None:
         """Get parameter definition by name"""
         for param_def in self.get_parameter_definitions():
             if param_def.name == parameter_name:
@@ -375,7 +363,7 @@ class BaseModel(ABC):
         return None
 
 
-_model_registry: Dict[str, BaseModel] = {}
+_model_registry: dict[str, BaseModel] = {}
 
 
 def register_model(model: BaseModel) -> None:
@@ -383,17 +371,17 @@ def register_model(model: BaseModel) -> None:
     _model_registry[model.name] = model
 
 
-def get_model(name: str) -> Optional[BaseModel]:
+def get_model(name: str) -> BaseModel | None:
     """Get a model by name from the registry"""
     return _model_registry.get(name)
 
 
-def get_all_models() -> Dict[str, BaseModel]:
+def get_all_models() -> dict[str, BaseModel]:
     """Get all registered models"""
     return _model_registry.copy()
 
 
-def get_compatible_models(mode: str) -> Dict[str, BaseModel]:
+def get_compatible_models(mode: str) -> dict[str, BaseModel]:
     """
     Get models compatible with a specific mode
 
@@ -411,7 +399,7 @@ def get_compatible_models(mode: str) -> Dict[str, BaseModel]:
     }
 
 
-def get_models_for_context(has_image: bool = False) -> Dict[str, BaseModel]:
+def get_models_for_context(has_image: bool = False) -> dict[str, BaseModel]:
     """
     Get models appropriate for the current context
 
@@ -435,6 +423,6 @@ def get_models_for_context(has_image: bool = False) -> Dict[str, BaseModel]:
     return filtered_models
 
 
-def get_model_names() -> List[str]:
+def get_model_names() -> list[str]:
     """Get list of all registered model names"""
     return list(_model_registry.keys())

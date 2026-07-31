@@ -1,15 +1,13 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Threading operations for Dream Prompter dialog
 Handles all background AI processing and image operations
 """
 
 import threading
-from typing import Dict, Callable, Optional, Any, List
+from collections.abc import Callable
+from typing import Any
 
-from gi.repository import GLib, GdkPixbuf
+from gi.repository import GdkPixbuf, GLib
 
 import integrator
 from api import ReplicateAPI
@@ -21,7 +19,7 @@ class DreamPrompterThreads:
     """Handles all background threading operations"""
 
     def __init__(
-        self, ui: DreamPrompterUI, image: Optional[Any], drawable: Optional[Any]
+        self, ui: DreamPrompterUI, image: Any | None, drawable: Any | None
     ) -> None:
         """
         Initialize thread manager
@@ -40,10 +38,10 @@ class DreamPrompterThreads:
         self.ui = ui
         self.image = image
         self.drawable = drawable
-        self._callbacks: Dict[str, Callable] = {}
+        self._callbacks: dict[str, Callable] = {}
         self._processing: bool = False
         self._cancel_requested: bool = False
-        self._current_thread: Optional[threading.Thread] = None
+        self._current_thread: threading.Thread | None = None
 
     def cancel_processing(self) -> None:
         """Request cancellation of current processing"""
@@ -54,7 +52,7 @@ class DreamPrompterThreads:
         """Check if image processing is currently running"""
         return self._processing
 
-    def set_callbacks(self, callbacks: Dict[str, Callable]) -> None:
+    def set_callbacks(self, callbacks: dict[str, Callable]) -> None:
         """
         Set callback functions for thread completion
 
@@ -63,13 +61,13 @@ class DreamPrompterThreads:
                 callbacks
 
         Raises:
-            ValueError: If callbacks is not a dictionary
+            TypeError: If callbacks is not a dictionary
         """
         if not isinstance(callbacks, dict):
-            raise ValueError("Callbacks must be a dictionary")
+            raise TypeError("Callbacks must be a dictionary")
 
         valid_keys = {"on_success", "on_error"}
-        for key in callbacks.keys():
+        for key in callbacks:
             if key not in valid_keys:
                 error_msg = (
                     f"Invalid callback key: {key}. Valid keys: {valid_keys}"
@@ -82,8 +80,8 @@ class DreamPrompterThreads:
         self,
         api_key: str,
         prompt: str,
-        reference_images: Optional[List[str]] = None,
-        model_name: Optional[str] = None,
+        reference_images: list[str] | None = None,
+        model_name: str | None = None,
     ) -> None:
         """
         Start image editing in background thread
@@ -128,8 +126,8 @@ class DreamPrompterThreads:
         self,
         api_key: str,
         prompt: str,
-        reference_images: Optional[List[str]] = None,
-        model_name: Optional[str] = None,
+        reference_images: list[str] | None = None,
+        model_name: str | None = None,
     ) -> None:
         """
         Start image generation in background thread
@@ -166,8 +164,8 @@ class DreamPrompterThreads:
         self,
         api_key: str,
         prompt: str,
-        reference_images: Optional[List[str]],
-        model_name: Optional[str],
+        reference_images: list[str] | None,
+        model_name: str | None,
     ) -> None:
         """
         Edit image in background thread
@@ -192,7 +190,7 @@ class DreamPrompterThreads:
             api = ReplicateAPI(api_key, model_name)
 
             def progress_callback(
-                message: str, percentage: Optional[float] = None
+                message: str, percentage: float | None = None
             ) -> bool:
                 """Progress callback for API operations"""
                 if self._cancel_requested:
@@ -235,8 +233,8 @@ class DreamPrompterThreads:
         self,
         api_key: str,
         prompt: str,
-        reference_images: Optional[List[str]],
-        model_name: Optional[str],
+        reference_images: list[str] | None,
+        model_name: str | None,
     ) -> None:
         """
         Generate image in background thread
@@ -255,7 +253,7 @@ class DreamPrompterThreads:
             api = ReplicateAPI(api_key, model_name)
 
             def progress_callback(
-                message: str, percentage: Optional[float] = None
+                message: str, percentage: float | None = None
             ) -> bool:
                 """Progress callback for API operations"""
                 if self._cancel_requested:
@@ -326,7 +324,7 @@ class DreamPrompterThreads:
         self.ui.set_ui_enabled(True)
 
     def _handle_edited_images(
-        self, pixbufs: List[GdkPixbuf.Pixbuf], base_layer_name: str
+        self, pixbufs: list[GdkPixbuf.Pixbuf], base_layer_name: str
     ) -> None:
         """
         Handle multiple edited images by creating layers
@@ -362,7 +360,7 @@ class DreamPrompterThreads:
             self._handle_error(error_msg)
 
     def _handle_generated_images(
-        self, pixbufs: List[GdkPixbuf.Pixbuf], prompt: str
+        self, pixbufs: list[GdkPixbuf.Pixbuf], prompt: str
     ) -> None:
         """
         Handle multiple generated images by creating separate files

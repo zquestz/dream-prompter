@@ -1,33 +1,31 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
-Seedream 4.5 model implementation
-ByteDance's upgraded image model with stronger spatial understanding
-and world knowledge. Available through Replicate API
+Seedream 5 Pro model implementation
+ByteDance's flagship image generation and editing model, producing sharp
+1K and 2K images. Available through Replicate API
 """
 
 import io
-from typing import List, Dict, Any, Optional
+from typing import Any
+
+from i18n import _
 
 from . import (
     BaseModel,
     ModelCapability,
     OutputFormat,
     ParameterDefinition,
-    ParameterType,
     ParameterMode,
+    ParameterType,
     register_model,
 )
-from i18n import _
 
 
 class SeedreamModel(BaseModel):
-    """ByteDance Seedream 4.5 model implementation for Replicate"""
+    """ByteDance Seedream 5 Pro model implementation for Replicate"""
 
     @property
     def capabilities(self) -> ModelCapability:
-        """Seedream 4.5 supports editing and generation"""
+        """Seedream 5 Pro supports editing and generation"""
         return ModelCapability.BOTH
 
     @property
@@ -39,13 +37,13 @@ class SeedreamModel(BaseModel):
     def description(self) -> str:
         """Model description"""
         return _(
-            "ByteDance's upgraded model with stronger spatial understanding"
+            "ByteDance's flagship model for sharp 1K and 2K images"
         )
 
     @property
     def display_name(self) -> str:
         """Human-readable model name"""
-        return _("Seedream 4.5")
+        return _("Seedream 5 Pro")
 
     @property
     def max_file_size_mb(self) -> int:
@@ -55,20 +53,20 @@ class SeedreamModel(BaseModel):
     @property
     def max_reference_images(self) -> int:
         """Maximum number of reference images for generation"""
-        return 14
+        return 10
 
     @property
     def max_reference_images_edit(self) -> int:
         """Maximum number of reference images for editing"""
-        return 13
+        return 9
 
     @property
     def name(self) -> str:
         """Model name/identifier"""
-        return "bytedance/seedream-4.5"
+        return "bytedance/seedream-5-pro"
 
     @property
-    def supported_mime_types(self) -> List[str]:
+    def supported_mime_types(self) -> list[str]:
         """List of supported MIME types for reference images"""
         return ["image/png", "image/jpeg", "image/webp"]
 
@@ -76,10 +74,10 @@ class SeedreamModel(BaseModel):
         self,
         prompt: str,
         main_image,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image editing
 
@@ -116,12 +114,7 @@ class SeedreamModel(BaseModel):
             "image_input": image_input,
             "size": params["size"],
             "aspect_ratio": "match_input_image",
-            "width": params["width"],
-            "height": params["height"],
-            "sequential_image_generation": (
-                params["sequential_image_generation"]
-            ),
-            "max_images": params["max_images"],
+            "output_format": params["output_format"],
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
@@ -129,10 +122,10 @@ class SeedreamModel(BaseModel):
     def build_generation_input(
         self,
         prompt: str,
-        reference_images: Optional[List] = None,
-        user_settings: Optional[Dict[str, Any]] = None,
+        reference_images: list | None = None,
+        user_settings: dict[str, Any] | None = None,
         **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Build input dictionary for image generation
 
@@ -156,18 +149,13 @@ class SeedreamModel(BaseModel):
             "image_input": reference_images or [],
             "size": params["size"],
             "aspect_ratio": params["aspect_ratio"],
-            "width": params["width"],
-            "height": params["height"],
-            "sequential_image_generation": (
-                params["sequential_image_generation"]
-            ),
-            "max_images": params["max_images"],
+            "output_format": params["output_format"],
         }
 
         return {k: v for k, v in model_input.items() if v is not None}
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
-        """Get list of configurable parameters for Seedream 4.5"""
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
+        """Get list of configurable parameters for Seedream 5 Pro"""
         return [
             ParameterDefinition(
                 name="size",
@@ -175,35 +163,10 @@ class SeedreamModel(BaseModel):
                 default_value="2K",
                 label=_("Image Size"),
                 description=_(
-                    "Resolution preset: 2K (2048px), 4K (4096px), or custom"
+                    "Image resolution: 1K (~2 megapixels) or 2K "
+                    "(~4 megapixels)"
                 ),
-                choices=["2K", "4K", "custom"],
-                supported_modes=[ParameterMode.BOTH],
-            ),
-            ParameterDefinition(
-                name="width",
-                param_type=ParameterType.INTEGER,
-                default_value=2048,
-                label=_("Width"),
-                description=_(
-                    "Custom width in pixels (only used when size='custom')"
-                ),
-                min_value=1024,
-                max_value=4096,
-                step=1,
-                supported_modes=[ParameterMode.BOTH],
-            ),
-            ParameterDefinition(
-                name="height",
-                param_type=ParameterType.INTEGER,
-                default_value=2048,
-                label=_("Height"),
-                description=_(
-                    "Custom height in pixels (only used when size='custom')"
-                ),
-                min_value=1024,
-                max_value=4096,
-                step=1,
+                choices=["1K", "2K"],
                 supported_modes=[ParameterMode.BOTH],
             ),
             ParameterDefinition(
@@ -226,22 +189,12 @@ class SeedreamModel(BaseModel):
                 supported_modes=[ParameterMode.GENERATE],
             ),
             ParameterDefinition(
-                name="max_images",
-                param_type=ParameterType.INTEGER,
-                default_value=1,
-                label=_("Max Images"),
-                description=_("Maximum number of images to generate"),
-                min_value=1,
-                max_value=15,
-                supported_modes=[ParameterMode.BOTH],
-            ),
-            ParameterDefinition(
-                name="sequential_image_generation",
+                name="output_format",
                 param_type=ParameterType.CHOICE,
-                default_value="disabled",
-                label=_("Sequential Generation"),
-                description=_("Generate images sequentially or in parallel"),
-                choices=["disabled", "auto"],
+                default_value="png",
+                label=_("Output Format"),
+                description=_("Format of the output images"),
+                choices=["png", "jpeg"],
                 supported_modes=[ParameterMode.BOTH],
             ),
         ]

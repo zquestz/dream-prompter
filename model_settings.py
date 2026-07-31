@@ -1,16 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Model settings utility functions for Dream Prompter plugin
 Provides easy access to model parameter management
 """
 
-from typing import Dict, Any, List, Optional, Tuple, cast
-from models import BaseModel, ParameterDefinition, ParameterType
-from models.factory import get_model_by_name, get_all_models
-from settings import get_model_settings, set_model_parameter
+from typing import Any, cast
+
 from i18n import _
+from models import BaseModel, ParameterDefinition, ParameterType
+from models.factory import get_all_models, get_model_by_name
+from settings import get_model_settings, set_model_parameter
 
 
 class ModelParameterManager:
@@ -29,14 +27,14 @@ class ModelParameterManager:
             raise ValueError(f"Model '{model_name}' not found")
         self.model = cast(BaseModel, model)
 
-    def get_all_parameter_values(self) -> Dict[str, Any]:
+    def get_all_parameter_values(self) -> dict[str, Any]:
         """Get current values for all parameters"""
         values = {}
         for param_def in self.get_parameter_definitions():
             values[param_def.name] = self.get_parameter_value(param_def.name)
         return values
 
-    def get_all_parameters_info(self) -> List[Dict[str, Any]]:
+    def get_all_parameters_info(self) -> list[dict[str, Any]]:
         """Get complete information for all parameters"""
         info_list = []
         for param_def in self.get_parameter_definitions():
@@ -45,13 +43,13 @@ class ModelParameterManager:
                 info_list.append(info)
         return info_list
 
-    def get_parameter_definitions(self) -> List[ParameterDefinition]:
+    def get_parameter_definitions(self) -> list[ParameterDefinition]:
         """Get all parameter definitions for this model"""
         return self.model.get_parameter_definitions()
 
     def get_parameter_info(
         self, parameter_name: str
-    ) -> Optional[Dict[str, Any]]:
+    ) -> dict[str, Any] | None:
         """
         Get complete information about a parameter
 
@@ -128,8 +126,8 @@ class ModelParameterManager:
         return self.set_parameter_value(parameter_name, param_def.default_value)
 
     def set_multiple_parameters(
-        self, parameters: Dict[str, Any]
-    ) -> Dict[str, bool]:
+        self, parameters: dict[str, Any]
+    ) -> dict[str, bool]:
         """
         Set multiple parameters at once
 
@@ -165,7 +163,7 @@ class ModelParameterManager:
 
     def _get_parameter_definition(
         self, parameter_name: str
-    ) -> Optional[ParameterDefinition]:
+    ) -> ParameterDefinition | None:
         """Get parameter definition by name"""
         for param_def in self.get_parameter_definitions():
             if param_def.name == parameter_name:
@@ -173,7 +171,7 @@ class ModelParameterManager:
         return None
 
 
-def export_model_settings(model_name: str) -> Dict[str, Any]:
+def export_model_settings(model_name: str) -> dict[str, Any]:
     """
     Export all settings for a model
 
@@ -191,7 +189,7 @@ def export_model_settings(model_name: str) -> Dict[str, Any]:
         return {}
 
 
-def get_all_model_parameters() -> Dict[str, List[Dict[str, Any]]]:
+def get_all_model_parameters() -> dict[str, list[dict[str, Any]]]:
     """
     Get parameter information for all available models
 
@@ -201,7 +199,7 @@ def get_all_model_parameters() -> Dict[str, List[Dict[str, Any]]]:
     all_params = {}
     all_models = get_all_models()
 
-    for model_name, model in all_models.items():
+    for model_name in all_models:
         try:
             manager = ModelParameterManager(model_name)
             all_params[model_name] = manager.get_all_parameters_info()
@@ -214,7 +212,7 @@ def get_all_model_parameters() -> Dict[str, List[Dict[str, Any]]]:
 
 def get_model_parameter_manager(
     model_name: str,
-) -> Optional[ModelParameterManager]:
+) -> ModelParameterManager | None:
     """
     Get parameter manager for a model
 
@@ -230,7 +228,7 @@ def get_model_parameter_manager(
         return None
 
 
-def get_parameter_display_value(param_info: Dict[str, Any]) -> str:
+def get_parameter_display_value(param_info: dict[str, Any]) -> str:
     """
     Get a human-readable display value for a parameter
 
@@ -257,8 +255,8 @@ def get_parameter_display_value(param_info: Dict[str, Any]) -> str:
 
 
 def import_model_settings(
-    model_name: str, settings: Dict[str, Any]
-) -> Dict[str, bool]:
+    model_name: str, settings: dict[str, Any]
+) -> dict[str, bool]:
     """
     Import settings for a model
 
@@ -274,12 +272,12 @@ def import_model_settings(
         return manager.set_multiple_parameters(settings)
     except Exception as e:
         print(f"Error importing settings for {model_name}: {e}")
-        return {key: False for key in settings.keys()}
+        return {key: False for key in settings}
 
 
 def validate_parameter_value(
     model_name: str, parameter_name: str, value: Any
-) -> Tuple[bool, Any, str]:
+) -> tuple[bool, Any, str]:
     """
     Validate a parameter value for a specific model
 

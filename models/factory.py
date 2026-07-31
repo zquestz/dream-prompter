@@ -1,26 +1,26 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Model factory for Dream Prompter plugin
 Provides easy access to model instances and management
 """
 
-from typing import Optional, Dict
-from . import BaseModel, get_model, get_all_models
 
 # Import models to register them
-from . import flux_pro  # noqa: F401
-from . import gpt_image  # noqa: F401
-from . import gpt_image_2  # noqa: F401
-from . import imagen  # noqa: F401
-from . import nano_banana  # noqa: F401
-from . import nano_banana_2  # noqa: F401
-from . import nano_banana_pro  # noqa: F401
-from . import qwen_image  # noqa: F401
-from . import qwen_image_edit_plus  # noqa: F401
-from . import seedream  # noqa: F401
-from . import stable_diffusion_large_turbo  # noqa: F401
+from . import (
+    BaseModel,
+    flux_pro,  # noqa: F401
+    get_all_models,
+    get_model,
+    gpt_image,  # noqa: F401
+    gpt_image_2,  # noqa: F401
+    imagen,  # noqa: F401
+    nano_banana,  # noqa: F401
+    nano_banana_2,  # noqa: F401
+    nano_banana_pro,  # noqa: F401
+    qwen_image,  # noqa: F401
+    qwen_image_edit_plus,  # noqa: F401
+    seedream,  # noqa: F401
+    stable_diffusion_large_turbo,  # noqa: F401
+)
 
 
 class ModelFactory:
@@ -30,7 +30,7 @@ class ModelFactory:
         """Initialize the model factory"""
         self._default_model = "google/nano-banana"
 
-    def get_available_models(self) -> Dict[str, BaseModel]:
+    def get_available_models(self) -> dict[str, BaseModel]:
         """
         Get all available model instances
 
@@ -39,7 +39,7 @@ class ModelFactory:
         """
         return get_all_models()
 
-    def get_compatible_models(self, mode: str) -> Dict[str, BaseModel]:
+    def get_compatible_models(self, mode: str) -> dict[str, BaseModel]:
         """
         Get models compatible with a specific mode
 
@@ -75,7 +75,7 @@ class ModelFactory:
 
     def get_models_for_context(
         self, has_image: bool = False
-    ) -> Dict[str, BaseModel]:
+    ) -> dict[str, BaseModel]:
         """
         Get models appropriate for the current context
 
@@ -98,7 +98,7 @@ class ModelFactory:
 
         return filtered_models
 
-    def get_model_by_name(self, name: str) -> Optional[BaseModel]:
+    def get_model_by_name(self, name: str) -> BaseModel | None:
         """
         Get a model instance by name
 
@@ -114,7 +114,7 @@ class ModelFactory:
 model_factory = ModelFactory()
 
 
-def get_compatible_models(mode: str) -> Dict[str, BaseModel]:
+def get_compatible_models(mode: str) -> dict[str, BaseModel]:
     """Convenience function to get compatible models"""
     return model_factory.get_compatible_models(mode)
 
@@ -124,11 +124,11 @@ def get_default_model() -> BaseModel:
     return model_factory.get_default_model()
 
 
-def get_models_for_context(has_image: bool = False) -> Dict[str, BaseModel]:
+def get_models_for_context(has_image: bool = False) -> dict[str, BaseModel]:
     """Convenience function to get models for context"""
     return model_factory.get_models_for_context(has_image)
 
 
-def get_model_by_name(name: str) -> Optional[BaseModel]:
+def get_model_by_name(name: str) -> BaseModel | None:
     """Convenience function to get a model by name"""
     return model_factory.get_model_by_name(name)
