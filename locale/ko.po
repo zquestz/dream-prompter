@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-07-31 13:05-1000\n"
+"POT-Creation-Date: 2026-08-07 19:34-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
@@ -27,11 +27,11 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:381 integrator.py:113
+#: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
 msgstr "AI 생성"
 
-#: dialog_threads.py:379
+#: dialog_threads.py:381
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "AI 생성 {num}"
@@ -61,10 +61,11 @@ msgstr "Replicate 모델을 사용한 AI 이미지 생성/편집"
 msgid "API key is required"
 msgstr "API 키가 필요합니다"
 
-#: dialog_threads.py:354
+#: dialog_threads.py:355
 #, python-brace-format
-msgid "Added {count} layers"
-msgstr "{count}개 레이어 추가됨"
+msgid "Added {count} layer"
+msgid_plural "Added {count} layers"
+msgstr[0] "{count}개 레이어 추가됨"
 
 #: dialog_threads.py:343
 #, python-brace-format
@@ -107,7 +108,7 @@ msgstr "Replicate 편집 요청 구축 중..."
 msgid "ByteDance's flagship model for sharp 1K and 2K images"
 msgstr "선명한 1K 및 2K 이미지를 위한 ByteDance의 플래그십 모델"
 
-#: dialog_events.py:215 dialog_gtk.py:408
+#: dialog_events.py:219 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "취소"
 
@@ -115,21 +116,11 @@ msgstr "취소"
 msgid "Cancelling..."
 msgstr "취소 중..."
 
-#: dialog_events.py:253
+#: dialog_events.py:255
 #, python-brace-format
-msgid ""
-"Cannot add {count} files. Maximum {max} reference images allowed in edit "
-"mode."
-msgstr ""
-"{count}개의 파일을 추가할 수 없습니다. 편집 모드에서는 최대 {max}개의 참조 이"
-"미지가 허용됩니다."
-
-#: dialog_events.py:260
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum {max} reference images allowed."
-msgstr ""
-"{count}개의 파일을 추가할 수 없습니다. 최대 {max}개의 참조 이미지가 허용됩니"
-"다."
+msgid "Cannot add {count} file."
+msgid_plural "Cannot add {count} files."
+msgstr[0] "{count}개의 파일을 추가할 수 없습니다."
 
 #: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
@@ -166,7 +157,7 @@ msgstr "생성된 이미지의 안전 필터링 제어"
 msgid "Control safety of generated images"
 msgstr "생성 이미지의 안전성 제어"
 
-#: dialog_threads.py:374
+#: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "이미지 {num} 생성 중..."
@@ -207,12 +198,12 @@ msgstr "속도 최적화 활성화"
 msgid "Enter your Replicate API key"
 msgstr "Replicate API 키를 입력하세요"
 
-#: dialog_threads.py:359
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "레이어 추가 오류: {error}"
 
-#: dialog_threads.py:393
+#: dialog_threads.py:399
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "이미지 생성 오류: {error}"
@@ -261,18 +252,19 @@ msgstr "GPT Image 1.5"
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
 
-#: dialog_events.py:185 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "편집 생성"
 
-#: dialog_events.py:188 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "이미지 생성"
 
-#: dialog_threads.py:388
+#: dialog_threads.py:391
 #, python-brace-format
-msgid "Generated {count} images"
-msgstr "{count}개 이미지 생성됨"
+msgid "Generated {count} image"
+msgid_plural "Generated {count} images"
+msgstr[0] "{count}개 이미지 생성됨"
 
 #: api.py:180
 msgid "Generating image with Replicate..."
@@ -324,7 +316,7 @@ msgid ""
 "multiple of 32."
 msgstr "텍스트-이미지 모드에서 생성된 이미지의 높이."
 
-#: dialog_events.py:278
+#: dialog_events.py:292
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
@@ -375,6 +367,18 @@ msgstr "로그"
 #: models/qwen_image.py:196
 msgid "Match Reference Image"
 msgstr "참조 이미지에 맞추기"
+
+#: dialog_events.py:263
+#, python-brace-format
+msgid "Maximum {max} reference image allowed in edit mode."
+msgid_plural "Maximum {max} reference images allowed in edit mode."
+msgstr[0] "편집 모드에서는 최대 {max}개의 참조 이미지가 허용됩니다."
+
+#: dialog_events.py:272
+#, python-brace-format
+msgid "Maximum {max} reference image allowed."
+msgid_plural "Maximum {max} reference images allowed."
+msgstr[0] "최대 {max}개의 참조 이미지가 허용됩니다."
 
 #: dialog_gtk.py:262
 msgid "Model Settings"
@@ -556,10 +560,11 @@ msgstr "재현 가능한 결과를 위한 랜덤 시드 (-1 = 랜덤)"
 msgid "Ready"
 msgstr "준비"
 
-#: dialog_events.py:181
+#: dialog_events.py:182
 #, python-brace-format
-msgid "Reduced to {max} reference images for edit mode"
-msgstr "편집 모드에서 {max}개의 참조 이미지로 감소"
+msgid "Reduced to {max} reference image for edit mode"
+msgid_plural "Reduced to {max} reference images for edit mode"
+msgstr[0] "편집 모드에서 {max}개의 참조 이미지로 감소"
 
 #: dialog_gtk.py:362
 msgid "Replicate API Key"
@@ -617,7 +622,7 @@ msgstr "시드"
 msgid "Seedream 5 Pro"
 msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:216
+#: dialog_events.py:220
 msgid "Select"
 msgstr "선택"
 
@@ -625,14 +630,15 @@ msgstr "선택"
 msgid "Select Images..."
 msgstr "이미지 선택..."
 
-#: dialog_events.py:210
+#: dialog_events.py:214
 msgid "Select Reference Images"
 msgstr "참조 이미지 선택"
 
-#: dialog_events.py:339
+#: dialog_events.py:354
 #, python-brace-format
-msgid "Select up to {max} additional images"
-msgstr "최대 {max}개의 추가 이미지 선택"
+msgid "Select up to {max} additional image"
+msgid_plural "Select up to {max} additional images"
+msgstr[0] "최대 {max}개의 추가 이미지 선택"
 
 #: api.py:135
 msgid "Sending edit request to Replicate..."
@@ -655,7 +661,7 @@ msgstr "배경 모드 설정"
 msgid "Set whether the background is transparent or opaque"
 msgstr "배경을 투명 또는 불투명으로 설정"
 
-#: dialog_events.py:285
+#: dialog_events.py:299
 msgid "Show API key"
 msgstr "API 키 표시"
 
@@ -671,7 +677,7 @@ msgstr "Stability AI의 고해상도 이미지 생성 모델"
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr "지원되는 이미지 ({formats})"
@@ -684,7 +690,7 @@ msgstr "생성된 이미지의 종횡비"
 msgid "The quality of the generated image"
 msgstr "생성된 이미지의 품질"
 
-#: dialog_events.py:343
+#: dialog_events.py:359
 msgid "This model does not support reference images"
 msgstr "이 모델은 참조 이미지를 지원하지 않습니다"
 
@@ -695,7 +701,12 @@ msgid ""
 "including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
 "Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
 "Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
-msgstr "자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거나 새 이미지를 생성합니다. Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택하세요."
+msgstr ""
+"자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거"
+"나 새 이미지를 생성합니다. Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, "
+"Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image "
+"Edit 2511, Seedream 5 Pro, Stable Diffusion 3.5 Large Turbo를 포함한 여러 모"
+"델 중에서 선택하세요."
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -759,12 +770,8 @@ msgstr "OpenAI API 키 (선택 사항 - 제공되지 않으면 프록시 사용)
 #: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
-msgstr "{count}개 이미지 선택됨"
-
-#: dialog_gtk.py:803
-#, python-brace-format
-msgid "{count} images selected"
-msgstr "{count}개 이미지 선택됨"
+msgid_plural "{count} images selected"
+msgstr[0] "{count}개 이미지 선택됨"
 
 #: dialog_threads.py:308
 #, python-brace-format

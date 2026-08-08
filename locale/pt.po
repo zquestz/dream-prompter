@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-07-31 13:05-1000\n"
+"POT-Creation-Date: 2026-08-07 19:34-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Portuguese\n"
@@ -27,11 +27,11 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:381 integrator.py:113
+#: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
 msgstr "Gerado por IA"
 
-#: dialog_threads.py:379
+#: dialog_threads.py:381
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "IA Gerada {num}"
@@ -61,10 +61,12 @@ msgstr "Criação/edição de imagens com IA usando modelos Replicate"
 msgid "API key is required"
 msgstr "Chave API é obrigatória"
 
-#: dialog_threads.py:354
+#: dialog_threads.py:355
 #, python-brace-format
-msgid "Added {count} layers"
-msgstr "Adicionadas {count} camadas"
+msgid "Added {count} layer"
+msgid_plural "Added {count} layers"
+msgstr[0] "Adicionada {count} camada"
+msgstr[1] "Adicionadas {count} camadas"
 
 #: dialog_threads.py:343
 #, python-brace-format
@@ -107,7 +109,7 @@ msgstr "Construindo solicitação de edição para Replicate..."
 msgid "ByteDance's flagship model for sharp 1K and 2K images"
 msgstr "Modelo carro-chefe da ByteDance para imagens nítidas em 1K e 2K"
 
-#: dialog_events.py:215 dialog_gtk.py:408
+#: dialog_events.py:219 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -115,21 +117,12 @@ msgstr "Cancelar"
 msgid "Cancelling..."
 msgstr "Cancelando..."
 
-#: dialog_events.py:253
+#: dialog_events.py:255
 #, python-brace-format
-msgid ""
-"Cannot add {count} files. Maximum {max} reference images allowed in edit "
-"mode."
-msgstr ""
-"Não é possível adicionar {count} arquivos. Máximo de {max} imagens de "
-"referência permitidas no modo de edição."
-
-#: dialog_events.py:260
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum {max} reference images allowed."
-msgstr ""
-"Não é possível adicionar {count} arquivos. Máximo de {max} imagens de "
-"referência permitidas."
+msgid "Cannot add {count} file."
+msgid_plural "Cannot add {count} files."
+msgstr[0] "Não é possível adicionar {count} arquivo."
+msgstr[1] "Não é possível adicionar {count} arquivos."
 
 #: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
@@ -168,7 +161,7 @@ msgstr "Controlar a filtragem de segurança das imagens geradas"
 msgid "Control safety of generated images"
 msgstr "Controlar a segurança das imagens geradas"
 
-#: dialog_threads.py:374
+#: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "Criando imagem {num}..."
@@ -209,12 +202,12 @@ msgstr "Ativar otimizações de velocidade"
 msgid "Enter your Replicate API key"
 msgstr "Digite sua chave API do Replicate"
 
-#: dialog_threads.py:359
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "Erro ao adicionar camadas: {error}"
 
-#: dialog_threads.py:393
+#: dialog_threads.py:399
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "Erro ao criar imagens: {error}"
@@ -263,18 +256,20 @@ msgstr "GPT Image 1.5"
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
 
-#: dialog_events.py:185 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "Gerar Edição"
 
-#: dialog_events.py:188 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "Gerar Imagem"
 
-#: dialog_threads.py:388
+#: dialog_threads.py:391
 #, python-brace-format
-msgid "Generated {count} images"
-msgstr "Geradas {count} imagens"
+msgid "Generated {count} image"
+msgid_plural "Generated {count} images"
+msgstr[0] "Gerada {count} imagem"
+msgstr[1] "Geradas {count} imagens"
 
 #: api.py:180
 msgid "Generating image with Replicate..."
@@ -327,7 +322,7 @@ msgid ""
 "multiple of 32."
 msgstr "Altura da imagem gerada no modo texto-para-imagem."
 
-#: dialog_events.py:278
+#: dialog_events.py:292
 msgid "Hide API key"
 msgstr "Ocultar chave API"
 
@@ -378,6 +373,20 @@ msgstr "Logs"
 #: models/qwen_image.py:196
 msgid "Match Reference Image"
 msgstr "Corresponder à Imagem de Referência"
+
+#: dialog_events.py:263
+#, python-brace-format
+msgid "Maximum {max} reference image allowed in edit mode."
+msgid_plural "Maximum {max} reference images allowed in edit mode."
+msgstr[0] "Máximo de {max} imagem de referência permitida no modo de edição."
+msgstr[1] "Máximo de {max} imagens de referência permitidas no modo de edição."
+
+#: dialog_events.py:272
+#, python-brace-format
+msgid "Maximum {max} reference image allowed."
+msgid_plural "Maximum {max} reference images allowed."
+msgstr[0] "Máximo de {max} imagem de referência permitida."
+msgstr[1] "Máximo de {max} imagens de referência permitidas."
 
 #: dialog_gtk.py:262
 msgid "Model Settings"
@@ -559,10 +568,12 @@ msgstr "Semente aleatória para resultados reproduzíveis (-1 = aleatório)"
 msgid "Ready"
 msgstr "Pronto"
 
-#: dialog_events.py:181
+#: dialog_events.py:182
 #, python-brace-format
-msgid "Reduced to {max} reference images for edit mode"
-msgstr "Reduzido para {max} imagens de referência para o modo de edição"
+msgid "Reduced to {max} reference image for edit mode"
+msgid_plural "Reduced to {max} reference images for edit mode"
+msgstr[0] "Reduzido para {max} imagem de referência para o modo de edição"
+msgstr[1] "Reduzido para {max} imagens de referência para o modo de edição"
 
 #: dialog_gtk.py:362
 msgid "Replicate API Key"
@@ -624,7 +635,7 @@ msgstr "Semente"
 msgid "Seedream 5 Pro"
 msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:216
+#: dialog_events.py:220
 msgid "Select"
 msgstr "Selecionar"
 
@@ -632,14 +643,16 @@ msgstr "Selecionar"
 msgid "Select Images..."
 msgstr "Selecionar Imagens..."
 
-#: dialog_events.py:210
+#: dialog_events.py:214
 msgid "Select Reference Images"
 msgstr "Selecionar Imagens de Referência"
 
-#: dialog_events.py:339
+#: dialog_events.py:354
 #, python-brace-format
-msgid "Select up to {max} additional images"
-msgstr "Selecione até {max} imagens adicionais"
+msgid "Select up to {max} additional image"
+msgid_plural "Select up to {max} additional images"
+msgstr[0] "Selecione até {max} imagem adicional"
+msgstr[1] "Selecione até {max} imagens adicionais"
 
 #: api.py:135
 msgid "Sending edit request to Replicate..."
@@ -662,7 +675,7 @@ msgstr "Definir o modo do fundo"
 msgid "Set whether the background is transparent or opaque"
 msgstr "Definir se o fundo é transparente ou opaco"
 
-#: dialog_events.py:285
+#: dialog_events.py:299
 msgid "Show API key"
 msgstr "Mostrar chave API"
 
@@ -678,7 +691,7 @@ msgstr "Modelo de geração de imagens de alta resolução da Stability AI"
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr "Imagens Suportadas ({formats})"
@@ -691,7 +704,7 @@ msgstr "A proporção da imagem gerada"
 msgid "The quality of the generated image"
 msgstr "A qualidade da imagem gerada"
 
-#: dialog_events.py:343
+#: dialog_events.py:359
 msgid "This model does not support reference images"
 msgstr "Este modelo não suporta imagens de referência"
 
@@ -702,7 +715,12 @@ msgid ""
 "including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
 "Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
 "Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
-msgstr "Transforme imagens existentes ou gere novas imagens usando modelos avançados de IA do Replicate com prompts em linguagem natural. Escolha entre vários modelos incluindo Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro e Stable Diffusion 3.5 Large Turbo."
+msgstr ""
+"Transforme imagens existentes ou gere novas imagens usando modelos avançados "
+"de IA do Replicate com prompts em linguagem natural. Escolha entre vários "
+"modelos incluindo Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano "
+"Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit "
+"2511, Seedream 5 Pro e Stable Diffusion 3.5 Large Turbo."
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -739,7 +757,9 @@ msgstr ""
 msgid ""
 "Use the reference image's aspect ratio and resolution instead of the aspect "
 "ratio setting"
-msgstr "Usar a proporção de aspecto e a resolução da imagem de referência em vez da configuração de proporção de aspecto"
+msgstr ""
+"Usar a proporção de aspecto e a resolução da imagem de referência em vez da "
+"configuração de proporção de aspecto"
 
 #: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
@@ -766,12 +786,9 @@ msgstr "Sua chave API da OpenAI (opcional - usa proxy se não fornecida)"
 #: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
-msgstr "{count} imagem selecionada"
-
-#: dialog_gtk.py:803
-#, python-brace-format
-msgid "{count} images selected"
-msgstr "{count} imagens selecionadas"
+msgid_plural "{count} images selected"
+msgstr[0] "{count} imagem selecionada"
+msgstr[1] "{count} imagens selecionadas"
 
 #: dialog_threads.py:308
 #, python-brace-format

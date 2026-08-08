@@ -12,7 +12,7 @@ from gi.repository import GdkPixbuf, GLib
 import integrator
 from api import ReplicateAPI
 from dialog_gtk import DreamPrompterUI
-from i18n import _
+from i18n import _, ngettext
 
 
 class DreamPrompterThreads:
@@ -351,7 +351,9 @@ class DreamPrompterThreads:
                     print(f"Warning: Failed to create layer {i + 1}")
                     continue
 
-            count_msg = _("Added {count} layers").format(count=len(pixbufs))
+            count_msg = ngettext(
+                "Added {count} layer", "Added {count} layers", len(pixbufs)
+            ).format(count=len(pixbufs))
             self.ui.update_status(count_msg, 1.0)
             self._handle_success()
 
@@ -385,7 +387,11 @@ class DreamPrompterThreads:
                     print(f"Warning: Failed to create image {i + 1}")
                     continue
 
-            count_msg = _("Generated {count} images").format(count=len(pixbufs))
+            count_msg = ngettext(
+                "Generated {count} image",
+                "Generated {count} images",
+                len(pixbufs),
+            ).format(count=len(pixbufs))
             self.ui.update_status(count_msg, 1.0)
             self._handle_success()
 

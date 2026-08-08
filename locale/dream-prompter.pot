@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.5.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-07-31 13:05-1000\n"
+"POT-Creation-Date: 2026-08-07 19:34-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: api.py:57 api.py:100 api.py:172
 msgid "Replicate API not available. Please install replicate"
@@ -124,62 +125,75 @@ msgstr ""
 msgid "Initializing API request..."
 msgstr ""
 
-#: dialog_events.py:181
+#: dialog_events.py:182
 #, python-brace-format
-msgid "Reduced to {max} reference images for edit mode"
-msgstr ""
+msgid "Reduced to {max} reference image for edit mode"
+msgid_plural "Reduced to {max} reference images for edit mode"
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_events.py:185 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:188 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:210
+#: dialog_events.py:214
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:215 dialog_gtk.py:408
+#: dialog_events.py:219 dialog_gtk.py:408
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:216
+#: dialog_events.py:220
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr ""
 
-#: dialog_events.py:253
+#: dialog_events.py:255
 #, python-brace-format
-msgid ""
-"Cannot add {count} files. Maximum {max} reference images allowed in edit "
-"mode."
-msgstr ""
+msgid "Cannot add {count} file."
+msgid_plural "Cannot add {count} files."
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_events.py:260
+#: dialog_events.py:263
 #, python-brace-format
-msgid "Cannot add {count} files. Maximum {max} reference images allowed."
-msgstr ""
+msgid "Maximum {max} reference image allowed in edit mode."
+msgid_plural "Maximum {max} reference images allowed in edit mode."
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_events.py:278
+#: dialog_events.py:272
+#, python-brace-format
+msgid "Maximum {max} reference image allowed."
+msgid_plural "Maximum {max} reference images allowed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: dialog_events.py:292
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:285
+#: dialog_events.py:299
 msgid "Show API key"
 msgstr ""
 
-#: dialog_events.py:339
+#: dialog_events.py:354
 #, python-brace-format
-msgid "Select up to {max} additional images"
-msgstr ""
+msgid "Select up to {max} additional image"
+msgid_plural "Select up to {max} additional images"
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_events.py:343
+#: dialog_events.py:359
 msgid "This model does not support reference images"
 msgstr ""
 
@@ -258,12 +272,9 @@ msgstr ""
 #: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
-msgstr ""
-
-#: dialog_gtk.py:803
-#, python-brace-format
-msgid "{count} images selected"
-msgstr ""
+msgid_plural "{count} images selected"
+msgstr[0] ""
+msgstr[1] ""
 
 #: dialog_threads.py:49
 msgid "Cancelling..."
@@ -314,36 +325,40 @@ msgstr ""
 msgid "Adding layer {num}..."
 msgstr ""
 
-#: dialog_threads.py:354
+#: dialog_threads.py:355
 #, python-brace-format
-msgid "Added {count} layers"
-msgstr ""
+msgid "Added {count} layer"
+msgid_plural "Added {count} layers"
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_threads.py:359
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr ""
 
-#: dialog_threads.py:374
+#: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr ""
 
-#: dialog_threads.py:379
+#: dialog_threads.py:381
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr ""
 
-#: dialog_threads.py:381 integrator.py:113
+#: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
 msgstr ""
 
-#: dialog_threads.py:388
+#: dialog_threads.py:391
 #, python-brace-format
-msgid "Generated {count} images"
-msgstr ""
+msgid "Generated {count} image"
+msgid_plural "Generated {count} images"
+msgstr[0] ""
+msgstr[1] ""
 
-#: dialog_threads.py:393
+#: dialog_threads.py:399
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr ""

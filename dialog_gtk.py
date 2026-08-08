@@ -7,7 +7,7 @@ import os
 
 from gi.repository import Gtk, Pango
 
-from i18n import _
+from i18n import _, ngettext
 from model_settings import ModelParameterManager
 from models import ParameterType
 from models.factory import get_model_by_name, get_models_for_context
@@ -797,10 +797,9 @@ class DreamPrompterUI:
             return
 
         count = len(self.selected_files)
-        if count == 1:
-            text = _("{count} image selected")
-        else:
-            text = _("{count} images selected").format(count=count)
+        text = ngettext(
+            "{count} image selected", "{count} images selected", count
+        ).format(count=count)
 
         self.files_info_label.set_text(text)
 

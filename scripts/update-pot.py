@@ -51,6 +51,7 @@ def extract_strings() -> bool:
         "--language=Python",
         "--keyword=_",
         "--keyword=N_",
+        "--keyword=ngettext:1,2",
         "--output=" + pot_file,
         "--from-code=UTF-8",
         "--copyright-holder=Josh Ellithorpe",

@@ -6,7 +6,7 @@ Handles all user interactions and UI events
 from gi.repository import GLib, Gtk
 
 from dialog_threads import DreamPrompterThreads
-from i18n import _
+from i18n import _, ngettext
 from models.factory import get_default_model, get_model_by_name
 from settings import load_settings, store_settings
 
@@ -178,7 +178,11 @@ class DreamPrompterEventHandler:
             if len(self.ui.selected_files) > max_edit_files:
                 self.ui.selected_files = self.ui.selected_files[:max_edit_files]
                 self.ui.update_files_display()
-                message = _("Reduced to {max} reference images for edit mode")
+                message = ngettext(
+                    "Reduced to {max} reference image for edit mode",
+                    "Reduced to {max} reference images for edit mode",
+                    max_edit_files,
+                )
                 print(message.format(max=max_edit_files))
 
             if self.ui.generate_btn:
@@ -247,20 +251,30 @@ class DreamPrompterEventHandler:
                 self.ui.selected_files.extend(files[:max_new_files])
                 self.ui.update_files_display()
             elif files:
+                rejected = ngettext(
+                    "Cannot add {count} file.",
+                    "Cannot add {count} files.",
+                    len(files),
+                ).format(count=len(files))
+
                 if current_mode == "edit":
                     max_refs = self.model.max_reference_images_edit
-                    message = _(
-                        "Cannot add {count} files. Maximum {max} "
-                        "reference images allowed in edit mode."
-                    )
-                    print(message.format(count=len(files), max=max_refs))
+                    limit = ngettext(
+                        "Maximum {max} reference image allowed in edit "
+                        "mode.",
+                        "Maximum {max} reference images allowed in edit "
+                        "mode.",
+                        max_refs,
+                    ).format(max=max_refs)
                 else:
                     max_refs = self.model.max_reference_images
-                    message = _(
-                        "Cannot add {count} files. Maximum {max} "
-                        "reference images allowed."
-                    )
-                    print(message.format(count=len(files), max=max_refs))
+                    limit = ngettext(
+                        "Maximum {max} reference image allowed.",
+                        "Maximum {max} reference images allowed.",
+                        max_refs,
+                    ).format(max=max_refs)
+
+                print(f"{rejected} {limit}")
 
         dialog.destroy()
 
@@ -336,9 +350,11 @@ class DreamPrompterEventHandler:
             max_imgs = self.model.max_reference_images
 
         if max_imgs > 0:
-            text = _("Select up to {max} additional images").format(
-                max=max_imgs
-            )
+            text = ngettext(
+                "Select up to {max} additional image",
+                "Select up to {max} additional images",
+                max_imgs,
+            ).format(max=max_imgs)
         else:
             text = _("This model does not support reference images")
 

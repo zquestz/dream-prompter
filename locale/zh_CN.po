@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.1.5\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-07-31 13:05-1000\n"
+"POT-Creation-Date: 2026-08-07 19:34-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Simplified\n"
@@ -27,11 +27,11 @@ msgstr "({size:.0f} KB)"
 msgid "({size:.1f} MB)"
 msgstr "({size:.1f} MB)"
 
-#: dialog_threads.py:381 integrator.py:113
+#: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
 msgstr "AI生成"
 
-#: dialog_threads.py:379
+#: dialog_threads.py:381
 #, python-brace-format
 msgid "AI Generated {num}"
 msgstr "AI生成 {num}"
@@ -61,10 +61,11 @@ msgstr "使用Replicate模型进行AI驱动的图像创建/编辑"
 msgid "API key is required"
 msgstr "需要API密钥"
 
-#: dialog_threads.py:354
+#: dialog_threads.py:355
 #, python-brace-format
-msgid "Added {count} layers"
-msgstr "已添加 {count} 层"
+msgid "Added {count} layer"
+msgid_plural "Added {count} layers"
+msgstr[0] "已添加 {count} 层"
 
 #: dialog_threads.py:343
 #, python-brace-format
@@ -107,7 +108,7 @@ msgstr "构建Replicate编辑请求..."
 msgid "ByteDance's flagship model for sharp 1K and 2K images"
 msgstr "字节跳动的旗舰模型，可生成清晰的1K和2K图像"
 
-#: dialog_events.py:215 dialog_gtk.py:408
+#: dialog_events.py:219 dialog_gtk.py:408
 msgid "Cancel"
 msgstr "取消"
 
@@ -115,17 +116,11 @@ msgstr "取消"
 msgid "Cancelling..."
 msgstr "正在取消..."
 
-#: dialog_events.py:253
+#: dialog_events.py:255
 #, python-brace-format
-msgid ""
-"Cannot add {count} files. Maximum {max} reference images allowed in edit "
-"mode."
-msgstr "无法添加{count}个文件。编辑模式下最多允许{max}张参考图像。"
-
-#: dialog_events.py:260
-#, python-brace-format
-msgid "Cannot add {count} files. Maximum {max} reference images allowed."
-msgstr "无法添加{count}个文件。最多允许{max}个参考图像。"
+msgid "Cannot add {count} file."
+msgid_plural "Cannot add {count} files."
+msgstr[0] "无法添加{count}个文件。"
 
 #: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
@@ -162,7 +157,7 @@ msgstr "控制生成图像的安全过滤"
 msgid "Control safety of generated images"
 msgstr "控制生成图像的安全性"
 
-#: dialog_threads.py:374
+#: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "正在创建图像 {num}..."
@@ -203,12 +198,12 @@ msgstr "启用速度优化"
 msgid "Enter your Replicate API key"
 msgstr "输入您的Replicate API密钥"
 
-#: dialog_threads.py:359
+#: dialog_threads.py:361
 #, python-brace-format
 msgid "Error adding layers: {error}"
 msgstr "添加图层错误: {error}"
 
-#: dialog_threads.py:393
+#: dialog_threads.py:399
 #, python-brace-format
 msgid "Error creating images: {error}"
 msgstr "创建图像错误: {error}"
@@ -257,18 +252,19 @@ msgstr "GPT Image 1.5"
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
 
-#: dialog_events.py:185 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
 msgstr "生成编辑"
 
-#: dialog_events.py:188 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:523
 msgid "Generate Image"
 msgstr "生成图像"
 
-#: dialog_threads.py:388
+#: dialog_threads.py:391
 #, python-brace-format
-msgid "Generated {count} images"
-msgstr "已生成 {count} 张图像"
+msgid "Generated {count} image"
+msgid_plural "Generated {count} images"
+msgstr[0] "已生成 {count} 张图像"
 
 #: api.py:180
 msgid "Generating image with Replicate..."
@@ -317,7 +313,7 @@ msgid ""
 "multiple of 32."
 msgstr "文本转图像模式下生成图像的高度。"
 
-#: dialog_events.py:278
+#: dialog_events.py:292
 msgid "Hide API key"
 msgstr "隐藏API密钥"
 
@@ -368,6 +364,18 @@ msgstr "日志"
 #: models/qwen_image.py:196
 msgid "Match Reference Image"
 msgstr "匹配参考图像"
+
+#: dialog_events.py:263
+#, python-brace-format
+msgid "Maximum {max} reference image allowed in edit mode."
+msgid_plural "Maximum {max} reference images allowed in edit mode."
+msgstr[0] "编辑模式下最多允许{max}张参考图像。"
+
+#: dialog_events.py:272
+#, python-brace-format
+msgid "Maximum {max} reference image allowed."
+msgid_plural "Maximum {max} reference images allowed."
+msgstr[0] "最多允许{max}张参考图像。"
 
 #: dialog_gtk.py:262
 msgid "Model Settings"
@@ -548,10 +556,11 @@ msgstr "用于可重现结果的随机种子（-1 = 随机）"
 msgid "Ready"
 msgstr "就绪"
 
-#: dialog_events.py:181
+#: dialog_events.py:182
 #, python-brace-format
-msgid "Reduced to {max} reference images for edit mode"
-msgstr "减少到{max}张参考图像用于编辑模式"
+msgid "Reduced to {max} reference image for edit mode"
+msgid_plural "Reduced to {max} reference images for edit mode"
+msgstr[0] "减少到{max}张参考图像用于编辑模式"
 
 #: dialog_gtk.py:362
 msgid "Replicate API Key"
@@ -609,7 +618,7 @@ msgstr "种子"
 msgid "Seedream 5 Pro"
 msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:216
+#: dialog_events.py:220
 msgid "Select"
 msgstr "选择"
 
@@ -617,14 +626,15 @@ msgstr "选择"
 msgid "Select Images..."
 msgstr "选择图像..."
 
-#: dialog_events.py:210
+#: dialog_events.py:214
 msgid "Select Reference Images"
 msgstr "选择参考图像"
 
-#: dialog_events.py:339
+#: dialog_events.py:354
 #, python-brace-format
-msgid "Select up to {max} additional images"
-msgstr "最多选择{max}张附加图像"
+msgid "Select up to {max} additional image"
+msgid_plural "Select up to {max} additional images"
+msgstr[0] "最多选择{max}张附加图像"
 
 #: api.py:135
 msgid "Sending edit request to Replicate..."
@@ -647,7 +657,7 @@ msgstr "设置背景模式"
 msgid "Set whether the background is transparent or opaque"
 msgstr "设置背景是透明还是不透明"
 
-#: dialog_events.py:285
+#: dialog_events.py:299
 msgid "Show API key"
 msgstr "显示API密钥"
 
@@ -663,7 +673,7 @@ msgstr "Stability AI的高分辨率图像生成模型"
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:226
+#: dialog_events.py:230
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr "支持的图像格式（{formats}）"
@@ -676,7 +686,7 @@ msgstr "生成图像的宽高比"
 msgid "The quality of the generated image"
 msgstr "生成图像的质量"
 
-#: dialog_events.py:343
+#: dialog_events.py:359
 msgid "This model does not support reference images"
 msgstr "此模型不支持参考图像"
 
@@ -687,7 +697,11 @@ msgid ""
 "including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
 "Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
 "Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
-msgstr "使用Replicate的高级AI模型和自然语言提示转换现有图像或生成新图像。可从多个模型中选择，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、Imagen 4、Nano Banana、Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、Qwen Image Edit 2511、Seedream 5 Pro和Stable Diffusion 3.5 Large Turbo。"
+msgstr ""
+"使用Replicate的高级AI模型和自然语言提示转换现有图像或生成新图像。可从多个模型"
+"中选择，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、Imagen 4、Nano Banana、"
+"Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、Qwen Image Edit 2511、"
+"Seedream 5 Pro和Stable Diffusion 3.5 Large Turbo。"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -747,12 +761,8 @@ msgstr "您的OpenAI API密钥（可选 - 如未提供则使用代理）"
 #: dialog_gtk.py:801
 #, python-brace-format
 msgid "{count} image selected"
-msgstr "已选择{count}张图像"
-
-#: dialog_gtk.py:803
-#, python-brace-format
-msgid "{count} images selected"
-msgstr "已选择{count}张图像"
+msgid_plural "{count} images selected"
+msgstr[0] "已选择{count}张图像"
 
 #: dialog_threads.py:308
 #, python-brace-format
