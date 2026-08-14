@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.5.1\n"
+"Project-Id-Version: Dream Prompter 1.6.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-07 19:34-1000\n"
+"POT-Creation-Date: 2026-08-13 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
@@ -57,7 +57,7 @@ msgstr "AI提示詞"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "使用Replicate模型進行AI驅動的圖像創建/編輯"
 
-#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "需要API密鑰"
 
@@ -77,7 +77,8 @@ msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
-#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/grok_imagine_image_2.py:179 models/imagen.py:142
+#: models/nano_banana.py:162 models/nano_banana_2.py:182
 #: models/nano_banana_pro.py:177 models/qwen_image.py:177
 #: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
@@ -87,8 +88,8 @@ msgstr "長寬比"
 msgid "Aspect ratio for the generated image"
 msgstr "生成圖像的縱橫比"
 
-#: models/nano_banana.py:163 models/nano_banana_2.py:183
-#: models/nano_banana_pro.py:178
+#: models/grok_imagine_image_2.py:180 models/nano_banana.py:163
+#: models/nano_banana_2.py:183 models/nano_banana_pro.py:178
 msgid "Aspect ratio of the generated image"
 msgstr "生成圖像的長寬比"
 
@@ -100,7 +101,7 @@ msgstr "自動擴展並優化提示以獲得更好的結果"
 msgid "Background"
 msgstr "背景"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "構建Replicate編輯請求..."
 
@@ -170,7 +171,7 @@ msgstr "停用安全檢查器"
 msgid "Disable safety checker for generated images."
 msgstr "停用生成圖像的安全檢查器。"
 
-#: api.py:376
+#: api.py:455
 msgid "Downloading result..."
 msgstr "正在下載結果..."
 
@@ -178,7 +179,7 @@ msgstr "正在下載結果..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI圖像創建器/編輯器"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -208,7 +209,7 @@ msgstr "新增圖層錯誤: {error}"
 msgid "Error creating images: {error}"
 msgstr "建立影像錯誤: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
@@ -217,11 +218,11 @@ msgstr "運行Dream Prompter時出錯：{error}"
 msgid "Expand Prompt"
 msgstr "擴展提示"
 
-#: api.py:392
+#: api.py:471
 msgid "Failed to convert any images from API response"
 msgstr "無法從API回應轉換影像"
 
-#: api.py:116
+#: api.py:119
 msgid "Failed to export current image"
 msgstr "匯出當前圖像失敗"
 
@@ -266,9 +267,15 @@ msgid "Generated {count} image"
 msgid_plural "Generated {count} images"
 msgstr[0] "已生成 {count} 張影像"
 
-#: api.py:180
+#: api.py:191
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
+
+#: models/grok_imagine_image_2.py:214
+msgid ""
+"Generation quality. Medium produces the best results, low is faster and "
+"cheaper."
+msgstr "生成品質。Medium生成最佳結果，low更快且更便宜。"
 
 #: dialog_gtk.py:391
 #, python-brace-format
@@ -303,6 +310,10 @@ msgid ""
 "conversational workflows"
 msgstr "Google最先進的圖像生成和編輯模型，適用於快速、對話式工作流程"
 
+#: models/grok_imagine_image_2.py:47
+msgid "Grok Imagine Image 2"
+msgstr "Grok Imagine Image 2"
+
 #: models/flux_pro.py:230
 msgid "Height"
 msgstr "高度"
@@ -333,11 +344,11 @@ msgstr "圖片搜尋"
 msgid "Image Size"
 msgstr "影像大小"
 
-#: api.py:396
+#: api.py:475
 msgid "Image editing complete!"
 msgstr "圖像編輯完成！"
 
-#: api.py:398
+#: api.py:477
 msgid "Image generation complete!"
 msgstr "圖像生成完成！"
 
@@ -357,7 +368,7 @@ msgstr "正在初始化API請求..."
 msgid "Input Fidelity"
 msgstr "輸入保真度"
 
-#: api.py:265
+#: api.py:321 api.py:339
 msgid "Logs"
 msgstr "日誌"
 
@@ -381,7 +392,7 @@ msgstr[0] "最多允許{max}張參考圖像。"
 msgid "Model Settings"
 msgstr "模型設定"
 
-#: api.py:258
+#: api.py:317 api.py:332
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
@@ -410,11 +421,16 @@ msgstr "負面提示"
 msgid "Negative prompt for generated image"
 msgstr "生成圖像的負面提示"
 
+#: api.py:346
+#, python-brace-format
+msgid "Network error: {error}"
+msgstr "網路錯誤：{error}"
+
 #: model_settings.py:248
 msgid "No"
 msgstr "否"
 
-#: api.py:104
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "未提供用於編輯的GIMP圖像"
 
@@ -434,11 +450,11 @@ msgstr "未從API接收到圖像數據"
 msgid "No layer available for editing"
 msgstr "沒有可編輯的圖層"
 
-#: api.py:373
+#: api.py:452
 msgid "No output received from API"
 msgstr "未從API接收到輸出"
 
-#: api.py:382
+#: api.py:461
 msgid "No valid image data in API response"
 msgstr "API響應中沒有有效圖像數據"
 
@@ -470,7 +486,8 @@ msgstr "OpenAI的新一代圖像生成模型"
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
+#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
+#: api.py:449 api.py:457
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
@@ -497,11 +514,11 @@ msgstr "請輸入提示詞"
 msgid "Please enter your Replicate API key"
 msgstr "請輸入您的Replicate API密鑰"
 
-#: api.py:108
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "為Replicate準備當前圖像..."
 
-#: api.py:368
+#: api.py:447
 msgid "Processing Replicate response..."
 msgstr "處理Replicate響應..."
 
@@ -518,6 +535,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "提示強度（或去噪強度）"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
+#: models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "品質"
 
@@ -566,17 +584,17 @@ msgstr[0] "減少到{max}張參考圖像用於編輯模式"
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
-#: api.py:269
+#: api.py:343
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API錯誤：{error}"
 
-#: api.py:57 api.py:100 api.py:172
+#: api.py:60 api.py:103 api.py:183
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。請安裝replicate"
 
-#: models/flux_pro.py:198 models/nano_banana_2.py:170
-#: models/nano_banana_pro.py:168
+#: models/flux_pro.py:198 models/grok_imagine_image_2.py:203
+#: models/nano_banana_2.py:170 models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr "解析度"
 
@@ -586,7 +604,7 @@ msgid ""
 "recommended."
 msgstr "以百萬像素為單位的解析度。最高可達4MP，但建議使用2MP或更低。"
 
-#: models/nano_banana_pro.py:169
+#: models/grok_imagine_image_2.py:204 models/nano_banana_pro.py:169
 msgid "Resolution of the generated image"
 msgstr "生成圖像的解析度"
 
@@ -636,11 +654,11 @@ msgid "Select up to {max} additional image"
 msgid_plural "Select up to {max} additional images"
 msgstr[0] "最多選擇{max}張附加圖像"
 
-#: api.py:135
+#: api.py:142
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate發送編輯請求..."
 
-#: api.py:192
+#: api.py:203
 msgid "Sending request to Replicate..."
 msgstr "向Replicate發送請求..."
 
@@ -694,14 +712,14 @@ msgstr "此模型不支援參考圖像"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
-"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
+"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
+"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "使用Replicate的高級AI模型和自然語言提示轉換現有圖像或生成新圖像。可從多個模型"
-"中選擇，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、Imagen 4、Nano Banana、"
-"Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、Qwen Image Edit 2511、"
-"Seedream 5 Pro和Stable Diffusion 3.5 Large Turbo。"
+"中選擇，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、Grok Imagine Image 2、"
+"Imagen 4、Nano Banana、Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、"
+"Qwen Image Edit 2511、Seedream 5 Pro和Stable Diffusion 3.5 Large Turbo。"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -713,7 +731,7 @@ msgstr "圖像編輯過程中出現意外錯誤：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "圖像生成過程中出現意外錯誤：{error}"
 
-#: api.py:146 api.py:203
+#: api.py:157 api.py:216
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外錯誤：{error}"
@@ -736,6 +754,10 @@ msgid ""
 "ratio setting"
 msgstr "使用參考圖像的長寬比和解析度，而不是長寬比設定"
 
+#: api.py:301
+msgid "Waiting for Replicate..."
+msgstr "正在等待Replicate..."
+
 #: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
 msgstr "您不希望在影像中看到的內容"
@@ -757,6 +779,10 @@ msgstr "是"
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "您的OpenAI API金鑰（可選 - 如未提供則使用代理）"
+
+#: models/grok_imagine_image_2.py:41
+msgid "xAI's general-purpose image generation and editing model"
+msgstr "xAI的通用圖像生成和編輯模型"
 
 #: dialog_gtk.py:801
 #, python-brace-format

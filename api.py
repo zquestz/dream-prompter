@@ -8,6 +8,7 @@ API to perform image generation and editing operations using various AI models.
 import io
 import mimetypes
 import os
+import time
 import urllib.request
 from collections.abc import Callable
 from contextlib import contextmanager
@@ -19,6 +20,7 @@ from i18n import _
 from models.factory import get_default_model, get_model_by_name
 from settings import get_model_settings
 
+DOWNLOAD_TIMEOUT_SECONDS = 60
 PROGRESS_COMPLETE = 1.0
 PROGRESS_DOWNLOAD = 0.9
 PROGRESS_PREPARE = 0.1
@@ -26,6 +28,7 @@ PROGRESS_PROCESS = 0.7
 PROGRESS_UPLOAD = 0.5
 
 try:
+    import httpx
     from replicate.client import Client
     from replicate.exceptions import ModelError, ReplicateError
 
@@ -124,9 +127,13 @@ class ReplicateAPI:
                     return None, _("Operation cancelled")
 
                 user_settings = get_model_settings(self.model.name)
+                main_image = io.BytesIO(current_image_data)
+                # Uploads inherit this name; some model runners (Grok)
+                # validate the file extension and reject unnamed buffers
+                main_image.name = "image.png"
                 model_input = self.model.build_edit_input(
                     prompt=prompt,
-                    main_image=io.BytesIO(current_image_data),
+                    main_image=main_image,
                     reference_images=ref_files if ref_files else None,
                     user_settings=user_settings,
                 )
@@ -136,11 +143,15 @@ class ReplicateAPI:
                 ):
                     return None, _("Operation cancelled")
 
-                output = self._execute_api_call(model_input)
+                output = self._execute_api_call(
+                    model_input, progress_callback
+                )
                 if isinstance(output, str):
                     return None, output
 
-            return self._process_response(output, progress_callback)
+            return self._process_response(
+                output, progress_callback, is_edit=True
+            )
 
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
@@ -193,7 +204,9 @@ class ReplicateAPI:
                 ):
                     return None, _("Operation cancelled")
 
-                output = self._execute_api_call(model_input)
+                output = self._execute_api_call(
+                    model_input, progress_callback
+                )
                 if isinstance(output, str):
                     return None, output
 
@@ -235,24 +248,85 @@ class ReplicateAPI:
             Image data as bytes, or None if download failed
         """
         try:
-            with urllib.request.urlopen(url) as url_response:
+            with urllib.request.urlopen(
+                url, timeout=DOWNLOAD_TIMEOUT_SECONDS
+            ) as url_response:
                 return url_response.read()
         except Exception as e:
             print(f"Error downloading from URL {url}: {e}")
             return None
 
-    def _execute_api_call(self, model_input: dict) -> object | str:
+    def _execute_api_call(
+        self,
+        model_input: dict,
+        progress_callback: Callable[[str, float | None], bool] | None = None,
+    ) -> object | str:
         """
-        Execute API call with proper error handling.
+        Create a prediction and poll it until it completes.
+
+        Polling with short requests instead of one long blocking call
+        avoids the HTTP read timeout on slow generations and lets the
+        user cancel a running prediction between polls.
 
         Args:
             model_input: Input parameters for the model
+            progress_callback: Progress callback function; returning
+                False cancels the prediction on Replicate
 
         Returns:
-            API response object or error message string
+            API response output or error message string
         """
         try:
-            return self.client.run(self.model.name, input=model_input)
+            strategy = self.model.file_encoding_strategy
+            if strategy:
+                prediction = self.client.models.predictions.create(
+                    model=self.model.name,
+                    input=model_input,
+                    wait=False,
+                    file_encoding_strategy=strategy,
+                )
+            else:
+                prediction = self.client.models.predictions.create(
+                    model=self.model.name,
+                    input=model_input,
+                    wait=False,
+                )
+
+            while prediction.status not in (
+                "succeeded",
+                "failed",
+                "canceled",
+            ):
+                if progress_callback and not progress_callback(
+                    _("Waiting for Replicate..."), PROGRESS_PROCESS
+                ):
+                    try:
+                        prediction.cancel()
+                    except Exception as e:
+                        print(f"Error cancelling prediction: {e}")
+                    return _("Operation cancelled")
+
+                time.sleep(self.client.poll_interval)
+                prediction.reload()
+
+            if prediction.status == "canceled":
+                return _("Operation cancelled")
+
+            if prediction.status == "failed":
+                error_detail = str(prediction.error or "prediction failed")
+                error_msg = _("Model error: {error}").format(
+                    error=error_detail
+                )
+                if prediction.logs:
+                    error_msg += f"\n{_('Logs')}: {prediction.logs}"
+                return error_msg
+
+            if isinstance(prediction.output, str):
+                # Callers treat string results as error messages, so a
+                # bare URL output must be wrapped in a list
+                return [prediction.output]
+
+            return prediction.output
 
         except ModelError as e:
             error_msg = _("Model error: {error}").format(error=str(e))
@@ -267,6 +341,9 @@ class ReplicateAPI:
 
         except ReplicateError as e:
             return _("Replicate API error: {error}").format(error=str(e))
+
+        except httpx.HTTPError as e:
+            return _("Network error: {error}").format(error=str(e))
 
     @contextmanager
     def _prepare_reference_images(
@@ -353,6 +430,7 @@ class ReplicateAPI:
         self,
         output,
         progress_callback: Callable[[str, float | None], bool] | None = None,
+        is_edit: bool = False,
     ) -> tuple[list[GdkPixbuf.Pixbuf] | None, str | None]:
         """
         Process API response and convert to pixbufs.
@@ -360,6 +438,7 @@ class ReplicateAPI:
         Args:
             output: API response object
             progress_callback: Progress callback function
+            is_edit: Whether this response completes an edit operation
 
         Returns:
             Tuple of (pixbufs, error_message)
@@ -394,7 +473,7 @@ class ReplicateAPI:
         if progress_callback:
             operation_complete_msg = (
                 _("Image editing complete!")
-                if hasattr(self, "_is_edit_operation")
+                if is_edit
                 else _("Image generation complete!")
             )
             progress_callback(operation_complete_msg, PROGRESS_COMPLETE)

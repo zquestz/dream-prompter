@@ -5,7 +5,7 @@ Defines interfaces and implementations for different AI models
 
 from abc import ABC, abstractmethod
 from enum import Enum
-from typing import Any
+from typing import Any, Literal
 
 
 class ModelCapability(Enum):
@@ -172,6 +172,16 @@ class BaseModel(ABC):
     @abstractmethod
     def display_name(self) -> str:
         """Human-readable model name"""
+
+    @property
+    def file_encoding_strategy(self) -> Literal["base64", "url"] | None:
+        """
+        How file inputs are sent to Replicate (None = client default)
+
+        Models whose runners validate inputs by URL extension need
+        "base64" so the MIME type travels inside a data URI instead.
+        """
+        return None
 
     @property
     @abstractmethod

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.5.1\n"
+"Project-Id-Version: Dream Prompter 1.6.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-07 19:34-1000\n"
+"POT-Creation-Date: 2026-08-13 13:42-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,90 +18,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: api.py:57 api.py:100 api.py:172
+#: api.py:60 api.py:103 api.py:183
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
-#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr ""
 
-#: api.py:104
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr ""
 
-#: api.py:108
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
+#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
+#: api.py:449 api.py:457
 msgid "Operation cancelled"
 msgstr ""
 
-#: api.py:116
+#: api.py:119
 msgid "Failed to export current image"
 msgstr ""
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr ""
 
-#: api.py:135
+#: api.py:142
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:146 api.py:203
+#: api.py:157 api.py:216
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:180
+#: api.py:191
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:192
+#: api.py:203
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:258
+#: api.py:301
+msgid "Waiting for Replicate..."
+msgstr ""
+
+#: api.py:317 api.py:332
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:265
+#: api.py:321 api.py:339
 msgid "Logs"
 msgstr ""
 
-#: api.py:269
+#: api.py:343
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
 
-#: api.py:368
+#: api.py:346
+#, python-brace-format
+msgid "Network error: {error}"
+msgstr ""
+
+#: api.py:447
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:373
+#: api.py:452
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:376
+#: api.py:455
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:382
+#: api.py:461
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:392
+#: api.py:471
 msgid "Failed to convert any images from API response"
 msgstr ""
 
-#: api.py:396
+#: api.py:475
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:398
+#: api.py:477
 msgid "Image generation complete!"
 msgstr ""
 
@@ -371,16 +381,16 @@ msgstr ""
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
-"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
+"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
+"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr ""
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr ""
@@ -406,7 +416,8 @@ msgid "Flux 2 Pro"
 msgstr ""
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
-#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/grok_imagine_image_2.py:179 models/imagen.py:142
+#: models/nano_banana.py:162 models/nano_banana_2.py:182
 #: models/nano_banana_pro.py:177 models/qwen_image.py:177
 #: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
@@ -416,8 +427,8 @@ msgstr ""
 msgid "Aspect ratio for the generated image"
 msgstr ""
 
-#: models/flux_pro.py:198 models/nano_banana_2.py:170
-#: models/nano_banana_pro.py:168
+#: models/flux_pro.py:198 models/grok_imagine_image_2.py:203
+#: models/nano_banana_2.py:170 models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr ""
 
@@ -524,6 +535,7 @@ msgid "Number of images to generate (1-10)"
 msgstr ""
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
+#: models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr ""
 
@@ -573,6 +585,29 @@ msgstr ""
 msgid "Set the background mode"
 msgstr ""
 
+#: models/grok_imagine_image_2.py:41
+msgid "xAI's general-purpose image generation and editing model"
+msgstr ""
+
+#: models/grok_imagine_image_2.py:47
+msgid "Grok Imagine Image 2"
+msgstr ""
+
+#: models/grok_imagine_image_2.py:180 models/nano_banana.py:163
+#: models/nano_banana_2.py:183 models/nano_banana_pro.py:178
+msgid "Aspect ratio of the generated image"
+msgstr ""
+
+#: models/grok_imagine_image_2.py:204 models/nano_banana_pro.py:169
+msgid "Resolution of the generated image"
+msgstr ""
+
+#: models/grok_imagine_image_2.py:214
+msgid ""
+"Generation quality. Medium produces the best results, low is faster and "
+"cheaper."
+msgstr ""
+
 #: models/imagen.py:37
 msgid "Google's advanced image generation model"
 msgstr ""
@@ -602,11 +637,6 @@ msgstr ""
 
 #: models/nano_banana.py:48
 msgid "Nano Banana (Gemini 2.5 Flash Image)"
-msgstr ""
-
-#: models/nano_banana.py:163 models/nano_banana_2.py:183
-#: models/nano_banana_pro.py:178
-msgid "Aspect ratio of the generated image"
 msgstr ""
 
 #: models/nano_banana_2.py:41
@@ -651,10 +681,6 @@ msgstr ""
 
 #: models/nano_banana_pro.py:44
 msgid "Nano Banana Pro (Gemini 3 Pro)"
-msgstr ""
-
-#: models/nano_banana_pro.py:169
-msgid "Resolution of the generated image"
 msgstr ""
 
 #: models/nano_banana_pro.py:207

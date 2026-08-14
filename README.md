@@ -1,6 +1,6 @@
 # Dream Prompter - GIMP Plugin
 
-Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo.
+Dream Prompter brings powerful AI models from Replicate directly into GIMP for intelligent image generation and editing. Choose from multiple advanced models including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo.
 
 ![Dream Prompter](screenshots/dream-prompter.png)
 
@@ -8,7 +8,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 
 - 🎨 **AI Image Generation**: Create new images from text descriptions
 - ✨ **AI Image Editing**: Transform existing images with natural language prompts
-- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo
+- 🤖 **Multiple AI Models**: Choose from Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo
 - 🖼️ **Reference Images**: Support for multiple reference images (varies by model)
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
@@ -36,7 +36,7 @@ pip install replicate
 
 2. **Extract the release**
 
-   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.5.1`)
+   This will create a folder named `dream-prompter-{version}` (e.g., `dream-prompter-1.6.0`)
 
 3. **Move to your GIMP plugins folder with the correct name:**
 
@@ -51,11 +51,11 @@ pip install replicate
 Example for Linux:
 
 ```bash
-# Extract creates dream-prompter-1.5.1/
-unzip dream-prompter-1.5.1.zip
+# Extract creates dream-prompter-1.6.0/
+unzip dream-prompter-1.6.0.zip
 # Move to correct location with correct name
 # Replace ~/.config/GIMP with ~/snap/gimp/current/GIMP if you installed GIMP via Snap
-mv dream-prompter-1.5.1 ~/.config/GIMP/<version>/plug-ins/dream-prompter
+mv dream-prompter-1.6.0 ~/.config/GIMP/<version>/plug-ins/dream-prompter
 ```
 
 4. **Make executable** (Linux/macOS only):
@@ -130,6 +130,7 @@ yay -S dream-prompter
 │   ├── flux_pro.py
 │   ├── gpt_image.py
 │   ├── gpt_image_2.py
+│   ├── grok_imagine_image_2.py
 │   ├── imagen.py
 │   ├── nano_banana.py
 │   ├── nano_banana_2.py
@@ -210,7 +211,7 @@ If you get the **"replicate not installed"** error on Windows:
    ```
 
    You should see something like:
-    
+
    ```
    C:\Users\quest\AppData\Local\Programs\GIMP 3\bin\pythonw.exe
    ```
@@ -266,6 +267,14 @@ If you get the **"replicate not installed"** error on Windows:
 - **File Size**: Maximum 10MB per image
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Quality control, dense text rendering, world-knowledge reasoning
+
+**Grok Imagine Image 2** (`xai/grok-imagine-image-2`) - xAI's general-purpose image generation and editing model:
+
+- **Capabilities**: Both generation and editing
+- **Reference Images**: Up to 1 for img2img, none for editing
+- **File Size**: Maximum 10MB per image
+- **Formats**: PNG, JPEG, WebP
+- **Special Features**: 1K/2K resolution, quality control, wide aspect ratio range including phone ratios, handles real-world entities and brands
 
 **Imagen 4** (`google/imagen-4`) - Google's advanced image generation model:
 
@@ -433,6 +442,7 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`models/flux_pro.py`** - Flux 2 Pro model implementation
 - **`models/gpt_image.py`** - GPT Image 1.5 model implementation
 - **`models/gpt_image_2.py`** - GPT Image 2 model implementation
+- **`models/grok_imagine_image_2.py`** - Grok Imagine Image 2 model implementation
 - **`models/imagen.py`** - Imagen 4 model implementation
 - **`models/nano_banana.py`** - Nano Banana model implementation
 - **`models/nano_banana_2.py`** - Nano Banana 2 model implementation
@@ -561,4 +571,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, OpenAI's GPT Image 2, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana 2, Google's Nano Banana Pro, Qwen's Image 2 Pro, Qwen's Image Edit 2511, ByteDance's Seedream 5 Pro, and Stability AI's Stable Diffusion 3.5 Large Turbo.
+Built with Replicate's API providing access to multiple advanced AI models including Black Forest Labs' Flux 2 Pro, OpenAI's GPT Image 1.5, OpenAI's GPT Image 2, xAI's Grok Imagine Image 2, Google's Imagen 4, Google's Nano Banana, Google's Nano Banana 2, Google's Nano Banana Pro, Qwen's Image 2 Pro, Qwen's Image Edit 2511, ByteDance's Seedream 5 Pro, and Stability AI's Stable Diffusion 3.5 Large Turbo.

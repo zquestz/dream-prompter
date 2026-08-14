@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.5.1\n"
+"Project-Id-Version: Dream Prompter 1.6.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-07 19:34-1000\n"
+"POT-Creation-Date: 2026-08-13 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Hindi\n"
@@ -57,7 +57,7 @@ msgstr "AI प्रॉम्प्ट"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Replicate मॉडल के साथ AI संचालित छवि निर्माण/संपादन"
 
-#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "API कुंजी आवश्यक है"
 
@@ -78,7 +78,8 @@ msgid "Additional Images (Optional)"
 msgstr "अतिरिक्त छवियां (वैकल्पिक)"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
-#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/grok_imagine_image_2.py:179 models/imagen.py:142
+#: models/nano_banana.py:162 models/nano_banana_2.py:182
 #: models/nano_banana_pro.py:177 models/qwen_image.py:177
 #: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
@@ -88,8 +89,8 @@ msgstr "पहलू अनुपात"
 msgid "Aspect ratio for the generated image"
 msgstr "उत्पन्न छवि के लिए पहलू अनुपात"
 
-#: models/nano_banana.py:163 models/nano_banana_2.py:183
-#: models/nano_banana_pro.py:178
+#: models/grok_imagine_image_2.py:180 models/nano_banana.py:163
+#: models/nano_banana_2.py:183 models/nano_banana_pro.py:178
 msgid "Aspect ratio of the generated image"
 msgstr "जेनेरेट की गई छवि का पहलू अनुपात"
 
@@ -101,7 +102,7 @@ msgstr "बेहतर परिणामों के लिए प्रॉ�
 msgid "Background"
 msgstr "पृष्ठभूमि"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Replicate संपादन अनुरोध बनाया जा रहा है..."
 
@@ -174,7 +175,7 @@ msgstr "सुरक्षा चेकर को निष्क्रिय �
 msgid "Disable safety checker for generated images."
 msgstr "जेनेरेट की गई छवियों के लिए सुरक्षा चेकर अक्षम करें।"
 
-#: api.py:376
+#: api.py:455
 msgid "Downloading result..."
 msgstr "परिणाम डाउनलोड किया जा रहा है..."
 
@@ -182,7 +183,7 @@ msgstr "परिणाम डाउनलोड किया जा रहा �
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI छवि निर्माता/संपादक"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -212,7 +213,7 @@ msgstr "परतें जोड़ने में त्रुटि: {error}
 msgid "Error creating images: {error}"
 msgstr "छवियां बनाने में त्रुटि: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter चलाने में त्रुटि: {error}"
@@ -221,11 +222,11 @@ msgstr "Dream Prompter चलाने में त्रुटि: {error}"
 msgid "Expand Prompt"
 msgstr "प्रॉम्प्ट विस्तारित करें"
 
-#: api.py:392
+#: api.py:471
 msgid "Failed to convert any images from API response"
 msgstr "API प्रतिक्रिया से छवियों को रूपांतरित करने में विफल"
 
-#: api.py:116
+#: api.py:119
 msgid "Failed to export current image"
 msgstr "वर्तमान छवि निर्यात करने में विफल"
 
@@ -271,9 +272,15 @@ msgid_plural "Generated {count} images"
 msgstr[0] "{count} छवि जेनेरेट की गई"
 msgstr[1] "{count} छवियां जेनेरेट की गईं"
 
-#: api.py:180
+#: api.py:191
 msgid "Generating image with Replicate..."
 msgstr "Replicate के साथ छवि उत्पन्न की जा रही है..."
+
+#: models/grok_imagine_image_2.py:214
+msgid ""
+"Generation quality. Medium produces the best results, low is faster and "
+"cheaper."
+msgstr "जेनरेशन गुणवत्ता। Medium सर्वोत्तम परिणाम देता है, low तेज़ और सस्ता है।"
 
 #: dialog_gtk.py:391
 #, python-brace-format
@@ -311,6 +318,10 @@ msgid ""
 msgstr ""
 "तेज़, संवादात्मक कार्यप्रवाहों के लिए Google का अत्याधुनिक छवि निर्माण और संपादन मॉडल"
 
+#: models/grok_imagine_image_2.py:47
+msgid "Grok Imagine Image 2"
+msgstr "Grok Imagine Image 2"
+
 #: models/flux_pro.py:230
 msgid "Height"
 msgstr "ऊंचाई"
@@ -341,11 +352,11 @@ msgstr "छवि खोज"
 msgid "Image Size"
 msgstr "छवि का आकार"
 
-#: api.py:396
+#: api.py:475
 msgid "Image editing complete!"
 msgstr "छवि संपादन पूर्ण!"
 
-#: api.py:398
+#: api.py:477
 msgid "Image generation complete!"
 msgstr "छवि उत्पादन पूर्ण!"
 
@@ -365,7 +376,7 @@ msgstr "API अनुरोध आरंभ किया जा रहा है
 msgid "Input Fidelity"
 msgstr "इनपुट फिडेलिटी"
 
-#: api.py:265
+#: api.py:321 api.py:339
 msgid "Logs"
 msgstr "लॉग"
 
@@ -391,7 +402,7 @@ msgstr[1] "अधिकतम {max} संदर्भ छवियों की
 msgid "Model Settings"
 msgstr "मॉडल सेटिंग्स"
 
-#: api.py:258
+#: api.py:317 api.py:332
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "मॉडल त्रुटि: {error}"
@@ -420,11 +431,16 @@ msgstr "नकारात्मक प्रॉम्प्ट"
 msgid "Negative prompt for generated image"
 msgstr "जेनेरेट की गई छवि के लिए नकारात्मक प्रॉम्प्ट"
 
+#: api.py:346
+#, python-brace-format
+msgid "Network error: {error}"
+msgstr "नेटवर्क त्रुटि: {error}"
+
 #: model_settings.py:248
 msgid "No"
 msgstr "नहीं"
 
-#: api.py:104
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "संपादन के लिए कोई GIMP छवि प्रदान नहीं की गई"
 
@@ -444,11 +460,11 @@ msgstr "API से कोई छवि डेटा प्राप्त नह
 msgid "No layer available for editing"
 msgstr "संपादन के लिए कोई परत उपलब्ध नहीं"
 
-#: api.py:373
+#: api.py:452
 msgid "No output received from API"
 msgstr "API से कोई आउटपुट प्राप्त नहीं हुआ"
 
-#: api.py:382
+#: api.py:461
 msgid "No valid image data in API response"
 msgstr "API प्रतिक्रिया में कोई वैध छवि डेटा नहीं"
 
@@ -480,7 +496,8 @@ msgstr "OpenAI का अगली पीढ़ी का छवि निर्
 msgid "Operation Mode"
 msgstr "ऑपरेशन मोड"
 
-#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
+#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
+#: api.py:449 api.py:457
 msgid "Operation cancelled"
 msgstr "ऑपरेशन रद्द किया गया"
 
@@ -507,11 +524,11 @@ msgstr "कृपया एक प्रॉम्प्ट दर्ज कर�
 msgid "Please enter your Replicate API key"
 msgstr "कृपया अपनी Replicate API कुंजी दर्ज करें"
 
-#: api.py:108
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate के लिए वर्तमान छवि तैयार की जा रही है..."
 
-#: api.py:368
+#: api.py:447
 msgid "Processing Replicate response..."
 msgstr "Replicate प्रतिक्रिया संसाधित की जा रही है..."
 
@@ -528,6 +545,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "प्रॉम्प्ट की शक्ति (या डीनॉइज़िंग की शक्ति)"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
+#: models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "गुणवत्ता"
 
@@ -578,17 +596,17 @@ msgstr[1] "संपादन मोड के लिए {max} संदर्�
 msgid "Replicate API Key"
 msgstr "Replicate API कुंजी"
 
-#: api.py:269
+#: api.py:343
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API त्रुटि: {error}"
 
-#: api.py:57 api.py:100 api.py:172
+#: api.py:60 api.py:103 api.py:183
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API उपलब्ध नहीं है। कृपया replicate स्थापित करें"
 
-#: models/flux_pro.py:198 models/nano_banana_2.py:170
-#: models/nano_banana_pro.py:168
+#: models/flux_pro.py:198 models/grok_imagine_image_2.py:203
+#: models/nano_banana_2.py:170 models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr "रिज़ॉल्यूशन"
 
@@ -598,7 +616,7 @@ msgid ""
 "recommended."
 msgstr "मेगापिक्सेल में रिज़ॉल्यूशन। 4 MP तक संभव है, लेकिन 2 MP या उससे कम अनुशंसित है।"
 
-#: models/nano_banana_pro.py:169
+#: models/grok_imagine_image_2.py:204 models/nano_banana_pro.py:169
 msgid "Resolution of the generated image"
 msgstr "जेनेरेट की गई छवि का रिज़ॉल्यूशन"
 
@@ -649,11 +667,11 @@ msgid_plural "Select up to {max} additional images"
 msgstr[0] "अधिकतम {max} अतिरिक्त छवि चुनें"
 msgstr[1] "अधिकतम {max} अतिरिक्त छवियां चुनें"
 
-#: api.py:135
+#: api.py:142
 msgid "Sending edit request to Replicate..."
 msgstr "Replicate को संपादन अनुरोध भेजा जा रहा है..."
 
-#: api.py:192
+#: api.py:203
 msgid "Sending request to Replicate..."
 msgstr "Replicate को अनुरोध भेजा जा रहा है..."
 
@@ -707,15 +725,15 @@ msgstr "यह मॉडल संदर्भ छवियों का सम�
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
-"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
+"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
+"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "प्राकृतिक भाषा प्रॉम्प्ट के साथ Replicate के उन्नत AI मॉडल का उपयोग करके मौजूदा छवियों "
-"को रूपांतरित करें या नई छवियां बनाएं। Flux 2 Pro, GPT Image 1.5, GPT Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro और Stable Diffusion 3.5 Large Turbo "
-"सहित कई मॉडलों में से चुनें।"
+"को रूपांतरित करें या नई छवियां बनाएं। Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok "
+"Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen "
+"Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro और Stable Diffusion 3.5 "
+"Large Turbo सहित कई मॉडलों में से चुनें।"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -727,7 +745,7 @@ msgstr "छवि संपादन के दौरान अप्रत्�
 msgid "Unexpected error during image generation: {error}"
 msgstr "छवि उत्पादन के दौरान अप्रत्याशित त्रुटि: {error}"
 
-#: api.py:146 api.py:203
+#: api.py:157 api.py:216
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "अप्रत्याशित त्रुटि: {error}"
@@ -754,6 +772,10 @@ msgid ""
 "ratio setting"
 msgstr "पहलू अनुपात सेटिंग के बजाय संदर्भ छवि के पहलू अनुपात और रिज़ॉल्यूशन का उपयोग करें"
 
+#: api.py:301
+msgid "Waiting for Replicate..."
+msgstr "Replicate की प्रतीक्षा की जा रही है..."
+
 #: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
 msgstr "आप छवि में क्या नहीं देखना चाहते"
@@ -776,6 +798,10 @@ msgstr "हाँ"
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr ""
 "आपकी OpenAI API कुंजी (वैकल्पिक - यदि प्रदान नहीं की गई तो प्रॉक्सी का उपयोग करता है)"
+
+#: models/grok_imagine_image_2.py:41
+msgid "xAI's general-purpose image generation and editing model"
+msgstr "xAI का सामान्य-उद्देश्य छवि निर्माण और संपादन मॉडल"
 
 #: dialog_gtk.py:801
 #, python-brace-format

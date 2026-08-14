@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.5.1\n"
+"Project-Id-Version: Dream Prompter 1.6.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-07 19:34-1000\n"
+"POT-Creation-Date: 2026-08-13 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
@@ -57,7 +57,7 @@ msgstr "Prompt de AI"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Creación/edición de imágenes con IA usando modelos de Replicate"
 
-#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "Se requiere clave API"
 
@@ -78,7 +78,8 @@ msgid "Additional Images (Optional)"
 msgstr "Imágenes Adicionales (Opcional)"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
-#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/grok_imagine_image_2.py:179 models/imagen.py:142
+#: models/nano_banana.py:162 models/nano_banana_2.py:182
 #: models/nano_banana_pro.py:177 models/qwen_image.py:177
 #: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
@@ -88,8 +89,8 @@ msgstr "Relación de Aspecto"
 msgid "Aspect ratio for the generated image"
 msgstr "Relación de aspecto para la imagen generada"
 
-#: models/nano_banana.py:163 models/nano_banana_2.py:183
-#: models/nano_banana_pro.py:178
+#: models/grok_imagine_image_2.py:180 models/nano_banana.py:163
+#: models/nano_banana_2.py:183 models/nano_banana_pro.py:178
 msgid "Aspect ratio of the generated image"
 msgstr "Relación de aspecto de la imagen generada"
 
@@ -101,7 +102,7 @@ msgstr "Expandir y optimizar automáticamente el prompt para mejores resultados"
 msgid "Background"
 msgstr "Fondo"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Construyendo solicitud de edición para Replicate..."
 
@@ -174,7 +175,7 @@ msgstr "Desactivar Verificador de Seguridad"
 msgid "Disable safety checker for generated images."
 msgstr "Deshabilitar el verificador de seguridad para imágenes generadas."
 
-#: api.py:376
+#: api.py:455
 msgid "Downloading result..."
 msgstr "Descargando resultado..."
 
@@ -182,7 +183,7 @@ msgstr "Descargando resultado..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - Creador/Editor de Imágenes AI"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -212,7 +213,7 @@ msgstr "Error al agregar capas: {error}"
 msgid "Error creating images: {error}"
 msgstr "Error al crear imágenes: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
@@ -221,11 +222,11 @@ msgstr "Error ejecutando Dream Prompter: {error}"
 msgid "Expand Prompt"
 msgstr "Expandir Prompt"
 
-#: api.py:392
+#: api.py:471
 msgid "Failed to convert any images from API response"
 msgstr "Error al convertir imágenes de la respuesta de la API"
 
-#: api.py:116
+#: api.py:119
 msgid "Failed to export current image"
 msgstr "Error al exportar imagen actual"
 
@@ -271,9 +272,17 @@ msgid_plural "Generated {count} images"
 msgstr[0] "Generada {count} imagen"
 msgstr[1] "Generadas {count} imágenes"
 
-#: api.py:180
+#: api.py:191
 msgid "Generating image with Replicate..."
 msgstr "Generando imagen con Replicate..."
+
+#: models/grok_imagine_image_2.py:214
+msgid ""
+"Generation quality. Medium produces the best results, low is faster and "
+"cheaper."
+msgstr ""
+"Calidad de generación. Medium produce los mejores resultados, low es más "
+"rápido y económico."
 
 #: dialog_gtk.py:391
 #, python-brace-format
@@ -312,6 +321,10 @@ msgstr ""
 "Modelo de generación y edición de imágenes de última generación de Google "
 "para flujos de trabajo conversacionales rápidos"
 
+#: models/grok_imagine_image_2.py:47
+msgid "Grok Imagine Image 2"
+msgstr "Grok Imagine Image 2"
+
 #: models/flux_pro.py:230
 msgid "Height"
 msgstr "Alto"
@@ -342,11 +355,11 @@ msgstr "Búsqueda de Imágenes"
 msgid "Image Size"
 msgstr "Tamaño de Imagen"
 
-#: api.py:396
+#: api.py:475
 msgid "Image editing complete!"
 msgstr "¡Edición de imagen completada!"
 
-#: api.py:398
+#: api.py:477
 msgid "Image generation complete!"
 msgstr "¡Generación de imagen completada!"
 
@@ -366,7 +379,7 @@ msgstr "Inicializando solicitud a la API..."
 msgid "Input Fidelity"
 msgstr "Fidelidad de Entrada"
 
-#: api.py:265
+#: api.py:321 api.py:339
 msgid "Logs"
 msgstr "Registros"
 
@@ -392,7 +405,7 @@ msgstr[1] "Máximo {max} imágenes de referencia permitidas."
 msgid "Model Settings"
 msgstr "Configuración del Modelo"
 
-#: api.py:258
+#: api.py:317 api.py:332
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
@@ -421,11 +434,16 @@ msgstr "Prompt Negativo"
 msgid "Negative prompt for generated image"
 msgstr "Prompt negativo para la imagen generada"
 
+#: api.py:346
+#, python-brace-format
+msgid "Network error: {error}"
+msgstr "Error de red: {error}"
+
 #: model_settings.py:248
 msgid "No"
 msgstr "No"
 
-#: api.py:104
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "No se proporcionó imagen de GIMP para editar"
 
@@ -445,11 +463,11 @@ msgstr "No se recibieron datos de imagen de la API"
 msgid "No layer available for editing"
 msgstr "No hay capa disponible para editar"
 
-#: api.py:373
+#: api.py:452
 msgid "No output received from API"
 msgstr "No se recibió salida de la API"
 
-#: api.py:382
+#: api.py:461
 msgid "No valid image data in API response"
 msgstr "No hay datos de imagen válidos en la respuesta de la API"
 
@@ -481,7 +499,8 @@ msgstr "Modelo de generación de imágenes de próxima generación de OpenAI"
 msgid "Operation Mode"
 msgstr "Modo de Operación"
 
-#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
+#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
+#: api.py:449 api.py:457
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
@@ -508,11 +527,11 @@ msgstr "Por favor ingresa un prompt"
 msgid "Please enter your Replicate API key"
 msgstr "Por favor ingresa tu clave API de Replicate"
 
-#: api.py:108
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Preparando imagen actual para Replicate..."
 
-#: api.py:368
+#: api.py:447
 msgid "Processing Replicate response..."
 msgstr "Procesando respuesta de Replicate..."
 
@@ -529,6 +548,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "Fuerza del prompt (o intensidad de eliminación de ruido)"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
+#: models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "Calidad"
 
@@ -579,17 +599,17 @@ msgstr[1] "Reducido a {max} imágenes de referencia para modo edición"
 msgid "Replicate API Key"
 msgstr "Clave API de Replicate"
 
-#: api.py:269
+#: api.py:343
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Error de API Replicate: {error}"
 
-#: api.py:57 api.py:100 api.py:172
+#: api.py:60 api.py:103 api.py:183
 msgid "Replicate API not available. Please install replicate"
 msgstr "API de Replicate no disponible. Por favor instala replicate"
 
-#: models/flux_pro.py:198 models/nano_banana_2.py:170
-#: models/nano_banana_pro.py:168
+#: models/flux_pro.py:198 models/grok_imagine_image_2.py:203
+#: models/nano_banana_2.py:170 models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr "Resolución"
 
@@ -601,7 +621,7 @@ msgstr ""
 "Resolución en megapíxeles. Hasta 4 MP es posible, pero se recomienda 2 MP o "
 "menos."
 
-#: models/nano_banana_pro.py:169
+#: models/grok_imagine_image_2.py:204 models/nano_banana_pro.py:169
 msgid "Resolution of the generated image"
 msgstr "Resolución de la imagen generada"
 
@@ -654,11 +674,11 @@ msgid_plural "Select up to {max} additional images"
 msgstr[0] "Selecciona hasta {max} imagen adicional"
 msgstr[1] "Selecciona hasta {max} imágenes adicionales"
 
-#: api.py:135
+#: api.py:142
 msgid "Sending edit request to Replicate..."
 msgstr "Enviando solicitud de edición a Replicate..."
 
-#: api.py:192
+#: api.py:203
 msgid "Sending request to Replicate..."
 msgstr "Enviando solicitud a Replicate..."
 
@@ -712,15 +732,16 @@ msgstr "Este modelo no admite imágenes de referencia"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
-"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
+"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
+"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "Transforma imágenes existentes o genera nuevas imágenes usando modelos "
 "avanzados de IA de Replicate con prompts en lenguaje natural. Elige entre "
-"múltiples modelos incluyendo Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen "
-"4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image "
-"Edit 2511, Seedream 5 Pro y Stable Diffusion 3.5 Large Turbo."
+"múltiples modelos incluyendo Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok "
+"Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen "
+"Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro y Stable Diffusion 3.5 "
+"Large Turbo."
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -732,7 +753,7 @@ msgstr "Error inesperado durante la edición de imagen: {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Error inesperado durante la generación de imagen: {error}"
 
-#: api.py:146 api.py:203
+#: api.py:157 api.py:216
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Error inesperado: {error}"
@@ -761,6 +782,10 @@ msgstr ""
 "Usar la relación de aspecto y la resolución de la imagen de referencia en "
 "lugar del ajuste de relación de aspecto"
 
+#: api.py:301
+msgid "Waiting for Replicate..."
+msgstr "Esperando a Replicate..."
+
 #: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
 msgstr "Lo que no quieres ver en la imagen"
@@ -782,6 +807,11 @@ msgstr "Sí"
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "Tu clave API de OpenAI (opcional - usa proxy si no se proporciona)"
+
+#: models/grok_imagine_image_2.py:41
+msgid "xAI's general-purpose image generation and editing model"
+msgstr ""
+"El modelo de generación y edición de imágenes de propósito general de xAI"
 
 #: dialog_gtk.py:801
 #, python-brace-format

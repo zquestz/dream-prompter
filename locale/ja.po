@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.5.1\n"
+"Project-Id-Version: Dream Prompter 1.6.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-07 19:34-1000\n"
+"POT-Creation-Date: 2026-08-13 13:42-1000\n"
 "PO-Revision-Date: 2025-01-15 12:00+0000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Japanese\n"
@@ -57,7 +57,7 @@ msgstr "AIプロンプト"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "ReplicateモデルによるAI画像作成・編集"
 
-#: api.py:61 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "APIキーが必要です"
 
@@ -77,7 +77,8 @@ msgid "Additional Images (Optional)"
 msgstr "追加画像（オプション）"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
-#: models/imagen.py:142 models/nano_banana.py:162 models/nano_banana_2.py:182
+#: models/grok_imagine_image_2.py:179 models/imagen.py:142
+#: models/nano_banana.py:162 models/nano_banana_2.py:182
 #: models/nano_banana_pro.py:177 models/qwen_image.py:177
 #: models/seedream.py:176 models/stable_diffusion_large_turbo.py:177
 msgid "Aspect Ratio"
@@ -87,8 +88,8 @@ msgstr "アスペクト比"
 msgid "Aspect ratio for the generated image"
 msgstr "生成される画像のアスペクト比"
 
-#: models/nano_banana.py:163 models/nano_banana_2.py:183
-#: models/nano_banana_pro.py:178
+#: models/grok_imagine_image_2.py:180 models/nano_banana.py:163
+#: models/nano_banana_2.py:183 models/nano_banana_pro.py:178
 msgid "Aspect ratio of the generated image"
 msgstr "生成される画像のアスペクト比"
 
@@ -100,7 +101,7 @@ msgstr "より良い結果のためにプロンプトを自動的に拡張・最
 msgid "Background"
 msgstr "背景"
 
-#: api.py:122
+#: api.py:125
 msgid "Building Replicate edit request..."
 msgstr "Replicate編集リクエストを構築中..."
 
@@ -171,7 +172,7 @@ msgstr "セーフティチェッカーを無効化"
 msgid "Disable safety checker for generated images."
 msgstr "生成画像のセーフティチェッカーを無効にする。"
 
-#: api.py:376
+#: api.py:455
 msgid "Downloading result..."
 msgstr "結果をダウンロード中..."
 
@@ -179,7 +180,7 @@ msgstr "結果をダウンロード中..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI画像作成・編集"
 
-#: dream-prompter.py:56
+#: dream-prompter.py:57
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -209,7 +210,7 @@ msgstr "レイヤー追加エラー: {error}"
 msgid "Error creating images: {error}"
 msgstr "画像作成エラー: {error}"
 
-#: dream-prompter.py:101
+#: dream-prompter.py:102
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompterの実行エラー：{error}"
@@ -218,11 +219,11 @@ msgstr "Dream Prompterの実行エラー：{error}"
 msgid "Expand Prompt"
 msgstr "プロンプトを拡張"
 
-#: api.py:392
+#: api.py:471
 msgid "Failed to convert any images from API response"
 msgstr "APIレスポンスから画像の変換に失敗"
 
-#: api.py:116
+#: api.py:119
 msgid "Failed to export current image"
 msgstr "現在の画像のエクスポートに失敗しました"
 
@@ -267,9 +268,15 @@ msgid "Generated {count} image"
 msgid_plural "Generated {count} images"
 msgstr[0] "{count}個の画像を生成"
 
-#: api.py:180
+#: api.py:191
 msgid "Generating image with Replicate..."
 msgstr "Replicateで画像を生成中..."
+
+#: models/grok_imagine_image_2.py:214
+msgid ""
+"Generation quality. Medium produces the best results, low is faster and "
+"cheaper."
+msgstr "生成品質。Mediumは最高の結果を生成し、lowはより高速で安価です。"
 
 #: dialog_gtk.py:391
 #, python-brace-format
@@ -306,6 +313,10 @@ msgid ""
 "conversational workflows"
 msgstr "高速で会話的なワークフローのためのGoogleの最先端画像生成・編集モデル"
 
+#: models/grok_imagine_image_2.py:47
+msgid "Grok Imagine Image 2"
+msgstr "Grok Imagine Image 2"
+
 #: models/flux_pro.py:230
 msgid "Height"
 msgstr "高さ"
@@ -336,11 +347,11 @@ msgstr "画像検索"
 msgid "Image Size"
 msgstr "画像サイズ"
 
-#: api.py:396
+#: api.py:475
 msgid "Image editing complete!"
 msgstr "画像編集が完了しました！"
 
-#: api.py:398
+#: api.py:477
 msgid "Image generation complete!"
 msgstr "画像生成が完了しました！"
 
@@ -360,7 +371,7 @@ msgstr "APIリクエストを初期化中..."
 msgid "Input Fidelity"
 msgstr "入力忠実度"
 
-#: api.py:265
+#: api.py:321 api.py:339
 msgid "Logs"
 msgstr "ログ"
 
@@ -384,7 +395,7 @@ msgstr[0] "最大{max}枚の参照画像が許可されています。"
 msgid "Model Settings"
 msgstr "モデル設定"
 
-#: api.py:258
+#: api.py:317 api.py:332
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "モデルエラー：{error}"
@@ -413,11 +424,16 @@ msgstr "ネガティブプロンプト"
 msgid "Negative prompt for generated image"
 msgstr "生成画像のネガティブプロンプト"
 
+#: api.py:346
+#, python-brace-format
+msgid "Network error: {error}"
+msgstr "ネットワークエラー：{error}"
+
 #: model_settings.py:248
 msgid "No"
 msgstr "いいえ"
 
-#: api.py:104
+#: api.py:107
 msgid "No GIMP image provided for editing"
 msgstr "編集用のGIMP画像が提供されていません"
 
@@ -437,11 +453,11 @@ msgstr "APIから画像データを受信しませんでした"
 msgid "No layer available for editing"
 msgstr "編集可能なレイヤーがありません"
 
-#: api.py:373
+#: api.py:452
 msgid "No output received from API"
 msgstr "APIから出力を受信しませんでした"
 
-#: api.py:382
+#: api.py:461
 msgid "No valid image data in API response"
 msgstr "APIレスポンスに有効な画像データがありません"
 
@@ -473,7 +489,8 @@ msgstr "OpenAIの次世代画像生成モデル"
 msgid "Operation Mode"
 msgstr "操作モード"
 
-#: api.py:110 api.py:124 api.py:137 api.py:182 api.py:194 api.py:370 api.py:378
+#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
+#: api.py:449 api.py:457
 msgid "Operation cancelled"
 msgstr "操作がキャンセルされました"
 
@@ -500,11 +517,11 @@ msgstr "プロンプトを入力してください"
 msgid "Please enter your Replicate API key"
 msgstr "Replicate APIキーを入力してください"
 
-#: api.py:108
+#: api.py:111
 msgid "Preparing current image for Replicate..."
 msgstr "Replicate用に現在の画像を準備中..."
 
-#: api.py:368
+#: api.py:447
 msgid "Processing Replicate response..."
 msgstr "Replicateレスポンスを処理中..."
 
@@ -521,6 +538,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "プロンプト強度（またはデノイジング強度）"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
+#: models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "品質"
 
@@ -570,17 +588,17 @@ msgstr[0] "編集モードで{max}枚の参照画像に削減しました"
 msgid "Replicate API Key"
 msgstr "Replicate APIキー"
 
-#: api.py:269
+#: api.py:343
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate APIエラー：{error}"
 
-#: api.py:57 api.py:100 api.py:172
+#: api.py:60 api.py:103 api.py:183
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate APIが利用できません。replicateをインストールしてください"
 
-#: models/flux_pro.py:198 models/nano_banana_2.py:170
-#: models/nano_banana_pro.py:168
+#: models/flux_pro.py:198 models/grok_imagine_image_2.py:203
+#: models/nano_banana_2.py:170 models/nano_banana_pro.py:168
 msgid "Resolution"
 msgstr "解像度"
 
@@ -590,7 +608,7 @@ msgid ""
 "recommended."
 msgstr "メガピクセル単位の解像度。最大4MPまで可能ですが、2MP以下を推奨します。"
 
-#: models/nano_banana_pro.py:169
+#: models/grok_imagine_image_2.py:204 models/nano_banana_pro.py:169
 msgid "Resolution of the generated image"
 msgstr "生成される画像の解像度"
 
@@ -640,11 +658,11 @@ msgid "Select up to {max} additional image"
 msgid_plural "Select up to {max} additional images"
 msgstr[0] "最大{max}枚の追加画像を選択"
 
-#: api.py:135
+#: api.py:142
 msgid "Sending edit request to Replicate..."
 msgstr "Replicateに編集リクエストを送信中..."
 
-#: api.py:192
+#: api.py:203
 msgid "Sending request to Replicate..."
 msgstr "Replicateにリクエストを送信中..."
 
@@ -698,15 +716,15 @@ msgstr "このモデルは参照画像をサポートしていません"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Imagen 4, Nano Banana, "
-"Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, "
-"Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
+"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
+"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
 msgstr ""
 "自然言語プロンプトを使用してReplicateの高度なAIモデルで既存の画像を変換した"
-"り、新しい画像を生成します。Flux 2 Pro、GPT Image 1.5、GPT Image 2、Imagen "
-"4、Nano Banana、Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、Qwen Image "
-"Edit 2511、Seedream 5 Pro、Stable Diffusion 3.5 Large Turboなど、複数のモデル"
-"から選択できます。"
+"り、新しい画像を生成します。Flux 2 Pro、GPT Image 1.5、GPT Image 2、Grok "
+"Imagine Image 2、Imagen 4、Nano Banana、Nano Banana 2、Nano Banana Pro、Qwen "
+"Image 2 Pro、Qwen Image Edit 2511、Seedream 5 Pro、Stable Diffusion 3.5 "
+"Large Turboなど、複数のモデルから選択できます。"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -718,7 +736,7 @@ msgstr "画像編集中の予期しないエラー：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "画像生成中の予期しないエラー：{error}"
 
-#: api.py:146 api.py:203
+#: api.py:157 api.py:216
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "予期しないエラー：{error}"
@@ -745,6 +763,10 @@ msgid ""
 "ratio setting"
 msgstr "アスペクト比設定の代わりに参照画像のアスペクト比と解像度を使用"
 
+#: api.py:301
+msgid "Waiting for Replicate..."
+msgstr "Replicateを待機中..."
+
 #: models/stable_diffusion_large_turbo.py:170
 msgid "What you do not want to see in the image"
 msgstr "画像に表示したくないもの"
@@ -766,6 +788,10 @@ msgstr "はい"
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "OpenAI APIキー（オプション - 提供されない場合はプロキシを使用）"
+
+#: models/grok_imagine_image_2.py:41
+msgid "xAI's general-purpose image generation and editing model"
+msgstr "xAIの汎用画像生成・編集モデル"
 
 #: dialog_gtk.py:801
 #, python-brace-format
