@@ -21,7 +21,7 @@ from dialog import DreamPrompterDialog  # noqa: E402
 from i18n import DOMAIN, _  # noqa: E402
 
 PLUGIN_NAME = "dream-prompter"
-PLUGIN_VERSION = "1.6.0"
+PLUGIN_VERSION = "1.7.0"
 PLUGIN_DESCRIPTION = "AI-powered image creation/editing with Replicate models"
 
 
@@ -47,6 +47,7 @@ class DreamPrompter(Gimp.PlugIn):
                     "advanced AI models from Replicate with natural language "
                     "prompts. Choose from multiple models including "
                     "Flux 2 Pro, GPT Image 1.5, GPT Image 2, "
+                    "GPT Image 2.5 Sunburst, "
                     "Grok Imagine Image 2, Imagen 4, Nano Banana, "
                     "Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
                     "Qwen Image Edit 2511, Seedream 5 Pro, and "

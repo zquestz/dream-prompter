@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.6.0\n"
+"Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-13 13:42-1000\n"
-"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"POT-Creation-Date: 2026-09-21 20:53-0700\n"
+"PO-Revision-Date: 2026-09-21 20:41-0700\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Bengali\n"
 "Language: bn\n"
@@ -94,11 +94,20 @@ msgstr "উত্পন্ন চিত্রের জন্য দিক অ�
 msgid "Aspect ratio of the generated image"
 msgstr "জেনারেট করা ছবির দিক অনুপাত"
 
+#: models/gpt_image_2_5_sunburst.py:169
+msgid ""
+"Aspect ratio or pixel dimensions. Auto lets the model choose. Sizes above "
+"2560x1440 are experimental."
+msgstr ""
+"আস্পেক্ট রেশিও বা পিক্সেলের মাপ। Auto মডেলকে বেছে নিতে দেয়। 2560x1440-এর চেয়ে "
+"বড় আকার পরীক্ষামূলক।"
+
 #: models/qwen_image.py:209
 msgid "Automatically expand and optimize the prompt for better results"
 msgstr "আরও ভালো ফলাফলের জন্য স্বয়ংক্রিয়ভাবে প্রম্পট সম্প্রসারণ এবং অপ্টিমাইজ করুন"
 
 #: models/gpt_image.py:189 models/gpt_image_2.py:176
+#: models/gpt_image_2_5_sunburst.py:217
 msgid "Background"
 msgstr "পটভূমি"
 
@@ -134,10 +143,12 @@ msgid "Clear selected files"
 msgstr "নির্বাচিত ফাইলগুলি সাফ করুন"
 
 #: models/gpt_image.py:201 models/gpt_image_2.py:186
+#: models/gpt_image_2_5_sunburst.py:229
 msgid "Compression level (0-100%)"
 msgstr "কম্প্রেশন স্তর (0-100%)"
 
 #: models/gpt_image.py:220 models/gpt_image_2.py:205
+#: models/gpt_image_2_5_sunburst.py:248
 msgid "Content moderation level"
 msgstr "কনটেন্ট মডারেশন স্তর"
 
@@ -183,7 +194,7 @@ msgstr "ফলাফল ডাউনলোড করা হচ্ছে..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI ছবি তৈরিকারী/সম্পাদক"
 
-#: dream-prompter.py:57
+#: dream-prompter.py:58
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -213,7 +224,7 @@ msgstr "স্তর যোগ করতে ত্রুটি: {error}"
 msgid "Error creating images: {error}"
 msgstr "ছবি তৈরি করতে ত্রুটি: {error}"
 
-#: dream-prompter.py:102
+#: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter চালানোতে ত্রুটি: {error}"
@@ -234,7 +245,8 @@ msgstr "বর্তমান ছবি রপ্তানি করতে ব�
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/gpt_image.py:211 models/gpt_image_2.py:196
+#: models/gpt_image_2_5_sunburst.py:239 models/imagen.py:152
 #: models/nano_banana.py:183 models/nano_banana_2.py:207
 #: models/nano_banana_pro.py:198
 msgid "Format of the output image"
@@ -256,6 +268,10 @@ msgstr "GPT Image 1.5"
 #: models/gpt_image_2.py:43
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
+
+#: models/gpt_image_2_5_sunburst.py:47
+msgid "GPT Image 2.5 Sunburst"
+msgstr "GPT Image 2.5 Sunburst"
 
 #: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
@@ -340,6 +356,10 @@ msgstr "API কী লুকান"
 msgid "High-quality image generation and editing model"
 msgstr "চমৎকার চিত্র মানের সাথে টেক্সট-টু-ইমেজ মডেল"
 
+#: models/gpt_image_2_5_sunburst.py:209
+msgid "Higher quality takes longer and costs more."
+msgstr "উচ্চতর মানের জন্য বেশি সময় ও খরচ লাগে।"
+
 #: models/stable_diffusion_large_turbo.py:197
 msgid "How similar the output should be to the prompt"
 msgstr "আউটপুট প্রম্পটের কতটা অনুরূপ হওয়া উচিত"
@@ -348,7 +368,7 @@ msgstr "আউটপুট প্রম্পটের কতটা অনুর
 msgid "Image Search"
 msgstr "ছবি সার্চ"
 
-#: models/seedream.py:164
+#: models/gpt_image_2_5_sunburst.py:167 models/seedream.py:164
 msgid "Image Size"
 msgstr "ছবির আকার"
 
@@ -408,6 +428,7 @@ msgid "Model error: {error}"
 msgstr "মডেল ত্রুটি: {error}"
 
 #: models/gpt_image.py:219 models/gpt_image_2.py:204
+#: models/gpt_image_2_5_sunburst.py:247
 msgid "Moderation"
 msgstr "মডারেশন"
 
@@ -473,20 +494,28 @@ msgid "Not set"
 msgstr "সেট করা হয়নি"
 
 #: models/gpt_image.py:170 models/gpt_image_2.py:157
+#: models/gpt_image_2_5_sunburst.py:198
 msgid "Number of Images"
 msgstr "ছবির সংখ্যা"
 
 #: models/gpt_image.py:171 models/gpt_image_2.py:158
+#: models/gpt_image_2_5_sunburst.py:199
 msgid "Number of images to generate (1-10)"
 msgstr "জেনারেট করার ছবির সংখ্যা (1-10)"
 
 #: models/gpt_image.py:137 models/gpt_image_2.py:136
+#: models/gpt_image_2_5_sunburst.py:155
 msgid "OpenAI API Key"
 msgstr "OpenAI API কী"
 
 #: models/gpt_image.py:38
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI এর উন্নত ছবি তৈরি মডেল"
+
+#: models/gpt_image_2_5_sunburst.py:40
+msgid ""
+"OpenAI's image generation and editing model with precise editing control"
+msgstr "নির্ভুল সম্পাদনা নিয়ন্ত্রণসহ OpenAI-এর ছবি তৈরি ও সম্পাদনার মডেল"
 
 #: models/gpt_image_2.py:38
 msgid "OpenAI's next generation image generation model"
@@ -501,12 +530,18 @@ msgstr "অপারেশন মোড"
 msgid "Operation cancelled"
 msgstr "অপারেশন বাতিল হয়েছে"
 
+#: models/gpt_image_2_5_sunburst.py:258
+msgid "Optional end-user identifier for OpenAI abuse monitoring"
+msgstr "OpenAI-এর অপব্যবহার পর্যবেক্ষণের জন্য ঐচ্ছিক অন্তিম ব্যবহারকারী শনাক্তকারী"
+
 #: models/gpt_image.py:200 models/gpt_image_2.py:185
+#: models/gpt_image_2_5_sunburst.py:228
 msgid "Output Compression"
 msgstr "আউটপুট কম্প্রেশন"
 
 #: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
-#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/gpt_image_2_5_sunburst.py:238 models/imagen.py:151
+#: models/nano_banana.py:182 models/nano_banana_2.py:206
 #: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
 #: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
@@ -545,7 +580,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "প্রম্পট শক্তি (বা ডিনয়েজিং শক্তি)"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
-#: models/grok_imagine_image_2.py:212
+#: models/gpt_image_2_5_sunburst.py:208 models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "গুণমান"
 
@@ -684,7 +719,7 @@ msgstr "পুনরুৎপাদনযোগ্যতার জন্য এ�
 msgid "Set the background mode"
 msgstr "পটভূমির মোড সেট করুন"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2_5_sunburst.py:219
 msgid "Set whether the background is transparent or opaque"
 msgstr "পটভূমি স্বচ্ছ বা অস্বচ্ছ কিনা সেট করুন"
 
@@ -725,15 +760,16 @@ msgstr "এই মডেল রেফারেন্স ছবি সমর্�
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image 2.5 Sunburst, "
+"Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, "
+"Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 "প্রাকৃতিক ভাষার প্রম্পট দিয়ে Replicate এর উন্নত AI মডেল ব্যবহার করে বিদ্যমান ছবি "
-"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok "
-"Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen "
-"Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro এবং Stable Diffusion 3.5 "
-"Large Turbo সহ একাধিক মডেল থেকে বেছে নিন।"
+"রূপান্তর করুন বা নতুন ছবি তৈরি করুন। Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT "
+"Image 2.5 Sunburst, Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana "
+"2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro "
+"এবং Stable Diffusion 3.5 Large Turbo সহ একাধিক মডেল থেকে বেছে নিন।"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -773,6 +809,10 @@ msgid ""
 msgstr ""
 "দিক অনুপাত সেটিংয়ের পরিবর্তে রেফারেন্স ছবির দিক অনুপাত এবং রেজোলিউশন ব্যবহার করুন"
 
+#: models/gpt_image_2_5_sunburst.py:256
+msgid "User ID"
+msgstr "ব্যবহারকারী ID"
+
 #: api.py:301
 msgid "Waiting for Replicate..."
 msgstr "Replicate এর জন্য অপেক্ষা করা হচ্ছে..."
@@ -796,6 +836,7 @@ msgid "Yes"
 msgstr "হ্যাঁ"
 
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image_2_5_sunburst.py:157
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "আপনার OpenAI API কী (ঐচ্ছিক - প্রদান না করলে প্রক্সি ব্যবহার করে)"
 

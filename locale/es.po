@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.6.0\n"
+"Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-13 13:42-1000\n"
-"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"POT-Creation-Date: 2026-09-21 20:53-0700\n"
+"PO-Revision-Date: 2026-09-21 20:41-0700\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -94,11 +94,20 @@ msgstr "Relación de aspecto para la imagen generada"
 msgid "Aspect ratio of the generated image"
 msgstr "Relación de aspecto de la imagen generada"
 
+#: models/gpt_image_2_5_sunburst.py:169
+msgid ""
+"Aspect ratio or pixel dimensions. Auto lets the model choose. Sizes above "
+"2560x1440 are experimental."
+msgstr ""
+"Relación de aspecto o dimensiones en píxeles. Auto permite que el modelo "
+"elija. Los tamaños superiores a 2560x1440 son experimentales."
+
 #: models/qwen_image.py:209
 msgid "Automatically expand and optimize the prompt for better results"
 msgstr "Expandir y optimizar automáticamente el prompt para mejores resultados"
 
 #: models/gpt_image.py:189 models/gpt_image_2.py:176
+#: models/gpt_image_2_5_sunburst.py:217
 msgid "Background"
 msgstr "Fondo"
 
@@ -134,10 +143,12 @@ msgid "Clear selected files"
 msgstr "Limpiar archivos seleccionados"
 
 #: models/gpt_image.py:201 models/gpt_image_2.py:186
+#: models/gpt_image_2_5_sunburst.py:229
 msgid "Compression level (0-100%)"
 msgstr "Nivel de compresión (0-100%)"
 
 #: models/gpt_image.py:220 models/gpt_image_2.py:205
+#: models/gpt_image_2_5_sunburst.py:248
 msgid "Content moderation level"
 msgstr "Nivel de moderación de contenido"
 
@@ -183,7 +194,7 @@ msgstr "Descargando resultado..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - Creador/Editor de Imágenes AI"
 
-#: dream-prompter.py:57
+#: dream-prompter.py:58
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -213,7 +224,7 @@ msgstr "Error al agregar capas: {error}"
 msgid "Error creating images: {error}"
 msgstr "Error al crear imágenes: {error}"
 
-#: dream-prompter.py:102
+#: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Error ejecutando Dream Prompter: {error}"
@@ -234,7 +245,8 @@ msgstr "Error al exportar imagen actual"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/gpt_image.py:211 models/gpt_image_2.py:196
+#: models/gpt_image_2_5_sunburst.py:239 models/imagen.py:152
 #: models/nano_banana.py:183 models/nano_banana_2.py:207
 #: models/nano_banana_pro.py:198
 msgid "Format of the output image"
@@ -256,6 +268,10 @@ msgstr "GPT Image 1.5"
 #: models/gpt_image_2.py:43
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
+
+#: models/gpt_image_2_5_sunburst.py:47
+msgid "GPT Image 2.5 Sunburst"
+msgstr "GPT Image 2.5 Sunburst"
 
 #: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
@@ -343,6 +359,10 @@ msgstr "Ocultar clave API"
 msgid "High-quality image generation and editing model"
 msgstr "Modelo texto-a-imagen con excelente calidad de imagen"
 
+#: models/gpt_image_2_5_sunburst.py:209
+msgid "Higher quality takes longer and costs more."
+msgstr "Una mayor calidad requiere más tiempo y cuesta más."
+
 #: models/stable_diffusion_large_turbo.py:197
 msgid "How similar the output should be to the prompt"
 msgstr "Qué tan similar debe ser la salida al prompt"
@@ -351,7 +371,7 @@ msgstr "Qué tan similar debe ser la salida al prompt"
 msgid "Image Search"
 msgstr "Búsqueda de Imágenes"
 
-#: models/seedream.py:164
+#: models/gpt_image_2_5_sunburst.py:167 models/seedream.py:164
 msgid "Image Size"
 msgstr "Tamaño de Imagen"
 
@@ -411,6 +431,7 @@ msgid "Model error: {error}"
 msgstr "Error del modelo: {error}"
 
 #: models/gpt_image.py:219 models/gpt_image_2.py:204
+#: models/gpt_image_2_5_sunburst.py:247
 msgid "Moderation"
 msgstr "Moderación"
 
@@ -476,20 +497,30 @@ msgid "Not set"
 msgstr "No establecido"
 
 #: models/gpt_image.py:170 models/gpt_image_2.py:157
+#: models/gpt_image_2_5_sunburst.py:198
 msgid "Number of Images"
 msgstr "Número de Imágenes"
 
 #: models/gpt_image.py:171 models/gpt_image_2.py:158
+#: models/gpt_image_2_5_sunburst.py:199
 msgid "Number of images to generate (1-10)"
 msgstr "Número de imágenes a generar (1-10)"
 
 #: models/gpt_image.py:137 models/gpt_image_2.py:136
+#: models/gpt_image_2_5_sunburst.py:155
 msgid "OpenAI API Key"
 msgstr "Clave API de OpenAI"
 
 #: models/gpt_image.py:38
 msgid "OpenAI's advanced image generation model"
 msgstr "Modelo avanzado de generación de imágenes de OpenAI"
+
+#: models/gpt_image_2_5_sunburst.py:40
+msgid ""
+"OpenAI's image generation and editing model with precise editing control"
+msgstr ""
+"Modelo de generación y edición de imágenes de OpenAI con control preciso de "
+"la edición"
 
 #: models/gpt_image_2.py:38
 msgid "OpenAI's next generation image generation model"
@@ -504,12 +535,20 @@ msgstr "Modo de Operación"
 msgid "Operation cancelled"
 msgstr "Operación cancelada"
 
+#: models/gpt_image_2_5_sunburst.py:258
+msgid "Optional end-user identifier for OpenAI abuse monitoring"
+msgstr ""
+"Identificador opcional del usuario final para que OpenAI supervise posibles "
+"abusos"
+
 #: models/gpt_image.py:200 models/gpt_image_2.py:185
+#: models/gpt_image_2_5_sunburst.py:228
 msgid "Output Compression"
 msgstr "Compresión de Salida"
 
 #: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
-#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/gpt_image_2_5_sunburst.py:238 models/imagen.py:151
+#: models/nano_banana.py:182 models/nano_banana_2.py:206
 #: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
 #: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
@@ -548,7 +587,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "Fuerza del prompt (o intensidad de eliminación de ruido)"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
-#: models/grok_imagine_image_2.py:212
+#: models/gpt_image_2_5_sunburst.py:208 models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "Calidad"
 
@@ -691,7 +730,7 @@ msgstr "Establecer una semilla para reproducibilidad (-1 = aleatorio)"
 msgid "Set the background mode"
 msgstr "Establecer el modo de fondo"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2_5_sunburst.py:219
 msgid "Set whether the background is transparent or opaque"
 msgstr "Establecer si el fondo es transparente u opaco"
 
@@ -732,16 +771,17 @@ msgstr "Este modelo no admite imágenes de referencia"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image 2.5 Sunburst, "
+"Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, "
+"Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 "Transforma imágenes existentes o genera nuevas imágenes usando modelos "
 "avanzados de IA de Replicate con prompts en lenguaje natural. Elige entre "
-"múltiples modelos incluyendo Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok "
-"Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen "
-"Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro y Stable Diffusion 3.5 "
-"Large Turbo."
+"múltiples modelos incluyendo Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT "
+"Image 2.5 Sunburst, Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana "
+"2, Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro y "
+"Stable Diffusion 3.5 Large Turbo."
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -782,6 +822,10 @@ msgstr ""
 "Usar la relación de aspecto y la resolución de la imagen de referencia en "
 "lugar del ajuste de relación de aspecto"
 
+#: models/gpt_image_2_5_sunburst.py:256
+msgid "User ID"
+msgstr "ID de Usuario"
+
 #: api.py:301
 msgid "Waiting for Replicate..."
 msgstr "Esperando a Replicate..."
@@ -805,6 +849,7 @@ msgid "Yes"
 msgstr "Sí"
 
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image_2_5_sunburst.py:157
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "Tu clave API de OpenAI (opcional - usa proxy si no se proporciona)"
 

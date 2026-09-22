@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.6.0\n"
+"Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-13 13:42-1000\n"
+"POT-Creation-Date: 2026-09-21 20:53-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -381,16 +381,17 @@ msgstr ""
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image 2.5 Sunburst, "
+"Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, "
+"Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 
-#: dream-prompter.py:57
+#: dream-prompter.py:58
 msgid "Dream Prompter..."
 msgstr ""
 
-#: dream-prompter.py:102
+#: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr ""
@@ -478,7 +479,8 @@ msgid "Set a seed for reproducibility (-1 = random)"
 msgstr ""
 
 #: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
-#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/gpt_image_2_5_sunburst.py:238 models/imagen.py:151
+#: models/nano_banana.py:182 models/nano_banana_2.py:206
 #: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
 #: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
@@ -505,10 +507,12 @@ msgid "GPT Image 1.5"
 msgstr ""
 
 #: models/gpt_image.py:137 models/gpt_image_2.py:136
+#: models/gpt_image_2_5_sunburst.py:155
 msgid "OpenAI API Key"
 msgstr ""
 
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image_2_5_sunburst.py:157
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr ""
 
@@ -527,15 +531,17 @@ msgid ""
 msgstr ""
 
 #: models/gpt_image.py:170 models/gpt_image_2.py:157
+#: models/gpt_image_2_5_sunburst.py:198
 msgid "Number of Images"
 msgstr ""
 
 #: models/gpt_image.py:171 models/gpt_image_2.py:158
+#: models/gpt_image_2_5_sunburst.py:199
 msgid "Number of images to generate (1-10)"
 msgstr ""
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
-#: models/grok_imagine_image_2.py:212
+#: models/gpt_image_2_5_sunburst.py:208 models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr ""
 
@@ -544,32 +550,38 @@ msgid "The quality of the generated image"
 msgstr ""
 
 #: models/gpt_image.py:189 models/gpt_image_2.py:176
+#: models/gpt_image_2_5_sunburst.py:217
 msgid "Background"
 msgstr ""
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2_5_sunburst.py:219
 msgid "Set whether the background is transparent or opaque"
 msgstr ""
 
 #: models/gpt_image.py:200 models/gpt_image_2.py:185
+#: models/gpt_image_2_5_sunburst.py:228
 msgid "Output Compression"
 msgstr ""
 
 #: models/gpt_image.py:201 models/gpt_image_2.py:186
+#: models/gpt_image_2_5_sunburst.py:229
 msgid "Compression level (0-100%)"
 msgstr ""
 
-#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/gpt_image.py:211 models/gpt_image_2.py:196
+#: models/gpt_image_2_5_sunburst.py:239 models/imagen.py:152
 #: models/nano_banana.py:183 models/nano_banana_2.py:207
 #: models/nano_banana_pro.py:198
 msgid "Format of the output image"
 msgstr ""
 
 #: models/gpt_image.py:219 models/gpt_image_2.py:204
+#: models/gpt_image_2_5_sunburst.py:247
 msgid "Moderation"
 msgstr ""
 
 #: models/gpt_image.py:220 models/gpt_image_2.py:205
+#: models/gpt_image_2_5_sunburst.py:248
 msgid "Content moderation level"
 msgstr ""
 
@@ -583,6 +595,37 @@ msgstr ""
 
 #: models/gpt_image_2.py:177
 msgid "Set the background mode"
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:40
+msgid ""
+"OpenAI's image generation and editing model with precise editing control"
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:47
+msgid "GPT Image 2.5 Sunburst"
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:167 models/seedream.py:164
+msgid "Image Size"
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:169
+msgid ""
+"Aspect ratio or pixel dimensions. Auto lets the model choose. Sizes above "
+"2560x1440 are experimental."
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:209
+msgid "Higher quality takes longer and costs more."
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:256
+msgid "User ID"
+msgstr ""
+
+#: models/gpt_image_2_5_sunburst.py:258
+msgid "Optional end-user identifier for OpenAI abuse monitoring"
 msgstr ""
 
 #: models/grok_imagine_image_2.py:41
@@ -766,10 +809,6 @@ msgstr ""
 
 #: models/seedream.py:46
 msgid "Seedream 5 Pro"
-msgstr ""
-
-#: models/seedream.py:164
-msgid "Image Size"
 msgstr ""
 
 #: models/seedream.py:166

@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.6.0\n"
+"Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-13 13:42-1000\n"
-"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"POT-Creation-Date: 2026-09-21 20:53-0700\n"
+"PO-Revision-Date: 2026-09-21 20:41-0700\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -93,11 +93,20 @@ msgstr "생성된 이미지의 종횡비"
 msgid "Aspect ratio of the generated image"
 msgstr "생성된 이미지의 종횡비"
 
+#: models/gpt_image_2_5_sunburst.py:169
+msgid ""
+"Aspect ratio or pixel dimensions. Auto lets the model choose. Sizes above "
+"2560x1440 are experimental."
+msgstr ""
+"화면 비율 또는 픽셀 크기. auto를 선택하면 모델이 크기를 결정합니다. 2560x1440"
+"을 초과하는 크기는 실험적입니다."
+
 #: models/qwen_image.py:209
 msgid "Automatically expand and optimize the prompt for better results"
 msgstr "더 나은 결과를 위해 프롬프트를 자동으로 확장하고 최적화"
 
 #: models/gpt_image.py:189 models/gpt_image_2.py:176
+#: models/gpt_image_2_5_sunburst.py:217
 msgid "Background"
 msgstr "배경"
 
@@ -132,10 +141,12 @@ msgid "Clear selected files"
 msgstr "선택한 파일 지우기"
 
 #: models/gpt_image.py:201 models/gpt_image_2.py:186
+#: models/gpt_image_2_5_sunburst.py:229
 msgid "Compression level (0-100%)"
 msgstr "압축 수준 (0-100%)"
 
 #: models/gpt_image.py:220 models/gpt_image_2.py:205
+#: models/gpt_image_2_5_sunburst.py:248
 msgid "Content moderation level"
 msgstr "콘텐츠 검토 수준"
 
@@ -179,7 +190,7 @@ msgstr "결과 다운로드 중..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI 이미지 생성기/편집기"
 
-#: dream-prompter.py:57
+#: dream-prompter.py:58
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -209,7 +220,7 @@ msgstr "레이어 추가 오류: {error}"
 msgid "Error creating images: {error}"
 msgstr "이미지 생성 오류: {error}"
 
-#: dream-prompter.py:102
+#: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "Dream Prompter 실행 오류: {error}"
@@ -230,7 +241,8 @@ msgstr "현재 이미지 내보내기 실패"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/gpt_image.py:211 models/gpt_image_2.py:196
+#: models/gpt_image_2_5_sunburst.py:239 models/imagen.py:152
 #: models/nano_banana.py:183 models/nano_banana_2.py:207
 #: models/nano_banana_pro.py:198
 msgid "Format of the output image"
@@ -252,6 +264,10 @@ msgstr "GPT Image 1.5"
 #: models/gpt_image_2.py:43
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
+
+#: models/gpt_image_2_5_sunburst.py:47
+msgid "GPT Image 2.5 Sunburst"
+msgstr "GPT Image 2.5 Sunburst"
 
 #: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
@@ -336,6 +352,10 @@ msgstr "API 키 숨기기"
 msgid "High-quality image generation and editing model"
 msgstr "우수한 이미지 품질의 텍스트-이미지 모델"
 
+#: models/gpt_image_2_5_sunburst.py:209
+msgid "Higher quality takes longer and costs more."
+msgstr "품질이 높을수록 시간과 비용이 더 많이 듭니다."
+
 #: models/stable_diffusion_large_turbo.py:197
 msgid "How similar the output should be to the prompt"
 msgstr "출력이 프롬프트와 얼마나 비슷해야 하는지"
@@ -344,7 +364,7 @@ msgstr "출력이 프롬프트와 얼마나 비슷해야 하는지"
 msgid "Image Search"
 msgstr "이미지 검색"
 
-#: models/seedream.py:164
+#: models/gpt_image_2_5_sunburst.py:167 models/seedream.py:164
 msgid "Image Size"
 msgstr "이미지 크기"
 
@@ -402,6 +422,7 @@ msgid "Model error: {error}"
 msgstr "모델 오류: {error}"
 
 #: models/gpt_image.py:219 models/gpt_image_2.py:204
+#: models/gpt_image_2_5_sunburst.py:247
 msgid "Moderation"
 msgstr "콘텐츠 검토"
 
@@ -467,20 +488,28 @@ msgid "Not set"
 msgstr "설정되지 않음"
 
 #: models/gpt_image.py:170 models/gpt_image_2.py:157
+#: models/gpt_image_2_5_sunburst.py:198
 msgid "Number of Images"
 msgstr "이미지 수"
 
 #: models/gpt_image.py:171 models/gpt_image_2.py:158
+#: models/gpt_image_2_5_sunburst.py:199
 msgid "Number of images to generate (1-10)"
 msgstr "생성할 이미지 수 (1-10)"
 
 #: models/gpt_image.py:137 models/gpt_image_2.py:136
+#: models/gpt_image_2_5_sunburst.py:155
 msgid "OpenAI API Key"
 msgstr "OpenAI API 키"
 
 #: models/gpt_image.py:38
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI의 고급 이미지 생성 모델"
+
+#: models/gpt_image_2_5_sunburst.py:40
+msgid ""
+"OpenAI's image generation and editing model with precise editing control"
+msgstr "정밀한 편집 제어를 지원하는 OpenAI의 이미지 생성 및 편집 모델"
 
 #: models/gpt_image_2.py:38
 msgid "OpenAI's next generation image generation model"
@@ -495,12 +524,18 @@ msgstr "작업 모드"
 msgid "Operation cancelled"
 msgstr "작업이 취소되었습니다"
 
+#: models/gpt_image_2_5_sunburst.py:258
+msgid "Optional end-user identifier for OpenAI abuse monitoring"
+msgstr "OpenAI의 오용 모니터링을 위한 선택적 최종 사용자 식별자"
+
 #: models/gpt_image.py:200 models/gpt_image_2.py:185
+#: models/gpt_image_2_5_sunburst.py:228
 msgid "Output Compression"
 msgstr "출력 압축"
 
 #: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
-#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/gpt_image_2_5_sunburst.py:238 models/imagen.py:151
+#: models/nano_banana.py:182 models/nano_banana_2.py:206
 #: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
 #: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
@@ -539,7 +574,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "프롬프트 강도 (또는 디노이징 강도)"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
-#: models/grok_imagine_image_2.py:212
+#: models/gpt_image_2_5_sunburst.py:208 models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "품질"
 
@@ -676,7 +711,7 @@ msgstr "재현성을 위한 시드 설정 (-1 = 랜덤)"
 msgid "Set the background mode"
 msgstr "배경 모드 설정"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2_5_sunburst.py:219
 msgid "Set whether the background is transparent or opaque"
 msgstr "배경을 투명 또는 불투명으로 설정"
 
@@ -717,15 +752,16 @@ msgstr "이 모델은 참조 이미지를 지원하지 않습니다"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image 2.5 Sunburst, "
+"Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, "
+"Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 "자연어 프롬프트를 사용하여 Replicate의 고급 AI 모델로 기존 이미지를 변환하거"
-"나 새 이미지를 생성합니다. Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok "
-"Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen "
-"Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, Stable Diffusion 3.5 "
-"Large Turbo를 포함한 여러 모델 중에서 선택하세요."
+"나 새 이미지를 생성합니다. Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image "
+"2.5 Sunburst, Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, "
+"Nano Banana Pro, Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, "
+"Stable Diffusion 3.5 Large Turbo를 포함한 여러 모델 중에서 선택하세요."
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -764,6 +800,10 @@ msgid ""
 "ratio setting"
 msgstr "종횡비 설정 대신 참조 이미지의 종횡비와 해상도를 사용"
 
+#: models/gpt_image_2_5_sunburst.py:256
+msgid "User ID"
+msgstr "사용자 ID"
+
 #: api.py:301
 msgid "Waiting for Replicate..."
 msgstr "Replicate 대기 중..."
@@ -787,6 +827,7 @@ msgid "Yes"
 msgstr "예"
 
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image_2_5_sunburst.py:157
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "OpenAI API 키 (선택 사항 - 제공되지 않으면 프록시 사용)"
 

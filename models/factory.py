@@ -3,7 +3,6 @@ Model factory for Dream Prompter plugin
 Provides easy access to model instances and management
 """
 
-
 # Import models to register them
 from . import (
     BaseModel,
@@ -12,6 +11,7 @@ from . import (
     get_model,
     gpt_image,  # noqa: F401
     gpt_image_2,  # noqa: F401
+    gpt_image_2_5_sunburst,  # noqa: F401
     grok_imagine_image_2,  # noqa: F401
     imagen,  # noqa: F401
     nano_banana,  # noqa: F401

@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream Prompter 1.6.0\n"
+"Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-08-13 13:42-1000\n"
-"PO-Revision-Date: 2025-01-15 12:00+0000\n"
+"POT-Creation-Date: 2026-09-21 20:53-0700\n"
+"PO-Revision-Date: 2026-09-21 20:41-0700\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -93,11 +93,19 @@ msgstr "生成圖像的縱橫比"
 msgid "Aspect ratio of the generated image"
 msgstr "生成圖像的長寬比"
 
+#: models/gpt_image_2_5_sunburst.py:169
+msgid ""
+"Aspect ratio or pixel dimensions. Auto lets the model choose. Sizes above "
+"2560x1440 are experimental."
+msgstr ""
+"長寬比或像素尺寸。auto 讓模型自行選擇。超過 2560x1440 的尺寸為實驗性功能。"
+
 #: models/qwen_image.py:209
 msgid "Automatically expand and optimize the prompt for better results"
 msgstr "自動擴展並優化提示以獲得更好的結果"
 
 #: models/gpt_image.py:189 models/gpt_image_2.py:176
+#: models/gpt_image_2_5_sunburst.py:217
 msgid "Background"
 msgstr "背景"
 
@@ -132,10 +140,12 @@ msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
 #: models/gpt_image.py:201 models/gpt_image_2.py:186
+#: models/gpt_image_2_5_sunburst.py:229
 msgid "Compression level (0-100%)"
 msgstr "壓縮級別（0-100%）"
 
 #: models/gpt_image.py:220 models/gpt_image_2.py:205
+#: models/gpt_image_2_5_sunburst.py:248
 msgid "Content moderation level"
 msgstr "內容審核級別"
 
@@ -179,7 +189,7 @@ msgstr "正在下載結果..."
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr "Dream Prompter - AI圖像創建器/編輯器"
 
-#: dream-prompter.py:57
+#: dream-prompter.py:58
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
@@ -209,7 +219,7 @@ msgstr "新增圖層錯誤: {error}"
 msgid "Error creating images: {error}"
 msgstr "建立影像錯誤: {error}"
 
-#: dream-prompter.py:102
+#: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
 msgstr "運行Dream Prompter時出錯：{error}"
@@ -230,7 +240,8 @@ msgstr "匯出當前圖像失敗"
 msgid "Flux 2 Pro"
 msgstr "Flux 2 Pro"
 
-#: models/gpt_image.py:211 models/gpt_image_2.py:196 models/imagen.py:152
+#: models/gpt_image.py:211 models/gpt_image_2.py:196
+#: models/gpt_image_2_5_sunburst.py:239 models/imagen.py:152
 #: models/nano_banana.py:183 models/nano_banana_2.py:207
 #: models/nano_banana_pro.py:198
 msgid "Format of the output image"
@@ -252,6 +263,10 @@ msgstr "GPT Image 1.5"
 #: models/gpt_image_2.py:43
 msgid "GPT Image 2"
 msgstr "GPT Image 2"
+
+#: models/gpt_image_2_5_sunburst.py:47
+msgid "GPT Image 2.5 Sunburst"
+msgstr "GPT Image 2.5 Sunburst"
 
 #: dialog_events.py:189 dialog_gtk.py:413
 msgid "Generate Edit"
@@ -332,6 +347,10 @@ msgstr "隱藏API密鑰"
 msgid "High-quality image generation and editing model"
 msgstr "具有優秀圖像質量的文本轉圖像模型"
 
+#: models/gpt_image_2_5_sunburst.py:209
+msgid "Higher quality takes longer and costs more."
+msgstr "更高的品質需要更長的時間和更高的費用。"
+
 #: models/stable_diffusion_large_turbo.py:197
 msgid "How similar the output should be to the prompt"
 msgstr "輸出與提示的相似程度"
@@ -340,7 +359,7 @@ msgstr "輸出與提示的相似程度"
 msgid "Image Search"
 msgstr "圖片搜尋"
 
-#: models/seedream.py:164
+#: models/gpt_image_2_5_sunburst.py:167 models/seedream.py:164
 msgid "Image Size"
 msgstr "影像大小"
 
@@ -398,6 +417,7 @@ msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
 
 #: models/gpt_image.py:219 models/gpt_image_2.py:204
+#: models/gpt_image_2_5_sunburst.py:247
 msgid "Moderation"
 msgstr "內容審核"
 
@@ -463,20 +483,28 @@ msgid "Not set"
 msgstr "未設置"
 
 #: models/gpt_image.py:170 models/gpt_image_2.py:157
+#: models/gpt_image_2_5_sunburst.py:198
 msgid "Number of Images"
 msgstr "圖像數量"
 
 #: models/gpt_image.py:171 models/gpt_image_2.py:158
+#: models/gpt_image_2_5_sunburst.py:199
 msgid "Number of images to generate (1-10)"
 msgstr "要生成的圖像數量（1-10）"
 
 #: models/gpt_image.py:137 models/gpt_image_2.py:136
+#: models/gpt_image_2_5_sunburst.py:155
 msgid "OpenAI API Key"
 msgstr "OpenAI API金鑰"
 
 #: models/gpt_image.py:38
 msgid "OpenAI's advanced image generation model"
 msgstr "OpenAI的高級圖像生成模型"
+
+#: models/gpt_image_2_5_sunburst.py:40
+msgid ""
+"OpenAI's image generation and editing model with precise editing control"
+msgstr "支援精確編輯控制的 OpenAI 影像生成與編輯模型"
 
 #: models/gpt_image_2.py:38
 msgid "OpenAI's next generation image generation model"
@@ -491,12 +519,18 @@ msgstr "操作模式"
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
+#: models/gpt_image_2_5_sunburst.py:258
+msgid "Optional end-user identifier for OpenAI abuse monitoring"
+msgstr "供 OpenAI 監測濫用行為的選填終端使用者識別碼"
+
 #: models/gpt_image.py:200 models/gpt_image_2.py:185
+#: models/gpt_image_2_5_sunburst.py:228
 msgid "Output Compression"
 msgstr "輸出壓縮"
 
 #: models/flux_pro.py:268 models/gpt_image.py:210 models/gpt_image_2.py:195
-#: models/imagen.py:151 models/nano_banana.py:182 models/nano_banana_2.py:206
+#: models/gpt_image_2_5_sunburst.py:238 models/imagen.py:151
+#: models/nano_banana.py:182 models/nano_banana_2.py:206
 #: models/nano_banana_pro.py:197 models/qwen_image_edit_plus.py:175
 #: models/seedream.py:195 models/stable_diffusion_large_turbo.py:229
 msgid "Output Format"
@@ -535,7 +569,7 @@ msgid "Prompt strength (or denoising strength)"
 msgstr "提示強度（或去噪強度）"
 
 #: models/gpt_image.py:180 models/gpt_image_2.py:167
-#: models/grok_imagine_image_2.py:212
+#: models/gpt_image_2_5_sunburst.py:208 models/grok_imagine_image_2.py:212
 msgid "Quality"
 msgstr "品質"
 
@@ -671,7 +705,7 @@ msgstr "設置種子以實現可重現性（-1 = 隨機）"
 msgid "Set the background mode"
 msgstr "設定背景模式"
 
-#: models/gpt_image.py:191
+#: models/gpt_image.py:191 models/gpt_image_2_5_sunburst.py:219
 msgid "Set whether the background is transparent or opaque"
 msgstr "設定背景是透明還是不透明"
 
@@ -712,14 +746,16 @@ msgstr "此模型不支援參考圖像"
 msgid ""
 "Transform existing images or generate new images using advanced AI models "
 "from Replicate with natural language prompts. Choose from multiple models "
-"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, Grok Imagine Image 2, "
-"Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, Qwen Image 2 Pro, "
-"Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion 3.5 Large Turbo."
+"including Flux 2 Pro, GPT Image 1.5, GPT Image 2, GPT Image 2.5 Sunburst, "
+"Grok Imagine Image 2, Imagen 4, Nano Banana, Nano Banana 2, Nano Banana Pro, "
+"Qwen Image 2 Pro, Qwen Image Edit 2511, Seedream 5 Pro, and Stable Diffusion "
+"3.5 Large Turbo."
 msgstr ""
 "使用Replicate的高級AI模型和自然語言提示轉換現有圖像或生成新圖像。可從多個模型"
-"中選擇，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、Grok Imagine Image 2、"
-"Imagen 4、Nano Banana、Nano Banana 2、Nano Banana Pro、Qwen Image 2 Pro、"
-"Qwen Image Edit 2511、Seedream 5 Pro和Stable Diffusion 3.5 Large Turbo。"
+"中選擇，包括Flux 2 Pro、GPT Image 1.5、GPT Image 2、GPT Image 2.5 Sunburst、"
+"Grok Imagine Image 2、Imagen 4、Nano Banana、Nano Banana 2、Nano Banana Pro、"
+"Qwen Image 2 Pro、Qwen Image Edit 2511、Seedream 5 Pro和Stable Diffusion 3.5 "
+"Large Turbo。"
 
 #: dialog_threads.py:228
 #, python-brace-format
@@ -754,6 +790,10 @@ msgid ""
 "ratio setting"
 msgstr "使用參考圖像的長寬比和解析度，而不是長寬比設定"
 
+#: models/gpt_image_2_5_sunburst.py:256
+msgid "User ID"
+msgstr "使用者 ID"
+
 #: api.py:301
 msgid "Waiting for Replicate..."
 msgstr "正在等待Replicate..."
@@ -777,6 +817,7 @@ msgid "Yes"
 msgstr "是"
 
 #: models/gpt_image.py:139 models/gpt_image_2.py:138
+#: models/gpt_image_2_5_sunburst.py:157
 msgid "Your OpenAI API key (optional - uses proxy if not provided)"
 msgstr "您的OpenAI API金鑰（可選 - 如未提供則使用代理）"
 
