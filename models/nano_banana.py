@@ -49,7 +49,7 @@ class NanaBananaModel(BaseModel):
 
     @property
     def max_file_size_mb(self) -> int:
-        """Maximum file size in MB for reference images"""
+        """Plugin size limit per reference file in MiB, not GIMP exports."""
         return 7
 
     @property
@@ -69,7 +69,7 @@ class NanaBananaModel(BaseModel):
 
     @property
     def supported_mime_types(self) -> list[str]:
-        """List of supported MIME types for reference images"""
+        """Input formats accepted by the plugin for this model."""
         return ["image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(

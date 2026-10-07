@@ -7,6 +7,7 @@ from gi.repository import GLib, Gtk
 
 from dialog_threads import DreamPrompterThreads
 from i18n import _, ngettext
+from image_validation import InputValidationError, validate_request
 from models.factory import get_default_model, get_model_by_name
 from settings import load_settings, store_settings
 
@@ -109,6 +110,7 @@ class DreamPrompterEventHandler:
         """Clear selected files"""
         self.ui.selected_files.clear()
         self.ui.update_files_display()
+        self.update_ui_limits()
 
     def on_generate(self, _button):
         """Handle generate button - main AI processing entry point"""
@@ -130,6 +132,12 @@ class DreamPrompterEventHandler:
             return
 
         mode = self.dialog.get_current_mode()
+        reference_images = self.ui.selected_files.copy()
+        try:
+            validate_request(self.model, mode, len(reference_images))
+        except InputValidationError as error:
+            self.show_error(str(error))
+            return
         api_key_visible = self.dialog.get_api_key_visible()
         selected_model_name = self.ui.get_selected_model()
         store_settings(
@@ -143,14 +151,14 @@ class DreamPrompterEventHandler:
             self.threads.start_edit_thread(
                 api_key,
                 prompt_text,
-                self.ui.selected_files,
+                reference_images,
                 selected_model_name,
             )
         else:
             self.threads.start_generate_thread(
                 api_key,
                 prompt_text,
-                self.ui.selected_files,
+                reference_images,
                 selected_model_name,
             )
 
@@ -167,6 +175,9 @@ class DreamPrompterEventHandler:
 
                 current_mode = self.dialog.get_current_mode()
                 self.ui.update_mode_sensitivity(new_model, current_mode)
+                self.ui.update_files_display()
+                self.update_ui_limits()
+                self.update_generate_button_state()
 
     def on_mode_changed(self, _radio_button):
         """Handle mode selection changes"""
@@ -174,17 +185,6 @@ class DreamPrompterEventHandler:
             return
 
         if self.ui.edit_mode_radio.get_active():
-            max_edit_files = self.model.max_reference_images_edit
-            if len(self.ui.selected_files) > max_edit_files:
-                self.ui.selected_files = self.ui.selected_files[:max_edit_files]
-                self.ui.update_files_display()
-                message = ngettext(
-                    "Reduced to {max} reference image for edit mode",
-                    "Reduced to {max} reference images for edit mode",
-                    max_edit_files,
-                )
-                print(message.format(max=max_edit_files))
-
             if self.ui.generate_btn:
                 self.ui.generate_btn.set_label(_("Generate Edit"))
         else:
@@ -207,6 +207,7 @@ class DreamPrompterEventHandler:
         if file_path in self.ui.selected_files:
             self.ui.selected_files.remove(file_path)
             self.ui.update_files_display()
+            self.update_ui_limits()
 
     def on_select_files(self, _button):
         """Open file chooser for reference images"""
@@ -233,50 +234,45 @@ class DreamPrompterEventHandler:
                 image_filter.add_mime_type(mime_type)
             dialog.add_filter(image_filter)
 
+        all_files = Gtk.FileFilter()
+        all_files.set_name(_("All Files"))
+        all_files.add_pattern("*")
+        dialog.add_filter(all_files)
+
         dialog.set_select_multiple(True)
 
         response = dialog.run()
-
-        if response == Gtk.ResponseType.OK:
-            files = dialog.get_filenames()
-
-            current_mode = self.dialog.get_current_mode()
-            if current_mode == "edit":
-                max_total_files = self.model.max_reference_images_edit
-            else:
-                max_total_files = self.model.max_reference_images
-
-            max_new_files = max_total_files - len(self.ui.selected_files)
-            if max_new_files > 0:
-                self.ui.selected_files.extend(files[:max_new_files])
-                self.ui.update_files_display()
-            elif files:
-                rejected = ngettext(
-                    "Cannot add {count} file.",
-                    "Cannot add {count} files.",
-                    len(files),
-                ).format(count=len(files))
-
-                if current_mode == "edit":
-                    max_refs = self.model.max_reference_images_edit
-                    limit = ngettext(
-                        "Maximum {max} reference image allowed in edit "
-                        "mode.",
-                        "Maximum {max} reference images allowed in edit "
-                        "mode.",
-                        max_refs,
-                    ).format(max=max_refs)
-                else:
-                    max_refs = self.model.max_reference_images
-                    limit = ngettext(
-                        "Maximum {max} reference image allowed.",
-                        "Maximum {max} reference images allowed.",
-                        max_refs,
-                    ).format(max=max_refs)
-
-                print(f"{rejected} {limit}")
-
+        files = (
+            dialog.get_filenames() if response == Gtk.ResponseType.OK else []
+        )
         dialog.destroy()
+
+        if files:
+            try:
+                validate_request(
+                    self.model,
+                    self.dialog.get_current_mode(),
+                    len(self.ui.selected_files) + len(files),
+                )
+            except InputValidationError as error:
+                maximum = (
+                    self.model.max_reference_images_edit
+                    if self.dialog.get_current_mode() == "edit"
+                    else self.model.max_reference_images
+                )
+                details = _(
+                    "No files were added. Already selected: {selected}; "
+                    "requested: {requested}; available slots: {remaining}."
+                ).format(
+                    selected=len(self.ui.selected_files),
+                    requested=len(files),
+                    remaining=max(0, maximum - len(self.ui.selected_files)),
+                )
+                self.show_error(f"{error}\n{details}")
+                return
+            self.ui.selected_files.extend(files)
+            self.ui.update_files_display()
+            self.update_ui_limits()
 
     def on_toggle_visibility(self, button):
         """Handle API key visibility toggle"""
@@ -355,8 +351,22 @@ class DreamPrompterEventHandler:
                 "Select up to {max} additional images",
                 max_imgs,
             ).format(max=max_imgs)
+        elif current_mode == "edit":
+            text = _("This model accepts no additional images in edit mode.")
         else:
             text = _("This model does not support reference images")
 
-        markup = f"<small>{text}</small>"
+        try:
+            validate_request(
+                self.model, current_mode, len(self.ui.selected_files)
+            )
+        except InputValidationError as error:
+            if max_imgs == 0:
+                text += "\n" + _(
+                    "Remove the selected reference images to continue."
+                )
+            else:
+                text += "\n" + str(error)
+
+        markup = f"<small>{GLib.markup_escape_text(text)}</small>"
         self.ui.images_help_label.set_markup(markup)

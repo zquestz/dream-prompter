@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-09-21 20:53-0700\n"
-"PO-Revision-Date: 2026-09-21 20:41-0700\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"PO-Revision-Date: 2026-10-06 18:04-1000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:742
 #, python-brace-format
-msgid "({size:.0f} KB)"
-msgstr "({size:.0f} Ko)"
+msgid "({size:.0f} KiB)"
+msgstr "({size:.0f} Kio)"
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:738
 #, python-brace-format
-msgid "({size:.1f} MB)"
-msgstr "({size:.1f} Mo)"
+msgid "({size:.1f} MiB)"
+msgstr "({size:.1f} Mio)"
 
 #: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
@@ -45,11 +45,11 @@ msgstr "Généré par IA : {prompt}"
 msgid "AI Layer"
 msgstr "Calque IA"
 
-#: dialog_gtk.py:464
+#: dialog_gtk.py:466
 msgid "AI Model"
 msgstr "Modèle IA"
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:655
 msgid "AI Prompt"
 msgstr "Invite IA"
 
@@ -57,7 +57,7 @@ msgstr "Invite IA"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "Création/édition d'images avec IA utilisant les modèles Replicate"
 
-#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:68 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "Clé API requise"
 
@@ -73,9 +73,13 @@ msgstr[1] "Ajouté {count} calques"
 msgid "Adding layer {num}..."
 msgstr "Ajout du calque {num}..."
 
-#: dialog_gtk.py:310
+#: dialog_gtk.py:312
 msgid "Additional Images (Optional)"
 msgstr "Images Supplémentaires (Optionnel)"
+
+#: dialog_events.py:238
+msgid "All Files"
+msgstr "Tous les fichiers"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
 #: models/grok_imagine_image_2.py:179 models/imagen.py:142
@@ -112,7 +116,7 @@ msgstr ""
 msgid "Background"
 msgstr "Arrière-plan"
 
-#: api.py:125
+#: api.py:139
 msgid "Building Replicate edit request..."
 msgstr "Construction de la requête d'édition Replicate..."
 
@@ -120,7 +124,7 @@ msgstr "Construction de la requête d'édition Replicate..."
 msgid "ByteDance's flagship model for sharp 1K and 2K images"
 msgstr "Modèle phare de ByteDance pour des images nettes en 1K et 2K"
 
-#: dialog_events.py:219 dialog_gtk.py:408
+#: dialog_events.py:220 dialog_gtk.py:410
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -128,18 +132,11 @@ msgstr "Annuler"
 msgid "Cancelling..."
 msgstr "Annulation..."
 
-#: dialog_events.py:255
-#, python-brace-format
-msgid "Cannot add {count} file."
-msgid_plural "Cannot add {count} files."
-msgstr[0] "Impossible d'ajouter {count} fichier."
-msgstr[1] "Impossible d'ajouter {count} fichiers."
-
 #: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:338
+#: dialog_gtk.py:340
 msgid "Clear selected files"
 msgstr "Effacer les fichiers sélectionnés"
 
@@ -174,10 +171,19 @@ msgstr "Contrôler le filtrage de sécurité des images générées"
 msgid "Control safety of generated images"
 msgstr "Contrôler la sécurité des images générées"
 
+#: image_validation.py:102
+#, python-brace-format
+msgid "Could not read image '{image}'."
+msgstr "Impossible de lire l'image '{image}'."
+
 #: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "Création de l'image {num}..."
+
+#: api.py:131
+msgid "Current image or selection"
+msgstr "Image actuelle ou sélection"
 
 #: models/qwen_image_edit_plus.py:198
 msgid "Disable Safety Checker"
@@ -187,7 +193,7 @@ msgstr "Désactiver le Vérificateur de Sécurité"
 msgid "Disable safety checker for generated images."
 msgstr "Désactiver le vérificateur de sécurité pour les images générées."
 
-#: api.py:455
+#: api.py:432
 msgid "Downloading result..."
 msgstr "Téléchargement du résultat..."
 
@@ -199,11 +205,11 @@ msgstr "Dream Prompter - Créateur/Éditeur d'Images IA"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:518
+#: dialog_gtk.py:520
 msgid "Edit Image"
 msgstr "Modifier l'Image"
 
-#: dialog_events.py:129
+#: dialog_events.py:131
 msgid "Edit mode requires a selected layer"
 msgstr "Le mode édition nécessite un calque sélectionné"
 
@@ -211,7 +217,7 @@ msgstr "Le mode édition nécessite un calque sélectionné"
 msgid "Enable speed optimizations"
 msgstr "Activer les optimisations de vitesse"
 
-#: dialog_gtk.py:371
+#: dialog_gtk.py:373
 msgid "Enter your Replicate API key"
 msgstr "Saisissez votre clé API Replicate"
 
@@ -234,11 +240,11 @@ msgstr "Erreur lors de l'exécution de Dream Prompter : {error}"
 msgid "Expand Prompt"
 msgstr "Développer le Prompt"
 
-#: api.py:471
+#: api.py:448
 msgid "Failed to convert any images from API response"
 msgstr "Impossible de convertir les images de la réponse de l'API"
 
-#: api.py:119
+#: api.py:126
 msgid "Failed to export current image"
 msgstr "Échec de l'exportation de l'image actuelle"
 
@@ -274,11 +280,11 @@ msgstr "GPT Image 2"
 msgid "GPT Image 2.5 Sunburst"
 msgstr "GPT Image 2.5 Sunburst"
 
-#: dialog_events.py:189 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:415
 msgid "Generate Edit"
 msgstr "Générer l'Édition"
 
-#: dialog_events.py:192 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:525
 msgid "Generate Image"
 msgstr "Générer une Image"
 
@@ -289,7 +295,7 @@ msgid_plural "Generated {count} images"
 msgstr[0] "Généré {count} image"
 msgstr[1] "Généré {count} images"
 
-#: api.py:191
+#: api.py:204
 msgid "Generating image with Replicate..."
 msgstr "Génération d'image avec Replicate..."
 
@@ -301,7 +307,7 @@ msgstr ""
 "Qualité de génération. Medium produit les meilleurs résultats, low est plus "
 "rapide et moins cher."
 
-#: dialog_gtk.py:391
+#: dialog_gtk.py:393
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "Obtenez votre clé API depuis <a href=\"{url}\">Replicate</a>"
@@ -352,7 +358,7 @@ msgid ""
 "multiple of 32."
 msgstr "Hauteur de l'image générée en mode texte-à-image."
 
-#: dialog_events.py:292
+#: dialog_events.py:288
 msgid "Hide API key"
 msgstr "Masquer la clé API"
 
@@ -368,6 +374,21 @@ msgstr "Une qualité supérieure prend plus de temps et coûte plus cher."
 msgid "How similar the output should be to the prompt"
 msgstr "À quel point la sortie doit ressembler au prompt"
 
+#: image_validation.py:108
+#, python-brace-format
+msgid "Image '{image}' exceeds the {max} MiB size limit."
+msgstr "L'image '{image}' dépasse la limite de taille de {max} Mio."
+
+#: image_validation.py:84
+#, python-brace-format
+msgid "Image '{image}' has an unsupported file format."
+msgstr "Le format de fichier de l'image '{image}' n'est pas pris en charge."
+
+#: image_validation.py:79
+#, python-brace-format
+msgid "Image '{image}' is empty."
+msgstr "L'image '{image}' est vide."
+
 #: models/nano_banana_2.py:226
 msgid "Image Search"
 msgstr "Recherche d'Images"
@@ -376,11 +397,11 @@ msgstr "Recherche d'Images"
 msgid "Image Size"
 msgstr "Taille d'Image"
 
-#: api.py:475
+#: api.py:452
 msgid "Image editing complete!"
 msgstr "Édition d'image terminée !"
 
-#: api.py:477
+#: api.py:454
 msgid "Image generation complete!"
 msgstr "Génération d'image terminée !"
 
@@ -392,7 +413,7 @@ msgstr "Résolution d'image : 1K (~2 mégapixels) ou 2K (~4 mégapixels)"
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: dialog_events.py:140
+#: dialog_events.py:148
 msgid "Initializing API request..."
 msgstr "Initialisation de la requête API..."
 
@@ -400,7 +421,7 @@ msgstr "Initialisation de la requête API..."
 msgid "Input Fidelity"
 msgstr "Fidélité d'Entrée"
 
-#: api.py:321 api.py:339
+#: api.py:330 api.py:348
 msgid "Logs"
 msgstr "Journaux"
 
@@ -408,25 +429,25 @@ msgstr "Journaux"
 msgid "Match Reference Image"
 msgstr "Adapter à l'Image de Référence"
 
-#: dialog_events.py:263
+#: image_validation.py:36
 #, python-brace-format
 msgid "Maximum {max} reference image allowed in edit mode."
 msgid_plural "Maximum {max} reference images allowed in edit mode."
 msgstr[0] "Maximum {max} image de référence autorisée en mode édition."
 msgstr[1] "Maximum {max} images de référence autorisées en mode édition."
 
-#: dialog_events.py:272
+#: image_validation.py:43
 #, python-brace-format
 msgid "Maximum {max} reference image allowed."
 msgid_plural "Maximum {max} reference images allowed."
 msgstr[0] "Maximum {max} image de référence autorisée."
 msgstr[1] "Maximum {max} images de référence autorisées."
 
-#: dialog_gtk.py:262
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr "Paramètres du Modèle"
 
-#: api.py:317 api.py:332
+#: api.py:328 api.py:341
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "Erreur de modèle : {error}"
@@ -456,7 +477,7 @@ msgstr "Prompt Négatif"
 msgid "Negative prompt for generated image"
 msgstr "Prompt négatif pour l'image générée"
 
-#: api.py:346
+#: api.py:355
 #, python-brace-format
 msgid "Network error: {error}"
 msgstr "Erreur réseau : {error}"
@@ -465,13 +486,22 @@ msgstr "Erreur réseau : {error}"
 msgid "No"
 msgstr "Non"
 
-#: api.py:107
+#: api.py:111
 msgid "No GIMP image provided for editing"
 msgstr "Aucune image GIMP fournie pour l'édition"
 
-#: dialog_gtk.py:327 dialog_gtk.py:788
+#: dialog_gtk.py:329 dialog_gtk.py:800
 msgid "No additional images selected"
 msgstr "Aucune image supplémentaire sélectionnée"
+
+#: dialog_events.py:264
+#, python-brace-format
+msgid ""
+"No files were added. Already selected: {selected}; requested: {requested}; "
+"available slots: {remaining}."
+msgstr ""
+"Aucun fichier n'a été ajouté. Déjà sélectionnés : {selected} ; demandés : "
+"{requested} ; places disponibles : {remaining}."
 
 #: dialog_threads.py:103 dialog_threads.py:186
 msgid "No image available for editing"
@@ -485,11 +515,11 @@ msgstr "Aucune donnée d'image reçue de l'API"
 msgid "No layer available for editing"
 msgstr "Aucun calque disponible pour l'édition"
 
-#: api.py:452
+#: api.py:429
 msgid "No output received from API"
 msgstr "Aucune sortie reçue de l'API"
 
-#: api.py:461
+#: api.py:438
 msgid "No valid image data in API response"
 msgstr "Aucune donnée d'image valide dans la réponse de l'API"
 
@@ -527,12 +557,12 @@ msgstr ""
 msgid "OpenAI's next generation image generation model"
 msgstr "Modèle de génération d'images de nouvelle génération d'OpenAI"
 
-#: dialog_gtk.py:511
+#: dialog_gtk.py:513
 msgid "Operation Mode"
 msgstr "Mode d'Opération"
 
-#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
-#: api.py:449 api.py:457
+#: api.py:120 api.py:141 api.py:157 api.py:206 api.py:218 api.py:318 api.py:324
+#: api.py:426 api.py:434
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
@@ -559,19 +589,19 @@ msgstr "Format de Sortie"
 msgid "Output Quality"
 msgstr "Qualité de Sortie"
 
-#: dialog_events.py:123
+#: dialog_events.py:125
 msgid "Please enter a prompt"
 msgstr "Veuillez saisir une invite"
 
-#: dialog_events.py:119
+#: dialog_events.py:121
 msgid "Please enter your Replicate API key"
 msgstr "Veuillez saisir votre clé API Replicate"
 
-#: api.py:111
+#: api.py:118
 msgid "Preparing current image for Replicate..."
 msgstr "Préparation de l'image actuelle pour Replicate..."
 
-#: api.py:447
+#: api.py:424
 msgid "Processing Replicate response..."
 msgstr "Traitement de la réponse de Replicate..."
 
@@ -624,27 +654,24 @@ msgstr "Modèle de nouvelle génération de Qwen avec un rendu de texte amélior
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr "Graine aléatoire pour des résultats reproductibles (-1 = aléatoire)"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:704
 msgid "Ready"
 msgstr "Prêt"
 
-#: dialog_events.py:182
-#, python-brace-format
-msgid "Reduced to {max} reference image for edit mode"
-msgid_plural "Reduced to {max} reference images for edit mode"
-msgstr[0] "Réduit à {max} image de référence pour le mode édition"
-msgstr[1] "Réduit à {max} images de référence pour le mode édition"
+#: dialog_events.py:366
+msgid "Remove the selected reference images to continue."
+msgstr "Supprimez les images de référence sélectionnées pour continuer."
 
-#: dialog_gtk.py:362
+#: dialog_gtk.py:364
 msgid "Replicate API Key"
 msgstr "Clé API Replicate"
 
-#: api.py:343
+#: api.py:352
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Erreur de l'API Replicate : {error}"
 
-#: api.py:60 api.py:103 api.py:183
+#: api.py:64 api.py:107 api.py:196
 msgid "Replicate API not available. Please install replicate"
 msgstr "API Replicate non disponible. Veuillez installer replicate"
 
@@ -695,30 +722,30 @@ msgstr "Graine"
 msgid "Seedream 5 Pro"
 msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:220
+#: dialog_events.py:221
 msgid "Select"
 msgstr "Sélectionner"
 
-#: dialog_gtk.py:319
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "Sélectionner les Images..."
 
-#: dialog_events.py:214
+#: dialog_events.py:215
 msgid "Select Reference Images"
 msgstr "Sélectionner les Images de Référence"
 
-#: dialog_events.py:354
+#: dialog_events.py:350
 #, python-brace-format
 msgid "Select up to {max} additional image"
 msgid_plural "Select up to {max} additional images"
 msgstr[0] "Sélectionnez jusqu'à {max} image supplémentaire"
 msgstr[1] "Sélectionnez jusqu'à {max} images supplémentaires"
 
-#: api.py:142
+#: api.py:155
 msgid "Sending edit request to Replicate..."
 msgstr "Envoi de la requête d'édition à Replicate..."
 
-#: api.py:203
+#: api.py:216
 msgid "Sending request to Replicate..."
 msgstr "Envoi de la requête à Replicate..."
 
@@ -735,11 +762,11 @@ msgstr "Définir le mode d'arrière-plan"
 msgid "Set whether the background is transparent or opaque"
 msgstr "Définir si l'arrière-plan est transparent ou opaque"
 
-#: dialog_events.py:299
+#: dialog_events.py:295
 msgid "Show API key"
 msgstr "Afficher la clé API"
 
-#: dialog_gtk.py:383
+#: dialog_gtk.py:385
 msgid "Show/Hide API key"
 msgstr "Afficher/Masquer la clé API"
 
@@ -751,7 +778,7 @@ msgstr "Modèle de génération d'images haute résolution de Stability AI"
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:230
+#: dialog_events.py:231
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr "Images supportées ({formats})"
@@ -764,7 +791,15 @@ msgstr "Le rapport d'aspect de l'image générée"
 msgid "The quality of the generated image"
 msgstr "La qualité de l'image générée"
 
-#: dialog_events.py:359
+#: image_validation.py:30
+msgid "The selected model does not support this operation."
+msgstr "Le modèle sélectionné ne prend pas en charge cette opération."
+
+#: dialog_events.py:355 image_validation.py:50
+msgid "This model accepts no additional images in edit mode."
+msgstr "Ce modèle n'accepte aucune image supplémentaire en mode édition."
+
+#: dialog_events.py:357 image_validation.py:52
 msgid "This model does not support reference images"
 msgstr "Ce modèle ne prend pas en charge les images de référence"
 
@@ -794,7 +829,7 @@ msgstr "Erreur inattendue pendant l'édition d'image : {error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "Erreur inattendue pendant la génération d'image : {error}"
 
-#: api.py:157 api.py:216
+#: api.py:170 api.py:229
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "Erreur inattendue : {error}"
@@ -827,7 +862,7 @@ msgstr ""
 msgid "User ID"
 msgstr "Identifiant Utilisateur"
 
-#: api.py:301
+#: api.py:312
 msgid "Waiting for Replicate..."
 msgstr "En attente de Replicate..."
 
@@ -858,7 +893,7 @@ msgstr "Votre clé API OpenAI (optionnel - utilise un proxy si non fournie)"
 msgid "xAI's general-purpose image generation and editing model"
 msgstr "Modèle de génération et d'édition d'images à usage général de xAI"
 
-#: dialog_gtk.py:801
+#: dialog_gtk.py:813
 #, python-brace-format
 msgid "{count} image selected"
 msgid_plural "{count} images selected"
@@ -870,7 +905,19 @@ msgstr[1] "{count} images sélectionnées"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original} (Édition IA : {prompt})"
 
-#: dialog_gtk.py:723
+#: dialog_gtk.py:735
 #, python-brace-format
-msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
-msgstr "⚠️ ({size:.1f} Mo - Taille Max Dépassée)"
+msgid "⚠️ ({size:.1f} MiB - Max Size Exceeded)"
+msgstr "⚠️ ({size:.1f} Mio - Taille Max Dépassée)"
+
+#, python-brace-format
+#~ msgid "Cannot add {count} file."
+#~ msgid_plural "Cannot add {count} files."
+#~ msgstr[0] "Impossible d'ajouter {count} fichier."
+#~ msgstr[1] "Impossible d'ajouter {count} fichiers."
+
+#, python-brace-format
+#~ msgid "Reduced to {max} reference image for edit mode"
+#~ msgid_plural "Reduced to {max} reference images for edit mode"
+#~ msgstr[0] "Réduit à {max} image de référence pour le mode édition"
+#~ msgstr[1] "Réduit à {max} images de référence pour le mode édition"

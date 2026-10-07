@@ -186,7 +186,7 @@ class BaseModel(ABC):
     @property
     @abstractmethod
     def max_file_size_mb(self) -> int:
-        """Maximum file size in MB for reference images"""
+        """Plugin size limit per reference file in MiB, not GIMP exports."""
 
     @property
     @abstractmethod
@@ -195,8 +195,8 @@ class BaseModel(ABC):
 
     @property
     def max_reference_images_edit(self) -> int:
-        """Maximum number of reference images for editing (default: max - 1)"""
-        return max(1, self.max_reference_images - 1)
+        """Additional references, reserving one input slot for the edit."""
+        return max(0, self.max_reference_images - 1)
 
     @property
     @abstractmethod
@@ -206,7 +206,7 @@ class BaseModel(ABC):
     @property
     @abstractmethod
     def supported_mime_types(self) -> list[str]:
-        """List of supported MIME types for reference images"""
+        """Input formats accepted by the plugin for this model."""
 
     @abstractmethod
     def build_edit_input(
@@ -349,7 +349,7 @@ class BaseModel(ABC):
             True if size is valid, False otherwise
         """
         max_bytes = self.max_file_size_mb * 1024 * 1024
-        return size_bytes <= max_bytes
+        return 0 < size_bytes <= max_bytes
 
     def validate_mime_type(self, mime_type: str) -> bool:
         """

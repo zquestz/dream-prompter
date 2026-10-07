@@ -6,17 +6,21 @@ API to perform image generation and editing operations using various AI models.
 """
 
 import io
-import mimetypes
-import os
 import time
 import urllib.request
 from collections.abc import Callable
-from contextlib import contextmanager
+from contextlib import ExitStack, contextmanager
 
 from gi.repository import GdkPixbuf, Gimp
 
 import integrator
 from i18n import _
+from image_validation import (
+    InputValidationError,
+    prepare_reference_image,
+    validate_image,
+    validate_request,
+)
 from models.factory import get_default_model, get_model_by_name
 from settings import get_model_settings
 
@@ -107,6 +111,9 @@ class ReplicateAPI:
             return None, _("No GIMP image provided for editing")
 
         try:
+            # Validate and prepare the same snapshot of the request.
+            reference_images = list(reference_images or [])
+            validate_request(self.model, "edit", len(reference_images))
             if progress_callback and not progress_callback(
                 _("Preparing current image for Replicate..."), PROGRESS_PREPARE
             ):
@@ -118,16 +125,22 @@ class ReplicateAPI:
             if not current_image_data:
                 return None, _("Failed to export current image")
 
-            with self._prepare_reference_images(
-                reference_images, self.model.max_reference_images_edit
-            ) as ref_files:
+            validate_image(
+                self.model,
+                current_image_data,
+                _("Current image or selection"),
+            )
+
+            with (
+                self._prepare_reference_images(reference_images) as ref_files,
+                io.BytesIO(current_image_data) as main_image,
+            ):
                 if progress_callback and not progress_callback(
                     _("Building Replicate edit request..."), PROGRESS_UPLOAD
                 ):
                     return None, _("Operation cancelled")
 
                 user_settings = get_model_settings(self.model.name)
-                main_image = io.BytesIO(current_image_data)
                 # Uploads inherit this name; some model runners (Grok)
                 # validate the file extension and reject unnamed buffers
                 main_image.name = "image.png"
@@ -143,9 +156,7 @@ class ReplicateAPI:
                 ):
                     return None, _("Operation cancelled")
 
-                output = self._execute_api_call(
-                    model_input, progress_callback
-                )
+                output = self._execute_api_call(model_input, progress_callback)
                 if isinstance(output, str):
                     return None, output
 
@@ -153,6 +164,8 @@ class ReplicateAPI:
                 output, progress_callback, is_edit=True
             )
 
+        except InputValidationError as e:
+            return None, str(e)
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
 
@@ -184,9 +197,9 @@ class ReplicateAPI:
             )
 
         try:
-            with self._prepare_reference_images(
-                reference_images, self.model.max_reference_images
-            ) as ref_files:
+            reference_images = list(reference_images or [])
+            validate_request(self.model, "generate", len(reference_images))
+            with self._prepare_reference_images(reference_images) as ref_files:
                 if progress_callback and not progress_callback(
                     _("Generating image with Replicate..."), PROGRESS_PREPARE
                 ):
@@ -195,7 +208,7 @@ class ReplicateAPI:
                 user_settings = get_model_settings(self.model.name)
                 model_input = self.model.build_generation_input(
                     prompt=prompt,
-                    reference_images=ref_files if reference_images else None,
+                    reference_images=ref_files if ref_files else None,
                     user_settings=user_settings,
                 )
 
@@ -204,20 +217,18 @@ class ReplicateAPI:
                 ):
                     return None, _("Operation cancelled")
 
-                output = self._execute_api_call(
-                    model_input, progress_callback
-                )
+                output = self._execute_api_call(model_input, progress_callback)
                 if isinstance(output, str):
                     return None, output
 
             return self._process_response(output, progress_callback)
 
+        except InputValidationError as e:
+            return None, str(e)
         except Exception as e:
             return None, _("Unexpected error: {error}").format(error=str(e))
 
-    def _bytes_to_pixbuf(
-        self, image_bytes: bytes
-    ) -> GdkPixbuf.Pixbuf | None:
+    def _bytes_to_pixbuf(self, image_bytes: bytes) -> GdkPixbuf.Pixbuf | None:
         """
         Convert image bytes to GdkPixbuf.
 
@@ -314,9 +325,7 @@ class ReplicateAPI:
 
             if prediction.status == "failed":
                 error_detail = str(prediction.error or "prediction failed")
-                error_msg = _("Model error: {error}").format(
-                    error=error_detail
-                )
+                error_msg = _("Model error: {error}").format(error=error_detail)
                 if prediction.logs:
                     error_msg += f"\n{_('Logs')}: {prediction.logs}"
                 return error_msg
@@ -346,46 +355,14 @@ class ReplicateAPI:
             return _("Network error: {error}").format(error=str(e))
 
     @contextmanager
-    def _prepare_reference_images(
-        self, reference_images: list[str] | None, max_count: int
-    ):
-        """
-        Context manager for preparing reference images.
-
-        Args:
-            reference_images: List of image file paths
-            max_count: Maximum number of images to process
-
-        Yields:
-            List of file objects for Replicate API
-        """
-        if not reference_images:
-            yield []
-            return
-
-        file_handles = []
-        try:
-            for img_path in reference_images[:max_count]:
-                if self._validate_reference_image(img_path):
-                    try:
-                        # Deliberate: handles must stay open across the
-                        # yield below; they are closed in the finally
-                        file_handle = open(img_path, "rb")  # noqa: SIM115
-                        file_handles.append(file_handle)
-                    except OSError as e:
-                        print(
-                            f"Warning: Could not open reference image "
-                            f"{img_path}: {e}"
-                        )
-
+    def _prepare_reference_images(self, reference_images: list[str] | None):
+        """Keep validated snapshots alive through upload; never omit inputs."""
+        with ExitStack() as stack:
+            file_handles = [
+                stack.enter_context(prepare_reference_image(self.model, path))
+                for path in reference_images or []
+            ]
             yield file_handles
-
-        finally:
-            for file_handle in file_handles:
-                try:
-                    file_handle.close()
-                except Exception as e:
-                    print(f"Error closing file handle: {e}")
 
     def _process_api_response(self, output) -> list[bytes]:
         """
@@ -479,53 +456,3 @@ class ReplicateAPI:
             progress_callback(operation_complete_msg, PROGRESS_COMPLETE)
 
         return pixbufs, None
-
-    def _validate_reference_image(self, img_path: str) -> bool:
-        """
-        Validate a reference image file.
-
-        Args:
-            img_path: Path to the image file
-
-        Returns:
-            True if valid, False otherwise
-        """
-        try:
-            if not os.path.exists(img_path):
-                print(
-                    f"Warning: Image file {img_path} does not exist. Skipping."
-                )
-                return False
-
-            file_size = os.path.getsize(img_path)
-            if not self.model.validate_file_size(file_size):
-                file_size_mb = file_size / (1024 * 1024)
-                max_size_mb = self.model.max_file_size_mb
-                print(
-                    f"Warning: Image {img_path} is {file_size_mb:.1f} MB, "
-                    f"exceeds {max_size_mb} MB limit. Skipping."
-                )
-                return False
-
-            mime_type, _encoding = mimetypes.guess_type(img_path)
-            if not mime_type:
-                print(
-                    f"Warning: Could not determine MIME type for "
-                    f"{img_path}. Skipping."
-                )
-                return False
-
-            if not self.model.validate_mime_type(mime_type):
-                print(
-                    f"Warning: Image {img_path} has unsupported MIME type "
-                    f"{mime_type}. Skipping."
-                )
-                return False
-
-            return True
-
-        except Exception as e:
-            print(
-                f"Warning: Could not validate reference image {img_path}: {e}"
-            )
-            return False

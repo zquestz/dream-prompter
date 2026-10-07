@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-09-21 20:53-0700\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,100 +18,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: api.py:60 api.py:103 api.py:183
+#: api.py:64 api.py:107 api.py:196
 msgid "Replicate API not available. Please install replicate"
 msgstr ""
 
-#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:68 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr ""
 
-#: api.py:107
+#: api.py:111
 msgid "No GIMP image provided for editing"
 msgstr ""
 
-#: api.py:111
+#: api.py:118
 msgid "Preparing current image for Replicate..."
 msgstr ""
 
-#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
-#: api.py:449 api.py:457
+#: api.py:120 api.py:141 api.py:157 api.py:206 api.py:218 api.py:318 api.py:324
+#: api.py:426 api.py:434
 msgid "Operation cancelled"
 msgstr ""
 
-#: api.py:119
+#: api.py:126
 msgid "Failed to export current image"
 msgstr ""
 
-#: api.py:125
+#: api.py:131
+msgid "Current image or selection"
+msgstr ""
+
+#: api.py:139
 msgid "Building Replicate edit request..."
 msgstr ""
 
-#: api.py:142
+#: api.py:155
 msgid "Sending edit request to Replicate..."
 msgstr ""
 
-#: api.py:157 api.py:216
+#: api.py:170 api.py:229
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr ""
 
-#: api.py:191
+#: api.py:204
 msgid "Generating image with Replicate..."
 msgstr ""
 
-#: api.py:203
+#: api.py:216
 msgid "Sending request to Replicate..."
 msgstr ""
 
-#: api.py:301
+#: api.py:312
 msgid "Waiting for Replicate..."
 msgstr ""
 
-#: api.py:317 api.py:332
+#: api.py:328 api.py:341
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr ""
 
-#: api.py:321 api.py:339
+#: api.py:330 api.py:348
 msgid "Logs"
 msgstr ""
 
-#: api.py:343
+#: api.py:352
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr ""
 
-#: api.py:346
+#: api.py:355
 #, python-brace-format
 msgid "Network error: {error}"
 msgstr ""
 
-#: api.py:447
+#: api.py:424
 msgid "Processing Replicate response..."
 msgstr ""
 
-#: api.py:452
+#: api.py:429
 msgid "No output received from API"
 msgstr ""
 
-#: api.py:455
+#: api.py:432
 msgid "Downloading result..."
 msgstr ""
 
-#: api.py:461
+#: api.py:438
 msgid "No valid image data in API response"
 msgstr ""
 
-#: api.py:471
+#: api.py:448
 msgid "Failed to convert any images from API response"
 msgstr ""
 
-#: api.py:475
+#: api.py:452
 msgid "Image editing complete!"
 msgstr ""
 
-#: api.py:477
+#: api.py:454
 msgid "Image generation complete!"
 msgstr ""
 
@@ -119,167 +123,158 @@ msgstr ""
 msgid "Dream Prompter - AI Image Creator/Editor"
 msgstr ""
 
-#: dialog_events.py:119
+#: dialog_events.py:121
 msgid "Please enter your Replicate API key"
 msgstr ""
 
-#: dialog_events.py:123
+#: dialog_events.py:125
 msgid "Please enter a prompt"
 msgstr ""
 
-#: dialog_events.py:129
+#: dialog_events.py:131
 msgid "Edit mode requires a selected layer"
 msgstr ""
 
-#: dialog_events.py:140
+#: dialog_events.py:148
 msgid "Initializing API request..."
 msgstr ""
 
-#: dialog_events.py:182
-#, python-brace-format
-msgid "Reduced to {max} reference image for edit mode"
-msgid_plural "Reduced to {max} reference images for edit mode"
-msgstr[0] ""
-msgstr[1] ""
-
-#: dialog_events.py:189 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:415
 msgid "Generate Edit"
 msgstr ""
 
-#: dialog_events.py:192 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:525
 msgid "Generate Image"
 msgstr ""
 
-#: dialog_events.py:214
+#: dialog_events.py:215
 msgid "Select Reference Images"
 msgstr ""
 
-#: dialog_events.py:219 dialog_gtk.py:408
+#: dialog_events.py:220 dialog_gtk.py:410
 msgid "Cancel"
 msgstr ""
 
-#: dialog_events.py:220
+#: dialog_events.py:221
 msgid "Select"
 msgstr ""
 
-#: dialog_events.py:230
+#: dialog_events.py:231
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr ""
 
-#: dialog_events.py:255
-#, python-brace-format
-msgid "Cannot add {count} file."
-msgid_plural "Cannot add {count} files."
-msgstr[0] ""
-msgstr[1] ""
+#: dialog_events.py:238
+msgid "All Files"
+msgstr ""
 
-#: dialog_events.py:263
+#: dialog_events.py:264
 #, python-brace-format
-msgid "Maximum {max} reference image allowed in edit mode."
-msgid_plural "Maximum {max} reference images allowed in edit mode."
-msgstr[0] ""
-msgstr[1] ""
+msgid ""
+"No files were added. Already selected: {selected}; requested: {requested}; "
+"available slots: {remaining}."
+msgstr ""
 
-#: dialog_events.py:272
-#, python-brace-format
-msgid "Maximum {max} reference image allowed."
-msgid_plural "Maximum {max} reference images allowed."
-msgstr[0] ""
-msgstr[1] ""
-
-#: dialog_events.py:292
+#: dialog_events.py:288
 msgid "Hide API key"
 msgstr ""
 
-#: dialog_events.py:299
+#: dialog_events.py:295
 msgid "Show API key"
 msgstr ""
 
-#: dialog_events.py:354
+#: dialog_events.py:350
 #, python-brace-format
 msgid "Select up to {max} additional image"
 msgid_plural "Select up to {max} additional images"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dialog_events.py:359
+#: dialog_events.py:355 image_validation.py:50
+msgid "This model accepts no additional images in edit mode."
+msgstr ""
+
+#: dialog_events.py:357 image_validation.py:52
 msgid "This model does not support reference images"
 msgstr ""
 
-#: dialog_gtk.py:262
+#: dialog_events.py:366
+msgid "Remove the selected reference images to continue."
+msgstr ""
+
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr ""
 
-#: dialog_gtk.py:310
+#: dialog_gtk.py:312
 msgid "Additional Images (Optional)"
 msgstr ""
 
-#: dialog_gtk.py:319
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr ""
 
-#: dialog_gtk.py:327 dialog_gtk.py:788
+#: dialog_gtk.py:329 dialog_gtk.py:800
 msgid "No additional images selected"
 msgstr ""
 
-#: dialog_gtk.py:338
+#: dialog_gtk.py:340
 msgid "Clear selected files"
 msgstr ""
 
-#: dialog_gtk.py:362
+#: dialog_gtk.py:364
 msgid "Replicate API Key"
 msgstr ""
 
-#: dialog_gtk.py:371
+#: dialog_gtk.py:373
 msgid "Enter your Replicate API key"
 msgstr ""
 
-#: dialog_gtk.py:383
+#: dialog_gtk.py:385
 msgid "Show/Hide API key"
 msgstr ""
 
-#: dialog_gtk.py:391
+#: dialog_gtk.py:393
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr ""
 
-#: dialog_gtk.py:464
+#: dialog_gtk.py:466
 msgid "AI Model"
 msgstr ""
 
-#: dialog_gtk.py:511
+#: dialog_gtk.py:513
 msgid "Operation Mode"
 msgstr ""
 
-#: dialog_gtk.py:518
+#: dialog_gtk.py:520
 msgid "Edit Image"
 msgstr ""
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:655
 msgid "AI Prompt"
 msgstr ""
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:704
 msgid "Ready"
 msgstr ""
 
-#: dialog_gtk.py:723
+#: dialog_gtk.py:735
 #, python-brace-format
-msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
+msgid "⚠️ ({size:.1f} MiB - Max Size Exceeded)"
 msgstr ""
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:738
 #, python-brace-format
-msgid "({size:.1f} MB)"
+msgid "({size:.1f} MiB)"
 msgstr ""
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:742
 #, python-brace-format
-msgid "({size:.0f} KB)"
+msgid "({size:.0f} KiB)"
 msgstr ""
 
-#: dialog_gtk.py:801
+#: dialog_gtk.py:813
 #, python-brace-format
 msgid "{count} image selected"
 msgid_plural "{count} images selected"
@@ -394,6 +389,44 @@ msgstr ""
 #: dream-prompter.py:103
 #, python-brace-format
 msgid "Error running Dream Prompter: {error}"
+msgstr ""
+
+#: image_validation.py:30
+msgid "The selected model does not support this operation."
+msgstr ""
+
+#: image_validation.py:36
+#, python-brace-format
+msgid "Maximum {max} reference image allowed in edit mode."
+msgid_plural "Maximum {max} reference images allowed in edit mode."
+msgstr[0] ""
+msgstr[1] ""
+
+#: image_validation.py:43
+#, python-brace-format
+msgid "Maximum {max} reference image allowed."
+msgid_plural "Maximum {max} reference images allowed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: image_validation.py:79
+#, python-brace-format
+msgid "Image '{image}' is empty."
+msgstr ""
+
+#: image_validation.py:84
+#, python-brace-format
+msgid "Image '{image}' has an unsupported file format."
+msgstr ""
+
+#: image_validation.py:102
+#, python-brace-format
+msgid "Could not read image '{image}'."
+msgstr ""
+
+#: image_validation.py:108
+#, python-brace-format
+msgid "Image '{image}' exceeds the {max} MiB size limit."
 msgstr ""
 
 #: model_settings.py:245

@@ -13,7 +13,7 @@ Dream Prompter brings powerful AI models from Replicate directly into GIMP for i
 - 🔄 **Smart Layer Management**: Automatically creates properly named layers
 - 🎯 **Dual Operation Modes**: Seamlessly switch between editing and generation
 - 🌍 **Multi-Language Support**: Full internationalization with 10+ languages
-- 🔒 **Safe File Handling**: Validates image formats and file sizes per model
+- 🔒 **Safe File Handling**: Validates references, edited images, and selections before upload
 - 🏗️ **Native GIMP Integration**: Works seamlessly within your GIMP workflow
 
 ## Installation
@@ -121,6 +121,7 @@ yay -S dream-prompter
 ├── api.py
 ├── dialog*.py
 ├── integrator.py
+├── image_validation.py
 ├── model_settings.py
 ├── settings.py
 ├── i18n.py
@@ -244,11 +245,13 @@ If you get the **"replicate not installed"** error on Windows:
 
 ### Available AI Models
 
+The limits below describe plugin support. File-size caps are plugin limits per reference file in MiB (1 MiB = 1,048,576 bytes); they do not apply to GIMP's exported edit image or selection. Editing reference counts exclude the main image, which occupies one input slot. Provider-side limits still apply.
+
 **Flux 2 Pro** (`black-forest-labs/flux-2-pro`) - High-quality image generation and editing model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 8 for generation, 7 for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 8 for generation, 7 additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP, GIF
 - **Special Features**: Excellent text rendering, photorealism, character consistency, up to 4MP resolution
 - **More Info**: [Replicate Model Page](https://replicate.com/black-forest-labs/flux-2-pro)
@@ -256,16 +259,16 @@ If you get the **"replicate not installed"** error on Windows:
 **GPT Image 1.5** (`openai/gpt-image-1.5`) - OpenAI's advanced image generation model:
 
 - **Capabilities**: Generation only
-- **Reference Images**: Up to 10 for generation
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 10 for generation (plugin limit)
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Transparent backgrounds, quality control, input fidelity options
 
 **GPT Image 2** (`openai/gpt-image-2`) - OpenAI's next generation image generation model:
 
 - **Capabilities**: Generation only
-- **Reference Images**: Up to 10 for generation
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 10 for generation (plugin limit)
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Quality control, dense text rendering, world-knowledge reasoning
 
@@ -273,7 +276,7 @@ If you get the **"replicate not installed"** error on Windows:
 
 - **Capabilities**: Both generation and editing
 - **Reference Images**: Up to 10 for generation, 9 additional references for editing (plugin limits)
-- **File Size**: Maximum 10MB per reference image (plugin limit)
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Precise editing, automatic high-fidelity references, six quality levels, transparent backgrounds, flexible output sizes
 - **More Info**: [Replicate Model README](https://replicate.com/openai/gpt-image-2.5-sunburst/readme) and [API Schema](https://replicate.com/openai/gpt-image-2.5-sunburst/api/schema)
@@ -281,8 +284,8 @@ If you get the **"replicate not installed"** error on Windows:
 **Grok Imagine Image 2** (`xai/grok-imagine-image-2`) - xAI's general-purpose image generation and editing model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 1 for img2img, none for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 1 for img2img, no additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: 1K/2K resolution, quality control, wide aspect ratio range including phone ratios, handles real-world entities and brands
 
@@ -290,63 +293,62 @@ If you get the **"replicate not installed"** error on Windows:
 
 - **Capabilities**: Generation only
 - **Reference Images**: Not supported
-- **File Size**: Maximum 7MB per image
-- **Formats**: PNG, JPEG
+- **Output Formats**: PNG, JPEG
 - **Special Features**: Advanced safety filtering, high-quality generation
 
 **Nano Banana** (`google/nano-banana`) - Google's Gemini 2.5 Flash Image model for fast, conversational workflows:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 10 for generation, 9 for editing
-- **File Size**: Maximum 7MB per image
+- **Reference Images**: Up to 10 for generation, 9 additional references for editing (plugin limits)
+- **File Size**: Maximum 7 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Character consistency, multi-image fusion, conversational editing, native image understanding
 
 **Nano Banana 2** (`google/nano-banana-2`) - Google's Gemini 3.1 Flash Image model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 14 for generation, 13 for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 14 for generation, 13 additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Multiple resolutions (1K/2K/4K), extended aspect ratios (including 1:4, 4:1, 1:8, 8:1), Google Search and Image Search grounding, improved text rendering
 
 **Nano Banana Pro** (`google/nano-banana-pro`) - Google's Gemini 3 Pro state of the art model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 14 for generation, 13 for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 14 for generation, 13 additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: 4K resolution, accurate text rendering, multi-image fusion, real-time Google Search integration
 
 **Qwen Image 2 Pro** (`qwen/qwen-image-2-pro`) - Qwen's next-generation image generation and editing model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 1 for img2img, none for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 1 for img2img, no additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: Enhanced text rendering, prompt expansion, negative prompts
 
 **Qwen Image Edit 2511** (`qwen/qwen-image-edit-2511`) - Qwen's advanced image editing model:
 
 - **Capabilities**: Editing only
-- **Reference Images**: Up to 9 for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 9 additional references for editing (plugin limit)
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP, GIF
 - **Special Features**: Specialized for image editing and transformation
 
 **Seedream 5 Pro** (`bytedance/seedream-5-pro`) - ByteDance's flagship image generation and editing model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 10 for generation, 9 for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 10 for generation, 9 additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: 1K and 2K resolution, multi-reference composition, character consistency
 
 **Stable Diffusion 3.5 Large Turbo** (`stability-ai/stable-diffusion-3.5-large-turbo`) - Stability AI's high-resolution image generation model:
 
 - **Capabilities**: Both generation and editing
-- **Reference Images**: Up to 1 for generation, none for editing
-- **File Size**: Maximum 10MB per image
+- **Reference Images**: Up to 1 for generation, no additional references for editing
+- **File Size**: Maximum 10 MiB per reference file
 - **Formats**: PNG, JPEG, WebP
 - **Special Features**: High-resolution generation, fast inference, fewer steps required
 
@@ -393,7 +395,17 @@ If you get the **"replicate not installed"** error on Windows:
 - **Include style**: "photorealistic", "oil painting", "digital art"
 - **Describe lighting**: "golden hour", "dramatic shadows", "soft natural light"
 - **Use reference images** to guide style and composition
-- **Keep files under 7MB** for reference images
+- **Observe the selected model's reference-file cap**: 7 MiB for Nano Banana, 10 MiB for other models that accept images
+
+### Input Validation
+
+Before uploading, the plugin checks the operation, reference count, file readability, nonempty content, reference-file size, and supported MIME type. PNG, JPEG, WebP, and GIF are identified by file signatures, not filenames. Files with missing or misleading extensions are accepted when their detected format is supported; use the file chooser's **All Files** filter when needed.
+
+Requests that fail these checks stop before uploading; references are never silently skipped or truncated. Switching models or modes preserves selected files until you remove them. A batch that exceeds the reference limit is rejected in full, with the remaining capacity shown.
+
+Selection edits check the exported PNG of the selection's bounding rectangle, not the full canvas. Main-image exports are checked for nonempty content and supported MIME type, without applying reference-file size caps.
+
+The plugin does not decode input images, inspect their dimensions, or resize, recompress, or convert uploads. Signature detection identifies a format, not whether an image is complete or uncorrupted; image integrity and provider-specific constraints are handled by Replicate. Upload bytes and local files are unchanged. Only the in-memory upload filename's extension is normalized, with explicit MIME mappings so upload metadata does not depend on system defaults. Decoding returned images for import into GIMP is unchanged.
 
 ## Language Support
 
@@ -441,6 +453,7 @@ The plugin is organized into focused modules with a clean model-driven architect
 - **`dialog_threads.py`** - Background processing and threading
 - **`api.py`** - Replicate API integration
 - **`integrator.py`** - GIMP-specific operations
+- **`image_validation.py`** - Shared request and image-upload validation
 - **`model_settings.py`** - Model parameter management utilities
 - **`settings.py`** - Configuration persistence
 - **`i18n.py`** - Internationalization support
@@ -508,6 +521,27 @@ register_model(my_model)
 4. **The model is now available** throughout the plugin with automatic validation and UI updates
 
 The `nano_banana.py` file serves as a complete reference implementation.
+
+Declare `max_file_size_mb` as a per-reference-file limit in MiB and `max_reference_images_edit` as additional references, excluding the main edit image. Declare accepted input MIME types in `supported_mime_types`; a new format also needs signature detection and an upload extension in `image_validation.py`. `ReplicateAPI` checks inputs before calling a model's request builder; it does not decode them or enforce pixel dimensions.
+
+### Offline Tests
+
+Run from the repository root using the same Python environment as GIMP, with the plugin's dependencies installed. Replace `python3` or `python.exe` below with GIMP's Python executable path when needed. Input validation tests do not require image codecs.
+
+On Linux/macOS (POSIX shell):
+
+```bash
+LANGUAGE=en python3 -m unittest discover -s tests -v
+```
+
+On Windows (PowerShell):
+
+```powershell
+$env:LANGUAGE = "en"
+python.exe -m unittest discover -s tests -v
+```
+
+These tests cover every registered model, content-based MIME detection, arbitrary filenames, reference-file size and count boundaries, exported edit data, stream cleanup, and reference-selection behavior. Replicate SDK upload metadata and data-URI encoding are exercised with the network boundary mocked. GIMP exports are mocked; no paid predictions run. In-GIMP creation, whole-image editing, and selection editing remain manual smoke tests.
 
 ## Troubleshooting
 

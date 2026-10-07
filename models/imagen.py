@@ -43,8 +43,8 @@ class ImagenModel(BaseModel):
 
     @property
     def max_file_size_mb(self) -> int:
-        """Maximum file size in MB for reference images"""
-        return 7
+        """No image uploads are supported."""
+        return 0
 
     @property
     def max_reference_images(self) -> int:
@@ -63,7 +63,7 @@ class ImagenModel(BaseModel):
 
     @property
     def supported_mime_types(self) -> list[str]:
-        """List of supported MIME types for reference images"""
+        """No image uploads are supported."""
         return []
 
     def build_edit_input(

@@ -48,7 +48,7 @@ class GPTImage25SunburstModel(BaseModel):
 
     @property
     def max_file_size_mb(self) -> int:
-        """Plugin reference file limit; the API schema specifies no limit"""
+        """Plugin size limit per reference file in MiB, not GIMP exports."""
         return 10
 
     @property
@@ -68,7 +68,7 @@ class GPTImage25SunburstModel(BaseModel):
 
     @property
     def supported_mime_types(self) -> list[str]:
-        """Reference image formats accepted by the plugin"""
+        """Input formats accepted by the plugin for this model."""
         return ["image/png", "image/jpeg", "image/webp"]
 
     def build_edit_input(

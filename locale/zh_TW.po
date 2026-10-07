@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dream Prompter 1.7.0\n"
 "Report-Msgid-Bugs-To: quest@mac.com\n"
-"POT-Creation-Date: 2026-09-21 20:53-0700\n"
-"PO-Revision-Date: 2026-09-21 20:41-0700\n"
+"POT-Creation-Date: 2026-10-06 18:16-1000\n"
+"PO-Revision-Date: 2026-10-06 18:04-1000\n"
 "Last-Translator: Translation Team\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: dialog_gtk.py:730
+#: dialog_gtk.py:742
 #, python-brace-format
-msgid "({size:.0f} KB)"
-msgstr "({size:.0f} KB)"
+msgid "({size:.0f} KiB)"
+msgstr "({size:.0f} KiB)"
 
-#: dialog_gtk.py:726
+#: dialog_gtk.py:738
 #, python-brace-format
-msgid "({size:.1f} MB)"
-msgstr "({size:.1f} MB)"
+msgid "({size:.1f} MiB)"
+msgstr "({size:.1f} MiB)"
 
 #: dialog_threads.py:383 integrator.py:113
 msgid "AI Generated"
@@ -45,11 +45,11 @@ msgstr "AI生成：{prompt}"
 msgid "AI Layer"
 msgstr "AI圖層"
 
-#: dialog_gtk.py:464
+#: dialog_gtk.py:466
 msgid "AI Model"
 msgstr "AI模型"
 
-#: dialog_gtk.py:653
+#: dialog_gtk.py:655
 msgid "AI Prompt"
 msgstr "AI提示詞"
 
@@ -57,7 +57,7 @@ msgstr "AI提示詞"
 msgid "AI-powered image creation/editing with Replicate models"
 msgstr "使用Replicate模型進行AI驅動的圖像創建/編輯"
 
-#: api.py:64 dialog_threads.py:107 dialog_threads.py:145
+#: api.py:68 dialog_threads.py:107 dialog_threads.py:145
 msgid "API key is required"
 msgstr "需要API密鑰"
 
@@ -72,9 +72,13 @@ msgstr[0] "已新增 {count} 層"
 msgid "Adding layer {num}..."
 msgstr "正在新增圖層 {num}..."
 
-#: dialog_gtk.py:310
+#: dialog_gtk.py:312
 msgid "Additional Images (Optional)"
 msgstr "附加圖像（可選）"
+
+#: dialog_events.py:238
+msgid "All Files"
+msgstr "所有檔案"
 
 #: models/flux_pro.py:177 models/gpt_image.py:149 models/gpt_image_2.py:148
 #: models/grok_imagine_image_2.py:179 models/imagen.py:142
@@ -109,7 +113,7 @@ msgstr "自動擴展並優化提示以獲得更好的結果"
 msgid "Background"
 msgstr "背景"
 
-#: api.py:125
+#: api.py:139
 msgid "Building Replicate edit request..."
 msgstr "構建Replicate編輯請求..."
 
@@ -117,7 +121,7 @@ msgstr "構建Replicate編輯請求..."
 msgid "ByteDance's flagship model for sharp 1K and 2K images"
 msgstr "字節跳動的旗艦模型，可生成清晰的1K和2K圖像"
 
-#: dialog_events.py:219 dialog_gtk.py:408
+#: dialog_events.py:220 dialog_gtk.py:410
 msgid "Cancel"
 msgstr "取消"
 
@@ -125,17 +129,11 @@ msgstr "取消"
 msgid "Cancelling..."
 msgstr "正在取消..."
 
-#: dialog_events.py:255
-#, python-brace-format
-msgid "Cannot add {count} file."
-msgid_plural "Cannot add {count} files."
-msgstr[0] "無法添加{count}個檔案。"
-
 #: models/stable_diffusion_large_turbo.py:196
 msgid "Cfg"
 msgstr "Cfg"
 
-#: dialog_gtk.py:338
+#: dialog_gtk.py:340
 msgid "Clear selected files"
 msgstr "清除選定的檔案"
 
@@ -168,10 +166,19 @@ msgstr "控制生成圖像的安全過濾"
 msgid "Control safety of generated images"
 msgstr "控制生成影像的安全性"
 
+#: image_validation.py:102
+#, python-brace-format
+msgid "Could not read image '{image}'."
+msgstr "無法讀取圖像 '{image}'。"
+
 #: dialog_threads.py:376
 #, python-brace-format
 msgid "Creating image {num}..."
 msgstr "正在建立影像 {num}..."
+
+#: api.py:131
+msgid "Current image or selection"
+msgstr "目前圖像或選取範圍"
 
 #: models/qwen_image_edit_plus.py:198
 msgid "Disable Safety Checker"
@@ -181,7 +188,7 @@ msgstr "停用安全檢查器"
 msgid "Disable safety checker for generated images."
 msgstr "停用生成圖像的安全檢查器。"
 
-#: api.py:455
+#: api.py:432
 msgid "Downloading result..."
 msgstr "正在下載結果..."
 
@@ -193,11 +200,11 @@ msgstr "Dream Prompter - AI圖像創建器/編輯器"
 msgid "Dream Prompter..."
 msgstr "Dream Prompter..."
 
-#: dialog_gtk.py:518
+#: dialog_gtk.py:520
 msgid "Edit Image"
 msgstr "編輯圖像"
 
-#: dialog_events.py:129
+#: dialog_events.py:131
 msgid "Edit mode requires a selected layer"
 msgstr "編輯模式需要選擇一個圖層"
 
@@ -205,7 +212,7 @@ msgstr "編輯模式需要選擇一個圖層"
 msgid "Enable speed optimizations"
 msgstr "啟用速度最佳化"
 
-#: dialog_gtk.py:371
+#: dialog_gtk.py:373
 msgid "Enter your Replicate API key"
 msgstr "輸入您的Replicate API密鑰"
 
@@ -228,11 +235,11 @@ msgstr "運行Dream Prompter時出錯：{error}"
 msgid "Expand Prompt"
 msgstr "擴展提示"
 
-#: api.py:471
+#: api.py:448
 msgid "Failed to convert any images from API response"
 msgstr "無法從API回應轉換影像"
 
-#: api.py:119
+#: api.py:126
 msgid "Failed to export current image"
 msgstr "匯出當前圖像失敗"
 
@@ -268,11 +275,11 @@ msgstr "GPT Image 2"
 msgid "GPT Image 2.5 Sunburst"
 msgstr "GPT Image 2.5 Sunburst"
 
-#: dialog_events.py:189 dialog_gtk.py:413
+#: dialog_events.py:189 dialog_gtk.py:415
 msgid "Generate Edit"
 msgstr "生成編輯"
 
-#: dialog_events.py:192 dialog_gtk.py:523
+#: dialog_events.py:192 dialog_gtk.py:525
 msgid "Generate Image"
 msgstr "生成圖像"
 
@@ -282,7 +289,7 @@ msgid "Generated {count} image"
 msgid_plural "Generated {count} images"
 msgstr[0] "已生成 {count} 張影像"
 
-#: api.py:191
+#: api.py:204
 msgid "Generating image with Replicate..."
 msgstr "正在使用Replicate生成圖像..."
 
@@ -292,7 +299,7 @@ msgid ""
 "cheaper."
 msgstr "生成品質。Medium生成最佳結果，low更快且更便宜。"
 
-#: dialog_gtk.py:391
+#: dialog_gtk.py:393
 #, python-brace-format
 msgid "Get your API key from <a href=\"{url}\">Replicate</a>"
 msgstr "從<a href=\"{url}\">Replicate</a>獲取您的API密鑰"
@@ -339,7 +346,7 @@ msgid ""
 "multiple of 32."
 msgstr "文本轉圖像模式下生成圖像的高度。"
 
-#: dialog_events.py:292
+#: dialog_events.py:288
 msgid "Hide API key"
 msgstr "隱藏API密鑰"
 
@@ -355,6 +362,21 @@ msgstr "更高的品質需要更長的時間和更高的費用。"
 msgid "How similar the output should be to the prompt"
 msgstr "輸出與提示的相似程度"
 
+#: image_validation.py:108
+#, python-brace-format
+msgid "Image '{image}' exceeds the {max} MiB size limit."
+msgstr "圖像 '{image}' 超出了 {max} MiB 的大小限制。"
+
+#: image_validation.py:84
+#, python-brace-format
+msgid "Image '{image}' has an unsupported file format."
+msgstr "圖像 '{image}' 的檔案格式不受支援。"
+
+#: image_validation.py:79
+#, python-brace-format
+msgid "Image '{image}' is empty."
+msgstr "圖像 '{image}' 為空。"
+
 #: models/nano_banana_2.py:226
 msgid "Image Search"
 msgstr "圖片搜尋"
@@ -363,11 +385,11 @@ msgstr "圖片搜尋"
 msgid "Image Size"
 msgstr "影像大小"
 
-#: api.py:475
+#: api.py:452
 msgid "Image editing complete!"
 msgstr "圖像編輯完成！"
 
-#: api.py:477
+#: api.py:454
 msgid "Image generation complete!"
 msgstr "圖像生成完成！"
 
@@ -379,7 +401,7 @@ msgstr "圖像解析度：1K（約200萬像素）或2K（約400萬像素）"
 msgid "Imagen 4"
 msgstr "Imagen 4"
 
-#: dialog_events.py:140
+#: dialog_events.py:148
 msgid "Initializing API request..."
 msgstr "正在初始化API請求..."
 
@@ -387,7 +409,7 @@ msgstr "正在初始化API請求..."
 msgid "Input Fidelity"
 msgstr "輸入保真度"
 
-#: api.py:321 api.py:339
+#: api.py:330 api.py:348
 msgid "Logs"
 msgstr "日誌"
 
@@ -395,23 +417,23 @@ msgstr "日誌"
 msgid "Match Reference Image"
 msgstr "符合參考圖像"
 
-#: dialog_events.py:263
+#: image_validation.py:36
 #, python-brace-format
 msgid "Maximum {max} reference image allowed in edit mode."
 msgid_plural "Maximum {max} reference images allowed in edit mode."
 msgstr[0] "編輯模式下最多允許{max}張參考圖像。"
 
-#: dialog_events.py:272
+#: image_validation.py:43
 #, python-brace-format
 msgid "Maximum {max} reference image allowed."
 msgid_plural "Maximum {max} reference images allowed."
 msgstr[0] "最多允許{max}張參考圖像。"
 
-#: dialog_gtk.py:262
+#: dialog_gtk.py:264
 msgid "Model Settings"
 msgstr "模型設定"
 
-#: api.py:317 api.py:332
+#: api.py:328 api.py:341
 #, python-brace-format
 msgid "Model error: {error}"
 msgstr "模型錯誤：{error}"
@@ -441,7 +463,7 @@ msgstr "負面提示"
 msgid "Negative prompt for generated image"
 msgstr "生成圖像的負面提示"
 
-#: api.py:346
+#: api.py:355
 #, python-brace-format
 msgid "Network error: {error}"
 msgstr "網路錯誤：{error}"
@@ -450,13 +472,22 @@ msgstr "網路錯誤：{error}"
 msgid "No"
 msgstr "否"
 
-#: api.py:107
+#: api.py:111
 msgid "No GIMP image provided for editing"
 msgstr "未提供用於編輯的GIMP圖像"
 
-#: dialog_gtk.py:327 dialog_gtk.py:788
+#: dialog_gtk.py:329 dialog_gtk.py:800
 msgid "No additional images selected"
 msgstr "未選擇附加圖像"
+
+#: dialog_events.py:264
+#, python-brace-format
+msgid ""
+"No files were added. Already selected: {selected}; requested: {requested}; "
+"available slots: {remaining}."
+msgstr ""
+"未新增任何檔案。已選取：{selected}；要求新增：{requested}；可新增數量："
+"{remaining}。"
 
 #: dialog_threads.py:103 dialog_threads.py:186
 msgid "No image available for editing"
@@ -470,11 +501,11 @@ msgstr "未從API接收到圖像數據"
 msgid "No layer available for editing"
 msgstr "沒有可編輯的圖層"
 
-#: api.py:452
+#: api.py:429
 msgid "No output received from API"
 msgstr "未從API接收到輸出"
 
-#: api.py:461
+#: api.py:438
 msgid "No valid image data in API response"
 msgstr "API響應中沒有有效圖像數據"
 
@@ -510,12 +541,12 @@ msgstr "支援精確編輯控制的 OpenAI 影像生成與編輯模型"
 msgid "OpenAI's next generation image generation model"
 msgstr "OpenAI的新一代圖像生成模型"
 
-#: dialog_gtk.py:511
+#: dialog_gtk.py:513
 msgid "Operation Mode"
 msgstr "操作模式"
 
-#: api.py:113 api.py:127 api.py:144 api.py:193 api.py:205 api.py:307 api.py:313
-#: api.py:449 api.py:457
+#: api.py:120 api.py:141 api.py:157 api.py:206 api.py:218 api.py:318 api.py:324
+#: api.py:426 api.py:434
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
@@ -540,19 +571,19 @@ msgstr "輸出格式"
 msgid "Output Quality"
 msgstr "輸出品質"
 
-#: dialog_events.py:123
+#: dialog_events.py:125
 msgid "Please enter a prompt"
 msgstr "請輸入提示詞"
 
-#: dialog_events.py:119
+#: dialog_events.py:121
 msgid "Please enter your Replicate API key"
 msgstr "請輸入您的Replicate API密鑰"
 
-#: api.py:111
+#: api.py:118
 msgid "Preparing current image for Replicate..."
 msgstr "為Replicate準備當前圖像..."
 
-#: api.py:447
+#: api.py:424
 msgid "Processing Replicate response..."
 msgstr "處理Replicate響應..."
 
@@ -604,26 +635,24 @@ msgstr "Qwen的新一代模型，具有增強的文字渲染能力"
 msgid "Random seed for reproducible results (-1 = random)"
 msgstr "用於可重現結果的隨機種子（-1 = 隨機）"
 
-#: dialog_gtk.py:702
+#: dialog_gtk.py:704
 msgid "Ready"
 msgstr "就緒"
 
-#: dialog_events.py:182
-#, python-brace-format
-msgid "Reduced to {max} reference image for edit mode"
-msgid_plural "Reduced to {max} reference images for edit mode"
-msgstr[0] "減少到{max}張參考圖像用於編輯模式"
+#: dialog_events.py:366
+msgid "Remove the selected reference images to continue."
+msgstr "請移除所選參考圖像以繼續。"
 
-#: dialog_gtk.py:362
+#: dialog_gtk.py:364
 msgid "Replicate API Key"
 msgstr "Replicate API密鑰"
 
-#: api.py:343
+#: api.py:352
 #, python-brace-format
 msgid "Replicate API error: {error}"
 msgstr "Replicate API錯誤：{error}"
 
-#: api.py:60 api.py:103 api.py:183
+#: api.py:64 api.py:107 api.py:196
 msgid "Replicate API not available. Please install replicate"
 msgstr "Replicate API不可用。請安裝replicate"
 
@@ -670,29 +699,29 @@ msgstr "種子"
 msgid "Seedream 5 Pro"
 msgstr "Seedream 5 Pro"
 
-#: dialog_events.py:220
+#: dialog_events.py:221
 msgid "Select"
 msgstr "選擇"
 
-#: dialog_gtk.py:319
+#: dialog_gtk.py:321
 msgid "Select Images..."
 msgstr "選擇圖像..."
 
-#: dialog_events.py:214
+#: dialog_events.py:215
 msgid "Select Reference Images"
 msgstr "選擇參考圖像"
 
-#: dialog_events.py:354
+#: dialog_events.py:350
 #, python-brace-format
 msgid "Select up to {max} additional image"
 msgid_plural "Select up to {max} additional images"
 msgstr[0] "最多選擇{max}張附加圖像"
 
-#: api.py:142
+#: api.py:155
 msgid "Sending edit request to Replicate..."
 msgstr "向Replicate發送編輯請求..."
 
-#: api.py:203
+#: api.py:216
 msgid "Sending request to Replicate..."
 msgstr "向Replicate發送請求..."
 
@@ -709,11 +738,11 @@ msgstr "設定背景模式"
 msgid "Set whether the background is transparent or opaque"
 msgstr "設定背景是透明還是不透明"
 
-#: dialog_events.py:299
+#: dialog_events.py:295
 msgid "Show API key"
 msgstr "顯示API密鑰"
 
-#: dialog_gtk.py:383
+#: dialog_gtk.py:385
 msgid "Show/Hide API key"
 msgstr "顯示/隱藏API密鑰"
 
@@ -725,7 +754,7 @@ msgstr "Stability AI的高解析度影像生成模型"
 msgid "Stable Diffusion 3.5 Large Turbo"
 msgstr "Stable Diffusion 3.5 Large Turbo"
 
-#: dialog_events.py:230
+#: dialog_events.py:231
 #, python-brace-format
 msgid "Supported Images ({formats})"
 msgstr "支援的圖像格式（{formats}）"
@@ -738,7 +767,15 @@ msgstr "生成圖像的長寬比"
 msgid "The quality of the generated image"
 msgstr "生成圖像的品質"
 
-#: dialog_events.py:359
+#: image_validation.py:30
+msgid "The selected model does not support this operation."
+msgstr "所選模型不支援此操作。"
+
+#: dialog_events.py:355 image_validation.py:50
+msgid "This model accepts no additional images in edit mode."
+msgstr "此模型在編輯模式下不接受額外圖像。"
+
+#: dialog_events.py:357 image_validation.py:52
 msgid "This model does not support reference images"
 msgstr "此模型不支援參考圖像"
 
@@ -767,7 +804,7 @@ msgstr "圖像編輯過程中出現意外錯誤：{error}"
 msgid "Unexpected error during image generation: {error}"
 msgstr "圖像生成過程中出現意外錯誤：{error}"
 
-#: api.py:157 api.py:216
+#: api.py:170 api.py:229
 #, python-brace-format
 msgid "Unexpected error: {error}"
 msgstr "意外錯誤：{error}"
@@ -794,7 +831,7 @@ msgstr "使用參考圖像的長寬比和解析度，而不是長寬比設定"
 msgid "User ID"
 msgstr "使用者 ID"
 
-#: api.py:301
+#: api.py:312
 msgid "Waiting for Replicate..."
 msgstr "正在等待Replicate..."
 
@@ -825,7 +862,7 @@ msgstr "您的OpenAI API金鑰（可選 - 如未提供則使用代理）"
 msgid "xAI's general-purpose image generation and editing model"
 msgstr "xAI的通用圖像生成和編輯模型"
 
-#: dialog_gtk.py:801
+#: dialog_gtk.py:813
 #, python-brace-format
 msgid "{count} image selected"
 msgid_plural "{count} images selected"
@@ -836,7 +873,17 @@ msgstr[0] "已選擇{count}張圖像"
 msgid "{original} (AI Edit: {prompt})"
 msgstr "{original}（AI編輯：{prompt}）"
 
-#: dialog_gtk.py:723
+#: dialog_gtk.py:735
 #, python-brace-format
-msgid "⚠️ ({size:.1f} MB - Max Size Exceeded)"
-msgstr "⚠️ ({size:.1f} MB - 超出最大大小)"
+msgid "⚠️ ({size:.1f} MiB - Max Size Exceeded)"
+msgstr "⚠️ ({size:.1f} MiB - 超出最大大小)"
+
+#, python-brace-format
+#~ msgid "Cannot add {count} file."
+#~ msgid_plural "Cannot add {count} files."
+#~ msgstr[0] "無法添加{count}個檔案。"
+
+#, python-brace-format
+#~ msgid "Reduced to {max} reference image for edit mode"
+#~ msgid_plural "Reduced to {max} reference images for edit mode"
+#~ msgstr[0] "減少到{max}張參考圖像用於編輯模式"

@@ -171,6 +171,8 @@ class DreamPrompterUI:
             self.file_chooser_btn.set_sensitive(enabled)
         if self.clear_files_btn:
             self.clear_files_btn.set_sensitive(enabled)
+        if self.files_listbox:
+            self.files_listbox.set_sensitive(enabled)
         if self.generate_btn:
             self.generate_btn.set_sensitive(enabled)
 
@@ -700,7 +702,11 @@ class DreamPrompterUI:
 
         self.status_label = Gtk.Label()
         self.status_label.set_text(_("Ready"))
-        self.status_label.set_halign(Gtk.Align.START)
+        self.status_label.set_halign(Gtk.Align.FILL)
+        self.status_label.set_line_wrap(True)
+        self.status_label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
+        self.status_label.set_max_width_chars(70)
+        self.status_label.set_xalign(0)
         self.status_label.get_style_context().add_class("dim-label")
         section_box.pack_start(self.status_label, False, False, 0)
 
@@ -718,16 +724,22 @@ class DreamPrompterUI:
         try:
             file_size = os.path.getsize(file_path)
             size_mb = file_size / (1024 * 1024)
+            model_name = self.get_selected_model()
+            model = get_model_by_name(model_name) if model_name else None
 
-            if size_mb > 7:
-                size_warning = _("⚠️ ({size:.1f} MB - Max Size Exceeded)")
+            if (
+                model
+                and model.supported_mime_types
+                and size_mb > model.max_file_size_mb
+            ):
+                size_warning = _("⚠️ ({size:.1f} MiB - Max Size Exceeded)")
                 filename += " " + size_warning.format(size=size_mb)
             elif size_mb >= 0.1:
-                size_text = _("({size:.1f} MB)").format(size=size_mb)
+                size_text = _("({size:.1f} MiB)").format(size=size_mb)
                 filename += " " + size_text
             else:
                 size_kb = file_size / 1024
-                filename += " " + _("({size:.0f} KB)").format(size=size_kb)
+                filename += " " + _("({size:.0f} KiB)").format(size=size_kb)
         except Exception:
             pass
 
